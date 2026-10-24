@@ -124,7 +124,14 @@ scores: the public labels are explicitly not a tuning set.
 5. Generate the complete CSV deterministically, validate it, and document the
    method, dependencies, external data, limitations, and reproduction command.
 
-This is a proposed direction, not an implemented or benchmarked improvement.
+This direction is now implemented in the [external experiment suite](../experiments/README.md).
+Four tracking-based approaches were compared on fixed match-level partitions.
+The validation-selected gap-augmented boosting model reached **0.9298 frame macro
+F1 / 0.6232 spell F1** on the held-out Sportec match, and **0.9090 / 0.5355** with
+synthetic observation gaps. Sportec's frozen dead-ball coordinates make its
+stoppage classification unusually easy; these results do not establish challenge
+accuracy. A complete challenge CSV was generated and validated without reading
+challenge ground truth. See the linked report for reproduction and limitations.
 
 ## Reusable research
 
