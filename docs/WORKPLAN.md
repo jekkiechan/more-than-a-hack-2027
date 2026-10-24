@@ -133,6 +133,15 @@ stoppage classification unusually easy; these results do not establish challenge
 accuracy. A complete challenge CSV was generated and validated without reading
 challenge ground truth. See the linked report for reproduction and limitations.
 
+The [subsequent refinement round](../experiments/REFINEMENT.md) raised a fresh
+external test to **0.9408 frame macro F1 / 0.7059 spell F1**, compared with
+**0.9303 / 0.6654** for the prior model on the same match. The frozen competition
+pipeline check then exposed poor transfer: the selected model scored
+**0.6487 / 0.4300** on the public five minutes; the predeclared PathCRF hybrid
+scored **0.6795 / 0.5067**. No model or threshold was adjusted using those public
+results. Reliable stoppage detection and independent broadcast validation remain
+unresolved; no full-match accuracy or intrinsic ceiling is established.
+
 ## Reusable research
 
 - [Automatic event detection in football using tracking data](https://arxiv.org/abs/2202.00804):

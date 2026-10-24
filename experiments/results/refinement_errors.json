@@ -1,0 +1,575 @@
+{
+  "baseline": {
+    "purpose": "Post-hoc diagnosis of frozen predictions; no fitting, tuning or model changes.",
+    "matching": {
+      "implementation": "Unchanged evaluation.possession_metrics spell_overlaps, matched_gt_flags and match_spells",
+      "rule": "Same-team temporal IoU; greedy descending IoU, ties by GT then prediction index; one-to-one.",
+      "headline_iou": 0.5,
+      "gaps": "Insert X at period/time discontinuities, then use official valid_runs and fill_abstentions.",
+      "duration": "Half-open spell length in frames divided by native fps; dead-ball spells excluded."
+    },
+    "metrics": {
+      "macro_f1": 0.9303356775927725,
+      "accuracy": 0.9386982331658997,
+      "spell_f1_mean": 0.6654353562005277,
+      "spell_f1_at_headline": 0.6807387862796834,
+      "n_gt_spells": 401,
+      "n_pred_spells": 357,
+      "spell_count_error": -44,
+      "fragmentation": 0.916,
+      "n_gt_segments": 500,
+      "n_pred_segments": 458,
+      "mean_spell_duration_s": 9.44436974789916,
+      "gt_mean_spell_duration_s": 8.414164588528678,
+      "team_acc_gt_alive": 0.8973942526555387,
+      "team_acc_both_alive": 0.8988007599145096,
+      "alive_dead_f1": 0.9987962737854521,
+      "gt_home_share": 0.4389937405159332,
+      "pred_home_share": 0.44642963068417746,
+      "share_err": 0.007435890168244252,
+      "per_class": {
+        "H": {
+          "precision": 0.8776242359819293,
+          "recall": 0.8918444504455847,
+          "f1": 0.8846772033217252,
+          "support": 37030
+        },
+        "A": {
+          "precision": 0.9145110477700864,
+          "recall": 0.901737035628249,
+          "f1": 0.9080791206920401,
+          "support": 47322
+        },
+        "D": {
+          "precision": 0.9977262548661591,
+          "recall": 0.9987757143103478,
+          "f1": 0.9982507087645522,
+          "support": 57993
+        }
+      },
+      "confusion": [
+        [
+          33025,
+          3953,
+          52,
+          0
+        ],
+        [
+          4570,
+          42672,
+          80,
+          0
+        ],
+        [
+          35,
+          36,
+          57922,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "original_n_frames": 142345,
+      "period_or_time_separators": 1,
+      "sampling_fps": 25.0,
+      "label_coverage": 1.0,
+      "three_class_benchmark": true,
+      "spell_f1": {
+        "0.3": {
+          "precision": 0.8319327731092437,
+          "recall": 0.7406483790523691,
+          "f1": 0.783641160949868,
+          "n_matched": 297,
+          "n_spurious": 60,
+          "n_missed": 104
+        },
+        "0.4": {
+          "precision": 0.7759103641456583,
+          "recall": 0.6907730673316709,
+          "f1": 0.7308707124010555,
+          "n_matched": 277,
+          "n_spurious": 80,
+          "n_missed": 124
+        },
+        "0.5": {
+          "precision": 0.7226890756302521,
+          "recall": 0.6433915211970075,
+          "f1": 0.6807387862796834,
+          "n_matched": 258,
+          "n_spurious": 99,
+          "n_missed": 143
+        },
+        "0.6": {
+          "precision": 0.6470588235294118,
+          "recall": 0.5760598503740648,
+          "f1": 0.6094986807387863,
+          "n_matched": 231,
+          "n_spurious": 126,
+          "n_missed": 170
+        },
+        "0.7": {
+          "precision": 0.5546218487394958,
+          "recall": 0.4937655860349127,
+          "f1": 0.5224274406332454,
+          "n_matched": 198,
+          "n_spurious": 159,
+          "n_missed": 203
+        }
+      }
+    },
+    "by_gt_duration": [
+      {
+        "duration": "<1 s",
+        "min_seconds_inclusive": 0,
+        "max_seconds_exclusive": 1,
+        "n_gt": 37,
+        "n_matched_at_iou_0_5": 5,
+        "n_missed_at_iou_0_5": 32,
+        "recall_at_iou_0_5": 0.13513513513513514,
+        "share_of_all_gt_spells": 0.09226932668329177,
+        "share_of_all_missed_spells": 0.22377622377622378,
+        "share_of_gt_alive_time": 0.005939396813353567,
+        "best_same_team_iou": {
+          "n": 37,
+          "mean": 0.14692714716767635,
+          "median": 0.0,
+          "p10": 0.0,
+          "p90": 0.5519999999999999
+        },
+        "n_with_no_same_team_overlap": 21,
+        "n_fragmented": 0,
+        "n_touching_merged_prediction": 7
+      },
+      {
+        "duration": "1\u2013<3 s",
+        "min_seconds_inclusive": 1,
+        "max_seconds_exclusive": 3,
+        "n_gt": 118,
+        "n_matched_at_iou_0_5": 45,
+        "n_missed_at_iou_0_5": 73,
+        "recall_at_iou_0_5": 0.3813559322033898,
+        "share_of_all_gt_spells": 0.2942643391521197,
+        "share_of_all_missed_spells": 0.5104895104895105,
+        "share_of_gt_alive_time": 0.06792962822458272,
+        "best_same_team_iou": {
+          "n": 118,
+          "mean": 0.4041693284629901,
+          "median": 0.36660447761194026,
+          "p10": 0.0,
+          "p90": 0.9213675213675213
+        },
+        "n_with_no_same_team_overlap": 28,
+        "n_fragmented": 0,
+        "n_touching_merged_prediction": 24
+      },
+      {
+        "duration": "3\u2013<10 s",
+        "min_seconds_inclusive": 3,
+        "max_seconds_exclusive": 10,
+        "n_gt": 136,
+        "n_matched_at_iou_0_5": 102,
+        "n_missed_at_iou_0_5": 34,
+        "recall_at_iou_0_5": 0.75,
+        "share_of_all_gt_spells": 0.33915211970074816,
+        "share_of_all_missed_spells": 0.23776223776223776,
+        "share_of_gt_alive_time": 0.23627181335356603,
+        "best_same_team_iou": {
+          "n": 136,
+          "mean": 0.6554318613108903,
+          "median": 0.7082651869158878,
+          "p10": 0.3159115509509819,
+          "p90": 0.9745025481221801
+        },
+        "n_with_no_same_team_overlap": 8,
+        "n_fragmented": 4,
+        "n_touching_merged_prediction": 24
+      },
+      {
+        "duration": ">=10 s",
+        "min_seconds_inclusive": 10,
+        "max_seconds_exclusive": null,
+        "n_gt": 110,
+        "n_matched_at_iou_0_5": 106,
+        "n_missed_at_iou_0_5": 4,
+        "recall_at_iou_0_5": 0.9636363636363636,
+        "share_of_all_gt_spells": 0.2743142144638404,
+        "share_of_all_missed_spells": 0.027972027972027972,
+        "share_of_gt_alive_time": 0.6898591616084977,
+        "best_same_team_iou": {
+          "n": 110,
+          "mean": 0.8667646306846003,
+          "median": 0.9247661459437808,
+          "p10": 0.6612169935546468,
+          "p90": 0.9956703277733423
+        },
+        "n_with_no_same_team_overlap": 0,
+        "n_fragmented": 6,
+        "n_touching_merged_prediction": 13
+      }
+    ],
+    "missed_spell_categories_at_iou_0_5": {
+      "n_missed": 143,
+      "no_same_team_overlap": 57,
+      "same_team_overlap_but_best_iou_below_0_5": 86,
+      "qualifying_iou_but_unmatched_after_one_to_one_assignment": 0,
+      "zero_overlap_spell_prediction": {
+        "entirely_opposite_team": 55,
+        "entirely_dead": 0,
+        "mixed_or_abstained": 2
+      }
+    },
+    "overlap_structure": {
+      "definition": "An edge is any positive-duration same-team overlap, including one frame. These are overlapping diagnostics, not mutually exclusive causes.",
+      "merge_definition": "One predicted spell overlaps at least two separate GT spells of its team.",
+      "fragmentation_definition": "One GT spell overlaps at least two separate predicted spells of its team.",
+      "n_merged_predictions": 33,
+      "n_gt_spells_touching_merged_prediction": 68,
+      "n_missed_gt_spells_touching_merged_prediction": 44,
+      "n_fragmented_gt_spells": 10,
+      "n_missed_fragmented_gt_spells": 3,
+      "n_gt_spells_both_fragmented_and_touching_merge": 3,
+      "n_predictions_without_same_team_overlap": 38,
+      "gt_same_team_prediction_overlap_degree": {
+        "0": 57,
+        "1": 334,
+        "2": 10
+      },
+      "pred_same_team_gt_overlap_degree": {
+        "0": 38,
+        "1": 286,
+        "2": 31,
+        "3": 2
+      },
+      "gt_spell_duration_seconds": {
+        "n": 401,
+        "mean": 8.414164588528678,
+        "median": 4.68,
+        "p10": 1.08,
+        "p90": 21.28
+      },
+      "prediction_spell_duration_seconds": {
+        "n": 357,
+        "mean": 9.444369747899161,
+        "median": 5.44,
+        "p10": 1.24,
+        "p90": 22.93600000000003
+      }
+    },
+    "frame_errors": {
+      "total": 8726,
+      "home_away_swaps": 8523,
+      "home_away_share_of_errors": 0.9767361906944763,
+      "other_errors_including_alive_dead": 203
+    },
+    "limitations": [
+      "One held-out external match; these are observed errors, not an accuracy ceiling or a new model-selection benchmark.",
+      "Sportec's original source freezes ball XY while dead, a dataset-specific shortcut that strongly favors dead-ball detection.",
+      "No challenge labels were read; these results do not establish hackathon-match accuracy.",
+      "Overlap merge/fragmentation counts depend on any positive overlap and may co-occur; they are descriptive, not proof of causes."
+    ],
+    "provenance": {
+      "match": "J03WQQ",
+      "model": "baseline",
+      "condition": "clean",
+      "data_sha256": "352833edc8e32d398ccbac2d079e122e032b5a1f4dfff1a0557874caaafb0a4a",
+      "prediction_sha256": "2e372fd23c8751b17d69526d15dedf609ae689512540985d756ea0cf213f23f4",
+      "manifest_sha256": "ff860cc7bcd997c1bd40b9a574056e187b2d51bca37bd4f0caeaa25288d85431"
+    }
+  },
+  "ensemble": {
+    "purpose": "Post-hoc diagnosis of frozen predictions; no fitting, tuning or model changes.",
+    "matching": {
+      "implementation": "Unchanged evaluation.possession_metrics spell_overlaps, matched_gt_flags and match_spells",
+      "rule": "Same-team temporal IoU; greedy descending IoU, ties by GT then prediction index; one-to-one.",
+      "headline_iou": 0.5,
+      "gaps": "Insert X at period/time discontinuities, then use official valid_runs and fill_abstentions.",
+      "duration": "Half-open spell length in frames divided by native fps; dead-ball spells excluded."
+    },
+    "metrics": {
+      "macro_f1": 0.9408338650763569,
+      "accuracy": 0.9479855281183042,
+      "spell_f1_mean": 0.7059119496855345,
+      "spell_f1_at_headline": 0.7069182389937108,
+      "n_gt_spells": 401,
+      "n_pred_spells": 394,
+      "spell_count_error": -7,
+      "fragmentation": 0.986,
+      "n_gt_segments": 500,
+      "n_pred_segments": 493,
+      "mean_spell_duration_s": 8.55472081218274,
+      "gt_mean_spell_duration_s": 8.414164588528678,
+      "team_acc_gt_alive": 0.9124857738998483,
+      "team_acc_both_alive": 0.9136772631229079,
+      "alive_dead_f1": 0.9992171561417659,
+      "gt_home_share": 0.4389937405159332,
+      "pred_home_share": 0.4460979777841071,
+      "share_err": 0.007104237268173885,
+      "per_class": {
+        "H": {
+          "precision": 0.8951582867783985,
+          "recall": 0.908695652173913,
+          "f1": 0.9018761726078798,
+          "support": 37030
+        },
+        "A": {
+          "precision": 0.9281612889403094,
+          "recall": 0.9154515869997042,
+          "f1": 0.9217626281969445,
+          "support": 47322
+        },
+        "D": {
+          "precision": 0.9981060932146485,
+          "recall": 0.999620643870812,
+          "f1": 0.9988627944242466,
+          "support": 57993
+        }
+      },
+      "confusion": [
+        [
+          33649,
+          3343,
+          38,
+          0
+        ],
+        [
+          3929,
+          43321,
+          72,
+          0
+        ],
+        [
+          12,
+          10,
+          57971,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "original_n_frames": 142345,
+      "period_or_time_separators": 1,
+      "sampling_fps": 25.0,
+      "label_coverage": 1.0,
+      "three_class_benchmark": true,
+      "spell_f1": {
+        "0.3": {
+          "precision": 0.8096446700507615,
+          "recall": 0.7955112219451371,
+          "f1": 0.8025157232704403,
+          "n_matched": 319,
+          "n_spurious": 75,
+          "n_missed": 82
+        },
+        "0.4": {
+          "precision": 0.7741116751269036,
+          "recall": 0.7605985037406484,
+          "f1": 0.7672955974842769,
+          "n_matched": 305,
+          "n_spurious": 89,
+          "n_missed": 96
+        },
+        "0.5": {
+          "precision": 0.7131979695431472,
+          "recall": 0.7007481296758105,
+          "f1": 0.7069182389937108,
+          "n_matched": 281,
+          "n_spurious": 113,
+          "n_missed": 120
+        },
+        "0.6": {
+          "precision": 0.6649746192893401,
+          "recall": 0.6533665835411472,
+          "f1": 0.659119496855346,
+          "n_matched": 262,
+          "n_spurious": 132,
+          "n_missed": 139
+        },
+        "0.7": {
+          "precision": 0.5989847715736041,
+          "recall": 0.5885286783042394,
+          "f1": 0.5937106918238994,
+          "n_matched": 236,
+          "n_spurious": 158,
+          "n_missed": 165
+        }
+      }
+    },
+    "by_gt_duration": [
+      {
+        "duration": "<1 s",
+        "min_seconds_inclusive": 0,
+        "max_seconds_exclusive": 1,
+        "n_gt": 37,
+        "n_matched_at_iou_0_5": 8,
+        "n_missed_at_iou_0_5": 29,
+        "recall_at_iou_0_5": 0.21621621621621623,
+        "share_of_all_gt_spells": 0.09226932668329177,
+        "share_of_all_missed_spells": 0.24166666666666667,
+        "share_of_gt_alive_time": 0.005939396813353567,
+        "best_same_team_iou": {
+          "n": 37,
+          "mean": 0.2198737666096765,
+          "median": 0.014598540145985401,
+          "p10": 0.0,
+          "p90": 0.75
+        },
+        "n_with_no_same_team_overlap": 17,
+        "n_fragmented": 0,
+        "n_touching_merged_prediction": 6
+      },
+      {
+        "duration": "1\u2013<3 s",
+        "min_seconds_inclusive": 1,
+        "max_seconds_exclusive": 3,
+        "n_gt": 118,
+        "n_matched_at_iou_0_5": 62,
+        "n_missed_at_iou_0_5": 56,
+        "recall_at_iou_0_5": 0.5254237288135594,
+        "share_of_all_gt_spells": 0.2942643391521197,
+        "share_of_all_missed_spells": 0.4666666666666667,
+        "share_of_gt_alive_time": 0.06792962822458272,
+        "best_same_team_iou": {
+          "n": 118,
+          "mean": 0.5359768002096076,
+          "median": 0.5444664031620553,
+          "p10": 0.0,
+          "p90": 0.9661016949152542
+        },
+        "n_with_no_same_team_overlap": 17,
+        "n_fragmented": 0,
+        "n_touching_merged_prediction": 16
+      },
+      {
+        "duration": "3\u2013<10 s",
+        "min_seconds_inclusive": 3,
+        "max_seconds_exclusive": 10,
+        "n_gt": 136,
+        "n_matched_at_iou_0_5": 106,
+        "n_missed_at_iou_0_5": 30,
+        "recall_at_iou_0_5": 0.7794117647058824,
+        "share_of_all_gt_spells": 0.33915211970074816,
+        "share_of_all_missed_spells": 0.25,
+        "share_of_gt_alive_time": 0.23627181335356603,
+        "best_same_team_iou": {
+          "n": 136,
+          "mean": 0.7099126774288181,
+          "median": 0.7967403341518609,
+          "p10": 0.2912191769052324,
+          "p90": 0.9897185721404779
+        },
+        "n_with_no_same_team_overlap": 6,
+        "n_fragmented": 5,
+        "n_touching_merged_prediction": 14
+      },
+      {
+        "duration": ">=10 s",
+        "min_seconds_inclusive": 10,
+        "max_seconds_exclusive": null,
+        "n_gt": 110,
+        "n_matched_at_iou_0_5": 105,
+        "n_missed_at_iou_0_5": 5,
+        "recall_at_iou_0_5": 0.9545454545454546,
+        "share_of_all_gt_spells": 0.2743142144638404,
+        "share_of_all_missed_spells": 0.041666666666666664,
+        "share_of_gt_alive_time": 0.6898591616084977,
+        "best_same_team_iou": {
+          "n": 110,
+          "mean": 0.8688451798111572,
+          "median": 0.9234760613230231,
+          "p10": 0.6503846153846154,
+          "p90": 0.9951313313149497
+        },
+        "n_with_no_same_team_overlap": 0,
+        "n_fragmented": 12,
+        "n_touching_merged_prediction": 11
+      }
+    ],
+    "missed_spell_categories_at_iou_0_5": {
+      "n_missed": 120,
+      "no_same_team_overlap": 40,
+      "same_team_overlap_but_best_iou_below_0_5": 80,
+      "qualifying_iou_but_unmatched_after_one_to_one_assignment": 0,
+      "zero_overlap_spell_prediction": {
+        "entirely_opposite_team": 38,
+        "entirely_dead": 0,
+        "mixed_or_abstained": 2
+      }
+    },
+    "overlap_structure": {
+      "definition": "An edge is any positive-duration same-team overlap, including one frame. These are overlapping diagnostics, not mutually exclusive causes.",
+      "merge_definition": "One predicted spell overlaps at least two separate GT spells of its team.",
+      "fragmentation_definition": "One GT spell overlaps at least two separate predicted spells of its team.",
+      "n_merged_predictions": 23,
+      "n_gt_spells_touching_merged_prediction": 47,
+      "n_missed_gt_spells_touching_merged_prediction": 34,
+      "n_fragmented_gt_spells": 17,
+      "n_missed_fragmented_gt_spells": 5,
+      "n_gt_spells_both_fragmented_and_touching_merge": 1,
+      "n_predictions_without_same_team_overlap": 39,
+      "gt_same_team_prediction_overlap_degree": {
+        "0": 40,
+        "1": 344,
+        "2": 16,
+        "3": 1
+      },
+      "pred_same_team_gt_overlap_degree": {
+        "0": 39,
+        "1": 332,
+        "2": 22,
+        "3": 1
+      },
+      "gt_spell_duration_seconds": {
+        "n": 401,
+        "mean": 8.414164588528678,
+        "median": 4.68,
+        "p10": 1.08,
+        "p90": 21.28
+      },
+      "prediction_spell_duration_seconds": {
+        "n": 394,
+        "mean": 8.55472081218274,
+        "median": 4.72,
+        "p10": 1.1720000000000002,
+        "p90": 21.272
+      }
+    },
+    "frame_errors": {
+      "total": 7404,
+      "home_away_swaps": 7272,
+      "home_away_share_of_errors": 0.9821717990275527,
+      "other_errors_including_alive_dead": 132
+    },
+    "limitations": [
+      "One held-out external match; these are observed errors, not an accuracy ceiling or a new model-selection benchmark.",
+      "Sportec's original source freezes ball XY while dead, a dataset-specific shortcut that strongly favors dead-ball detection.",
+      "No challenge labels were read; these results do not establish hackathon-match accuracy.",
+      "Overlap merge/fragmentation counts depend on any positive overlap and may co-occur; they are descriptive, not proof of causes."
+    ],
+    "provenance": {
+      "match": "J03WQQ",
+      "model": "ensemble",
+      "condition": "clean",
+      "data_sha256": "352833edc8e32d398ccbac2d079e122e032b5a1f4dfff1a0557874caaafb0a4a",
+      "prediction_sha256": "a5685533b8922bd73ff927ec1a5a8536b7191f05edf87355c4e21bde4c215742",
+      "manifest_sha256": "ff860cc7bcd997c1bd40b9a574056e187b2d51bca37bd4f0caeaa25288d85431"
+    },
+    "conditional_bootstrap": {
+      "macro_f1": [
+        0.9307983820425338,
+        0.9488539416020033
+      ],
+      "spell_f1_mean": [
+        0.6732075471698112,
+        0.7371572327044024
+      ]
+    }
+  }
+}

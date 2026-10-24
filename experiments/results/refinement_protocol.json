@@ -1,0 +1,30 @@
+{
+  "name": "fresh_local_refinement_confirmation",
+  "created_utc": "2026-10-24T15:22:08.094714+00:00",
+  "train": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH"
+  ],
+  "validation": [
+    "J03WOY"
+  ],
+  "test": [
+    "J03WQQ"
+  ],
+  "data_root": "data/external_audit/sportec/processed",
+  "excluded_previously_viewed": [
+    "J03WPY",
+    "J03WR9"
+  ],
+  "scope": "New locally trained refinements fitted only to the listed training matches and selected only on listed validation match.",
+  "test_policy": "Freeze configuration and model before one final J03WQQ evaluation. No test-target inspection, target-derived preprocessing, or test-driven parameter selection.",
+  "pathcrf_caveat": "J03WQQ was validation for the published PathCRF trial140 checkpoint; it is NOT an independent held-out test for that checkpoint or adaptations selected with that checkpoint validation.",
+  "previous_matches_caveat": "J03WPY and J03WR9 have already been viewed/evaluated and must not support fresh held-out claims after refinement.",
+  "selection_policy": "Use J03WOY only. Target per-frame macro-F1 >=0.90, then maximize official spell F1 among eligible configurations; otherwise select highest validation macro-F1.",
+  "split_policy": "Whole matches, no random frame split. Existing primary split remains unchanged.",
+  "primary_split_sha256": "b945a12df761cf5f1dddc0900b99f829841fd11cf07342538ea7fdc7da7401fc",
+  "source_doi": "10.6084/m9.figshare.28196177.v1",
+  "source_license": "CC BY 4.0",
+  "dead_ball_artifact_caveat": "Sportec freezes ball XY during dead periods upstream; separately disclose any detector using this cue and do not infer broadcast generalization."
+}
