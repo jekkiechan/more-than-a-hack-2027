@@ -1,0 +1,57 @@
+{
+  "match": "J03WR9",
+  "selected_custom_model": "robust",
+  "custom_training_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH"
+  ],
+  "pathcrf_training_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "J03WOY",
+    "J03WPY"
+  ],
+  "pathcrf": {
+    "checkpoint_commit": "1b7c6f85a6b78c92e4543fde72ca2b86a933f997",
+    "checkpoint": "saved/140/model/state_dict_best_acc.pt",
+    "checkpoint_sha256": "55757d9dca9777d60356ba368dc315867ea1ae38e90c332e935b9c5be72d83c9",
+    "adapter_sha256": "26a6a192d555fdf6ebea0b2d174fac5c670775ea9782f92b5f20d338a2df09d5",
+    "test_match": "J03WR9",
+    "test_labels_read": false,
+    "threads": 2,
+    "batch_size": 4,
+    "window_seconds": 10,
+    "stride_seconds": 5,
+    "target_fps": 5,
+    "primary_mapping": "originalCRF edge_source team; outsidecarryforward, leadingoutside macro_source team",
+    "macro_output": "diagnostic only, not candidate for selection",
+    "native_dead_head": false,
+    "uses_true_live_boundaries": false,
+    "audit": "independent benchmark_audit review and sixcontract tests passed beforeinference"
+  },
+  "dead_cue_config": {
+    "interpolate_s": 0.0,
+    "smooth_s": 0.7,
+    "control_radius_m": 1.0,
+    "margin": 0.0,
+    "confirmation_s": 0.7,
+    "dead_ball": true,
+    "stationary_s": 0.2,
+    "stationary_radius_m": 0.01,
+    "restart_speed_m_s": 1.5
+  },
+  "pathcrf_output": "prediction (original CRF); macro_diagnostic is not evaluated or selected",
+  "hybrid": "PathCRF H/A overridden by the frozen geometric D cue",
+  "conditional_diagnostic": "H/A F1 and accuracy on true-live rows; reference used only for scoring",
+  "labels_deserialized": false,
+  "sha256": {
+    "experiments/compare_pathcrf.py": "8a796b9808054ebc6725124624a5e60e5c27a89ca799800db25c961da8236edc",
+    "experiments/pathcrf_eval.py": "26a6a192d555fdf6ebea0b2d174fac5c670775ea9782f92b5f20d338a2df09d5",
+    "data/experiments/robust/model.joblib": "2df96983affc51c52fe50b9bd9a77b238f730933f8051ebda4918be4f664612c",
+    "data/experiments/pathcrf/frozen_config.json": "26e0239c9b9d7ec0ef5e5595627e6d25b58c8111d61fb55270c34fe173fc207e",
+    "data/experiments/pathcrf_comparison/custom_predictions_and_dead_cue.npz": "92fee0b13f04ac66f6cde3f4d2eb4b7059ef76e325fac0150f1772abffd1b90a",
+    "data/external_audit/sportec/processed/J03WR9.npz": "5fbd31a9b6389d202555eb7753dc17b273eb75f69101af80db8b69c5db898c26"
+  }
+}

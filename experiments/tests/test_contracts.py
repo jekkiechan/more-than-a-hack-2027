@@ -4,10 +4,13 @@ These checks never read an external match or its targets.
 """
 
 import unittest
+from pathlib import Path
+import tempfile
 
 import numpy as np
 
 from experiments import state_machine, supervised, temporal
+from experiments import pathcrf_eval
 
 
 class TargetGuard(dict):
@@ -46,6 +49,28 @@ def window(data, left, right):
 
 
 class ModelContractTests(unittest.TestCase):
+    def test_pathcrf_loader_never_deserializes_targets(self):
+        data = tracking()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "synthetic.npz"
+            # Accessing this object target with allow_pickle=False would fail.
+            np.savez(path, **data, labels=np.array([object()], dtype=object))
+            loaded = pathcrf_eval.load_geometry(path)
+        self.assertEqual(set(loaded), set(pathcrf_eval.GEOMETRY_KEYS))
+        self.assertNotIn("ball", loaded)
+
+    def test_pathcrf_phases_do_not_access_ball_or_targets(self):
+        data = tracking()
+        guarded = TargetGuard({key: value for key, value in data.items() if key != "ball"})
+        guarded.update({key: object() for key in TargetGuard.forbidden})
+        expected = list(pathcrf_eval.feature_phases(data))
+        actual = list(pathcrf_eval.feature_phases(guarded))
+        self.assertEqual(len(expected), len(actual))
+        for left, right in zip(expected, actual):
+            self.assertEqual(left[:2], right[:2])
+            np.testing.assert_allclose(left[2], right[2])
+            np.testing.assert_array_equal(left[3], right[3])
+
     def test_features_and_state_predictions_do_not_access_targets(self):
         data = tracking()
         guarded = TargetGuard(data)

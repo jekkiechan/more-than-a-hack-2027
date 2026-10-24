@@ -69,6 +69,9 @@ For the selected model on the clean test:
 The best observed spell F1 is about 0.63 in these experiments. This is not an
 estimated ceiling. Accurate long possessions can dominate frame scores while
 short turnovers and interval boundaries still fail the spell metric.
+The [post-hoc error analysis](ERROR_ANALYSIS.md) finds that possessions under
+three seconds account for 68.2% of missed spells, despite occupying only 7.9% of
+live time. No model parameters were changed after that analysis.
 
 ## Industry and open-source comparison
 
@@ -83,8 +86,11 @@ PathCRF has public code and pretrained weights, but its supplied trial 140 was
 trained on our primary validation and test matches. A separate evaluation must
 use a match excluded from that checkpoint and remove the stock inference path's
 use of true in-play episodes. Its published event F1 is also a different task.
-The separate pretrained-model comparison is documented independently so it
-cannot contaminate the primary experiment above.
+The [separate pretrained-model comparison](PATHCRF.md) uses J03WR9. On that same
+match, PathCRF plus a frozen geometric dead-ball rule scored **0.9382 macro F1 /
+0.6015 spell F1**, versus **0.9320 / 0.6122** for our frozen model. Native PathCRF
+H/A F1 on reference-live frames was **0.9148**. It is a competitive reusable model;
+these small differences on one match do not establish a reliable winner.
 
 ## Reproduce
 
