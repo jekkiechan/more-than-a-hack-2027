@@ -41,21 +41,42 @@ See [CHALLENGE.md](../CHALLENGE.md), [EVALUATION.md](../EVALUATION.md), and
 - [x] Create a local `possession/research` branch.
 - [x] Run the official scorer on all four bundled baselines.
 - [x] Validate the bundled `baseline_smooth50.csv` submission format.
-- [ ] Create the personal GitHub fork and connect it as `origin`.
-- [ ] Obtain the enrolled participant's match-data bundle.
-- [ ] Regenerate the reference baselines from the actual tracking assets.
+- [x] Connect the personal GitHub fork as `origin` and push `possession/research`.
+- [x] Retrieve the tactical tracking, metadata, Smart Tagging, and homography from
+  the participant data bundle.
+- [x] Verify tracking and homography frame alignment and the tagging time base.
+- [x] Regenerate all four reference baselines from the actual tracking assets.
+- [x] Confirm every regenerated CSV matches the corresponding upstream baseline
+  byte for byte, passes validation, and reproduces the public scores below.
 
-GitHub fork and repository creation were attempted, but the available integration
-returned `Resource not accessible by integration`. No personal remote repository
-was created by these attempts.
+Working fork: [jekkiechan/more-than-a-hack-2027](https://github.com/jekkiechan/more-than-a-hack-2027),
+branch `possession/research`. `upstream` remains the organizers' repository.
+
+Four tactical input files (about 219 MB combined) are available locally in
+`data/tactical/`. They are ignored by Git. The multi-gigabyte videos and the
+broadcast inputs have not been downloaded; the reference baseline needs only the
+tactical tracking metadata and raw tracking file.
 
 The scorer runs in the current environment without additional packages:
 Python 3.12.14, NumPy 2.3.5, pandas 2.2.3. No GPU is needed for this baseline.
 
 ```bash
-python evaluation/run_evaluation.py
-python evaluation/validate_submission.py evaluation/results/baseline_smooth50.csv
+python starter/baseline.py --out data/generated_baselines
+python evaluation/validate_submission.py data/generated_baselines/baseline_smooth50.csv
+python evaluation/run_evaluation.py --results data/generated_baselines --out data/baseline_evaluation --no-detail
 ```
+
+On the delivered tactical assets, the checks confirmed 199,319 consecutive ATD
+records (IDs 1 through 199,319), 46 team-assigned track slots, 638 tactical-tag
+instances, and 199,319 valid, aligned homography rows. The ball is observed in
+94,214 of 158,857 graded frames: 40.69% are missing. Both tagged kickoff intervals
+contain the starter's published kickoff anchors. These reproduce the data
+description; no human labels or parameter tuning were used.
+
+The baseline regeneration completed in about two seconds in this CPU environment.
+Generated CSVs, evaluation reports, and the data-check report stay local in
+gitignored directories. This verifies the data-to-submission pipeline, not a new
+method or an improvement over the reference baseline.
 
 Observed scores on the public five-minute window:
 
