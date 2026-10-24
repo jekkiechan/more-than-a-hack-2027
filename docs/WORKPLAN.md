@@ -78,14 +78,27 @@ Generated CSVs, evaluation reports, and the data-check report stay local in
 gitignored directories. This verifies the data-to-submission pipeline, not a new
 method or an improvement over the reference baseline.
 
-Observed scores on the public five-minute window:
+Observed scores on the public five-minute window (7,500 graded frames, 17
+possession spells). Accuracy was independently calculated from the regenerated
+CSVs, masking out ground-truth X frames, and agrees with the official scorer:
 
-| Baseline | macroF1 | spellF1 |
-| --- | ---: | ---: |
-| baseline_raw | 0.5972 | 0.0378 |
-| baseline_smooth25 | 0.6200 | 0.2868 |
-| baseline_smooth50 | 0.6207 | 0.3256 |
-| baseline_smooth125 | 0.5812 | 0.4242 |
+| Baseline | Correct frames | Accuracy | macroF1 | spellF1 |
+| --- | ---: | ---: | ---: | ---: |
+| baseline_raw | 4,884 | 65.12% | 0.5972 | 0.0378 |
+| baseline_smooth25 | 5,184 | 69.12% | 0.6200 | 0.2868 |
+| baseline_smooth50 | 5,349 | 71.32% | 0.6207 | 0.3256 |
+| baseline_smooth125 | 5,456 | 72.75% | 0.5812 | 0.4242 |
+
+Always predicting the most common class (home) would achieve 46.05% accuracy on
+this window. For the published reference `baseline_smooth50`, recall is 88.04%
+for home, 77.38% for away, and 21.38% for dead ball. Its team-label accuracy on
+ground-truth live frames is 83.49%; incorrect D or X predictions count as misses
+there too. It predicts 26 possession spells against 17 in the public ground truth.
+
+On the same window, the reference baseline estimates home possession at 62.12%,
+versus 57.27% in the public ground truth (4.85 percentage points of absolute
+error). Each share uses its own H/(H+A) denominator, excluding its D/X frames.
+The local aggregate report is `data/baseline_evaluation/accuracy_summary.json`.
 
 These match the upstream README. The organizer-reported full-match floor is
 `baseline_smooth50` with spellF1 **0.2433**. The private full-match scores were not
