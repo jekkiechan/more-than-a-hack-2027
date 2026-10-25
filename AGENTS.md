@@ -108,9 +108,14 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   These folds hold out providers from D training only; H/A remains pooled.
   `experiments/eval_set/manifest.json` records hashes and prior data exposure;
   none of these matches is fresh confirmation. SkillCorner X margins make D
-  boundary timing ungradable. New organizer tracking was absent; no new public
-  check has been performed. Use `temporal_challenge.py` only after the frozen
-  external selection, never to iterate on public labels.
+  boundary timing ungradable. Organizer tracking was recovered via the exact
+  Drive folder link in the registration email (keyword search missed it).
+  The one-time public check is complete: BiGRU .4889 spell/.8617 macro, TCN
+  .4541/.8506, ordered HGB .4205/.8653. Previous refinement was .4300/.6487;
+  previous PathCRF hybrid remains higher in spell F1 at .5067. No model was
+  selected or tuned on these public results. Details and the animated ChatGPT
+  Page are linked in `experiments/TEMPORAL_PUBLIC_CHECK.md`; the public gate
+  must not be reset or used for iteration.
 
 ## Artifacts and reproducibility
 

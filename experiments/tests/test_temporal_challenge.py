@@ -18,6 +18,9 @@ class ChallengeGuards(unittest.TestCase):
                              attribution_model_sha256=lt.digest(out/'attribution.joblib'),
                              predeclared_spec_sha256=lt.digest(out/'predeclared.json'))
             (out/'selection.json').write_text(json.dumps(selection))
+            (out/'pooled_hgb_frozen.json').write_text(json.dumps(dict(
+                model_sha256=selection['selected_model_sha256'],
+                spec_sha256=selection['predeclared_spec_sha256'])))
             with patch.object(tc.challenge, 'load_challenge', side_effect=FileNotFoundError('no assets')):
                 with patch.object(tc.pd, 'read_csv') as read_gt:
                     with self.assertRaises(FileNotFoundError):
@@ -40,6 +43,29 @@ class ChallengeGuards(unittest.TestCase):
                     tc.check(out, None)
                 read_gt.assert_not_called()
             self.assertFalse((target/'public_check_started.json').exists())
+
+    def test_all_declared_candidates_are_checked_once(self):
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp)
+            target = out/'challenge'
+            target.mkdir()
+            hashes = {}
+            for name in ('selected', 'tcn'):
+                path = target/f'{name}.csv'
+                path.write_text('frame,label\n0,H\n1,A\n2,D\n')
+                hashes[name] = lt.digest(path)
+            (target/'frozen.json').write_text(json.dumps({'csv_sha256': hashes}))
+            truth = tc.pd.DataFrame({'frame': [0, 1, 2], 'label': ['H', 'A', 'D']})
+            original_read = tc.pd.read_csv
+            def read(path):
+                return truth if Path(path).name == 'BAR-ATH_possession_gt_public.csv' else original_read(path)
+            with patch.object(tc.pd, 'read_csv', side_effect=read):
+                tc.check(out, None)
+                with self.assertRaises(FileExistsError):
+                    tc.check(out, None)
+            result = json.loads((target/'public_check.json').read_text())
+            self.assertEqual(set(result['scores']), {'selected', 'tcn'})
+            self.assertEqual(result['scores']['tcn']['macro_f1'], 1.)
 
 
 if __name__ == '__main__':

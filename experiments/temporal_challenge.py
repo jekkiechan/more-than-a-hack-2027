@@ -14,7 +14,7 @@ import pandas as pd
 from experiments import challenge, learned_temporal as lt, refine_features, robust, supervised
 
 
-def generate(out, inputs_path):
+def generate(out, inputs_path, all_frozen_heads=False):
     selection = json.loads((out/'selection.json').read_text())
     kind = selection['selected_model']
     model_path = out/f'pooled_{kind}.joblib'
@@ -27,6 +27,25 @@ def generate(out, inputs_path):
     target.mkdir(exist_ok=True)
     if (target/'public_check_started.json').exists():
         raise ValueError('Public check started: candidate regeneration is locked')
+    candidates = {'selected': kind, 'hgb_baseline': 'hgb'}
+    if all_frozen_heads:
+        candidates.update({name: name for name in lt.MODELS if name not in candidates.values()})
+    model_hashes = {}
+    for name in set(candidates.values()):
+        path = out/f'pooled_{name}.joblib'
+        marker = json.loads((out/f'pooled_{name}_frozen.json').read_text())
+        if lt.digest(path) != marker['model_sha256'] or lt.digest(out/'predeclared.json') != marker['spec_sha256']:
+            raise ValueError('Frozen diagnostic model/spec hashes changed')
+        model_hashes[name] = lt.digest(path)
+    public_spec = dict(candidate_models=candidates, model_sha256=model_hashes,
+                       selected_model_unchanged=kind,
+                       use='One descriptive pipeline check of externally frozen heads; no public-label tuning or selection')
+    declaration = target/'public_predeclared.json'
+    if declaration.exists():
+        if json.loads(declaration.read_text()) != public_spec:
+            raise ValueError('Public comparison candidates already declared')
+    else:
+        declaration.write_text(json.dumps(public_spec, indent=2)+'\n')
     # Missing inputs fail before any organizer GT or prediction is accessed.
     if inputs_path.exists():
         inputs = robust.tracking_inputs(supervised.load(inputs_path))
@@ -36,19 +55,19 @@ def generate(out, inputs_path):
     x, names = lt.player_features(inputs)
     record = dict(x=x[indices], names=names, period=supervised.model_periods(inputs)[indices],
                   indices=indices, native_n=len(x))
-    dead = lt.upsample(lt.predict_sampled(record, joblib.load(model_path)), record, supervised.model_periods(inputs))
     base = refine_features.predict_probabilities(inputs, joblib.load(attribution_path))
-    for label, d in (('selected', dead), ('hgb_baseline', lt.upsample(lt.predict_sampled(record,
-                          joblib.load(out/'pooled_hgb.joblib')), record, supervised.model_periods(inputs)))):
+    for label, name in candidates.items():
+        d = lt.upsample(lt.predict_sampled(record, joblib.load(out/f'pooled_{name}.joblib')),
+                        record, supervised.model_periods(inputs))
         p = lt.refine_domain.combine(base, d, 0.)
         pred = supervised.decode(p, supervised.model_periods(inputs), float(inputs['fps']), lt.COST)
         pred[np.asarray(inputs['period']) <= 0] = 'X'
         challenge.write_submission(pred, target/f'{label}.csv')
-    frozen = dict(selection=selection, input_sha256=lt.digest(inputs_path),
-                  csv_sha256={name: lt.digest(target/f'{name}.csv') for name in ('selected', 'hgb_baseline')},
+    frozen = dict(selection=selection, input_sha256=lt.digest(inputs_path), public_spec=public_spec,
+                  csv_sha256={name: lt.digest(target/f'{name}.csv') for name in candidates},
                   created_utc=datetime.now(timezone.utc).isoformat())
     (target/'frozen.json').write_text(json.dumps(frozen, indent=2)+'\n')
-    print('Generated and validated both full-length candidates; no organizer labels read')
+    print(f'Generated and validated {len(candidates)} full-length candidates; no organizer labels read')
 
 
 def check(out, previous_csv):
@@ -57,7 +76,7 @@ def check(out, previous_csv):
     for name, expected in frozen['csv_sha256'].items():
         if lt.digest(target/f'{name}.csv') != expected:
             raise ValueError('Frozen predictions changed')
-    paths = {'selected': target/'selected.csv', 'hgb_baseline': target/'hgb_baseline.csv'}
+    paths = {name: target/f'{name}.csv' for name in frozen['csv_sha256']}
     if previous_csv is not None:
         if not previous_csv.is_file():
             raise ValueError('Previous candidate is missing')
@@ -89,9 +108,11 @@ def main():
     parser.add_argument('--out', type=Path, default=lt.ROOT/'data/experiments/learned_temporal')
     parser.add_argument('--inputs', type=Path, default=lt.ROOT/'data/challenge/inputs.npz')
     parser.add_argument('--previous-csv', type=Path)
+    parser.add_argument('--all-frozen-heads', action='store_true',
+                        help='Predeclare one descriptive check of all six externally frozen heads')
     args = parser.parse_args()
     if args.action == 'generate':
-        generate(args.out, args.inputs)
+        generate(args.out, args.inputs, args.all_frozen_heads)
     else:
         check(args.out, args.previous_csv)
 

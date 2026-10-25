@@ -119,8 +119,10 @@ selection optimism. A new independently labeled match remains necessary.
 At a 1-second tolerance, ordered HGB improves D-boundary F1 from .4464 to .4805
 on Sportec and .2901 to .3945 on Metrica. Many boundaries are still missed.
 SkillCorner timing cannot be assessed because of its X margins. No new organizer
-score is reported; candidate generation confirmed that the tactical ATD files
-are missing before it could read any public target labels.
+score was available at external selection time. The subsequent one-time
+[organizer pipeline check](TEMPORAL_PUBLIC_CHECK.md) scored the six frozen
+heads after retrieving the tactical ATD inputs from the organizer's shared
+Drive folder. No external selection or model was changed after that check.
 
 ## Reproduce
 
@@ -151,13 +153,16 @@ pooled model before any organizer pipeline check.
 
 ## Organizer five-minute check
 
-Organizer tracking and prior model artifacts were absent from the initial
-workspace and are not in the external-data cache. Once the tactical ATD assets
-are under `data/tactical` (or `MTAH_DATA_DIR`), or a previously generated
-`data/challenge/inputs.npz` is supplied:
+Organizer tracking was recovered from the Drive invitation in the registration
+email. The two tactical ATD inputs and prepared `data/challenge/inputs.npz` now
+exist locally under ignored `data/`. The shared folder is not found by ordinary
+Drive keyword search; use its exact URL from the organizer email.
+
+The following sequence has completed. The exclusive check marker deliberately
+refuses another public scoring run:
 
 ```sh
-python -m experiments.temporal_challenge generate
+python -m experiments.temporal_challenge generate --all-frozen-heads
 python evaluation/validate_submission.py data/experiments/learned_temporal/challenge/selected.csv
 python -m experiments.temporal_challenge check --previous-csv path/to/previous_candidate.csv
 ```
@@ -165,7 +170,10 @@ python -m experiments.temporal_challenge check --previous-csv path/to/previous_c
 Generation reads no organizer labels, writes complete 199,319-row files, and
 validates them with the official validator. The optional previous candidate
 must be supplied for an exact file-to-file comparison. Both the selected head
-and matched HGB baseline are frozen before the check. An exclusive marker
+and matched HGB baseline, plus four explicitly declared diagnostic heads, are
+frozen before the check. The old refinement and PathCRF scores were compared
+from their archived aggregate report after verifying the identical GT hash;
+their previous CSVs were not regenerated. An exclusive marker
 prevents repeated public-window checks and regeneration after checking starts.
 Under `RULES.md`, this is one descriptive pipeline check, never a tuning or
 selection step. Public-window improvement does not establish full-match gain.

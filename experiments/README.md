@@ -4,7 +4,11 @@
 with fixed H/A attribution. On historical provider-holdout D development folds,
 ordered HGB scores 0.5652 spell F1 versus 0.5588 for the matched HGB baseline;
 BiGRU scores 0.5649 and TCN 0.5605. The TCN improves D F1 more than spell F1.
-This is a modest external development gain, with no new organizer-window result.
+This is a modest external development gain. The subsequent
+[organizer five-minute check](TEMPORAL_PUBLIC_CHECK.md) gives BiGRU .4889 spell
+F1 and TCN .4541, versus the prior selected refinement's .4300 and prior
+PathCRF hybrid's .5067. Externally selected ordered HGB scores .4205. Public
+scores did not change the frozen external selection.
 The [evaluation manifest and shortcut audit](eval_set/README.md) document
 provenance, whole-match splits, silver labels, and the missing fresh test set.
 
