@@ -10,9 +10,10 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 ## Repository and task
 
 - Upstream: `metrica-sports/more-than-a-hack-2027`; working fork:
-  `jekkiechan/more-than-a-hack-2027`. Current experiment branch:
-  `possession/refinement`. Preserve the `upstream` remote. Earlier work is on
-  `possession/research` and `possession/experiments`.
+  `jekkiechan/more-than-a-hack-2027`. The completed experiment series is on
+  `possession/refinement` and merged into the fork's `main`. Preserve the
+  `upstream` remote. Earlier stages are on `possession/research` and
+  `possession/experiments`.
 - Label each of 199,319 tactical-video frames at 25 Hz: `H` home/Barcelona in
   live possession, `A` away/Athletic Club in live possession, `D` dead ball, or
   `X` abstention/outside a half. Loose or contested ball remains with the last
