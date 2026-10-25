@@ -99,6 +99,12 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   matches are reused development data, not fresh independent confirmation.
   `pipeline_predict.py` generates a checked full-length CSV when organizer
   tracking and the final fitted model are available.
+  The completed 80-row comparison selects the contextual model: mean spell F1
+  0.5512 versus 0.5259 for the baseline with identical training, across providers and clean/degraded
+  views. A D-blended ensemble reaches 0.5455 spell / 0.8398 macro, versus the
+  selected model's 0.8147 macro. The small ranking gap is unconfirmed; clean
+  SkillCorner D F1 remains poor (0.3637 selected, 0.6341 for that blend). See
+  `experiments/results/pipeline_validation.json`; no new competition score exists.
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
   data first, then validation, then preprocessing. LightGBM hyperparameter tuning
   comes after those.

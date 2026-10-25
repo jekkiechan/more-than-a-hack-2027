@@ -47,7 +47,7 @@ Next:
 - Report per-source spread, and seed variance for any stochastic model.
 - Keep the public five minutes as a pipeline check only (RULES.md).
 
-## 3. Better preprocessing (needs the challenge assets in the environment)
+## 3. Challenge-specific preprocessing (needs the assets in the environment)
 
 All label-free, so they are allowed on the challenge match:
 - **Second ball source:** align the broadcast feed's tracking to the tactical

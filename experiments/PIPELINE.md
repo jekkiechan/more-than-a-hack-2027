@@ -10,6 +10,60 @@ possession attribution through observation repair, control context, ensembling
 and decoding. Adding another provider remains useful, but is not a prerequisite
 for this bounded experiment.
 
+## Results
+
+The declared objective selects **preprocessing plus control context**, with the
+full model's D probabilities and team/dead costs **3/3**. Across providers and
+clean/degraded conditions, spell F1 rises from **0.5259 to 0.5512** (+0.0253),
+while macro F1 moves from **0.8113 to 0.8147**. This is a validation result, not
+independent confirmation or competition performance.
+
+All eight candidates, ordered by the declared objective:
+
+| Candidate | Mean spell F1 | Mean macro F1 |
+| --- | ---: | ---: |
+| **Control context (selected)** | **0.5512** | 0.8147 |
+| Team ensemble + half player-only D, costs 3/8 | 0.5455 | **0.8398** |
+| Team ensemble + half player-only D, costs 3/3 | 0.5448 | 0.8390 |
+| Team ensemble, full-model D | 0.5446 | 0.8141 |
+| Baseline with identical training settings | 0.5259 | 0.8113 |
+| Preprocessing only | 0.5251 | 0.8105 |
+| Team ensemble + player-only D, costs 3/8 | 0.5075 | 0.8123 |
+| Team ensemble + player-only D, costs 3/3 | 0.5033 | 0.8110 |
+
+Here each provider is excluded from training when evaluated. SkillCorner cells
+below average its three validation matches; the other providers have one each.
+
+| Provider | Baseline clean spell | Context clean spell | Baseline degraded spell | Context degraded spell |
+| --- | ---: | ---: | ---: | ---: |
+| Sportec | 0.6062 | 0.6248 | 0.5003 | 0.5044 |
+| Metrica | 0.6708 | 0.7401 | 0.5780 | 0.6250 |
+| SkillCorner | 0.4045 | 0.4056 | 0.3959 | 0.4075 |
+
+The strongest gain is Metrica H/A attribution. Preprocessing alone helps degraded
+Sportec but does not improve the aggregate. The fixed team ensemble improves on
+the baseline, but dilutes the stronger contextual model on Metrica.
+
+Dead-ball transfer remains unresolved. On clean SkillCorner, the selected model's
+D F1 is **0.3637**, against **0.6341** for the half-player-D ensemble with 3/8
+costs. That blend also raises SkillCorner macro F1 from **0.6150 to 0.7216** and
+spell F1 from **0.4056 to 0.4256**. It loses on the full-view sources, however.
+Its overall spell gap to the selected model is only **0.0058**, with no seed
+repeats or new-match confirmation; this does not establish a reliable ranking.
+
+The next useful bounded comparison is to combine the contextual H/A expert with
+the D head independently of the weaker baseline team expert, and to test
+observation-quality-dependent D blending on external sources. Challenge-specific
+ball fusion and tracking-confidence features need the organizer assets. These
+are follow-ups, not unreported additional candidates in this run.
+
+The complete **80 aggregate score rows**, predeclared settings, code/data hashes
+and selection are in [results/pipeline_validation.json](results/pipeline_validation.json).
+Validation took 1,492 seconds with three feature workers and two fitting threads.
+The selected settings are refitted on all 13 training matches; the five validation
+matches remain excluded from that fit. The earlier competition candidate is not
+overwritten or submitted by this experiment.
+
 ## Implemented changes
 
 `possession_pipeline.py` keeps all inference behind the existing tracking-field

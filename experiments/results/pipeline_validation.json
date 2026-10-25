@@ -1,0 +1,1451 @@
+{
+  "manifest": {
+    "declared_utc": "2026-10-25T11:09:06.487893+00:00",
+    "protocol": {
+      "version": 1,
+      "seed": 17,
+      "capacity": {
+        "max_iter": 120,
+        "max_leaf_nodes": 31,
+        "learning_rate": 0.08,
+        "min_samples_leaf": 35,
+        "l2_regularization": 1,
+        "early_stopping": false
+      },
+      "train_hz": 2,
+      "train_weight": "beta=.5 short live spells; equal total per match, then per source",
+      "splits": {
+        "sportec": {
+          "train": [
+            "J03WMX",
+            "J03WN1",
+            "J03WOH"
+          ],
+          "eval": [
+            "J03WOY"
+          ]
+        },
+        "metrica": {
+          "train": [
+            "metrica_1",
+            "metrica_2"
+          ],
+          "eval": [
+            "metrica_3"
+          ]
+        },
+        "skillcorner": {
+          "train": [
+            "skillcorner_had_1874553",
+            "skillcorner_had_1886347",
+            "skillcorner_had_1899585",
+            "skillcorner_had_1925299",
+            "skillcorner_had_1927964",
+            "skillcorner_had_1953632",
+            "skillcorner_had_1959846",
+            "skillcorner_had_1986691"
+          ],
+          "eval": [
+            "skillcorner_had_1996435",
+            "skillcorner_had_1996436",
+            "skillcorner_had_2006229"
+          ]
+        }
+      },
+      "folds": {
+        "sportec": [
+          "metrica",
+          "skillcorner"
+        ],
+        "metrica": [
+          "sportec",
+          "skillcorner"
+        ],
+        "skillcorner": [
+          "sportec",
+          "metrica"
+        ]
+      },
+      "conditions": [
+        "clean",
+        "degraded"
+      ],
+      "candidates": [
+        {
+          "name": "baseline",
+          "members": [
+            "baseline",
+            "baseline"
+          ],
+          "context_weight": 0.0,
+          "player_dead_weight": 0.0,
+          "team_cost": 3.0,
+          "dead_cost": 3.0
+        },
+        {
+          "name": "preprocessed",
+          "members": [
+            "preprocessed",
+            "preprocessed"
+          ],
+          "context_weight": 0.0,
+          "player_dead_weight": 0.0,
+          "team_cost": 3.0,
+          "dead_cost": 3.0
+        },
+        {
+          "name": "context",
+          "members": [
+            "context",
+            "context"
+          ],
+          "context_weight": 0.0,
+          "player_dead_weight": 0.0,
+          "team_cost": 3.0,
+          "dead_cost": 3.0
+        },
+        {
+          "name": "ensemble",
+          "members": [
+            "baseline",
+            "context"
+          ],
+          "context_weight": 0.5,
+          "player_dead_weight": 0.0,
+          "team_cost": 3.0,
+          "dead_cost": 3.0
+        },
+        {
+          "name": "ensemble_half_player_D",
+          "members": [
+            "baseline",
+            "context"
+          ],
+          "context_weight": 0.5,
+          "player_dead_weight": 0.5,
+          "team_cost": 3.0,
+          "dead_cost": 3.0
+        },
+        {
+          "name": "ensemble_player_D",
+          "members": [
+            "baseline",
+            "context"
+          ],
+          "context_weight": 0.5,
+          "player_dead_weight": 1.0,
+          "team_cost": 3.0,
+          "dead_cost": 3.0
+        },
+        {
+          "name": "ensemble_half_player_D_cost8",
+          "members": [
+            "baseline",
+            "context"
+          ],
+          "context_weight": 0.5,
+          "player_dead_weight": 0.5,
+          "team_cost": 3.0,
+          "dead_cost": 8.0
+        },
+        {
+          "name": "ensemble_player_D_cost8",
+          "members": [
+            "baseline",
+            "context"
+          ],
+          "context_weight": 0.5,
+          "player_dead_weight": 1.0,
+          "team_cost": 3.0,
+          "dead_cost": 8.0
+        }
+      ],
+      "augmentation": "same clean and degraded views for every ablation, each with H/A swap",
+      "selection": "max mean spell F1 over providers, matches and conditions; macro F1 breaks ties",
+      "limits": "reused validation matches; one seed per run; not fresh confirmation or competition performance",
+      "data_sha256": {
+        "external_audit/sportec/processed/J03WMX.npz": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+        "external_audit/sportec/processed/J03WN1.npz": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+        "external_audit/sportec/processed/J03WOH.npz": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+        "external_audit/sportec/processed/J03WOY.npz": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+        "external/processed/metrica_1.npz": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+        "external/processed/metrica_2.npz": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+        "external/processed/metrica_3.npz": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+        "external/processed/skillcorner_had_1874553.npz": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+        "external/processed/skillcorner_had_1886347.npz": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+        "external/processed/skillcorner_had_1899585.npz": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+        "external/processed/skillcorner_had_1925299.npz": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+        "external/processed/skillcorner_had_1927964.npz": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+        "external/processed/skillcorner_had_1953632.npz": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+        "external/processed/skillcorner_had_1959846.npz": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+        "external/processed/skillcorner_had_1986691.npz": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+        "external/processed/skillcorner_had_1996435.npz": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+        "external/processed/skillcorner_had_1996436.npz": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+        "external/processed/skillcorner_had_2006229.npz": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420"
+      },
+      "source_sha256": {
+        "pipeline_eval.py": "8d7a7a6d661f1bbc3cc871d2eb893dfae503095c3b68259ed06b63b7114bbb45",
+        "possession_pipeline.py": "423047cc7af1cb500c956fef6d322324fb620fd4266fdfec8a7923b2e4ef8146",
+        "multisource_eval.py": "1e166cf7169c81ca1393a8cd503f8fd99891ce7693156c73133f8002c847f592",
+        "dead_transfer.py": "f38aa33ddf8b7619973cadbe99b9c16c99e37cfa466aa8a5e2a05bb456ad3186",
+        "supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+        "refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+        "refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+        "refine_decode.py": "710efe78a070b847b278507505b9714209b2541c329e867973d45f560180c87d",
+        "refine_weighted.py": "97ea2bdb26a23989a69fe54b419ed0bb77ae604d53ea8b0eb73b10648c29b180",
+        "robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+        "stress.py": "c4d9f47ea8e77e29bac74ea26831f4cd4597ca79ea3cadcb316183f84dcae32e",
+        "metrics.py": "36a8ca48af6b21f4a25957306bf80efdf603917cec9746a886b1090e70dc2270"
+      },
+      "official_metric_sha256": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+      "versions": {
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "sklearn": "1.8.0",
+        "joblib": "1.5.3"
+      },
+      "test_accessed": false,
+      "competition_labels_accessed": false
+    }
+  },
+  "rows": [
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "clean",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.908376357172359,
+      "spell_f1": 0.6061757719714964,
+      "d_f1": 0.9843066131063014,
+      "team_acc_alive": 0.8651128647458249,
+      "n_gt_spells": 456,
+      "n_pred_spells": 386
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "clean",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.9086776532047027,
+      "spell_f1": 0.6075294117647059,
+      "d_f1": 0.9837951490575956,
+      "team_acc_alive": 0.8673151036887502,
+      "n_gt_spells": 456,
+      "n_pred_spells": 394
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "clean",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.9122621297321306,
+      "spell_f1": 0.624757281553398,
+      "d_f1": 0.9823119662285273,
+      "team_acc_alive": 0.872296358440605,
+      "n_gt_spells": 456,
+      "n_pred_spells": 368
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "clean",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.9102988467292809,
+      "spell_f1": 0.6180487804878049,
+      "d_f1": 0.9836770789615684,
+      "team_acc_alive": 0.8683113546391212,
+      "n_gt_spells": 456,
+      "n_pred_spells": 364
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.9012933791178845,
+      "spell_f1": 0.6034482758620688,
+      "d_f1": 0.9735028791501851,
+      "team_acc_alive": 0.8554125265448445,
+      "n_gt_spells": 456,
+      "n_pred_spells": 356
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "clean",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.8453551729545493,
+      "spell_f1": 0.5230398069963813,
+      "d_f1": 0.9061810154525387,
+      "team_acc_alive": 0.8260100149437642,
+      "n_gt_spells": 456,
+      "n_pred_spells": 373
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.8983343601232566,
+      "spell_f1": 0.6007453416149068,
+      "d_f1": 0.9704279287652898,
+      "team_acc_alive": 0.8512177857011771,
+      "n_gt_spells": 456,
+      "n_pred_spells": 349
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "clean",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.8450117589795626,
+      "spell_f1": 0.5258536585365854,
+      "d_f1": 0.9053633815794524,
+      "team_acc_alive": 0.8271111344152269,
+      "n_gt_spells": 456,
+      "n_pred_spells": 364
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "degraded",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.8704085754940389,
+      "spell_f1": 0.5002518891687657,
+      "d_f1": 0.9581050312155711,
+      "team_acc_alive": 0.8068059670188501,
+      "n_gt_spells": 456,
+      "n_pred_spells": 338
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "degraded",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.8723334136719784,
+      "spell_f1": 0.5111111111111112,
+      "d_f1": 0.9577528948451184,
+      "team_acc_alive": 0.8100568911726922,
+      "n_gt_spells": 456,
+      "n_pred_spells": 336
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "degraded",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.873537576861925,
+      "spell_f1": 0.5044359949302916,
+      "d_f1": 0.9563901600570006,
+      "team_acc_alive": 0.8123508900715728,
+      "n_gt_spells": 456,
+      "n_pred_spells": 333
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "degraded",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.8737146515470724,
+      "spell_f1": 0.5062261753494283,
+      "d_f1": 0.9568673548102707,
+      "team_acc_alive": 0.8124819757229373,
+      "n_gt_spells": 456,
+      "n_pred_spells": 331
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.8698750440386899,
+      "spell_f1": 0.5060489060489061,
+      "d_f1": 0.9553961972208171,
+      "team_acc_alive": 0.8167553679574234,
+      "n_gt_spells": 456,
+      "n_pred_spells": 321
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.8116088257327473,
+      "spell_f1": 0.4433617539585871,
+      "d_f1": 0.8819828408007626,
+      "team_acc_alive": 0.8100699997378287,
+      "n_gt_spells": 456,
+      "n_pred_spells": 365
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.8717578301138241,
+      "spell_f1": 0.5088082901554404,
+      "d_f1": 0.9584404168622105,
+      "team_acc_alive": 0.8190755839865769,
+      "n_gt_spells": 456,
+      "n_pred_spells": 316
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.8127448294937748,
+      "spell_f1": 0.4520446096654275,
+      "d_f1": 0.8832816576399407,
+      "team_acc_alive": 0.8100437826075558,
+      "n_gt_spells": 456,
+      "n_pred_spells": 351
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "clean",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.912403329702472,
+      "spell_f1": 0.6708385481852315,
+      "d_f1": 0.9269460222198408,
+      "team_acc_alive": 0.9334391480210946,
+      "n_gt_spells": 382,
+      "n_pred_spells": 417
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "clean",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.9108325457692183,
+      "spell_f1": 0.664312736443884,
+      "d_f1": 0.925448951849467,
+      "team_acc_alive": 0.9323434539962111,
+      "n_gt_spells": 382,
+      "n_pred_spells": 411
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "clean",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.9220349009021657,
+      "spell_f1": 0.7400530503978779,
+      "d_f1": 0.9232295226941372,
+      "team_acc_alive": 0.9516256208079463,
+      "n_gt_spells": 382,
+      "n_pred_spells": 372
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "clean",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.9180372279599638,
+      "spell_f1": 0.7038107752956636,
+      "d_f1": 0.9264218828182705,
+      "team_acc_alive": 0.9426245455941836,
+      "n_gt_spells": 382,
+      "n_pred_spells": 379
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.9134925590438462,
+      "spell_f1": 0.6919631093544137,
+      "d_f1": 0.9197305280855584,
+      "team_acc_alive": 0.9311351185295171,
+      "n_gt_spells": 382,
+      "n_pred_spells": 377
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "clean",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.8784446240988074,
+      "spell_f1": 0.6418725617685306,
+      "d_f1": 0.8645065612079813,
+      "team_acc_alive": 0.8907070810506375,
+      "n_gt_spells": 382,
+      "n_pred_spells": 387
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.9134335285306167,
+      "spell_f1": 0.6928381962864723,
+      "d_f1": 0.9187234490748867,
+      "team_acc_alive": 0.9324663355690953,
+      "n_gt_spells": 382,
+      "n_pred_spells": 372
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "clean",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.8788762436505615,
+      "spell_f1": 0.644532279314888,
+      "d_f1": 0.8647093206240726,
+      "team_acc_alive": 0.8914648507500896,
+      "n_gt_spells": 382,
+      "n_pred_spells": 377
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "degraded",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.8895085577241991,
+      "spell_f1": 0.5780077619663648,
+      "d_f1": 0.923293807342057,
+      "team_acc_alive": 0.8823408939634427,
+      "n_gt_spells": 382,
+      "n_pred_spells": 391
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "degraded",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.8866324102080366,
+      "spell_f1": 0.5703989703989704,
+      "d_f1": 0.9224647100408201,
+      "team_acc_alive": 0.8795453381803288,
+      "n_gt_spells": 382,
+      "n_pred_spells": 395
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "degraded",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.8951561163556767,
+      "spell_f1": 0.625,
+      "d_f1": 0.9241118256031376,
+      "team_acc_alive": 0.8915877323229737,
+      "n_gt_spells": 382,
+      "n_pred_spells": 370
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "degraded",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.8949254389931763,
+      "spell_f1": 0.6220430107526882,
+      "d_f1": 0.9231784312610205,
+      "team_acc_alive": 0.890850442885669,
+      "n_gt_spells": 382,
+      "n_pred_spells": 362
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.8878756102394534,
+      "spell_f1": 0.6126855600539812,
+      "d_f1": 0.9128805461523656,
+      "team_acc_alive": 0.883508268905842,
+      "n_gt_spells": 382,
+      "n_pred_spells": 359
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.8563631578906605,
+      "spell_f1": 0.5659574468085107,
+      "d_f1": 0.86327486166185,
+      "team_acc_alive": 0.8568736879832062,
+      "n_gt_spells": 382,
+      "n_pred_spells": 370
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.888651546952873,
+      "spell_f1": 0.6160108548168249,
+      "d_f1": 0.9136176316568384,
+      "team_acc_alive": 0.8864574266550612,
+      "n_gt_spells": 382,
+      "n_pred_spells": 355
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.8592372178057558,
+      "spell_f1": 0.5756756756756757,
+      "d_f1": 0.8664410134154982,
+      "team_acc_alive": 0.8611847831652245,
+      "n_gt_spells": 382,
+      "n_pred_spells": 358
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "clean",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.6553231278117885,
+      "spell_f1": 0.39183673469387753,
+      "d_f1": 0.4603110482730761,
+      "team_acc_alive": 0.8296944886665151,
+      "n_gt_spells": 384,
+      "n_pred_spells": 547
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "clean",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.6513446993547432,
+      "spell_f1": 0.3816435432230523,
+      "d_f1": 0.45314401622718065,
+      "team_acc_alive": 0.8277234478053218,
+      "n_gt_spells": 384,
+      "n_pred_spells": 553
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "clean",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.6506906446210683,
+      "spell_f1": 0.39567567567567563,
+      "d_f1": 0.4475183075671277,
+      "team_acc_alive": 0.8301493442498673,
+      "n_gt_spells": 384,
+      "n_pred_spells": 541
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "clean",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.652001871777718,
+      "spell_f1": 0.4021881838074398,
+      "d_f1": 0.4494769980704783,
+      "team_acc_alive": 0.8309453415207338,
+      "n_gt_spells": 384,
+      "n_pred_spells": 530
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7414105718840514,
+      "spell_f1": 0.4149659863945579,
+      "d_f1": 0.673104616687844,
+      "team_acc_alive": 0.8268895459025093,
+      "n_gt_spells": 384,
+      "n_pred_spells": 498
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "clean",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7358695308473885,
+      "spell_f1": 0.40412844036697254,
+      "d_f1": 0.680894756142281,
+      "team_acc_alive": 0.7869759684633463,
+      "n_gt_spells": 384,
+      "n_pred_spells": 488
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7411623396549797,
+      "spell_f1": 0.41452894438138477,
+      "d_f1": 0.6731032125768968,
+      "team_acc_alive": 0.828064589492836,
+      "n_gt_spells": 384,
+      "n_pred_spells": 497
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "clean",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7399008359332324,
+      "spell_f1": 0.40690448791714606,
+      "d_f1": 0.6886665671196058,
+      "team_acc_alive": 0.7928132817830339,
+      "n_gt_spells": 384,
+      "n_pred_spells": 485
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "degraded",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.6966198841704081,
+      "spell_f1": 0.3822525597269625,
+      "d_f1": 0.5761375850949482,
+      "team_acc_alive": 0.8157834887423243,
+      "n_gt_spells": 384,
+      "n_pred_spells": 495
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "degraded",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.6988101404338973,
+      "spell_f1": 0.38,
+      "d_f1": 0.5766219742643751,
+      "team_acc_alive": 0.8197634750966568,
+      "n_gt_spells": 384,
+      "n_pred_spells": 496
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "degraded",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.697992867972978,
+      "spell_f1": 0.3990909090909091,
+      "d_f1": 0.5680398370303305,
+      "team_acc_alive": 0.8241983170343415,
+      "n_gt_spells": 384,
+      "n_pred_spells": 496
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "degraded",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.6974232512076756,
+      "spell_f1": 0.39212962962962966,
+      "d_f1": 0.5729953254225099,
+      "team_acc_alive": 0.8194602380410886,
+      "n_gt_spells": 384,
+      "n_pred_spells": 480
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7511411047646778,
+      "spell_f1": 0.4072202166064982,
+      "d_f1": 0.7030585213133179,
+      "team_acc_alive": 0.8165415813812448,
+      "n_gt_spells": 384,
+      "n_pred_spells": 447
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7326178118857299,
+      "spell_f1": 0.3906542056074766,
+      "d_f1": 0.6722423146473779,
+      "team_acc_alive": 0.7915624289288151,
+      "n_gt_spells": 384,
+      "n_pred_spells": 472
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7525062813469442,
+      "spell_f1": 0.40772946859903375,
+      "d_f1": 0.7062333682767519,
+      "team_acc_alive": 0.8180198620271397,
+      "n_gt_spells": 384,
+      "n_pred_spells": 444
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7343008586172477,
+      "spell_f1": 0.39103773584905666,
+      "d_f1": 0.6771331058020478,
+      "team_acc_alive": 0.792964900310818,
+      "n_gt_spells": 384,
+      "n_pred_spells": 464
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "clean",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.5834436811764669,
+      "spell_f1": 0.37884028484231946,
+      "d_f1": 0.38207352333746386,
+      "team_acc_alive": 0.7839258888332499,
+      "n_gt_spells": 361,
+      "n_pred_spells": 622
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "clean",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.5871831215640729,
+      "spell_f1": 0.3859013091641491,
+      "d_f1": 0.39108096999588987,
+      "team_acc_alive": 0.784476715072609,
+      "n_gt_spells": 361,
+      "n_pred_spells": 632
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "clean",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.5767052347171386,
+      "spell_f1": 0.37731343283582086,
+      "d_f1": 0.35946342485852023,
+      "team_acc_alive": 0.7879819729594392,
+      "n_gt_spells": 361,
+      "n_pred_spells": 644
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "clean",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.5812793543045188,
+      "spell_f1": 0.3798387096774194,
+      "d_f1": 0.3697846217875351,
+      "team_acc_alive": 0.7886329494241362,
+      "n_gt_spells": 361,
+      "n_pred_spells": 631
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.687311766870429,
+      "spell_f1": 0.40170394036208734,
+      "d_f1": 0.6306754784996996,
+      "team_acc_alive": 0.7847270906359539,
+      "n_gt_spells": 361,
+      "n_pred_spells": 578
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "clean",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7213927033399551,
+      "spell_f1": 0.4040358744394618,
+      "d_f1": 0.7150496562261268,
+      "team_acc_alive": 0.7682023034551828,
+      "n_gt_spells": 361,
+      "n_pred_spells": 531
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.6930458956374967,
+      "spell_f1": 0.400427807486631,
+      "d_f1": 0.6454881085258006,
+      "team_acc_alive": 0.786179268903355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 574
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "clean",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7227403864029617,
+      "spell_f1": 0.40675675675675665,
+      "d_f1": 0.717948717948718,
+      "team_acc_alive": 0.7685528292438658,
+      "n_gt_spells": 361,
+      "n_pred_spells": 527
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "degraded",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.6361857229677693,
+      "spell_f1": 0.37825641025641027,
+      "d_f1": 0.5217230199166281,
+      "team_acc_alive": 0.7753630445668502,
+      "n_gt_spells": 361,
+      "n_pred_spells": 614
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "degraded",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.6392905036361415,
+      "spell_f1": 0.3807574206755374,
+      "d_f1": 0.5293194200757226,
+      "team_acc_alive": 0.7757135703555333,
+      "n_gt_spells": 361,
+      "n_pred_spells": 616
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "degraded",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.6361679129537633,
+      "spell_f1": 0.39545454545454545,
+      "d_f1": 0.5139915769770707,
+      "team_acc_alive": 0.7816224336504757,
+      "n_gt_spells": 361,
+      "n_pred_spells": 607
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "degraded",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.6408967519749927,
+      "spell_f1": 0.3966735966735967,
+      "d_f1": 0.5226532700716345,
+      "team_acc_alive": 0.7836755132699048,
+      "n_gt_spells": 361,
+      "n_pred_spells": 601
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7205403692406755,
+      "spell_f1": 0.4248062015503876,
+      "d_f1": 0.7067741163328812,
+      "team_acc_alive": 0.7815723585378067,
+      "n_gt_spells": 361,
+      "n_pred_spells": 542
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7317014800721311,
+      "spell_f1": 0.4277136258660509,
+      "d_f1": 0.7347946435250992,
+      "team_acc_alive": 0.7690535803705558,
+      "n_gt_spells": 361,
+      "n_pred_spells": 505
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7198336024623103,
+      "spell_f1": 0.42360801781737195,
+      "d_f1": 0.7052715654952076,
+      "team_acc_alive": 0.7815222834251377,
+      "n_gt_spells": 361,
+      "n_pred_spells": 537
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7297586831579729,
+      "spell_f1": 0.42638888888888893,
+      "d_f1": 0.7313935223277733,
+      "team_acc_alive": 0.7678517776664997,
+      "n_gt_spells": 361,
+      "n_pred_spells": 503
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "clean",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.6175879311094312,
+      "spell_f1": 0.44276729559748434,
+      "d_f1": 0.2929801324503311,
+      "team_acc_alive": 0.8618399202922618,
+      "n_gt_spells": 380,
+      "n_pred_spells": 574
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "clean",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.6070392847112255,
+      "spell_f1": 0.44500525762355425,
+      "d_f1": 0.26797473457868565,
+      "team_acc_alive": 0.8599210302963209,
+      "n_gt_spells": 380,
+      "n_pred_spells": 571
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "clean",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.6175099285653203,
+      "spell_f1": 0.4438356164383562,
+      "d_f1": 0.28411662894421513,
+      "team_acc_alive": 0.8674489833573195,
+      "n_gt_spells": 380,
+      "n_pred_spells": 569
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "clean",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.6178643804461704,
+      "spell_f1": 0.4473852721451442,
+      "d_f1": 0.28685364881031505,
+      "team_acc_alive": 0.866046717591055,
+      "n_gt_spells": 380,
+      "n_pred_spells": 557
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7269243835664801,
+      "spell_f1": 0.4614364640883978,
+      "d_f1": 0.575399430947691,
+      "team_acc_alive": 0.8637588102882026,
+      "n_gt_spells": 380,
+      "n_pred_spells": 525
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "clean",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7485980891286569,
+      "spell_f1": 0.45869074492099315,
+      "d_f1": 0.6427918874474694,
+      "team_acc_alive": 0.8354182811173844,
+      "n_gt_spells": 380,
+      "n_pred_spells": 506
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "clean",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7304992386838537,
+      "spell_f1": 0.4619469026548672,
+      "d_f1": 0.5837163493105711,
+      "team_acc_alive": 0.8651610760544669,
+      "n_gt_spells": 380,
+      "n_pred_spells": 524
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "clean",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.754365595589983,
+      "spell_f1": 0.4592090395480226,
+      "d_f1": 0.6563354603463992,
+      "team_acc_alive": 0.83685744861434,
+      "n_gt_spells": 380,
+      "n_pred_spells": 505
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "degraded",
+      "candidate": "baseline",
+      "unseen_source": true,
+      "macro_f1": 0.6728679186757196,
+      "spell_f1": 0.4271259418729817,
+      "d_f1": 0.4574554766616227,
+      "team_acc_alive": 0.8482231816672202,
+      "n_gt_spells": 380,
+      "n_pred_spells": 549
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "degraded",
+      "candidate": "preprocessed",
+      "unseen_source": true,
+      "macro_f1": 0.6701672332762847,
+      "spell_f1": 0.41910828025477703,
+      "d_f1": 0.45291375291375296,
+      "team_acc_alive": 0.8465626037861176,
+      "n_gt_spells": 380,
+      "n_pred_spells": 562
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "degraded",
+      "candidate": "context",
+      "unseen_source": true,
+      "macro_f1": 0.6768425834653318,
+      "spell_f1": 0.42781875658587987,
+      "d_f1": 0.45707629586488063,
+      "team_acc_alive": 0.8548285914609395,
+      "n_gt_spells": 380,
+      "n_pred_spells": 569
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "degraded",
+      "candidate": "ensemble",
+      "unseen_source": true,
+      "macro_f1": 0.6725257146388114,
+      "spell_f1": 0.43387622149837135,
+      "d_f1": 0.45072073127856555,
+      "team_acc_alive": 0.8521716668511753,
+      "n_gt_spells": 380,
+      "n_pred_spells": 541
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.7565886227862489,
+      "spell_f1": 0.45318181818181813,
+      "d_f1": 0.6630994447248864,
+      "team_acc_alive": 0.8536846378095133,
+      "n_gt_spells": 380,
+      "n_pred_spells": 500
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D",
+      "unseen_source": true,
+      "macro_f1": 0.752979052649856,
+      "spell_f1": 0.45149425287356326,
+      "d_f1": 0.6626244343891403,
+      "team_acc_alive": 0.8311376803572088,
+      "n_gt_spells": 380,
+      "n_pred_spells": 490
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "degraded",
+      "candidate": "ensemble_half_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7623695802567217,
+      "spell_f1": 0.45473204104903076,
+      "d_f1": 0.6790024135156879,
+      "team_acc_alive": 0.8538322447322779,
+      "n_gt_spells": 380,
+      "n_pred_spells": 497
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "condition": "degraded",
+      "candidate": "ensemble_player_D_cost8",
+      "unseen_source": true,
+      "macro_f1": 0.7520892530965334,
+      "spell_f1": 0.4506912442396313,
+      "d_f1": 0.6605404421799654,
+      "team_acc_alive": 0.8318388132403409,
+      "n_gt_spells": 380,
+      "n_pred_spells": 488
+    }
+  ],
+  "summary": [
+    {
+      "candidate": "context",
+      "by_source": {
+        "sportec": {
+          "spell_f1": 0.5645966382418448,
+          "macro_f1": 0.8928998532970278,
+          "d_f1": 0.969351063142764
+        },
+        "metrica": {
+          "spell_f1": 0.682526525198939,
+          "macro_f1": 0.9085955086289212,
+          "d_f1": 0.9236706741486373
+        },
+        "skillcorner": {
+          "spell_f1": 0.40653148934686456,
+          "macro_f1": 0.6426515287159333,
+          "d_f1": 0.43836767854035746
+        }
+      },
+      "spell_f1": 0.5512182175958827,
+      "macro_f1": 0.8147156302139608,
+      "d_f1": 0.777129805277253
+    },
+    {
+      "candidate": "ensemble_half_player_D_cost8",
+      "by_source": {
+        "sportec": {
+          "spell_f1": 0.5547768158851736,
+          "macro_f1": 0.8850460951185404,
+          "d_f1": 0.9644341728137502
+        },
+        "metrica": {
+          "spell_f1": 0.6544245255516485,
+          "macro_f1": 0.9010425377417448,
+          "d_f1": 0.9161705403658625
+        },
+        "skillcorner": {
+          "spell_f1": 0.42716219699805325,
+          "macro_f1": 0.7332361563403843,
+          "d_f1": 0.6654691696168193
+        }
+      },
+      "spell_f1": 0.5454545128116252,
+      "macro_f1": 0.8397749297335565,
+      "d_f1": 0.8486912942654774
+    },
+    {
+      "candidate": "ensemble_half_player_D",
+      "by_source": {
+        "sportec": {
+          "spell_f1": 0.5547485909554875,
+          "macro_f1": 0.8855842115782873,
+          "d_f1": 0.9644495381855012
+        },
+        "metrica": {
+          "spell_f1": 0.6523243347041975,
+          "macro_f1": 0.9006840846416497,
+          "d_f1": 0.916305537118962
+        },
+        "skillcorner": {
+          "spell_f1": 0.42721910453062456,
+          "macro_f1": 0.7306528031854271,
+          "d_f1": 0.6586852680843868
+        }
+      },
+      "spell_f1": 0.5447640100634366,
+      "macro_f1": 0.8389736998017879,
+      "d_f1": 0.84648011446295
+    },
+    {
+      "candidate": "ensemble",
+      "by_source": {
+        "sportec": {
+          "spell_f1": 0.5621374779186166,
+          "macro_f1": 0.8920067491381767,
+          "d_f1": 0.9702722168859196
+        },
+        "metrica": {
+          "spell_f1": 0.6629268930241758,
+          "macro_f1": 0.90648133347657,
+          "d_f1": 0.9248001570396456
+        },
+        "skillcorner": {
+          "spell_f1": 0.40868193557193355,
+          "macro_f1": 0.6436652207249812,
+          "d_f1": 0.44208076590683976
+        }
+      },
+      "spell_f1": 0.5445821021715753,
+      "macro_f1": 0.8140511011132426,
+      "d_f1": 0.7790510466108017
+    },
+    {
+      "candidate": "baseline",
+      "by_source": {
+        "sportec": {
+          "spell_f1": 0.5532138305701311,
+          "macro_f1": 0.8893924663331989,
+          "d_f1": 0.9712058221609363
+        },
+        "metrica": {
+          "spell_f1": 0.6244231550757982,
+          "macro_f1": 0.9009559437133355,
+          "d_f1": 0.9251199147809489
+        },
+        "skillcorner": {
+          "spell_f1": 0.400179871165006,
+          "macro_f1": 0.6436713776519306,
+          "d_f1": 0.44844679762234496
+        }
+      },
+      "spell_f1": 0.5259389522703117,
+      "macro_f1": 0.8113399292328216,
+      "d_f1": 0.7815908448547434
+    },
+    {
+      "candidate": "preprocessed",
+      "by_source": {
+        "sportec": {
+          "spell_f1": 0.5593202614379085,
+          "macro_f1": 0.8905055334383405,
+          "d_f1": 0.970774021951357
+        },
+        "metrica": {
+          "spell_f1": 0.6173558534214272,
+          "macro_f1": 0.8987324779886274,
+          "d_f1": 0.9239568309451436
+        },
+        "skillcorner": {
+          "spell_f1": 0.39873596849017834,
+          "macro_f1": 0.6423058304960608,
+          "d_f1": 0.44517581134260115
+        }
+      },
+      "spell_f1": 0.5251373611165047,
+      "macro_f1": 0.8105146139743429,
+      "d_f1": 0.7799688880797006
+    },
+    {
+      "candidate": "ensemble_player_D_cost8",
+      "by_source": {
+        "sportec": {
+          "spell_f1": 0.48894913410100643,
+          "macro_f1": 0.8288782942366687,
+          "d_f1": 0.8943225196096966
+        },
+        "metrica": {
+          "spell_f1": 0.6101039774952819,
+          "macro_f1": 0.8690567307281587,
+          "d_f1": 0.8655751670197853
+        },
+        "skillcorner": {
+          "spell_f1": 0.42349802553325033,
+          "macro_f1": 0.7388592687996551,
+          "d_f1": 0.6886696359540849
+        }
+      },
+      "spell_f1": 0.5075170457098462,
+      "macro_f1": 0.8122647645881608,
+      "d_f1": 0.8161891075278556
+    },
+    {
+      "candidate": "ensemble_player_D",
+      "by_source": {
+        "sportec": {
+          "spell_f1": 0.4832007804774842,
+          "macro_f1": 0.8284819993436483,
+          "d_f1": 0.8940819281266507
+        },
+        "metrica": {
+          "spell_f1": 0.6039150042885206,
+          "macro_f1": 0.8674038909947339,
+          "d_f1": 0.8638907114349157
+        },
+        "skillcorner": {
+          "spell_f1": 0.4227861906790864,
+          "macro_f1": 0.7371931113206195,
+          "d_f1": 0.6847329487295823
+        }
+      },
+      "spell_f1": 0.5033006584816971,
+      "macro_f1": 0.8110263338863338,
+      "d_f1": 0.8142351960970496
+    }
+  ],
+  "selected": {
+    "name": "context",
+    "members": [
+      "context",
+      "context"
+    ],
+    "context_weight": 0.0,
+    "player_dead_weight": 0.0,
+    "team_cost": 3.0,
+    "dead_cost": 3.0
+  },
+  "last_run_seconds": 1492.2
+}
