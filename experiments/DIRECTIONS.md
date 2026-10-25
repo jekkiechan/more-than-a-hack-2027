@@ -1,5 +1,12 @@
 # Research directions
 
+The current implementation pass uses the existing 18 external matches (13 train,
+5 validation) to test preprocessing, control-context features, probability
+ensembling and separate team/dead decoding costs. See [PIPELINE.md](PIPELINE.md)
+and `pipeline_eval.py` for the bounded leave-one-provider-out protocol. It does
+not depend on acquiring another dataset; additional broadcast data remains useful
+for independent confirmation and subsequent work.
+
 Ordered by expected payoff. Most of the gain is expected to come from more and
 better data, better validation and better preprocessing. Modelling waits until
 those are in place, so its gains can be measured on data that resembles the

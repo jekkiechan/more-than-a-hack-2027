@@ -91,6 +91,14 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Current research directions
 
+- The takeover implementation is [experiments/PIPELINE.md](experiments/PIPELINE.md):
+  conservative observation repair, control-context features, separate H/A and D
+  probability blends, and a bounded leave-one-provider-out validation runner.
+  `pipeline_eval.py` selects across all three providers and clean/degraded views;
+  it does not use the organizer labels or historical Sportec tests. Its validation
+  matches are reused development data, not fresh independent confirmation.
+  `pipeline_predict.py` generates a checked full-length CSV when organizer
+  tracking and the final fitted model are available.
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
   data first, then validation, then preprocessing. LightGBM hyperparameter tuning
   comes after those.
