@@ -109,3 +109,8 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   reproduction sequence in `experiments/REFINEMENT.md` in a fresh checkout;
   frozen manifests deliberately refuse repeated held-out scoring. Never use
   repeated public-window checks as an iteration loop.
+- Work on a branch and open a PR to `main`. The CI workflow runs synthetic
+  tests and the submission validator; a separate workflow merges passing PRs
+  from branches in this fork when their tested commit is still current. See
+  [docs/CI.md](docs/CI.md) for the protection setup and scope. Do not use
+  organizer labels or assets in CI.
