@@ -1,5 +1,13 @@
 # Possession experiments
 
+**New temporal comparison:** [ordered features, TCN, and bidirectional GRU](LEARNED_TEMPORAL.md)
+with fixed H/A attribution. On historical provider-holdout D development folds,
+ordered HGB scores 0.5652 spell F1 versus 0.5588 for the matched HGB baseline;
+BiGRU scores 0.5649 and TCN 0.5605. The TCN improves D F1 more than spell F1.
+This is a modest external development gain, with no new organizer-window result.
+The [evaluation manifest and shortcut audit](eval_set/README.md) document
+provenance, whole-match splits, silver labels, and the missing fresh test set.
+
 **Latest:** [refinement and competition results](REFINEMENT.md). The final
 external test improved to **0.9408 frame macro F1 / 0.7059 spell F1**. On the
 competition's public five-minute pipeline check, the externally selected model

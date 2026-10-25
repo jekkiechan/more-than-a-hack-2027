@@ -99,6 +99,18 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   and SkillCorner with D labels.
 - Do not select models on Sportec J03WOY alone; use the multi-source suite
   (`multisource_eval.py`).
+- The bounded temporal-D experiment is [experiments/LEARNED_TEMPORAL.md](experiments/LEARNED_TEMPORAL.md).
+  It holds conditional H/A and decoder fixed. Historical provider-holdout D
+  development spell F1: HGB baseline .5588, ordered HGB .5652, BiGRU .5649,
+  TCN .5605. TCN improves D F1 but has no clear overall spell advantage over
+  boosting. LightGBM D heads .08/160 vs .02/640 trees score .5577/.5613.
+  This does not repeat the earlier full-model LightGBM .02/1500-tree result.
+  These folds hold out providers from D training only; H/A remains pooled.
+  `experiments/eval_set/manifest.json` records hashes and prior data exposure;
+  none of these matches is fresh confirmation. SkillCorner X margins make D
+  boundary timing ungradable. New organizer tracking was absent; no new public
+  check has been performed. Use `temporal_challenge.py` only after the frozen
+  external selection, never to iterate on public labels.
 
 ## Artifacts and reproducibility
 
