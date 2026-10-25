@@ -125,6 +125,67 @@ in parentheses include the evaluation source in training.
 One evaluation match per source (three for SkillCorner); these are point
 estimates, not intervals.
 
+## Result 2: full H/A/D, official metric, three providers
+
+`multisource_eval.py` trains the refined model family (`refine_features`,
+clean + 41%-masked ball, team swap, HGB 63/260, equal weight per source). It
+scores each training mixture with the official metric on every evaluation
+split. D comes either from the full model or from a player-only head trained
+on the same sources. Cells are frame macro F1 / spell F1 / D F1, averaged over
+a source's evaluation matches, at switch cost 3. `*` marks a source that is in
+the training mixture.
+
+| Train | D head | Sportec J03WOY | Metrica game 3 | SkillCorner ×3 |
+| --- | --- | --- | --- | --- |
+| sportec | full model | *.936 / .672 / .999 | .887 / .648 / .874 | .565 / .392 / .228 |
+| sportec+metrica | full model | *.937 / .680 / .999 | *.953 / .769 / .976 | .610 / .399 / .352 |
+| sportec+skillcorner | full model | *.930 / .658 / .999 | .901 / .664 / .903 | *.837 / .500 / .864 |
+| all three | full model | *.935 / .678 / .999 | *.950 / .769 / .970 | *.836 / .500 / .865 |
+| sportec | player-only | *.875 / .576 / .924 | .876 / .621 / .858 | .731 / .406 / .671 |
+| sportec+metrica | player-only | *.871 / .576 / .920 | *.887 / .675 / .865 | .744 / .418 / .699 |
+| sportec+skillcorner | player-only | *.864 / .560 / .917 | .877 / .631 / .864 | *.794 / .474 / .773 |
+| all three | player-only | *.873 / .586 / .924 | *.887 / .665 / .865 | *.793 / .477 / .774 |
+
+All 80 rows (both heads, costs 3 and 8, per match) are in
+`results/multisource_eval.json`.
+
+What it says:
+
+1. **The single-match validation picks the wrong D head.** On Sportec J03WOY
+   the full model wins clearly: macro .936 against .875, D F1 .999. On
+   SkillCorner, a provider it never saw, the same full model's D collapses
+   (D F1 .23, macro .565), while the player-only head holds (.67 / .731). That
+   is the same reversal as the public-window diagnostic on the challenge
+   (full-model D F1 .34–.37, player-only .75).
+2. **More sources help on providers the model has not seen, at no cost in-source.**
+   - Unseen SkillCorner: adding Metrica raises macro by +.045 (full model) and
+     +.013 (player-only). At cost 8, player-only spell F1 rises from .432 to .451.
+   - Unseen Metrica: adding SkillCorner gives +.014 macro and +.016 spell.
+   - Sportec validation stays within ±.015 spell for every mixture, and the
+     pooled model is +.006 over Sportec-only.
+3. **Team attribution is the spell-F1 bottleneck on broadcast data.**
+   - Even with D fixed, SkillCorner spell F1 stays at or below .52, with
+     team accuracy on live frames .83–.85.
+   - On Metrica (25 Hz, full view) team accuracy on live frames is .94–.95.
+   - The SkillCorner views are partial and 10 Hz, with ball positions NaN when
+     undetected. That is closer to the challenge's 41% missing ball than
+     Metrica's clean live ball.
+4. **The in-source Metrica numbers are optimistic.** "Ball missing" means D
+   there (see the caveat above). The full model's .976 D F1 on Metrica
+   game 3 after training on Metrica largely reflects that shortcut. Use the
+   unseen-source columns to judge.
+
+Practical consequences:
+- Choose D heads, blend weights and decoder costs on unseen-source cells.
+- Pool all sources for the final model.
+- Spend the next modelling effort on H/A attribution under ball loss. Spend
+  data effort on a large broadcast-like set (PFF World Cup 2022, see
+  [DIRECTIONS.md](DIRECTIONS.md)).
+
+Limits: one evaluation match for Sportec and Metrica, three for SkillCorner;
+no seed repeats; SkillCorner labels are silver. The Sportec-only rows were
+recovered from the first run's log, so they are rounded to 4 decimals.
+
 ## Reproduce
 
 ```sh
