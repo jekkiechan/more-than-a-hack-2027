@@ -91,9 +91,15 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Current research directions
 
+- [experiments/RESEARCH_LOG.md](experiments/RESEARCH_LOG.md) records the completed
+  contextual-model/D-blend comparison and proposed D-only and temporal-model
+  experiments. The implementation stays on `possession/robust-pipeline` in
+  draft PR #8; only research documentation is promoted to `main`. Do not merge
+  the implementation or replace the submission candidate as part of docs upkeep.
+  TCN/GRU/LSTM comparisons are proposed, not measured results.
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
-  data first, then validation, then preprocessing. LightGBM hyperparameter tuning
-  comes after those.
+  representative data and validation, then targeted D/context comparisons and
+  preprocessing. Broad LightGBM hyperparameter tuning comes after those.
 - New labelled sources and the per-source dead-ball shortcuts are in
   [experiments/OPEN_DATA.md](experiments/OPEN_DATA.md): Metrica's sample games
   and SkillCorner with D labels.

@@ -1,9 +1,11 @@
 # Research directions
 
-Ordered by expected payoff. Most of the gain is expected to come from more and
-better data, better validation and better preprocessing. Modelling waits until
-those are in place, so its gains can be measured on data that resembles the
-challenge.
+Representative data and validation remain priorities. The existing 18 matches
+(13 training, five validation) already support bounded feature/model comparisons
+while better data is sought. [RESEARCH_LOG.md](RESEARCH_LOG.md) records the
+completed context/D-blend experiment and the proposed follow-ups. Implementation
+stays on `possession/robust-pipeline`; this plan does not promote a new submission
+candidate. TCN/GRU/LSTM experiments have not yet been run.
 
 ## 1. More data, closer to the challenge (in progress)
 
@@ -39,27 +41,55 @@ Next:
   (`OPEN_DATA.md`).
 - Report per-source spread, and seed variance for any stochastic model.
 - Keep the public five minutes as a pipeline check only (RULES.md).
+- The completed provider-held-out context comparison uses reused development
+  matches and one seed. Its small ranking gap needs fresh confirmation. Compare
+  the previous submission pipeline and new candidates under the same external
+  protocol before claiming a replacement baseline.
 
-## 3. Better preprocessing (needs the challenge assets in the environment)
+## 3. Better preprocessing
+
+Tactical ATD tracking and metadata are restored locally. The additional broadcast,
+Smart Tagging and homography assets are still needed for the corresponding work.
 
 All label-free, so they are allowed on the challenge match:
 - **Second ball source:** align the broadcast feed's tracking to the tactical
   timeline by matching player positions in pitch coordinates, then use its
   ball where the tactical ball is missing (broadcast sees the ball on 50.5% of
   its frames, on a different set of moments).
-- **Smart Tagging as evidence:** SET PIECES intervals mark restarts, which end
-  a D stretch; Team tags give a weak H/A prior.
+- **Smart Tagging as evidence:** SET PIECES intervals provide soft restart
+  context; they are not exact dead-onset/restart boundaries. Team tags can
+  provide a weak H/A prior. Do not turn tagging windows directly into D labels.
 - **Homography quality:** use `reprojection_error` and `valid` as observation
   confidence.
 - **Unused ATD fields:** player speed and the ball's third value.
 - **Tracklet stitching** for all models, not only the PathCRF adapter.
 
-## 4. Modelling: LightGBM hyperparameter tuning (after 1–2)
+## 4. Modelling: isolate D, then test learned temporal context
+
+The completed contextual classifier improves aggregate external spell F1 from
+0.5259 to 0.5512 against its matched baseline. The best D-blended alternative
+scores 0.5455 spell / 0.8398 macro versus 0.8147 macro for context, and improves
+SkillCorner D recognition. It also changes H/A attribution, so it does not
+isolate the D contribution. See [RESEARCH_LOG.md](RESEARCH_LOG.md) for limits.
+
+Proposed comparisons, not yet run:
+
+- Keep contextual conditional H/A and decoder settings fixed; vary only the
+  blend of contextual and player-only D probabilities on a predeclared grid.
+- Add before/after activity differences, deceleration, restart acceleration and
+  duration to the existing temporal summaries.
+- Compare those features with a small TCN and bidirectional GRU/LSTM D head.
+  Full-match offline inputs allow both past and future tracking. Use observation
+  masks, windows that respect time breaks and whole-match/provider splits.
+- Measure official spell F1 alongside D precision/recall and boundary timing.
+  Decoder changes and soft duration priors should be separate comparisons.
+
+### Later: LightGBM hyperparameter tuning
 
 `REFINE_LGBM.md` shows that tuned LightGBM beats the HGB baseline (+0.017 clean,
 +0.013 masked spell F1 on J03WOY), while default LightGBM does not. So tuning,
 not the library, carries the gain, and a real search should find more. It
-waits for more data, so it optimises against the right target:
+should follow the targeted D/temporal comparisons and stronger transfer evidence:
 
 - **Objective:** mean spell F1 on the multi-source suite, not J03WOY. Evaluate
   the decoder switch cost jointly with the booster settings.
