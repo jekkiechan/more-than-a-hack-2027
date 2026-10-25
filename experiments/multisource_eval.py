@@ -29,6 +29,7 @@ from pathlib import Path
 import sys
 import time
 
+import joblib
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
 from threadpoolctl import threadpool_limits
@@ -111,12 +112,19 @@ def score(inputs, labels, probabilities, cost):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, default=ROOT / "experiments/results/multisource_eval.json")
+    parser.add_argument("--cache", type=Path, default=ROOT / "data/experiments/multisource")
     args = parser.parse_args()
     started = time.monotonic()
+    args.cache.mkdir(parents=True, exist_ok=True)
     cache, dead_cache = {}, {}
     for source, split in dead_transfer.SPLITS.items():
-        cache[source] = training_rows(split["train"], 2026)
-        dead_cache[source] = dead_transfer.matrices(split["train"], 9026, augment=True)
+        path = args.cache / f"{source}_train.joblib"
+        if path.exists():
+            cache[source], dead_cache[source] = joblib.load(path)
+        else:
+            cache[source] = training_rows(split["train"], 2026)
+            dead_cache[source] = dead_transfer.matrices(split["train"], 9026, augment=True)
+            joblib.dump((cache[source], dead_cache[source]), path)
         print(f"PREPARED {source} rows={len(cache[source][1])}", flush=True)
     evaluation = []
     for source, split in dead_transfer.SPLITS.items():
@@ -125,8 +133,10 @@ def main():
             x, names = refine_features.features(inputs)
             px, _ = refine_domain.features(inputs)
             evaluation.append((source, path.stem, inputs, labels, x, px))
-    rows = []
+    rows = json.loads(args.out.read_text())["rows"] if args.out.exists() else []
     for mixture in MIXTURES:
+        if any(r["train"] == "+".join(mixture) for r in rows):
+            continue
         model = fit(mixture, cache)
         head = fit_dead_head(mixture, dead_cache)
         for source, name, inputs, labels, x, px in evaluation:
@@ -142,8 +152,11 @@ def main():
                     rows.append(row)
                     print(json.dumps({k: (round(v, 4) if isinstance(v, float) else v) for k, v in row.items()}),
                           flush=True)
+        # Save after every mixture so a stopped run resumes where it left off.
+        args.out.write_text(json.dumps({"mixtures": ["+".join(m) for m in MIXTURES],
+                                        "switch_costs": SWITCH_COSTS, "rows": rows}, indent=2) + "\n")
     args.out.write_text(json.dumps({"mixtures": ["+".join(m) for m in MIXTURES], "switch_costs": SWITCH_COSTS,
-                                    "rows": rows, "seconds": round(time.monotonic() - started, 1)},
+                                    "rows": rows, "last_run_seconds": round(time.monotonic() - started, 1)},
                                    indent=2) + "\n")
 
 
