@@ -89,6 +89,17 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   missing-ball and stoppage behavior, evaluated at both frame and spell level.
   Better ball/player tracking and stoppage evidence are likely valuable.
 
+## Current research directions
+
+- The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
+  data first, then validation, then preprocessing. LightGBM hyperparameter tuning
+  comes after those.
+- New labelled sources and the per-source dead-ball shortcuts are in
+  [experiments/OPEN_DATA.md](experiments/OPEN_DATA.md): Metrica's sample games
+  and SkillCorner with D labels.
+- Do not select models on Sportec J03WOY alone; use the multi-source suite
+  (`multisource_eval.py`).
+
 ## Artifacts and reproducibility
 
 - Start at [experiments/REFINEMENT.md](experiments/REFINEMENT.md), then read
