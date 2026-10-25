@@ -64,10 +64,88 @@ The selected settings are refitted on all 13 training matches; the five validati
 matches remain excluded from that fit. The earlier competition candidate is not
 overwritten or submitted by this experiment.
 
+## Public five-minute pipeline check
+
+On 2026-10-25, the organizer's tactical tracking text and metadata were restored
+from the participant's authorized data share. Regenerating all four reference
+baselines reproduced the bundled CSVs byte for byte, confirming the inputs and
+frame alignment. The externally selected `context` configuration, model and
+feature code remained frozen. Its full 199,319-row CSV passed the official
+validator before the public labels were scored once with the official CLI.
+
+| Model | Public spell F1 | Public macro F1 | Frame accuracy |
+| --- | ---: | ---: | ---: |
+| **New contextual model** | **0.4190** | **0.6455** | **72.08%** |
+| Previous selected refinement (earlier check) | 0.4300 | 0.6487 | 74.92% |
+| Earlier PathCRF + robust-D hybrid (earlier check) | 0.5067 | 0.6795 | 77.47% |
+
+Only the new contextual model was scored in this check; the comparison rows are
+previously recorded results, not new trials. The external validation gain has
+not produced an improvement on this public segment. With only 7,500 graded
+frames and 17 true possessions, the new model's 1,000-resample conditional 90%
+bootstrap intervals are wide: **[0.2952, 0.5333]** for spell F1 and
+**[0.4792, 0.7772]** for macro F1. They do not establish a full-match ranking.
+
+Class F1 is **H 0.8034 / A 0.7387 / D 0.3945**. Dead-ball recall is **0.2907**,
+and the output contains **25 predicted possessions versus 17 reference
+possessions** in the graded window. The model still misses many stoppages and
+produces too many possession intervals on this segment. These are aggregate
+pipeline diagnostics, not a basis for adjusting thresholds on the public labels.
+No model, feature, blend, decoder setting or selection was changed after this
+check, and no organizer submission was made.
+
+The aggregate report and model/input/prediction/scorer hashes are in
+[results/pipeline_competition.json](results/pipeline_competition.json). Raw
+tracking, the generated `competition.csv`, its provenance sidecar and detailed
+reports remain under ignored `data/`. The check used an exclusive
+`data/experiments/pipeline_v1/public_check/` directory and recorded its start
+before loading the public labels. The scorer command was:
+
+```sh
+python evaluation/run_evaluation.py --gt public \
+  --results data/experiments/pipeline_v1 \
+  --out data/experiments/pipeline_v1/public_check --bootstrap 1000
+```
+
+Read the recorded result for ongoing work; do not turn public scoring into an
+iteration loop. Future model choices must continue to use external validation.
+
 ## Implemented changes
 
 `possession_pipeline.py` keeps all inference behind the existing tracking-field
 allowlist. Historical models and feature definitions are unchanged.
+
+The selected inference path is:
+
+```mermaid
+flowchart LR
+    A[Player and ball tracking] --> B[Observation repair]
+    B --> C[168 geometry and temporal features]
+    C --> D[Gradient-boosted H/A/D classifier]
+    D --> E[Average original and team-swapped predictions]
+    E --> F[Viterbi sequence decoding]
+    F --> G[H / A / D for each frame]
+```
+
+The classifier has 120 boosting rounds and at most 31 leaves per tree. It returns
+three probabilities per frame: home possession, away possession and dead ball.
+The original and H/A-swapped views use the same fitted classifier; probabilities
+are mapped back to the original team names before averaging. The final decoder
+maximizes the sequence's summed log probabilities with a fixed penalty for label
+changes (3 in 10-Hz units, scaled by frame rate). It resets at period/time breaks,
+does not force a minimum possession length, and writes X outside playing halves.
+
+The 137 existing features describe proximity, ball/player motion and local
+context. The 31 additions describe sustained control evidence, its age before
+and after the current frame, support around the ball and repair quality. Recent
+control evidence expires after five seconds. Future tracking context is available
+because submission inference is offline; no future possession labels are inputs.
+
+The separate player-only D model and baseline/context blend are retained as
+experimental alternatives. Their blend weights are zero in the selected
+configuration: the selected prediction uses the contextual classifier's own D
+probability. The wider inference harness currently also computes those unused
+alternatives, but they do not affect the selected output.
 
 - **Preprocessing:** respect observation flags, normalize incomplete XY pairs,
   reject isolated impossible position spikes, and interpolate internal player
@@ -178,6 +256,8 @@ The output command masks frames outside the playing halves, validates all
 199,319 rows, writes a provenance sidecar and refuses to overwrite a submission.
 It does not score public labels or submit anything to the organizers.
 
-Organizer assets were not present in this fresh environment at takeover. Dual-feed
-ball fusion, homography confidence and Smart Tagging integration therefore remain
-separate follow-up experiments; no results for those are claimed here.
+Organizer assets were not present at takeover. The tactical tracking text and
+metadata have now been restored for the frozen public check. Broadcast tracking,
+videos, homography and Smart Tagging were not used by this model. Dual-feed ball
+fusion, homography confidence and Smart Tagging integration remain separate
+follow-up experiments; no results for those are claimed here.

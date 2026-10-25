@@ -104,7 +104,15 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   views. A D-blended ensemble reaches 0.5455 spell / 0.8398 macro, versus the
   selected model's 0.8147 macro. The small ranking gap is unconfirmed; clean
   SkillCorner D F1 remains poor (0.3637 selected, 0.6341 for that blend). See
-  `experiments/results/pipeline_validation.json`; no new competition score exists.
+  `experiments/results/pipeline_validation.json`.
+  The frozen contextual model subsequently received one public pipeline check:
+  **0.4190 spell / 0.6455 macro F1, 72.08% accuracy** on 7,500 graded frames and
+  17 true possessions. D F1 is 0.3945; 25 possessions were predicted. This does
+  not improve on the previous selected model's public point estimate; the 90%
+  spell interval is [0.2952, 0.5333]. No settings or selection changed afterward.
+  See `experiments/results/pipeline_competition.json`. The generated, validated
+  CSV is ignored at `data/experiments/pipeline_v1/competition.csv`; it has not
+  been submitted. Tactical ATD text/metadata are now restored in `data/tactical/`.
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
   data first, then validation, then preprocessing. LightGBM hyperparameter tuning
   comes after those.
