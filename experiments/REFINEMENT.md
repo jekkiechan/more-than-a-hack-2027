@@ -75,6 +75,11 @@ Detailed experiments: [physical features](REFINE_FEATURES.md),
 [training weights](REFINE_WEIGHTED.md), [capacity](REFINE_SCALE.md), and
 [ensemble](REFINE_ENSEMBLE.md).
 
+The later [LightGBM-versus-HGB comparison](REFINE_LGBM.md) was validation-only.
+Its selected configuration beat the weighted HGB on J03WOY spell F1 by +0.017
+clean and +0.013 masked; this margin is small, and the comparison was not tested
+on held-out data.
+
 ## How much headroom remains
 
 [Validation-only oracle diagnostics](HEADROOM.md) separate possible error sources;
