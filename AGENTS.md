@@ -147,6 +147,22 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Artifacts and reproducibility
 
+- The completed composite-corruption ablation is
+  `experiments/REALISTIC_CORRUPTION.md`, implemented by `tracking_corruption.py`
+  and `corruption_experiment.py`. It froze aggregate unlabeled organizer gap
+  statistics, kept native grading masks fixed, and evaluated four training arms
+  on clean plus two corrupted views of the same five development matches.
+  All 120 evaluations and 59 synthetic/protocol tests completed. D-provider-held-out
+  baseline spell/macro is .5746/.8449 clean and .4205/.7699 corrupted;
+  augmenting both heads gives .5617/.8399 and .4564/.7993. Stress robustness
+  improves on every provider, but clean spell F1 falls. Retain GRU/HGB as the
+  adopted baseline. This is reused development data and shared-family synthetic
+  stress, not new broadcast confirmation. Results/receipts are tracked under
+  `experiments/results/realistic_corruption_*.json`; all 15 checkpoints and
+  frozen reports are archived in private `mtah-data`, restored using
+  `corruption_cache_manifest.json`. No public gate was reopened. Next, isolate
+  corruption groups and lower training weight before evaluating a new recipe.
+
 - The PathCRF retention test is `experiments/PATHCRF_ENSEMBLE.md`. It uses
   Metrica game 3 and the three SkillCorner evaluation matches, excluding
   Sportec J03WOY because PathCRF trained on it. With GRU/HGB P(D) fixed,

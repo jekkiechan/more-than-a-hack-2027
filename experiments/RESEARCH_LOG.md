@@ -162,3 +162,21 @@ never random overlapping windows. Compare on the same external protocol,
 repeat promising stochastic models across seeds, and seek fresh independent
 match confirmation. Existing PathCRF work remains a separate learned sequence
 baseline; its native model has no referee D head (see [PATHCRF.md](PATHCRF.md)).
+
+## 2026-10-26: composite corruption training
+
+The fixed [corruption ablation](REALISTIC_CORRUPTION.md) completed 120 evaluations
+across four training arms, five development matches, pooled/D-provider-held-out
+training and three input views. Augmenting both GRU/HGB D heads and HGB team
+attribution raises D-provider-held-out corrupted spell/macro from .4205/.7699
+to .4564/.7993, with stress spell gains on all three providers. Clean spell/macro
+falls from .5746/.8449 to .5617/.8399. Team-only augmentation improves stressed
+conditional H/A accuracy by 3.13 percentage points but also costs clean spell F1.
+
+This supports investigating corruption training, rather than promoting this
+recipe. The adopted baseline is unchanged. The comparison reproduces archived
+clean baseline scores, preserves original grading masks under corruption, and
+does not read organizer reference labels. The recipe mixes several failure
+mechanisms, so it cannot identify which causes the clean loss. Next isolate
+corruption groups and reduce their training weight with a fixed budget. Fresh
+labeled broadcast confirmation remains unavailable.

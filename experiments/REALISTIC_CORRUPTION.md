@@ -43,6 +43,60 @@ The report retains every match/seed/arm result and paired whole-match bootstrap
 deltas. These reused matches and synthetic corruptions cannot establish improved
 competition performance or replace independent broadcast validation.
 
+## Results
+
+All 120 evaluations completed. The unchanged baseline reproduces the archived
+pooled and provider-held-out clean spell, macro and D F1 summaries to 1e-12.
+The following uses the preferred D-provider-holdout view, with H/A pooled.
+Corrupted scores average the two seeds within each match before provider means.
+
+| Training change | Clean spell F1 | Clean macro F1 | Corrupted spell F1 | Corrupted macro F1 |
+| --- | ---: | ---: | ---: | ---: |
+| Unchanged GRU + HGB | .5746 | .8449 | .4205 | .7699 |
+| Team attribution only | .5659 | .8437 | .4429 | .7895 |
+| D heads only | .5718 | .8414 | .4370 | .7814 |
+| Both | .5617 | .8399 | .4564 | .7993 |
+
+The composite recipe improves stress robustness but costs native-input spell
+accuracy. Augmenting both components adds 3.59 percentage points of corrupted
+spell F1, with gains on Sportec (+5.06), Metrica (+4.15) and SkillCorner (+1.55).
+Its clean loss is 1.29 points. Team-only augmentation adds 2.24 corrupted spell
+points and improves conditional H/A accuracy on reference-live frames from
+80.10% to 83.23%; it loses 0.88 clean spell points. D-only augmentation has the
+smallest clean loss, 0.28 points, and adds 1.65 corrupted spell points, with no
+stress spell gain on SkillCorner.
+
+The pooled deployment-family comparison agrees on the main tradeoff: both-head
+augmentation changes clean spell/macro from .5952/.8687 to .5876/.8669 and
+corrupted spell/macro from .4307/.7810 to .4702/.8247. Pooled D-only training is
+nearly tied on clean spell (.5953), but its clean gain does not survive the
+D-provider holdouts. The adopted baseline therefore remains unchanged.
+
+The conditional paired-match bootstrap interval for the both-head corrupted
+spell gain is [+3.21, +3.79] percentage points. This conditions on these already
+used matches: one Sportec and one Metrica match cannot estimate provider
+uncertainty, and the intervals do not establish independent significance.
+The evaluation also shares its corruption family with training; two unseen
+seeds do not validate a new failure mechanism or real broadcast transfer.
+
+The [full report](results/realistic_corruption_development.json) includes all
+match/seed rows, clean and corrupted summaries, D boundaries, and paired deltas.
+[Artifact receipts](results/realistic_corruption_artifacts.json) bind all 15
+checkpoints to the frozen source/configuration and record package versions.
+The 35-file, 13.8 MB archive is preserved privately in `mtah-data` under
+`experiments/realistic_corruption_v1/`, with `corruption_cache_manifest.json`.
+Until its draft PR is merged, use private cache branch
+`experiments/realistic-corruption` when restoring this archive.
+The existing cache fetch/restore script verifies each archived file. No raw
+corrupted tracking or feature matrix is published.
+
+The next bounded experiment should reduce the corruption training weight and
+separate long ball gaps from player/coordinate corruption, retaining the old
+augmentation as a control. This batch does not identify which corruption is
+helpful or which causes the clean loss. Freeze those comparisons and training
+budgets before another external evaluation; prioritize a fresh labeled
+broadcast match for confirmation. No organizer recheck was performed.
+
 ## Reproduce
 
 Restore external NPZs, organizer input arrays and the baseline package from the
