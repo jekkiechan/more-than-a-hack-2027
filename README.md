@@ -12,16 +12,24 @@ question to answer with it.
 
 ## Current fork baseline
 
-This fork's current development head is **GRU + ordered HGB** for dead-ball
-probability, contextual HGB for home/away attribution, and Viterbi decoding.
-The [baseline guide](experiments/BASELINE.md) records its frozen models,
-reproduction commands, and comparisons with the archived PathCRF approach.
+This fork's current working baseline is **GRU + ordered HGB** for dead-ball
+probability, with **25% ball-gap-only replacement in HGB team-model training**
+and Viterbi decoding. The D heads, 50/50 blend and switch cost 3 are unchanged.
+The [improvements summary](experiments/BASELINE_IMPROVEMENTS.md) compares this
+with the baseline in PR #10; the [baseline guide](experiments/BASELINE.md)
+records versions, promotion evidence and reproduction commands.
 
-External D-head provider-holdout development scores are **0.5746 spell F1 /
-0.8449 macro F1**. The organizer's public five-minute pipeline check is
-**0.4889 / 0.8568**. That window contains only 17 possessions, is not a tuning
-set, and does not establish full-match performance or superiority over PathCRF.
-No candidate has been submitted to the organizers.
+On the same external D-provider holdouts, clean spell/macro F1 is
+**0.5740 / 0.8439**, versus **0.5746 / 0.8449** previously; composite-corrupted
+spell/macro improves to **0.4315 / 0.7866**, from **0.4205 / 0.7699**. The user
+authorized this robustness tradeoff. The earlier clean-winner selection remains
+preserved; the new baseline is not a clean-score winner.
+
+The existing organizer public-five-minute diagnostic is **0.5257 spell /
+0.8588 macro / 0.8568 dead-ball F1**. It covers only 17 reference possessions
+and does not establish full-match performance. That result was already known
+when the user requested promotion; no training or scoring occurred during
+promotion. No candidate has been submitted to the organizers.
 
 Authorized team members can restore competition inputs and the packaged models
 from the private `mtah-data` checkout alongside this repository:
@@ -33,11 +41,11 @@ python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache
 python -m experiments.current_baseline predict
 ```
 
-The generated candidate is `data/experiments/current_baseline/gru_hgb.csv`.
+The generated candidate is `data/experiments/current_baseline/gru_hgb_ballgap25.csv`.
 Competition assets, trained model weights and frame-level outputs stay outside
-the public repository. [Research directions](experiments/DIRECTIONS.md) prioritize
-realistic tracking corruption and fresh broadcast-match validation next; those
-experiments are not part of the current head.
+the public repository. Two corruption-training batches have now been measured;
+only the targeted ball-gap team model is adopted. Fresh independently labeled
+broadcast validation remains the priority in [research directions](experiments/DIRECTIONS.md).
 
 ---
 

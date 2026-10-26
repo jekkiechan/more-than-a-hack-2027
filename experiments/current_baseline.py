@@ -75,13 +75,18 @@ def load_inputs(path):
     return data
 
 
-def load_models(directory=None):
-    manifest = json.loads(MANIFEST.read_text())
+def load_models(directory=None, manifest_path=None):
+    manifest_path = Path(manifest_path) if manifest_path else MANIFEST
+    manifest = json.loads(manifest_path.read_text())
     directory = Path(directory) if directory else ROOT/manifest['model_directory']
     for name, expected in manifest['models_sha256'].items():
         if sha256(directory/name) != expected:
             raise ValueError(f'Baseline model hash mismatch: {name}')
     return {name.removesuffix('.joblib'): joblib.load(directory/name) for name in manifest['models_sha256']}
+
+
+def default_output(manifest):
+    return ROOT/manifest.get('default_output', f"data/experiments/current_baseline/{manifest['model']}.csv")
 
 
 def dead_probability(inputs, models):
@@ -105,23 +110,27 @@ def main():
     parser.add_argument('action', choices=('promote', 'predict'))
     parser.add_argument('--inputs', type=Path, default=ROOT/'data/challenge/inputs.npz')
     parser.add_argument('--models-dir', type=Path)
-    parser.add_argument('--output', type=Path, default=ROOT/'data/experiments/current_baseline/gru_hgb.csv')
+    parser.add_argument('--manifest', type=Path, default=MANIFEST,
+                        help='Active baseline by default; historical manifests support label-free replay')
+    parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     if args.action == 'promote':
         promote()
         return
+    manifest = json.loads(args.manifest.read_text())
+    output = args.output or default_output(manifest)
+    if output.exists():
+        raise ValueError('Refusing to overwrite a generated baseline candidate')
     inputs = load_inputs(args.inputs)
-    probabilities = predict_probabilities(inputs, load_models(args.models_dir))
+    probabilities = predict_probabilities(inputs, load_models(args.models_dir, args.manifest))
     labels = supervised.decode(probabilities, supervised.model_periods(inputs), float(inputs['fps']), lt.COST)
     labels[np.asarray(inputs['period']) <= 0] = 'X'
-    if args.output.exists():
-        raise ValueError('Refusing to overwrite a generated baseline candidate')
-    challenge.write_submission(labels, args.output)
-    args.output.with_suffix('.json').write_text(json.dumps(dict(
-        model='gru_hgb', input_sha256=sha256(args.inputs), output_sha256=sha256(args.output),
-        baseline_manifest_sha256=sha256(MANIFEST),
+    challenge.write_submission(labels, output)
+    output.with_suffix('.json').write_text(json.dumps(dict(
+        model=manifest['model'], input_sha256=sha256(args.inputs), output_sha256=sha256(output),
+        baseline_manifest_sha256=sha256(args.manifest),
         target_labels_read=False, organizer_scored=False), indent=2)+'\n')
-    print('Generated and validated current GRU/HGB baseline without reference labels')
+    print('Generated and validated', manifest['model'], 'without reference labels')
 
 
 if __name__ == '__main__':

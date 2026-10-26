@@ -162,3 +162,56 @@ never random overlapping windows. Compare on the same external protocol,
 repeat promising stochastic models across seeds, and seek fresh independent
 match confirmation. Existing PathCRF work remains a separate learned sequence
 baseline; its native model has no referee D head (see [PATHCRF.md](PATHCRF.md)).
+
+## 2026-10-26: composite corruption training
+
+The fixed [corruption ablation](REALISTIC_CORRUPTION.md) completed 120 evaluations
+across four training arms, five development matches, pooled/D-provider-held-out
+training and three input views. Augmenting both GRU/HGB D heads and HGB team
+attribution raises D-provider-held-out corrupted spell/macro from .4205/.7699
+to .4564/.7993, with stress spell gains on all three providers. Clean spell/macro
+falls from .5746/.8449 to .5617/.8399. Team-only augmentation improves stressed
+conditional H/A accuracy by 3.13 percentage points but also costs clean spell F1.
+
+This supports investigating corruption training, rather than promoting this
+recipe. The adopted baseline is unchanged. The comparison reproduces archived
+clean baseline scores, preserves original grading masks under corruption, and
+does not read organizer reference labels. The recipe mixes several failure
+mechanisms, so it cannot identify which causes the clean loss. Next isolate
+corruption groups and reduce their training weight with a fixed budget. Fresh
+labeled broadcast confirmation remains unavailable.
+
+## 2026-10-26: 25% targeted replacement and requested public diagnostic
+
+The [lighter follow-up](LIGHT_CORRUPTION.md) retains the original clean/coarse
+augmentation, replacing one quarter of examples with task-specific corruption.
+H/A sees only the long ball-gap/sampling mask; D sees player/coordinate errors.
+The 90 new plus 30 reused baseline comparisons have identical row/window
+budgets, splits and clean/stress views. Ball-only teams nearly preserve clean
+spell F1 (.5740 versus .5746) and improve stress spell from .4205 to .4315.
+Paired replacements score .5718 clean and .4477 stress, a smaller clean loss
+than the preceding composite-both recipe. Baseline remains the external choice.
+
+The user also requested the competition score. The best new arm by external
+clean spell-first order, ball-only teams, was frozen as a reporting-only
+diagnostic before any new public check. Its single check scored .5257 spell,
+.8588 macro and .8568 D F1 on 7,500 frames and 17 possessions. This is above
+baseline's .4889 spell point estimate, with a broad [.3657,.6743] 90% interval.
+No model, setting or external selection changed from the result. Its dedicated
+gate is closed; full-match performance and fresh broadcast confirmation remain
+unknown. All 66 tests and both full-length candidate validations passed.
+
+## 2026-10-26: user-authorized ball-gap working baseline
+
+The user explicitly requested promoting the ball-gap-only team variant after
+reviewing the external and public diagnostic results. The active package is
+`gru_hgb_ballgap25_v1`: the previous GRU/HGB D weights and decoder, plus the
+frozen `team_light.joblib` attribution checkpoint. The new default runner
+reproduces the tested 199,319-row diagnostic CSV byte for byte without GT.
+
+This is a documented robustness tradeoff, not a clean-rule win: external clean
+spell changes .5746 to .5740 while corrupted spell rises .4205 to .4315. The
+public .5257/.8588/.8568 spell/macro/D result was already known when the user
+requested promotion. No fitting or new scoring occurred. The prior manifest
+and policy are archived under `experiments/baselines/`, the old models remain
+available, and all experiment selections, reports and scoring gates are preserved.
