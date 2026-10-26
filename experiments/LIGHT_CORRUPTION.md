@@ -51,6 +51,11 @@ identify real broadcast transfer or establish significance across providers.
 
 ## External results
 
+The experiment and diagnostic below are frozen history. After reviewing them,
+the user explicitly requested adopting `ball_team25` as the new working
+baseline. That later promotion keeps the original clean-winner selection intact
+and records the robustness tradeoff in [BASELINE.md](BASELINE.md).
+
 All 90 new evaluations and 30 reused baseline comparisons completed. The
 preferred D-provider-holdout summaries are below; team models remain pooled.
 Stress scores average two seeds within a match before equal-provider means.

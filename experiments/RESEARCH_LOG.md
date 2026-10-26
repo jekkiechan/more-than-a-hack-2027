@@ -200,3 +200,18 @@ baseline's .4889 spell point estimate, with a broad [.3657,.6743] 90% interval.
 No model, setting or external selection changed from the result. Its dedicated
 gate is closed; full-match performance and fresh broadcast confirmation remain
 unknown. All 66 tests and both full-length candidate validations passed.
+
+## 2026-10-26: user-authorized ball-gap working baseline
+
+The user explicitly requested promoting the ball-gap-only team variant after
+reviewing the external and public diagnostic results. The active package is
+`gru_hgb_ballgap25_v1`: the previous GRU/HGB D weights and decoder, plus the
+frozen `team_light.joblib` attribution checkpoint. The new default runner
+reproduces the tested 199,319-row diagnostic CSV byte for byte without GT.
+
+This is a documented robustness tradeoff, not a clean-rule win: external clean
+spell changes .5746 to .5740 while corrupted spell rises .4205 to .4315. The
+public .5257/.8588/.8568 spell/macro/D result was already known when the user
+requested promotion. No fitting or new scoring occurred. The prior manifest
+and policy are archived under `experiments/baselines/`, the old models remain
+available, and all experiment selections, reports and scoring gates are preserved.

@@ -1,7 +1,10 @@
 {
-  "version": 1,
+  "version": 2,
   "confirmed_utc_date": "2026-10-26",
-  "primary_order": ["spell_f1", "macro_f1"],
+  "primary_order": [
+    "spell_f1",
+    "macro_f1"
+  ],
   "primary_direction": "descending",
   "primary_rule": "Maximize spell F1; use macro F1 for exact spell ties, matching the competition headline ranking",
   "weighted_summary": {
@@ -14,14 +17,23 @@
   "preferred_development_view": "provider_holdout_D",
   "working_candidate": {
     "family": "GRU plus boosting",
-    "model": "gru_hgb",
-    "members": {"bigru": 0.5, "ordered_hgb": 0.5},
-    "status": "Adopted development baseline; independent confirmation pending",
+    "model": "gru_hgb_ballgap25",
+    "members": {
+      "bigru": 0.5,
+      "ordered_hgb": 0.5
+    },
+    "status": "User-authorized ball-gap team development baseline; independent confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
     "numeric_leader_on_current_development": "gru_hgb_lgbm",
-    "reason": "Two-model blend is nearly tied with the three-way blend and uses fewer components",
-    "previous_frozen_competition_selection_changed": false
+    "reason": "Explicit user-authorized corruption-robustness tradeoff; clean external spell is near-tied but slightly lower",
+    "previous_frozen_competition_selection_changed": false,
+    "team": "Contextual HGB with 25% ball-gap-only training replacement",
+    "baseline_manifest_sha256": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
+    "promotion_record": "experiments/results/baseline_ballgap25_promotion.json",
+    "frozen_clean_rule_winner": "Previous gru_hgb baseline",
+    "prior_external_selection_rewritten": false,
+    "public_diagnostic_known_before_user_request": true
   },
   "pathcrf_component": {
     "default_enabled": false,

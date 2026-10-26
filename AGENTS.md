@@ -95,13 +95,17 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   spell-first ranking with macro F1 as exact-tie break; show an additional
   70% spell / 30% macro summary, never use it as the competition ranking.
   Keep both components visible and freeze weights before future experiments.
-  User-confirmed working direction is GRU plus boosting; 50/50 GRU + ordered
-  HGB is now the adopted development baseline after explicit user authorization
-  and its same-cohort gain over ordered HGB (.5746/.8449 vs .5652/.8363).
-  `experiments/baseline_manifest.json` binds the packaged models and promotion
-  evidence. Run `python -m experiments.current_baseline predict` for its default
-  full-length candidate; this reads no reference labels. Fresh independent
-  confirmation is still pending.
+  The current user-authorized working package is `gru_hgb_ballgap25_v1`: the
+  existing 50/50 GRU/ordered-HGB D heads plus the HGB team model trained with
+  25% ball-gap-only replacement. The user requested this robustness tradeoff:
+  clean external spell/macro .5740/.8439 versus previous .5746/.8449;
+  corrupted .4315/.7866 versus .4205/.7699. It is not a new clean-score winner.
+  `experiments/baseline_manifest.json` binds the new package and explicit user
+  authorization; the old manifest/policy are under `experiments/baselines/`.
+  The historical frozen clean selection is unchanged. Run
+  `python -m experiments.current_baseline predict`; it now writes
+  `data/experiments/current_baseline/gru_hgb_ballgap25.csv` without GT and
+  reproduces the tested diagnostic byte for byte. Fresh confirmation is pending.
   Three-way GRU/HGB/LightGBM remains numerically highest on the current
   development metrics, by a tiny margin; do not claim the simpler pair wins
   numerically or overwrite prior frozen competition selection history. Details and
@@ -112,13 +116,14 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   The older contextual implementation stays on `possession/robust-pipeline`
   in draft PR #8 and is not part of the current baseline promotion. TCN and
   BiGRU have now been evaluated; LSTM remains untested.
-- The current frozen GRU/HGB public pipeline check is .4889 spell/.8568 macro
-  on 7,500 graded frames and 17 reference possessions. It ties GRU alone in
-  spell F1, below the historical PathCRF hybrid's .5067. Public labels did not
-  select the baseline; no full-match competition performance is known. See
-  `experiments/BASELINE.md` and `results/current_baseline_public_check.json`
-  under `experiments/`. Preserve the exclusive current-baseline check marker
-  as well as the earlier experiment gates.
+- The current package's existing public diagnostic is .5257 spell/.8588 macro/
+  .8568 D F1 on 7,500 graded frames and 17 reference possessions. It was known
+  before the later explicit user-requested working-baseline promotion; it is
+  descriptive evidence, not independent confirmation. The previous GRU/HGB
+  check remains .4889/.8568 and the historical PathCRF hybrid .5067/.6795.
+  No full-match competition score is available. See `experiments/BASELINE.md`,
+  `results/light_corruption_public_check.json` and the preserved older reports.
+  Promotion did not rerun scoring or reopen any exclusive gate.
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
   representative data and validation, then targeted D/context comparisons and
   preprocessing. Broad LightGBM hyperparameter tuning comes after those.
@@ -154,12 +159,14 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   grading masks and evaluation views are fixed; 90 new evaluations plus 30
   reused baseline comparisons and 66 tests completed. Clean/stress spell is
   .5740/.4315 for ball-only teams and .5718/.4477 for both replacements,
-  versus baseline .5746/.4205. Baseline remains selected by external clean
-  spell-first ordering. At the user's explicit request, the best new external
+  versus baseline .5746/.4205. The old baseline won the frozen external clean
+  spell-first ordering; that record is preserved. The user subsequently adopted
+  ball-only teams as the current working robustness baseline. At the user's
+  explicit request, the best new external
   arm (ball-only teams) received one separately frozen public diagnostic:
   .5257 spell/.8588 macro/.8568 D F1, 18 predicted versus 17 reference spells.
-  This exceeds baseline's .4889 public spell point estimate but cannot select
-  or promote a model; the 90% spell interval is [.3657,.6743] and full-match
+  This exceeds the previous baseline's .4889 public spell point estimate but is
+  not independent selection evidence; the 90% spell interval is [.3657,.6743] and full-match
   performance is unknown. Do not repeat the check, reset its gate or tune from
   it. `light_candidate.py` exports the selected/diagnostic CSVs without GT;
   `light_public_check.py` has the closed exclusive gate. Reports/receipts are

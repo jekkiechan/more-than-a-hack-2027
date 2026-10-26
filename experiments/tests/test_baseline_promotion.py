@@ -1,0 +1,50 @@
+"""Versioned baseline loading and honest corruption-promotion evidence."""
+import json
+from pathlib import Path
+import tempfile
+import unittest
+import joblib
+from experiments import current_baseline as baseline
+from experiments.promote_ballgap_baseline import evidence
+from experiments.eval_set.protocol import sha256
+
+
+class BaselinePromotionContracts(unittest.TestCase):
+    def test_robustness_override_does_not_claim_a_clean_win(self):
+        def row(model, view, spell, macro):
+            return dict(evaluation='provider_holdout_D', model=model, view=view,
+                        spell_f1=spell, macro_f1=macro)
+        report = dict(summaries=[row('baseline', 'clean', .6, .8),
+            row('ball_team25', 'clean', .599, .799), row('baseline', 'corrupted', .42, .77),
+            row('ball_team25', 'corrupted', .43, .78)],
+            rows=[dict(model=m, source='source', match='one', view='clean', fold='without_source')
+                  for m in ('baseline', 'ball_team25')])
+        result = evidence(report)
+        self.assertFalse(result['clean_rule_candidate_wins'])
+        self.assertLess(result['clean_spell_delta'], 0)
+        self.assertGreater(result['corrupted_spell_delta'], 0)
+        report['rows'][1]['match'] = 'different'
+        with self.assertRaisesRegex(ValueError, 'identical'): evidence(report)
+
+    def test_manifest_selects_exact_version_and_rejects_tampered_weights(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            model = root/'attribution.joblib'
+            joblib.dump({'version': 'ballgap25'}, model)
+            manifest = root/'manifest.json'
+            manifest.write_text(json.dumps(dict(model_directory=str(root),
+                models_sha256={'attribution.joblib': sha256(model)})))
+            loaded = baseline.load_models(manifest_path=manifest)
+            self.assertEqual(loaded['attribution']['version'], 'ballgap25')
+            joblib.dump({'version': 'wrong'}, model)
+            with self.assertRaisesRegex(ValueError, 'hash mismatch'):
+                baseline.load_models(manifest_path=manifest)
+
+    def test_versioned_default_cannot_overwrite_old_candidate(self):
+        old = baseline.default_output({'model': 'gru_hgb'})
+        new = baseline.default_output({'model': 'gru_hgb_ballgap25'})
+        self.assertNotEqual(old, new)
+        self.assertEqual(new.name, 'gru_hgb_ballgap25.csv')
+
+
+if __name__ == '__main__': unittest.main()
