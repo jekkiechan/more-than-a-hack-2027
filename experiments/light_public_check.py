@@ -31,27 +31,32 @@ def start(out, frozen):
         selected_model=frozen['selected_model']), exclusive=True)
 
 
-def freeze(out):
+def freeze(out, candidate='candidate.csv'):
     light.check(out)
     if REPORT.exists() or (out/'public_check_started.json').exists():
         raise ValueError('This public check has already started; no repeat scoring')
-    selection = json.loads((out/'selection.json').read_text())
-    receipt = json.loads((out/'candidate.json').read_text())
+    candidate_path = out/candidate
+    receipt_path = candidate_path.with_suffix('.json')
+    receipt = json.loads(receipt_path.read_text())
+    selection_path = out/receipt.get('selection_file', 'selection.json')
+    selection = json.loads(selection_path.read_text())
     if receipt['arm'] != selection['selected']['model']:
         raise ValueError('Candidate is not the externally selected arm')
-    if receipt['selection_sha256'] != sha256(out/'selection.json'):
+    if receipt['selection_sha256'] != sha256(selection_path):
         raise ValueError('Candidate selection hash changed')
-    if receipt['output_sha256'] != sha256(out/'candidate.csv'):
+    if receipt['output_sha256'] != sha256(candidate_path):
         raise ValueError('Frozen candidate hash changed')
     for name, expected in selection['pooled_checkpoints_sha256'].items():
         if sha256(out/name) != expected: raise ValueError('Externally selected weights changed')
-    paths = [out/'candidate.csv', out/'candidate.json', out/'selection.json',
+    paths = [candidate_path, receipt_path, selection_path, out/'selection.json',
              ROOT/'experiments/results/light_corruption_development.json',
              ROOT/'experiments/results/current_baseline_public_check.json',
              ROOT/'experiments/baseline_manifest.json', Path(__file__),
              ROOT/'evaluation/possession_metrics.py']
     spec = dict(created_utc=datetime.now(timezone.utc).isoformat(),
         selected_model=selection['selected']['model'], bootstrap_draws=1000,
+        candidate_file=candidate_path.name, diagnostic_only=selection.get('diagnostic_only', False),
+        working_model=json.loads((out/'selection.json').read_text())['selected']['model'],
         files_sha256={str(p.relative_to(ROOT)): sha256(p) for p in paths},
         user_request="try next experiment and also report to me the comp's score",
         scope='One descriptive five-minute check after external selection; no fitting, tuning, reselection or full-match claim',
@@ -72,7 +77,8 @@ def check(out):
     verify(frozen)
     start(out, frozen)
     previous = json.loads((ROOT/'experiments/results/current_baseline_public_check.json').read_text())
-    identical = sha256(out/'candidate.csv') == previous['frozen']['candidate_sha256']
+    candidate_path = out/frozen['candidate_file']
+    identical = sha256(candidate_path) == previous['frozen']['candidate_sha256']
     if identical:
         score = previous['scores']['gru_hgb']
         source = 'Reused exact existing baseline CSV score; organizer reference labels not reread'
@@ -82,7 +88,7 @@ def check(out):
         gt_path = ROOT/'evaluation/gt/BAR-ATH_possession_gt_public.csv'
         if sha256(gt_path) != previous['organizer_gt_sha256']:
             raise ValueError('Public reference differs from the historical check')
-        predicted = pd.read_csv(out/'candidate.csv')
+        predicted = pd.read_csv(candidate_path)
         gt = pd.read_csv(gt_path)
         error = pm.validate_submission(predicted, len(gt))
         if error: raise ValueError(error)
@@ -106,8 +112,10 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('action', choices=('freeze', 'check'))
     p.add_argument('--out', type=Path, default=light.DEFAULT)
+    p.add_argument('--candidate', default='candidate.csv')
     args = p.parse_args()
-    (freeze if args.action == 'freeze' else check)(args.out)
+    if args.action == 'freeze': freeze(args.out, args.candidate)
+    else: check(args.out)
 
 
 if __name__ == '__main__': main()
