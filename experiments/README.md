@@ -1,5 +1,10 @@
 # Possession experiments
 
+**Ensembling:** [GRU plus boosting](TEMPORAL_ENSEMBLE.md) raises external
+provider-holdout D spell F1 from .5649 (GRU) / .5652 (ordered HGB) to .5746
+(50/50 GRU + HGB). Three-way GRU/HGB/LightGBM reaches .5750, a negligible
+additional margin. No new organizer check or competition-selection change.
+
 **New temporal comparison:** [ordered features, TCN, and bidirectional GRU](LEARNED_TEMPORAL.md)
 with fixed H/A attribution. On historical provider-holdout D development folds,
 ordered HGB scores 0.5652 spell F1 versus 0.5588 for the matched HGB baseline;

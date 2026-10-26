@@ -119,6 +119,15 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Artifacts and reproducibility
 
+- The external-only probability-ensemble follow-up is
+  `experiments/TEMPORAL_ENSEMBLE.md`. Fixed 50/50 GRU + ordered HGB scores
+  .5746 provider-holdout D spell F1; the equal three-way blend adds little
+  (.5750). GRU alone is .5649 and ordered HGB .5652. GRU remains slightly
+  stronger on SkillCorner alone. New combinations were evaluated only on
+  historical external development matches; no organizer gate was reopened,
+  model retrained, or original competition selection changed. Results are in
+  `experiments/results/temporal_ensemble_development.json`.
+
 - Start at [experiments/REFINEMENT.md](experiments/REFINEMENT.md), then read
   [experiments/README.md](experiments/README.md) and
   [docs/WORKPLAN.md](docs/WORKPLAN.md) for the earlier baseline and task setup.
