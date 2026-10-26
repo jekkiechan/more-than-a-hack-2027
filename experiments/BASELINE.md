@@ -20,6 +20,38 @@ The deployment package uses models trained on the pooled training matches.
 Provider-holdout scores describe the family with its corresponding held-out
 D heads, rather than the pooled deployment checkpoint itself.
 
+## Organizer five-minute pipeline check
+
+At the user's request, the already generated, externally selected candidate was
+checked once against the public window. Candidate, source, model and promotion
+manifest hashes were verified before reading the reference labels. Earlier
+experiment gates were preserved; this check has its own exclusive marker.
+
+| Frozen candidate | Spell F1 | Macro F1 |
+| --- | ---: | ---: |
+| Adopted GRU + HGB | .4889 | .8568 |
+| Historical GRU alone | .4889 | .8617 |
+| Historical ordered HGB | .4205 | .8653 |
+| Historical selected refinement | .4300 | .6487 |
+| Historical PathCRF teams + original robust D | .5067 | .6795 |
+
+These are the identical 7,500 graded frames with 17 reference possessions;
+the ensemble predicts 19 possessions. Its D precision/recall/F1 are
+.8918/.8359/.8630. The historical scores are previously recorded results,
+not regenerated candidates. The ensemble improves spell F1 over ordered HGB
+by .0684, but ties GRU alone and has slightly lower macro F1. There is no
+demonstrated ensemble advantage over GRU alone on this window. The old
+PathCRF hybrid is a different architecture from the external PathCRF
+retention experiment and does not establish a benefit from adding PathCRF
+to GRU/HGB.
+
+This is a descriptive pipeline check, not a tuning or selection set. The
+externally chosen baseline remains fixed, and full-match performance is
+unknown. Aggregate results and frozen candidate provenance are saved in
+`results/current_baseline_public_check.json`; local guard/receipts are under
+`data/experiments/current_baseline/`. Do not repeat this check to iterate on
+the public labels.
+
 `baseline_manifest.json` binds the comparison report, cohort, model hashes,
 architecture and promotion time. Previous benchmark/competition selection
 manifests remain historical records; they are not overwritten by this update.
