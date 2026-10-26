@@ -57,10 +57,18 @@ the old frozen GRU/HGB baseline, not new experimental candidates. The full-match
 competition score is unavailable. Public results were already known before
 this experiment and do not select a model.
 
-This runner has no organizer scoring command and preserves every existing gate.
+The external experiment runner has no organizer scoring command and preserves
+every existing gate. Its external report copies only archived baseline metrics.
+The user additionally requested, "try next experiment and also report to me the
+comp's score." A separate, single-candidate descriptive check honors that request
+after external selection and CSV generation. It has a new exclusive marker;
+earlier markers remain intact. If selection retains the exact baseline CSV,
+its existing score is reused without rereading the reference labels.
+
 `AGENTS.md` says, "Never use repeated public-window checks as an iteration loop."
-After freezing external selection, the report copies only those archived
-aggregate competition metrics and explicitly marks new candidates unscored.
+This explicit user-requested check cannot trigger fitting, reselection, another
+candidate check, or any configuration change. Its result is reported separately
+from external development and does not establish full-match performance.
 
 ## Reproduce
 
@@ -94,3 +102,9 @@ per-frame predictions remain under ignored `data/experiments/light_corruption_v1
 Reports and checkpoint receipts bind fitted files to the frozen code/configuration.
 The final candidate command generates and validates 199,319 labels from the
 externally frozen selection without reading or scoring organizer reference labels.
+Only after that is complete, the requested descriptive competition check is:
+
+```sh
+python -m experiments.light_public_check freeze
+python -m experiments.light_public_check check
+```
