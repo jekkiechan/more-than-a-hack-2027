@@ -176,8 +176,9 @@ and `evaluate --matches --report-name development_<shard>.json` support
 independent workers; run `fit` after all fitting workers, then `merge` after
 evaluation workers to reject incomplete/duplicate cohorts.
 
-The team-only artifact archive is in private `mtah-data` branch
-`research/top-three-directions`, bound by `top_three_cache_manifest.json`.
+The team-only artifact archive is prepared in the local private `mtah-data`
+checkout on branch `research/top-three-directions`, bound by
+`top_three_cache_manifest.json`. This report does not assert remote availability.
 That manifest restores the broadcast files, calibration, three pilot models,
 complete reports, experimental fusion CSV, adopted package and all 18 external
 match inputs. The matched training feature caches are reproducible and omitted.
