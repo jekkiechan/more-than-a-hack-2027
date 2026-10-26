@@ -16,6 +16,10 @@ equal provider weights. It is not fresh independent confirmation. The
 three-way GRU/HGB/LightGBM blend remains numerically slightly higher; the
 two-model baseline is the authorized simplicity choice.
 
+The deployment package uses models trained on the pooled training matches.
+Provider-holdout scores describe the family with its corresponding held-out
+D heads, rather than the pooled deployment checkpoint itself.
+
 `baseline_manifest.json` binds the comparison report, cohort, model hashes,
 architecture and promotion time. Previous benchmark/competition selection
 manifests remain historical records; they are not overwritten by this update.
@@ -57,4 +61,6 @@ segments. The full synthetic suite passes with optional neural dependencies.
 The separate PathCRF experiment uses the same GRU/HGB D head and compares the
 original team model, PathCRF team attribution, and a fixed 50/50 team blend on
 Metrica/SkillCorner only. Sportec J03WOY is excluded because it was PathCRF
-checkpoint training data. See `pathcrf_ensemble.py` for the fixed protocol.
+checkpoint training data. Both PathCRF variants reduce spell and macro F1, so
+PathCRF remains an archived comparator and is excluded from the default
+baseline. See [PATHCRF_ENSEMBLE.md](PATHCRF_ENSEMBLE.md) for matched results.

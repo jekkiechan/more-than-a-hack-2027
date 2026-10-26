@@ -1,0 +1,174 @@
+{
+  "created_utc": "2026-10-26T01:07:29.658925+00:00",
+  "view": "provider_holdout_D",
+  "scope": "Retrospective external development scorecard; not a new evaluation or organizer selection",
+  "competition_rule": "spell F1 descending, then macro F1 for exact ties; weighted score is not the official metric",
+  "weighted_score": {
+    "spell_weight": 0.7,
+    "macro_weight": 0.30000000000000004,
+    "purpose": "additional internal summary, configurable before future experiments"
+  },
+  "policy": {
+    "version": 1,
+    "confirmed_utc_date": "2026-10-26",
+    "primary_order": [
+      "spell_f1",
+      "macro_f1"
+    ],
+    "primary_direction": "descending",
+    "primary_rule": "Maximize spell F1; use macro F1 for exact spell ties, matching the competition headline ranking",
+    "weighted_summary": {
+      "spell_weight": 0.7,
+      "macro_weight": 0.3,
+      "used_for_primary_ranking": false,
+      "purpose": "Additional internal comparison column; weights must be recorded before future experiments"
+    },
+    "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
+    "preferred_development_view": "provider_holdout_D",
+    "working_candidate": {
+      "family": "GRU plus boosting",
+      "model": "gru_hgb",
+      "members": {
+        "bigru": 0.5,
+        "ordered_hgb": 0.5
+      },
+      "status": "Adopted development baseline; independent confirmation pending",
+      "baseline_manifest": "experiments/baseline_manifest.json",
+      "prediction_entrypoint": "python -m experiments.current_baseline predict",
+      "numeric_leader_on_current_development": "gru_hgb_lgbm",
+      "reason": "Two-model blend is nearly tied with the three-way blend and uses fewer components",
+      "previous_frozen_competition_selection_changed": false
+    },
+    "pathcrf_component": {
+      "default_enabled": false,
+      "status": "Retain as archived optional comparator",
+      "reason": "Both fixed PathCRF H/A variants reduced spell and macro F1 on the matched Metrica and SkillCorner cohort",
+      "evidence": "experiments/results/pathcrf_ensemble_development.json"
+    },
+    "controls": [
+      "Always show spell F1 and macro F1 alongside the weighted summary",
+      "Primary ordering uses unrounded values; weighted-score rank does not replace it",
+      "Record this policy and its weights before future fitting or selection",
+      "Do not reclassify historical scorecards as predeclared experiments",
+      "Organizer public labels are pipeline checks only, never selection or tuning data"
+    ]
+  },
+  "policy_sha256": "383b124a467242324331ebc1c6f85571d919bb715e52fc4ebf70ab70f219957b",
+  "scorecard_source_sha256": "9804834a76aaf3aa900efbbabf7badad276c2d5f2da80d538ae6d3c5827fd7b0",
+  "aggregation": "Mean within each provider, then equal mean across providers",
+  "report_sha256": {
+    "experiments/results/pathcrf_ensemble_development.json": "ac5c5864bb42cd4c89cbf83a38ec1222ca86afaf7ae13d3cf6447221cb0c6ca4"
+  },
+  "candidates": [
+    {
+      "model": "gru_hgb_baseline",
+      "spell_f1": 0.5743860463837551,
+      "macro_f1": 0.8345913318912768,
+      "weighted_score": 0.6524476320360116,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6837273991655076,
+          "macro_f1": 0.904970973845583
+        },
+        "skillcorner": {
+          "spell_f1": 0.46504469360200257,
+          "macro_f1": 0.7642116899369705
+        }
+      },
+      "spell_first_rank": 1,
+      "weighted_rank": 1
+    },
+    {
+      "model": "gru_hgb_team_blend",
+      "spell_f1": 0.5414059161810312,
+      "macro_f1": 0.8212915273874567,
+      "weighted_score": 0.6253715995429588,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6516788321167883,
+          "macro_f1": 0.8939754941267526
+        },
+        "skillcorner": {
+          "spell_f1": 0.4311330002452739,
+          "macro_f1": 0.7486075606481608
+        }
+      },
+      "spell_first_rank": 2,
+      "weighted_rank": 2
+    },
+    {
+      "model": "gru_hgb_pathcrf_team",
+      "spell_f1": 0.49928895017769204,
+      "macro_f1": 0.8090416841821948,
+      "weighted_score": 0.5922147703790429,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.5983695652173913,
+          "macro_f1": 0.8852392355469717
+        },
+        "skillcorner": {
+          "spell_f1": 0.40020833513799287,
+          "macro_f1": 0.7328441328174178
+        }
+      },
+      "spell_first_rank": 3,
+      "weighted_rank": 3
+    }
+  ],
+  "weight_sensitivity": [
+    {
+      "spell_weight": 0.0,
+      "macro_weight": 1.0,
+      "order": [
+        "gru_hgb_baseline",
+        "gru_hgb_team_blend",
+        "gru_hgb_pathcrf_team"
+      ]
+    },
+    {
+      "spell_weight": 0.25,
+      "macro_weight": 0.75,
+      "order": [
+        "gru_hgb_baseline",
+        "gru_hgb_team_blend",
+        "gru_hgb_pathcrf_team"
+      ]
+    },
+    {
+      "spell_weight": 0.5,
+      "macro_weight": 0.5,
+      "order": [
+        "gru_hgb_baseline",
+        "gru_hgb_team_blend",
+        "gru_hgb_pathcrf_team"
+      ]
+    },
+    {
+      "spell_weight": 0.7,
+      "macro_weight": 0.30000000000000004,
+      "order": [
+        "gru_hgb_baseline",
+        "gru_hgb_team_blend",
+        "gru_hgb_pathcrf_team"
+      ]
+    },
+    {
+      "spell_weight": 0.8,
+      "macro_weight": 0.19999999999999996,
+      "order": [
+        "gru_hgb_baseline",
+        "gru_hgb_team_blend",
+        "gru_hgb_pathcrf_team"
+      ]
+    },
+    {
+      "spell_weight": 1.0,
+      "macro_weight": 0.0,
+      "order": [
+        "gru_hgb_baseline",
+        "gru_hgb_team_blend",
+        "gru_hgb_pathcrf_team"
+      ]
+    }
+  ]
+}

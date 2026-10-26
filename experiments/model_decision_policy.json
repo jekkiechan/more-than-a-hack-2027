@@ -23,6 +23,12 @@
     "reason": "Two-model blend is nearly tied with the three-way blend and uses fewer components",
     "previous_frozen_competition_selection_changed": false
   },
+  "pathcrf_component": {
+    "default_enabled": false,
+    "status": "Retain as archived optional comparator",
+    "reason": "Both fixed PathCRF H/A variants reduced spell and macro F1 on the matched Metrica and SkillCorner cohort",
+    "evidence": "experiments/results/pathcrf_ensemble_development.json"
+  },
   "controls": [
     "Always show spell F1 and macro F1 alongside the weighted summary",
     "Primary ordering uses unrounded values; weighted-score rank does not replace it",

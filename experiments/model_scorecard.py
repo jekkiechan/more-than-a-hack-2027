@@ -109,7 +109,8 @@ def main():
         policy=policy, policy_sha256=hashlib.sha256(args.policy.read_bytes()).hexdigest(),
         scorecard_source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         aggregation='Mean within each provider, then equal mean across providers',
-        report_sha256={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in args.reports},
+        report_sha256={(str(p.resolve().relative_to(ROOT)) if p.resolve().is_relative_to(ROOT) else str(p.resolve())):
+                       hashlib.sha256(p.read_bytes()).hexdigest() for p in args.reports},
         candidates=rows, weight_sensitivity=sensitivity)
     with args.output.open('x') as handle:
         json.dump(result, handle, indent=2, allow_nan=False)

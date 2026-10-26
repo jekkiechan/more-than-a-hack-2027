@@ -135,6 +135,18 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Artifacts and reproducibility
 
+- The PathCRF retention test is `experiments/PATHCRF_ENSEMBLE.md`. It uses
+  Metrica game 3 and the three SkillCorner evaluation matches, excluding
+  Sportec J03WOY because PathCRF trained on it. With GRU/HGB P(D) fixed,
+  baseline spell/macro is .5744/.8346 on that two-provider cohort; 50/50
+  HGB/PathCRF team blending falls to .5414/.8213 and PathCRF teams alone to
+  .4993/.8090. Keep PathCRF as an archived comparator, not a default component.
+  No organizer recheck was performed. Runtime is 13–15 minutes per match on
+  one CPU thread; SkillCorner needs 50–60% player-slot imputation. Baseline
+  models and provenance are persisted in private mtah-data under
+  `models/gru_hgb_v1/`; restore with `competition_cache.py fetch --manifest
+  baseline_cache_manifest.json --data-dir <code-repo>/data`.
+
 - The external-only probability-ensemble follow-up is
   `experiments/TEMPORAL_ENSEMBLE.md`. Fixed 50/50 GRU + ordered HGB scores
   .5746 provider-holdout D spell F1; the equal three-way blend adds little

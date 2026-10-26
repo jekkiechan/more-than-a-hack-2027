@@ -10,6 +10,11 @@ entrypoint. Earlier frozen competition selections remain historical artifacts.
 The [baseline guide](BASELINE.md) includes verified private-cache restore and
 inference commands.
 
+**PathCRF retention:** the [controlled external ablation](PATHCRF_ENSEMBLE.md)
+finds no gain from PathCRF with the adopted D head. On the same Metrica/SkillCorner
+cohort, baseline spell F1 .5744 falls to .5414 with team blending or .4993 with
+PathCRF teams alone. PathCRF remains an archived optional comparator.
+
 **Ensembling:** [GRU plus boosting](TEMPORAL_ENSEMBLE.md) raises external
 provider-holdout D spell F1 from .5649 (GRU) / .5652 (ordered HGB) to .5746
 (50/50 GRU + HGB). Three-way GRU/HGB/LightGBM reaches .5750, a negligible

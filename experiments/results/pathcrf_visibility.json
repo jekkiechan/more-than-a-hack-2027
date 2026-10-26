@@ -1,0 +1,223 @@
+{
+  "scope": "Fixed external candidates, descriptive conditional H/A accuracy before D combination and Viterbi",
+  "groups": "Reference-live frames surviving the existing SkillCorner visibility filter, split by input ball observation flag",
+  "use": "Mechanism diagnostic only; no subset-based selection or weight tuning",
+  "rows": [
+    {
+      "match": "metrica_3",
+      "model": "gru_hgb_baseline",
+      "groups": {
+        "all_graded_live": {
+          "frames": 97655,
+          "ha_accuracy": 0.9466898776304337
+        },
+        "ball_observed_live": {
+          "frames": 97333,
+          "ha_accuracy": 0.9479416025397347
+        },
+        "ball_missing_live": {
+          "frames": 322,
+          "ha_accuracy": 0.5683229813664596
+        }
+      }
+    },
+    {
+      "match": "metrica_3",
+      "model": "gru_hgb_pathcrf_team",
+      "groups": {
+        "all_graded_live": {
+          "frames": 97655,
+          "ha_accuracy": 0.9236291024525114
+        },
+        "ball_observed_live": {
+          "frames": 97333,
+          "ha_accuracy": 0.9251024832276823
+        },
+        "ball_missing_live": {
+          "frames": 322,
+          "ha_accuracy": 0.4782608695652174
+        }
+      }
+    },
+    {
+      "match": "metrica_3",
+      "model": "gru_hgb_team_blend",
+      "groups": {
+        "all_graded_live": {
+          "frames": 97655,
+          "ha_accuracy": 0.9340842762787364
+        },
+        "ball_observed_live": {
+          "frames": 97333,
+          "ha_accuracy": 0.9355819711711342
+        },
+        "ball_missing_live": {
+          "frames": 322,
+          "ha_accuracy": 0.4813664596273292
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_1996435",
+      "model": "gru_hgb_baseline",
+      "groups": {
+        "all_graded_live": {
+          "frames": 26382,
+          "ha_accuracy": 0.8495565158062315
+        },
+        "ball_observed_live": {
+          "frames": 25717,
+          "ha_accuracy": 0.8544931368355563
+        },
+        "ball_missing_live": {
+          "frames": 665,
+          "ha_accuracy": 0.6586466165413534
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_1996435",
+      "model": "gru_hgb_pathcrf_team",
+      "groups": {
+        "all_graded_live": {
+          "frames": 26382,
+          "ha_accuracy": 0.8183610037146539
+        },
+        "ball_observed_live": {
+          "frames": 25717,
+          "ha_accuracy": 0.8220243418750243
+        },
+        "ball_missing_live": {
+          "frames": 665,
+          "ha_accuracy": 0.6766917293233082
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_1996435",
+      "model": "gru_hgb_team_blend",
+      "groups": {
+        "all_graded_live": {
+          "frames": 26382,
+          "ha_accuracy": 0.8288226821317565
+        },
+        "ball_observed_live": {
+          "frames": 25717,
+          "ha_accuracy": 0.83232880973675
+        },
+        "ball_missing_live": {
+          "frames": 665,
+          "ha_accuracy": 0.6932330827067669
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_1996436",
+      "model": "gru_hgb_baseline",
+      "groups": {
+        "all_graded_live": {
+          "frames": 19970,
+          "ha_accuracy": 0.8176264396594892
+        },
+        "ball_observed_live": {
+          "frames": 19792,
+          "ha_accuracy": 0.8198767178658044
+        },
+        "ball_missing_live": {
+          "frames": 178,
+          "ha_accuracy": 0.5674157303370787
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_1996436",
+      "model": "gru_hgb_pathcrf_team",
+      "groups": {
+        "all_graded_live": {
+          "frames": 19970,
+          "ha_accuracy": 0.7737606409614421
+        },
+        "ball_observed_live": {
+          "frames": 19792,
+          "ha_accuracy": 0.7756669361358125
+        },
+        "ball_missing_live": {
+          "frames": 178,
+          "ha_accuracy": 0.5617977528089888
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_1996436",
+      "model": "gru_hgb_team_blend",
+      "groups": {
+        "all_graded_live": {
+          "frames": 19970,
+          "ha_accuracy": 0.7786680020030045
+        },
+        "ball_observed_live": {
+          "frames": 19792,
+          "ha_accuracy": 0.7806184316895716
+        },
+        "ball_missing_live": {
+          "frames": 178,
+          "ha_accuracy": 0.5617977528089888
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_2006229",
+      "model": "gru_hgb_baseline",
+      "groups": {
+        "all_graded_live": {
+          "frames": 27099,
+          "ha_accuracy": 0.8835381379386693
+        },
+        "ball_observed_live": {
+          "frames": 26903,
+          "ha_accuracy": 0.8837304389844999
+        },
+        "ball_missing_live": {
+          "frames": 196,
+          "ha_accuracy": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_2006229",
+      "model": "gru_hgb_pathcrf_team",
+      "groups": {
+        "all_graded_live": {
+          "frames": 27099,
+          "ha_accuracy": 0.8422820030259419
+        },
+        "ball_observed_live": {
+          "frames": 26903,
+          "ha_accuracy": 0.8432145113927815
+        },
+        "ball_missing_live": {
+          "frames": 196,
+          "ha_accuracy": 0.7142857142857143
+        }
+      }
+    },
+    {
+      "match": "skillcorner_had_2006229",
+      "model": "gru_hgb_team_blend",
+      "groups": {
+        "all_graded_live": {
+          "frames": 27099,
+          "ha_accuracy": 0.8491826266651906
+        },
+        "ball_observed_live": {
+          "frames": 26903,
+          "ha_accuracy": 0.8497937033044641
+        },
+        "ball_missing_live": {
+          "frames": 196,
+          "ha_accuracy": 0.7653061224489796
+        }
+      }
+    }
+  ]
+}
