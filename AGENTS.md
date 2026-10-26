@@ -96,10 +96,15 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   70% spell / 30% macro summary, never use it as the competition ranking.
   Keep both components visible and freeze weights before future experiments.
   User-confirmed working direction is GRU plus boosting; 50/50 GRU + ordered
-  HGB is the leading development candidate for independent confirmation.
+  HGB is now the adopted development baseline after explicit user authorization
+  and its same-cohort gain over ordered HGB (.5746/.8449 vs .5652/.8363).
+  `experiments/baseline_manifest.json` binds the packaged models and promotion
+  evidence. Run `python -m experiments.current_baseline predict` for its default
+  full-length candidate; this reads no reference labels. Fresh independent
+  confirmation is still pending.
   Three-way GRU/HGB/LightGBM remains numerically highest on the current
   development metrics, by a tiny margin; do not claim the simpler pair wins
-  numerically or overwrite prior frozen competition selections. Details and
+  numerically or overwrite prior frozen competition selection history. Details and
   the saved scorecard are in `experiments/MODEL_SELECTION.md`.
 
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):

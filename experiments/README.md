@@ -2,8 +2,13 @@
 
 **Model decisions:** [confirmed reporting policy](MODEL_SELECTION.md) keeps
 spell-first competition ordering and adds a 70/30 spell/macro summary column.
-GRU + ordered HGB is the leading development candidate for confirmation, with
+GRU + ordered HGB is the adopted development baseline, with
 the three-way blend retained as its numerically higher close comparator.
+Its [promotion manifest](baseline_manifest.json) records same-cohort evidence,
+model hashes, and the default `python -m experiments.current_baseline predict`
+entrypoint. Earlier frozen competition selections remain historical artifacts.
+The [baseline guide](BASELINE.md) includes verified private-cache restore and
+inference commands.
 
 **Ensembling:** [GRU plus boosting](TEMPORAL_ENSEMBLE.md) raises external
 provider-holdout D spell F1 from .5649 (GRU) / .5652 (ordered HGB) to .5746

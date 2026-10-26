@@ -19,11 +19,16 @@ All components use the same 0–1 scale.
 
 ## Current working candidate
 
-**GRU plus ordered HGB, averaged 50/50 at P(D), is the leading development
-candidate for confirmation.** The three-way blend is numerically first under
+**GRU plus ordered HGB, averaged 50/50 at P(D), is now the adopted development
+baseline.** Promotion was authorized after it beat ordered HGB on the identical
+five-match provider-holdout cohort: .5746 spell/.8449 macro versus .5652/.8363.
+The manifest and default inference entrypoint are
+`experiments/baseline_manifest.json` and
+`python -m experiments.current_baseline predict`. Fresh confirmation remains
+pending. The three-way blend is numerically first under
 both headline metrics, with gains too small to establish an additional benefit
 from LightGBM. The pair is a practical simplicity choice, not the numeric winner.
-This working preference does not overwrite historical frozen competition
+This promotion does not overwrite historical frozen competition
 selections or bypass the completed organizer check.
 
 Current equal-provider D-head holdout scores:
