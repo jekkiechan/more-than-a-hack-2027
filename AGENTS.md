@@ -91,6 +91,17 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Current research directions
 
+- Future reports follow `experiments/model_decision_policy.json`: official
+  spell-first ranking with macro F1 as exact-tie break; show an additional
+  70% spell / 30% macro summary, never use it as the competition ranking.
+  Keep both components visible and freeze weights before future experiments.
+  User-confirmed working direction is GRU plus boosting; 50/50 GRU + ordered
+  HGB is the leading development candidate for independent confirmation.
+  Three-way GRU/HGB/LightGBM remains numerically highest on the current
+  development metrics, by a tiny margin; do not claim the simpler pair wins
+  numerically or overwrite prior frozen competition selections. Details and
+  the saved scorecard are in `experiments/MODEL_SELECTION.md`.
+
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
   data first, then validation, then preprocessing. LightGBM hyperparameter tuning
   comes after those.

@@ -1,5 +1,10 @@
 # Possession experiments
 
+**Model decisions:** [confirmed reporting policy](MODEL_SELECTION.md) keeps
+spell-first competition ordering and adds a 70/30 spell/macro summary column.
+GRU + ordered HGB is the leading development candidate for confirmation, with
+the three-way blend retained as its numerically higher close comparator.
+
 **Ensembling:** [GRU plus boosting](TEMPORAL_ENSEMBLE.md) raises external
 provider-holdout D spell F1 from .5649 (GRU) / .5652 (ordered HGB) to .5746
 (50/50 GRU + HGB). Three-way GRU/HGB/LightGBM reaches .5750, a negligible
