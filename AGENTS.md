@@ -107,9 +107,21 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   numerically or overwrite prior frozen competition selection history. Details and
   the saved scorecard are in `experiments/MODEL_SELECTION.md`.
 
+- [experiments/RESEARCH_LOG.md](experiments/RESEARCH_LOG.md) records the completed
+  contextual-model/D-blend comparison and the later measured temporal work.
+  The older contextual implementation stays on `possession/robust-pipeline`
+  in draft PR #8 and is not part of the current baseline promotion. TCN and
+  BiGRU have now been evaluated; LSTM remains untested.
+- The current frozen GRU/HGB public pipeline check is .4889 spell/.8568 macro
+  on 7,500 graded frames and 17 reference possessions. It ties GRU alone in
+  spell F1, below the historical PathCRF hybrid's .5067. Public labels did not
+  select the baseline; no full-match competition performance is known. See
+  `experiments/BASELINE.md` and `results/current_baseline_public_check.json`
+  under `experiments/`. Preserve the exclusive current-baseline check marker
+  as well as the earlier experiment gates.
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
-  data first, then validation, then preprocessing. LightGBM hyperparameter tuning
-  comes after those.
+  representative data and validation, then targeted D/context comparisons and
+  preprocessing. Broad LightGBM hyperparameter tuning comes after those.
 - New labelled sources and the per-source dead-ball shortcuts are in
   [experiments/OPEN_DATA.md](experiments/OPEN_DATA.md): Metrica's sample games
   and SkillCorner with D labels.

@@ -10,6 +10,12 @@ entrypoint. Earlier frozen competition selections remain historical artifacts.
 The [baseline guide](BASELINE.md) includes verified private-cache restore and
 inference commands.
 
+**Current organizer pipeline check:** frozen GRU + HGB scores **.4889 spell /
+.8568 macro** on 7,500 frames and 17 reference possessions. It ties GRU alone
+on spell F1; the historical PathCRF hybrid remains higher at .5067, with lower
+macro F1 (.6795). See [BASELINE.md](BASELINE.md). This check did not select or
+tune the current baseline, and full-match competition performance is unknown.
+
 **PathCRF retention:** the [controlled external ablation](PATHCRF_ENSEMBLE.md)
 finds no gain from PathCRF with the adopted D head. On the same Metrica/SkillCorner
 cohort, baseline spell F1 .5744 falls to .5414 with team blending or .4993 with
@@ -18,7 +24,8 @@ PathCRF teams alone. PathCRF remains an archived optional comparator.
 **Ensembling:** [GRU plus boosting](TEMPORAL_ENSEMBLE.md) raises external
 provider-holdout D spell F1 from .5649 (GRU) / .5652 (ordered HGB) to .5746
 (50/50 GRU + HGB). Three-way GRU/HGB/LightGBM reaches .5750, a negligible
-additional margin. No new organizer check or competition-selection change.
+additional margin. The ensemble experiment used external data only; the later
+current-baseline pipeline check is recorded separately above.
 
 **New temporal comparison:** [ordered features, TCN, and bidirectional GRU](LEARNED_TEMPORAL.md)
 with fixed H/A attribution. On historical provider-holdout D development folds,
@@ -32,7 +39,7 @@ scores did not change the frozen external selection.
 The [evaluation manifest and shortcut audit](eval_set/README.md) document
 provenance, whole-match splits, silver labels, and the missing fresh test set.
 
-**Latest:** [refinement and competition results](REFINEMENT.md). The final
+**Earlier refinement:** [refinement and competition results](REFINEMENT.md). The final
 external test improved to **0.9408 frame macro F1 / 0.7059 spell F1**. On the
 competition's public five-minute pipeline check, the externally selected model
 scored **0.6487 / 0.4300**; the predeclared PathCRF hybrid scored **0.6795 / 0.5067**.
