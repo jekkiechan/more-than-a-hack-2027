@@ -1,18 +1,21 @@
 # Possession experiment approaches
 
-Updated 2026-10-26. The current development head is the externally selected
-[50/50 GRU + ordered HGB baseline](BASELINE.md), with contextual HGB H/A
-attribution and Viterbi cost 3. Its external D-provider-holdout spell/macro is
-.5746/.8449; the frozen organizer five-minute check is .4889/.8568. The older
-PathCRF hybrid scored .5067/.6795 on that same small window, so competition
-superiority is unproven. Full-match performance remains unknown.
+Updated 2026-10-26. The current working package is
+[GRU + ordered HGB with 25% ball-gap team training](BASELINE.md), adopted as
+a user-authorized robustness tradeoff. Its existing external D-provider-holdout
+spell/macro is .5740/.8439 clean and .4315/.7866 on the earlier composite stress
+view, versus .5746/.8449 and .4205/.7699 previously. The existing organizer
+diagnostic is .5257/.8588 on 17 possessions; it is descriptive, and full-match
+competition performance remains unknown.
 
 The [temporal comparison](LEARNED_TEMPORAL.md),
 [ensemble results](TEMPORAL_ENSEMBLE.md),
 [PathCRF retention ablation](PATHCRF_ENSEMBLE.md), and
 [evaluation provenance](eval_set/README.md) are now available. TCN and BiGRU
-have been measured; LSTM remains untested. Realistic tracking corruption is a
-[proposed next experiment](DIRECTIONS.md), not part of the packaged head.
+have been measured; LSTM remains untested. The composite and targeted corruption
+batches are complete. The [first three-priority tracking pilot](TOP_THREE_PILOT.md)
+adds state-conditioned views, a broadcast coverage audit and matched team-feature
+comparisons. Those new prototypes do not alter the packaged head.
 
 The remainder preserves the earlier 2026-10-25 contextual experiment and its
 then-proposed follow-ups. That separate implementation remains on

@@ -16,6 +16,12 @@ starting with broadcast-feed fusion; (3) gap-level and de-duplicated tracking
 features; (4) H/A boundary timing in decoding. Model-family and hyperparameter
 work comes after these.
 
+The [first tracking pilot](TOP_THREE_PILOT.md) implements these three directions:
+state-conditioned development views, a label-free broadcast alignment/coverage
+audit, and matched gap-context / close-observation suppression experiments.
+The adopted package is preserved; coverage and reused-development results do
+not establish independent broadcast performance.
+
 ## Why preprocessing has not moved the scores (2026-10-26 review)
 
 This review reads only existing code and recorded aggregate results; no new
@@ -130,8 +136,9 @@ draw from the training family.
 
 ## 3. Better preprocessing
 
-Tactical ATD tracking and metadata are restored locally. The additional broadcast,
-Smart Tagging and homography assets are still needed for the corresponding work.
+Tactical and broadcast ATD tracking and metadata have been restored for the
+[tracking pilot](TOP_THREE_PILOT.md). Smart Tagging and homography assets are
+still needed for their corresponding follow-ups.
 
 All label-free, so they are allowed on the challenge match. Ordered by expected
 value; each needs the challenge-like view in section 1 to be measured.
