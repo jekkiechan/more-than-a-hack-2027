@@ -29,6 +29,11 @@ weights reaches .5980/.8655, a small spell gain with lower macro F1 and a
 SkillCorner loss. Synthetic ball-gap spell F1 rises .5407 → .5501, driven by
 Sportec. Keep the weighted head as an experimental comparator; the adopted
 baseline is unchanged. This pooled view is distinct from D-provider holdouts.
+The subsequent user-requested organizer pipeline check gives live-only
+.4914 spell/.8541 macro and weighted live-only .4649/.8492, versus the saved
+baseline .4889/.8568 on 7,500 frames/17 possessions. The weighted external gain
+does not appear on this window. These descriptive results select no model;
+the baseline CSV was reproduced exactly and earlier public gates preserved.
 
 **Ensembling:** [GRU plus boosting](TEMPORAL_ENSEMBLE.md) raises external
 provider-holdout D spell F1 from .5649 (GRU) / .5652 (ordered HGB) to .5746

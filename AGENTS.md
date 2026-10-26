@@ -156,9 +156,16 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   by Sportec. The weighted candidate ranks first numerically but the clean
   delta interval includes zero; retain it as a comparator, with no promotion.
   These are pooled-D scores, not the .5746 D-provider-holdout view. All 30
-  comparisons completed, all five original baselines reproduce exactly, and
-  53 tests pass. Organizer inputs/labels/gates were not accessed. Aggregate
-  results and verification are in `experiments/results/live_attribution_*.json`.
+  comparisons completed and all five original external baselines reproduce
+  exactly. The external run used no organizer inputs/labels/gates. A subsequent
+  explicit user-requested public pipeline check scored both frozen heads once:
+  live-only .4914 spell/.8541 macro; weighted .4649/.8492. Baseline .4889/.8568
+  was reused after exact CSV hash reproduction. No model was selected, tuned,
+  or promoted from those 7,500 frames/17 possessions. Preserve the new exclusive
+  marker under `data/experiments/live_attribution/organizer_check/challenge/`
+  along with all earlier public gates; do not repeat this check. The wrapper is
+  `live_attribution_challenge.py`. All 57 current tests pass. Aggregates and
+  verification are in `experiments/results/live_attribution_*.json`.
 
 - The PathCRF retention test is `experiments/PATHCRF_ENSEMBLE.md`. It uses
   Metrica game 3 and the three SkillCorner evaluation matches, excluding

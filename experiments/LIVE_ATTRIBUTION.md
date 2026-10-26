@@ -4,7 +4,8 @@ The spell-weighted binary H/A head has a **small, mixed development gain**:
 clean spell F1 rises from .5952 to .5980, while macro F1 falls from .8687 to
 .8655. Live-only training without weights is worse. Keep the adopted GRU/HGB
 baseline; retain the weighted head as an experimental comparator pending stronger
-confirmation. No organizer inputs or reference labels were accessed.
+confirmation. The external experiment used no organizer inputs/reference labels;
+the subsequent user-requested public pipeline check is recorded below.
 
 ## Measured result
 
@@ -71,9 +72,52 @@ pooled spell/macro/D scores **exactly on all five matches**. All prediction,
 input, source, and checkpoint hashes were verified, and each match uses one
 identical D-probability array across all six comparisons. All **53** synthetic
 and contract tests pass, including five new training/inference contracts; the
-bundled submission passes the official format validator. No organizer gate was
-opened or reset. Aggregates: [development result](results/live_attribution_development.json)
+bundled submission passes the official format validator. That external run
+opened or reset no organizer gate. Aggregates: [development result](results/live_attribution_development.json)
 and [verification receipt](results/live_attribution_verification.json).
+
+## Subsequent organizer public pipeline check
+
+At the user's explicit request, both already frozen alternatives were checked
+once against the organizer's public reference. All three full-length CSVs
+contain 199,319 frames and pass the official format validator. The regenerated
+baseline CSV matches its historically checked file **byte for byte**; its
+saved scores are reused, and only the two new heads are scored. The model,
+input, source, shared P(D), and CSV hashes were fixed before reference access.
+
+This is the identical **7,500 graded frames and 17 reference possessions**.
+
+| Frozen team head | Spell F1 | Macro F1 | Dead-ball F1 | 70/30 summary | Predicted spells |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Adopted baseline (historical score, identical reproduced CSV) | .4889 | .8568 | .8630 | .5993 | 19 |
+| Live-only binary HGB | .4914 | .8541 | .8574 | .6002 | 18 |
+| Live-only + short-spell weights | .4649 | .8492 | .8571 | .5802 | 20 |
+
+Live-only's observed spell difference is **+.00254** (0.25 percentage points).
+The weighted head's difference is **-.02402** (-2.40 percentage points), with
+macro F1 lower by .00762. Its small external gain did not appear on this window.
+Neither candidate exceeds the historical PathCRF hybrid's .5067 public spell
+point estimate. These are descriptive checks on a small, previously inspected
+window, not fresh confirmation or evidence of a full-match winner. The results
+do not select, tune, promote, or change any candidate. The baseline remains
+GRU/HGB, as decided before this check.
+
+`live_attribution_challenge.py` reuses the existing exclusive one-shot check
+guard in `temporal_challenge.py`, under a separate user-requested check receipt.
+Earlier guards and historical predictions are preserved. The original commands
+are retained for provenance; completed checks must not be reset or rerun:
+
+```sh
+python -m experiments.live_attribution_challenge generate
+python -m experiments.live_attribution_challenge check
+```
+
+Tracking inputs, CSVs and raw output stay under ignored
+`data/experiments/live_attribution/organizer_check/challenge/`. The tracked
+[public-check aggregate](results/live_attribution_public_check.json) omits
+frame locations. All **57** current synthetic/contract tests pass, including
+four new checks that fail before public-reference access for missing inputs,
+partial comparisons, changed sources, or an already completed report.
 
 ## Hypothesis and controls
 
