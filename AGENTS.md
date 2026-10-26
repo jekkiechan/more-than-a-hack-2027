@@ -124,9 +124,14 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   No full-match competition score is available. See `experiments/BASELINE.md`,
   `results/light_corruption_public_check.json` and the preserved older reports.
   Promotion did not rerun scoring or reopen any exclusive gate.
-- The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
-  representative data and validation, then targeted D/context comparisons and
-  preprocessing. Broad LightGBM hyperparameter tuning comes after those.
+- The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md).
+  Its 2026-10-26 review explains why preprocessing has not moved scores: the
+  development data lacks the challenge's defects, repairs bridge only subsecond
+  gaps against a 10.7 s median ball gap, and synthetic gaps ignore game state.
+  Priorities are a challenge-like development view, ball recovery during gaps
+  (broadcast fusion first), gap-level/de-duplicated features, then H/A boundary
+  timing. PFF access was requested by email with no response yet. Broad
+  LightGBM hyperparameter tuning comes after those.
 - New labelled sources and the per-source dead-ball shortcuts are in
   [experiments/OPEN_DATA.md](experiments/OPEN_DATA.md): Metrica's sample games
   and SkillCorner with D labels.
