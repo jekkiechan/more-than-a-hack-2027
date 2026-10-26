@@ -6,9 +6,11 @@ inputs, labels, historical tests, or competition gates are accessed.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime, timezone
 import importlib.metadata
 import json
+import multiprocessing
 from pathlib import Path
 import time
 
@@ -131,10 +133,19 @@ def pooled_arrays(cache, weighted):
     return np.concatenate(xs), np.concatenate(ys), weights/weights.mean(), names
 
 
+def prepare_cached_source(source, out):
+    # Workers write independent provider caches; large matrices stay off IPC.
+    prepare_source(source, out)
+
+
 def train(out):
     needed = [name for name in CANDIDATES[1:] if not (out/f'{name}_frozen.json').exists()]
     if needed:
-        cache = {source: prepare_source(source, out) for source in dead_transfer.SPLITS}
+        with ProcessPoolExecutor(max_workers=3, mp_context=multiprocessing.get_context('spawn')) as pool:
+            jobs = [pool.submit(prepare_cached_source, source, out) for source in dead_transfer.SPLITS]
+            for job in jobs:
+                job.result()
+        cache = {source: joblib.load(out/f'{source}_training.joblib') for source in dead_transfer.SPLITS}
         for name in needed:
             path = out/f'{name}.joblib'
             if path.exists():
