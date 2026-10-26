@@ -147,6 +147,19 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Artifacts and reproducibility
 
+- The separate live-only team-head ablation is
+  `experiments/LIVE_ATTRIBUTION.md`, implemented in `live_attribution.py`.
+  It holds packaged pooled GRU/HGB D and decoding fixed on five historical
+  development matches. Live-only binary training lowers spell F1 .5952→.5885;
+  adding fixed short-spell weights reaches .5980 with macro .8687→.8655.
+  SkillCorner gets worse. Synthetic ball-gap spell rises .5407→.5501, driven
+  by Sportec. The weighted candidate ranks first numerically but the clean
+  delta interval includes zero; retain it as a comparator, with no promotion.
+  These are pooled-D scores, not the .5746 D-provider-holdout view. All 30
+  comparisons completed, all five original baselines reproduce exactly, and
+  53 tests pass. Organizer inputs/labels/gates were not accessed. Aggregate
+  results and verification are in `experiments/results/live_attribution_*.json`.
+
 - The PathCRF retention test is `experiments/PATHCRF_ENSEMBLE.md`. It uses
   Metrica game 3 and the three SkillCorner evaluation matches, excluding
   Sportec J03WOY because PathCRF trained on it. With GRU/HGB P(D) fixed,

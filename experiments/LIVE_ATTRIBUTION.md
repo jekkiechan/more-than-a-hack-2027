@@ -1,7 +1,79 @@
 # Live-only team attribution with frozen GRU/HGB dead-ball probabilities
 
-Results pending the predeclared external run. This experiment does not promote a
-new baseline or access organizer inputs/reference labels.
+The spell-weighted binary H/A head has a **small, mixed development gain**:
+clean spell F1 rises from .5952 to .5980, while macro F1 falls from .8687 to
+.8655. Live-only training without weights is worse. Keep the adopted GRU/HGB
+baseline; retain the weighted head as an experimental comparator pending stronger
+confirmation. No organizer inputs or reference labels were accessed.
+
+## Measured result
+
+These are five historical external development matches, with **pooled** GRU/HGB
+D checkpoints and equal provider weights. They are a different view from the
+historical .5746 D-provider-holdout score; compare rows within this table.
+
+| Clean team head | Spell F1 | Macro F1 | 70/30 summary |
+| --- | ---: | ---: | ---: |
+| Original three-class HGB baseline | .5952 | **.8687** | .6772 |
+| Live-only binary HGB | .5885 | .8648 | .6714 |
+| Live-only + fixed short-spell weights | **.5980** | .8655 | **.6783** |
+
+The weighted head ranks first under the frozen spell-first rule, by **.00289**
+(0.29 percentage points). This does not establish an upgrade: its conditional
+paired match-bootstrap 95% interval is **[-.00173, +.00542]**, already spanning
+zero despite the interval omitting unseen-provider uncertainty and uncertainty
+from the singleton Sportec/Metrica sources. Its clean macro F1 falls by .00317.
+No promotion or change to the packaged baseline was made.
+
+| Provider, clean inputs | Baseline spell | Live-only spell | Weighted live-only spell |
+| --- | ---: | ---: | ---: |
+| Sportec J03WOY | .5930 | .5741 | .5962 |
+| Metrica game 3 | .7006 | .6999 | .7118 |
+| SkillCorner mean of three | .4919 | .4916 | .4862 |
+
+The clean gain comes from Sportec and Metrica; the weighted candidate loses
+.00575 spell F1 on SkillCorner. Raw conditional H/A accuracy on reference-live
+frames falls from .8986 to .8937 overall, and from .8502 to .8407 on SkillCorner.
+Its overall decoded D F1 also falls from .8887 to .8851, even though P(D) is
+identical: joint decoding responds to changes in team confidence.
+
+| Synthetic ball-gap condition | Spell F1 | Macro F1 | 70/30 summary |
+| --- | ---: | ---: | ---: |
+| Original baseline | .5407 | **.8589** | .6362 |
+| Live-only binary HGB | .5367 | .8560 | .6325 |
+| Live-only + short-spell weights | **.5501** | .8559 | **.6418** |
+
+The weighted stress gain is .00934, driven by **+.03172 on Sportec**; Metrica
+changes by -.00052 and SkillCorner by -.00318. Its conditional interval
+[+.00534, +.01206] cannot establish generalization across providers: only the
+three SkillCorner matches vary in this bootstrap, while Sportec/Metrica each
+have one match. The mask is crude synthetic missingness, not a broadcast test.
+
+Weighting does recover additional 1–3 second possessions, with costs elsewhere.
+The following descriptive recall counts pool the five matches; they do not
+replace the source-balanced primary metric.
+
+| True duration, clean inputs | Baseline matched / true | Weighted matched / true |
+| --- | ---: | ---: |
+| <1 second | 63 / 274 (23.0%) | 62 / 274 (22.6%) |
+| 1–<3 seconds | 170 / 509 (33.4%) | 192 / 509 (37.7%) |
+| 3–<10 seconds | 434 / 727 (59.7%) | 441 / 727 (60.7%) |
+| >=10 seconds | 392 / 453 (86.5%) | 387 / 453 (85.4%) |
+
+Matches use the official one-to-one IoU .5 assignment. The weighted head
+predicts 1,900 spells versus baseline's 1,768, against 1,963 reference spells.
+Thus increased short-spell recall accompanies extra segmentation; the mean
+spell F1 gain remains small. These results support investigating the loss
+weighting, but do not support replacing the team head based on this run.
+
+All 30 evaluations completed. The original baseline reproduces its historical
+pooled spell/macro/D scores **exactly on all five matches**. All prediction,
+input, source, and checkpoint hashes were verified, and each match uses one
+identical D-probability array across all six comparisons. All **53** synthetic
+and contract tests pass, including five new training/inference contracts; the
+bundled submission passes the official format validator. No organizer gate was
+opened or reset. Aggregates: [development result](results/live_attribution_development.json)
+and [verification receipt](results/live_attribution_verification.json).
 
 ## Hypothesis and controls
 
@@ -23,6 +95,8 @@ Both new heads use the existing 137 physical/contextual features, 63 leaves,
 no early stopping, and seed 17. Binary HGB uses one tree per iteration rather
 than the multiclass baseline's three. This holds the per-class settings fixed,
 not the total number of trees.
+Each binary fit uses 655,952 augmented live rows; fits took 122.5 and 127.9
+seconds respectively on one CPU thread, after feature preparation.
 
 Sampling is unchanged: take the existing roughly 4-Hz graded training rows,
 then retain H/A rows. Augmentation stays clean plus the existing Markov ball-gap
@@ -69,7 +143,7 @@ Scoring uses the unchanged official evaluator, with half/time-gap separation.
 Average match scores within provider, then average the three providers equally.
 Rank by spell F1, using macro F1 only for exact ties; also show the existing
 70% spell / 30% macro auxiliary score. Report D F1/precision/recall/boundaries,
-conditional live-frame team accuracy, spell counts, and short-spell recall at
+raw conditional live-frame team accuracy, spell counts, and short-spell recall at
 IoU .5. Paired whole-match bootstrap intervals condition on the observed sources;
 singleton Sportec/Metrica cases contribute no match-sampling uncertainty.
 Only one training seed is used; this does not establish seed robustness.

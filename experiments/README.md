@@ -21,6 +21,15 @@ finds no gain from PathCRF with the adopted D head. On the same Metrica/SkillCor
 cohort, baseline spell F1 .5744 falls to .5414 with team blending or .4993 with
 PathCRF teams alone. PathCRF remains an archived optional comparator.
 
+**Live-only team training:** a [fixed binary H/A and short-spell weighting
+ablation](LIVE_ATTRIBUTION.md) holds packaged pooled GRU/HGB P(D) and decoding
+fixed. Across five external development matches, live-only training scores
+.5885 spell/.8648 macro versus baseline .5952/.8687. Adding fixed short-spell
+weights reaches .5980/.8655, a small spell gain with lower macro F1 and a
+SkillCorner loss. Synthetic ball-gap spell F1 rises .5407 → .5501, driven by
+Sportec. Keep the weighted head as an experimental comparator; the adopted
+baseline is unchanged. This pooled view is distinct from D-provider holdouts.
+
 **Ensembling:** [GRU plus boosting](TEMPORAL_ENSEMBLE.md) raises external
 provider-holdout D spell F1 from .5649 (GRU) / .5652 (ordered HGB) to .5746
 (50/50 GRU + HGB). Three-way GRU/HGB/LightGBM reaches .5750, a negligible
