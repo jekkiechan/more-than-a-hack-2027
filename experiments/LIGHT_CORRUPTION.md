@@ -66,8 +66,10 @@ aggregate competition metrics and explicitly marks new candidates unscored.
 
 The previous experiment's prepared training and evaluation feature caches are
 required locally, including `pending_*` feature matrices. Their hashes are
-recorded before fitting. These caches can be regenerated with the first
-experiment's feature functions; they are not part of the private model archive.
+recorded before fitting. Restore the previous model archive and external data,
+then run `python -m experiments.corruption_experiment prepare` and
+`python -m experiments.prepare_corruption_cache` if these caches are absent.
+Raw feature caches are not part of the private model archive.
 
 ```sh
 python -m experiments.light_corruption freeze
@@ -81,6 +83,7 @@ for fold in pooled without_sportec without_metrica without_skillcorner; do
   python -m experiments.light_corruption evaluate --fold $fold
 done
 python -m experiments.light_corruption report
+python -m experiments.light_candidate
 python -m unittest discover -s experiments/tests -v
 python -m unittest experiments.eval_set.test_protocol -v
 ```
@@ -89,3 +92,5 @@ python -m unittest experiments.eval_set.test_protocol -v
 Each D fold can also run independently. All new model files, feature caches and
 per-frame predictions remain under ignored `data/experiments/light_corruption_v1/`.
 Reports and checkpoint receipts bind fitted files to the frozen code/configuration.
+The final candidate command generates and validates 199,319 labels from the
+externally frozen selection without reading or scoring organizer reference labels.
