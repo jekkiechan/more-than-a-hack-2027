@@ -1,0 +1,389 @@
+{
+  "created_utc": "2026-10-26T09:06:08.470404+00:00",
+  "outcome": "Real football audio acquired and processed; audio-only pipeline evidence, not a labeled detection or possession benchmark",
+  "source_sha256": "78df7e518f988f24186d19bf534fd9f3332222adaaf5168f167920c1f01c7535",
+  "model_sha256": "924e779a5791eba1ba26def09a368dae904323e73a2ae240061a844c09f96f75",
+  "model_repository": "https://github.com/NaoDevils/AudioProcessing",
+  "model_revision": "5f226987024318d8669b3ce9face9081fc114b5b",
+  "model_license_url": "https://github.com/NaoDevils/AudioProcessing/blob/5f226987024318d8669b3ce9face9081fc114b5b/LICENSE",
+  "frontend": {
+    "window_samples": 1024,
+    "hop_samples": 512,
+    "fft_bins": 513,
+    "representation": "20*log10(abs(full FFT)); Hamming window; no normalization/floor",
+    "source_url": "https://github.com/NaoDevils/AudioProcessing/blob/5f226987024318d8669b3ce9face9081fc114b5b/Utils/annotateWhistle.py",
+    "threshold": 0.65,
+    "threshold_comparison": "strictly greater",
+    "threshold_provenance": "Upstream annotation proposal default; not calibrated football precision/recall"
+  },
+  "execution": {
+    "window_chunk": 512,
+    "wav_memory_mapped": true,
+    "model_load_count": 1,
+    "full_recording_fft_materialized": false,
+    "memory_scaling": "Bounded FFT/model-input chunks; only scores, masks and native window starts scale with duration"
+  },
+  "dependencies": {
+    "python": "3.12.14",
+    "prefix": "/workspace/.venv-audio",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.14.1",
+      "tensorflow-cpu": "2.16.2",
+      "keras": "3.15.1",
+      "h5py": "3.16.0"
+    },
+    "cpu_threads": 1
+  },
+  "model_or_threshold_changed": false,
+  "threshold": 0.65,
+  "full_match_audio_available": {
+    "source_page": "https://archive.org/details/snafuinfinitysoccer-boys_090924-vs-wakefield",
+    "creator": "Belmont Media Center",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "duration_seconds": 5578.645,
+    "native_audio_format": "AAC-LC, 48000 Hz, stereo; stream copied without resampling",
+    "local_file": "data/audio_source_search/belmont_wakefield_2024_cc0_full_native_aac.m4a",
+    "bytes": 51333312,
+    "sha256": "6deed00becc5efec529e84569ebd7b9def44cf65d4d87db9a93c307ec306ef1c",
+    "full_video_retained": false,
+    "full_match_whistle_inference_performed": false,
+    "supplied_tracking": false,
+    "supplied_dead_live_or_possession_labels": false
+  },
+  "inputs": [
+    {
+      "name": "Latvia\u2013Gibraltar international match fan recording, 2026-03-31",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Latvia-Gibraltar_football_2026-03-31.webm",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "M\u0101rti\u0146\u0161 Bru\u0146enieks (Wikimedia user Papuass)",
+      "source_video_local": "data/audio_source_search/latvia_gibraltar_2026_cc0.webm",
+      "source_video_sha256": "3612e26baf7d57a83e1ab7aa176b8ef7551fa7fe991d821e15434e9f0b5c3fe3",
+      "source_audio_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "av1",
+            "codec_type": "video",
+            "start_time": "0.000000"
+          },
+          {
+            "index": 1,
+            "codec_name": "opus",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "start_time": "-0.007000"
+          }
+        ],
+        "format": {
+          "start_time": "-0.007000",
+          "duration": "16.903000"
+        }
+      },
+      "first_decoded_audio_frame_pts": {
+        "frames": [
+          {
+            "pts_time": "0.000000",
+            "best_effort_timestamp_time": "0.000000",
+            "nb_samples": 648
+          },
+          {
+            "pts_time": "0.014000",
+            "best_effort_timestamp_time": "0.014000",
+            "nb_samples": 960
+          },
+          {
+            "pts_time": "0.034000",
+            "best_effort_timestamp_time": "0.034000",
+            "nb_samples": 960
+          },
+          {
+            "pts_time": "0.054000",
+            "best_effort_timestamp_time": "0.054000",
+            "nb_samples": 960
+          },
+          {
+            "pts_time": "0.074000",
+            "best_effort_timestamp_time": "0.074000",
+            "nb_samples": 960
+          }
+        ]
+      },
+      "conversion": {
+        "arguments": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-i",
+          "latvia_gibraltar_2026_cc0.webm",
+          "-map",
+          "0:a:0",
+          "-vn",
+          "-ar",
+          "44100",
+          "-c:a",
+          "pcm_f32le",
+          "latvia_gibraltar_cc0_audio_matchsearch.wav"
+        ],
+        "source_sample_rate": 48000,
+        "target_sample_rate": 44100,
+        "target_format": "float32 PCM WAV",
+        "source_stream_start_seconds": -0.007,
+        "first_decoded_audio_frame_pts_seconds": 0.0,
+        "source_duration_seconds": 16.903,
+        "decoded_resampled_duration_seconds": 16.895986394557823,
+        "note": "Source Opus pre-skip is recorded; output audio uses its own native sample grid. No tracking or match-clock mapping is assumed"
+      },
+      "inference_audio_local": "data/audio_source_search/latvia_gibraltar_cc0_audio_matchsearch.wav",
+      "inference_audio_sha256": "ecd420f33dfb6d9af107258171af5b2c20742c0877181ae2434fde8e61322c5d",
+      "private_inference_receipt": "data/experiments/whistle_audio_v1/latvia_gibraltar_cc0_inference/inference.json",
+      "observation": {
+        "audio": {
+          "sample_rate": 44100,
+          "channels": 2,
+          "native_samples": 745113,
+          "duration_seconds": 16.895986394557823,
+          "input_dtype": "float32",
+          "amplitude_conversion": "none: native floating WAV amplitudes"
+        },
+        "scored_windows_per_channel": [
+          1454,
+          1454
+        ],
+        "unscored_nonfinite_fft_windows_per_channel": [
+          0,
+          0
+        ],
+        "positive_windows_per_channel": [
+          0,
+          0
+        ],
+        "raw_candidate_run_count": 0,
+        "score_min": 1.9693011381605174e-06,
+        "score_max": 0.047875214368104935,
+        "candidates": [],
+        "whistle_presence_independently_verified": false,
+        "detector_accuracy_measured": false,
+        "possession_improvement_measured": false,
+        "tracking_mapping_supplied": false
+      }
+    },
+    {
+      "name": "Belmont vs Wakefield boys high-school soccer community broadcast, 2024-09-09; 120-second excerpt",
+      "source_page": "https://archive.org/details/snafuinfinitysoccer-boys_090924-vs-wakefield",
+      "source_video_url": "https://archive.org/download/snafuinfinitysoccer-boys_090924-vs-wakefield/soccer-boys_090924-vs-wakefield.mp4",
+      "creator": "Belmont Media Center",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_video_publisher_checksums": {
+        "md5": "2921d7d19329ebe90bd2e5f79456773a",
+        "sha1": "991a974843b1852363c4e805512bba7cd4326932",
+        "verification": "Published Internet Archive metadata; full video was not downloaded, so these are not locally verified file hashes"
+      },
+      "source_video_audio_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 854,
+            "height": 480,
+            "r_frame_rate": "30/1",
+            "start_time": "0.000000",
+            "duration": "5578.633333"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "r_frame_rate": "0/0",
+            "start_time": "0.000000",
+            "duration": "5578.645000"
+          }
+        ],
+        "format": {
+          "start_time": "0.000000",
+          "duration": "5578.645000",
+          "size": "543782053"
+        }
+      },
+      "conversion": {
+        "arguments": [
+          "ffmpeg",
+          "-ss",
+          "300",
+          "-i",
+          "https://archive.org/download/snafuinfinitysoccer-boys_090924-vs-wakefield/soccer-boys_090924-vs-wakefield.mp4",
+          "-t",
+          "120",
+          "-map",
+          "0:a:0",
+          "-vn",
+          "-ac",
+          "2",
+          "-ar",
+          "44100",
+          "-c:a",
+          "pcm_f32le",
+          "excerpt.wav"
+        ],
+        "source_sample_rate": 48000,
+        "target_sample_rate": 44100,
+        "target_format": "float32 PCM WAV",
+        "source_audio_start_pts_seconds": 0.0,
+        "source_video_start_pts_seconds": 0.0,
+        "requested_source_seek_seconds": 300.0,
+        "requested_duration_seconds": 120.0,
+        "excerpt_origin": "Audio sample t=0 represents the requested source-media PTS 300-second seek; no existing tracking timeline is asserted"
+      },
+      "inference_audio_local": "data/audio_source_search/belmont_wakefield_2024_cc0_source300s_120s_44100_float_stereo.wav",
+      "inference_audio_sha256": "80f8a162bb5fe99401c593bf109c44d6b652e64112d99a5dd8d74a9850d74feb",
+      "private_inference_receipt": "data/experiments/whistle_audio_v1/belmont_wakefield_cc0_inference/inference.json",
+      "observation": {
+        "audio": {
+          "sample_rate": 44100,
+          "channels": 2,
+          "native_samples": 5292000,
+          "duration_seconds": 120.0,
+          "input_dtype": "float32",
+          "amplitude_conversion": "none: native floating WAV amplitudes"
+        },
+        "scored_windows_per_channel": [
+          10334,
+          10334
+        ],
+        "unscored_nonfinite_fft_windows_per_channel": [
+          0,
+          0
+        ],
+        "positive_windows_per_channel": [
+          28,
+          28
+        ],
+        "raw_candidate_run_count": 7,
+        "score_min": 2.232467977592023e-06,
+        "score_max": 0.9815878868103027,
+        "candidates": [
+          {
+            "audio_start_seconds": 103.87446712018141,
+            "audio_end_seconds": 103.89768707482993,
+            "audio_peak_seconds": 103.88607709750566,
+            "peak_score": 0.8276779651641846,
+            "peak_channel": 0,
+            "contributing_channels": [
+              0,
+              1
+            ],
+            "positive_windows": 1,
+            "tracking_mapping": null
+          },
+          {
+            "audio_start_seconds": 103.89768707482993,
+            "audio_end_seconds": 103.92090702947846,
+            "audio_peak_seconds": 103.9092970521542,
+            "peak_score": 0.8405513763427734,
+            "peak_channel": 0,
+            "contributing_channels": [
+              0,
+              1
+            ],
+            "positive_windows": 1,
+            "tracking_mapping": null
+          },
+          {
+            "audio_start_seconds": 103.92090702947846,
+            "audio_end_seconds": 103.94412698412698,
+            "audio_peak_seconds": 103.93251700680273,
+            "peak_score": 0.9269241690635681,
+            "peak_channel": 0,
+            "contributing_channels": [
+              0,
+              1
+            ],
+            "positive_windows": 1,
+            "tracking_mapping": null
+          },
+          {
+            "audio_start_seconds": 103.9673469387755,
+            "audio_end_seconds": 104.0021768707483,
+            "audio_peak_seconds": 103.97895691609978,
+            "peak_score": 0.7407388091087341,
+            "peak_channel": 0,
+            "contributing_channels": [
+              0,
+              1
+            ],
+            "positive_windows": 2,
+            "tracking_mapping": null
+          },
+          {
+            "audio_start_seconds": 104.07183673469387,
+            "audio_end_seconds": 104.11827664399092,
+            "audio_peak_seconds": 104.08344671201814,
+            "peak_score": 0.8116647601127625,
+            "peak_channel": 0,
+            "contributing_channels": [
+              0,
+              1
+            ],
+            "positive_windows": 3,
+            "tracking_mapping": null
+          },
+          {
+            "audio_start_seconds": 104.11827664399092,
+            "audio_end_seconds": 104.35047619047619,
+            "audio_peak_seconds": 104.2227664399093,
+            "peak_score": 0.9815878868103027,
+            "peak_channel": 0,
+            "contributing_channels": [
+              0,
+              1
+            ],
+            "positive_windows": 19,
+            "tracking_mapping": null
+          },
+          {
+            "audio_start_seconds": 114.9619954648526,
+            "audio_end_seconds": 114.98521541950113,
+            "audio_peak_seconds": 114.97360544217688,
+            "peak_score": 0.8279845714569092,
+            "peak_channel": 0,
+            "contributing_channels": [
+              0,
+              1
+            ],
+            "positive_windows": 1,
+            "tracking_mapping": null
+          }
+        ],
+        "whistle_presence_independently_verified": false,
+        "detector_accuracy_measured": false,
+        "possession_improvement_measured": false,
+        "tracking_mapping_supplied": false
+      },
+      "interpretation": "Seven raw threshold-positive runs can fragment fewer acoustic events; they are not seven verified referee whistles. Most candidates occur around excerpt seconds 103.9\u2013104.4"
+    }
+  ],
+  "limitations": [
+    "No whistle event was manually or independently labeled; zero candidates on the short fan clip is not evidence of a false negative",
+    "Community high-school soccer and a fan-recorded international clip differ from professional broadcast audio and restart semantics",
+    "Scores are from a pretrained robot-microphone model and its fixed annotation threshold, not calibrated broadcast confidence",
+    "No source is aligned to existing development tracking or scored against D/H/A labels",
+    "No organizer/public labels, closed evaluation gate, current possession model, or frozen possession result was accessed or changed",
+    "A separate unseen recording must remain untouched if used for later confirmation"
+  ],
+  "reserved_confirmation_audio_accessed": false,
+  "organizer_labels_read": false,
+  "current_possession_model_changed": false
+}

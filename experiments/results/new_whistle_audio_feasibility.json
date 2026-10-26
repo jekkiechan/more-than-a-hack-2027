@@ -1,0 +1,160 @@
+{
+  "status": "Runnable optional adapter; actual upstream demo inference completed",
+  "created_utc": "2026-10-26T08:29:53.113803+00:00",
+  "smoke_report": "experiments/results/new_whistle_audio_smoke.json",
+  "smoke_report_sha256": "1ec7bd8ff09a799acef177945b56a3672ea486c4e9522e6e7531583515c2f8df",
+  "source": "experiments/new_whistle_audio.py",
+  "source_sha256": "78df7e518f988f24186d19bf534fd9f3332222adaaf5168f167920c1f01c7535",
+  "upstream_revision": "5f226987024318d8669b3ce9face9081fc114b5b",
+  "repository": "https://github.com/NaoDevils/AudioProcessing",
+  "license": "MIT repository; copyright2025 Diana Kleingarn and Dominik Braemer; retained notice in experiments/licenses/naodevils-audio-MIT.txt",
+  "license_url": "https://github.com/NaoDevils/AudioProcessing/blob/5f226987024318d8669b3ce9face9081fc114b5b/LICENSE",
+  "training_dataset": "Not downloaded or used; separately published TUDO data has separate CC BY-SA4.0 terms",
+  "assets_manifest_sha256": "ca8540304da573f638cf192627a0946ddfcd09b0ff9ede414fd2561885f6ac5b",
+  "model_bytes": 1592048,
+  "demo_bytes": 796904,
+  "actual_demo_audio": {
+    "sample_rate": 44100,
+    "channels": 4,
+    "native_samples": 49800,
+    "duration_seconds": 1.129251700680272,
+    "input_dtype": "float32",
+    "amplitude_conversion": "none: native floating WAV amplitudes"
+  },
+  "actual_demo_candidate_count": 2,
+  "actual_demo_positive_windows_per_channel": [
+    10,
+    10,
+    12,
+    11
+  ],
+  "actual_demo_score_max": 0.9992424845695496,
+  "actual_demo_events": [
+    {
+      "audio_start_seconds": 0.2438095238095238,
+      "audio_end_seconds": 0.3831292517006803,
+      "audio_peak_seconds": 0.29024943310657597,
+      "peak_score": 0.9992424845695496,
+      "peak_channel": 2,
+      "contributing_channels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "positive_windows": 11,
+      "tracking_mapping": null
+    },
+    {
+      "audio_start_seconds": 0.3831292517006803,
+      "audio_end_seconds": 0.4295691609977324,
+      "audio_peak_seconds": 0.40634920634920635,
+      "peak_score": 0.8555772304534912,
+      "peak_channel": 0,
+      "contributing_channels": [
+        0,
+        1,
+        2
+      ],
+      "positive_windows": 3,
+      "tracking_mapping": null
+    }
+  ],
+  "frontend_equivalence": {
+    "shape": [
+      4,
+      96,
+      513,
+      1
+    ],
+    "bit_identical": true,
+    "max_absolute_error": 0.0,
+    "upstream_source_sha256": "35d9bc71191db633e36a17d4d9661f58a8956838bcefb90368c1dff643808c9e"
+  },
+  "threshold": "Fixed upstream annotation proposal threshold: score>0.65; not tuned on demo and not a broadcast operating-point claim",
+  "grouping": "Consecutive positive FFT windows unioned across channels; no gap/duration tuning. Two candidate runs need not mean two real whistles",
+  "independent_whistle_accuracy_measured": false,
+  "real_broadcast_validation": false,
+  "possession_improvement_measured": false,
+  "dependencies": {
+    "python": "3.12.14",
+    "prefix": "/workspace/.venv-audio",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.14.1",
+      "tensorflow-cpu": "2.16.2",
+      "keras": "3.15.1",
+      "h5py": "3.16.0"
+    },
+    "cpu_threads": 1
+  },
+  "optional_requirements": "experiments/requirements-whistle-audio.txt",
+  "resolved_environment_receipt_private": "data/experiments/whistle_audio_v1/audio_environment.txt",
+  "tests": {
+    "command": "/workspace/.venv-audio/bin/python -m unittest experiments.tests.test_new_whistle_audio -v",
+    "passed": 12,
+    "scope": "Native sample grid, channel order, fixed threshold, silence/unscored mask, explicit PCM scaling, sample-rate rejection, absent mapping, replay/cut/overlap mapping safeguards; chunk/full frontend and batch-independent model equality across uneven chunk cuts, one model load, silence masks, chunk-local PCM scaling on mmap WAV"
+  },
+  "main_possession_environment_unchanged": {
+    "prefix": "/workspace/.venv",
+    "numpy": "2.3.5",
+    "scikit_learn": "1.8.0",
+    "torch": "2.8.0+cpu"
+  },
+  "reproduction": [
+    "python -m venv /workspace/.venv-audio",
+    "/workspace/.venv-audio/bin/python -m pip install -r experiments/requirements-whistle-audio.txt",
+    "/workspace/.venv-audio/bin/python -m experiments.new_whistle_audio fetch",
+    "/workspace/.venv-audio/bin/python -m experiments.new_whistle_audio smoke --out data/experiments/whistle_audio_v1/new_smoke --report experiments/results/new_whistle_audio_smoke_reproduction.json",
+    "/workspace/.venv-audio/bin/python -m experiments.new_whistle_audio infer --audio external_44100_float.wav --mapping audio_tracking_map.json --out data/experiments/whistle_audio_v1/external_inference --window-chunk 512"
+  ],
+  "explicit_mapping_example": {
+    "timeline_id": "independently_supplied_external_match_tracking_seconds",
+    "segments": [
+      {
+        "audio_start_seconds": 0.0,
+        "audio_end_seconds": 60.0,
+        "tracking_start_seconds": 120.0,
+        "tracking_seconds_per_audio_second": 1.0,
+        "kind": "live"
+      }
+    ]
+  },
+  "next_data_required": [
+    "Matched external audio and tracking or video with explicit verified synchronization",
+    "Fresh external dead/live and H/A labels, held out from any whistle threshold or fusion choice",
+    "Live/replay/edit mapping or excluded segments; crowd whistles, music, commentary and compression negatives"
+  ],
+  "proposed_next_ablation": "Freeze current tracking baseline; add whistle event evidence only at explicitly aligned live segments; compare baseline/whistle-only event head/fused model on external labels. No hard rule that every whistle starts or stops play",
+  "organizer_labels_read": false,
+  "public_gate_touched": false,
+  "frozen_possession_source_changed": false,
+  "assets_and_per_window_scores_remain_ignored": true,
+  "execution": {
+    "window_chunk": 512,
+    "wav_memory_mapped": true,
+    "model_load_count": 1,
+    "full_recording_fft_materialized": false,
+    "memory_scaling": "Bounded FFT/model-input chunks; only scores, masks and native window starts scale with duration"
+  },
+  "chunked_demo_equivalence": {
+    "bit_identical_scores": true,
+    "bit_identical_scored_masks": true,
+    "bit_identical_native_window_start_samples": true,
+    "identical_event_proposals": true,
+    "old_report_sha256": "f3c49f26c97d88bbe84f4503fde1d93dd698eb3051eb3cd3665c22a3f05392f8",
+    "old_source_sha256": "03af487956b23dcb2c7e69a36adb324700b429f2b1b843fc3a98ef46d27fe40b",
+    "new_source_sha256": "78df7e518f988f24186d19bf534fd9f3332222adaaf5168f167920c1f01c7535",
+    "compared_channel_windows": 384,
+    "max_absolute_score_error": 0.0,
+    "threshold_unchanged": true,
+    "frontend_unchanged": true
+  },
+  "long_form_memory": {
+    "native_wav": "Memory mapped; no full-recording finite-mask or PCM conversion allocation",
+    "fft": "At most512windows*channels*1024complex bins per FFT call; frontend intermediates bounded by chunk size",
+    "example_stereo_fft_complex_tensor_bytes": 16777216,
+    "retained_outputs": "Only channel scores/masks and absolute window-start samples scale with duration",
+    "actual_90_minute_recording_benchmark_performed": false
+  }
+}

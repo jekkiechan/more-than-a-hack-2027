@@ -1,0 +1,364 @@
+{
+  "title": "Whistle audio as a new possession-boundary signal",
+  "researched_at_utc": "2026-10-26",
+  "status": "Primary-source research and a bounded experiment proposal; no possession gain measured. This research agent acquired no gated media, submitted no form, made no outreach/payment, installed no models and changed no old candidates/reports. A separate concurrent boundary agent is implementing an optional upstream-demo smoke; its outcome is separate from this research.",
+  "recommendation": {
+    "decision": "Prioritize a synchronized whistle-audio pilot. It adds a potentially useful observation of referee stoppages to geometry-only D inference, particularly when the ball is occluded. Treat it as a soft, state-dependent cue and test its contribution on external matches before claiming significant gains.",
+    "fastest_immediate_code_check": "Use the small public NaoDevils whistle demo with an off-the-shelf YAMNet Whistle score or NaoDevils' own pretrained WhistleNet. This can establish runnable audio preprocessing/inference without gated media. It cannot measure football stoppage recall or possession F1.",
+    "fastest_meaningful_next_step": "Obtain one rights-permitted external full match with an audible original stadium soundtrack and exact matching video/tracking, plus a separate development match. Verify the audio stream and synchronization first. Then annotate whistles separately from D/live boundaries and run tracking-only, audio-only boundary/D diagnostics, and fusion on identical frozen whole-match splits.",
+    "current_blocker": "No synchronized full-match audio/video was present in the initial searched data caches. A separate optional public whistle demo can test inference but supplies no possession labels or broadcast-to-tactical mapping. Existing tracking-only evaluation matches still cannot support meaningful whistle-fusion scores without matching audio and alignment.",
+    "competition_rule": "Do not hand-label whistles, boundaries, possession, corrections or time-specific rules on the provided Barcelona-Athletic organizer game. Do not use organizer public labels to tune audio or reopen closed diagnostics. External other-match manual labels are allowed subject to organizer access and documented provenance."
+  },
+  "local_feasibility_audit": {
+    "searched_roots": [
+      "/workspace/mtah-data",
+      "/workspace/more-than-a-hack-2027/data"
+    ],
+    "searched_media_extensions": [
+      "wav",
+      "mp3",
+      "flac",
+      "ogg",
+      "m4a",
+      "mp4",
+      "mkv",
+      "mov",
+      "webm"
+    ],
+    "media_files_found": 0,
+    "related_cache_files_named_audio_or_whistle_found": 0,
+    "ffprobe_available": true,
+    "system_python_packages_observed": {
+      "numpy": true,
+      "scipy": true,
+      "torch": false,
+      "tensorflow": false,
+      "tensorflow_hub": false,
+      "librosa": false,
+      "soundfile": false,
+      "panns_inference": false
+    },
+    "runtime_caveat": "These package observations refer to the inspected system Python, not every possible separate virtual environment. An isolated optional audio environment avoids changing the current possession-model runtime.",
+    "repository_evidence": [
+      {
+        "path": "DATA.md",
+        "finding": "The broadcast and tactical recordings have different frame counts and timelines; there is no mapping table. Broadcast cuts, replays and zooms require alignment to the 199,319-frame tactical target."
+      },
+      {
+        "path": "experiments/TEMPORAL_PUBLIC_CHECK.md",
+        "finding": "Previous restoration required only tactical ATD XML/TXT; source video was not needed."
+      },
+      {
+        "path": "AGENTS.md",
+        "finding": "Current D heads are player-only; existing folds hold out providers from D training only and all five evaluation matches are previously exposed development."
+      },
+      {
+        "path": "RULES.md",
+        "finding": "New hand labels are permitted on other games; none are permitted on the provided organizer game, including for validation. Required methods/data must be accessible to organizers."
+      }
+    ],
+    "snapshot_scope": "Initial cache inventory before the separately delegated optional upstream-demo prototype; any subsequently downloaded demonstration waveform is not a synchronized football benchmark."
+  },
+  "why_a_whistle_is_not_a_boundary_label": {
+    "verified_rule_facts": [
+      "IFAB requires whistles for starts, several referee stoppages and some controlled restarts, but not for clear outs/goals or most ordinary restarts.",
+      "Permission to restart can precede ball-in-play. For example, a kickoff becomes live on the kick and movement, not at the permission sound. The referee whistle can therefore locate a precursor rather than the desired D-to-live edge.",
+      "The ball can become dead by leaving the field without an audible whistle. An unobserved whistle is not evidence that play remains live."
+    ],
+    "modeling_consequences": [
+      "Classify whistle event versus non-whistle first, then learn a separate context-dependent relationship to live-to-D, D-to-live and no state change. Do not toggle D/live at every detected whistle.",
+      "Represent multiple pulses as one burst for event detection while preserving count, duration and inter-pulse gaps as features. Double/triple patterns are not a reliable universal code for restart/stoppage type.",
+      "Referee attention/warning whistles during an existing stoppage, repeated permission, advantage followed by a delayed decision, spectator whistles, replayed whistle audio, commentary sibilance and other tonal sounds all require hard negatives or context.",
+      "Audio does not identify the team in control. It primarily targets D and boundaries; ordinary live H-to-A turnovers, including most short spells, still need tracking/visual evidence."
+    ],
+    "sources": [
+      "https://www.theifab.com/laws/latest/guidelines/body-language-communication-and-whistle/",
+      "https://theifab.com/laws/latest/the-ball-in-and-out-of-play/",
+      "https://theifab.com/laws/latest/the-start-and-restart-of-play/"
+    ]
+  },
+  "match_audio_sources": [
+    {
+      "id": "soccernet_full_broadcast",
+      "audio_availability": "Verified at corpus level, not guaranteed per file or representation. The SoccerNet-Echoes paper extracted commentary from 1,100 half-videos and reported 56 without game audio and 14 with stadium audio but no commentary. Its released missing-commentary spreadsheet can help avoid silent games.",
+      "preferred_representation": "Acquire one authorized full-half MKV from videos-HQ, videos-720p or videos-224p and inspect its actual audio streams. HQ includes video.ini timing metadata. Resolution names do not establish audio presence, codec quality or exact sound/video alignment.",
+      "not_audio_sources": "Frames, features and image-only clip archives have no waveform. The current raw-data card describes clips-720p-10s archives as extracted images, so do not infer playable audio from the word 'clips'. Echoes itself releases ASR text/timestamps, not referee-whistle ground truth or an unrestricted waveform license.",
+      "access_and_license": "SoccerNet raw media is personal/account-specific NDA-gated for research and non-commercial use. Audio has underlying broadcaster rights too. Verify organizer-access compatibility before making it a required competition dependency; no access request made here.",
+      "sources": [
+        "https://arxiv.org/html/2405.07354v1",
+        "https://github.com/SoccerNet/sn-echoes",
+        "https://huggingface.co/datasets/SoccerNet/SoccerNet_raw_HQ",
+        "https://huggingface.co/datasets/SoccerNet/SN-echoes"
+      ]
+    },
+    {
+      "id": "soccertrack_v2",
+      "audio_availability": "Unverified. The public v1.2 data card promises panoramic MP4s and synchronized annotations but does not promise an audible soundtrack. Source trimming code uses ffmpeg stream copy rather than explicitly removing audio; this can retain audio that exists, but proves neither original recording nor released-file audio presence.",
+      "action": "Probe one authorized MP4 before choosing this as an audio benchmark. If silent, camera cropping cannot create genuine referee audio. A synthetic inserted whistle is augmentation with designed timing, not real validation.",
+      "additional_caveat": "The v1.2 auxiliary ball trajectory is interpolated from annotated events. Do not use it as independent input when assessing whistle/event boundary gains.",
+      "license": "Dataset card CC BY 4.0, conditions gate on Hugging Face. Verify any separately acquired audio rights.",
+      "sources": [
+        "https://huggingface.co/datasets/atomscott/soccertrack-v2",
+        "https://raw.githubusercontent.com/AtomScott/SoccerTrack-v2/main/src/video_utils/trim_video_into_halves.py"
+      ]
+    },
+    {
+      "id": "gradient_pff_skillcorner_sportec_tracking",
+      "audio_availability": "No waveform in the tracking/event products already recommended or cached. Gradient/PFF's official offer describes tracking/events, not audio. SkillCorner open per-match products are tracking/events/phases. Sportec's paper says video is excluded for licensing reasons.",
+      "action": "Obtain the exact matching rights-permitted audiovisual recording separately. A scoreboard clock or provider frame number alone does not establish audio alignment, and event timestamps must not be used as model input when they are also evaluation truth.",
+      "sources": [
+        "https://www.gradientsports.com/blog/enhanced-2022-world-cup-dataset",
+        "https://skillcorner.github.io/opendata/",
+        "https://www.nature.com/articles/s41597-025-04505-y"
+      ]
+    },
+    {
+      "id": "rights_cleared_own_fixture",
+      "audio_availability": "Controllable at acquisition. Retain original camera audio and/or a synchronized pitch-side microphone with a fixed wide tactical view and optional operated camera. Confirm sound is actually recorded; some tactical cameras export silent video.",
+      "action": "Record an external fixture with permission for model training, evaluation and organizer access; preserve unedited media, presentation timestamps, device clocks and audio-channel identity. Keep whistle source positions/microphone distances for propagation-delay analysis if available.",
+      "benefit_and_limit": "Potentially clearest shareability and annotation route; amateur soundscape and referee habits can differ from elite broadcast. Use a later genuine production broadcast as an additional domain check."
+    }
+  ],
+  "whistle_training_data": [
+    {
+      "id": "naodevils_tudo",
+      "priority": 1,
+      "name": "NaoDevils / TU Dortmund Whistle Detection Dataset",
+      "verified_contents": "Official dataset metadata says recordings are from a NAO V6 robot, with labeled baseline NumPy spectra and test-bench WAVs. Some original data cannot be published. This is referee-instrument/robot-soccer research, not elite broadcast audio.",
+      "license_and_access": "Public metadata API reports CC BY-SA 4.0 and all listed files unrestricted. Repository code is MIT. Dataset license and code license are separate.",
+      "practical_size": "Public test WAVs are approximately 74 MB and 83 MB; training spectra approximately 2.23 GB and test spectra approximately 605 MB. The code repository has a much smaller demonstration WAV and a 1.52 MB pretrained H5 network, suitable for a first technical smoke check.",
+      "preprocessing": "Follow the actual upstream annotation source rather than ambiguous dataset prose: scipy.io.wavfile.read preserves native samples; per-channel 1,024-sample Hamming windows with 512-sample hops; full FFT, first 513 bins, 20*log10(abs(FFT)); model input (n_windows,513,1). Source annotation uses probability >0.65. Do not use a log-mel frontend, normalize sample amplitudes silently, or change sample rate without a validated model-specific conversion.",
+      "use": "Train or verify acoustic whistle recognition and test noise robustness; add real stadium/commentary/crowd negatives before football fusion. Keep recordings and whistle exemplars grouped across all derived windows.",
+      "sources": [
+        "https://spl.robocup.org/datasets/",
+        "https://doi.org/10.17877/tudodata-2024-m0f6bmi1",
+        "https://data.tu-dortmund.de/api/datasets/:persistentId/?persistentId=doi:10.17877/tudodata-2024-m0f6bmi1",
+        "https://github.com/NaoDevils/AudioProcessing"
+      ],
+      "public_metadata_and_readme_endpoints": [
+        "https://data.tu-dortmund.de/api/access/datafile/10229"
+      ]
+    },
+    {
+      "id": "volleyball_whistles",
+      "priority": 2,
+      "name": "GYdevy / Volleylitics whistle detection",
+      "verified_contents": "Author-published Hugging Face card describes full indoor-volleyball audio WAVs at 22.05 kHz with whistle timestamps; repository size is approximately 3.29 GB. It distinguishes raw manual times from band-peak anchored versions.",
+      "license_and_access": "Card labels the dataset MIT; no access gate displayed at inspection. Original recording provenance and any separate audio rights should be checked before relying on redistribution. No files downloaded here.",
+      "use": "Sports-specific acoustic pretraining and hard negatives. Indoor reverberation, sport rules and recording mix differ from football. Do not treat band-anchored times as independently established football D/live boundaries.",
+      "sources": [
+        "https://huggingface.co/datasets/GYdevy/volleyball-whistles"
+      ]
+    },
+    {
+      "id": "audioset",
+      "priority": 3,
+      "name": "AudioSet instrument Whistle versus human Whistling",
+      "verified_contents": "Instrument Whistle is /m/0l156k; human lip Whistling is /m/01w250. Neither is a referee-only category. Standard labels cover presence in ten-second YouTube segments, not precise onset/offset or game-state semantics.",
+      "license_and_access": "Official labels/features are CC BY 4.0 and ontology CC BY-SA 4.0. Raw media is referenced by YouTube ID and timestamps, not furnished as an unrestricted raw-audio archive. Media availability/rights vary; model reuse is faster than reconstructing the full dataset.",
+      "use": "Pretrained embeddings and broad instrument-whistle cues. Add human whistling, crowd, cheering, hiss, speech, horns and other tonal negatives; do not equate the label with referee identity.",
+      "sources": [
+        "https://research.google.com/audioset/ontology/whistle_1.html",
+        "https://research.google.com/audioset/ontology/whistling.html",
+        "https://research.google.com/audioset/download.html"
+      ]
+    },
+    {
+      "id": "fsd50k",
+      "priority": 5,
+      "name": "FSD50K",
+      "verified_contents": "The official ground-truth archive was inspected in memory. Its vocabulary.csv has no class name containing 'whistl': neither Whistle nor Whistling is in the main 200-class benchmark vocabulary. Do not advertise FSD50K as a ready referee-whistle-positive dataset.",
+      "license_and_access": "Dataset-as-a-whole CC BY, but individual clips have CC0, CC BY, CC BY-NC and Sampling+ licenses. The official page also asks commercial and machine-learning-competition users to contact authors; no contact made here.",
+      "use": "Potential background/hard-negative clips after individual license review. Broader raw collection annotations may contain tiny classes, but whistle-positive contents were not verified there.",
+      "sources": [
+        "https://zenodo.org/records/4060432",
+        "https://zenodo.org/records/4060432/files/FSD50K.ground_truth.zip?download=1"
+      ]
+    },
+    {
+      "id": "esc50",
+      "priority": 5,
+      "name": "ESC-50",
+      "verified_contents": "Official fifty-class list contains no whistle class. It offers negatives such as sirens, chirping birds, clapping, alarms and environmental noise, rather than sports whistle positives.",
+      "license_and_access": "ESC-50 is CC BY-NC 3.0; the smaller ESC-10 subset has different CC BY terms. Dataset is public. Keep source recordings within the published folds to avoid fragments leaking across splits.",
+      "use": "Optional general negatives; not a priority compared with actual football commentary/crowd audio.",
+      "sources": [
+        "https://github.com/karolpiczak/ESC-50",
+        "https://raw.githubusercontent.com/karolpiczak/ESC-50/master/meta/esc50.csv"
+      ]
+    },
+    {
+      "id": "individual_freesound_examples",
+      "name": "Small individually licensed referee whistle examples",
+      "examples": [
+        {
+          "source": "https://freesound.org/people/SpliceSound/sounds/218318/",
+          "description": "Referee whistle in a gymnasium, 3.329 seconds, 48 kHz mono WAV",
+          "license": "CC0",
+          "access": "Original download requires login; public source page verifies description/license. No login or download made."
+        },
+        {
+          "source": "https://freesound.org/people/patobottos/sounds/345800/",
+          "description": "Referee whistle for a free kick at a Spanish second-division soccer match, 0.698 seconds, 48 kHz stereo AIFF",
+          "license": "CC BY-NC 4.0",
+          "access": "Original download requires login; useful sports-domain exemplar but not a commercial default."
+        },
+        {
+          "source": "https://freesound.org/people/Robinhood76/sounds/692545/",
+          "description": "End-of-match football referee whistle, 1.933 seconds, 44.1 kHz stereo WAV",
+          "license": "CC BY-NC 4.0",
+          "access": "Original download requires login."
+        }
+      ],
+      "use": "Smoke checks and augmentation, never an independent football test. Group all copies, crops, pitch shifts and background mixes of each recording together; one sound mixed many times is still one positive source."
+    }
+  ],
+  "pretrained_detector_options": [
+    {
+      "id": "yamnet",
+      "priority": 1,
+      "implementation": "Official TensorFlow YAMNet waveform-to-scores model with 521 AudioSet classes. Select instrument Whistle by MID /m/0l156k (current class-map index 396), and retain human Whistling /m/01w250 (index 35) and crowd/speech outputs as auxiliary/confounder features. Resolve by MID/name from the versioned class map rather than hardcoding cross-model indices.",
+      "input_and_timing": "16 kHz mono floating waveform; default 0.96-second patches at 0.48-second hops. These scores are patch-level, not exact onset estimates. For precise edges, use a separately calibrated high-resolution acoustic onset refinement and preserve each patch's support/center offset.",
+      "adaptation": "Freeze the backbone, fit one regularized referee-whistle head on its 1,024-dimensional embeddings using external sports positives and football hard negatives. Compare the frozen Whistle score first to establish a minimal baseline.",
+      "license_and_runtime": "TensorFlow Models code is Apache-2.0. Pin the official model artifact and its distributed terms. Repository Keras implementation requires Keras 2/tf-keras and warns it is incompatible with default Keras 3; use an isolated environment or official SavedModel.",
+      "direct_sources": [
+        "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet",
+        "https://storage.googleapis.com/audioset/yamnet.h5",
+        "https://tfhub.dev/google/yamnet/1",
+        "https://raw.githubusercontent.com/tensorflow/models/master/research/audioset/yamnet/yamnet_class_map.csv",
+        "https://www.tensorflow.org/hub/tutorials/yamnet"
+      ],
+      "smoke_sample_caveat": "The official speech_whistling2.wav sample tests human whistling, not referee-instrument discrimination or possession correctness. Prefer the NaoDevils demo as an additional instrument check."
+    },
+    {
+      "id": "naodevils_whistlenet",
+      "priority": 2,
+      "implementation": "Existing instrument-whistle H5 network plus exact preprocessing/annotation utilities from NaoDevils. This is a compact specialty comparator with a robot-microphone domain shift.",
+      "license": "Repository MIT; TU Dortmund training dataset CC BY-SA 4.0 is a separate artifact. Preserve attribution and check the precise model/asset notices.",
+      "direct_sources": [
+        "https://github.com/NaoDevils/AudioProcessing",
+        "https://raw.githubusercontent.com/NaoDevils/AudioProcessing/main/PreTrainedNetworks/WhistleDetection/WhistleNetMk16.h5",
+        "https://raw.githubusercontent.com/NaoDevils/AudioProcessing/main/WhistleDetector/AnnotationData/Demo.wav",
+        "https://github.com/NaoDevils/AudioProcessing/blob/main/Utils/annotateWhistle.py"
+      ],
+      "availability_checked": "Public GitHub tree and source README verify both demo and pretrained network paths. No checkpoint or waveform downloaded by this research agent.",
+      "source_commit": "5f226987024318d8669b3ce9face9081fc114b5b",
+      "exact_reference_frontend": {
+        "reader": "scipy.io.wavfile.read; native samples, no added amplitude normalization in upstream annotation source",
+        "window_samples": 1024,
+        "hop_samples": 512,
+        "window": "numpy.hamming(1024)",
+        "spectrum": "20 * numpy.log10(numpy.abs(numpy.fft.fft(windowed_data)[:,:,:513]))",
+        "network_input_per_channel": "n_windows x 513 x 1",
+        "upstream_annotation_threshold": 0.65,
+        "comparison": "strictly greater than threshold",
+        "source_reference": "https://github.com/NaoDevils/AudioProcessing/blob/5f226987024318d8669b3ce9face9081fc114b5b/Utils/annotateWhistle.py",
+        "timestamp_convention": "Preserve native WAV sample clock; record window support and center explicitly. Threshold is an annotation proposal default, not a calibrated football accuracy claim.",
+        "source_loading": "tf.keras.models.load_model(model_name, compile=False)"
+      },
+      "exact_demo_asset": {
+        "raw_url": "https://raw.githubusercontent.com/NaoDevils/AudioProcessing/5f226987024318d8669b3ce9face9081fc114b5b/WhistleDetector/AnnotationData/Demo.wav",
+        "size_bytes": 796904,
+        "git_blob_sha1": "1619296d0516a94e86230d0487c14014da8ded06",
+        "separate_prototype_agent_observed_format": "FLOAT WAV, four channels, 44.1 kHz; verify against downloaded hash in prototype receipt.",
+        "semantics": "README describes a short demonstration recording with one whistle; it has no independent football boundary truth."
+      },
+      "exact_model_asset": {
+        "raw_url": "https://raw.githubusercontent.com/NaoDevils/AudioProcessing/5f226987024318d8669b3ce9face9081fc114b5b/PreTrainedNetworks/WhistleDetection/WhistleNetMk16.h5",
+        "size_bytes": 1592048,
+        "git_blob_sha1": "f2839bed035b74daa12db7b54e948fe995447fff"
+      }
+    },
+    {
+      "id": "panns",
+      "priority": 3,
+      "implementation": "PANNs AudioSet tagging and framewise sound-event detection models provide instrument-whistle scores/embeddings. The panns_inference wrapper exposes AudioTagging and SoundEventDetection; prefer framewise SED rather than a whole-file pooled tag for timing.",
+      "input_and_timing": "Reference wrapper loads 32 kHz mono; follow the selected checkpoint's sample rate and frontend. Its 527-class map differs from YAMNet's 521-class map, so use MID matching rather than index 396.",
+      "adaptation": "Frozen embeddings plus a small supervised head are feasible; compare only after the first audio pilot to avoid a broad model sweep on a tiny labeled match set.",
+      "license": "Core audioset_tagging_cnn repository MIT. Verify the selected checkpoint and wrapper notices independently.",
+      "direct_sources": [
+        "https://github.com/qiuqiangkong/audioset_tagging_cnn",
+        "https://github.com/qiuqiangkong/panns_inference",
+        "https://zenodo.org/records/3987831",
+        "https://raw.githubusercontent.com/qiuqiangkong/audioset_tagging_cnn/master/metadata/class_labels_indices.csv"
+      ]
+    },
+    {
+      "id": "dsp_baseline",
+      "priority": 1,
+      "implementation": "A small STFT detector using narrowband energy relative to local background, spectral peak persistence, duration and harmonic features gives an interpretable timing comparator. Do not assume a fixed universal whistle pitch; learn/calibrate a small frozen range on external development audio.",
+      "supporting_research": "A 2025 soccer-whistle paper describes one-second overlapping windows, STFT/PSD features and classifiers, using 3.3-4.2 kHz prominence in its data. That supports feasibility, not a universal operating band or this project's performance.",
+      "sources": [
+        "https://publications.isods.org/index.php/jdsai/article/view/33"
+      ]
+    }
+  ],
+  "alignment_and_audio_quality_protocol": {
+    "probe_before_download_expansion": "ffprobe the exact authorized file for audio codec, sample rate, channel count, stream start_time/time_base/duration and video presentation timestamps. Confirm waveform is nonempty/non-silent and contains real stadium sound. File extension and resolution are insufficient.",
+    "preserve_original": "Retain the original multichannel waveform and timestamps. Create 16 kHz mono YAMNet and 32 kHz PANNs derivatives as needed, but store resampling ratio and audio/video zero-time offsets. Test channels separately if commentary dominates one mix or channel summation cancels content.",
+    "target_timeline": "Audio in the same MKV normally shares a container timeline but may still have mux/codec offsets. Broadcast-to-tactical mapping needs algorithmic piecewise correspondence; a single constant offset cannot absorb edits, halftime trims or replay footage. Use source visual/clock correspondence and, when both feeds carry the same live audio, waveform correlation as independent checks.",
+    "do_not_align_using_test_targets": "Estimate alignment from metadata or unsupervised audiovisual correspondence. Do not maximize boundary F1 against held-out D labels to pick offsets. On the organizer match, no human time annotations/corrections/constants tied to inspected moments are permitted.",
+    "drift": "Check correspondence throughout each half and after discontinuities. Keep confidence intervals/residuals for piecewise offset/drift maps, and abstain from audio fusion where mapping confidence fails. A small rate mismatch accumulates over a half.",
+    "physical_and_editorial_latency": "Whistle sound reaches microphones after propagation delay, and broadcasters may independently delay or mix audio. Crowd/commentator reactions lag play; replay video may have original replayed or continuing live audio. Distinguish mapping delay from acoustic propagation and permission-to-action delay.",
+    "noise_stress": "Evaluate held-out real crowd whistles, cheering, commentary, hiss, horns, codec loss, clipping, distant/faint whistles, music and replay spans. Train-time mixes must not use evaluation backgrounds or whistle exemplars.",
+    "event_output": "Store onset/offset support, confidence, instrument/human-whistle scores, burst grouping, channel, replay/live-context flag, source PTS, mapped tactical time and alignment confidence; do not output an unjustified frame-exact boundary from a one-second tagger."
+  },
+  "bounded_external_experiment": {
+    "status": "Proposed; cannot execute meaningful match evaluation with the currently cached tracking-only assets.",
+    "fixed_questions": [
+      "Can an off-the-shelf detector locate real referee whistles with acceptable false alarms on football audio?",
+      "What fraction of independently labeled live-to-D and D-to-live boundaries have an audible aligned whistle, and how far away is it?",
+      "Does adding those predicted signals improve official possession spell F1, especially under live ball occlusion, without creating false D intervals?"
+    ],
+    "data_budget": "Minimum feasibility: one external development match and one separate full confirmation match with synchronized audio/video/tracking. Prefer at least three production/source groups for a defensible source holdout. Before acquisition, freeze match IDs, intended-use terms, upstream exposure audit, split and model/checkpoint hashes. One held-out match remains limited confirmation, not broad generalization proof.",
+    "split_and_masks": [
+      "Keep every crop/channel/noise mix from the same source recording/match in one split. Hold production/source/provider out from all learned heads, audio calibration, normalization and thresholds when claiming source holdout.",
+      "Freeze the existing tracking/H/A baseline and all native grading masks for the first audio ablation. Reuse identical eligible frames/matches for paired comparisons. Report whole-match and audio-available coverage; absence/silence is an explicit missing modality.",
+      "Keep full-match main results and an additional common audio-aligned subset. Do not drop cutaways, uncertain sound or difficult stoppages only from the fused arm. Preserve separate reason-coded unavailable/uncertain masks.",
+      "Do not reuse censored SkillCorner X edges as whistle timing truth. New independent boundary annotations are required for those moments. No organizer scoring or manual annotation is part of this experiment."
+    ],
+    "finite_arms": [
+      {
+        "name": "tracking_only",
+        "definition": "Current frozen GRU/HGB ball-gap baseline with existing H/A attribution and decoder; same source audio may be present but is ignored."
+      },
+      {
+        "name": "audio_only_boundary_and_D",
+        "definition": "Predict whistle events and D/live from audio alone with a small externally trained state model. Score event/D metrics independently. For an attributable official spell-F1 diagnostic only, combine this D stream with the identical frozen tracking H/A head; label the result 'audio D + fixed tracking teams', not fully audio-only possession."
+      },
+      {
+        "name": "tracking_plus_whistle",
+        "definition": "Add a small set of aligned whistle score/burst/onset/time-since-event features and an audio-available mask to a regularized D/transition head. Keep H/A and decoder family fixed. Use state-aware transition probabilities rather than compulsory label switches."
+      },
+      {
+        "name": "tracking_plus_shuffled_audio_negative_control",
+        "definition": "Use the identical fusion architecture with within-half displaced/mismatched whistle timings chosen independently of labels. This reveals gains caused by extra capacity or recording shortcuts rather than synchronized evidence; never tune its displacement using test results."
+      }
+    ],
+    "training_budget": "One declared detector checkpoint (YAMNet) plus one declared DSP baseline for the initial pilot; a small fixed regularization/threshold grid fitted only to external training/development data, with three declared training seeds if a learned fusion head is used. WhistleNet/PANNs remain predeclared follow-ups, not additions selected after seeing confirmation.",
+    "metrics": [
+      "Referee-whistle event precision/recall/F1 with one-to-one matching at 0.25, 0.5 and 1 second, false alarms per match-hour, and onset error; report spectators/replays as separate negative categories.",
+      "Audible-whistle coverage of true stoppage and restart boundaries separately, with direction/type counts and lag distribution. This is a diagnostic limit for whistle-only inference, not measured detector recall or model gain.",
+      "D/live boundary precision/recall/F1 and timing within 0.25/0.5/1/2 seconds on independently eligible boundaries, plus all-frame D precision/recall/F1 and coverage.",
+      "Official greedy one-to-one H/A spell F1 averaged over IoU 0.3/0.4/0.5/0.6/0.7 through experiments.metrics.evaluate_tracking; macro F1 for exact spell ties and the already predeclared 70/30 summary as auxiliary.",
+      "Short-spell recall/counts, conditional H/A accuracy, false extra possessions, per-source/match deltas, clean versus real occlusion subsets and audio-loss fallback. Bootstrap whole matches only when enough matches exist; overlapping audio patches are not independent samples."
+    ],
+    "decision_rule": "Promote audio only after a paired official spell-F1 gain on frozen external confirmation under the repository's ranking policy, with acceptable D false positives and no material short-spell regression. A high whistle-tagging score or synthetic-demo success alone is insufficient. No numeric gain is predicted here."
+  },
+  "additional_labels_needed": {
+    "on_external_matches_only": [
+      "Whistle onset/offset interval, burst ID, audible/referee-likely versus spectator/uncertain/replay, channel and audibility confidence.",
+      "Separate independently judged live-to-D and D-to-live times or earliest/latest intervals, actual restart action, stoppage type, current team-control label and censoring/visibility metadata. Do not derive state truth by blindly copying whistle detections.",
+      "Video/audio source hash, period, source PTS, target sampling clock, resampling/mux offsets, piecewise alignment map and uncertainty.",
+      "Double annotation/adjudication of ambiguous whistles and rapid restarts; annotate silent boundaries as carefully as whistle-associated boundaries to measure the cue's real coverage."
+    ],
+    "planning_estimate": "For a ten-minute external pilot, approximately 1-3 person-hours of waveform/video annotation and synchronization checking is a planning estimate. Full-match independent D/H/A labeling remains approximately 16-34 person-hours from the companion data research; additional whistle annotation/adjudication may add several hours. Calibrate with the pilot; no work-rate study was measured here."
+  },
+  "deliverable_limits": [
+    "This research establishes accessible models/data and a concrete experiment, not a measured audio improvement.",
+    "No synchronized full-match audio/video is available from the initial cache audit. A subsequently downloaded upstream whistle demonstration can establish inference execution, but cannot provide an honest football possession-fusion score.",
+    "SoccerNet has audio at corpus level but per-file/per-branch presence must be probed; SoccerTrack soundtrack remains unverified; tracking providers do not themselves supply a waveform in the verified products.",
+    "Whistles are promising for selected stoppages and restart permission. They do not cover every boundary or solve ordinary H/A turnovers.",
+    "All historical reports, baseline manifests/candidates, source arrays and closed organizer checks remain unchanged."
+  ]
+}

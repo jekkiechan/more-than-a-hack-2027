@@ -1,0 +1,205 @@
+{
+  "created_utc": "2026-10-26T09:02:43.711245+00:00",
+  "scope": "Official video/audio discovery matching existing external development inputs; no organizer assets or labels",
+  "outcome": "Verified audio-bearing official highlights for all three SkillCorner development matches; no fully aligned openly reusable full-match media recovered for current development suite",
+  "metrica": {
+    "source": "https://github.com/metrica-sports/sample-data",
+    "pinned_data_revision": "e706dd506b360d69d9d123d5b8026e7294b13996",
+    "repository_tree": "https://api.github.com/repos/metrica-sports/sample-data/git/trees/master?recursive=1",
+    "games_1_and_2": "Anonymized tracking/events in official repository; no audio/video files or direct media URL found in release",
+    "game3": {
+      "existing_development_match": "metrica_3",
+      "official_route": "https://www.metrica-sports.com/blog/data-driven-video-analysis",
+      "exact_published_video_project_key": "SAMPLEGAME3",
+      "route": "Add Video Project to Play database using published key; matching tracking/events linked by the same official article",
+      "old_import_tutorial": "https://help.metrica-sports.com/hc/en-us/articles/360058943831-How-to-add-a-Promotional-Code-or-License-Key",
+      "old_tutorial_current_redirect": "https://www.metrica-sports.com/help-center/help",
+      "cloud_landing": "https://cloud.metrica-play.com/",
+      "current_public_download_url_found": false,
+      "audio_presence_verified": false,
+      "blocker": "Official app/cloud-database route exists, but no ungated raw media URL was published in checked pages/metadata; app/account/import steps were not attempted",
+      "metadata_xml_media_uri_found": false
+    }
+  },
+  "sportec": {
+    "existing_development_match": "J03WOY",
+    "primary_source": "https://www.nature.com/articles/s41597-025-04505-y",
+    "status": "Dataset paper explicitly excludes match video due licensing restrictions",
+    "available_modalities": [
+      "match information XML",
+      "event XML",
+      "trackingXML"
+    ],
+    "open_data_license": "CC BY 4.0 data does not supply a video/audio licence",
+    "audio_presence_verified": false,
+    "media_download_retained": false
+  },
+  "skillcorner": [
+    {
+      "source": "skillcorner",
+      "existing_development_match": "skillcorner_had_1996435",
+      "match_id": 1996435,
+      "date_time": "2025-02-01T06:00:00Z",
+      "home_team": "Sydney FC",
+      "away_team": "Adelaide United",
+      "score": "4-1",
+      "match_identity_source": "https://github.com/SkillCorner/opendata/blob/master/data/matches/1996435/1996435_match.json",
+      "official_video_page": "https://aleagues.com.au/news/sydney-adelaide-united-goals-video-highlights-match-report-aleague/",
+      "public_player": "https://players.brightcove.net/6254585950001/oxJLOIJwH_default/index.html?videoId=6368101798112",
+      "metadata_video_id": "6368101798112",
+      "media_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "start_time": "0.000000",
+          "duration": "180.040000"
+        }
+      },
+      "audio_stream_verified": true,
+      "full_match": false,
+      "source_length": "approximately3-minute edited highlights",
+      "media_download_retained": false,
+      "probe_only": true,
+      "rights": {
+        "source": "https://aleagues.com.au/terms-and-conditions/",
+        "section": "11: Licence and site access",
+        "status": "Limited personal non-commercial copies; no open research/redistribution licence established",
+        "handling": "Public page/player metadata and short ffprobe probe only; no clip media retained or added to a dataset"
+      },
+      "aligned_to_existing_tracking": false,
+      "alignment_limit": "Cuts/replays delete/repeat match time; requires explicit per-segment alignment and replay exclusion; no global offset assumed",
+      "validation_limit": "Existing SkillCorner labels are silver with censored D-boundary margins; audio alone does not remove censored timing labels or create fresh confirmation"
+    },
+    {
+      "source": "skillcorner",
+      "existing_development_match": "skillcorner_had_1996436",
+      "match_id": 1996436,
+      "date_time": "2025-02-01T04:00:00Z",
+      "home_team": "Auckland FC",
+      "away_team": "Macarthur FC",
+      "score": "2-1",
+      "match_identity_source": "https://github.com/SkillCorner/opendata/blob/master/data/matches/1996436/1996436_match.json",
+      "official_video_page": "https://aleagues.com.au/news/aleague-goals-highlights-video-auckland-macarthur-match-report-louis-verstraete/",
+      "public_player": "https://players.brightcove.net/6254585950001/oxJLOIJwH_default/index.html?videoId=6368098929112",
+      "metadata_video_id": "6368098929112",
+      "media_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "start_time": "0.000000",
+          "duration": "180.520000"
+        }
+      },
+      "audio_stream_verified": true,
+      "full_match": false,
+      "source_length": "approximately3-minute edited highlights",
+      "media_download_retained": false,
+      "probe_only": true,
+      "rights": {
+        "source": "https://aleagues.com.au/terms-and-conditions/",
+        "section": "11: Licence and site access",
+        "status": "Limited personal non-commercial copies; no open research/redistribution licence established",
+        "handling": "Public page/player metadata and short ffprobe probe only; no clip media retained or added to a dataset"
+      },
+      "aligned_to_existing_tracking": false,
+      "alignment_limit": "Cuts/replays delete/repeat match time; requires explicit per-segment alignment and replay exclusion; no global offset assumed",
+      "validation_limit": "Existing SkillCorner labels are silver with censored D-boundary margins; audio alone does not remove censored timing labels or create fresh confirmation"
+    },
+    {
+      "source": "skillcorner",
+      "existing_development_match": "skillcorner_had_2006229",
+      "match_id": 2006229,
+      "date_time": "2025-03-07T08:35:00Z",
+      "home_team": "Melbourne City",
+      "away_team": "Macarthur FC",
+      "score": "2-0",
+      "match_identity_source": "https://github.com/SkillCorner/opendata/blob/master/data/matches/2006229/2006229_match.json",
+      "official_video_page": "https://aleagues.com.au/news/melbourne-city-macarthur-fc-max-caputo-match-report-goals-highlights-video-aleague-men-round-22/",
+      "public_player": "https://players.brightcove.net/6254585950001/oxJLOIJwH_default/index.html?videoId=6369719353112",
+      "metadata_video_id": "6369719353112",
+      "media_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "start_time": "0.000000",
+          "duration": "180.063000"
+        }
+      },
+      "audio_stream_verified": true,
+      "full_match": false,
+      "source_length": "approximately3-minute edited highlights",
+      "media_download_retained": false,
+      "probe_only": true,
+      "rights": {
+        "source": "https://aleagues.com.au/terms-and-conditions/",
+        "section": "11: Licence and site access",
+        "status": "Limited personal non-commercial copies; no open research/redistribution licence established",
+        "handling": "Public page/player metadata and short ffprobe probe only; no clip media retained or added to a dataset"
+      },
+      "aligned_to_existing_tracking": false,
+      "alignment_limit": "Cuts/replays delete/repeat match time; requires explicit per-segment alignment and replay exclusion; no global offset assumed",
+      "validation_limit": "Existing SkillCorner labels are silver with censored D-boundary margins; audio alone does not remove censored timing labels or create fresh confirmation"
+    }
+  ],
+  "immediate_unmatched_open_audio": {
+    "source": "https://commons.wikimedia.org/wiki/File:Latvia-Gibraltar_football_2026-03-31.webm",
+    "license": "CC0",
+    "downloaded_local": "data/audio_source_search/latvia_gibraltar_2026_cc0.webm",
+    "clip_duration_seconds": 16.903,
+    "source_audio": "Opus, 48000 Hz, stereo",
+    "purpose": "Real football waveform pipeline proof only; no aligned tracking or whistle labels",
+    "actual_whistle_inference_report": "experiments/results/new_football_audio_inference.json"
+  },
+  "next_actions": [
+    "If app access is already available, obtain Sample Game 3 media via official project key and inspect whether it contains audio; do not assume that audio exists",
+    "For an open full game, use the separately researched creatorlicensed Belmont community broadcast, then create independent external labels and explicit synchronization",
+    "Treat official SkillCorner highlights as clip-level leads only; no possession scoring or public media redistribution from this search"
+  ],
+  "checked_only_official_sources": true,
+  "no_outreach_or_accounts_created": true,
+  "no_organizer_labels_accessed": true,
+  "no_permission_or_NDA_gates_accepted": true,
+  "no_matched_possession_accuracy_or_gain_claimed": true
+}

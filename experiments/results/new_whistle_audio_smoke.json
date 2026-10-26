@@ -1,0 +1,135 @@
+{
+  "created_utc": "2026-10-26T08:48:57.949947+00:00",
+  "evidence_kind": "upstream_demo_smoke_only",
+  "real_broadcast_validation": false,
+  "independent_accuracy_measured": false,
+  "possession_improvement_measured": false,
+  "source_sha256": "78df7e518f988f24186d19bf534fd9f3332222adaaf5168f167920c1f01c7535",
+  "upstream_repository": "https://github.com/NaoDevils/AudioProcessing",
+  "upstream_revision": "5f226987024318d8669b3ce9face9081fc114b5b",
+  "model_sha256": "924e779a5791eba1ba26def09a368dae904323e73a2ae240061a844c09f96f75",
+  "audio_sha256": "6e6df16089c047825f359732be1bd8b62f5a6cc509ca1ccc8b1edef38e99fda3",
+  "license_url": "https://github.com/NaoDevils/AudioProcessing/blob/5f226987024318d8669b3ce9face9081fc114b5b/LICENSE",
+  "frontend": {
+    "window_samples": 1024,
+    "hop_samples": 512,
+    "fft_bins": 513,
+    "representation": "20*log10(abs(full FFT)); Hamming window; no normalization/floor",
+    "source_url": "https://github.com/NaoDevils/AudioProcessing/blob/5f226987024318d8669b3ce9face9081fc114b5b/Utils/annotateWhistle.py",
+    "threshold": 0.65,
+    "threshold_comparison": "strictly greater",
+    "threshold_provenance": "Upstream annotation proposal default; not calibrated football precision/recall"
+  },
+  "audio": {
+    "sample_rate": 44100,
+    "channels": 4,
+    "native_samples": 49800,
+    "duration_seconds": 1.129251700680272,
+    "input_dtype": "float32",
+    "amplitude_conversion": "none: native floating WAV amplitudes"
+  },
+  "inference_execution": {
+    "window_chunk": 512,
+    "wav_memory_mapped": true,
+    "model_load_count": 1,
+    "full_recording_fft_materialized": false,
+    "memory_scaling": "Bounded FFT/model-input chunks; only scores, masks and native window starts scale with duration"
+  },
+  "scored_windows_per_channel": [
+    96,
+    96,
+    96,
+    96
+  ],
+  "unscored_nonfinite_fft_windows_per_channel": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "positive_windows_per_channel": [
+    10,
+    10,
+    12,
+    11
+  ],
+  "score_min": 1.7516667867312208e-05,
+  "score_max": 0.9992424845695496,
+  "event_count": 2,
+  "events": [
+    {
+      "audio_start_seconds": 0.2438095238095238,
+      "audio_end_seconds": 0.3831292517006803,
+      "audio_peak_seconds": 0.29024943310657597,
+      "peak_score": 0.9992424845695496,
+      "peak_channel": 2,
+      "contributing_channels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "positive_windows": 11,
+      "tracking_mapping": null
+    },
+    {
+      "audio_start_seconds": 0.3831292517006803,
+      "audio_end_seconds": 0.4295691609977324,
+      "audio_peak_seconds": 0.40634920634920635,
+      "peak_score": 0.8555772304534912,
+      "peak_channel": 0,
+      "contributing_channels": [
+        0,
+        1,
+        2
+      ],
+      "positive_windows": 3,
+      "tracking_mapping": null
+    }
+  ],
+  "time_mapping_supplied": false,
+  "mapping_sha256": null,
+  "upstream_feature_equivalence": {
+    "shape": [
+      4,
+      96,
+      513,
+      1
+    ],
+    "bit_identical": true,
+    "max_absolute_error": 0.0,
+    "upstream_source_sha256": "35d9bc71191db633e36a17d4d9661f58a8956838bcefb90368c1dff643808c9e"
+  },
+  "dependencies": {
+    "python": "3.12.14",
+    "prefix": "/workspace/.venv-audio",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.14.1",
+      "tensorflow-cpu": "2.16.2",
+      "keras": "3.15.1",
+      "h5py": "3.16.0"
+    },
+    "cpu_threads": 1
+  },
+  "limitations": [
+    "Robot-microphone model/demo; broadcast music/crowd/compression/replay transfer unvalidated",
+    "Whistle proposals do not distinguish referee from crowd whistles or determine restart vs stoppage",
+    "No tracking alignment is assumed; replay/excluded/cut-crossing events remain unmapped",
+    "Zero-FFT/nonfinite-feature windows are unscored; no fabricated confidence",
+    "No organizer labels, possession evaluator, public gate or current model is accessed"
+  ],
+  "chunked_vs_initial_full_fft_equivalence": {
+    "bit_identical_scores": true,
+    "bit_identical_scored_masks": true,
+    "bit_identical_native_window_start_samples": true,
+    "identical_event_proposals": true,
+    "old_report_sha256": "f3c49f26c97d88bbe84f4503fde1d93dd698eb3051eb3cd3665c22a3f05392f8",
+    "old_source_sha256": "03af487956b23dcb2c7e69a36adb324700b429f2b1b843fc3a98ef46d27fe40b",
+    "new_source_sha256": "78df7e518f988f24186d19bf534fd9f3332222adaaf5168f167920c1f01c7535",
+    "compared_channel_windows": 384,
+    "max_absolute_score_error": 0.0,
+    "threshold_unchanged": true,
+    "frontend_unchanged": true
+  }
+}

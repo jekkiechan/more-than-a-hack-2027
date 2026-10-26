@@ -1,0 +1,223 @@
+{
+  "created_utc": "2026-10-26T09:38:29.535479+00:00",
+  "status": "Complete full-source audio pass; model proposals only",
+  "source_page": "https://archive.org/details/snafuinfinitysoccer-boys_090924-vs-wakefield",
+  "source_video_url": "https://archive.org/download/snafuinfinitysoccer-boys_090924-vs-wakefield/soccer-boys_090924-vs-wakefield.mp4",
+  "creator": "Belmont Media Center",
+  "fixture": "Belmont vs Wakefield boys high-school soccer,2024-09-09",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "native_aac": {
+    "path": "data/audio_source_search/belmont_wakefield_2024_cc0_full_native_aac.m4a",
+    "bytes": 51333312,
+    "sha256": "6deed00becc5efec529e84569ebd7b9def44cf65d4d87db9a93c307ec306ef1c",
+    "sample_rate": 48000,
+    "channels": 2,
+    "duration_seconds": 5578.645
+  },
+  "converted_wav": {
+    "path": "data/audio_source_search/belmont_wakefield_2024_cc0_full_44100_float_stereo.wav",
+    "bytes": 1968146286,
+    "sha256": "75d3520cf73dfe3b2253cab13fa4ce884dedc8c7b32981fb87c8f9f3746c0129",
+    "sample_rate": 44100,
+    "channels": 2,
+    "native_samples": 246018260,
+    "duration_seconds": 5578.645351473923,
+    "input_dtype": "float32",
+    "amplitude_conversion": "none: native floating WAV amplitudes"
+  },
+  "explicit_conversion_arguments": [
+    "ffmpeg",
+    "-i",
+    "data/audio_source_search/belmont_wakefield_2024_cc0_full_native_aac.m4a",
+    "-map",
+    "0:a:0",
+    "-vn",
+    "-ac",
+    "2",
+    "-ar",
+    "44100",
+    "-c:a",
+    "pcm_f32le",
+    "data/audio_source_search/belmont_wakefield_2024_cc0_full_44100_float_stereo.wav"
+  ],
+  "native_audio_probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "start_time": "0.000000",
+        "duration": "5578.645000"
+      }
+    ],
+    "format": {
+      "start_time": "0.000000",
+      "duration": "5578.645000"
+    }
+  },
+  "native_first_decoded_audio_frame_pts": {
+    "frames": [
+      {
+        "pts_time": "0.000000",
+        "best_effort_timestamp_time": "0.000000",
+        "nb_samples": 1024
+      },
+      {
+        "pts_time": "0.021333",
+        "best_effort_timestamp_time": "0.021333",
+        "nb_samples": 1024
+      },
+      {
+        "pts_time": "0.042667",
+        "best_effort_timestamp_time": "0.042667",
+        "nb_samples": 1024
+      }
+    ]
+  },
+  "timeline": {
+    "source_audio_offset_seconds": 0.0,
+    "output_audio_origin_seconds": 0.0,
+    "source_video_start_pts_seconds": 0.0,
+    "tracking_mapping_assumed": false,
+    "scope": "Native audio seconds and original container PTS provenance only; no existing development tracking/video edit synchronization asserted"
+  },
+  "adapter_source_sha256": "78df7e518f988f24186d19bf534fd9f3332222adaaf5168f167920c1f01c7535",
+  "pinned_model_sha256": "924e779a5791eba1ba26def09a368dae904323e73a2ae240061a844c09f96f75",
+  "upstream_repository": "https://github.com/NaoDevils/AudioProcessing",
+  "upstream_revision": "5f226987024318d8669b3ce9face9081fc114b5b",
+  "frontend": {
+    "window_samples": 1024,
+    "hop_samples": 512,
+    "fft_bins": 513,
+    "representation": "20*log10(abs(full FFT)); Hamming window; no normalization/floor",
+    "source_url": "https://github.com/NaoDevils/AudioProcessing/blob/5f226987024318d8669b3ce9face9081fc114b5b/Utils/annotateWhistle.py",
+    "threshold": 0.65,
+    "threshold_comparison": "strictly greater",
+    "threshold_provenance": "Upstream annotation proposal default; not calibrated football precision/recall"
+  },
+  "execution": {
+    "window_chunk": 512,
+    "wav_memory_mapped": true,
+    "model_load_count": 1,
+    "full_recording_fft_materialized": false,
+    "memory_scaling": "Bounded FFT/model-input chunks; only scores, masks and native window starts scale with duration"
+  },
+  "dependencies": {
+    "python": "3.12.14",
+    "prefix": "/workspace/.venv-audio",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.14.1",
+      "tensorflow-cpu": "2.16.2",
+      "keras": "3.15.1",
+      "h5py": "3.16.0"
+    },
+    "cpu_threads": 1
+  },
+  "full_pass_wall_seconds": 461.8489792780001,
+  "processed_audio_seconds": 5578.645351473923,
+  "scored_windows_per_channel": [
+    480254,
+    480254
+  ],
+  "unscored_nonfinite_fft_windows_per_channel": [
+    249,
+    249
+  ],
+  "positive_windows_per_channel": [
+    1011,
+    1011
+  ],
+  "raw_candidate_run_count": 335,
+  "score_min": 9.58921987148642e-07,
+  "score_max": 0.999548614025116,
+  "true_whistle_count": null,
+  "whistle_presence_independently_verified": false,
+  "whistle_detection_accuracy_measured": false,
+  "possession_improvement_measured": false,
+  "raw_exports": {
+    "scores_npz": "data/experiments/whistle_audio_v1/belmont_wakefield_full_cc0_inference/window_scores.npz",
+    "scores_npz_sha256": "cf6a4b2ab82191bd58a4ae81024b3f1b98365180c5828377cdf098256addc34e",
+    "candidate_events_json": "data/experiments/whistle_audio_v1/belmont_wakefield_full_cc0_inference/candidate_events.json",
+    "candidate_events_json_sha256": "7dcc9434a46f1848771fe2c464c7bb6448de15d571b7648e5746e1d881fe0b15",
+    "inference_receipt": "data/experiments/whistle_audio_v1/belmont_wakefield_full_cc0_inference/inference.json"
+  },
+  "annotation_packet": {
+    "status": "MODEL-ASSISTED DEVELOPMENT REVIEW; UNLABELED; NOT GOLD",
+    "all_review_fields_blank": true,
+    "model_proposal_review_count": 335,
+    "uniform_unlabeled_control_count": 93,
+    "blind_task_count": 428,
+    "shuffle_seed": 20261026,
+    "controls_are_known_negatives": false,
+    "proposal_scores_or_origin_in_blind_csv": false,
+    "gold_or_accuracy_created": false,
+    "instructions": "Review raw audio independently. Record whistle presence/onset/offset or uncertainty; do not infer referee origin, live/dead status or possession from a proposal. Keep the private construction key separate.",
+    "manifest_path": "data/experiments/whistle_audio_v1/belmont_wakefield_full_cc0_inference/annotation_reproducible/annotation_manifest.json",
+    "blind_task_csv_path": "data/experiments/whistle_audio_v1/belmont_wakefield_full_cc0_inference/annotation_reproducible/blind_tasks.csv",
+    "blind_task_csv_sha256": "3d81a77b70ffdf67babae9b1676a84de8a797d21a498e52fdc31e23c8f480f58",
+    "reproducible_from": "experiments/new_whistle_annotation_tasks.py",
+    "generator_sha256": "ed2525f1b84fe44adf263d3767ec5e4de6b20124bfea64507669ed8d0910c26f",
+    "blind_csv_and_private_key_identical_to_full_pass_orchestration": true
+  },
+  "orchestration": {
+    "progress_only_delegate": true,
+    "wrapper_sha256": "f73b467069ee4fe4ce7cc82ee7a45bfe857aae3110c0db910e4415ac8e82843e",
+    "source": "Private progress-only wrapper around unchanged adapter; original feature_chunks yields all tensors"
+  },
+  "limitations": [
+    "Raw threshold runs may fragment one acoustic event or include crowd whistles, music or other false positives",
+    "This source is community high-school soccer; professional broadcast transfer and restart semantics remain unvalidated",
+    "Review proposals and fixed controls have no human or AI labels and are not gold data",
+    "No existing D/H/A benchmark was evaluated; no organizer labels or frozen possession files were read or changed"
+  ],
+  "model_or_threshold_changed": false,
+  "current_possession_model_changed": false,
+  "reserved_confirmation_source_accessed": false,
+  "independent_human_annotation_template": {
+    "status": "BLANK HUMAN ANNOTATION TEMPLATE; NO GOLD LABELS",
+    "construction": "Uniform contiguous cores cover the complete audio timeline; context is for review only",
+    "duration_seconds": 5578.645351473923,
+    "core_seconds": 60.0,
+    "context_seconds": 5.0,
+    "task_count": 93,
+    "source_video_url": "https://archive.org/details/snafuinfinitysoccer-boys_090924-vs-wakefield",
+    "audio_file": "data/audio_source_search/belmont_wakefield_2024_cc0_full_44100_float_stereo.wav",
+    "source_media_origin_seconds": 0.0,
+    "detector_scores_or_event_hints_included": false,
+    "all_label_fields_blank": true,
+    "human_video_annotation_required": true,
+    "annotators_must_be_blind_to_model_outputs": true,
+    "human_adjudication_required": true,
+    "instructions": "Use raw source video/audio, not detector outputs or the model-assisted review packet. Two independent humans annotate temporal H/A/D/X intervals inside each core; adjudicate disagreement. A task is not one label for sixty seconds. Verify teams and active halves independently; use X outside the graded timeline. Audio alone cannot identify H/A.",
+    "source_exposure": "Belmont recording has already been used for development/probing. Independently produced labels would not turn it into a fresh confirmation recording.",
+    "existing_tracking_time_assumed": false,
+    "accuracy_computable_before_labels": false,
+    "reserved_confirmation_source_accessed": false,
+    "manifest_path": "data/experiments/whistle_audio_v1/belmont_independent_timeline_template/whole_timeline_manifest.json",
+    "uniform_task_csv_path": "data/experiments/whistle_audio_v1/belmont_independent_timeline_template/whole_timeline_tasks.csv",
+    "uniform_task_csv_sha256": "1d6ffe22086d592f1e4a4144479d92d812c4f6f4814155415436aba005ad8aa0",
+    "blank_interval_csv_path": "data/experiments/whistle_audio_v1/belmont_independent_timeline_template/blank_interval_annotations.csv",
+    "blank_interval_csv_sha256": "bfa38a61f4d0c1997f4b5a9b01d76d22264ea94c03a7d2673e91f820412a76f8",
+    "generated_from_duration_only": true,
+    "contiguous_complete_timeline_coverage_verified": true,
+    "actual_labels_created": 0,
+    "generator_sha256": "ed2525f1b84fe44adf263d3767ec5e4de6b20124bfea64507669ed8d0910c26f"
+  },
+  "verification": {
+    "full_pass_completed": true,
+    "scored_mask_and_time_grid_lengths_verified": true,
+    "all_model_assisted_review_fields_blank": true,
+    "uniform_controls_assigned_negative_labels": false,
+    "independent_template_has_no_model_hints": true,
+    "independent_interval_label_rows": 0,
+    "model_source_unchanged": true,
+    "threshold_unchanged": true,
+    "reserved_confirmation_source_accessed": false
+  }
+}

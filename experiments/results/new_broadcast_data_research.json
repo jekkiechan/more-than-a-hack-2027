@@ -1,0 +1,472 @@
+{
+  "title": "New broadcast data research, contextualized to the possession project",
+  "researched_at_utc": "2026-10-26",
+  "status": "Primary-source research completed; no gated data downloaded, account requests submitted, purchases made, or third parties contacted.",
+  "executive_recommendation": {
+    "fresh_independent_validation": "Acquire an entirely different full match and its exact matching video/track under permitted terms; exclude the provided Barcelona-Athletic game completely from new human labeling. Freeze one full new match before fitting, and use two annotators blind to model predictions/provider possession. Prefer a new provider plus separate matching tactical/production views when feasible.",
+    "fast_research_route": "First investigate the already-prioritized Gradient Sports/PFF FIFA World Cup 2022 release: 64 matches of broadcast-derived tracking plus events, with a kloppy adapter. This adds a genuinely new provider/competition relative to the local manifest, conditional on a complete upstream exposure audit. The official free-access form has not been submitted. Acquire permission and organizer-access terms, then independently annotate one matching video rather than treating provider event-derived D/H/A as gold. SoccerNet complete broadcasts are the fallback if the project is eligible for its research/non-commercial NDA.",
+    "controlled_generation_route": "Use a separately held-out SoccerTrack v2 panoramic match to generate moving crop, blur, compression, occlusion, missing-ball, and missing-player variants with a recorded visibility mask. This gives repeatable broadcast-like stress tests, but cannot replace a genuine broadcast validation match.",
+    "tracking_only_expansion": "Do not count the current SkillCorner sample, Metrica sample games, or the seven Sportec Open DFL matches as fresh expansion: all are already exposed. Re-labeling a SkillCorner match independently may improve truth quality but does not make that match unseen.",
+    "stoppage_restart_implication": "Additional Out, Throw In and Free Kick event timestamps can support weak boundary supervision. They do not resolve hidden restarts, every stoppage type, or continuous possession truth. Evaluate predicted boundary signals against the same model without them and against an oracle D/live upper bound on eligible independently labeled transitions."
+  },
+  "verified_sources": [
+    {
+      "id": "gradient_pff_worldcup_2022",
+      "name": "Gradient Sports / PFF FC FIFA World Cup 2022",
+      "rank_for_fresh_broadcast_test": 1,
+      "what_is_available": "The official Gradient Sports announcement offers 64 World Cup 2022 matches of broadcast-derived tracking and event data, with per-game tracking files, metadata, rosters and data specifications. This candidate was already named in experiments/DIRECTIONS.md but is absent from the reviewed local evaluation manifest.",
+      "access": "Official free-access form. No request submitted here. Validate actual delivered inventory: the enhanced page describes per-game event/metadata organization but also retains older single-file wording. Do not assume the old file layout.",
+      "license_and_use": "Free access is not an open redistribution or commercial-use license. Current public announcement does not establish training, model release, organizer access, redistribution or matching broadcast-video rights. Obtain and record those terms before making the data a required dependency.",
+      "tracking_and_sync": "The maintained kloppy PFF loader consumes metadata, rosters and JSONL tracking. Its documented output has ball_state and ball_owning_team_id, and accepts only_alive filtering. Set only_alive=False when retaining stoppages; verify frame timestamps, half boundaries, missingness, interpolation and state provenance rather than inferring semantics from field names.",
+      "possession_labels": "Provider state/ownership and event annotations can provide silver supervision after semantic audit. They are not independent frame-level D/H/A gold, and must preserve the project rule that loose/contested balls remain with the last controlling team.",
+      "video_availability": "The official provider announcement verified here promises tracking/events, not an unrestricted matching broadcast-video license. Matching video acquisition and exact encode synchronization remain explicit open requirements. An OpenSportsLab/PFF mirror advertises 720p downloads behind its own information-sharing gate; its GPL-3.0 card tag does not establish underlying broadcast rights, so it is an additional lead rather than a rights bypass.",
+      "best_use": "Largest practical new-provider training candidate; reserve whole matches before ingesting labels, then independently label a new matching broadcast for confirmation. Audit pretrained components for World Cup exposure before claiming independence.",
+      "sources": [
+        "https://www.gradientsports.com/blog/enhanced-2022-world-cup-dataset",
+        "https://www.gradientsports.com/blog/pff-fc-release-2022-world-cup-data",
+        "https://kloppy.pysport.org/user-guide/loading-data/pff/",
+        "https://huggingface.co/datasets/OpenSportsLab/PFF"
+      ]
+    },
+    {
+      "id": "soccernet_raw",
+      "name": "SoccerNet complete broadcast videos",
+      "rank_for_fresh_broadcast_test": 2,
+      "what_is_available": "The raw-data card describes 500 complete original-release broadcast games from six European competitions, approximately 764 hours, with several resolution branches. The main SoccerNet site describes the wider collection as 550 complete broadcast games plus single-camera games; use the selected repository manifest rather than treating those counts as interchangeable.",
+      "access": "Hugging Face account, dataset-specific request and manual approval under the SoccerNet NDA. Current official documentation says downloads migrated to Hugging Face; old password/ownCloud instructions may be obsolete.",
+      "license_and_use": "The raw-data card specifies research-only, non-commercial, confidential and non-redistributable use through its NDA; it explicitly says the NDA does not grant underlying broadcast copyright. Check eligibility for this project's intended use before acquisition. Commercial use needs an appropriate separate agreement.",
+      "tracking_and_sync": "Broadcast video and task labels/features are available, but complete synchronized player-and-ball tracking is not promised. Run the project's actual video-to-tracking pipeline, or acquire synchronized provider tracking separately.",
+      "possession_labels": "No verified complete framewise D/H/A possession annotation in the raw-video release. Existing sparse event or camera-shot labels are auxiliary supervision only.",
+      "best_use": "Choose a whole match never used for model training, preprocessing selection, threshold tuning or prompt development, then independently annotate it.",
+      "sources": [
+        "https://huggingface.co/datasets/SoccerNet/SoccerNet_raw_HQ",
+        "https://www.soccer-net.org/data",
+        "https://github.com/SoccerNet/SoccerNet",
+        "https://www.soccer-net.org/"
+      ]
+    },
+    {
+      "id": "soccernet_bas_team",
+      "name": "SoccerNet Ball Action Spotting and Team Ball Action Spotting",
+      "rank_for_fresh_broadcast_test": 3,
+      "what_is_available": "The official BAS page describes seven 720p English Football League games and two separate challenge games, with twelve timestamped ball-action classes. The Team BAS devkit extends the same actions with the acting team's left/right identity.",
+      "access": "SN-BAS-2025 currently has its own Hugging Face NDA gate and manual approval. Raw-video access does not automatically imply BAS access. The card lists approximately 19.3 GB at inspection.",
+      "license_and_use": "Dataset card uses a custom 'other' license and the SoccerNet NDA. The devkit code license is separate from video rights.",
+      "tracking_and_sync": "Actions have video timestamps, but dense continuous player/ball positions are not promised. Map video-left/video-right team identities to actual home/away per period using lineups and play direction, rather than assuming left equals home.",
+      "possession_labels": "Pass, Drive, Header, High Pass, Out, Cross, Throw In, Shot, Ball Player Block, Player Successful Tackle, Free Kick and Goal are individual events, not exhaustive possession intervals. The benchmark's one-second tolerance does not certify subsecond boundary label accuracy.",
+      "best_use": "Weak supervision for possession changes and selected stoppage/restart cues; or independently relabel one untouched complete game. Audit overlap with other SoccerNet training data before claiming independence.",
+      "sources": [
+        "https://www.soccer-net.org/tasks/ball-action-spotting",
+        "https://github.com/SoccerNet/sn-teamspotting",
+        "https://huggingface.co/datasets/SoccerNet/SN-BAS-2025",
+        "https://github.com/SoccerNet/SoccerNet"
+      ]
+    },
+    {
+      "id": "soccernet_pc_bas",
+      "name": "SoccerNet Player-Centric Ball Action Spotting 2026",
+      "what_is_available": "The official 2026 task describes temporally localized ball actions associated with the acting player across full matches. The current SN-PCBAS-2026 card is NDA-gated and lists approximately 236 GB.",
+      "access": "Separate Hugging Face access request with manual NDA approval. Labels and availability must be inspected after authorized access; public task description alone does not establish dense possession ground truth.",
+      "possession_labels": "Player attribution is useful for team-control supervision but action instances still do not constitute complete possession intervals or dead/live states.",
+      "best_use": "An additional training candidate after the smaller BAS set; do not assume it is independent of prior SoccerNet matches.",
+      "sources": [
+        "https://www.soccer-net.org/challenges/2026",
+        "https://huggingface.co/datasets/SoccerNet/SN-PCBAS-2026"
+      ]
+    },
+    {
+      "id": "soccernet_gsr",
+      "name": "SoccerNet Game State Reconstruction",
+      "what_is_available": "The official task page lists 57 training, 59 validation and 50 test main-camera clips of 30 seconds at 1080p, with pitch localization and role/team/jersey annotations for individuals.",
+      "access": "Use the current official SoccerNet downloader and per-edition data card. Official package documentation lists GSR datasets separately from gated full broadcasts; verify selected edition's terms before use.",
+      "tracking_and_sync": "Useful real moving-camera input paired with person localization and team identity; this task does not promise complete off-screen player or continuous ball trajectories.",
+      "possession_labels": "Individuals' identities and positions are not D/H/A possession labels. Short selected main-camera clips are poorly suited to measuring full-match dead-time coverage or all stoppage/restart intervals.",
+      "best_use": "Evaluate calibration, team assignment and tracking under genuine camera motion; auxiliary upstream-model training rather than the sole independent possession benchmark.",
+      "sources": [
+        "https://www.soccer-net.org/tasks/game-state-reconstruction",
+        "https://github.com/SoccerNet/sn-gamestate",
+        "https://github.com/SoccerNet/SoccerNet"
+      ]
+    },
+    {
+      "id": "skillcorner_current_open",
+      "name": "SkillCorner open data: current 2024/25 A-League sample",
+      "what_is_available": "The public landing page describes ten 2024/25 A-League matches, but this project already pinned eleven with tracking and dynamic events. The eleven existing IDs are listed in project_context. No new match was verified beyond that inventory.",
+      "access": "The official GitHub sample is already present in the project data cache. Do not re-download or recount those eleven matches as expansion. A future genuinely new match must have a new ID and full provenance.",
+      "license_and_use": "Repository includes an MIT software/documentation license and requests attribution to SkillCorner. Confirm scope for dataset use and redistribution; that license does not establish rights to source broadcasts.",
+      "tracking_and_sync": "Frame IDs and match-clock timestamps support alignment, but must be checked against the exact video edit and presentation timestamps. Preserve detected-versus-extrapolated flags and camera footprint.",
+      "possession_labels": "Provider-derived possession/events/phases are weak labels. Absence of a phase is not verified dead-ball truth: missing, censored or low-confidence data can create the same absence.",
+      "best_use": "Existing training/development only. Independently annotating one existing video could improve label quality and expose boundary errors, but prior training/evaluation exposure remains and must be reported.",
+      "sources": [
+        "https://skillcorner.github.io/opendata/",
+        "https://github.com/SkillCorner/opendata/blob/master/LICENSE"
+      ],
+      "status_for_this_project": "Already exposed; not new data and not independent confirmation.",
+      "project_label_details": "Existing SkillCorner D labels are interruption-derived cores with one-second X margins. Frames with fewer than twelve visible players are excluded in the fixed suite, retaining only 24-29% of D frames in the user-reported evaluations; censored edges do not support exact boundary scoring."
+    },
+    {
+      "id": "soccertrack_v2",
+      "name": "SoccerTrack v2 release v1.2",
+      "rank_for_controlled_generation": 1,
+      "what_is_available": "Ten university-level full-match panoramic recordings, with game-state and player-linked ball-action annotations and calibration files. These are fixed panoramic views, not television production broadcasts.",
+      "access": "Hugging Face conditions gate requiring acceptance and sharing account information. Dataset is CC BY 4.0; repository code is MIT. Prefer selective downloads of one match; the full card lists approximately 145 GB.",
+      "tracking_and_sync": "The v1.2 card specifies frame-for-frame GSR/video alignment and event frames. Pin v1.2: earlier M10 positions were about one second out of synchronization. Raw calibration includes hand-marked pitch points, distortion maps and intrinsics.",
+      "critical_leakage_warning": "The auxiliary ball/ trajectory is reconstructed from annotated event anchors with straight constant-speed interpolation; its card explicitly says it carries event timing. It is not independent measured ball truth. Do not feed it as an ordinary input when scoring event/boundary inference, and do not silently treat clamped ball positions as real out-of-play observations.",
+      "possession_labels": "GSR teams and BAS events support relabeling, but no exhaustive independently labeled D/H/A sequence is verified. Add that annotation before possession scoring.",
+      "best_use": "Controlled paired panoramic-versus-broadcast-crop and occlusion experiments; tests on an untouched panoramic match still represent a different domain from genuine production broadcast.",
+      "sources": [
+        "https://huggingface.co/datasets/atomscott/soccertrack-v2",
+        "https://github.com/AtomScott/SoccerTrack-v2",
+        "https://github.com/AtomScott/SoccerTrack-v2/blob/main/LICENSE-DATA"
+      ]
+    },
+    {
+      "id": "commercial_or_owned_video",
+      "name": "Rights-cleared club/league footage with separately requested tracking",
+      "what_is_available": "A club, league or rights holder can supply a full match, or the project can record its own consenting match. SkillCorner's September 2026 Data On Demand announcement describes processing supplied single-camera footage, lineups and substitution/red-card events into tracking and Game Intelligence through an API.",
+      "access": "Obtain video processing and annotation rights plus permitted retention and derived-data terms. Request a quote and actual sample schema rather than assuming a public price. SkillCorner advertises 24-48 hour processing depending on package; this is a vendor claim, not a guaranteed project delivery time.",
+      "tracking_and_sync": "Ask for exact source-video/frame identifiers, fps/timebase, player and ball tracks, detection/extrapolation confidence, view polygon, identity confidence, coordinate convention and censoring policy, including all dead-ball frames.",
+      "possession_labels": "Keep provider-derived possession hidden from independent annotators. A new provider label stream is not an independent manual validation set.",
+      "best_use": "Commercially compatible fresh broadcast validation, or a synchronized wide tactical reference and operated panning camera recording of the same match.",
+      "sources": [
+        "https://skillcorner.com/articles/data-on-demand"
+      ],
+      "license_and_competition_access": "A paid service is allowed in principle, but a private dataset unavailable to organizers is not. Include organizer access/reproduction and permitted data/label sharing in the agreement. Do not accept exclusivity terms that make the required pipeline unverifiable."
+    },
+    {
+      "id": "bepro_free_sample",
+      "name": "BEPRO free match-data sample",
+      "what_is_available": "Official page offers one full match of 25 Hz player positions plus event data through a form.",
+      "access": "Form requires personal/contact details. Page says personal use only and BEPRO branding in public content; no form submitted here.",
+      "tracking_and_sync": "Matching broadcast video, ball track and exact synchronization are not verified on the public offer.",
+      "best_use": "Secondary provider-transfer candidate after terms and source-video availability are established; lower priority than a ready full video plus independent labels.",
+      "sources": [
+        "https://bepro.ai/free-data-example"
+      ]
+    }
+  ],
+  "generation_options": [
+    {
+      "id": "tracking_channel_simulation",
+      "priority": 1,
+      "type": "Training augmentation and robustness test; not new independent broadcast evidence",
+      "plan": [
+        "On training matches only, learn empirical distributions of continuous missing-ball/player runs, view footprint, identity swaps, coordinate jitter, delays and calibration jumps from real detected-versus-extrapolated indicators.",
+        "Generate temporally contiguous missingness conditioned on camera view and distance from the ball; compare with simple random dropout. Use separate random seeds and source matches for evaluation.",
+        "Keep clean labels and latent trajectories separate from corrupted model input. Export a visibility mask and corruption manifest. Never turn an unknown label into a known state because an augmentation removed its input.",
+        "Oversample already labeled sub-three-second possessions and real transitions during training, while retaining natural prevalence in validation and test."
+      ],
+      "limits": "Augmentations based on development providers may fail to represent real broadcast failure patterns. Improvements are robustness evidence only until repeated on a separately labeled genuine broadcast."
+    },
+    {
+      "id": "panoramic_broadcast_emulation",
+      "priority": 2,
+      "type": "Video-domain controlled generation",
+      "plan": [
+        "Take a rights-permitted panoramic match with independently checked labels; divide by source match before creating any crop variants.",
+        "Simulate a main camera with smooth pan/zoom, finite acceleration, lag, imperfect ball following and bounded field of view. Add cutaways, camera cuts and replay spans while preserving a map from output presentation timestamps to original match time.",
+        "Add resolution loss, motion blur, codec artifacts, overlays and ball/player occluders. Re-run detection, calibration and tracking on the generated pixels; do not simply crop perfect tracks and call that the production pipeline.",
+        "Record visibility from geometry, propagate observed/hidden masks, and save the same source moments at several severities to measure paired failures.",
+        "Use held-out real broadcast clips to inspect whether missingness lengths, pan speeds, view size and ball-detection rates are plausible; tune this realism check on training material only."
+      ],
+      "limits": "Panoramic crops retain source lighting, pitch and motion characteristics and do not reproduce production camera geometry, close-up cuts, commentary or all real ball occlusions. Multiple crops of one match are correlated and must remain in the same split.",
+      "sources": [
+        "https://github.com/AtomScott/SoccerTrack-v2",
+        "https://huggingface.co/datasets/atomscott/soccertrack-v2"
+      ]
+    },
+    {
+      "id": "deterministic_3d_rendering",
+      "priority": 3,
+      "type": "Exact-label synthetic scenarios",
+      "plan": [
+        "Replay permitted tracking and independently labeled state transitions in Blender with rigged players, a physical ball, calibrated cameras and explicit dead/live state. Use the source labels only as training supervision, never as model input.",
+        "Design adversarial 0.3-3 second controls, turnovers, contested balls and restart sequences; randomize jerseys, stadium, lighting, pan/zoom, motion blur and occluders.",
+        "Store 3D state, camera intrinsics/extrinsics, object IDs, depth, segmentation and visible masks for diagnosis. Split by source match/scenario family before rendering.",
+        "Treat artifact licenses separately from renderer-code licenses, including human models, motion assets and source trajectories."
+      ],
+      "related_verified_projects": [
+        {
+          "name": "SoccerNet NVS 2026",
+          "finding": "Official devkit describes five Blender-generated soccer-action scenes and known COLMAP camera parameters. Useful rendering reference; not a full continuous dead/live/possession dataset. No clear dataset license was verified from the inspected public pages.",
+          "sources": [
+            "https://github.com/SoccerNet/sn-nvs",
+            "https://huggingface.co/datasets/SoccerNet/SN-NVS-2026"
+          ]
+        },
+        {
+          "name": "Spiideo SoccerNet SynLoc",
+          "finding": "Synthetic calibrated single-frame athlete localization; registered access with 4K or FullHD image downloads. Good geometry/detection resource, but disconnected localization images do not supply temporal possession or stoppage truth. Verify dataset/asset terms at registration.",
+          "sources": [
+            "https://github.com/Spiideo/sskit",
+            "https://research.spiideo.com/",
+            "https://www.scitepress.org/Papers/2025/131082/131082.pdf"
+          ]
+        },
+        {
+          "name": "Axis Blenderset",
+          "finding": "MIT-licensed Blender tooling generates synthetic scenes and instance/bounding-box annotations. Useful building block, not a ready football possession generator; content assets need their own rights review.",
+          "sources": [
+            "https://github.com/AxisCommunications/blenderset-addon"
+          ]
+        }
+      ],
+      "limits": "Rendered contact/ball dynamics and rule interpretations can make labels internally exact but wrong for real possession semantics. Do not present synthetic gains as deployment performance."
+    },
+    {
+      "id": "football_simulator",
+      "priority": 4,
+      "type": "Mechanism tests with semantic mapping required",
+      "plan": "Google Research Football provides player/ball positions, ball_owned_team, game_mode and rendered RGB. It can generate controlled turnovers and restart contexts. Create and audit an explicit mapping from simulator ownership/modes to this project's team-possession and dead/live rules; ball_owned_team=-1 is not dead ball, and restart modes do not necessarily span the whole real-world stoppage.",
+      "maintenance": "Official repository was archived in August 2026; pin a reproducible environment. Its Apache-2.0 code license and third-party notices still need to be respected.",
+      "limits": "Simulation tactics, contact, broadcast camera behavior and stoppage duration differ from reality. Use to debug models and losses rather than certify full-match recall.",
+      "sources": [
+        "https://research.google/pubs/google-research-football-a-novel-reinforcement-learning-environment/",
+        "https://github.com/google-research/football/blob/master/gfootball/doc/observation.md",
+        "https://github.com/google-research/football/blob/master/LICENSE"
+      ]
+    }
+  ],
+  "independent_annotation_protocol": {
+    "classification": "Proposed project protocol, not a claim about annotations already available in a public dataset.",
+    "minimum_initial_delivery": "One complete untouched match, including stoppages, with exact video hash, decoder timebase, period offsets and independently labeled state intervals. Add a second untouched match before drawing strong cross-broadcast conclusions; one match can detect failure but cannot estimate broad generalization reliably.",
+    "operational_definitions": [
+      "Use the repository target rule exactly: H/A denotes live possession; loose or contested balls remain with the last controlling team until control changes. D is dead ball, X is abstention/outside-half/unknown. Distinguish annotation uncertainty metadata from a genuine state, and never infer D merely from ball loss or missing team ownership.",
+      "Define transition time from visible ball crossing or referee stopping play for live-to-dead, and actual legal putting-the-ball-in-play action for dead-to-live. Do not equate standing over a ball or a camera cut with a restart.",
+      "For an invisible transition, record earliest/latest plausible times and a reason such as camera cut, replay, off-screen ball or unobservable referee decision; do not fabricate a precise point.",
+      "Label home/away from match identity and kits, and record changes in attacking direction per period. Treat provider video-left/right as a separate field.",
+      "Separate live match time from video presentation time. Replays and inserted footage need a mapping or a no-inference interval rather than duplicated ground-truth events."
+    ],
+    "record_schema": [
+      "match_id, source_hash, period, video_pts_seconds, match_clock_seconds, fps_or_timebase",
+      "start_pts, end_pts, state_D_H_A_or_unknown, annotator_id, confidence, visibility",
+      "boundary_kind, boundary_earliest_pts, boundary_latest_pts, exact_if_observed",
+      "censor_left, censor_right, camera_shot, replay_flag, ambiguity_reason",
+      "adjudicated_state, adjudication_reason, annotation_version"
+    ],
+    "quality_process": [
+      "Run a ten-minute pilot, resolve the possession rulebook and check that fast controls under one second are being recorded; freeze definitions before test annotation.",
+      "Have two annotators label independently while blind to model outputs, provider possession and each other's labels. Use provider events only in separate weak-label training data, not as hidden ground truth for the independent test.",
+      "Adjudicate every disagreement, every possession shorter than three seconds, every dead/live transition and every censored interval, with an expert. Measure pre-adjudication agreement as well as final labels.",
+      "Audit synchronization near starts and ends of both periods and after edits/cuts using visible touches or known landmarks. A one-second offset is large enough to erase the claimed timing performance.",
+      "Freeze the test manifest and annotation hash before model comparison. Tune on whole separate matches, and exclude the held-out provider from D and H/A training, feature selection and thresholds when claiming a complete provider holdout."
+    ],
+    "evaluation": [
+      "Compute official spell precision/recall/F1 with experiments.metrics.evaluate_tracking: greedy one-to-one H/A temporal-IoU matches averaged over 0.3/0.4/0.5/0.6/0.7. Compare identical whole-match cohorts; mean within source, then equal mean across sources. Report duration-bin recall/counts, D F1, conditional H/A accuracy and false-positive spells; show macro F1 and auxiliary 70/30 summary without replacing spell-first ranking.",
+      "For stoppage and restart timing, use one-to-one matching separately by direction and report precision, recall, F1, median absolute error and recall within 0.25, 0.5, 1 and 2 seconds on eligible boundaries.",
+      "Eligibility requires independently observed or adequately bounded truth. Report the eligible numerator/denominator and total label coverage by provider, especially for SkillCorner; do not extrapolate from censored retained frames to all stoppages.",
+      "Retain censoring metadata and score only fully observable spell edges for exact timing; report interval-aware scoring separately rather than silently moving uncertain boundaries.",
+      "Use paired per-match deltas and match-level resampling when enough matches exist. Five correlated development matches or many rendered variants do not justify narrow population confidence intervals.",
+      "The existing five development matches and D-only provider folds remain reused development. Any new true provider-holdout must exclude that provider from H/A, D, normalization, feature selection and threshold tuning, and keep historical comparisons separately labeled."
+    ],
+    "competition_guardrail": "This protocol applies exclusively to other matches. RULES.md forbids any amount of hand labeling/correction or outside human-produced event data for the provided Barcelona-Athletic organizer match, including validation. Preserve every completed public-check gate; do not use new research to justify another check."
+  },
+  "practical_estimates": {
+    "status": "Planning estimates made for this project; not vendor quotes or published dataset facts. Calibrate all estimates with the ten-minute pilot.",
+    "one_full_match_annotation": {
+      "assumptions": "Approximately 95-110 minutes of recorded match play; labels are state/spell intervals and transition times, not dense player boxes or ball positions.",
+      "effort": "At roughly 4-8 times video duration per annotator, two independent passes plus 3-6 hours of adjudication/setup imply approximately 16-34 person-hours. Severe cutaways or ambiguous rapid exchanges may require more.",
+      "illustrative_labor_cost_usd": "At a locally appropriate analyst rate of $20-$50/hour, approximately $320-$1,700, excluding video rights, tracking extraction, equipment and project engineering.",
+      "precision_limit": "Frame stepping at native frame rate permits precise visible edges; hidden restarts remain interval-censored regardless of labor spent."
+    },
+    "generation_effort": "Feature-level corruption is usually the fastest route when tracking adapters exist. A reusable panoramic crop harness is likely a several-day engineering task; a physically plausible 3D football renderer with rigged animation is a substantially larger effort. No execution benchmark or rendering cost was measured here."
+  },
+  "recommended_execution_order": [
+    "Audit current and upstream/pretrained match exposure using eval_set/manifest.json; exclude the eleven existing SkillCorner, all three Metrica sample and all seven Sportec matches from new-confirmation claims.",
+    "Prioritize Gradient/PFF World Cup tracking plus exact rights-cleared video, or SoccerNet if intended-use terms fit. Ensure organizers can access/inspect required data and algorithms; use another match and never the provided organizer match.",
+    "Complete the ten-minute annotation pilot and freeze the rulebook, timing conventions and censoring policy.",
+    "Independently label the complete fresh match and seal its manifest. Use a separate match for adapting thresholds or annotation tools.",
+    "Run the same five strategies on identical real-data folds, followed by the frozen fresh match. Keep predicted-boundary and oracle-boundary comparisons separate to establish whether stoppage/restart information can help.",
+    "Add matched input-corruption tests and a held-out panoramic crop experiment. Record source-match grouping and label provenance so no generated sibling crosses a split.",
+    "If real gains justify more work, acquire additional competitions/productions or commission rights-cleared video plus tracking; prioritize independent short-possession and boundary labels before large unverified weak-label expansion."
+  ],
+  "unresolved_items": [
+    "Code/data repositories are now available and their manifests/rules were reviewed. No Gradient/PFF, SoccerNet or SoccerTrack match was acquired or run here; exact new-match availability, source-video access and upstream pretraining overlap remain unresolved.",
+    "No public candidate was verified to provide complete independent framewise D/H/A possession labels for the exact target definition out of the box.",
+    "The matching source video for the current SkillCorner open sample and its permitted use remain to be established.",
+    "Commercial prices, response times, intended-use approval and source-video rights require an actual agreement; none were assumed or purchased.",
+    "Synthetic and panoramic-derived matches remain training or stress-test resources and do not close the fresh independently labeled production-broadcast validation gap.",
+    "This report refines the initial workspace research after repository access; it does not alter historical reports, selection manifests, dataset arrays, models, or organizer diagnostic gates."
+  ],
+  "project_context": {
+    "code_repository": "metrica-sports/more-than-a-hack-2027; working fork jekkiechan/more-than-a-hack-2027",
+    "report_scope": "Research and acquisition/generation recommendations only. No assets copied, no new match acquired, no experiment run by this research subagent.",
+    "reviewed_files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "3db9674a9cd52c7841ef3e0e3ed3854f788cbfbbbe88f233d9a305f49b0961b3"
+      },
+      {
+        "path": "RULES.md",
+        "sha256": "b6f63456d215e2e6016619f6268580ed8921bb96ba41c7d3037f2733f8d10153"
+      },
+      {
+        "path": "EVALUATION.md",
+        "sha256": "25b61f6d8a2bcbe77396bd9a9cae564b27424538e0a958aa1cd365e1e58ae571"
+      },
+      {
+        "path": "experiments/OPEN_DATA.md",
+        "sha256": "5b4f40d5e727d23ce136f58af0dbf49c1ef8461907a41c6d789f837f94a487ac"
+      },
+      {
+        "path": "experiments/DATASETS.md",
+        "sha256": "c1a1108382a1aca2f5b425d3338e0a1ec71966b1f32d240d3011364927235860"
+      },
+      {
+        "path": "experiments/BASELINE.md",
+        "sha256": "e6041072b3da398791ea997097922d8b787ab91bf439ae571f721651c6390f27"
+      },
+      {
+        "path": "experiments/DIRECTIONS.md",
+        "sha256": "843a5665a3f28738c85772b29fa20a786d405af66d933d128ec6281bfe950aba"
+      },
+      {
+        "path": "experiments/eval_set/manifest.json",
+        "sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d"
+      },
+      {
+        "path": "experiments/model_decision_policy.json",
+        "sha256": "11d1cf3c656042f729f62709b6a596affa53fee3e41d69e3c2407dfb959f09ef"
+      }
+    ],
+    "current_baseline": "gru_hgb_ballgap25_v1, user-authorized GRU/ordered-HGB D blend with 25% ball-gap replacement for H/A training; fresh independent confirmation pending.",
+    "already_exposed_sources": {
+      "sportec": {
+        "train": [
+          "J03WMX",
+          "J03WN1",
+          "J03WOH"
+        ],
+        "selection": [
+          "J03WOY"
+        ]
+      },
+      "metrica": {
+        "train": [
+          "metrica_1",
+          "metrica_2"
+        ],
+        "selection": [
+          "metrica_3"
+        ]
+      },
+      "skillcorner": {
+        "train": [
+          "skillcorner_had_1874553",
+          "skillcorner_had_1886347",
+          "skillcorner_had_1899585",
+          "skillcorner_had_1925299",
+          "skillcorner_had_1927964",
+          "skillcorner_had_1953632",
+          "skillcorner_had_1959846",
+          "skillcorner_had_1986691"
+        ],
+        "selection": [
+          "skillcorner_had_1996435",
+          "skillcorner_had_1996436",
+          "skillcorner_had_2006229"
+        ]
+      }
+    },
+    "additional_historical_sportec_tests_excluded_from_freshness": [
+      "J03WPY",
+      "J03WR9",
+      "J03WQQ"
+    ],
+    "skillcorner_full_existing_ids": [
+      1874553,
+      1886347,
+      1899585,
+      1925299,
+      1927964,
+      1953632,
+      1959846,
+      1986691,
+      1996435,
+      1996436,
+      2006229
+    ],
+    "freshness_result": "All three Metrica sample games, all eleven locally pinned SkillCorner matches, and all seven available Sportec Open DFL matches have prior training/evaluation exposure. None is a new independent match. Current public SkillCorner prose says ten, but the local pinned inventory and experiment manifest govern this project.",
+    "dataset_doc_chronology": "DATASETS.md describes the older five-match H/A-only SkillCorner stage. OPEN_DATA.md and eval_set/manifest.json document the later eleven-match H/A/D silver-label suite. Do not infer five untouched matches from the older table.",
+    "organizer_match_excluded": "Barcelona versus Athletic Club (199,319 tactical frames). Never manually label/correct any part, import human-produced events/possession about it, train/tune/select on its public window, or reopen completed public diagnostic gates. Independent manual labels proposed here apply only to other matches.",
+    "organizer_camera_distinction": "The submission targets tactical-feed automatic tracking with no television cutaways. SkillCorner/SoccerNet main broadcast cutaways are an additional domain difference; a real full-pitch tactical recording with noisy automatic tracking is also valuable. Report tactical and production-broadcast results separately.",
+    "competition_access_constraint": "RULES.md permits external other-match labels only when organizers can access and inspect the method/data and the technical document explains provenance. A private dataset unavailable to organizers cannot become a required pipeline dependency.",
+    "metric_and_selection": "Use experiments.metrics.evaluate_tracking and official greedy one-to-one H/A spell matching averaged over IoU 0.3/0.4/0.5/0.6/0.7. Rank official spell F1 first, macro F1 only for exact ties; retain the predeclared 70/30 summary as auxiliary. Existing holdouts exclude provider from D training only; H/A remains pooled."
+  },
+  "existing_sources_not_new": [
+    {
+      "source": "Metrica sample games 1/2/3",
+      "reason": "Already used for training/development; event-derived D silver truth and ball-blanking shortcut. New event labeling of these same matches is not unseen-match confirmation."
+    },
+    {
+      "source": "Sportec Open DFL seven matches",
+      "reason": "J03WMX/J03WN1/J03WOH train; J03WOY development; J03WPY/J03WQQ/J03WR9 historical tests. All previously exposed. Frozen dead-ball coordinates are unlike target noisy automatic tracks. Official paper says video is omitted for licensing reasons.",
+      "sources": [
+        "https://www.nature.com/articles/s41597-025-04505-y"
+      ]
+    },
+    {
+      "source": "SkillCorner eleven A-League matches",
+      "reason": "All eleven already present/exposed; source possession and interruption-derived D remain silver labels. No reshuffle makes them fresh."
+    }
+  ],
+  "concrete_acquisition_proposals": [
+    {
+      "rank": 1,
+      "route": "Gradient/PFF World Cup 2022 plus exact matching rights-cleared video",
+      "proposed_development_match": {
+        "provider_game_id": 3844,
+        "fixture": "Ecuador versus Senegal",
+        "date": "2022-11-29"
+      },
+      "proposed_frozen_confirmation_match": {
+        "provider_game_id": 3848,
+        "fixture": "Australia versus Denmark",
+        "date": "2022-11-30"
+      },
+      "status": "Illustrative pre-acquisition split proposal, not an acquired/tested dataset or a frozen benchmark. These group-stage games avoid extra-time handling and are from a different competition/provider than the existing suite. Verify IDs, terms, no prior exposure of all trainable/pretrained components, completeness and exact video before accepting the split.",
+      "next_steps": [
+        "Project owner can review the official free-access form and terms; no request made by this agent.",
+        "Establish tracking plus matching video access for organizers; do not assume provider events alone can establish a fresh gold test.",
+        "Run ten-minute label/synchronization pilot on the development match only.",
+        "Seal independent labels on the confirmation match before model comparison; retain all stoppages and visibility/censoring metadata."
+      ],
+      "sources": [
+        "https://www.gradientsports.com/blog/enhanced-2022-world-cup-dataset",
+        "https://kloppy.pysport.org/user-guide/loading-data/pff/"
+      ]
+    },
+    {
+      "rank": 2,
+      "route": "SoccerNet full English Football League broadcast absent from current training and pretrained-model exposure",
+      "status": "Pick from authorized full-match inventory after NDA approval; team-action labels can aid training but are hidden during independent test annotation. No specific fixture was verified from public gated metadata, so do not invent one.",
+      "tradeoff": "Good real broadcast occlusion/cuts, but upstream tracking must be extracted or paired, and non-commercial research terms may make this unsuitable for commercial work or competition release.",
+      "sources": [
+        "https://huggingface.co/datasets/SoccerNet/SN-BAS-2025",
+        "https://huggingface.co/datasets/SoccerNet/SoccerNet_raw_HQ"
+      ]
+    },
+    {
+      "rank": 3,
+      "route": "A newly recorded consenting senior amateur/club fixture with simultaneous fixed tactical and operated panning views",
+      "status": "Strong fallback when commercial/shareability constraints prevent public-research datasets. Retain original timestamps/audio, pitch dimensions, roster team mapping and all dead time; obtain rights permitting processing and organizer access.",
+      "tradeoff": "Can share independent labels and measure real missingness; production level differs from elite tactical/broadcast feeds. Run the same automatic tracking pipeline used for target inputs. Vendor-produced labels are kept separate from blind human confirmation.",
+      "sources": [
+        "https://skillcorner.com/articles/data-on-demand"
+      ]
+    },
+    {
+      "rank": 4,
+      "route": "SoccerTrack v2 M7 (128057) or M9 (132831) as a reserved panoramic source match for generated camera views",
+      "status": "New controlled-generation candidate relative to the reviewed local manifest, conditional on exposure audit and authorized access. Preserve its release train/validation/test split and avoid training on its test-source siblings.",
+      "tradeoff": "CC BY 4.0 dataset with calibrated panoramic footage is convenient; generated broadcasts do not satisfy the real-broadcast confirmation requirement. Do not feed event-derived auxiliary ball tracks into event/boundary evaluation.",
+      "sources": [
+        "https://huggingface.co/datasets/atomscott/soccertrack-v2"
+      ]
+    }
+  ],
+  "source_report_provenance": {
+    "initial_report_sha256": "95ee58abd13b249c15ef01ef85e1f8d533f25ceaafcb36422be74fbb3565147c",
+    "contextualized_from": "Initial broadcast_data.json research; original preserved unchanged."
+  }
+}
