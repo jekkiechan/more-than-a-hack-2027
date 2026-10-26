@@ -64,7 +64,7 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 - On the organizer's **public five-minute pipeline check**, the externally
   selected refinement scored **0.6487 macro / 0.4300 spell**. The predeclared
   PathCRF H/A + original robust D hybrid scored **0.6795 / 0.5067**: the
-  highest *observed* spell score among our candidates on this small window.
+  highest *observed* spell score at that stage on this small window.
   It is not a validated winner or a basis to switch the final candidate under
   the rules. No full-match accuracy has been measured. The user's target of
   0.90 on both metrics has **not** been demonstrated on competition data.
@@ -146,6 +146,26 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   must not be reset or used for iteration.
 
 ## Artifacts and reproducibility
+
+- The lighter, task-specific corruption follow-up is
+  `experiments/LIGHT_CORRUPTION.md` and `light_corruption.py`. It retains 75%
+  of the original clean/coarse recipe and replaces 25% of rows/windows with
+  ball visibility gaps for H/A or player/coordinate corruption for D. Budgets,
+  grading masks and evaluation views are fixed; 90 new evaluations plus 30
+  reused baseline comparisons and 66 tests completed. Clean/stress spell is
+  .5740/.4315 for ball-only teams and .5718/.4477 for both replacements,
+  versus baseline .5746/.4205. Baseline remains selected by external clean
+  spell-first ordering. At the user's explicit request, the best new external
+  arm (ball-only teams) received one separately frozen public diagnostic:
+  .5257 spell/.8588 macro/.8568 D F1, 18 predicted versus 17 reference spells.
+  This exceeds baseline's .4889 public spell point estimate but cannot select
+  or promote a model; the 90% spell interval is [.3657,.6743] and full-match
+  performance is unknown. Do not repeat the check, reset its gate or tune from
+  it. `light_candidate.py` exports the selected/diagnostic CSVs without GT;
+  `light_public_check.py` has the closed exclusive gate. Reports/receipts are
+  in `experiments/results/light_corruption_*.json`; nine checkpoints and the
+  closed gate are archived privately on `mtah-data` branch
+  `experiments/light-corruption`, with `light_corruption_cache_manifest.json`.
 
 - The completed composite-corruption ablation is
   `experiments/REALISTIC_CORRUPTION.md`, implemented by `tracking_corruption.py`

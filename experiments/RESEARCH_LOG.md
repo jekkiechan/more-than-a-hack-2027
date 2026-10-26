@@ -180,3 +180,23 @@ does not read organizer reference labels. The recipe mixes several failure
 mechanisms, so it cannot identify which causes the clean loss. Next isolate
 corruption groups and reduce their training weight with a fixed budget. Fresh
 labeled broadcast confirmation remains unavailable.
+
+## 2026-10-26: 25% targeted replacement and requested public diagnostic
+
+The [lighter follow-up](LIGHT_CORRUPTION.md) retains the original clean/coarse
+augmentation, replacing one quarter of examples with task-specific corruption.
+H/A sees only the long ball-gap/sampling mask; D sees player/coordinate errors.
+The 90 new plus 30 reused baseline comparisons have identical row/window
+budgets, splits and clean/stress views. Ball-only teams nearly preserve clean
+spell F1 (.5740 versus .5746) and improve stress spell from .4205 to .4315.
+Paired replacements score .5718 clean and .4477 stress, a smaller clean loss
+than the preceding composite-both recipe. Baseline remains the external choice.
+
+The user also requested the competition score. The best new arm by external
+clean spell-first order, ball-only teams, was frozen as a reporting-only
+diagnostic before any new public check. Its single check scored .5257 spell,
+.8588 macro and .8568 D F1 on 7,500 frames and 17 possessions. This is above
+baseline's .4889 spell point estimate, with a broad [.3657,.6743] 90% interval.
+No model, setting or external selection changed from the result. Its dedicated
+gate is closed; full-match performance and fresh broadcast confirmation remain
+unknown. All 66 tests and both full-length candidate validations passed.

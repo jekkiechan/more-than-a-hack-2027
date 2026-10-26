@@ -45,6 +45,14 @@ PathCRF hybrid is a different architecture from the external PathCRF
 retention experiment and does not establish a benefit from adding PathCRF
 to GRU/HGB.
 
+The later [lighter-corruption diagnostic](LIGHT_CORRUPTION.md), requested by the
+user and frozen after external evaluation, scored .5257 spell/.8588 macro/.8568
+D F1 on the same window. It changes only team-model training and is not adopted:
+the external clean spell-first rule retained baseline (.5746 versus .5740).
+Its higher public point estimate cannot override that selection; no full-match
+score is available and no model changed after checking. Its separate gate is
+closed and does not reset the historical baseline check.
+
 This is a descriptive pipeline check, not a tuning or selection set. The
 externally chosen baseline remains fixed, and full-match performance is
 unknown. Aggregate results and frozen candidate provenance are saved in
