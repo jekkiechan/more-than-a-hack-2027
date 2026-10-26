@@ -1,0 +1,254 @@
+{
+  "created_utc": "2026-10-25T16:11:30.086678+00:00",
+  "purpose": "Predeclare temporal D and LightGBM learning-rate development comparisons",
+  "sources": {
+    "sportec": {
+      "labels": "provider BallStatus/BallPossession",
+      "quality": "provider_reference",
+      "shortcut": "Ball coordinates frozen during dead play",
+      "train": [
+        {
+          "match": "J03WMX",
+          "group_id": "J03WMX",
+          "path": "data/external_audit/sportec/processed/J03WMX.npz",
+          "sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "J03WN1",
+          "group_id": "J03WN1",
+          "path": "data/external_audit/sportec/processed/J03WN1.npz",
+          "sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "J03WOH",
+          "group_id": "J03WOH",
+          "path": "data/external_audit/sportec/processed/J03WOH.npz",
+          "sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+          "prior_exposure": "previously_used_for_training"
+        }
+      ],
+      "selection": [
+        {
+          "match": "J03WOY",
+          "group_id": "J03WOY",
+          "path": "data/external_audit/sportec/processed/J03WOY.npz",
+          "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+          "prior_exposure": "previously_evaluated_development_match"
+        }
+      ]
+    },
+    "metrica": {
+      "labels": "derived H/A/D from human event stream; inferred dead intervals",
+      "quality": "event_derived_silver",
+      "shortcut": "Ball mostly blanked only during dead play",
+      "train": [
+        {
+          "match": "metrica_1",
+          "group_id": "metrica_1",
+          "path": "data/external/processed/metrica_1.npz",
+          "sha256": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "metrica_2",
+          "group_id": "metrica_2",
+          "path": "data/external/processed/metrica_2.npz",
+          "sha256": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+          "prior_exposure": "previously_used_for_training"
+        }
+      ],
+      "selection": [
+        {
+          "match": "metrica_3",
+          "group_id": "metrica_3",
+          "path": "data/external/processed/metrica_3.npz",
+          "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+          "prior_exposure": "previously_evaluated_development_match"
+        }
+      ]
+    },
+    "skillcorner": {
+      "labels": "provider team possession + interruption-derived D cores; 1 s X margins",
+      "quality": "event_derived_silver",
+      "shortcut": "Broadcast cuts reduce player/ball visibility",
+      "train": [
+        {
+          "match": "skillcorner_had_1874553",
+          "group_id": "skillcorner_had_1874553",
+          "path": "data/external/processed/skillcorner_had_1874553.npz",
+          "sha256": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "skillcorner_had_1886347",
+          "group_id": "skillcorner_had_1886347",
+          "path": "data/external/processed/skillcorner_had_1886347.npz",
+          "sha256": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "skillcorner_had_1899585",
+          "group_id": "skillcorner_had_1899585",
+          "path": "data/external/processed/skillcorner_had_1899585.npz",
+          "sha256": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "skillcorner_had_1925299",
+          "group_id": "skillcorner_had_1925299",
+          "path": "data/external/processed/skillcorner_had_1925299.npz",
+          "sha256": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "skillcorner_had_1927964",
+          "group_id": "skillcorner_had_1927964",
+          "path": "data/external/processed/skillcorner_had_1927964.npz",
+          "sha256": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "skillcorner_had_1953632",
+          "group_id": "skillcorner_had_1953632",
+          "path": "data/external/processed/skillcorner_had_1953632.npz",
+          "sha256": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "skillcorner_had_1959846",
+          "group_id": "skillcorner_had_1959846",
+          "path": "data/external/processed/skillcorner_had_1959846.npz",
+          "sha256": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+          "prior_exposure": "previously_used_for_training"
+        },
+        {
+          "match": "skillcorner_had_1986691",
+          "group_id": "skillcorner_had_1986691",
+          "path": "data/external/processed/skillcorner_had_1986691.npz",
+          "sha256": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+          "prior_exposure": "previously_used_for_training"
+        }
+      ],
+      "selection": [
+        {
+          "match": "skillcorner_had_1996435",
+          "group_id": "skillcorner_had_1996435",
+          "path": "data/external/processed/skillcorner_had_1996435.npz",
+          "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+          "prior_exposure": "previously_evaluated_development_match"
+        },
+        {
+          "match": "skillcorner_had_1996436",
+          "group_id": "skillcorner_had_1996436",
+          "path": "data/external/processed/skillcorner_had_1996436.npz",
+          "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+          "prior_exposure": "previously_evaluated_development_match"
+        },
+        {
+          "match": "skillcorner_had_2006229",
+          "group_id": "skillcorner_had_2006229",
+          "path": "data/external/processed/skillcorner_had_2006229.npz",
+          "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+          "prior_exposure": "previously_evaluated_development_match"
+        }
+      ]
+    }
+  },
+  "folds": [
+    {
+      "name": "pooled",
+      "train_sources": [
+        "sportec",
+        "metrica",
+        "skillcorner"
+      ],
+      "selection_sources": [
+        "sportec",
+        "metrica",
+        "skillcorner"
+      ],
+      "interpretation": "Within-provider, whole-match development comparison"
+    },
+    {
+      "name": "leave_out_sportec",
+      "train_sources": [
+        "metrica",
+        "skillcorner"
+      ],
+      "selection_sources": [
+        "sportec"
+      ],
+      "interpretation": "Unseen-source transfer on historically evaluated development matches"
+    },
+    {
+      "name": "leave_out_metrica",
+      "train_sources": [
+        "sportec",
+        "skillcorner"
+      ],
+      "selection_sources": [
+        "metrica"
+      ],
+      "interpretation": "Unseen-source transfer on historically evaluated development matches"
+    },
+    {
+      "name": "leave_out_skillcorner",
+      "train_sources": [
+        "sportec",
+        "metrica"
+      ],
+      "selection_sources": [
+        "skillcorner"
+      ],
+      "interpretation": "Unseen-source transfer on historically evaluated development matches"
+    }
+  ],
+  "confirmation": {
+    "matches": [],
+    "status": "unavailable_no_unseen_external_match",
+    "reason": "Every available source/match has already influenced earlier training or evaluation; reshuffling cannot create a fresh test.",
+    "required_next_data": "Independent externally labelled tactical/broadcast match with real live-play ball occlusions and representative stoppages"
+  },
+  "historical_tests_excluded": [
+    "J03WPY",
+    "J03WR9",
+    "J03WQQ"
+  ],
+  "organizer_game": {
+    "training": false,
+    "selection": false,
+    "manual_labels": false,
+    "public_5min_use": "One pipeline check after external selection and configuration freeze; no tuning or winner selection"
+  },
+  "metric": {
+    "entrypoint": "experiments.metrics.evaluate_tracking",
+    "official_sha256": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "adapter_sha256": "36a8ca48af6b21f4a25957306bf80efdf603917cec9746a886b1090e70dc2270",
+    "primary": "spell_f1_mean: official greedy one-to-one H/A matching averaged over IoU .3/.4/.5/.6/.7",
+    "secondary": [
+      "macro_f1",
+      "D precision/recall/F1",
+      "D boundary precision/recall and latency at .5 s and 1 s"
+    ],
+    "aggregation": "Mean of match scores within source, then equal mean across sources; retain all per-match/source results",
+    "resampling": "Paired whole-match bootstrap stratified by source; never bootstrap correlated frames"
+  },
+  "controls": {
+    "D_features": "player-only geometry/motion with observation masks; no ball-derived D cue",
+    "team_attribution": "Fixed pooled multisource HGB conditional H/A; never refit during D-head comparison",
+    "decoder_switch_cost": 3,
+    "skillcorner_min_visible": 12,
+    "skillcorner_coverage": "Mask positions flagged unobserved; X for <12 visible players in both training and evaluation; report retained D/live coverage separately",
+    "temporal_context": "Centered offline windows; never cross match, half or timestamp discontinuity; fit normalization only to training folds",
+    "candidate_policy": "Freeze finite candidate set, epoch counts, seed and learning-rate budgets before selection; add no candidates after public check"
+  },
+  "limitations": [
+    "Development comparisons are not fresh confirmation.",
+    "Only one Sportec and one Metrica selection match; uncertainty across providers cannot be estimated reliably.",
+    "Metrica/SkillCorner labels are event-derived silver, not adjudicated frame gold.",
+    "Visible-player filtering changes the SkillCorner population and can remove much of D; report coverage.",
+    "Synthetic missingness probes sensitivity and does not reproduce real broadcast occlusion."
+  ]
+}

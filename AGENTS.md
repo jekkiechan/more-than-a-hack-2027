@@ -91,12 +91,34 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Current research directions
 
+- Future reports follow `experiments/model_decision_policy.json`: official
+  spell-first ranking with macro F1 as exact-tie break; show an additional
+  70% spell / 30% macro summary, never use it as the competition ranking.
+  Keep both components visible and freeze weights before future experiments.
+  User-confirmed working direction is GRU plus boosting; 50/50 GRU + ordered
+  HGB is now the adopted development baseline after explicit user authorization
+  and its same-cohort gain over ordered HGB (.5746/.8449 vs .5652/.8363).
+  `experiments/baseline_manifest.json` binds the packaged models and promotion
+  evidence. Run `python -m experiments.current_baseline predict` for its default
+  full-length candidate; this reads no reference labels. Fresh independent
+  confirmation is still pending.
+  Three-way GRU/HGB/LightGBM remains numerically highest on the current
+  development metrics, by a tiny margin; do not claim the simpler pair wins
+  numerically or overwrite prior frozen competition selection history. Details and
+  the saved scorecard are in `experiments/MODEL_SELECTION.md`.
+
 - [experiments/RESEARCH_LOG.md](experiments/RESEARCH_LOG.md) records the completed
-  contextual-model/D-blend comparison and proposed D-only and temporal-model
-  experiments. The implementation stays on `possession/robust-pipeline` in
-  draft PR #8; only research documentation is promoted to `main`. Do not merge
-  the implementation or replace the submission candidate as part of docs upkeep.
-  TCN/GRU/LSTM comparisons are proposed, not measured results.
+  contextual-model/D-blend comparison and the later measured temporal work.
+  The older contextual implementation stays on `possession/robust-pipeline`
+  in draft PR #8 and is not part of the current baseline promotion. TCN and
+  BiGRU have now been evaluated; LSTM remains untested.
+- The current frozen GRU/HGB public pipeline check is .4889 spell/.8568 macro
+  on 7,500 graded frames and 17 reference possessions. It ties GRU alone in
+  spell F1, below the historical PathCRF hybrid's .5067. Public labels did not
+  select the baseline; no full-match competition performance is known. See
+  `experiments/BASELINE.md` and `results/current_baseline_public_check.json`
+  under `experiments/`. Preserve the exclusive current-baseline check marker
+  as well as the earlier experiment gates.
 - The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
   representative data and validation, then targeted D/context comparisons and
   preprocessing. Broad LightGBM hyperparameter tuning comes after those.
@@ -105,8 +127,46 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   and SkillCorner with D labels.
 - Do not select models on Sportec J03WOY alone; use the multi-source suite
   (`multisource_eval.py`).
+- The bounded temporal-D experiment is [experiments/LEARNED_TEMPORAL.md](experiments/LEARNED_TEMPORAL.md).
+  It holds conditional H/A and decoder fixed. Historical provider-holdout D
+  development spell F1: HGB baseline .5588, ordered HGB .5652, BiGRU .5649,
+  TCN .5605. TCN improves D F1 but has no clear overall spell advantage over
+  boosting. LightGBM D heads .08/160 vs .02/640 trees score .5577/.5613.
+  This does not repeat the earlier full-model LightGBM .02/1500-tree result.
+  These folds hold out providers from D training only; H/A remains pooled.
+  `experiments/eval_set/manifest.json` records hashes and prior data exposure;
+  none of these matches is fresh confirmation. SkillCorner X margins make D
+  boundary timing ungradable. Organizer tracking was recovered via the exact
+  Drive folder link in the registration email (keyword search missed it).
+  The one-time public check is complete: BiGRU .4889 spell/.8617 macro, TCN
+  .4541/.8506, ordered HGB .4205/.8653. Previous refinement was .4300/.6487;
+  previous PathCRF hybrid remains higher in spell F1 at .5067. No model was
+  selected or tuned on these public results. Details and the animated ChatGPT
+  Page are linked in `experiments/TEMPORAL_PUBLIC_CHECK.md`; the public gate
+  must not be reset or used for iteration.
 
 ## Artifacts and reproducibility
+
+- The PathCRF retention test is `experiments/PATHCRF_ENSEMBLE.md`. It uses
+  Metrica game 3 and the three SkillCorner evaluation matches, excluding
+  Sportec J03WOY because PathCRF trained on it. With GRU/HGB P(D) fixed,
+  baseline spell/macro is .5744/.8346 on that two-provider cohort; 50/50
+  HGB/PathCRF team blending falls to .5414/.8213 and PathCRF teams alone to
+  .4993/.8090. Keep PathCRF as an archived comparator, not a default component.
+  No organizer recheck was performed. Runtime is 13–15 minutes per match on
+  one CPU thread; SkillCorner needs 50–60% player-slot imputation. Baseline
+  models and provenance are persisted in private mtah-data under
+  `models/gru_hgb_v1/`; restore with `competition_cache.py fetch --manifest
+  baseline_cache_manifest.json --data-dir <code-repo>/data`.
+
+- The external-only probability-ensemble follow-up is
+  `experiments/TEMPORAL_ENSEMBLE.md`. Fixed 50/50 GRU + ordered HGB scores
+  .5746 provider-holdout D spell F1; the equal three-way blend adds little
+  (.5750). GRU alone is .5649 and ordered HGB .5652. GRU remains slightly
+  stronger on SkillCorner alone. New combinations were evaluated only on
+  historical external development matches; no organizer gate was reopened,
+  model retrained, or original competition selection changed. Results are in
+  `experiments/results/temporal_ensemble_development.json`.
 
 - Start at [experiments/REFINEMENT.md](experiments/REFINEMENT.md), then read
   [experiments/README.md](experiments/README.md) and

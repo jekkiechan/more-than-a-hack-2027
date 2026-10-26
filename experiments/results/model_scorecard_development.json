@@ -1,0 +1,375 @@
+{
+  "created_utc": "2026-10-26T00:38:21.846927+00:00",
+  "view": "provider_holdout_D",
+  "scope": "Retrospective external development scorecard; not a new evaluation or organizer selection",
+  "competition_rule": "spell F1 descending, then macro F1 for exact ties; weighted score is not the official metric",
+  "weighted_score": {
+    "spell_weight": 0.7,
+    "macro_weight": 0.30000000000000004,
+    "purpose": "additional internal summary, configurable before future experiments"
+  },
+  "policy": {
+    "version": 1,
+    "confirmed_utc_date": "2026-10-26",
+    "primary_order": [
+      "spell_f1",
+      "macro_f1"
+    ],
+    "primary_direction": "descending",
+    "primary_rule": "Maximize spell F1; use macro F1 for exact spell ties, matching the competition headline ranking",
+    "weighted_summary": {
+      "spell_weight": 0.7,
+      "macro_weight": 0.3,
+      "used_for_primary_ranking": false,
+      "purpose": "Additional internal comparison column; weights must be recorded before future experiments"
+    },
+    "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
+    "preferred_development_view": "provider_holdout_D",
+    "working_candidate": {
+      "family": "GRU plus boosting",
+      "model": "gru_hgb",
+      "members": {
+        "bigru": 0.5,
+        "ordered_hgb": 0.5
+      },
+      "status": "Leading development candidate pending independent confirmation",
+      "numeric_leader_on_current_development": "gru_hgb_lgbm",
+      "reason": "Two-model blend is nearly tied with the three-way blend and uses fewer components",
+      "previous_frozen_competition_selection_changed": false
+    },
+    "controls": [
+      "Always show spell F1 and macro F1 alongside the weighted summary",
+      "Primary ordering uses unrounded values; weighted-score rank does not replace it",
+      "Record this policy and its weights before future fitting or selection",
+      "Do not reclassify historical scorecards as predeclared experiments",
+      "Organizer public labels are pipeline checks only, never selection or tuning data"
+    ]
+  },
+  "policy_sha256": "4a7d1797c823b0f64b66f5aa897b886b9941000f7c99580f851c5c0aa69c94bd",
+  "scorecard_source_sha256": "e84298862e2e9f6797794b68bb6e98f645dc75150206e88aa931011db4fe803e",
+  "aggregation": "Mean within each provider, then equal mean across providers",
+  "report_sha256": {
+    "experiments/results/learned_temporal_development.json": "8096c35bcf54ed41b1ac06355f12f7506436024f790d870b4fc5e6025d146b57",
+    "experiments/results/temporal_ensemble_development.json": "95450f328a47398693c3fabf503a75386086d44bc3c764e8bff678ef7bd15be2"
+  },
+  "candidates": [
+    {
+      "model": "gru_hgb_lgbm",
+      "spell_f1": 0.5750411956727423,
+      "macro_f1": 0.8449838581182149,
+      "weighted_score": 0.656023994406384,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6826446280991735,
+          "macro_f1": 0.9054763540068498
+        },
+        "skillcorner": {
+          "spell_f1": 0.46427536610468206,
+          "macro_f1": 0.7605170686141272
+        },
+        "sportec": {
+          "spell_f1": 0.5782035928143712,
+          "macro_f1": 0.8689581517336675
+        }
+      },
+      "spell_first_rank": 1,
+      "weighted_rank": 1
+    },
+    {
+      "model": "gru_hgb",
+      "spell_f1": 0.5746313479956742,
+      "macro_f1": 0.8449230220876734,
+      "weighted_score": 0.655718850223274,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6837273991655076,
+          "macro_f1": 0.904970973845583
+        },
+        "skillcorner": {
+          "spell_f1": 0.46504469360200257,
+          "macro_f1": 0.7642116899369705
+        },
+        "sportec": {
+          "spell_f1": 0.5751219512195122,
+          "macro_f1": 0.8655864024804667
+        }
+      },
+      "spell_first_rank": 2,
+      "weighted_rank": 2
+    },
+    {
+      "model": "gru_lgbm",
+      "spell_f1": 0.5715894382718272,
+      "macro_f1": 0.842363116140436,
+      "weighted_score": 0.6528215416324099,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6810511756569848,
+          "macro_f1": 0.9007275086195623
+        },
+        "skillcorner": {
+          "spell_f1": 0.46468952811407904,
+          "macro_f1": 0.7617483967819522
+        },
+        "sportec": {
+          "spell_f1": 0.5690276110444177,
+          "macro_f1": 0.8646134430197936
+        }
+      },
+      "spell_first_rank": 3,
+      "weighted_rank": 3
+    },
+    {
+      "model": "hgb_lgbm",
+      "spell_f1": 0.5671076474216261,
+      "macro_f1": 0.8376277323580743,
+      "weighted_score": 0.6482636729025606,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6728010825439783,
+          "macro_f1": 0.8979160015236727
+        },
+        "skillcorner": {
+          "spell_f1": 0.45545868927989885,
+          "macro_f1": 0.7496261219550049
+        },
+        "sportec": {
+          "spell_f1": 0.5730631704410012,
+          "macro_f1": 0.8653410735955455
+        }
+      },
+      "spell_first_rank": 4,
+      "weighted_rank": 4
+    },
+    {
+      "model": "ordered_hgb",
+      "spell_f1": 0.5651738431581991,
+      "macro_f1": 0.8362684956762753,
+      "weighted_score": 0.6465022389136219,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6740841248303935,
+          "macro_f1": 0.9006689613944044
+        },
+        "skillcorner": {
+          "spell_f1": 0.45623030405248777,
+          "macro_f1": 0.7460474699419664
+        },
+        "sportec": {
+          "spell_f1": 0.565207100591716,
+          "macro_f1": 0.8620890556924549
+        }
+      },
+      "spell_first_rank": 5,
+      "weighted_rank": 6
+    },
+    {
+      "model": "bigru",
+      "spell_f1": 0.5649055311749245,
+      "macro_f1": 0.8382640766592291,
+      "weighted_score": 0.6469130948202159,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6649789029535864,
+          "macro_f1": 0.8920489162020738
+        },
+        "skillcorner": {
+          "spell_f1": 0.4664824501272908,
+          "macro_f1": 0.7639144216714401
+        },
+        "sportec": {
+          "spell_f1": 0.5632552404438964,
+          "macro_f1": 0.8588288921041732
+        }
+      },
+      "spell_first_rank": 6,
+      "weighted_rank": 5
+    },
+    {
+      "model": "lgbm_002",
+      "spell_f1": 0.5612869307249406,
+      "macro_f1": 0.8321914839920164,
+      "weighted_score": 0.6425582967050634,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6625832223701732,
+          "macro_f1": 0.887070472417899
+        },
+        "skillcorner": {
+          "spell_f1": 0.45193794716313945,
+          "macro_f1": 0.7490797816702645
+        },
+        "sportec": {
+          "spell_f1": 0.5693396226415094,
+          "macro_f1": 0.8604241978878856
+        }
+      },
+      "spell_first_rank": 7,
+      "weighted_rank": 8
+    },
+    {
+      "model": "tcn",
+      "spell_f1": 0.5605317351444566,
+      "macro_f1": 0.8407660911699011,
+      "weighted_score": 0.64460204195209,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.650137741046832,
+          "macro_f1": 0.8847350619024872
+        },
+        "skillcorner": {
+          "spell_f1": 0.4687780385492175,
+          "macro_f1": 0.7789815553366977
+        },
+        "sportec": {
+          "spell_f1": 0.5626794258373206,
+          "macro_f1": 0.8585816562705184
+        }
+      },
+      "spell_first_rank": 8,
+      "weighted_rank": 7
+    },
+    {
+      "model": "hgb",
+      "spell_f1": 0.5588208086341647,
+      "macro_f1": 0.8319240064607665,
+      "weighted_score": 0.6407517679821453,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6572569906790946,
+          "macro_f1": 0.8861223789902551
+        },
+        "skillcorner": {
+          "spell_f1": 0.45477669552964206,
+          "macro_f1": 0.7494468990965424
+        },
+        "sportec": {
+          "spell_f1": 0.5644287396937574,
+          "macro_f1": 0.860202741295502
+        }
+      },
+      "spell_first_rank": 9,
+      "weighted_rank": 9
+    },
+    {
+      "model": "lgbm_008",
+      "spell_f1": 0.5576955722208499,
+      "macro_f1": 0.8315506120823609,
+      "weighted_score": 0.6398520841793032,
+      "per_source": {
+        "metrica": {
+          "spell_f1": 0.6593874833555259,
+          "macro_f1": 0.8861732680550775
+        },
+        "skillcorner": {
+          "spell_f1": 0.45191728723433905,
+          "macro_f1": 0.7496040869630322
+        },
+        "sportec": {
+          "spell_f1": 0.5617819460726846,
+          "macro_f1": 0.8588744812289731
+        }
+      },
+      "spell_first_rank": 10,
+      "weighted_rank": 10
+    }
+  ],
+  "weight_sensitivity": [
+    {
+      "spell_weight": 0.0,
+      "macro_weight": 1.0,
+      "order": [
+        "gru_hgb_lgbm",
+        "gru_hgb",
+        "gru_lgbm",
+        "tcn",
+        "bigru",
+        "hgb_lgbm",
+        "ordered_hgb",
+        "lgbm_002",
+        "hgb",
+        "lgbm_008"
+      ]
+    },
+    {
+      "spell_weight": 0.25,
+      "macro_weight": 0.75,
+      "order": [
+        "gru_hgb_lgbm",
+        "gru_hgb",
+        "gru_lgbm",
+        "tcn",
+        "hgb_lgbm",
+        "bigru",
+        "ordered_hgb",
+        "lgbm_002",
+        "hgb",
+        "lgbm_008"
+      ]
+    },
+    {
+      "spell_weight": 0.5,
+      "macro_weight": 0.5,
+      "order": [
+        "gru_hgb_lgbm",
+        "gru_hgb",
+        "gru_lgbm",
+        "hgb_lgbm",
+        "bigru",
+        "ordered_hgb",
+        "tcn",
+        "lgbm_002",
+        "hgb",
+        "lgbm_008"
+      ]
+    },
+    {
+      "spell_weight": 0.7,
+      "macro_weight": 0.30000000000000004,
+      "order": [
+        "gru_hgb_lgbm",
+        "gru_hgb",
+        "gru_lgbm",
+        "hgb_lgbm",
+        "bigru",
+        "ordered_hgb",
+        "tcn",
+        "lgbm_002",
+        "hgb",
+        "lgbm_008"
+      ]
+    },
+    {
+      "spell_weight": 0.8,
+      "macro_weight": 0.19999999999999996,
+      "order": [
+        "gru_hgb_lgbm",
+        "gru_hgb",
+        "gru_lgbm",
+        "hgb_lgbm",
+        "bigru",
+        "ordered_hgb",
+        "tcn",
+        "lgbm_002",
+        "hgb",
+        "lgbm_008"
+      ]
+    },
+    {
+      "spell_weight": 1.0,
+      "macro_weight": 0.0,
+      "order": [
+        "gru_hgb_lgbm",
+        "gru_hgb",
+        "gru_lgbm",
+        "hgb_lgbm",
+        "ordered_hgb",
+        "bigru",
+        "lgbm_002",
+        "tcn",
+        "hgb",
+        "lgbm_008"
+      ]
+    }
+  ]
+}

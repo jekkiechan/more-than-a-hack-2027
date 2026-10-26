@@ -1,11 +1,25 @@
 # Possession experiment approaches
 
-Updated 2026-10-25. This record shares the approaches, evidence and next
-comparisons on `main`. Experimental implementation remains on
+Updated 2026-10-26. The current development head is the externally selected
+[50/50 GRU + ordered HGB baseline](BASELINE.md), with contextual HGB H/A
+attribution and Viterbi cost 3. Its external D-provider-holdout spell/macro is
+.5746/.8449; the frozen organizer five-minute check is .4889/.8568. The older
+PathCRF hybrid scored .5067/.6795 on that same small window, so competition
+superiority is unproven. Full-match performance remains unknown.
+
+The [temporal comparison](LEARNED_TEMPORAL.md),
+[ensemble results](TEMPORAL_ENSEMBLE.md),
+[PathCRF retention ablation](PATHCRF_ENSEMBLE.md), and
+[evaluation provenance](eval_set/README.md) are now available. TCN and BiGRU
+have been measured; LSTM remains untested. Realistic tracking corruption is a
+[proposed next experiment](DIRECTIONS.md), not part of the packaged head.
+
+The remainder preserves the earlier 2026-10-25 contextual experiment and its
+then-proposed follow-ups. That separate implementation remains on
 [`possession/robust-pipeline`](https://github.com/jekkiechan/more-than-a-hack-2027/tree/possession/robust-pipeline)
 in [draft PR #8](https://github.com/jekkiechan/more-than-a-hack-2027/pull/8).
-These experiments have not replaced the existing submission candidate, and no
-candidate was submitted to the organizers.
+That draft implementation is not included in the current baseline promotion.
+No candidate has been submitted to the organizers.
 
 The completed experiment is pinned to commit
 [`7433fef`](https://github.com/jekkiechan/more-than-a-hack-2027/commit/7433fef721a810a2f8af383ca29fad7d13fa28d1).
