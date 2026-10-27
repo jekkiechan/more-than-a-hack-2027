@@ -39,7 +39,7 @@ fitting; do not infer that a proposed study has already run.
 
 | Priority / state | Next action | Required evidence |
 | --- | --- | --- |
-| 1 — Running | [Restore player-slot dropout](../../experiments/GRU_SLOT_ROBUSTNESS.md) in the latest joint GRU with matched controls. In parallel, test 625-feature bidirectional LightGBM heads and fixed GRU probability blends. | Frozen full-pipeline provider holdouts, clean/stress guardrails, both fixed GRU seeds, complete paired cohorts and per-IoU diagnostics. |
+| 1 — Running | [Restore player-slot dropout](../../experiments/GRU_SLOT_ROBUSTNESS.md) in the latest joint GRU with matched controls. In parallel, test [625-feature LightGBM heads](../../experiments/TEMPORAL_LGBM.md), fixed GRU probability blends, and the user's larger-tree/smaller-learning-rate extension. | Frozen full-pipeline provider holdouts, clean/stress guardrails, both fixed GRU seeds, complete paired cohorts and per-IoU diagnostics. |
 | 2 — Data blocked | Obtain an independent labeled broadcast match; follow [private issue #4](https://github.com/jekkiechan/mtah-data/issues/4) for rights, blind annotation, tracking/alignment and sealed confirmation. | PFF access was requested; response not established here. Audio/video or model-generated labels do not supply independent H/A/D ground truth. |
 | 3 — Ready to design | Calibrate pilot player defects and obtain independent ball-fusion confidence before integration. | Separate label-free calibration/audit partitions, preserved native masks, position-quality evidence and external possession evaluation. Coverage alone is insufficient. |
 | 4 — Evidence led | Choose boundary or decoder changes from the five-IoU curve and split/merge diagnostics after the current model comparisons. | Preserve the official greedy matcher and native X masks. Earlier short-spell, duration and decoder studies remain relevant; do not repeat failed arms unchanged. |
@@ -55,6 +55,7 @@ a failed provider or corruption guardrail.
 
 | PR / inspected head | State at review |
 | --- | --- |
+| [#18](https://github.com/jekkiechan/more-than-a-hack-2027/pull/18), `possession/temporal-spell-robustness` | Draft follow-up. Metric audit and explainer completed; 30 declared models and 420 new evaluation cells across the original comparisons and user-requested capacity extension. Training is running. Initial code CI passed. |
 | [#16](https://github.com/jekkiechan/more-than-a-hack-2027/pull/16), `possession/live-gap-had-gru`, `8c704aa` | Still draft. Original private archive restored and all 143 manifest files verified, including 18 external arrays. Follow-up player-only D checkpoints remain absent from the remote branch; new controls are reproduced explicitly rather than claimed restored. |
 | [#13](https://github.com/jekkiechan/more-than-a-hack-2027/pull/13), `possession/gap-results`, `33c03ca` | Draft reports/aggregates only; experimental implementation excluded. |
 | [#11](https://github.com/jekkiechan/more-than-a-hack-2027/pull/11), `possession/spell-balanced-attribution`, `b93ce36` | Draft attribution study; no adoption. |

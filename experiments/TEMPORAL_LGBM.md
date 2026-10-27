@@ -70,7 +70,7 @@ it causal validation importance.
 
 Let the GRU output probabilities be H, A and D, and let the LightGBM D
 probability be L. The GRU's conditional live-team probability is
-`q = H / (H + A)` (neutral .5 only when both live probabilities are zero).
+`q = H / (H + A)` (neutral .5 when their sum is at most 1e-12).
 For each fixed GRU seed, score two predeclared settings:
 
 - D replacement: `p = L`.

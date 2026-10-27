@@ -67,7 +67,7 @@ def verify_means(rows, summaries, identity, stress_name, metric_names):
                 raise ValueError(f'Equal-provider mean mismatch: {metric}')
 
 
-def verify(gru, lgbm, output):
+def verify(gru, lgbm, output, capacity=None):
     a, b = read(gru / 'report.json'), read(lgbm / 'report.json')
     model_counts = {'gru': verify_frozen(gru), 'lightgbm': verify_frozen(lgbm)}
     expected_gru = {(s, p.stem, v, arm, seed)
@@ -123,17 +123,45 @@ def verify(gru, lgbm, output):
             for metric in metric_names:
                 if r[metric] != reference[metric]:
                     raise ValueError(f'Reused control differs: {metric}')
+    capacity_count = 0
+    report_paths = [gru/'report.json', lgbm/'report.json']
+    if capacity is not None:
+        c = read(capacity/'report.json')
+        model_counts['capacity_extension'] = verify_frozen(capacity)
+        if model_counts['capacity_extension'] != 6:
+            raise ValueError('Capacity extension requires six frozen models')
+        expected_capacity = {(s, p.stem, v, config, seed, weight)
+                             for s, split in dead_transfer.SPLITS.items() for p in split['eval']
+                             for v in ('clean', 'corrupt_1', 'corrupt_2')
+                             for config in ('context_63_slow', 'context_127_slow')
+                             for seed in (2026, 2027) for weight in (.5, 1.)}
+        actual_capacity = {(r['source'], r['match'], r['view'], r['config'], r['seed'], r['weight']) for r in c['rows']}
+        if len(c['rows']) != len(expected_capacity) or actual_capacity != expected_capacity:
+            raise ValueError('Incomplete or duplicated capacity cohort')
+        if c['original_report_sha256'] != digest(lgbm/'report.json') or c['controls'] != b['controls']:
+            raise ValueError('Capacity extension reused different original evidence')
+        if c['original_regularized_rows'] != [r for r in b['rows'] if r['config'] == 'context_regularized']:
+            raise ValueError('Capacity extension comparator differs')
+        verify_means(c['rows'] + c['original_regularized_rows'] + c['controls'], c['summaries'],
+                     ('config', 'weight', 'seed'), 'stress', metric_names)
+        for r in c['rows']:
+            reference = controls[(r['source'], r['match'], r['view'], r['seed'])]
+            if (r['n_gt_spells'], r['graded_frames']) != (reference['n_gt_spells'], reference['graded_frames']):
+                raise ValueError('Capacity extension grading differs')
+        capacity_count = len(c['rows'])
+        report_paths.append(capacity/'report.json')
     # Preserve every source/input/model guard in the reports, and report actual
     # score populations separately from the additional verified archived rows.
     result = dict(verified_utc=datetime.now(timezone.utc).isoformat(),
                   verifier_sha256=digest(__file__), model_counts=model_counts,
-                  new_scored_rows={'gru': len(a['rows']), 'lightgbm': len(b['rows'])},
+                  new_scored_rows={'gru': len(a['rows']), 'lightgbm': len(b['rows']),
+                                   'capacity_extension': capacity_count},
                   archived_baseline_rows=len(a['archived_comparators']),
                   reused_gru_control_rows=len(b['controls']),
                   independent_summary_and_grading_checks=True,
                   valid_native_gru_probabilities=True,
                   organizer_labels_read=False,
-                  reports={str(p.relative_to(ROOT)): digest(p) for p in (gru/'report.json', lgbm/'report.json')})
+                  reports={str(p.relative_to(ROOT)): digest(p) for p in report_paths})
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('x') as stream:
         json.dump(result, stream, indent=2)
@@ -145,6 +173,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gru', type=Path, default=ROOT/'data/experiments/gru_slot_robustness_v2')
     parser.add_argument('--lgbm', type=Path, default=ROOT/'data/experiments/temporal_lgbm_v1')
+    parser.add_argument('--capacity', type=Path, default=ROOT/'data/experiments/capacity_lgbm_v1')
     parser.add_argument('--output', type=Path, default=ROOT/'data/experiments/temporal_followup_verification.json')
     args = parser.parse_args()
-    verify(args.gru, args.lgbm, args.output)
+    verify(args.gru, args.lgbm, args.output, args.capacity)

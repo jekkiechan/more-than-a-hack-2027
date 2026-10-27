@@ -43,6 +43,7 @@ no new organizer scoring or baseline promotion is part of this work.
 | `spell-metric-audit` — completed | Unchanged official objective; 30 saved external predictions reproduce. Strict-IoU gains, stress losses and substantial SkillCorner boundary censoring motivate expanded diagnostics. | [Metric audit](../../experiments/SPELL_METRIC_AUDIT.md), [aggregate](../../experiments/results/spell_metric_audit.json) |
 | `gru-slot-robustness-v2` — running | Restore raw player-slot dropout in latest player-only D joint GRU; two seeds, three full-pipeline provider holdouts, 12 fits and 60 new paired cells. Aborted v1 preserves its pre-fit mask correction receipt. | [GRU study](../../experiments/GRU_SLOT_ROBUSTNESS.md) |
 | `temporal-lgbm-v1` — running | Matched 67 versus 625 features plus two regularization settings; 12 fits, 240 decoded D replacement/blend cells against the same GRU controls. | [Feature implementation](../../experiments/temporal_lgbm.py), [frozen runner](../../experiments/temporal_lgbm_experiment.py) |
+| `capacity-lgbm-v1` — running | User-requested 63 leaves/depth 8 and 127 leaves/depth 10, learning rate .01 with 1,280 trees; six fits and 120 new cells with the same 625 features, training rows and controls. Declared before any original-study scores were opened. | [Capacity extension](../../experiments/capacity_lgbm_experiment.py), [LightGBM study](../../experiments/TEMPORAL_LGBM.md) |
 
 ## Supporting references
 
