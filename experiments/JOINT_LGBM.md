@@ -404,5 +404,9 @@ predictions are complete and sealed. The [independent verification receipt](resu
 passed checks of all 300 full-vector probability blends, 15 representative
 decodes, exact cohorts/summaries/guardrails and the model/input seals. Together
 with the GRU study, it covers 24 models and 360 new evaluation rows. Private
-artifact restore provenance is maintained in the follow-up artifact manifest;
-the adopted baseline manifest remains unchanged.
+artifact provenance is recorded in the [follow-up artifact receipt](results/temporal_followup_artifacts.json).
+The complete 738-file archive passes local size/SHA256 checks, but its upload
+is blocked by automatic approval review pending explicit user authorization
+for the private destination and payload. Earlier GRU and partial tree uploads
+were remotely verified; the complete archive is not yet remotely restorable.
+The adopted baseline manifest remains unchanged.
