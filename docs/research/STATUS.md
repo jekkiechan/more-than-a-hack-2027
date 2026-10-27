@@ -57,6 +57,9 @@ a failed provider or corruption guardrail.
 
 ## Open work and artifacts
 
+The user separately requested a [competition check of four temporal candidates](../../experiments/TEMPORAL_COMPETITION_CHECK.md). Its new gate is frozen and pooled fits are running; no new competition score is available yet. The parallel confidence-abstention transfer investigation remains external-only and cannot alter that candidate set.
+
+
 The completed confidence-abstention cache is uploaded on private
 `mtah-data` branch `experiments/confidence-abstention-v1` at `f240858`;
 all 213 files were independently downloaded and hash-verified. The

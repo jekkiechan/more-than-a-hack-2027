@@ -1,6 +1,6 @@
 # Requested competition check of temporal models
 
-Status: preparing the fixed diagnostic. The user requested “check comp as well”
+Status: frozen; pooled fits running. The user requested “check comp as well”
 after reviewing the completed full-provider holdout results. This is a separate
 user-requested check; previous public gates and declarations remain closed.
 
@@ -57,6 +57,8 @@ The separately requested confidence-abstention investigation stays on external
 development data and does not modify this candidate set.
 
 ## Results
+
+[Frozen declaration](results/temporal_competition_declaration.json). All 142 preflight tests passed; an additional inference-mask regression brings the focused diagnostic suite to eight passing tests.
 
 Pending the fixed fits and sealed predictions. Output directory:
 `data/experiments/temporal_competition_v1`. Aggregate report after the one-time

@@ -22,6 +22,10 @@ Detailed reports own their original selection rules and aggregate JSON paths.
 
 ## Draft-only evidence
 
+| Study | State | Evidence |
+| --- | --- | --- |
+| `temporal-competition-check` | User-requested, frozen four-candidate diagnostic; pooled fits running. No new public score yet. | [Plan](../../experiments/TEMPORAL_COMPETITION_CHECK.md), [declaration](../../experiments/results/temporal_competition_declaration.json) |
+
 Links pin inspected commits. These modules/reports may not exist on main;
 check live PR state before resuming.
 
