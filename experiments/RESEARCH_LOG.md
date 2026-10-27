@@ -1,28 +1,9 @@
-# Possession experiment approaches
+# Contextual pipeline and corruption history
 
-Updated 2026-10-26. The current working package is
-[GRU + ordered HGB with 25% ball-gap team training](BASELINE.md), adopted as
-a user-authorized robustness tradeoff. Its existing external D-provider-holdout
-spell/macro is .5740/.8439 clean and .4315/.7866 on the earlier composite stress
-view, versus .5746/.8449 and .4205/.7699 previously. The existing organizer
-diagnostic is .5257/.8588 on 17 possessions; it is descriptive, and full-match
-competition performance remains unknown.
-
-The [temporal comparison](LEARNED_TEMPORAL.md),
-[ensemble results](TEMPORAL_ENSEMBLE.md),
-[PathCRF retention ablation](PATHCRF_ENSEMBLE.md), and
-[evaluation provenance](eval_set/README.md) are now available. TCN and BiGRU
-have been measured; LSTM remains untested. The composite and targeted corruption
-batches are complete. The [first three-priority tracking pilot](TOP_THREE_PILOT.md)
-adds state-conditioned views, a broadcast coverage audit and matched team-feature
-comparisons. Those new prototypes do not alter the packaged head.
-
-The remainder preserves the earlier 2026-10-25 contextual experiment and its
-then-proposed follow-ups. That separate implementation remains on
-[`possession/robust-pipeline`](https://github.com/jekkiechan/more-than-a-hack-2027/tree/possession/robust-pipeline)
-in [draft PR #8](https://github.com/jekkiechan/more-than-a-hack-2027/pull/8).
-That draft implementation is not included in the current baseline promotion.
-No candidate has been submitted to the organizers.
+Historical 2026-10-25/26 readouts follow. Current adoption and next work live in
+[STATUS](../docs/research/STATUS.md); use the
+[experiment index](../docs/research/EXPERIMENTS.md) for subsequent studies.
+The contextual implementation is separate from the later adopted package.
 
 The completed experiment is pinned to commit
 [`7433fef`](https://github.com/jekkiechan/more-than-a-hack-2027/commit/7433fef721a810a2f8af383ca29fad7d13fa28d1).
