@@ -48,6 +48,24 @@ The geometry arm adds 23 different measurements:
   braking fraction, accelerating fraction and observation coverage distinguish
   synchronized slowing from restarting. Unknown observations stay unknown.
 
+For player $i$, let $r_i$ be ball position minus player position, $v_i$
+be ball velocity minus player velocity, and $d_i=\lVert r_i\rVert$.
+The control proxy is
+
+$$c_i=\exp[-\tfrac12(d_i/1.8)^2]\exp[-\tfrac12(\lVert v_i\rVert/5)^2].$$
+
+The team score takes the maximum over every valid observed player. Its
+normalized home margin is $(c_H-c_A)/(c_H+c_A+0.001)$ and ambiguity is
+$2\min(c_H,c_A)/(c_H+c_A+0.001)$. Both teams must have valid evidence;
+a missing opponent does not imply uncontested control.
+
+For valid relative speed above 0.5 m/s, closest approach uses
+$\tau_i=\operatorname{clip}(-r_i\cdot v_i/\lVert v_i\rVert^2,0,2)$ and miss
+distance $\lVert r_i+\tau_i v_i\rVert$. Each team contributes the minimum
+miss distance, its time and improvement over current distance. Deterministic
+tie handling preserves roster permutation invariance. This constant-velocity
+projection is a short-horizon cue, not a simulated interception outcome.
+
 These are tracking-derived physical proxies, not possession labels. New
 geometry uses native observation masks and valid native derivatives, rejects
 implausible velocities/accelerations, is invariant to roster-slot order, and
@@ -77,6 +95,19 @@ context resets at match, half and timestamp breaks. Every raw team swap occurs
 before nonlinear engineering; the explicit feature manifest separately records
 paired, signed and even transformations, including the fact that a signed
 margin's standard deviation must not change sign.
+
+## Feature coverage audit
+
+A [read-only audit of the prepared training matrices](results/joint_lgbm_feature_coverage.json)
+found no entirely missing feature in any fold. There were 6, 13 and 6 columns
+constant wherever observed in the Metrica-, SkillCorner- and Sportec-excluded
+folds respectively. Weighted instantaneous home control availability was
+68.6%, 57.2% and 54.2%; prior reliable-contact evidence was available on
+83.3%, 70.0% and 77.0%, and future evidence on 82.4%, 69.8% and 76.1%.
+Ordered context means had weighted finite coverage of 87.6%, 82.5% and 81.0%.
+These checks establish that the engineered inputs are populated and that
+contact anchors extend evidence through observation gaps. They do not establish
+predictive accuracy or causal feature importance.
 
 ## Training and evaluation protocol
 

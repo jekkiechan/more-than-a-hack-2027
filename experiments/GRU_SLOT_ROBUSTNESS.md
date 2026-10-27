@@ -206,6 +206,51 @@ Mean F1 uses the declared equal-provider aggregation. Counts sum the ten clean s
 
 The six regenerated controls have identical parameter, window and optimizer-update counts to the prior player-only D controls. Their checkpoint byte hashes differ. Across all thirty matched scored cells, the maximum absolute spell F1 difference from the archived results is .000435, macro F1 .000458 and D F1 .000607; reference spell counts are identical, and predicted spell count differs by at most one. The new augmentation effects use the newly reproduced paired controls. See the [saved aggregate reproduction audit](results/gru_control_reproduction.json).
 
-The next robustness hypothesis should isolate transient regional player loss or track fragmentation from whole-block slot removal, with each feature recomputed from the corrupted raw inputs. Compare the corruption components individually before combining them. Evaluate whether the model mistakes loss of visible player motion for dead play using D precision/recall, erased possessions, short-spell recall and per-IoU matches. Keep clean and per-provider guardrails; mean stress spell alone hid a Sportec regression and an unfavorable second seed here. This is a proposed follow-up, not another completed experiment.
+The next bounded robustness proposal isolates native player-frame blanking,
+described below. It preserves the current clean and provider guardrails and
+uses paired composite views to test the suspected mechanism. Mean stress spell
+alone hid a Sportec regression and an unfavorable second seed here.
 
-No additional GRU fits, threshold adjustments, seed selection or organizer scoring followed this readout. The twelve checkpoints, fifteen shared input views and sixty native predictions/probabilities are verified locally under the ignored v2 run directory. Remote artifact preservation is handled separately; this report does not claim a remote restore until a verified receipt exists.
+No additional GRU fits, threshold adjustments, seed selection or organizer
+scoring followed this readout. The private artifact receipt below verifies the
+completed model and evaluation files.
+
+### Verified private artifact availability
+
+All 12 GRU checkpoints, native probability/prediction outputs, evaluation caches
+and frozen receipts are preserved on private branch
+`experiments/temporal-spell-robustness-v1` in `jekkiechan/mtah-data`. A fresh remote
+clone and Git LFS fetch verified all **253 manifest files** (143 restored
+dependencies plus 110 new run files). Regenerable training feature caches are
+omitted. The [artifact receipt](results/gru_slot_robustness_artifacts.json) binds
+the private commit and manifest hash and provides the restore command.
+
+### Motion support diagnosis on 27 October 2026
+
+A read-only audit of the fifteen saved input views finds a specific mismatch with whole-block slot dropout. It uses only features, sampling indices and native periods: all five development matches at 5 Hz in positive native periods, including ungraded and unknown-label margins. Match-view fractions are averaged equally within each provider. No label or prediction fields, new inference or metric scoring enter this input-support audit.
+
+| Provider | Clean low or missing support | Stress low or missing support | Clean missing mean speed | Stress missing mean speed |
+| --- | ---: | ---: | ---: | ---: |
+| Sportec | 0.00% | 14.32% | 0.00% | 9.84% |
+| Metrica | 0.00% | 14.14% | 0.00% | 9.75% |
+| SkillCorner | 38.05% | 46.68% | 38.04% | 43.88% |
+
+Low or missing support means stored `D_valid_motion_fraction` is nonfinite or below .25; that feature divides finite-speed count by visible-position count. Missing mean speed means `D_speed_mean` is nonfinite. The [aggregate audit](results/gru_motion_support_audit.json) records exact counts, definitions, cache hashes and source hashes. These are not error rates on the graded population.
+
+[Player-motion features](refine_domain.py) use native-frame `np.gradient`, removing nonfinite velocities and speeds above 12 m/s. The [composite generator](tracking_corruption.py) blanks all players and the ball in 2–8% of native frames, drawing one rate per ten-second block. An isolated blank damages both adjacent central derivatives. For otherwise complete interior frames, the ideal expected rates are 9.72% with a missing derivative neighbor and 14.177% with a missing center or neighbor, close to Sportec/Metrica's observed shift. Jumps, regional gaps and fragmentation also affect support. Whole-block slot dropout leaves survivors' temporal sampling intact.
+
+**Missing speed is not encoded as measured zero speed.** [Normalization](learned_temporal.py) gives missing values a standardized zero and finite-mask zero; measured zero speed retains mask one and its own standardized value. [Rolling means](supervised.py) ignore NaNs. The hypothesis is a learned response to changed availability, not an implementation equating missingness with stopped motion. This label-free shift does not establish which corruption causes false D predictions.
+
+Broad augmentation has already been tested. [Composite D-head training](REALISTIC_CORRUPTION.md) changed clean/stress spell .5746/.4205 to .5718/.4370; [25% player/coordinate replacement](LIGHT_CORRUPTION.md) gave .5729/.4386. Both bundled defects and held out only D providers, with pooled H/A. The [unrestricted joint live-gap GRU](LIVE_GAP_HAD_GRU.md) improved stress .3976→.4278 but reduced clean spell .6272→.6002 and macro .7883→.7289, retaining severe D transfer failure. Those results do not justify repeating the same combined recipes unchanged.
+
+### Proposed native frame blanking experiment
+
+This proposed comparison isolates a mechanism rather than adding another broad corruption bundle:
+
+- **Training arm:** retain the original player-only D factorized GRU control's ball-gap schedule, features, normalization procedure, capacity and update budget. Replace a fixed 25% of whole input windows with native-frame player-only blanking using the existing 2–8% per-ten-second rule. Preserve the ball, retained coordinates, native masks, labels and time boundaries. Add no regional dropout, jitter or identity reassignment. Recompute features from raw tracking; never mask computed 5 Hz tensors or splice views inside a window.
+- **Mechanism test:** retain clean and both frozen composite views. Add the same two composites with only the final player-frame blanking assignment omitted. Consume identical random draws and retain ball blanking and every other defect. This isolates the player-sampling component conditional on the other simulated defects.
+- **Budget:** six new fits, two fixed seeds and three full H/A-and-D provider holdouts; reuse six verified control models. Five views give fifty candidate cells and twenty new counterfactual control cells, plus thirty reused control cells: seventy new evaluations. Seal models first; no dose, derivative, threshold or decoder sweep and no public scoring.
+- **Decision:** preserve the existing baseline clean/per-provider/stress guardrails in both seeds, plus no more than .01 clean spell loss against the paired joint control. Full-composite official spell F1 remains the robustness endpoint. Test whether removing player-frame blanking reduces P(D) on reference-live frames and recovers spell matches; without that recovery, the support shift alone cannot establish this cause.
+- **Diagnostics:** D precision/recall, live-frame P(D), support-conditioned false-D rates, per-IoU matches, erased/fragmented possessions, short-spell recall and graded-edge censoring. Report all providers and seeds with unchanged grading. Synthetic gains still require independent broadcast confirmation.
+
+The reviewed studies did not isolate this component in the constrained joint GRU with an otherwise-identical composite counterfactual. A mask-aware derivative arm is a later alternative if the mechanism test supports it; changing derivatives and augmentation together would prevent attribution.

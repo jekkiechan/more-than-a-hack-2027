@@ -6,6 +6,15 @@ This dated review explains the original preprocessing hypotheses; its
 conclusions describe evidence available on 2026-10-26, before the later joint
 GRU D-repair study. It does not establish today's bottleneck for every model.
 
+The [2026-10-27 matched GRU robustness study](GRU_SLOT_ROBUSTNESS.md) now
+shows a different failure under corrupted external tracking: dead-ball
+overprediction, with high D recall and low precision. Slot dropout preserves
+clean spell F1 but fails the robustness guardrail. The historical team-only
+bottleneck diagnosis below must not be generalized to that joint GRU. The
+current [full H/A/D LightGBM study](JOINT_LGBM.md) isolates new geometry,
+ordered before/after features and larger capacity before testing full-vector
+ensembles; its eventual decisions belong in STATUS.
+
 The [completed tracking pilot](TOP_THREE_PILOT.md) tested state-conditioned
 views, broadcast recovery and gap/de-duplication features. It found no matched
 overall spell gain; calibration and ball confidence remain unresolved. Read its
