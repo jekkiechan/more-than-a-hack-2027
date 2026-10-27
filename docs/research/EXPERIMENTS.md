@@ -18,6 +18,7 @@ Detailed reports own their original selection rules and aggregate JSON paths.
 | `composite-corruption` | 120 evaluations; stress gains with clean loss. No adoption. | [REALISTIC_CORRUPTION](../../experiments/REALISTIC_CORRUPTION.md) |
 | `light-corruption` | 90 new + 30 reused comparisons; ball-only teams explicitly adopted as robustness tradeoff. D replacements not adopted. | [LIGHT_CORRUPTION](../../experiments/LIGHT_CORRUPTION.md), [baseline improvements](../../experiments/BASELINE_IMPROVEMENTS.md), [BASELINE](../../experiments/BASELINE.md) |
 | `tracking-pilot` | 80 pooled development evaluations; matched gap/suppression features lose overall spell. Fusion quality/player calibration unresolved. | [TOP_THREE_PILOT](../../experiments/TOP_THREE_PILOT.md) |
+| `confidence-abstention` | 135 evaluations with exact baseline parity; four X thresholds and matched hold controls all lose stress spell. Primary .60 improves clean spell slightly but loses macro/short-spell recall. No adoption. | [CONFIDENCE_ABSTENTION](../../experiments/CONFIDENCE_ABSTENTION.md), [declaration](../../experiments/results/confidence_abstention_declaration.json), [results](../../experiments/results/confidence_abstention.json) |
 
 ## Draft-only evidence
 

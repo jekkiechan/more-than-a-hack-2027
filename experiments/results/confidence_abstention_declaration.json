@@ -1,0 +1,317 @@
+{
+  "study": "confidence_abstention_v1",
+  "frozen_utc": "2026-10-27T07:26:47.909706+00:00",
+  "source_commit": "5005115102842a8e938dd11a44855654d764f597",
+  "hypothesis": "Suppressing low-confidence decoded labels improves spell F1 without material clean/stress regressions",
+  "primary_arm": "abstain_60",
+  "sensitivity_thresholds": [
+    0.5,
+    0.6,
+    0.7,
+    0.8
+  ],
+  "arms": [
+    "baseline",
+    "abstain_50",
+    "abstain_60",
+    "abstain_70",
+    "abstain_80",
+    "hold_50",
+    "hold_60",
+    "hold_70",
+    "hold_80"
+  ],
+  "confidence": "Uncalibrated joint H/A/D probability assigned to the Viterbi-selected class; strict < threshold",
+  "hold_control": "Same rejected frames, explicitly filled within input-only time blocks; first accepted state backfills leading gaps; no accepted state retains baseline",
+  "protocol": "D-only provider holdout, pooled unchanged ballgap25 H/A; five previously exposed external development matches; not full-pipeline holdout or confirmation",
+  "splits": {
+    "sportec": {
+      "train": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH"
+      ],
+      "eval": [
+        "J03WOY"
+      ]
+    },
+    "metrica": {
+      "train": [
+        "metrica_1",
+        "metrica_2"
+      ],
+      "eval": [
+        "metrica_3"
+      ]
+    },
+    "skillcorner": {
+      "train": [
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "eval": [
+        "skillcorner_had_1996435",
+        "skillcorner_had_1996436",
+        "skillcorner_had_2006229"
+      ]
+    }
+  },
+  "source_semantics": {
+    "sportec": {
+      "labels": "provider BallStatus/BallPossession",
+      "quality": "provider_reference",
+      "shortcut": "Ball coordinates frozen during dead play"
+    },
+    "metrica": {
+      "labels": "derived H/A/D from human event stream; inferred dead intervals",
+      "quality": "event_derived_silver",
+      "shortcut": "Ball mostly blanked only during dead play"
+    },
+    "skillcorner": {
+      "labels": "provider team possession + interruption-derived D cores; 1 s X margins",
+      "quality": "event_derived_silver",
+      "shortcut": "Broadcast cuts reduce player/ball visibility"
+    }
+  },
+  "grading": "Original native X and SkillCorner <12 observed-player filter fixed before corruption; no target-dependent inference; preserve period/timestamp breaks",
+  "views": [
+    "clean",
+    "corrupt_1",
+    "corrupt_2"
+  ],
+  "seeds": {
+    "J03WOY": {
+      "corrupt_1": 1604061458,
+      "corrupt_2": 2133599334
+    },
+    "metrica_3": {
+      "corrupt_1": 1259074752,
+      "corrupt_2": 1058401138
+    },
+    "skillcorner_had_1996435": {
+      "corrupt_1": 1047835113,
+      "corrupt_2": 699202090
+    },
+    "skillcorner_had_1996436": {
+      "corrupt_1": 1050843619,
+      "corrupt_2": 3332348768
+    },
+    "skillcorner_had_2006229": {
+      "corrupt_1": 1536072514,
+      "corrupt_2": 4130107613
+    }
+  },
+  "calibration": {
+    "ball_missing_fraction": 0.40692572565263097,
+    "gap_edges_seconds": [
+      0.08,
+      0.2,
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0,
+      30.0
+    ],
+    "gap_bin_probability": [
+      0.08666666666666667,
+      0.02,
+      0.006666666666666667,
+      0.0,
+      0.006666666666666667,
+      0.35333333333333333,
+      0.5266666666666666
+    ],
+    "gap_count": 150,
+    "gap_quantiles_seconds": [
+      0.47200000000000003,
+      10.72,
+      30.0,
+      30.0
+    ],
+    "visible_player_quantiles": [
+      18.0,
+      21.0,
+      22.0,
+      22.0,
+      22.0
+    ],
+    "calibration": "Unlabeled tracking only; missingness does not identify true occlusion causes",
+    "coordinate_errors": "Assumed ranges; no coordinate ground truth available"
+  },
+  "corruption_recipe": {
+    "version": 1,
+    "clean_training_weight": 0.5,
+    "ball_gap": "alternating observed/gap runs; empirical duration histogram, capped at 30 s",
+    "regional_dropout": {
+      "interval_seconds": [
+        35.0,
+        70.0
+      ],
+      "duration_seconds": [
+        1.0,
+        5.0
+      ],
+      "radius_m": [
+        10.0,
+        22.0
+      ]
+    },
+    "player_dropout": {
+      "interval_seconds": [
+        40.0,
+        100.0
+      ],
+      "duration_seconds": [
+        0.2,
+        3.0
+      ]
+    },
+    "drift": {
+      "knot_seconds": 20.0,
+      "translation_sd_m": 0.35,
+      "scale_sd": 0.003
+    },
+    "jumps": {
+      "interval_seconds": [
+        60.0,
+        120.0
+      ],
+      "duration_seconds": [
+        0.3,
+        1.5
+      ],
+      "sd_m": 1.0
+    },
+    "fragmentation": {
+      "interval_seconds": [
+        60.0,
+        120.0
+      ],
+      "reacquisition_seconds": [
+        0.2,
+        1.0
+      ]
+    },
+    "sampling": {
+      "block_seconds": 10.0,
+      "missing_probability": [
+        0.02,
+        0.08
+      ]
+    },
+    "scope": "All applied before features; timestamps, frame grid and labels unchanged; no cross-block interpolation"
+  },
+  "calibration_status": "Reused frozen label-free organizer tracking gap profile, no new organizer access; no independent tracking-quality audit",
+  "training": "None; restored checkpoints and normalization unchanged, original fixed training seeds",
+  "budget": "15 prediction cells, 9 arms each = 135 evaluations; 0 fits; no added arms after scores",
+  "primary": "Official spell F1, macro F1 for exact ties; fixed auxiliary .7 spell + .3 macro",
+  "aggregation": "Average stress seeds within match, matches within provider, then equal provider weights",
+  "guardrails": {
+    "clean_spell_delta_min": 0.0,
+    "stress_spell_delta_min": 0.0,
+    "macro_delta_min_each_view": -0.005,
+    "provider_spell_delta_min_each_view": -0.02
+  },
+  "decision": "No automatic adoption. Primary hypothesis passes only if abstain_60 improves clean spell and meets every guardrail. Sensitivity arms are exploratory.",
+  "diagnostics": [
+    "abstention rate",
+    "changed label rate",
+    "D precision/recall",
+    "spell counts",
+    "short-spell recall IoU .5",
+    "typed boundary F1/latency at .5 seconds",
+    "abstention versus hold temporal differences from native reference X gaps"
+  ],
+  "baseline_parity": "Every cell must match archived ball_team25 provider-holdout spell/macro within 1e-12 before any candidate scoring",
+  "source_sha256": {
+    "experiments/audit_dataset.py": "4e445f5a2ffff5fd6b9f3f6892466641f6f3c381fad7d150968e085d9d33fb32",
+    "experiments/benchmark.py": "938d46301a147eff99fc3b39d09bf42186403e1264494a7dad5da152bfbae964",
+    "experiments/broadcast_fusion.py": "2e69e37234e6bb6418a29c96879a335388ba06803ec339316a51124b130ffc97",
+    "experiments/broadcast_quality.py": "09b4be9f95d5c05374f4d75d002919fcffcc07773b7238b3caeabaa6e7525e22",
+    "experiments/challenge.py": "204ac7ff7a8e530facd9e19fc7d264f2eb35698df1cda60bf32c7f6a720abba1",
+    "experiments/challenge_pathcrf.py": "4813a0bfa3d5e4b4c20de8885de526c53ccf72a57d50a7eb5ecb746faf917778",
+    "experiments/compare_pathcrf.py": "8a796b9808054ebc6725124624a5e60e5c27a89ca799800db25c961da8236edc",
+    "experiments/confidence_abstention.py": "9d4afa08ec49f4f96f810469233467a3a63b552861cbb97aeaa2b8af1bc1af8c",
+    "experiments/corruption_experiment.py": "07b357b7f9f99af444f110d576eaba8e791134c07b1dfc28d229fc242a6c22e7",
+    "experiments/current_baseline.py": "cffb345cbbd06e3faac283ada279eab9aabb41992736c9decac17ff083645953",
+    "experiments/datasets.py": "f0d3a4eeda1d0b970fe7677a24ad752952d44a403be0ccd7bcd7469a05e4e958",
+    "experiments/dead_transfer.py": "f38aa33ddf8b7619973cadbe99b9c16c99e37cfa466aa8a5e2a05bb456ad3186",
+    "experiments/error_analysis.py": "5d06f61f87a5ca6b831183c56ea97a2a6cffaff12d6db47cc5d9a318ab392a1f",
+    "experiments/export_reports.py": "b296b4601717602327e1bd1f934063904d8597cec143892cf9dcf93ff68722f1",
+    "experiments/freeze_pathcrf.py": "feb77b5421b1ac6805881f1e6111a519b8458c7036d222bb2d8d73947488c0a4",
+    "experiments/headroom.py": "eaf264d5aef604765df168b22d5a1573d124b6045ca6a5282609155126eed32d",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/light_candidate.py": "0cb31f4041c156413bc43bb38b5a5156500eb7a2da76c8836c14608842b3bedb",
+    "experiments/light_corruption.py": "29f1a5759112172af99d30c59e2e39fef3798b03ec9ee32640e7d7e81fbc0ac4",
+    "experiments/light_public_check.py": "0f0e745523d1bf4a1563ae8b21ae199b3c994c975ff96e71d770039a1b9ca3d1",
+    "experiments/metrica_open.py": "a0df5791a3ac3d5a1c22cd73fe51f1e522c8f1cabeefd759c9161b8bdde1861e",
+    "experiments/metrics.py": "36a8ca48af6b21f4a25957306bf80efdf603917cec9746a886b1090e70dc2270",
+    "experiments/model_scorecard.py": "9804834a76aaf3aa900efbbabf7badad276c2d5f2da80d538ae6d3c5827fd7b0",
+    "experiments/multisource_eval.py": "1e166cf7169c81ca1393a8cd503f8fd99891ce7693156c73133f8002c847f592",
+    "experiments/pathcrf_ensemble.py": "9f3607aec8a067a088b8f593e122ed4b4e7ab299afc2a7828aea123ca62abca2",
+    "experiments/pathcrf_eval.py": "26a6a192d555fdf6ebea0b2d174fac5c670775ea9782f92b5f20d338a2df09d5",
+    "experiments/pathcrf_visibility.py": "c9db0070a36144320b2efe004c09e000dcf203625978691bea82b36dd8aee7ed",
+    "experiments/plot_results.py": "7632463dc7748412a9883da3e55a07c2acbca7081e9659e7af0b743cfa17e1bf",
+    "experiments/prepare_corruption_cache.py": "a709ac480dbc44bfe89c9cf1944893aab9c7b9e00d4c301cee689130fd822ec0",
+    "experiments/promote_ballgap_baseline.py": "77412bb52e9bfef62aa83da02d8a71ef4543c0f1839702f484fcf098f72a862e",
+    "experiments/refine_combined.py": "0e7611042d5aef37324aca3bdda691a8928f3ad78e2027dd647b35b8c9bd5b47",
+    "experiments/refine_decode.py": "710efe78a070b847b278507505b9714209b2541c329e867973d45f560180c87d",
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/refine_ensemble.py": "6737cf7b49814c87a72e8e335ed3703737aeab2354706c77106c371deac43cb1",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/refine_lgbm.py": "cb0172891ec62c3c08a023eeff7517cd67080e99bcc38f5898085d7ce8eb695c",
+    "experiments/refine_scale.py": "0c3af8da7c0875656daf583677f127c4356e4e688e0857821e1e9aebab21a5ff",
+    "experiments/refine_weighted.py": "97ea2bdb26a23989a69fe54b419ed0bb77ae604d53ea8b0eb73b10648c29b180",
+    "experiments/refinement.py": "1556e80b5a3c516d699e5249d8e4135f25a6076010d51c382459cc7895079f70",
+    "experiments/refinement_errors.py": "55b056beec2df1c53a3b60be981fb8865645cc4fa9d7a1ced46d8452f44bc61b",
+    "experiments/research_directions.py": "a6206b241d64cdf0383916cb9cfad341e0dc45c191a6263a7d2215cb55255368",
+    "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+    "experiments/skillcorner_had.py": "4533bc8b974383c99db9de16548a93e40ea224f17dc752ce2aa8257b65f12a87",
+    "experiments/state_machine.py": "e8d221abe8d2e5a69c1d2e78fe4a64a86223f4d9c8e4fcd714ebce04084a74e4",
+    "experiments/stress.py": "c4d9f47ea8e77e29bac74ea26831f4cd4597ca79ea3cadcb316183f84dcae32e",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/temporal.py": "168e4960004488224bc230bcddedecfc81326c7a470a80f6a9580a5afb6326f8",
+    "experiments/temporal_attribution.py": "dc4a721a389ba741df9254256ffc721e6f8069286bce7658a08f5349ef9ad6a2",
+    "experiments/temporal_challenge.py": "ff976051717aa375e349a773b8d7ecb0d65804aa8aed46b726bd9d14fd582664",
+    "experiments/temporal_ensemble.py": "d9722870bd1910482c39467520095ec3b55c89b803fc452722e8be6bb8e5077d",
+    "experiments/temporal_report.py": "b159edb32e9c34e8bedcbf72cf3d5ae5f9cfae34f199c79b77eeeb8393e9ecf8",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+    "experiments/tracking_research.py": "e4ea404b2b51ea78fd3a81f302d00c525fb75c56bb0c9b0f3249d84d55355b86",
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+    "experiments/baseline_manifest.json": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
+    "experiments/model_decision_policy.json": "11d1cf3c656042f729f62709b6a596affa53fee3e41d69e3c2407dfb959f09ef"
+  },
+  "input_sha256": {
+    "data/external_audit/sportec/processed/J03WOY.npz": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+    "data/external/processed/metrica_3.npz": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+    "data/external/processed/skillcorner_had_1996435.npz": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+    "data/external/processed/skillcorner_had_1996436.npz": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+    "data/external/processed/skillcorner_had_2006229.npz": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420"
+  },
+  "models_sha256": {
+    "data/models/gru_hgb_ballgap25_v1/attribution.joblib": "cf619aa17f633be2beb100863d0cd585b6dd9e05622149add99e9f3c170bc16a",
+    "data/models/gru_hgb_ballgap25_v1/bigru.joblib": "6eceee4c6ea6ac8cdb181cc764ad3a02e309371d477a31014c9141c8cece9bf7",
+    "data/models/gru_hgb_ballgap25_v1/ordered_hgb.joblib": "a7829557d23a975808698ad78ec9290d4f93f5c06d7b5452e6264d48fa2b9c4c",
+    "data/experiments/realistic_corruption_v1/without_sportec_baseline_bigru.joblib": "dc5b334d907e276d9c8f1ab9191378facc71fc8d8a47af714184f0dca552e0f1",
+    "data/experiments/realistic_corruption_v1/without_sportec_baseline_ordered_hgb.joblib": "7780188e76e5b80e310d6c6d5a1db55ba44fa22eddcd9b6ea87cec1b5f32e610",
+    "data/experiments/realistic_corruption_v1/without_metrica_baseline_bigru.joblib": "4fe046d6f98caa2a326aae4c9f7c5db6e07a2aa066b75c9ea29981e3791b2c97",
+    "data/experiments/realistic_corruption_v1/without_metrica_baseline_ordered_hgb.joblib": "77c60fe1c70a60bd56a56a8266dbc2741e5cf247eec0ac970eec029cc8987529",
+    "data/experiments/realistic_corruption_v1/without_skillcorner_baseline_bigru.joblib": "a8e19ff34f49bac39bd1ca631a1796c17565e980b15b9ff375d7f8e39c2ee656",
+    "data/experiments/realistic_corruption_v1/without_skillcorner_baseline_ordered_hgb.joblib": "e3326fdbe4d83e52331f7205c0a661dc2b48eeb74782c5c1e44bc24ede01c6a4"
+  },
+  "inherited_declaration_sha256": "f872524d2f624953c552d01f05d0a23bed6e23c3ce0c498209ca61bbc42f0e8a",
+  "historical_report_sha256": "6be2b870365b507bb475307955746ca75b4247bbaf2694ec83c20fb3d55af783",
+  "private_output": "data/experiments/confidence_abstention_v1",
+  "organizer_labels_read": false,
+  "organizer_scored": false,
+  "historical_tests_accessed": false,
+  "fresh_confirmation": false
+}
