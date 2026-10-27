@@ -1,0 +1,627 @@
+{
+  "runtime_environment": {
+    "python": "3.12.14",
+    "machine": "x86_64",
+    "model_threads": 1,
+    "device": "cpu",
+    "packages": {
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "joblib": "1.5.3",
+      "threadpoolctl": "3.6.0",
+      "torch": "2.8.0+cpu"
+    }
+  },
+  "checkpoint_audit": {
+    "rows": [
+      {
+        "held_out_provider": "sportec",
+        "arm": "live_gap_pipeline",
+        "kind": "team",
+        "bytes": 5868442,
+        "sha256": "61aed63b6f6292a99cd49f7754f4f99a2d76eb9676229029a73aa8452264a121",
+        "fit_seconds": 442.943299462
+      },
+      {
+        "held_out_provider": "sportec",
+        "arm": "live_gap_pipeline",
+        "kind": "ordered_hgb",
+        "bytes": 1013009,
+        "sha256": "447caaf302635361de9ea7291b26c333be75f9f50bf6c5e4d2a9faa98467b2bb",
+        "fit_seconds": 89.28384327799995
+      },
+      {
+        "held_out_provider": "sportec",
+        "arm": "live_gap_pipeline",
+        "kind": "bigru",
+        "bytes": 94158,
+        "sha256": "de0217ddbb774f5a2601dc9302107468231675a76d4d38e04ae1d9e95b76b444",
+        "fit_seconds": 69.62357795100002
+      },
+      {
+        "held_out_provider": "sportec",
+        "arm": "had_gru",
+        "kind": "joint",
+        "bytes": 259476,
+        "sha256": "1c026ead6143eed8163d921809f383ec6a7129f1675f7261d01097faf0b18338",
+        "fit_seconds": 194.31034242600003,
+        "parameters": 62643,
+        "windows_per_epoch": 23748,
+        "optimizer_updates": 2976
+      },
+      {
+        "held_out_provider": "sportec",
+        "arm": "live_gap_had_gru",
+        "kind": "joint",
+        "bytes": 259476,
+        "sha256": "550ef10152c7c079a4a13425538096c0ff0f396d19a01edd8113cb90b62b7221",
+        "fit_seconds": 212.0895219009999,
+        "parameters": 62643,
+        "windows_per_epoch": 23748,
+        "optimizer_updates": 2976
+      },
+      {
+        "held_out_provider": "metrica",
+        "arm": "live_gap_pipeline",
+        "kind": "team",
+        "bytes": 5868458,
+        "sha256": "2e48fe4c4a94d9681660564cfef1d5ad745685e9b5713adebf7147772da938ae",
+        "fit_seconds": 503.5325446170001
+      },
+      {
+        "held_out_provider": "metrica",
+        "arm": "live_gap_pipeline",
+        "kind": "ordered_hgb",
+        "bytes": 1012977,
+        "sha256": "76629ee162449032750598a3a05a63ad52f2f768b967d3d810e27815499568fb",
+        "fit_seconds": 103.23741033400006
+      },
+      {
+        "held_out_provider": "metrica",
+        "arm": "live_gap_pipeline",
+        "kind": "bigru",
+        "bytes": 94158,
+        "sha256": "4ef2bad59b444710a076e9b3d053dbba6d023a5e8dc219efcde5a48743d74a03",
+        "fit_seconds": 72.19194038299997
+      },
+      {
+        "held_out_provider": "metrica",
+        "arm": "had_gru",
+        "kind": "joint",
+        "bytes": 259476,
+        "sha256": "1b5509a134d6cc6419a19314ce7e4c5bdbf1c2f7906311bd88afc9fce773f4e4",
+        "fit_seconds": 211.5583457319999,
+        "parameters": 62643,
+        "windows_per_epoch": 25976,
+        "optimizer_updates": 3248
+      },
+      {
+        "held_out_provider": "metrica",
+        "arm": "live_gap_had_gru",
+        "kind": "joint",
+        "bytes": 259476,
+        "sha256": "e867a7646d608ec3bf88691071f20b78ce4aa96ed27552f849b13392bc83e20d",
+        "fit_seconds": 227.65165001899982,
+        "parameters": 62643,
+        "windows_per_epoch": 25976,
+        "optimizer_updates": 3248
+      },
+      {
+        "held_out_provider": "skillcorner",
+        "arm": "live_gap_pipeline",
+        "kind": "team",
+        "bytes": 5867754,
+        "sha256": "54fc823667d7f9fd0160c37b11dfa49ad31d81866d143b6211ea8c8f1539ee06",
+        "fit_seconds": 331.33527133999996
+      },
+      {
+        "held_out_provider": "skillcorner",
+        "arm": "live_gap_pipeline",
+        "kind": "ordered_hgb",
+        "bytes": 1003233,
+        "sha256": "6d2093766f6abb99962d14c751ea661dbdf6d0ad8fc49254a537ccf319dae014",
+        "fit_seconds": 78.54729236499998
+      },
+      {
+        "held_out_provider": "skillcorner",
+        "arm": "live_gap_pipeline",
+        "kind": "bigru",
+        "bytes": 94158,
+        "sha256": "5e9d9d01a287be04405e329b5ac7818988478b04e9c96244d0bc3aa632d00900",
+        "fit_seconds": 32.197127378000005
+      },
+      {
+        "held_out_provider": "skillcorner",
+        "arm": "had_gru",
+        "kind": "joint",
+        "bytes": 259476,
+        "sha256": "9779bf287d13f5972df6f814907f80fd81c223991be004dac522fa13836136d0",
+        "fit_seconds": 101.07160748899992,
+        "parameters": 62643,
+        "windows_per_epoch": 11396,
+        "optimizer_updates": 1432
+      },
+      {
+        "held_out_provider": "skillcorner",
+        "arm": "live_gap_had_gru",
+        "kind": "joint",
+        "bytes": 259476,
+        "sha256": "8445f178b5bbd0f789c15687a1dcc933c832eb7bee9443bec063ff0fac08ec41",
+        "fit_seconds": 95.7219470880002,
+        "parameters": 62643,
+        "windows_per_epoch": 11396,
+        "optimizer_updates": 1432
+      }
+    ],
+    "paired_gru_budgets_equal": true,
+    "provider_isolation_verified": true
+  },
+  "corruption_audit": {
+    "rows": [
+      {
+        "source": "sportec",
+        "match": "J03WMX",
+        "native": {
+          "live_frames": 85369,
+          "live_missing_fraction": 0.0,
+          "live_gap_runs": 0,
+          "live_gap_median_seconds": null,
+          "live_gap_p90_seconds": null,
+          "mean_visible_players": 22.0
+        },
+        "live_gap": {
+          "live_frames": 85369,
+          "live_missing_fraction": 0.4502454052407783,
+          "live_gap_runs": 158,
+          "live_gap_median_seconds": 8.2,
+          "live_gap_p90_seconds": 22.964000000000002,
+          "mean_visible_players": 20.11492462134967
+        }
+      },
+      {
+        "source": "sportec",
+        "match": "J03WN1",
+        "native": {
+          "live_frames": 68377,
+          "live_missing_fraction": 0.0,
+          "live_gap_runs": 0,
+          "live_gap_median_seconds": null,
+          "live_gap_p90_seconds": null,
+          "mean_visible_players": 21.063193763984966
+        },
+        "live_gap": {
+          "live_frames": 68377,
+          "live_missing_fraction": 0.44335083434488204,
+          "live_gap_runs": 127,
+          "live_gap_median_seconds": 7.76,
+          "live_gap_p90_seconds": 22.248,
+          "mean_visible_players": 19.19509484183278
+        }
+      },
+      {
+        "source": "sportec",
+        "match": "J03WOH",
+        "native": {
+          "live_frames": 71945,
+          "live_missing_fraction": 0.0,
+          "live_gap_runs": 0,
+          "live_gap_median_seconds": null,
+          "live_gap_p90_seconds": null,
+          "mean_visible_players": 22.0
+        },
+        "live_gap": {
+          "live_frames": 71945,
+          "live_missing_fraction": 0.3943845993467232,
+          "live_gap_runs": 122,
+          "live_gap_median_seconds": 7.92,
+          "live_gap_p90_seconds": 20.376000000000015,
+          "mean_visible_players": 20.12818124956564
+        }
+      },
+      {
+        "source": "metrica",
+        "match": "metrica_1",
+        "native": {
+          "live_frames": 84525,
+          "live_missing_fraction": 0.006199349304939367,
+          "live_gap_runs": 71,
+          "live_gap_median_seconds": 0.12,
+          "live_gap_p90_seconds": 0.76,
+          "mean_visible_players": 22.00002366163857
+        },
+        "live_gap": {
+          "live_frames": 84525,
+          "live_missing_fraction": 0.4131795326826383,
+          "live_gap_runs": 187,
+          "live_gap_median_seconds": 5.68,
+          "live_gap_p90_seconds": 20.448000000000004,
+          "mean_visible_players": 20.063779946761315
+        }
+      },
+      {
+        "source": "metrica",
+        "match": "metrica_2",
+        "native": {
+          "live_frames": 83489,
+          "live_missing_fraction": 0.012109379678760076,
+          "live_gap_runs": 81,
+          "live_gap_median_seconds": 0.16,
+          "live_gap_p90_seconds": 1.52,
+          "mean_visible_players": 22.0
+        },
+        "live_gap": {
+          "live_frames": 83489,
+          "live_missing_fraction": 0.42767310663680247,
+          "live_gap_runs": 212,
+          "live_gap_median_seconds": 5.76,
+          "live_gap_p90_seconds": 16.564000000000007,
+          "mean_visible_players": 20.083160655894787
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1874553",
+        "native": {
+          "live_frames": 24431,
+          "live_missing_fraction": 0.0038475707093446852,
+          "live_gap_runs": 7,
+          "live_gap_median_seconds": 1.2,
+          "live_gap_p90_seconds": 2.38,
+          "mean_visible_players": 15.73742376488887
+        },
+        "live_gap": {
+          "live_frames": 24431,
+          "live_missing_fraction": 0.3856575662068683,
+          "live_gap_runs": 144,
+          "live_gap_median_seconds": 4.55,
+          "live_gap_p90_seconds": 18.580000000000005,
+          "mean_visible_players": 14.184888052065
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1886347",
+        "native": {
+          "live_frames": 24233,
+          "live_missing_fraction": 0.009738785953039245,
+          "live_gap_runs": 23,
+          "live_gap_median_seconds": 1.0,
+          "live_gap_p90_seconds": 1.78,
+          "mean_visible_players": 16.001196715223042
+        },
+        "live_gap": {
+          "live_frames": 24233,
+          "live_missing_fraction": 0.34432385589898074,
+          "live_gap_runs": 159,
+          "live_gap_median_seconds": 3.8,
+          "live_gap_p90_seconds": 11.920000000000002,
+          "mean_visible_players": 14.569182519704535
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1899585",
+        "native": {
+          "live_frames": 20166,
+          "live_missing_fraction": 0.03471189130219181,
+          "live_gap_runs": 53,
+          "live_gap_median_seconds": 1.2,
+          "live_gap_p90_seconds": 2.560000000000001,
+          "mean_visible_players": 15.65179014182287
+        },
+        "live_gap": {
+          "live_frames": 20166,
+          "live_missing_fraction": 0.47307349003272836,
+          "live_gap_runs": 189,
+          "live_gap_median_seconds": 3.2,
+          "live_gap_p90_seconds": 12.8,
+          "mean_visible_players": 14.240503818308044
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1925299",
+        "native": {
+          "live_frames": 25069,
+          "live_missing_fraction": 0.022537795683912402,
+          "live_gap_runs": 42,
+          "live_gap_median_seconds": 1.3,
+          "live_gap_p90_seconds": 2.19,
+          "mean_visible_players": 15.45091547329371
+        },
+        "live_gap": {
+          "live_frames": 25069,
+          "live_missing_fraction": 0.4251465953967051,
+          "live_gap_runs": 215,
+          "live_gap_median_seconds": 3.3,
+          "live_gap_p90_seconds": 11.239999999999998,
+          "mean_visible_players": 13.921177549962104
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1927964",
+        "native": {
+          "live_frames": 29883,
+          "live_missing_fraction": 0.0031121373356088745,
+          "live_gap_runs": 7,
+          "live_gap_median_seconds": 1.2,
+          "live_gap_p90_seconds": 2.640000000000001,
+          "mean_visible_players": 16.214503229260785
+        },
+        "live_gap": {
+          "live_frames": 29883,
+          "live_missing_fraction": 0.3497306160693371,
+          "live_gap_runs": 158,
+          "live_gap_median_seconds": 5.4,
+          "live_gap_p90_seconds": 15.590000000000003,
+          "mean_visible_players": 14.760064250577251
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1953632",
+        "native": {
+          "live_frames": 26574,
+          "live_missing_fraction": 0.016820952811018287,
+          "live_gap_runs": 36,
+          "live_gap_median_seconds": 1.1,
+          "live_gap_p90_seconds": 2.4,
+          "mean_visible_players": 16.816662903589975
+        },
+        "live_gap": {
+          "live_frames": 26574,
+          "live_missing_fraction": 0.400052683073681,
+          "live_gap_runs": 162,
+          "live_gap_median_seconds": 4.05,
+          "live_gap_p90_seconds": 16.39,
+          "mean_visible_players": 15.422254835553549
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1959846",
+        "native": {
+          "live_frames": 22346,
+          "live_missing_fraction": 0.006399355589367225,
+          "live_gap_runs": 10,
+          "live_gap_median_seconds": 1.05,
+          "live_gap_p90_seconds": 2.419999999999999,
+          "mean_visible_players": 15.738879441510784
+        },
+        "live_gap": {
+          "live_frames": 22346,
+          "live_missing_fraction": 0.434842924908261,
+          "live_gap_runs": 192,
+          "live_gap_median_seconds": 3.3,
+          "live_gap_p90_seconds": 12.440000000000003,
+          "mean_visible_players": 14.307527074196724
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1986691",
+        "native": {
+          "live_frames": 24082,
+          "live_missing_fraction": 0.008886305124159123,
+          "live_gap_runs": 14,
+          "live_gap_median_seconds": 1.25,
+          "live_gap_p90_seconds": 2.3600000000000008,
+          "mean_visible_players": 16.007308363092765
+        },
+        "live_gap": {
+          "live_frames": 24082,
+          "live_missing_fraction": 0.3807408022589486,
+          "live_gap_runs": 158,
+          "live_gap_median_seconds": 4.300000000000001,
+          "live_gap_p90_seconds": 13.850000000000005,
+          "mean_visible_players": 14.410306452952412
+        }
+      }
+    ],
+    "dead_unknown_ball_unchanged": true,
+    "gap_definition": "Contiguous missing-ball runs intersected with native graded H/A intervals; H/A switches do not split runs",
+    "limitation": "Training-only synthetic observation diagnostics; clipped gaps need not retain the calibration median"
+  },
+  "baseline_reproduction": {
+    "comparison": "Archived full H/A and D provider holdouts; full_holdout_equal_sources",
+    "cases": 15,
+    "metrics": [
+      "spell_f1",
+      "macro_f1",
+      "d_f1",
+      "n_gt_spells",
+      "n_pred_spells"
+    ],
+    "maximum_absolute_difference": 0.0,
+    "archive_results_sha256": {
+      "experiments/new_provider_transfer_v1/without_sportec_results.json": "967131040affede2c804c477a086de347540d5656badd883196e424ff433dd45",
+      "experiments/new_provider_transfer_v1/without_metrica_results.json": "c0dde46ed9581d764c73e1ca0b3a32657fe3733c4ad017791ec23e53f1d898b5",
+      "experiments/new_provider_transfer_v1/without_skillcorner_results.json": "1659cb79893174cf4365059e845f5044d4223936bad25f0ac2382c373bb711b9"
+    },
+    "rows": [
+      {
+        "source": "sportec",
+        "match": "J03WOY",
+        "view": "clean",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "sportec",
+        "match": "J03WOY",
+        "view": "corrupt_1",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "sportec",
+        "match": "J03WOY",
+        "view": "corrupt_2",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "metrica",
+        "match": "metrica_3",
+        "view": "clean",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "metrica",
+        "match": "metrica_3",
+        "view": "corrupt_1",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "metrica",
+        "match": "metrica_3",
+        "view": "corrupt_2",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996435",
+        "view": "clean",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996435",
+        "view": "corrupt_1",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996435",
+        "view": "corrupt_2",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996436",
+        "view": "clean",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996436",
+        "view": "corrupt_1",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996436",
+        "view": "corrupt_2",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_2006229",
+        "view": "clean",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_2006229",
+        "view": "corrupt_1",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      },
+      {
+        "source": "skillcorner",
+        "match": "skillcorner_had_2006229",
+        "view": "corrupt_2",
+        "absolute_differences": {
+          "spell_f1": 0.0,
+          "macro_f1": 0.0,
+          "d_f1": 0.0,
+          "n_gt_spells": 0,
+          "n_pred_spells": 0
+        }
+      }
+    ]
+  }
+}

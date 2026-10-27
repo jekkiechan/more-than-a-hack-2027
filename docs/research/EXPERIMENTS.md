@@ -33,6 +33,17 @@ check live PR state before resuming.
 | `joint-d-repair` / #16 | Matched unrestricted/player-only factorization, two seeds; clean D repaired, stress guardrail fails. | [DEADBALL_TRANSFER at 8c704aa](https://github.com/jekkiechan/more-than-a-hack-2027/blob/8c704aa0d919a942992dd1c493ae1297e5725e30/experiments/DEADBALL_TRANSFER.md) |
 | `joint-public-check` / #16 | Requested diagnostic completed; pooled seed 2026, 13 training matches, five development matches excluded. Gate closed, no adoption. | [JOINT_COMPETITION_CHECK at 8c704aa](https://github.com/jekkiechan/more-than-a-hack-2027/blob/8c704aa0d919a942992dd1c493ae1297e5725e30/experiments/JOINT_COMPETITION_CHECK.md) |
 
+## Temporal robustness follow-up
+
+All model comparisons below use previously exposed external development matches;
+no new organizer scoring or baseline promotion is part of this work.
+
+| ID and state | Scope and outcome | Evidence |
+| --- | --- | --- |
+| `spell-metric-audit` — completed | Unchanged official objective; 30 saved external predictions reproduce. Strict-IoU gains, stress losses and substantial SkillCorner boundary censoring motivate expanded diagnostics. | [Metric audit](../../experiments/SPELL_METRIC_AUDIT.md), [aggregate](../../experiments/results/spell_metric_audit.json) |
+| `gru-slot-robustness-v2` — running | Restore raw player-slot dropout in latest player-only D joint GRU; two seeds, three full-pipeline provider holdouts, 12 fits and 60 new paired cells. Aborted v1 preserves its pre-fit mask correction receipt. | [GRU study](../../experiments/GRU_SLOT_ROBUSTNESS.md) |
+| `temporal-lgbm-v1` — running | Matched 67 versus 625 features plus two regularization settings; 12 fits, 240 decoded D replacement/blend cells against the same GRU controls. | [Feature implementation](../../experiments/temporal_lgbm.py), [frozen runner](../../experiments/temporal_lgbm_experiment.py) |
+
 ## Supporting references
 
 [Data](../../experiments/DATASETS.md), [licenses](../../experiments/LICENSES.md),

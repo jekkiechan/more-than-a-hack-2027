@@ -1,0 +1,295 @@
+{
+  "scope": "One descriptive five-minute pipeline check of the latest D-repaired joint GRU; not model selection, tuning, promotion or full-match evaluation",
+  "frozen": {
+    "created_utc": "2026-10-27T04:49:49.616670+00:00",
+    "arm": "factorized_player_D",
+    "seed": 2026,
+    "scope": "One descriptive five-minute pipeline check of the latest D-repaired joint GRU; not model selection, tuning, promotion or full-match evaluation",
+    "bootstrap_draws": 1000,
+    "organizer_gt_sha256": "e596a9af9626c623bb94be6fd350e12ee9a75c76a696cfadca3bc01735e92487",
+    "files_sha256": {
+      "data/experiments/joint_gru_public_v1/predeclared.json": "b1c784266b0d47995ca3b6019ba1ec4ef4926b1121cd94756e8cd383f026f4e1",
+      "data/experiments/joint_gru_public_v1/pooled_joint_gru.joblib": "2aa975679e6bba1e685a63b20ccf7d1079b30d3c94e6520cc3167d4255aa35e5",
+      "data/experiments/joint_gru_public_v1/pooled_joint_gru.json": "321f48b42835930ceb1abc10c3377b1a1666d7742b8c0c30c20dbf2096061e11",
+      "data/experiments/joint_gru_public_v1/candidate.csv": "c809d53c67c42419ec7f9898c02d7c5136b192462488999fff153ba7dc782d04",
+      "data/experiments/joint_gru_public_v1/candidate.json": "e4e163e7aa8fad0904f7fefbd59a184a2841be43ba9715f66bd911387c8e54b6",
+      "experiments/results/light_corruption_public_check.json": "83f53d97d2ab5cd15a5bc6c124ac1cbff93382f67446183dc0f72d82d4ffec6a",
+      "experiments/baseline_manifest.json": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
+      "experiments/joint_competition_check.py": "5bb44e8f7c417ef45f2939d55505febf03e7cba7b12edc046c0a320910edec85",
+      "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d"
+    }
+  },
+  "training_plan": {
+    "created_utc": "2026-10-27T04:40:22.854045+00:00",
+    "source_sha256": {
+      "experiments/corruption_experiment.py": "07b357b7f9f99af444f110d576eaba8e791134c07b1dfc28d229fc242a6c22e7",
+      "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+      "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+      "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+      "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+      "experiments/multisource_eval.py": "1e166cf7169c81ca1393a8cd503f8fd99891ce7693156c73133f8002c847f592",
+      "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+      "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+      "experiments/dead_transfer.py": "f38aa33ddf8b7619973cadbe99b9c16c99e37cfa466aa8a5e2a05bb456ad3186",
+      "experiments/current_baseline.py": "cffb345cbbd06e3faac283ada279eab9aabb41992736c9decac17ff083645953",
+      "experiments/metrics.py": "36a8ca48af6b21f4a25957306bf80efdf603917cec9746a886b1090e70dc2270",
+      "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+      "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+      "experiments/eval_set/metrics.py": "753150955daafc9fc8aee84f76b9ba645d9205af5c221bd7e6764e92f98b89ee",
+      "experiments/model_decision_policy.json": "11d1cf3c656042f729f62709b6a596affa53fee3e41d69e3c2407dfb959f09ef",
+      "experiments/baseline_manifest.json": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
+      "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+      "experiments/had_gru.py": "d7597831f2af606a2a68e89747fa4756b5288c620ca710d06e0280bea6d90fa6",
+      "experiments/light_corruption.py": "29f1a5759112172af99d30c59e2e39fef3798b03ec9ee32640e7d7e81fbc0ac4",
+      "experiments/error_analysis.py": "5d06f61f87a5ca6b831183c56ea97a2a6cffaff12d6db47cc5d9a318ab392a1f",
+      "experiments/deadball_transfer_experiment.py": "5e18e17b29e2de989d94d37414f29546dcd839d6aa32f15e175474a9dd0c2538",
+      "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+      "experiments/joint_competition_check.py": "5bb44e8f7c417ef45f2939d55505febf03e7cba7b12edc046c0a320910edec85",
+      "experiments/challenge.py": "204ac7ff7a8e530facd9e19fc7d264f2eb35698df1cda60bf32c7f6a720abba1",
+      "experiments/light_public_check.py": "0f0e745523d1bf4a1563ae8b21ae199b3c994c975ff96e71d770039a1b9ca3d1"
+    },
+    "user_request": "calculate comp too. i think we are moving in the right direction. perhaps we just need better preprocessing for corrupted tracking",
+    "scope": "One descriptive five-minute pipeline check of the latest D-repaired joint GRU; not model selection, tuning, promotion or full-match evaluation",
+    "arm": "factorized_player_D",
+    "seed": 2026,
+    "seed_rule": "Original default seed, not the better external-score seed; no seed ensemble",
+    "fit": "One pooled final fit on the original 13 training matches only; same architecture, eight epochs, categorical loss, optimizer, clean/coarse and 25% ball-gap views; no retuning",
+    "training_sources": [
+      "sportec",
+      "metrica",
+      "skillcorner"
+    ],
+    "training_matches": [
+      "J03WMX",
+      "J03WN1",
+      "J03WOH",
+      "metrica_1",
+      "metrica_2",
+      "skillcorner_had_1874553",
+      "skillcorner_had_1886347",
+      "skillcorner_had_1899585",
+      "skillcorner_had_1925299",
+      "skillcorner_had_1927964",
+      "skillcorner_had_1953632",
+      "skillcorner_had_1959846",
+      "skillcorner_had_1986691"
+    ],
+    "excluded_evaluation_matches": [
+      "J03WOY",
+      "metrica_3",
+      "skillcorner_had_1996435",
+      "skillcorner_had_1996436",
+      "skillcorner_had_2006229"
+    ],
+    "data_sha256": {
+      "data/external_audit/sportec/processed/J03WMX.npz": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+      "data/external_audit/sportec/processed/J03WN1.npz": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+      "data/external_audit/sportec/processed/J03WOH.npz": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+      "data/external/processed/metrica_1.npz": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+      "data/external/processed/metrica_2.npz": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+      "data/external/processed/skillcorner_had_1874553.npz": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+      "data/external/processed/skillcorner_had_1886347.npz": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+      "data/external/processed/skillcorner_had_1899585.npz": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+      "data/external/processed/skillcorner_had_1925299.npz": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+      "data/external/processed/skillcorner_had_1927964.npz": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+      "data/external/processed/skillcorner_had_1953632.npz": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+      "data/external/processed/skillcorner_had_1959846.npz": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+      "data/external/processed/skillcorner_had_1986691.npz": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153"
+    },
+    "training_caches": {
+      "train_skillcorner_had_1927964.joblib": "eff890e152e0493014564e3e109e8e6ae652e86da3108a3a0e59222109e57d75",
+      "train_metrica_1.joblib": "842cd868bd92b13f9a2f277cfb0c35cdeb1e4f92fda23edabd7030731ff2ec24",
+      "train_skillcorner_had_1886347.joblib": "2b0010d880c63bc838afe1ae8c9e042959085527d888ccdfc9793c44e3832f28",
+      "train_metrica_2.joblib": "945f52adbc7d5a874b523aef476d9dc3321aee91bf3fc797f7d56247e0cf9853",
+      "train_skillcorner_had_1925299.joblib": "de92592acc22fb7783f636dcabd3b3ec8218876b6a403978e72c688e90663b2a",
+      "train_skillcorner_had_1899585.joblib": "a1d36f8f90426b3bac4a13efd221f2706e24b792ed01f66be0d53ed6db0467db",
+      "train_skillcorner_had_1986691.joblib": "26e60b11ba3282f9e9262b01b45dbe52d805fe2a53e4c6fed5e07123e99a8a8f",
+      "train_skillcorner_had_1953632.joblib": "529495fc5232fe38f4f1e073dc0176eed3c5d00c6f0bbc935b07fd2103d18f60",
+      "train_skillcorner_had_1959846.joblib": "789ee32720d6ff704cd16a808eb7c82f31cae661e06556cf7297e74ff5219d86",
+      "train_J03WMX.joblib": "ee5e438709b451ba2f6904e50493baaf45d7afe30ba6434965315bfa15ee823d",
+      "train_J03WN1.joblib": "546f4aae2f2f1fe90becdf654287b19b71b6dfcf2bda508e49bd9e9d7fed5de4",
+      "train_J03WOH.joblib": "db6683568d6855930493d17c2ea7a84a6f039de9ed07b851e034a5752d3c9fb1",
+      "train_skillcorner_had_1874553.joblib": "30ada8f2120c9fa9f0844de2593239898582d6de149b98da0f1f902f89fc87b9"
+    },
+    "external_development_report_sha256": "44b08400b29f3c2661bbf83a224e21c4aa534437e84c7ec377767333afccd5f8",
+    "external_guardrails": "Both D-repaired seeds failed synthetic-stress guardrails; this user-requested diagnostic does not change that decision",
+    "input_path": "data/challenge/inputs.npz",
+    "input_sha256": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3",
+    "preprocessing": "Unchanged baseline tracking-input allowlist and observed-coordinate masks; no new repair/interpolation",
+    "decoder_switch_cost": 3,
+    "bootstrap_draws": 1000,
+    "baseline_report": "experiments/results/light_corruption_public_check.json",
+    "baseline_report_sha256": "83f53d97d2ab5cd15a5bc6c124ac1cbff93382f67446183dc0f72d82d4ffec6a",
+    "baseline_manifest_sha256": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
+    "organizer_gt_sha256": "e596a9af9626c623bb94be6fd350e12ee9a75c76a696cfadca3bc01735e92487",
+    "prior_public_gates": "Untouched; separate exclusive marker for this explicitly requested check",
+    "organizer_labels_used_for_fitting": false,
+    "baseline_replaced": false
+  },
+  "score": {
+    "spell_f1_mean": 0.6193548387096774,
+    "macro_f1": 0.8574092792542832,
+    "accuracy": 0.8588,
+    "per_class": {
+      "H": {
+        "precision": 0.8472768107804605,
+        "recall": 0.8737695425593515,
+        "f1": 0.8603192702394528,
+        "support": 3454
+      },
+      "A": {
+        "precision": 0.8682965299684543,
+        "recall": 0.8544819557625145,
+        "f1": 0.8613338548797185,
+        "support": 2577
+      },
+      "D": {
+        "precision": 0.8708987161198288,
+        "recall": 0.8311776718856365,
+        "f1": 0.8505747126436781,
+        "support": 1469
+      }
+    },
+    "spell_f1": {
+      "0.3": {
+        "precision": 0.7857142857142857,
+        "recall": 0.6470588235294118,
+        "f1": 0.7096774193548386,
+        "n_matched": 11,
+        "n_spurious": 3,
+        "n_missed": 6
+      },
+      "0.4": {
+        "precision": 0.7857142857142857,
+        "recall": 0.6470588235294118,
+        "f1": 0.7096774193548386,
+        "n_matched": 11,
+        "n_spurious": 3,
+        "n_missed": 6
+      },
+      "0.5": {
+        "precision": 0.7857142857142857,
+        "recall": 0.6470588235294118,
+        "f1": 0.7096774193548386,
+        "n_matched": 11,
+        "n_spurious": 3,
+        "n_missed": 6
+      },
+      "0.6": {
+        "precision": 0.6428571428571429,
+        "recall": 0.5294117647058824,
+        "f1": 0.5806451612903226,
+        "n_matched": 9,
+        "n_spurious": 5,
+        "n_missed": 8
+      },
+      "0.7": {
+        "precision": 0.42857142857142855,
+        "recall": 0.35294117647058826,
+        "f1": 0.3870967741935484,
+        "n_matched": 6,
+        "n_spurious": 8,
+        "n_missed": 11
+      }
+    },
+    "n_frames": 199319,
+    "n_graded": 7500,
+    "n_gt_spells": 17,
+    "n_pred_spells": 14,
+    "team_acc_gt_alive": 0.8655281047919084,
+    "spell_bootstrap_low": 0.4387096774193548,
+    "spell_bootstrap_high": 0.7999999999999999,
+    "bootstrap_low": 0.6065279152863334,
+    "bootstrap_high": 0.9075716240686893,
+    "bootstrap_n": 1000
+  },
+  "archived_baseline": {
+    "spell_f1_mean": 0.5257142857142858,
+    "macro_f1": 0.858782268705506,
+    "accuracy": 0.8589333333333333,
+    "per_class": {
+      "H": {
+        "precision": 0.8740963855421687,
+        "recall": 0.8401852924145917,
+        "f1": 0.8568054325361677,
+        "support": 3454
+      },
+      "A": {
+        "precision": 0.825531914893617,
+        "recall": 0.9033760186263097,
+        "f1": 0.8627015008337966,
+        "support": 2577
+      },
+      "D": {
+        "precision": 0.8911764705882353,
+        "recall": 0.8250510551395507,
+        "f1": 0.8568398727465535,
+        "support": 1469
+      }
+    },
+    "spell_f1": {
+      "0.3": {
+        "precision": 0.6111111111111112,
+        "recall": 0.6470588235294118,
+        "f1": 0.6285714285714287,
+        "n_matched": 11,
+        "n_spurious": 7,
+        "n_missed": 6
+      },
+      "0.4": {
+        "precision": 0.6111111111111112,
+        "recall": 0.6470588235294118,
+        "f1": 0.6285714285714287,
+        "n_matched": 11,
+        "n_spurious": 7,
+        "n_missed": 6
+      },
+      "0.5": {
+        "precision": 0.6111111111111112,
+        "recall": 0.6470588235294118,
+        "f1": 0.6285714285714287,
+        "n_matched": 11,
+        "n_spurious": 7,
+        "n_missed": 6
+      },
+      "0.6": {
+        "precision": 0.3888888888888889,
+        "recall": 0.4117647058823529,
+        "f1": 0.39999999999999997,
+        "n_matched": 7,
+        "n_spurious": 11,
+        "n_missed": 10
+      },
+      "0.7": {
+        "precision": 0.3333333333333333,
+        "recall": 0.35294117647058826,
+        "f1": 0.34285714285714286,
+        "n_matched": 6,
+        "n_spurious": 12,
+        "n_missed": 11
+      }
+    },
+    "n_frames": 199319,
+    "n_graded": 7500,
+    "n_gt_spells": 17,
+    "n_pred_spells": 18,
+    "team_acc_gt_alive": 0.8671862046095175,
+    "spell_bootstrap_low": 0.36571428571428577,
+    "spell_bootstrap_high": 0.6742857142857143,
+    "bootstrap_low": 0.6105594743345725,
+    "bootstrap_high": 0.9084567946013647,
+    "bootstrap_n": 1000
+  },
+  "spell_delta": 0.09364055299539165,
+  "macro_delta": -0.0013729894512227725,
+  "auxiliary_70_30": {
+    "joint": 0.6907711708730591,
+    "baseline": 0.6256346806116518
+  },
+  "baseline_score_reused": true,
+  "full_match_score": null,
+  "organizer_labels_used_for_fitting": false,
+  "preprocessing_changed": false,
+  "baseline_replaced": false,
+  "bootstrap_interval": "Official 5th\u201395th percentiles; not a paired significance test"
+}
