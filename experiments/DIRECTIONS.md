@@ -11,9 +11,10 @@ shows a different failure under corrupted external tracking: dead-ball
 overprediction, with high D recall and low precision. Slot dropout preserves
 clean spell F1 but fails the robustness guardrail. The historical team-only
 bottleneck diagnosis below must not be generalized to that joint GRU. The
-current [full H/A/D LightGBM study](JOINT_LGBM.md) isolates new geometry,
-ordered before/after features and larger capacity before testing full-vector
-ensembles; its eventual decisions belong in STATUS.
+completed [full H/A/D LightGBM study](JOINT_LGBM.md) finds useful temporal
+features and a benefit from larger trees, but its promising full-vector GRU
+blends still fail the clean SkillCorner D-recall guardrail. Improving spell F1
+alone does not protect every class. Current priorities belong in STATUS.
 
 The [completed tracking pilot](TOP_THREE_PILOT.md) tested state-conditioned
 views, broadcast recovery and gap/de-duplication features. It found no matched

@@ -1,11 +1,170 @@
 # Full H A D LightGBM features and GRU ensembles
 
-Status: declared and frozen on 2026-10-27; feature preparation and training in
-progress. Every LightGBM model directly predicts **H, A and D**. Its ensemble
-averages the complete three-class probability vector with a GRU before applying
-the shared decoder. The adopted baseline remains unchanged.
+Completed on 2026-10-27: **12 full H/A/D LightGBM models and all 300 declared
+standalone/GRU ensemble evaluations**. Ordered temporal features improve stress
+performance, and the wider 127-leaf models improve over Full 63. The strongest
+stress blend substantially repairs the GRU’s synthetic-stress loss, but every
+recipe fails an adoption guardrail because of remaining D or stress failures.
+**Retain the adopted baseline.** These trees predict all three classes directly;
+their ensembles average complete H/A/D probability vectors before decoding.
 
-## What is being tested
+## Matched results
+
+All 300 declared tree/ensemble cells completed. Scores average matches within
+provider and then weight the three providers equally. The evaluation cohort is
+one Sportec match, one Metrica match and three SkillCorner matches; each has a
+clean view and two fixed stress views. The [aggregate report](results/joint_lgbm_development.json)
+contains every cell, declaration, guardrail and diagnostic. No organizer labels
+were scored. These are reused external development matches, not confirmation data.
+
+Rows marked “mean” average the separate 2026/2027 GRU pipeline scores. They do
+not average the two GRUs at inference. Each actual blend is fixed 50/50 between
+one full H/A/D tree model and one GRU. The 70/30 column is auxiliary; ranking uses
+unrounded clean official spell F1, with macro F1 only for exact ties.
+
+| Model / recipe | Clean spell | Stress spell | Clean macro | Clean 70/30 | Clean D precision | Clean D recall |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Adopted recipe | 0.5338 | 0.4129 | 0.8300 | 0.6227 | 0.8939 | 0.7920 |
+| GRU control mean | 0.6092 | 0.2991 | 0.8410 | 0.6788 | 0.8833 | 0.7950 |
+| GRU slot-dropout mean | 0.6132 | 0.3141 | 0.8489 | 0.6839 | 0.8904 | 0.8070 |
+| legacy_63 standalone | 0.5399 | 0.4085 | 0.7957 | 0.6166 | 0.9888 | 0.6527 |
+| geometry_63 standalone | 0.5365 | 0.4055 | 0.7992 | 0.6153 | 0.9888 | 0.6632 |
+| full_63 standalone | 0.5497 | 0.4285 | 0.7979 | 0.6241 | 0.9851 | 0.6500 |
+| full_127 standalone | 0.5555 | 0.4345 | 0.7995 | 0.6287 | 0.9862 | 0.6529 |
+| legacy_63 + control mean | 0.6220 | 0.3893 | 0.8469 | 0.6895 | 0.9564 | 0.7561 |
+| legacy_63 + slot_dropout mean | 0.6119 | 0.3954 | 0.8537 | 0.6844 | 0.9617 | 0.7696 |
+| geometry_63 + control mean | 0.6220 | 0.3858 | 0.8484 | 0.6899 | 0.9566 | 0.7600 |
+| geometry_63 + slot_dropout mean | 0.6129 | 0.3942 | 0.8550 | 0.6856 | 0.9618 | 0.7734 |
+| full_63 + control mean | 0.6095 | 0.4139 | 0.8421 | 0.6793 | 0.9532 | 0.7472 |
+| full_63 + slot_dropout mean | 0.6042 | 0.4171 | 0.8487 | 0.6776 | 0.9620 | 0.7593 |
+| full_127 + control mean | 0.6148 | 0.4177 | 0.8433 | 0.6834 | 0.9563 | 0.7470 |
+| full_127 + slot_dropout mean | 0.6101 | 0.4226 | 0.8498 | 0.6820 | 0.9644 | 0.7592 |
+
+### What the matched ablations establish
+
+The 23 instantaneous geometry additions alone do not provide a consistent
+benefit: standalone clean/stress spell F1 decreases by 0.0033/0.0030 versus
+legacy features, and the blend changes are small and mixed. The full temporal
+package matters more. At identical 63-leaf capacity, it improves standalone
+clean/stress spell F1 by **0.0131/0.0230** versus geometry and improves stress
+spell F1 in all four blends. Its blend clean scores decline, so this is a
+robustness tradeoff rather than an unconditional feature win. Anchors, ordered
+context and persistence were added together; this comparison cannot assign
+the gain uniquely to one of those families.
+
+Increasing to 127 leaves and depth 10 improves clean and stress spell F1 in
+all five recipes versus Full 63. Standalone gains are **0.0058/0.0060**.
+This supports the requested wider/deeper hypothesis within the measured
+0.01-learning-rate, 640-round budget. Leaves and depth changed together; a
+higher learning rate and 1,280-round multiclass models were not compared.
+
+The full127 + slot-dropout GRU blend raises mean stress spell F1 from
+**0.3141 to 0.4226** versus its corresponding GRU, while clean changes from
+**0.6132 to 0.6101**. Both seeds improve stress substantially. This is useful
+complementarity, but it still fails the clean SkillCorner D guardrail. The
+numerical clean leader is geometry63 + control2026 at 0.6257; its stress score
+is only 0.3718, and it fails both stress and provider-D requirements.
+
+### Seed results and every guardrail
+
+All 20 configurations/recipes fail at least one predeclared adoption guardrail.
+The required deltas against the matched adopted recipe are clean spell ≥ +0.01,
+stress spell ≥ −0.01, and worst provider clean D-F1/macro delta ≥ −0.02.
+The last column below is the minimum provider D-F1 or macro delta; its sign
+and magnitude matter even when aggregate spell F1 improves.
+
+| Tree | Recipe / GRU seed | Clean spell | Stress spell | Clean macro | Clean 70/30 | Worst provider D/macro delta | Screen |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
+| legacy_63 | standalone | 0.5399 | 0.4085 | 0.7957 | 0.6166 | -0.3454 | Fail |
+| legacy_63 | control_2026 | 0.6247 | 0.3725 | 0.8513 | 0.6927 | -0.0619 | Fail |
+| legacy_63 | control_2027 | 0.6192 | 0.4062 | 0.8426 | 0.6862 | -0.1136 | Fail |
+| legacy_63 | slot_dropout_2026 | 0.6101 | 0.3910 | 0.8515 | 0.6825 | -0.0570 | Fail |
+| legacy_63 | slot_dropout_2027 | 0.6137 | 0.3997 | 0.8559 | 0.6863 | -0.0219 | Fail |
+| geometry_63 | standalone | 0.5365 | 0.4055 | 0.7992 | 0.6153 | -0.3249 | Fail |
+| geometry_63 | control_2026 | 0.6257 | 0.3718 | 0.8533 | 0.6940 | -0.0556 | Fail |
+| geometry_63 | control_2027 | 0.6184 | 0.3999 | 0.8435 | 0.6859 | -0.1105 | Fail |
+| geometry_63 | slot_dropout_2026 | 0.6110 | 0.3919 | 0.8529 | 0.6835 | -0.0478 | Fail |
+| geometry_63 | slot_dropout_2027 | 0.6149 | 0.3965 | 0.8571 | 0.6876 | -0.0158 | Fail |
+| full_63 | standalone | 0.5497 | 0.4285 | 0.7979 | 0.6241 | -0.3729 | Fail |
+| full_63 | control_2026 | 0.6163 | 0.4055 | 0.8464 | 0.6853 | -0.0859 | Fail |
+| full_63 | control_2027 | 0.6026 | 0.4223 | 0.8379 | 0.6732 | -0.1304 | Fail |
+| full_63 | slot_dropout_2026 | 0.6067 | 0.4128 | 0.8457 | 0.6784 | -0.0733 | Fail |
+| full_63 | slot_dropout_2027 | 0.6018 | 0.4213 | 0.8516 | 0.6767 | -0.0380 | Fail |
+| full_127 | standalone | 0.5555 | 0.4345 | 0.7995 | 0.6287 | -0.3687 | Fail |
+| full_127 | control_2026 | 0.6225 | 0.4072 | 0.8474 | 0.6900 | -0.0859 | Fail |
+| full_127 | control_2027 | 0.6071 | 0.4283 | 0.8392 | 0.6767 | -0.1301 | Fail |
+| full_127 | slot_dropout_2026 | 0.6088 | 0.4164 | 0.8462 | 0.6800 | -0.0714 | Fail |
+| full_127 | slot_dropout_2027 | 0.6113 | 0.4289 | 0.8534 | 0.6840 | -0.0421 | Fail |
+
+| GRU alone | Clean spell | Stress spell | Clean macro | Clean 70/30 |
+| --- | ---: | ---: | ---: | ---: |
+| control_2026 | 0.6083 | 0.2767 | 0.8408 | 0.6780 |
+| control_2027 | 0.6102 | 0.3215 | 0.8413 | 0.6795 |
+| slot_dropout_2026 | 0.6088 | 0.3180 | 0.8434 | 0.6792 |
+| slot_dropout_2027 | 0.6176 | 0.3101 | 0.8543 | 0.6886 |
+
+Two GRU seeds expose sensitivity but are not a confidence interval. The trees
+use one fixed seed, and their seed variance is unmeasured.
+
+### The main remaining gap: dead-play recall
+
+The SkillCorner result demonstrates why spell F1 alone cannot certify a useful
+H/A/D model. Full127 standalone improves its provider spell F1 from the adopted
+recipe’s **0.4225 to 0.4322**, while D-F1 collapses from **0.7022 to 0.3335**
+and D recall from **0.5909 to 0.2035**. Its D precision is 0.9794: it recognizes
+few stoppages, but those few are usually correct. D is not a separately matched
+possession-spell class in the official objective; the [metric audit](SPELL_METRIC_AUDIT.md)
+explains this gap. Full multiclass trees have access to ball evidence, so they
+do not inherit the GRU’s player-only D restriction.
+
+| Provider | Recipe | Clean spell | Clean macro | D F1 | D precision | D recall |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| sportec | Adopted recipe | 0.5332 | 0.8500 | 0.9098 | 0.9297 | 0.8907 |
+| sportec | Full127 standalone | 0.5466 | 0.8840 | 0.9565 | 0.9835 | 0.9310 |
+| sportec | Full127 + slot GRU mean | 0.6060 | 0.8888 | 0.9451 | 0.9638 | 0.9274 |
+| metrica | Adopted recipe | 0.6457 | 0.8912 | 0.8893 | 0.8840 | 0.8946 |
+| metrica | Full127 standalone | 0.6875 | 0.9046 | 0.9020 | 0.9957 | 0.8243 |
+| metrica | Full127 + slot GRU mean | 0.7644 | 0.9256 | 0.9128 | 0.9688 | 0.8630 |
+| skillcorner | Adopted recipe | 0.4225 | 0.7488 | 0.7022 | 0.8680 | 0.5909 |
+| skillcorner | Full127 standalone | 0.4322 | 0.6099 | 0.3335 | 0.9794 | 0.2035 |
+| skillcorner | Full127 + slot GRU mean | 0.4598 | 0.7351 | 0.6455 | 0.9605 | 0.4872 |
+
+The stronger robustness blend still has SkillCorner D-F1 0.6308/0.6602 for
+seeds 2026/2027, below the 0.7022 baseline by 0.0714/0.0421. Both exceed the
+allowed 0.02 loss. Averaging the seeds cannot erase either failed guardrail.
+
+### Spell diagnostics
+
+Adding the full feature package to the standalone 63-leaf tree raises clean
+IoU-0.7 spell F1 from 0.4009 to 0.4250; wider trees raise it to 0.4315.
+However, short-spell recall at IoU 0.5 falls from 0.2791 with geometry alone
+to 0.2547 with Full 63, recovering only to 0.2675 with Full 127. Better strict
+overlap does not mean the short-possession problem is solved.
+
+The full127 + slot-GRU blend has mean clean IoU-0.7 F1 0.5001 versus 0.4917
+for its GRU alone, but short-spell recall falls from 0.3356 to 0.3183. Across
+the five clean matches, 1,963 reference spells are graded. The blend predicts
+2,033/1,997 spells versus 1,968/1,854 for its corresponding GRU seeds; these
+are counts, not pooled-score rankings or counts of false positives.
+
+All duration recall diagnostics retain the official global greedy matching.
+Fragment/merge diagnostics describe overlapping geometry, not mutually exclusive
+causes. Complete-boundary timing excludes censored graded-run edges; SkillCorner
+visibility and silver labels limit what these aggregate gains establish.
+
+### Next research decision
+
+Retain the adopted baseline. Keep the full H/A/D probability artifacts for
+ensembling research, and prioritize restoring cross-provider D recall while
+preserving the temporal bundle’s stress benefit. A future declared complete
+H/A/D tree model could restrict its D component to player evidence while using
+rich contact/context evidence for team attribution. Alternatively, transfer the
+curated contact-memory features into the existing constrained GRU. Either needs
+a matched test on additional held-out matches. More leaves or rounds alone
+do not address the demonstrated D failure; 1,280 rounds remain a separate
+unmeasured compute hypothesis.
+
+## Frozen comparison design
 
 The first three arms isolate feature engineering at identical capacity. The
 fourth tests larger trees on exactly the same complete feature set.
@@ -17,7 +176,7 @@ fourth tests larger trees on exactly the same complete feature set.
 | full_63 | 1003 | 63 | 8 | .01 | 640 |
 | full_127 | 1003 | 127 | 10 | .01 | 640 |
 
-All four use minimum 120 rows per leaf, minimum Hessian .01, L1 .2, L2 10,
+All four set `min_child_samples=120`, minimum Hessian .01, L1 .2, L2 10,
 column fraction .7, row fraction .8 with bagging every iteration, 127 bins,
 seed 2026 and one CPU thread. Each multiclass round produces three class trees,
 so 640 rounds permits 1,920 trees. This is a bounded initial training budget;
@@ -25,6 +184,8 @@ it is not mathematically equivalent to 1,280 binary rounds, and does not claim
 convergence or optimal capacity. The full training multi-logloss trajectory is
 saved to diagnose whether the chosen budget may still be underfitting. No
 validation-driven early stopping or extra arm is permitted in this study.
+The [capacity rationale and structural audit](LGBM_CAPACITY_REASONING.md) explain
+why feature count alone cannot determine a useful leaf or depth limit.
 
 ## New possession evidence
 
@@ -162,6 +323,52 @@ Full multiclass trees can learn ball-source shortcuts; their D prediction is
 not restricted to player-only evidence. Synthetic stress performance does not
 establish independent broadcast robustness.
 
+## Compute cost and learned use of the features
+
+All 12 models completed their fixed 640 rounds and contain 1,920 class trees.
+Summed per-fit elapsed time was 7.00 hours; up to four one-thread workers ran
+concurrently, and the complete fit phase took about 2 hours 10 minutes. Receipts
+include matrix preparation/checking where applicable, so the following times
+are operational costs rather than isolated algorithm benchmarks.
+
+| Arm | Metrica excluded, minutes | Sportec excluded, minutes | SkillCorner excluded, minutes |
+| --- | ---: | ---: | ---: |
+| Legacy 63 | 17.9 | 9.0 | 9.0 |
+| Geometry 63 | 18.2 | 13.8 | 8.9 |
+| Full 63 | 64.7 | 52.8 | 31.0 |
+| Full 127 | 76.7 | 72.2 | 45.8 |
+
+Training multi-logloss continued declining over the final 100 rounds in every
+fit, by 0.0108–0.0153. Full 63 ended at 0.1144–0.2257 and Full 127 at
+0.0893–0.1856 across folds. Wider trees fit the training labels more closely;
+this alone does not establish a held-out benefit or prove that additional
+rounds would improve spell F1. A 1,280-round full H/A/D budget remains unmeasured.
+
+The [independent tree-structure audit](results/joint_lgbm_capacity_audit.json)
+confirmed that every tree reaches its depth cap. Additional capacity is used,
+but the five-training-match SkillCorner holdout has thinner support: its wider
+model's median leaf contains 253 rows and 24.3% of leaves contain at most 150.
+Only 21.6% of that fold's D trees reach 127 leaves, compared with about 87% of
+H/A trees. LightGBM's `min_child_samples` is an approximate size constraint:
+1.29–12.50% of leaves across these models have fewer than 120 actual rows.
+These are correlated training-row counts, not independent examples;
+capacity needs validation separately from whether a configured limit binds.
+
+The following shares normalize split gain within each model, then average the
+three provider folds equally. They describe what training splits used, not
+held-out causal importance; correlated features can substitute for one another.
+
+| Arm | Legacy | New instantaneous geometry | Reliable anchors | Ordered context | Control persistence |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Full 63 | 41.0% | 0.2% | 17.7% | 32.7% | 8.4% |
+| Full 127 | 40.5% | 0.2% | 17.6% | 34.2% | 7.6% |
+
+The trees materially use contact memory and ordered temporal evidence. The
+small direct geometry share does not mean geometry is unused: anchors and
+persistence are themselves derived from its control evidence. The declared
+feature ablation measures the complete added packages; it does not isolate
+anchors from ordered context individually.
+
 ## Reproduction and artifacts
 
 The frozen output is `data/experiments/joint_lgbm_v1`. Restore the verified
@@ -170,6 +377,7 @@ runner and models are `joint_lgbm_experiment.py`, `joint_lgbm.py` and
 `possession_geometry.py`.
 
 ```sh
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 python -m experiments.joint_lgbm_experiment freeze
 python -m experiments.joint_lgbm_experiment prepare
 for source in sportec metrica skillcorner; do
@@ -191,5 +399,10 @@ full-vector blend. Models, matrices, tracking and frame outputs remain private.
 Only aggregate reports are published. No organizer diagnostic is run.
 
 Before fitting, all 19 geometry/full-class contracts and the 124-test repository
-suite passed. Results, measured runtime, guardrails and remote artifact receipts
-will be recorded when this frozen experiment completes.
+suite passed. All 12 checkpoints, 60 standalone probability artifacts and 300
+predictions are complete and sealed. The [independent verification receipt](results/temporal_followup_verification.json)
+passed checks of all 300 full-vector probability blends, 15 representative
+decodes, exact cohorts/summaries/guardrails and the model/input seals. Together
+with the GRU study, it covers 24 models and 360 new evaluation rows. Private
+artifact restore provenance is maintained in the follow-up artifact manifest;
+the adopted baseline manifest remains unchanged.

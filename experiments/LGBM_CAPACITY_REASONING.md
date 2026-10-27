@@ -6,11 +6,11 @@ tests 127 leaves and depth 10 on the complete feature set. This distinguishes
 the value of better possession evidence from the effect of adding tree
 capacity. These are bounded working hypotheses, not proven optimal settings.
 
-The structural measurements later in this report describe the earlier binary
+The completed full H/A/D structural audit below measures all twelve frozen
+multiclass models. A separate historical section describes the earlier binary
 player-only D models. The user clarified the intended full H/A/D scope after
-that read-only audit completed. Those observations inform questions about tree
-shape and support; they do not determine multiclass capacity or establish a
-full-model performance gain.
+that first audit completed. Neither structural audit establishes a held-out
+performance gain or determines optimal capacity.
 
 ## Full H A D feature and capacity design
 
@@ -77,6 +77,86 @@ The binary audit below suggests two practical checks: distinguish a leaf cap
 from a depth cap, and inspect match coverage instead of treating 120 correlated
 rows as 120 independent examples. It does not show that 63 or 127 leaves are
 optimal for the full multiclass problem.
+
+## Actual full H A D tree structure
+
+The read-only [multiclass audit](joint_lgbm_capacity_audit.py) inspected all
+twelve frozen checkpoints and their training histories. It verified model and
+receipt hashes, declared parameters, feature manifests, class order, excluded
+provider training cohorts, and the 640-iteration/1,920-tree budget. It read no
+evaluation scores or labels and made no predictions. The
+[complete measurements](results/joint_lgbm_capacity_audit.json) include separate
+H, A and D tree summaries.
+
+**Every class tree reaches its configured maximum depth:** 8 for the first
+three arms and 10 for the wider arm. The depth cap therefore affects actual
+tree shape, including the unchanged legacy feature set. Reaching a cap does
+not establish that loosening it would improve generalization.
+
+| Held-out provider | Arm | Trees reaching leaf cap | Row-count-weighted leaf depth | Median rows per leaf | Leaves with at most 150 rows |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Sportec | Legacy 63 | 99.48% | 6.99 | 1,233 | 5.09% |
+| Sportec | Geometry 63 | 99.79% | 7.00 | 1,247 | 4.98% |
+| Sportec | Full 63 | 99.43% | 7.07 | 1,086 | 6.12% |
+| Sportec | Full 127 | 97.81% | 8.62 | 498 | 11.36% |
+| Metrica | Legacy 63 | 99.84% | 6.79 | 1,402 | 3.33% |
+| Metrica | Geometry 63 | 100.00% | 6.79 | 1,408 | 3.20% |
+| Metrica | Full 63 | 99.95% | 6.80 | 1,376 | 2.97% |
+| Metrica | Full 127 | 99.90% | 8.17 | 608 | 7.16% |
+| SkillCorner | Legacy 63 | 92.97% | 6.52 | 583 | 13.40% |
+| SkillCorner | Geometry 63 | 95.21% | 6.48 | 576 | 13.23% |
+| SkillCorner | Full 63 | 91.82% | 6.71 | 514 | 14.99% |
+| SkillCorner | Full 127 | 65.42% | 8.25 | 253 | 24.32% |
+
+This makes the width/depth tradeoff concrete. The wider models use deeper paths
+for substantial training-row mass: mean count-weighted depth rises from
+6.71–7.07 to 8.17–8.62 on the complete features. Their median leaf support
+roughly halves. The number of columns alone would not have revealed either
+behavior. Geometry adds 23 features with almost unchanged depth and support;
+the temporal expansion supplies different evidence at the same 63-leaf cap.
+
+The fold trained on just five matches, holding out SkillCorner, needs special
+care. Only 21.56% of its wider **D** trees reach 127 leaves, versus 86.88% of H
+trees and 87.81% of A trees, although all reach depth 10. This is evidence that
+class-specific tree growth is constrained before the leaf budget is exhausted;
+it does not identify which combination of depth, split gain, regularization
+and support is responsible. A blanket claim that all classes need more leaves
+would be unsupported.
+
+Leaf counts are correlated fitted-row counts, not independent matches, unique
+frames, or seconds. The audit does not route training matches through these
+multiclass trees, so the exact binary selected-tree match-coverage results below
+must not be transferred to them. Actual dumped counts can fall below the
+configured `min_child_samples=120`: this occurs for 1.29–12.50% of leaves across
+the twelve models. Treat that parameter as a fitting constraint with
+LightGBM's count approximations, not a guarantee that every dumped leaf has
+120 distinct observations. The reported weighted depth uses `leaf_count`;
+the JSON also supplies Hessian-weighted depth using `leaf_weight`. Neither is
+an exact depth average under the original class-time sample weights.
+
+### Training-loss progression, without selecting a new budget
+
+| Held-out provider | Legacy 63 final loss | Geometry 63 final loss | Full 63 final loss | Full 127 final loss | Full 63 decrease over final 64 rounds | Full 127 decrease over final 64 rounds |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Sportec | 0.2566 | 0.2556 | 0.2184 | 0.1762 | 3.61% | 5.14% |
+| Metrica | 0.2609 | 0.2612 | 0.2257 | 0.1856 | 3.31% | 4.69% |
+| SkillCorner | 0.1423 | 0.1413 | 0.1144 | 0.0893 | 5.50% | 7.30% |
+
+These are weighted **training multiclass log losses**, not spell F1. Comparisons
+are meaningful between arms within a fold; folds contain different training
+populations. Every history decreases on every round, with its minimum at round
+640. Thus the fixed budget is visibly not a demonstrated training-loss plateau.
+The full feature expansion improves training fit at matched capacity in every
+fold; increasing capacity improves it further. Neither observation establishes
+held-out spell quality, robustness, or the benefit of extra boosting rounds.
+The existing declaration remains unchanged. A future budget comparison would
+need its own prospective design rather than extending a selected arm after
+reading the current evaluation.
+
+The practical conclusion is a justified comparison, not an optimum: 63/depth 8
+provides a substantial shared feature-engineering baseline, while 127/depth 10
+tests more detailed partitions at visibly lower support. Matched full-pipeline
+spell F1 and corruption behavior must decide whether that extra detail helps.
 
 ## Scope of the earlier binary audit
 
@@ -215,18 +295,23 @@ The following reasoning still applies:
    capacity that preserves true turnovers and stoppages. Full probability
    blending with the GRU must be evaluated as a complete pipeline.
 
-No adopted baseline, frozen binary model, or model-selection decision changes
-because of this structural audit. The full H/A/D implementation and matched
-evaluation are the next evidence required.
+No adopted baseline, frozen binary model, or model-selection decision changed
+because of this historical structural audit. The full H/A/D structure is now
+measured separately above; its matched predictive evaluation remains separate
+from both audits.
 
 ## Reproducible evidence
 
+- [All twelve full H/A/D model structures and training histories](results/joint_lgbm_capacity_audit.json).
+- [Multiclass structure audit](joint_lgbm_capacity_audit.py).
 - [All twelve model structures and preliminary bounded routing sample](results/lgbm_capacity_audit.json).
 - [Exact full-row routing for the three regularized models](results/lgbm_capacity_full_support.json).
 - [Structure and bounded-support audit](lgbm_capacity_audit.py).
 - [Full-row selected-tree follow-up](lgbm_capacity_full_support.py).
 
-Both audit scripts are read-only with respect to model artifacts and refuse to
-overwrite completed audit outputs. Their selected-tree support helper assumes
+All three audit scripts are read-only with respect to model artifacts and
+refuse to overwrite completed audit outputs. The binary selected-tree helper assumes
 a binary booster; a multiclass audit needs explicit class-tree indexing before
-reuse. Neither script reports predictive performance.
+reuse. The new multiclass structure audit handles H/A/D indexing explicitly;
+it does not perform match-routing analysis. No script reports predictive
+performance.
