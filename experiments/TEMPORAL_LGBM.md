@@ -1,6 +1,6 @@
 # Bidirectional player context for LightGBM and GRU fusion
 
-Status: frozen and running; external results not yet available. Date: 2026-10-27.
+Status: all 12 fits completed and sealed; external evaluation pending. Date: 2026-10-27.
 
 This study tests whether a LightGBM dead-ball head can complement the latest
 player-only D joint GRU. It preserves that GRU's conditional H/A attribution and
@@ -124,3 +124,23 @@ At declaration time, the six feature/fusion contract tests pass. Full experiment
 results, remote artifact availability and the resulting decision will be filled
 in after the frozen run finishes. No competition CSV or score is produced by
 this study.
+
+## Completed training cost
+
+All 12 fits completed without changing the frozen specification. Training rows
+were 141,392 with SkillCorner excluded, 179,452 with Sportec excluded, and
+207,964 with Metrica excluded. The mean fitting time across folds was 39.1
+seconds for raw_slow, 408.7 for context_slow, 187.8 for context_shallow and
+228.9 for context_regularized. These are elapsed one-thread fit times while
+other research jobs shared the machine. Feature-cache preparation is separate.
+
+In the matched context_slow arm, new temporal columns account for 46.5% of
+training split gain averaged across folds: future standard deviation 12.2%,
+future mean 10.1%, future lag values 7.1%, past standard deviation 4.9%, and
+smaller shares for the other context families. This establishes that the trees
+use the expanded representation. Training gain is not held-out permutation
+importance and cannot establish that a feature causes a generalization gain.
+
+A separate [capacity and shrinkage extension](CAPACITY_LGBM.md), requested
+while these fits were running, tests 63 and 127 leaves at learning rate .01.
+It leaves this four-arm experiment unchanged.

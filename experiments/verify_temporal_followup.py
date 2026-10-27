@@ -14,7 +14,7 @@ from pathlib import Path
 import numpy as np
 import joblib
 
-from experiments import dead_transfer, multisource_eval
+from experiments import dead_transfer, multisource_eval, supervised
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -67,101 +67,131 @@ def verify_means(rows, summaries, identity, stress_name, metric_names):
                 raise ValueError(f'Equal-provider mean mismatch: {metric}')
 
 
-def verify(gru, lgbm, output, capacity=None):
+def verify(gru, lgbm, output):
+    """Check the corrected full H/A/D study; superseded D-only runs are unscored."""
     a, b = read(gru / 'report.json'), read(lgbm / 'report.json')
-    model_counts = {'gru': verify_frozen(gru), 'lightgbm': verify_frozen(lgbm)}
+    model_counts = {'gru': verify_frozen(gru), 'joint_lightgbm': verify_frozen(lgbm)}
+    if model_counts != {'gru': 12, 'joint_lightgbm': 12}:
+        raise ValueError('Declared model count differs')
+    if b['gru_report_sha256'] != digest(gru/'report.json'):
+        raise ValueError('Shared GRU report changed')
+    for relative, expected in b['evaluation_inputs']['files_sha256'].items():
+        if digest(ROOT/relative) != expected:
+            raise ValueError(f'Shared evaluation artifact changed: {relative}')
+    for name, relative in (('baseline_manifest_sha256', 'experiments/baseline_manifest.json'),
+                           ('policy_sha256', 'experiments/model_decision_policy.json')):
+        if b['spec'][name] != digest(ROOT/relative):
+            raise ValueError('Adopted package or decision policy changed')
     expected_gru = {(s, p.stem, v, arm, seed)
                     for s, split in dead_transfer.SPLITS.items() for p in split['eval']
                     for v in ('clean', 'corrupt_1', 'corrupt_2')
                     for arm in ('control', 'slot_dropout') for seed in (2026, 2027)}
-    expected_lgbm = {(s, p.stem, v, config, seed, weight)
+    expected_lgbm = {(s, p.stem, v, config, recipe)
                      for s, split in dead_transfer.SPLITS.items() for p in split['eval']
                      for v in ('clean', 'corrupt_1', 'corrupt_2')
-                     for config in b['spec']['configs'] for seed in (2026, 2027)
-                     for weight in (.5, 1.)}
+                     for config in b['spec']['configs'] for recipe in b['spec']['recipes']}
     actual_gru = {(r['source'], r['match'], r['view'], r['arm'], r['seed']) for r in a['rows']}
-    actual_lgbm = {(r['source'], r['match'], r['view'], r['config'], r['seed'], r['weight']) for r in b['rows']}
+    actual_lgbm = {(r['source'], r['match'], r['view'], r['config'], r['recipe']) for r in b['rows']}
     if len(a['rows']) != len(expected_gru) or actual_gru != expected_gru or len(b['rows']) != len(expected_lgbm) or actual_lgbm != expected_lgbm:
         raise ValueError('Incomplete or duplicated declared cohort')
-    if model_counts != {'gru': 12, 'lightgbm': 12}:
-        raise ValueError('Declared model count differs')
     metric_names = ('spell_f1', 'macro_f1', 'd_f1', 'd_precision', 'd_recall')
     verify_means(a['rows'] + a['archived_comparators'], a['summaries'],
                  ('arm', 'seed'), 'corrupted', metric_names[:3])
-    verify_means(b['rows'] + b['controls'], b['summaries'],
-                 ('config', 'weight', 'seed'), 'stress', metric_names)
+    verify_means(b['rows'] + b['gru_controls'] + b['archived_baseline'], b['summaries'],
+                 ('config', 'recipe'), 'stress', metric_names + ('weighted_summary',))
+    summary_index = {(r['config'], r['recipe'], r['view']): r for r in b['summaries']}
+    base_clean = summary_index[('adopted_recipe', 'baseline', 'clean')]
+    base_stress = summary_index[('adopted_recipe', 'baseline', 'stress')]
+    for screen in b['screens']:
+        clean = summary_index[(screen['config'], screen['recipe'], 'clean')]
+        stress = summary_index[(screen['config'], screen['recipe'], 'stress')]
+        cd, sd = clean['spell_f1']-base_clean['spell_f1'], stress['spell_f1']-base_stress['spell_f1']
+        pd = min(clean['per_source'][s][k]-base_clean['per_source'][s][k]
+                 for s in dead_transfer.SPLITS for k in ('d_f1', 'macro_f1'))
+        expected = cd >= .01 and sd >= -.01 and pd >= -.02
+        if screen['passes'] != expected or any(not np.isclose(screen[k], value, atol=1e-12, rtol=0)
+                for k, value in (('clean_spell_delta', cd), ('stress_spell_delta', sd), ('worst_provider_d_or_macro_delta', pd))):
+            raise ValueError('Reported guardrail outcome differs')
     baseline = {(r['source'], r['match'], r['view']): r for r in a['archived_comparators']}
-    controls = {(r['source'], r['match'], r['view'], r['seed']): r
-                for r in a['rows'] if r['arm'] == 'control'}
-    label_support = {}
+    controls = {(r['source'], r['match'], r['view'], f"{r['arm']}_{r['seed']}"): r for r in a['rows']}
+    tree_rows = {(r['source'], r['match'], r['view'], r['config'], r['recipe']): r for r in b['rows']}
+    for r in b['gru_controls']:
+        original = controls[(r['source'], r['match'], r['view'], r['recipe'])]
+        if any(r[k] != original[k] for k in original):
+            raise ValueError('Reused GRU row differs')
+    for r in b['archived_baseline']:
+        original = baseline[(r['source'], r['match'], r['view'])]
+        if any(r[k] != original[k] for k in original):
+            raise ValueError('Reused baseline differs')
+    native_gru_count = native_tree_count = blend_count = decoded_count = 0
     for source, split in dead_transfer.SPLITS.items():
         for path in split['eval']:
             _, labels = multisource_eval.view(path)
-            label_support[(source, path.stem)] = int(np.isin(labels, ['H', 'A', 'D']).sum())
+            support = int(np.isin(labels, ['H', 'A', 'D']).sum())
             for view in ('clean', 'corrupt_1', 'corrupt_2'):
                 cached = joblib.load(gru/f'eval_{path.stem}_{view}.joblib')
                 if not np.array_equal(labels, cached['labels']):
-                    raise ValueError('Shared evaluation labels differ from original masked cohort')
+                    raise ValueError('Shared labels differ from original masked cohort')
                 if cached['joint']['match'] != path.stem or cached['joint']['source'] != source:
-                    raise ValueError('Shared evaluation cache identity differs')
-    for r in a['rows']:
-        key = (r['source'], r['match'], r['view'])
-        original = baseline[key]
-        archived_support = sum(original['per_class'][label]['support'] for label in ('H', 'A', 'D'))
-        if r['n_gt_spells'] != original['n_gt_spells'] or r['graded_frames'] != archived_support or r['graded_frames'] != label_support[key[:2]]:
-            raise ValueError(f'GRU grading mismatch: {key}')
-        probabilities = np.load(gru / f"{r['source']}_{r['match']}_{r['view']}_{r['arm']}_{r['seed']}.npz")
-        p = probabilities['probability']
-        if p.shape != (len(probabilities['prediction']), 3) or not np.isfinite(p).all() or np.any(p < 0) or not np.allclose(p.sum(1), 1, atol=1e-6):
-            raise ValueError('Invalid saved native GRU probability array')
-    for r in b['rows'] + b['controls']:
-        reference = controls[(r['source'], r['match'], r['view'], r['seed'])]
-        for field in ('n_gt_spells', 'graded_frames'):
-            if r[field] != reference[field]:
-                raise ValueError(f'LightGBM grading mismatch: {field}')
-        if r['config'] == 'gru_control':
-            for metric in metric_names:
-                if r[metric] != reference[metric]:
-                    raise ValueError(f'Reused control differs: {metric}')
-    capacity_count = 0
-    report_paths = [gru/'report.json', lgbm/'report.json']
-    if capacity is not None:
-        c = read(capacity/'report.json')
-        model_counts['capacity_extension'] = verify_frozen(capacity)
-        if model_counts['capacity_extension'] != 6:
-            raise ValueError('Capacity extension requires six frozen models')
-        expected_capacity = {(s, p.stem, v, config, seed, weight)
-                             for s, split in dead_transfer.SPLITS.items() for p in split['eval']
-                             for v in ('clean', 'corrupt_1', 'corrupt_2')
-                             for config in ('context_63_slow', 'context_127_slow')
-                             for seed in (2026, 2027) for weight in (.5, 1.)}
-        actual_capacity = {(r['source'], r['match'], r['view'], r['config'], r['seed'], r['weight']) for r in c['rows']}
-        if len(c['rows']) != len(expected_capacity) or actual_capacity != expected_capacity:
-            raise ValueError('Incomplete or duplicated capacity cohort')
-        if c['original_report_sha256'] != digest(lgbm/'report.json') or c['controls'] != b['controls']:
-            raise ValueError('Capacity extension reused different original evidence')
-        if c['original_regularized_rows'] != [r for r in b['rows'] if r['config'] == 'context_regularized']:
-            raise ValueError('Capacity extension comparator differs')
-        verify_means(c['rows'] + c['original_regularized_rows'] + c['controls'], c['summaries'],
-                     ('config', 'weight', 'seed'), 'stress', metric_names)
-        for r in c['rows']:
-            reference = controls[(r['source'], r['match'], r['view'], r['seed'])]
-            if (r['n_gt_spells'], r['graded_frames']) != (reference['n_gt_spells'], reference['graded_frames']):
-                raise ValueError('Capacity extension grading differs')
-        capacity_count = len(c['rows'])
-        report_paths.append(capacity/'report.json')
-    # Preserve every source/input/model guard in the reports, and report actual
-    # score populations separately from the additional verified archived rows.
+                    raise ValueError('Shared cache identity differs')
+                reference = baseline[(source, path.stem, view)]
+                archived_support = sum(reference['per_class'][label]['support'] for label in ('H', 'A', 'D'))
+                if archived_support != support:
+                    raise ValueError('Archived baseline grading differs')
+                gru_probabilities = {}
+                for arm in ('control', 'slot_dropout'):
+                    for seed in (2026, 2027):
+                        recipe = f'{arm}_{seed}'
+                        r = controls[(source, path.stem, view, recipe)]
+                        if (r['n_gt_spells'], r['graded_frames']) != (reference['n_gt_spells'], support):
+                            raise ValueError('GRU grading mismatch')
+                        with np.load(gru/f'{source}_{path.stem}_{view}_{recipe}.npz') as saved:
+                            p = saved['probability'].copy()
+                            valid_probability(p, len(labels))
+                            if len(saved['prediction']) != len(labels):
+                                raise ValueError('Native GRU prediction length differs')
+                        gru_probabilities[recipe] = p
+                        native_gru_count += 1
+                for config in b['spec']['configs']:
+                    with np.load(lgbm/f'{source}_{path.stem}_{view}_{config}_probability.npz') as saved:
+                        p = saved['probability'].copy()
+                        valid_probability(p, len(labels))
+                    native_tree_count += 1
+                    for recipe in b['spec']['recipes']:
+                        r = tree_rows[(source, path.stem, view, config, recipe)]
+                        if (r['n_gt_spells'], r['graded_frames']) != (reference['n_gt_spells'], support):
+                            raise ValueError('Joint LightGBM grading mismatch')
+                        combined = p if recipe == 'standalone' else .5*p + .5*gru_probabilities[recipe]
+                        if array_digest(combined) != r['native_probability_sha256']:
+                            raise ValueError('Full H/A/D blend differs from scored probabilities')
+                        prediction_path = lgbm/f'{source}_{path.stem}_{view}_{config}_{recipe}.npz'
+                        with np.load(prediction_path) as saved:
+                            prediction = saved['prediction']
+                            if len(prediction) != len(labels) or not np.isin(prediction, ['H', 'A', 'D']).all():
+                                raise ValueError('Invalid native tree prediction')
+                            if array_digest(prediction) != r['prediction_sha256']:
+                                raise ValueError('Saved prediction changed')
+                            # All vector hashes are checked; a fixed representative
+                            # cell per provider/recipe also verifies decoding.
+                            if path == split['eval'][0] and view == 'clean' and config == 'legacy_63':
+                                inputs = cached['inputs']
+                                decoded = supervised.decode(combined, supervised.model_periods(inputs), float(inputs['fps']), 3)
+                                if not np.array_equal(decoded, prediction):
+                                    raise ValueError('Probability-to-decoded-label mismatch')
+                                decoded_count += 1
+                        blend_count += 1
     result = dict(verified_utc=datetime.now(timezone.utc).isoformat(),
                   verifier_sha256=digest(__file__), model_counts=model_counts,
-                  new_scored_rows={'gru': len(a['rows']), 'lightgbm': len(b['rows']),
-                                   'capacity_extension': capacity_count},
+                  new_scored_rows={'gru': len(a['rows']), 'joint_lightgbm': len(b['rows'])},
                   archived_baseline_rows=len(a['archived_comparators']),
-                  reused_gru_control_rows=len(b['controls']),
+                  reused_gru_rows=len(b['gru_controls']),
                   independent_summary_and_grading_checks=True,
-                  valid_native_gru_probabilities=True,
+                  native_gru_probabilities_verified=native_gru_count,
+                  native_tree_probabilities_verified=native_tree_count,
+                  full_vector_blends_verified=blend_count,
+                  representative_decodes_verified=decoded_count,
                   organizer_labels_read=False,
-                  reports={str(p.relative_to(ROOT)): digest(p) for p in report_paths})
+                  reports={str(p.relative_to(ROOT)): digest(p) for p in (gru/'report.json', lgbm/'report.json')})
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('x') as stream:
         json.dump(result, stream, indent=2)
@@ -169,11 +199,19 @@ def verify(gru, lgbm, output, capacity=None):
     print(json.dumps(result, indent=2))
 
 
+def array_digest(value):
+    return hashlib.sha256(np.ascontiguousarray(value).tobytes()).hexdigest()
+
+
+def valid_probability(p, n):
+    if p.shape != (n, 3) or not np.isfinite(p).all() or np.any(p < 0) or not np.allclose(p.sum(1), 1, atol=1e-6):
+        raise ValueError('Invalid saved native H/A/D probability array')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gru', type=Path, default=ROOT/'data/experiments/gru_slot_robustness_v2')
-    parser.add_argument('--lgbm', type=Path, default=ROOT/'data/experiments/temporal_lgbm_v1')
-    parser.add_argument('--capacity', type=Path, default=ROOT/'data/experiments/capacity_lgbm_v1')
+    parser.add_argument('--lgbm', type=Path, default=ROOT/'data/experiments/joint_lgbm_v1')
     parser.add_argument('--output', type=Path, default=ROOT/'data/experiments/temporal_followup_verification.json')
     args = parser.parse_args()
-    verify(args.gru, args.lgbm, args.output, args.capacity)
+    verify(args.gru, args.lgbm, args.output)
