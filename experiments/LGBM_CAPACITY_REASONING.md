@@ -67,6 +67,12 @@ remain important even when the flattened matrix contains hundreds of thousands
 of rows. Capacity should earn its place through matched whole-provider spell
 F1 and stress behavior, not training loss or the raw number of frames.
 
+The full-model sampler retains run edges at 5 Hz and thins interiors to 1.25 Hz,
+with weights preserving each original known class's 5 Hz time mass. Thus the
+120-row leaf minimum has no fixed conversion to seconds in this study. The
+48-second frame-equivalent illustration in the binary audit below applies only
+to that older uniformly sampled 2.5 Hz matrix.
+
 The binary audit below suggests two practical checks: distinguish a leaf cap
 from a depth cap, and inspect match coverage instead of treating 120 correlated
 rows as 120 independent examples. It does not show that 63 or 127 leaves are

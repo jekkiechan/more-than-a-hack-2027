@@ -42,7 +42,30 @@ def verify_frozen(directory):
         path = directory / model['file']
         if digest(path) != model['sha256'] or digest(path.with_suffix('.json')) != model['receipt_sha256']:
             raise ValueError(f'Changed checkpoint: {path.name}')
+        receipt = read(path.with_suffix('.json'))
+        if receipt['sha256'] != model['sha256'] or receipt['predeclared_sha256'] != digest(directory/'predeclared.json'):
+            raise ValueError(f'Checkpoint receipt does not bind the declaration: {path.name}')
+        expected_matches = spec['training_matches'][receipt['heldout']]
+        if sorted(receipt['training_matches']) != sorted(expected_matches):
+            raise ValueError(f'Checkpoint training cohort differs: {path.name}')
     return len(sealed)
+
+
+def exact_keys(rows, fields, expected, description):
+    actual = {tuple(row[field] for field in fields) for row in rows}
+    if len(rows) != len(expected) or actual != expected:
+        raise ValueError(f'Incomplete or duplicate {description}')
+
+
+def verify_guardrail(screen, clean, stress, base_clean, base_stress):
+    cd = clean['spell_f1']-base_clean['spell_f1']
+    sd = stress['spell_f1']-base_stress['spell_f1']
+    pd = min(clean['per_source'][s][k]-base_clean['per_source'][s][k]
+             for s in dead_transfer.SPLITS for k in ('d_f1', 'macro_f1'))
+    expected = cd >= .01 and sd >= -.01 and pd >= -.02
+    if screen['passes'] != expected or any(not np.isclose(screen[k], value, atol=1e-12, rtol=0)
+            for k, value in (('clean_spell_delta', cd), ('stress_spell_delta', sd), ('worst_provider_d_or_macro_delta', pd))):
+        raise ValueError('Reported guardrail outcome differs')
 
 
 def verify_means(rows, summaries, identity, stress_name, metric_names):
@@ -70,6 +93,8 @@ def verify_means(rows, summaries, identity, stress_name, metric_names):
 def verify(gru, lgbm, output):
     """Check the corrected full H/A/D study; superseded D-only runs are unscored."""
     a, b = read(gru / 'report.json'), read(lgbm / 'report.json')
+    if a['spec'] != read(gru/'predeclared.json') or b['spec'] != read(lgbm/'predeclared.json'):
+        raise ValueError('Report declaration differs from frozen declaration')
     model_counts = {'gru': verify_frozen(gru), 'joint_lightgbm': verify_frozen(lgbm)}
     if model_counts != {'gru': 12, 'joint_lightgbm': 12}:
         raise ValueError('Declared model count differs')
@@ -94,24 +119,52 @@ def verify(gru, lgbm, output):
     actual_lgbm = {(r['source'], r['match'], r['view'], r['config'], r['recipe']) for r in b['rows']}
     if len(a['rows']) != len(expected_gru) or actual_gru != expected_gru or len(b['rows']) != len(expected_lgbm) or actual_lgbm != expected_lgbm:
         raise ValueError('Incomplete or duplicated declared cohort')
+    expected_baseline = {(s, p.stem, v) for s, split in dead_transfer.SPLITS.items()
+                         for p in split['eval'] for v in ('clean', 'corrupt_1', 'corrupt_2')}
+    expected_copied_gru = {(s, match, view, f'{arm}_{seed}') for s, match, view, arm, seed in expected_gru}
+    exact_keys(a['archived_comparators'], ('source','match','view'), expected_baseline, 'original baseline cohort')
+    exact_keys(b['archived_baseline'], ('source','match','view'), expected_baseline, 'copied baseline cohort')
+    exact_keys(b['gru_controls'], ('source','match','view','recipe'), expected_copied_gru, 'copied GRU cohort')
+    if any(r['arm'] != 'baseline' or r['seed'] != 2026 for r in a['archived_comparators']):
+        raise ValueError('Unexpected archived baseline identity')
+    gru_identities = {('control',2026),('control',2027),('slot_dropout',2026),('slot_dropout',2027)}
+    exact_keys(a['summaries'], ('arm','seed','view'),
+               {(arm,seed,view) for arm,seed in gru_identities | {('baseline',2026)}
+                for view in ('clean','corrupted')}, 'GRU summaries')
+    exact_keys(a['screens'], ('arm','seed'), gru_identities, 'GRU guardrail screens')
+    joint_identities = {(config,recipe) for config in b['spec']['configs'] for recipe in b['spec']['recipes']}
+    all_identities = joint_identities | {('gru',f'{arm}_{seed}') for arm,seed in gru_identities} | {('adopted_recipe','baseline')}
+    exact_keys(b['summaries'], ('config','recipe','view'),
+               {(config,recipe,view) for config,recipe in all_identities for view in ('clean','stress')}, 'joint summaries')
+    exact_keys(b['screens'], ('config','recipe'), joint_identities, 'joint guardrail screens')
+    exact_keys(b['paired_blend_deltas'], ('config','recipe','view'),
+               {(config,recipe,view) for config,recipe in joint_identities if recipe != 'standalone'
+                for view in ('clean','stress')}, 'paired blend differences')
     metric_names = ('spell_f1', 'macro_f1', 'd_f1', 'd_precision', 'd_recall')
     verify_means(a['rows'] + a['archived_comparators'], a['summaries'],
                  ('arm', 'seed'), 'corrupted', metric_names[:3])
     verify_means(b['rows'] + b['gru_controls'] + b['archived_baseline'], b['summaries'],
                  ('config', 'recipe'), 'stress', metric_names + ('weighted_summary',))
     summary_index = {(r['config'], r['recipe'], r['view']): r for r in b['summaries']}
+    gru_summary_index = {(r['arm'],r['seed'],r['view']): r for r in a['summaries']}
+    for screen in a['screens']:
+        verify_guardrail(screen,
+            gru_summary_index[(screen['arm'],screen['seed'],'clean')],
+            gru_summary_index[(screen['arm'],screen['seed'],'corrupted')],
+            gru_summary_index[('baseline',2026,'clean')],
+            gru_summary_index[('baseline',2026,'corrupted')])
     base_clean = summary_index[('adopted_recipe', 'baseline', 'clean')]
     base_stress = summary_index[('adopted_recipe', 'baseline', 'stress')]
     for screen in b['screens']:
         clean = summary_index[(screen['config'], screen['recipe'], 'clean')]
         stress = summary_index[(screen['config'], screen['recipe'], 'stress')]
-        cd, sd = clean['spell_f1']-base_clean['spell_f1'], stress['spell_f1']-base_stress['spell_f1']
-        pd = min(clean['per_source'][s][k]-base_clean['per_source'][s][k]
-                 for s in dead_transfer.SPLITS for k in ('d_f1', 'macro_f1'))
-        expected = cd >= .01 and sd >= -.01 and pd >= -.02
-        if screen['passes'] != expected or any(not np.isclose(screen[k], value, atol=1e-12, rtol=0)
-                for k, value in (('clean_spell_delta', cd), ('stress_spell_delta', sd), ('worst_provider_d_or_macro_delta', pd))):
-            raise ValueError('Reported guardrail outcome differs')
+        verify_guardrail(screen, clean, stress, base_clean, base_stress)
+    for paired in b['paired_blend_deltas']:
+        candidate = summary_index[(paired['config'],paired['recipe'],paired['view'])]
+        control = summary_index[('gru',paired['recipe'],paired['view'])]
+        for name, metric in (('spell_delta','spell_f1'),('macro_delta','macro_f1')):
+            if not np.isclose(paired[name],candidate[metric]-control[metric],atol=1e-12,rtol=0):
+                raise ValueError('Reported paired blend difference differs')
     baseline = {(r['source'], r['match'], r['view']): r for r in a['archived_comparators']}
     controls = {(r['source'], r['match'], r['view'], f"{r['arm']}_{r['seed']}"): r for r in a['rows']}
     tree_rows = {(r['source'], r['match'], r['view'], r['config'], r['recipe']): r for r in b['rows']}
@@ -153,23 +206,36 @@ def verify(gru, lgbm, output):
                         gru_probabilities[recipe] = p
                         native_gru_count += 1
                 for config in b['spec']['configs']:
-                    with np.load(lgbm/f'{source}_{path.stem}_{view}_{config}_probability.npz') as saved:
+                    probability_path = lgbm/f'{source}_{path.stem}_{view}_{config}_probability.npz'
+                    probability_receipt = read(probability_path.with_suffix('.json'))
+                    if (probability_receipt['sha256'] != digest(probability_path)
+                            or probability_receipt['model_sha256'] != digest(lgbm/f'without_{source}_{config}.joblib')
+                            or probability_receipt['input_seal_sha256'] != digest(lgbm/'evaluation_inputs_frozen.json')):
+                        raise ValueError('Standalone probability receipt or provenance differs')
+                    with np.load(probability_path) as saved:
                         p = saved['probability'].copy()
                         valid_probability(p, len(labels))
+                        if not np.array_equal(saved['indices'], cached['joint']['indices']):
+                            raise ValueError('Standalone sampled probability clock differs')
+                        valid_probability(saved['sampled'], len(saved['indices']))
                     native_tree_count += 1
                     for recipe in b['spec']['recipes']:
                         r = tree_rows[(source, path.stem, view, config, recipe)]
                         if (r['n_gt_spells'], r['graded_frames']) != (reference['n_gt_spells'], support):
                             raise ValueError('Joint LightGBM grading mismatch')
                         combined = p if recipe == 'standalone' else .5*p + .5*gru_probabilities[recipe]
+                        if r['probability_artifact'] != probability_path.name or combined.dtype.str != r['native_probability_dtype']:
+                            raise ValueError('Probability artifact identity or dtype differs')
                         if array_digest(combined) != r['native_probability_sha256']:
                             raise ValueError('Full H/A/D blend differs from scored probabilities')
                         prediction_path = lgbm/f'{source}_{path.stem}_{view}_{config}_{recipe}.npz'
+                        if digest(prediction_path) != r['prediction_file_sha256']:
+                            raise ValueError('Saved prediction file hash differs')
                         with np.load(prediction_path) as saved:
                             prediction = saved['prediction']
                             if len(prediction) != len(labels) or not np.isin(prediction, ['H', 'A', 'D']).all():
                                 raise ValueError('Invalid native tree prediction')
-                            if array_digest(prediction) != r['prediction_sha256']:
+                            if prediction.dtype.str != r['prediction_dtype'] or array_digest(prediction) != r['prediction_sha256']:
                                 raise ValueError('Saved prediction changed')
                             # All vector hashes are checked; a fixed representative
                             # cell per provider/recipe also verifies decoding.
@@ -186,6 +252,9 @@ def verify(gru, lgbm, output):
                   archived_baseline_rows=len(a['archived_comparators']),
                   reused_gru_rows=len(b['gru_controls']),
                   independent_summary_and_grading_checks=True,
+                  exact_comparator_summary_and_screen_cohorts=True,
+                  both_study_guardrails_and_paired_deltas_verified=True,
+                  probability_receipts_prediction_file_hashes_and_dtypes_verified=True,
                   native_gru_probabilities_verified=native_gru_count,
                   native_tree_probabilities_verified=native_tree_count,
                   full_vector_blends_verified=blend_count,
