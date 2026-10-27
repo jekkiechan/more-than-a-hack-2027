@@ -10,42 +10,18 @@ question to answer with it.
 
 ---
 
-## Current fork baseline
+## Fork research
 
-This fork's current working baseline is **GRU + ordered HGB** for dead-ball
-probability, with **25% ball-gap-only replacement in HGB team-model training**
-and Viterbi decoding. The D heads, 50/50 blend and switch cost 3 are unchanged.
-The [improvements summary](experiments/BASELINE_IMPROVEMENTS.md) compares this
-with the baseline in PR #10; the [baseline guide](experiments/BASELINE.md)
-records versions, promotion evidence and reproduction commands.
+The adopted package, open experiments and next actions are tracked in
+[current research status](docs/research/STATUS.md). Use the
+[experiment index](docs/research/EXPERIMENTS.md) to find results and
+[BASELINE.md](experiments/BASELINE.md) for model versions, exact evidence and
+private-cache restore/inference commands. Start agent work at [AGENTS.md](AGENTS.md).
 
-On the same external D-provider holdouts, clean spell/macro F1 is
-**0.5740 / 0.8439**, versus **0.5746 / 0.8449** previously; composite-corrupted
-spell/macro improves to **0.4315 / 0.7866**, from **0.4205 / 0.7699**. The user
-authorized this robustness tradeoff. The earlier clean-winner selection remains
-preserved; the new baseline is not a clean-score winner.
-
-The existing organizer public-five-minute diagnostic is **0.5257 spell /
-0.8588 macro / 0.8568 dead-ball F1**. It covers only 17 reference possessions
-and does not establish full-match performance. That result was already known
-when the user requested promotion; no training or scoring occurred during
-promotion. No candidate has been submitted to the organizers.
-
-Authorized team members can restore competition inputs and the packaged models
-from the private `mtah-data` checkout alongside this repository:
-
-```sh
-python -m pip install -r experiments/requirements-temporal.txt
-python ../mtah-data/scripts/competition_cache.py fetch --data-dir data
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest.json --data-dir data
-python -m experiments.current_baseline predict
-```
-
-The generated candidate is `data/experiments/current_baseline/gru_hgb_ballgap25.csv`.
-Competition assets, trained model weights and frame-level outputs stay outside
-the public repository. Two corruption-training batches have now been measured;
-only the targeted ball-gap team model is adopted. Fresh independently labeled
-broadcast validation remains the priority in [research directions](experiments/DIRECTIONS.md).
+Research reports distinguish external development from the organizer's small
+public pipeline check. No full-match performance or organizer submission is
+established. The original challenge guide below is retained as upstream context;
+its quick-start scorer is not the fork's research iteration loop.
 
 ---
 
