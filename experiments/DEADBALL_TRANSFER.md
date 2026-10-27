@@ -115,8 +115,10 @@ selected by score. This operational retry did not change training or evaluation.
 Aggregate evidence: [full results](results/deadball_transfer_development.json),
 [run audit](results/deadball_transfer_audit.json), and
 [training-only shortcut diagnostic](results/dead_shortcut_training_audit.json).
-Private archive: `mtah-data` branch `experiments/live-gap-had-v1`, manifest
+The follow-up archive is verified locally in `/workspace/mtah-live-gap`, with
 `deadball_transfer_cache_manifest.json` (including the prior-run dependencies).
+Its additional upload to private `mtah-data` branch `experiments/live-gap-had-v1`
+is pending separate approval; the first experiment's approved upload is complete.
 
 ## Hypothesis and diagnostic
 
@@ -194,8 +196,9 @@ Fresh independently labeled broadcast confirmation remains tracked in
 
 ## Reproduction
 
-From private `mtah-data` branch `experiments/live-gap-had-v1`, restore the complete
-archive (including the prior experiment and 18 external arrays):
+Once the follow-up upload is approved, restore the complete archive from private
+`mtah-data` branch `experiments/live-gap-had-v1` (including the prior experiment
+and 18 external arrays):
 
 ```sh
 python scripts/competition_cache.py fetch --manifest deadball_transfer_cache_manifest.json --data-dir /path/to/code/data

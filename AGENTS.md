@@ -168,8 +168,10 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   Player-only D overpredicts dead time under Sportec/Metrica corruption; the joint
   recipe still lacks the baseline D heads' separate player-slot-dropout view.
   Normalization, feature caches and update budgets match the original/paired
-  models. 81 tests pass. Private `experiments/live-gap-had-v1` archives the run
-  with `deadball_transfer_cache_manifest.json`. These remain adaptively motivated,
+  models. 81 tests pass. The local private checkout has the complete run with
+  `deadball_transfer_cache_manifest.json`; its additional remote upload awaits
+  separate approval (the first experiment's upload is complete). These are
+  adaptively motivated,
   reused development results; independent broadcast confirmation is outstanding.
 
 - The completed live-play-corruption / joint H/A/D GRU study is
