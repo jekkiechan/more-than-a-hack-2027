@@ -3,7 +3,8 @@
 The frozen runner binds the thirteen GRU TRAIN caches by file hash, but each
 cache pickles per-view ``feature_seconds`` wall-clock timings, so a rebuild can
 never be byte-identical. This wrapper keeps Codex's frozen declaration
-unchanged and re-pins only those 13 caches and their receipts, after recording
+unchanged and re-pins only those 13 caches, their receipts and the 13 geometry
+receipts (which also record prep seconds), after recording
 the evidence that their contents are identical:
 
 - evaluation features recompute bit-identically from the same code;
@@ -55,14 +56,14 @@ def deviation(evidence):
         current = sha256(ROOT/key)
         if current == digest:
             unchanged.append(key)
-        elif Path(key).name.startswith('train_'):
+        elif Path(key).name.startswith('train_') or (Path(key).name.startswith('geometry_') and key.endswith('.json')):
             rebuilt[key] = dict(frozen=digest, rebuilt=current)
         else:
             raise ValueError(f'Unexpected changed dependency: {key}')
-    if len(rebuilt) != 26:
-        raise ValueError('Expected only the 13 GRU TRAIN caches and receipts to differ')
+    if len(rebuilt) != 39:
+        raise ValueError('Expected only 13 GRU TRAIN caches, their receipts and 13 geometry receipts to differ')
     record = dict(created_utc=datetime.now(timezone.utc).isoformat(),
-                  reason='GRU TRAIN caches pickle wall-clock feature_seconds; rebuilt bytes cannot match.',
+                  reason='GRU TRAIN caches pickle wall-clock feature_seconds and cache receipts record prep seconds; rebuilt bytes cannot match. Geometry caches themselves hash-match.',
                   rebuilt=rebuilt, unchanged_dependencies=len(unchanged), evidence=evidence,
                   frozen_declaration_sha256=sha256(FROZEN), organizer_labels_read=False)
     if not (OUT/'predeclared.json').exists():
