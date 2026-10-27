@@ -17,8 +17,12 @@ Across all providers, the constrained model averages .6093 clean spell F1,
 .8411 macro F1 and .8303 D F1. Both seeds clear the clean +.01 spell screen and
 keep each provider's clean D/macro within the frozen .02 tolerance of baseline.
 **Both fail the stress guardrail**: spell F1 is .2767/.3214 versus .4129 baseline.
-Keep the baseline; no additional fits or threshold adjustments followed this
-readout.
+Keep the baseline; no additional development fits or threshold adjustments
+followed this readout. A later explicit user request authorized one unchanged,
+pooled seed-2026 fit and a separate competition pipeline check: .6194 spell /
+.8574 macro / .8506 D F1 versus the saved baseline .5257/.8588/.8568. See
+[the completed diagnostic](JOINT_COMPETITION_CHECK.md). It does not override
+the external stress failure or change the baseline.
 
 Under corruption the constrained model overpredicts dead play on Sportec and
 Metrica. D precision averages .6291/.4741 while recall is .9886/.9799; baseline

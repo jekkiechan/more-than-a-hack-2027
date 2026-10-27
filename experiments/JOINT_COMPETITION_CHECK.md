@@ -6,6 +6,50 @@ not a promotion or a preprocessing experiment. The baseline stays
 The full-match competition labels are unavailable; only the official five-minute
 pipeline check can be scored.
 
+## Completed result — 2026-10-27
+
+The single frozen check is complete. Spell F1 rises **.5257 → .6194**
+(+.0936); macro and D F1 remain close to baseline. Keep the current baseline:
+this small pipeline check does not supersede the failed external corruption
+guardrail or establish full-match transfer.
+
+| Public five-minute check | Saved baseline | Latest joint GRU | Delta |
+| --- | ---: | ---: | ---: |
+| Spell F1 | .5257 | .6194 | +.0936 |
+| Frame macro F1 | .8588 | .8574 | -.0014 |
+| Dead-ball F1 | .8568 | .8506 | -.0063 |
+| Predicted possessions | 18 | 14 | -4 |
+| Reference possessions | 17 | 17 | — |
+| Spell F1, official 90% interval | [.3657, .6743] | [.4387, .8000] | — |
+
+At IoU .5 both models match 11 of 17 reference possessions. The joint GRU has
+3 spurious possessions versus 7 for baseline; at IoU .6 it matches 9 versus 7.
+These are descriptive aggregate results, not evidence for choosing a repair.
+The intervals are separate official bootstrap intervals, not a paired test of
+the improvement. There are 7,500 graded frames; full-match accuracy is unknown.
+
+| Spell F1 comparison | Baseline | Latest joint GRU |
+| --- | ---: | ---: |
+| External clean, full provider holdouts | .5338 | .6093 |
+| External synthetic corruption, full provider holdouts | .4129 | .2991 |
+| Competition public pipeline check | .5257 | .6194 |
+
+External figures give each provider equal weight over five reused development
+matches; GRU figures average separate seeds 2026 and 2027, not an ensemble.
+The competition model uses the predeclared seed 2026 and all 13 external
+training matches, excluding those five development matches. The earlier plain
+joint GRU remains unscored on competition labels.
+
+The pooled fit completed eight epochs / 3,824 updates with 62,643 parameters
+in 475 seconds. All 199,319 predictions passed official format validation and
+were sealed before reference-label access. The baseline score was reused from
+its saved report. All 85 synthetic/contract tests and implementation CI passed.
+The exclusive public gate is now closed; **do not repeat scoring or tune from
+this result**. Aggregate results and all source/model/input/CSV hash bindings
+are in [the saved report](results/joint_gru_public_check.json). Checkpoint,
+receipts, gate and predictions remain local under the fixed ignored output
+directory; no organizer inputs or frame-level outputs are published.
+
 ## Declaration before fitting or reading labels
 
 The user's request is: "calculate comp too. i think we are moving in the right

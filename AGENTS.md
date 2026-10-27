@@ -157,6 +157,21 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Artifacts and reproducibility
 
+- [experiments/JOINT_COMPETITION_CHECK.md](experiments/JOINT_COMPETITION_CHECK.md)
+  records the later explicitly requested, single public check of the latest
+  player-only-D joint GRU. One unchanged seed-2026 pooled fit on the original
+  13 training matches excluded all five development matches; weights and all
+  199,319 predictions were sealed before labels. Public spell/macro/D F1 is
+  .6194/.8574/.8506 versus saved baseline .5257/.8588/.8568; 14 predicted and
+  17 reference possessions. The official 90% spell interval is [.4387,.8000].
+  This is only the five-minute pipeline check, not full-match accuracy or
+  independent selection evidence. Baseline unchanged; external stress failure
+  still stands. The new exclusive gate is CLOSED: do not rerun scoring,
+  reset it or tune preprocessing from this result. Read the saved
+  `experiments/results/joint_gru_public_check.json`. Local checkpoint/receipts/
+  predictions live in `data/experiments/joint_gru_public_v1`; no new private
+  archive upload was performed. 85 tests and format validation passed.
+
 - [experiments/DEADBALL_TRANSFER.md](experiments/DEADBALL_TRANSFER.md) records
   the completed player-only D-path repair: two matched factorized GRUs, two fixed
   seeds, three full provider holdouts; all 12 models sealed before 60 evaluations.
