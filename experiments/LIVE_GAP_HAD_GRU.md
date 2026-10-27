@@ -78,9 +78,10 @@ The full aggregate evidence and all per-match/seed results are in
 [live_gap_had_development.json](results/live_gap_had_development.json).
 [Provenance and corruption audit](results/live_gap_had_audit.json) records
 runtime versions, checkpoint verification, matched GRU budgets, and realized
-training gaps. Model weights and frame-level predictions are archived privately
-on `mtah-data` branch `experiments/live-gap-had-v1`, with
-`live_gap_had_cache_manifest.json`. The current baseline manifest, default
+training gaps. Model weights and frame-level predictions are saved in a verified
+local private-cache checkout on branch `experiments/live-gap-had-v1`, with
+`live_gap_had_cache_manifest.json`; remote upload is pending explicit approval.
+The current baseline manifest, default
 inference entrypoint and organizer gates are unchanged.
 
 Validation: 77 synthetic/contract tests and GitHub CI passed. The bundled
@@ -200,8 +201,9 @@ separately from speed.
 
 ## Reproduction
 
-To restore this completed run, check out private `mtah-data` branch
-`experiments/live-gap-had-v1` and run from that cache checkout:
+The completed run is currently saved locally in `/workspace/mtah-live-gap`.
+Remote archive upload is pending approval. Once uploaded, check out private
+`mtah-data` branch `experiments/live-gap-had-v1` and run from that cache checkout:
 
 ```sh
 python scripts/competition_cache.py fetch --manifest live_gap_had_cache_manifest.json --data-dir /path/to/code/data

@@ -167,8 +167,9 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
   Keep `gru_hgb_ballgap25_v1`. The joint GRU is smaller/faster in this run,
   but needs dead-ball transfer work before replacement. These are reused
   development and synthetic stress results, not broadcast confirmation.
-  All 15 baseline match/view cases reproduce the archive exactly. Private
-  branch `experiments/live-gap-had-v1` has `live_gap_had_cache_manifest.json`;
+  All 15 baseline match/view cases reproduce the archive exactly. Local private
+  branch `experiments/live-gap-had-v1` has `live_gap_had_cache_manifest.json`
+  (remote upload pending approval);
   [data issue #4](https://github.com/jekkiechan/mtah-data/issues/4) records the
   human access/annotation work. No organizer gate was used or reset.
 
