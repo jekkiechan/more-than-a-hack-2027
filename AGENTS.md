@@ -157,6 +157,21 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Artifacts and reproducibility
 
+- The completed live-play-corruption / joint H/A/D GRU study is
+  [experiments/LIVE_GAP_HAD_GRU.md](experiments/LIVE_GAP_HAD_GRU.md). All 60
+  evaluations exclude the evaluation provider from both H/A and D fitting.
+  Baseline clean/stress spell is .5338/.4129; live-gap pipeline .5240/.4277;
+  plain H/A/D GRU .6272/.3976; live-gap GRU .6002/.4278. Both GRUs clear the
+  clean +.01 screen but miss most SkillCorner dead time (plain GRU D F1
+  .1773 vs baseline .7022); overall clean macro falls .8300 to .7883/.7289.
+  Keep `gru_hgb_ballgap25_v1`. The joint GRU is smaller/faster in this run,
+  but needs dead-ball transfer work before replacement. These are reused
+  development and synthetic stress results, not broadcast confirmation.
+  All 15 baseline match/view cases reproduce the archive exactly. Private
+  branch `experiments/live-gap-had-v1` has `live_gap_had_cache_manifest.json`;
+  [data issue #4](https://github.com/jekkiechan/mtah-data/issues/4) records the
+  human access/annotation work. No organizer gate was used or reset.
+
 - The lighter, task-specific corruption follow-up is
   `experiments/LIGHT_CORRUPTION.md` and `light_corruption.py`. It retains 75%
   of the original clean/coarse recipe and replaces 25% of rows/windows with
