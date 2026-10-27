@@ -1,0 +1,213 @@
+{
+  "checkpoints": [
+    {
+      "provider_held_out": "sportec",
+      "arm": "factorized_all",
+      "seed": 2026,
+      "bytes": 261572,
+      "sha256": "794836f85dd9fd56772eca8437f6ad82d4bb30f5745982f042a01702d655e3b8",
+      "parameters": 62643,
+      "optimizer_updates": 2976,
+      "windows_per_epoch": 23748
+    },
+    {
+      "provider_held_out": "sportec",
+      "arm": "factorized_player_D",
+      "seed": 2026,
+      "bytes": 261572,
+      "sha256": "d9d9720dfcb8539afd6f2399c87ed6d08c11c295d531379314084f4d91187226",
+      "parameters": 62643,
+      "optimizer_updates": 2976,
+      "windows_per_epoch": 23748
+    },
+    {
+      "provider_held_out": "sportec",
+      "arm": "factorized_all",
+      "seed": 2027,
+      "bytes": 261572,
+      "sha256": "a3a51b9b5972ae1c5b6ec6d862b6f5ef960369a6fdd5b713dfcad11631563513",
+      "parameters": 62643,
+      "optimizer_updates": 2976,
+      "windows_per_epoch": 23748
+    },
+    {
+      "provider_held_out": "sportec",
+      "arm": "factorized_player_D",
+      "seed": 2027,
+      "bytes": 261572,
+      "sha256": "76b82d5496f4c71d83e0f49b68f8d1a8106cee3bc62a628df3198ea23e2787bf",
+      "parameters": 62643,
+      "optimizer_updates": 2976,
+      "windows_per_epoch": 23748
+    },
+    {
+      "provider_held_out": "metrica",
+      "arm": "factorized_all",
+      "seed": 2026,
+      "bytes": 261572,
+      "sha256": "9c8a29eb2eb5f8d22bef1864e18e76d512aa1aa72707f86694963db504fbb27c",
+      "parameters": 62643,
+      "optimizer_updates": 3248,
+      "windows_per_epoch": 25976
+    },
+    {
+      "provider_held_out": "metrica",
+      "arm": "factorized_player_D",
+      "seed": 2026,
+      "bytes": 261572,
+      "sha256": "6f14741e3dafd51e6dac78b44078fdc7adeaf506af7f056c30e9abef5a5a7168",
+      "parameters": 62643,
+      "optimizer_updates": 3248,
+      "windows_per_epoch": 25976
+    },
+    {
+      "provider_held_out": "metrica",
+      "arm": "factorized_all",
+      "seed": 2027,
+      "bytes": 261572,
+      "sha256": "fc234858756b5f7f304476c49f173b144f5ad3414bcf37df0bc428f93559e8b9",
+      "parameters": 62643,
+      "optimizer_updates": 3248,
+      "windows_per_epoch": 25976
+    },
+    {
+      "provider_held_out": "metrica",
+      "arm": "factorized_player_D",
+      "seed": 2027,
+      "bytes": 261572,
+      "sha256": "d529492df57a8473bfeb6a30bb1a2ab478908731712726d2a2b1a1e7a9f3b3ac",
+      "parameters": 62643,
+      "optimizer_updates": 3248,
+      "windows_per_epoch": 25976
+    },
+    {
+      "provider_held_out": "skillcorner",
+      "arm": "factorized_all",
+      "seed": 2026,
+      "bytes": 261572,
+      "sha256": "278b5d5eafe067108518bc32353d54875b6fc33260b3f20d86caa98b0717dfdf",
+      "parameters": 62643,
+      "optimizer_updates": 1432,
+      "windows_per_epoch": 11396
+    },
+    {
+      "provider_held_out": "skillcorner",
+      "arm": "factorized_player_D",
+      "seed": 2026,
+      "bytes": 261572,
+      "sha256": "3ac6126c02768836db4b43a8c737f720158af85815211fed84c307234054042e",
+      "parameters": 62643,
+      "optimizer_updates": 1432,
+      "windows_per_epoch": 11396
+    },
+    {
+      "provider_held_out": "skillcorner",
+      "arm": "factorized_all",
+      "seed": 2027,
+      "bytes": 261572,
+      "sha256": "8ed56d22213ab3aec8704ad08bb3df13617e69f3a1922705a1eb86e877bdc584",
+      "parameters": 62643,
+      "optimizer_updates": 1432,
+      "windows_per_epoch": 11396
+    },
+    {
+      "provider_held_out": "skillcorner",
+      "arm": "factorized_player_D",
+      "seed": 2027,
+      "bytes": 261572,
+      "sha256": "66f629f32876731b930ef3094e371541e83f98a42fa22c0bbc4c9413698becdb",
+      "parameters": 62643,
+      "optimizer_updates": 1432,
+      "windows_per_epoch": 11396
+    }
+  ],
+  "provider_isolation_verified": true,
+  "paired_capacity_updates_windows_equal": true,
+  "source_hashes_verified": true,
+  "data_hashes_verified": true,
+  "normalization_matches_paired_arms_and_original_joint": true,
+  "dead_input_masks_verified": true,
+  "training_data": "13 original matches; all derived views remain with the original match; 5 evaluation matches never fitted",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "sklearn": "1.8.0",
+    "torch": "2.8.0+cpu"
+  },
+  "retry": "Two initial constrained Sportec jobs were terminated by the memory limit before finishing. Identical seeds/spec restarted; concurrency reduced from four to two. No checkpoint was selected from retries.",
+  "exposure": "Reused development data; hypothesis follows earlier results; no fresh confirmation",
+  "auxiliary_70_30_not_used_for_ranking": [
+    {
+      "arm": "baseline",
+      "seed": 2026,
+      "view": "clean",
+      "score": 0.6226672474581907
+    },
+    {
+      "arm": "baseline",
+      "seed": 2026,
+      "view": "corrupted",
+      "score": 0.5224301021219496
+    },
+    {
+      "arm": "factorized_all",
+      "seed": 2026,
+      "view": "clean",
+      "score": 0.6685276436411249
+    },
+    {
+      "arm": "factorized_all",
+      "seed": 2026,
+      "view": "corrupted",
+      "score": 0.4715343149382225
+    },
+    {
+      "arm": "factorized_all",
+      "seed": 2027,
+      "view": "clean",
+      "score": 0.664023686065654
+    },
+    {
+      "arm": "factorized_all",
+      "seed": 2027,
+      "view": "corrupted",
+      "score": 0.5075988813918063
+    },
+    {
+      "arm": "factorized_player_D",
+      "seed": 2026,
+      "view": "clean",
+      "score": 0.6780198168045324
+    },
+    {
+      "arm": "factorized_player_D",
+      "seed": 2026,
+      "view": "corrupted",
+      "score": 0.37770667427390137
+    },
+    {
+      "arm": "factorized_player_D",
+      "seed": 2027,
+      "view": "clean",
+      "score": 0.6796406120343973
+    },
+    {
+      "arm": "factorized_player_D",
+      "seed": 2027,
+      "view": "corrupted",
+      "score": 0.4288396962352173
+    },
+    {
+      "arm": "had_gru",
+      "seed": 2026,
+      "view": "clean",
+      "score": 0.6755437794082924
+    },
+    {
+      "arm": "had_gru",
+      "seed": 2026,
+      "view": "corrupted",
+      "score": 0.48002093302000154
+    }
+  ]
+}

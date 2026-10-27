@@ -157,6 +157,21 @@ restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
 
 ## Artifacts and reproducibility
 
+- [experiments/DEADBALL_TRANSFER.md](experiments/DEADBALL_TRANSFER.md) records
+  the completed player-only D-path repair: two matched factorized GRUs, two fixed
+  seeds, three full provider holdouts; all 12 models sealed before 60 evaluations.
+  The restriction repairs clean SkillCorner D F1 .1773 to .7123/.6986 (baseline
+  .7022); unrestricted factorization alone only reaches .1997/.3743. Constrained
+  equal-provider means are .6093 spell/.8411 macro/.8303 D F1 clean, but stress
+  spell falls to .2991 versus baseline .4129. Both seeds fail frozen robustness
+  guardrails, so keep the baseline and do not continue tuning this completed run.
+  Player-only D overpredicts dead time under Sportec/Metrica corruption; the joint
+  recipe still lacks the baseline D heads' separate player-slot-dropout view.
+  Normalization, feature caches and update budgets match the original/paired
+  models. 81 tests pass. Private `experiments/live-gap-had-v1` archives the run
+  with `deadball_transfer_cache_manifest.json`. These remain adaptively motivated,
+  reused development results; independent broadcast confirmation is outstanding.
+
 - The completed live-play-corruption / joint H/A/D GRU study is
   [experiments/LIVE_GAP_HAD_GRU.md](experiments/LIVE_GAP_HAD_GRU.md). All 60
   evaluations exclude the evaluation provider from both H/A and D fitting.

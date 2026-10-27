@@ -5,6 +5,10 @@ directions on the five existing development matches. A +0.01 equal-provider
 clean spell-F1 gain is a screening threshold, not permission to promote a model.
 Independent labeled broadcast confirmation is still required.
 
+The completed [player-only D-path follow-up](DEADBALL_TRANSFER.md) repairs the
+clean SkillCorner D collapse across two fixed seeds, but fails the frozen stress
+guardrail. It also retains the current baseline.
+
 ## Measured development results
 
 | Arm | Clean spell F1 | Clean macro F1 | Stress spell F1 | Stress macro F1 |
