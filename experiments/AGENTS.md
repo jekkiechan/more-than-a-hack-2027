@@ -117,6 +117,7 @@ pinned in [EXPERIMENTS](../docs/research/EXPERIMENTS.md). Check live PR state.
 | `live_gap_experiment.py` | `feature_view(...)` builds the joint-GRU input record. Also used at inference. |
 | `joint_lgbm.py`, `temporal_lgbm.py`, `possession_geometry.py` | Full H/A/D LightGBM features, ordered temporal features, control geometry and anchors |
 | `datasets.py`, `metrica_open.py`, `skillcorner_had.py`, `audit_dataset.py` | Source download and normalization into the shared NPZ contract |
+| `preparation.py` | Validated manifest folds and hash-verified, reusable unnormalized joint feature caches for new runners; see [preparation skill](../.agents/skills/possession-preparation/SKILL.md) |
 | `challenge.py` | Organizer tracking prep. Never loads ground truth. |
 | `current_baseline.py` | `predict` with the active manifest; dispatches on `architecture.kind` |
 

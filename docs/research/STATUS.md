@@ -60,6 +60,16 @@ a failed provider or corruption guardrail.
 
 ## Open work and artifacts
 
+Reusable preparation infrastructure (2026-10-28):
+[`preparation.py`](../../experiments/preparation.py) resolves the existing
+whole-match/provider manifest and caches unnormalized joint features by input,
+code, dependency and view hashes. The
+[preparation skill](../../.agents/skills/possession-preparation/SKILL.md) owns
+usage and limits. Synthetic contracts cover provider isolation, grading,
+time breaks and cache integrity. Private-array preparation and runtime savings
+have not been measured here. Next new runner can import this API; frozen study
+runners, declarations, baseline and scoring gates are unchanged.
+
 The user-requested [competition check of four temporal candidates](../../experiments/TEMPORAL_COMPETITION_CHECK.md) is complete and its gate is closed: dropout GRU .5818, robustness blend .5818, clean leader blend .5500, Full127 .5371 spell F1. It was resumed with a [recorded cache-rehash deviation](../../experiments/results/temporal_competition_resume_deviation.json). The [stress-component ablation](../../experiments/STRESS_COMPONENT_ABLATION.md) and the promotion are in PR #20.
 
 
