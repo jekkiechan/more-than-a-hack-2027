@@ -126,6 +126,14 @@ process-local context adapter that restores the original constant on exit.
 Window counts and crop alignment have synthetic contracts. No old runner,
 baseline manifest, policy, historical declaration or public gate is modified.
 
+Runtime scheduling/cache adapters were added during fitting, before any context
+scoring; [runtime note](results/seed_gap_context_runtime.json) records them.
+The two initial fits use the in-memory runner. Later fits call that same
+mathematical routine with byte-verified file-backed raw arrays, allowing the OS
+to evict unused raw pages after normalization. A synthetic contract reproduces
+every fitted state value and training-history entry exactly. This changes cache
+storage and scheduling; all declared numerical mechanisms remain fixed.
+
 For each seed the clean and feed-like spell deltas must stay >=-.01 and every
 provider's clean macro/D-F1 delta >=-.02 versus its own original control. The
 mechanistic hypothesis requires positive spell and long-gap team-accuracy deltas
@@ -142,7 +150,8 @@ python -m experiments.seed_gap_context evaluate
 python -m experiments.seed_gap_context report
 # Only if the frozen diagnosis holds:
 python -m experiments.seed_gap_context prepare
-python -m experiments.seed_gap_context fit --source sportec --seed 2026
+python scripts/fit_context_filebacked.py --contract
+python scripts/fit_context_filebacked.py --source sportec --seed 2026
 # Repeat the remaining five declared source/seed pairs, then:
 python -m experiments.seed_gap_context seal
 python -m experiments.seed_gap_context evaluate-context
