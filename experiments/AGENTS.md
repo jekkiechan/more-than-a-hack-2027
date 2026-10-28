@@ -3,8 +3,11 @@
 Dense map of what has been tried here, so you can resume without reading 40
 reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
 below are snapshots as of 2026-10-28 (after PR #20). [STATUS](../docs/research/STATUS.md)
-is the live source for adoption and next work. If the two disagree, STATUS wins.
-Open a detailed report only for the study you are extending.
+is the coordination summary for adoption and next work. Before model-choice
+advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
+verify the active manifest/policy and recent PR evidence. STATUS and this guide
+can both lag newer work; historical verdicts below are not current adoption rules.
+Open a detailed report for the study relevant to the question.
 
 ## 1. State in five lines
 
@@ -118,6 +121,7 @@ pinned in [EXPERIMENTS](../docs/research/EXPERIMENTS.md). Check live PR state.
 | `live_gap_experiment.py` | `feature_view(...)` builds the joint-GRU input record. Also used at inference. |
 | `joint_lgbm.py`, `temporal_lgbm.py`, `possession_geometry.py` | Full H/A/D LightGBM features, ordered temporal features, control geometry and anchors |
 | `datasets.py`, `metrica_open.py`, `skillcorner_had.py`, `audit_dataset.py` | Source download and normalization into the shared NPZ contract |
+| `preparation.py` | Validated manifest folds and hash-verified, reusable unnormalized joint feature caches for new runners; see [preparation skill](../.agents/skills/possession-preparation/SKILL.md) |
 | `challenge.py` | Organizer tracking prep. Never loads ground truth. |
 | `current_baseline.py` | `predict` with the active manifest; dispatches on `architecture.kind` |
 
@@ -131,6 +135,14 @@ them to run a new study; write a new runner that imports the libraries.
 
 ## 7. How a study is built here
 
+- Start new preparation code with [`preparation.py`](preparation.py) and the
+  [preparation skill](../.agents/skills/possession-preparation/SKILL.md).
+  Preview `python -m experiments.preparation plan --fold leave_out_<provider>`;
+  use `pooled` for deployment training. Reuse compatible match/view caches
+  across folds and clean seed runs. Freeze the emitted plan hash and recipe;
+  fit normalization and all learned H/A/D components on its training records
+  only. Preserve native grading, X targets, masks and time breaks. Unsupported
+  feature families need a declared, versioned recipe and parity contracts.
 - The runner exposes `freeze` → `run`/`predict` (per match/view) → `report`
   (or `check` for a gate). `freeze` writes
   `results/<id>_declaration.json` with source, config and input hashes before
