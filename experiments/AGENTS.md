@@ -131,6 +131,14 @@ them to run a new study; write a new runner that imports the libraries.
 
 ## 7. How a study is built here
 
+- Start new preparation code with [`preparation.py`](preparation.py) and the
+  [preparation skill](../.agents/skills/possession-preparation/SKILL.md).
+  Preview `python -m experiments.preparation plan --fold leave_out_<provider>`;
+  use `pooled` for deployment training. Reuse compatible match/view caches
+  across folds and clean seed runs. Freeze the emitted plan hash and recipe;
+  fit normalization and all learned H/A/D components on its training records
+  only. Preserve native grading, X targets, masks and time breaks. Unsupported
+  feature families need a declared, versioned recipe and parity contracts.
 - The runner exposes `freeze` → `run`/`predict` (per match/view) → `report`
   (or `check` for a gate). `freeze` writes
   `results/<id>_declaration.json` with source, config and input hashes before
