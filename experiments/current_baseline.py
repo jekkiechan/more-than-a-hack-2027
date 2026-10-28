@@ -1,4 +1,4 @@
-"""Promote and run the GRU/HGB baseline without organizer reference labels."""
+"""Promote and run the adopted baseline package without organizer reference labels."""
 from __future__ import annotations
 import argparse
 from datetime import datetime, timezone
@@ -99,7 +99,19 @@ def dead_probability(inputs, models):
     return (pieces[0]+pieces[1])*.5
 
 
-def predict_probabilities(inputs, models):
+def joint_gru_probabilities(inputs, models):
+    """Player-only-D joint GRU package: one network outputs full H/A/D."""
+    from experiments import factorized_had, live_gap_experiment
+    placeholder = np.full(len(inputs['ball']), 'X', dtype='U1')
+    record = live_gap_experiment.feature_view(inputs, placeholder, 'competition', 'BAR-ATH')['joint']
+    periods = supervised.model_periods(inputs)
+    sampled = factorized_had.predict(record, models['joint_gru'])
+    return np.column_stack([lt.upsample(sampled[:, k], record, periods) for k in range(3)])
+
+
+def predict_probabilities(inputs, models, manifest=None):
+    if manifest and manifest.get('architecture', {}).get('kind') == 'joint_gru':
+        return joint_gru_probabilities(inputs, models)
     dead = dead_probability(inputs, models)
     team = refine_features.predict_probabilities(inputs, models['attribution'])
     return lt.refine_domain.combine(team, dead, 0.)
@@ -122,7 +134,7 @@ def main():
     if output.exists():
         raise ValueError('Refusing to overwrite a generated baseline candidate')
     inputs = load_inputs(args.inputs)
-    probabilities = predict_probabilities(inputs, load_models(args.models_dir, args.manifest))
+    probabilities = predict_probabilities(inputs, load_models(args.models_dir, args.manifest), manifest)
     labels = supervised.decode(probabilities, supervised.model_periods(inputs), float(inputs['fps']), lt.COST)
     labels[np.asarray(inputs['period']) <= 0] = 'X'
     challenge.write_submission(labels, output)

@@ -1,24 +1,27 @@
 # Current research state
 
-Reviewed 2026-10-27: fork main `5005115`, PR #16 at `8c704aa`, and the
+Reviewed 2026-10-28 (promotion); earlier review 2026-10-27: fork main `5005115`, PR #16 at `8c704aa`, and the
 `possession/temporal-spell-robustness` follow-up.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
 
 ## Adopted baseline
 
-`gru_hgb_ballgap25_v1`: fixed 50/50 GRU/ordered-HGB D heads, contextual HGB
-teams with 25% ball-gap training replacement, Viterbi cost 3. The
-[manifest](../../experiments/baseline_manifest.json) binds the package and
-explicit user-authorized robustness tradeoff. Independent broadcast confirmation
-is pending; no organizer submission or measured full-match performance exists.
-The user's .90 target on both competition metrics remains unestablished.
+`joint_gru_slotdrop_v1` (promoted 2026-10-28): pooled slot-dropout joint GRU,
+player-only D head, seed 2026, Viterbi cost 3. External full-provider-holdout
+clean spell .6088/.6176 versus the previous baseline's .5338; feed-like stress
+.4742/.4853 versus .4328. It passes every guardrail once feed-like stress replaces
+composite stress, a change decided after the composite results were known
+([ablation](../../experiments/STRESS_COMPONENT_ABLATION.md)). Public five-minute
+check .5818 spell / .8689 macro versus .5257 / .8588. Single seed, so full-match
+performance is unknown. Package details: [BASELINE](../../experiments/BASELINE.md).
+The previous `gru_hgb_ballgap25_v1` is archived under `experiments/baselines/`.
 
 ## Latest evidence
 
 | Scope / evidence | Finding | Decision |
 | --- | --- | --- |
-| Adopted recipe, historical **D-only provider holdout, pooled H/A**; [baseline](../../experiments/BASELINE.md) | Clean spell/macro .5740/.8439; composite-stress .4315/.7866. Previous .5746/.8449 and .4205/.7699. | Adopted robustness tradeoff, not a clean-score win. |
+| Previous adopted recipe (`gru_hgb_ballgap25_v1`), historical **D-only provider holdout, pooled H/A**; [baseline](../../experiments/BASELINE.md) | Clean spell/macro .5740/.8439; composite-stress .4315/.7866. Previous .5746/.8449 and .4205/.7699. | Adopted robustness tradeoff, not a clean-score win. |
 | Merged [tracking pilot](../../experiments/TOP_THREE_PILOT.md), PR #15 | 80 pooled development evaluations; matched gap/suppression arms lose overall spell. Fusion recovers 4,419 missing-ball frames (6.84%), with >10% overlapping ball positions disagreeing by >5 m. | No preprocessing/fusion adoption. |
 | Completed [confidence abstention](../../experiments/CONFIDENCE_ABSTENTION.md); **D-only provider holdout, pooled H/A** | 135 evaluations; 15/15 baseline parity. Primary .60 X gate: clean spell .57402→.58240, stress .43152→.42608; macro .84394→.82607 / .78659→.73476. All eight gates fail guardrails. X/hold differences occur on SkillCorner native unknown-label gaps. | Retain baseline; no organizer scoring or promotion. |
 | Draft [joint D repair](https://github.com/jekkiechan/more-than-a-hack-2027/blob/8c704aa0d919a942992dd1c493ae1297e5725e30/experiments/DEADBALL_TRANSFER.md), PR #16; **full H/A+D provider holdouts** | Baseline clean/stress spell .5338/.4129. Player-only D joint GRU .6093/.2991, averaging two separate seeds. Clean SkillCorner D collapse repaired; both seeds fail stress guardrail. | Retain baseline. Separate-seed means are not an ensemble. |

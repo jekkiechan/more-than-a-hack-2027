@@ -1,4 +1,67 @@
-# Current GRU/HGB ball-gap baseline
+# Current joint GRU baseline
+
+The current user-authorized working baseline is the **slot-dropout joint GRU**,
+package `joint_gru_slotdrop_v1`. One bidirectional GRU (24 hidden units) outputs
+full H/A/D probabilities; its dead-ball head sees player evidence only. It was
+trained once, pooled on the 13 external TRAIN matches with seed 2026, using
+clean/legacy views, 25% ball-gap replacement and ~25% player-slot dropout.
+Viterbi switch cost remains 3. The checkpoint is the one sealed by the
+[four-candidate competition check](TEMPORAL_COMPETITION_CHECK.md); promotion
+copied it without retraining or rescoring.
+
+| Full provider holdout, 5 external matches | Previous baseline | Seed 2026 | Seed 2027 |
+| --- | ---: | ---: | ---: |
+| Clean spell F1 | .5338 | .6088 (+.075) | .6176 (+.084) |
+| Feed-like stress spell F1 | .4328 | .4742 (+.041) | .4853 (+.053) |
+| Composite stress spell F1 (diagnostic only) | .4129 | .3180 | .3101 |
+| Worst provider clean D-F1/macro change | — | −.0155 | −.0007 |
+
+Both seeds pass every guardrail with **feed-like stress in place of composite
+stress**. That change was decided after the composite results were known. Its
+justification is label-free: the organizer feed has no whole-frame player loss,
+and the composite failure is driven by per-frame sampling loss. See the
+[stress-component ablation](STRESS_COMPONENT_ABLATION.md) and the
+[feed profile](results/feed_defect_profile.json). The deployed model is one
+seed; seed averaging is untested.
+
+| Public five-minute check (17 possessions) | Spell F1 | Macro F1 | D F1 |
+| --- | ---: | ---: | ---: |
+| Previous baseline (saved) | .5257 | .8588 | .8568 |
+| Joint GRU, slot dropout | .5818 | .8689 | .8393 |
+
+The spell gap is about one possession and the intervals overlap. Full-match
+performance is unknown. The public result was known before the promotion request.
+
+`baseline_manifest.json` records the request, the guardrail change, model hashes
+and evidence. `results/baseline_joint_gru_promotion.json` records the package.
+`python -m experiments.current_baseline predict` writes
+`data/experiments/current_baseline/joint_gru_slotdrop.csv`, byte-identical to the
+sealed candidate (`d8973971…a5e0`). The private cache's default
+`baseline_cache_manifest.json` restores `models/joint_gru_slotdrop_v1/`.
+
+```sh
+python ../mtah-data/scripts/competition_cache.py fetch --data-dir data
+python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest.json --data-dir data
+python -m experiments.current_baseline predict
+```
+
+## Previous GRU/HGB ball-gap baseline
+
+Its manifest and policy are preserved at `baselines/gru_hgb_ballgap25_v1.json`
+and `baselines/model_decision_policy_gru_hgb_ballgap25_v1.json`. Restore it with
+the private `baseline_cache_manifest_gru_hgb_ballgap25_v1.json`. Its replay through
+the current runner reproduces its validated CSV (`c12854d2…83fc`):
+
+```sh
+python -m experiments.current_baseline predict --manifest experiments/baselines/gru_hgb_ballgap25_v1.json --output data/experiments/current_baseline/previous_ballgap25_replay.csv
+```
+
+The closed competition-check directory binds the pre-promotion
+`current_baseline.py` hash. Re-running that closed gate is neither needed nor
+allowed; its sealed outputs remain the record.
+
+<details><summary>Previous package description</summary>
+
 
 The current user-authorized working baseline is **GRU/HGB with 25% ball-gap-only
 replacement in team-model training**, version `gru_hgb_ballgap25_v1`. Its GRU
@@ -27,7 +90,7 @@ tradeoff, unchanged D heads, previous manifest, and existing diagnostic evidence
 `results/baseline_ballgap25_promotion.json` records the package and byte-identical
 inference verification. No training or organizer scoring occurs during promotion.
 
-## Recorded competition check
+### Recorded competition check
 
 | Candidate | Spell F1 | Macro F1 | Dead-ball F1 |
 | --- | ---: | ---: | ---: |
@@ -46,7 +109,7 @@ previous check remains in `results/current_baseline_public_check.json`. Both
 exclusive gates stay closed. The historical PathCRF hybrid scored .5067 spell /
 .6795 macro on this window and remains an archived comparator.
 
-## Restore and run
+### Restore and run
 
 The private cache's default `baseline_cache_manifest.json` now restores
 `models/gru_hgb_ballgap25_v1/`: the unchanged GRU and ordered HGB, new team model,
@@ -71,7 +134,7 @@ commit to overlay. Use the matching current manifest and runtime when restoring
 from a checkout that predates this promotion. Input and model manifests remain
 separate, and no restore step authorizes resetting a completed scoring gate.
 
-## Previous baseline and frozen experiments
+## Older GRU/HGB baseline and frozen experiments
 
 The previous model package remains at `models/gru_hgb_v1/`. Its exact manifest
 and decision policy are preserved at `baselines/gru_hgb_v1.json` and
@@ -90,3 +153,5 @@ not rewrite their declarations to accept the new baseline. Future experiments
 should freeze a new output directory and compare against the newly adopted
 working package. See [LIGHT_CORRUPTION.md](LIGHT_CORRUPTION.md) for the training
 recipe and all four experimental arms.
+
+</details>
