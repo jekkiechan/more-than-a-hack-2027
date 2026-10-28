@@ -15,6 +15,37 @@
   [possession-readout](.agents/skills/possession-readout/SKILL.md).
   [Documentation ownership](docs/research/README.md) explains what to update.
 
+## Before answering model-choice or current-results questions
+
+This applies to chat advice as well as code work. Historical reports and saved
+Pages can contain valid scores but superseded recommendations.
+
+1. Check current `main`: read STATUS, BASELINE, the active baseline manifest
+   and model decision policy before describing the working model or guardrails.
+   The manifest identifies the adopted package; the policy defines the active
+   evaluation rule. Historical report verdicts do not override later promotion.
+   If current sources conflict, inspect the promotion record and recent commits
+   and disclose any unresolved discrepancy.
+2. Inspect recent merged and open PRs relevant to the question, including their
+   current heads and saved reports. STATUS and this guide are snapshots and may
+   lag ongoing work. Distinguish adopted, completed experimental, running and
+   proposed work; never call a method untested solely because an older summary
+   says so. Saved Pages are discovery aids, not authoritative current state.
+3. Name the exact stress view with every robustness claim. In particular,
+   `feed_like` and `composite` are different evaluations; compare models on the
+   same view and component holdouts. Check the current policy and component
+   ablation. Preserve composite failures as diagnostics and disclose a
+   post-result guardrail change rather than claiming the old failure vanished.
+4. Distinguish model family, training recipe and pipeline. A failed earlier GRU
+   recipe is not evidence that the current dropout GRU fails. A D-only GRU/TCN
+   comparison does not establish the best joint H/A/D architecture. Describe
+   “best supported current choice” separately from superiority demonstrated by
+   a matched architecture comparison.
+5. Check ensemble status in the latest evidence. Averaging separate seed scores
+   is not ensembling predictions; a measured probability ensemble may exist on
+   a newer branch while the adopted package remains single-seed. Cite the
+   relevant report/PR and its evaluation scope when making recommendations.
+
 ## Constraints that always apply
 
 - [CHALLENGE](CHALLENGE.md), [EVALUATION](EVALUATION.md),
