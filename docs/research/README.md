@@ -6,6 +6,7 @@ Read [STATUS](STATUS.md) to resume, then find the needed report in
 | Location | Owns | Update when |
 | --- | --- | --- |
 | [AGENTS](../../AGENTS.md) | Short routing and durable constraints | An operating rule changes |
+| [experiments/AGENTS](../../experiments/AGENTS.md) | Compressed lineage, vocabulary, settled directions, code map | A study completes or a module's role changes |
 | [STATUS](STATUS.md) | Current adoption, next actions, blockers and draft state | Work completes, priorities change or a PR merges |
 | [EXPERIMENTS](EXPERIMENTS.md) | Study IDs, outcomes, protocols and evidence links | A study is declared or reported |
 | [BASELINE](../../experiments/BASELINE.md) and its manifest | Package versions, promotion evidence, restore commands | A baseline is explicitly adopted |

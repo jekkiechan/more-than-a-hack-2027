@@ -1,6 +1,6 @@
 # Experiment index
 
-Reviewed 2026-10-27. Find evidence here; adoption and next work live in
+Reviewed 2026-10-28. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
@@ -20,11 +20,11 @@ Detailed reports own their original selection rules and aggregate JSON paths.
 | `tracking-pilot` | 80 pooled development evaluations; matched gap/suppression features lose overall spell. Fusion quality/player calibration unresolved. | [TOP_THREE_PILOT](../../experiments/TOP_THREE_PILOT.md) |
 | `confidence-abstention` | 135 evaluations with exact baseline parity; four X thresholds and matched hold controls all lose stress spell. Primary .60 improves clean spell slightly but loses macro/short-spell recall. No adoption. | [CONFIDENCE_ABSTENTION](../../experiments/CONFIDENCE_ABSTENTION.md), [declaration](../../experiments/results/confidence_abstention_declaration.json), [results](../../experiments/results/confidence_abstention.json) |
 
-## Draft-only evidence
+| `temporal-competition-check` | User-requested four-candidate public diagnostic, completed; gate closed. Dropout GRU .5818, robustness blend .5818, clean blend .5500, Full127 .5371 spell. | [TEMPORAL_COMPETITION_CHECK](../../experiments/TEMPORAL_COMPETITION_CHECK.md), [declaration](../../experiments/results/temporal_competition_declaration.json) |
+| `stress-component-ablation` | GRU composite-stress loss is mostly per-frame sampling loss, absent from the organizer feed; under feed-like stress every GRU seed beats the baseline. Guardrail switched to feed-like (decided after composite results). | [STRESS_COMPONENT_ABLATION](../../experiments/STRESS_COMPONENT_ABLATION.md), [results](../../experiments/results/stress_component_ablation.json) |
+| `joint-gru-slotdrop-promotion` | User-authorized promotion of the sealed slot-dropout joint GRU to `joint_gru_slotdrop_v1`; no refit or rescoring. | [BASELINE](../../experiments/BASELINE.md), [receipt](../../experiments/results/baseline_joint_gru_promotion.json) |
 
-| Study | State | Evidence |
-| --- | --- | --- |
-| `temporal-competition-check` | User-requested, frozen four-candidate diagnostic; pooled fits running. No new public score yet. | [Plan](../../experiments/TEMPORAL_COMPETITION_CHECK.md), [declaration](../../experiments/results/temporal_competition_declaration.json) |
+## Draft-only evidence
 
 Links pin inspected commits. These modules/reports may not exist on main;
 check live PR state before resuming.
