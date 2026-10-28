@@ -3,8 +3,11 @@
 Dense map of what has been tried here, so you can resume without reading 40
 reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
 below are snapshots as of 2026-10-28 (after PR #20). [STATUS](../docs/research/STATUS.md)
-is the live source for adoption and next work. If the two disagree, STATUS wins.
-Open a detailed report only for the study you are extending.
+is the coordination summary for adoption and next work. Before model-choice
+advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
+verify the active manifest/policy and recent PR evidence. STATUS and this guide
+can both lag newer work; historical verdicts below are not current adoption rules.
+Open a detailed report for the study relevant to the question.
 
 ## 1. State in five lines
 
