@@ -17,16 +17,20 @@ check .5818 spell / .8689 macro versus .5257 / .8588. Single seed, so full-match
 performance is unknown. Package details: [BASELINE](../../experiments/BASELINE.md).
 The previous `gru_hgb_ballgap25_v1` is archived under `experiments/baselines/`.
 
-## Running objective comparison
+## Completed objective comparison
 
-The user-requested [objective-alignment study](../../experiments/OBJECTIVE_ALIGNMENT.md)
-tests capped short-possession weighting, a cost-sensitive transition auxiliary,
-and their fixed combination against the adopted slot-dropout GRU recipe. All
-13 training feature caches are sealed and six control normalization/budget
-checks pass. Eighteen new full-provider-holdout fits (two seeds) are running;
-no comparative scores, organizer scoring, or adoption change yet. The separate
-[PR22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22) context/seed-ensemble
-study remains distinct.
+[PR25](https://github.com/jekkiechan/more-than-a-hack-2027/pull/25) completes
+[objective alignment](../../experiments/OBJECTIVE_ALIGNMENT.md): 18 new fits,
+six restored controls and 120 independently verified cases, with full provider
+holdouts and two seeds. All candidate guardrails pass, but no recipe clears the
++.01 clean spell-gain screen in both seeds. Combined improves clean spell by
++.01766/+.00895 and feed-like spell by +.01301/+.00627; clean short-spell recall
+rises +.0540/+.0382. SkillCorner clean spell falls about .01 and extra possessions
+increase there. Retain `joint_gru_slotdrop_v1`; combined is a confirmation
+candidate on these five exposed development matches. Organizer gates remain
+closed. Artifact restore status belongs in the report/receipt. The separate
+[PR22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22) context/seed
+ensemble study is distinct.
 
 ## Latest evidence
 
