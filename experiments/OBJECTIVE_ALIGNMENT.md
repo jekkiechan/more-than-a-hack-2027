@@ -105,7 +105,7 @@ The shared preparation API landed on main during training. Its recipe uses diffe
 
 All 170 integrated synthetic/contract tests pass, and the bundled 199,319-row submission passes the official format validator. All 18 candidates were sealed before the 120 evaluations (90 candidate cases plus 30 restored-control cases). Independent read-only verification passes: raw/cache/code/model seals, training-only labels and symmetry, budgets, all saved predictions and decoded outputs, official scores, every control parity cell, provider aggregation, all IoUs and screen decisions.
 
-Models, training caches and frame outputs remain in ignored/private storage. Remote archive verification is pending; the artifact receipt will record the exact private revision, manifest and fresh-restore result. No organizer labels were read or scored and no baseline package changed.
+Models, training caches and frame outputs remain in ignored/private storage. The complete private archive is uploaded at `35ad01cbef8519ad72a2baf9678255cf629b7efc`: 335 files / 2,204,568,476 bytes. A new network clone restored every file with exact size/SHA-256 checks; the isolated code checkout passed the full saved-results audit, producing a verification result identical to the local one. See the [artifact receipt](results/objective_alignment_artifacts.json) and [isolated verification](results/objective_alignment_remote_verification.json). No organizer labels were read or scored and no baseline package changed.
 
 The next useful test is independent labeled broadcast confirmation of the combined recipe, with explicit attention to SkillCorner false possessions. Preserve the both-seed screen; further loss or decoder tuning on these five exposed matches would need a new declared development comparison.
 
@@ -117,3 +117,18 @@ The next useful test is independent labeled broadcast confirmation of the combin
 - [Runtime addendum](results/objective_alignment_runtime.json).
 - [All 120 rows, per-provider scores and diagnostics](results/objective_alignment_development.json).
 - [Independent verification](results/objective_alignment_verification.json).
+
+## Restore the completed study
+
+Use the private branch and public source revision recorded in the artifact receipt,
+then restore and audit without fitting:
+
+```sh
+python ../mtah-data/scripts/competition_cache.py fetch --manifest objective_alignment_cache_manifest.json --data-dir data
+python -m scripts.verify_objective_alignment
+```
+
+The cache includes raw external inputs, six controls, 18 new models, all 13
+training caches, fixed evaluation features, 120 saved predictions, original
+declarations/receipts, and a source snapshot. Preserve frozen declarations and
+completed organizer gates; a new fitting comparison requires a new study ID.

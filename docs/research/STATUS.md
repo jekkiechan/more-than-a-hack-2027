@@ -28,7 +28,8 @@ holdouts and two seeds. All candidate guardrails pass, but no recipe clears the
 rises +.0540/+.0382. SkillCorner clean spell falls about .01 and extra possessions
 increase there. Retain `joint_gru_slotdrop_v1`; combined is a confirmation
 candidate on these five exposed development matches. Organizer gates remain
-closed. Artifact restore status belongs in the report/receipt. The separate
+closed. The full private archive (335 files) is independently restored and its isolated
+saved-results audit passes; see the report/receipt. The separate
 [PR22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22) context/seed
 ensemble study is distinct.
 

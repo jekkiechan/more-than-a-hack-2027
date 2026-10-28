@@ -1,0 +1,173 @@
+{
+  "aggregation": {
+    "screens": 6,
+    "summaries": 16
+  },
+  "candidate_manifest_sha256": "27a6ebad6d2fa21a23711d0be40419c4999e1d8d9e75f805e85d40209e8c65c8",
+  "declaration_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+  "evaluation": {
+    "cells": 120,
+    "saved_predictions_audited": 120
+  },
+  "models": {
+    "candidates": 18,
+    "checkpoint_manifest_sha256": "27a6ebad6d2fa21a23711d0be40419c4999e1d8d9e75f805e85d40209e8c65c8",
+    "initial_unadapted_candidates": [
+      "skillcorner/combined/2027",
+      "skillcorner/spell_sqrt/2026",
+      "sportec/spell_sqrt/2026"
+    ],
+    "models": [
+      {
+        "file": "without_sportec_spell_sqrt_2026.joblib",
+        "objective": "spell_sqrt",
+        "parameters": 62643,
+        "updates": 2976,
+        "windows": 23748
+      },
+      {
+        "file": "without_sportec_transition_2026.joblib",
+        "objective": "transition",
+        "parameters": 62643,
+        "updates": 2976,
+        "windows": 23748
+      },
+      {
+        "file": "without_sportec_combined_2026.joblib",
+        "objective": "combined",
+        "parameters": 62643,
+        "updates": 2976,
+        "windows": 23748
+      },
+      {
+        "file": "without_sportec_spell_sqrt_2027.joblib",
+        "objective": "spell_sqrt",
+        "parameters": 62643,
+        "updates": 2976,
+        "windows": 23748
+      },
+      {
+        "file": "without_sportec_transition_2027.joblib",
+        "objective": "transition",
+        "parameters": 62643,
+        "updates": 2976,
+        "windows": 23748
+      },
+      {
+        "file": "without_sportec_combined_2027.joblib",
+        "objective": "combined",
+        "parameters": 62643,
+        "updates": 2976,
+        "windows": 23748
+      },
+      {
+        "file": "without_metrica_spell_sqrt_2026.joblib",
+        "objective": "spell_sqrt",
+        "parameters": 62643,
+        "updates": 3248,
+        "windows": 25976
+      },
+      {
+        "file": "without_metrica_transition_2026.joblib",
+        "objective": "transition",
+        "parameters": 62643,
+        "updates": 3248,
+        "windows": 25976
+      },
+      {
+        "file": "without_metrica_combined_2026.joblib",
+        "objective": "combined",
+        "parameters": 62643,
+        "updates": 3248,
+        "windows": 25976
+      },
+      {
+        "file": "without_metrica_spell_sqrt_2027.joblib",
+        "objective": "spell_sqrt",
+        "parameters": 62643,
+        "updates": 3248,
+        "windows": 25976
+      },
+      {
+        "file": "without_metrica_transition_2027.joblib",
+        "objective": "transition",
+        "parameters": 62643,
+        "updates": 3248,
+        "windows": 25976
+      },
+      {
+        "file": "without_metrica_combined_2027.joblib",
+        "objective": "combined",
+        "parameters": 62643,
+        "updates": 3248,
+        "windows": 25976
+      },
+      {
+        "file": "without_skillcorner_spell_sqrt_2026.joblib",
+        "objective": "spell_sqrt",
+        "parameters": 62643,
+        "updates": 1432,
+        "windows": 11396
+      },
+      {
+        "file": "without_skillcorner_transition_2026.joblib",
+        "objective": "transition",
+        "parameters": 62643,
+        "updates": 1432,
+        "windows": 11396
+      },
+      {
+        "file": "without_skillcorner_combined_2026.joblib",
+        "objective": "combined",
+        "parameters": 62643,
+        "updates": 1432,
+        "windows": 11396
+      },
+      {
+        "file": "without_skillcorner_spell_sqrt_2027.joblib",
+        "objective": "spell_sqrt",
+        "parameters": 62643,
+        "updates": 1432,
+        "windows": 11396
+      },
+      {
+        "file": "without_skillcorner_transition_2027.joblib",
+        "objective": "transition",
+        "parameters": 62643,
+        "updates": 1432,
+        "windows": 11396
+      },
+      {
+        "file": "without_skillcorner_combined_2027.joblib",
+        "objective": "combined",
+        "parameters": 62643,
+        "updates": 1432,
+        "windows": 11396
+      }
+    ],
+    "runtime_receipts": 15
+  },
+  "report_sha256": "35ac72fef034f8209ed4f5aec5172a8f8028b6f8470c02b5f9cf5870ec3ba72f",
+  "training": {
+    "evaluation_matches": 5,
+    "matches": 13,
+    "paired_records_constructed": 52,
+    "prepared_views_inspected": 52,
+    "windows_by_fold": {
+      "metrica": {
+        "records": 44,
+        "windows_per_epoch": 25976
+      },
+      "skillcorner": {
+        "records": 20,
+        "windows_per_epoch": 11396
+      },
+      "sportec": {
+        "records": 40,
+        "windows_per_epoch": 23748
+      }
+    }
+  },
+  "verified": true,
+  "verifier_source_sha256": "71bf477b8cfe2f07d5de2d7f17fa0a5edf3d0ac18680caedc9039fa5e2ac626a"
+}
