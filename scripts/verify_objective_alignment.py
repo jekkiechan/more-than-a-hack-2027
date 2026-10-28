@@ -65,6 +65,27 @@ def _paired_records_from_prepared(metadata: dict, match: str) -> list[dict]:
     return gr.paired_records(wrapped, match, "slot_dropout")
 
 
+def _expected_paired_labels(y: np.ndarray, team_swap: bool) -> np.ndarray:
+    labels = np.asarray(y)
+    if not team_swap:
+        return labels
+    return np.where((labels >= 0) & (labels < 2), 1 - labels, labels)
+
+
+def _official_metric_values(scored: dict, graded_frames: int) -> dict:
+    """Map the official scorer schema to the saved study-row schema."""
+    return dict(
+        spell_f1=float(scored["spell_f1_mean"]),
+        macro_f1=float(scored["macro_f1"]),
+        d_f1=float(scored["per_class"]["D"]["f1"]),
+        d_precision=float(scored["per_class"]["D"]["precision"]),
+        d_recall=float(scored["per_class"]["D"]["recall"]),
+        n_gt_spells=int(scored["n_gt_spells"]),
+        n_pred_spells=int(scored["n_pred_spells"]),
+        graded_frames=int(graded_frames),
+    )
+
+
 def _audit_training_records(out: Path, spec: dict) -> dict:
     prepared_manifest_path = out / "prepared_training_manifest.json"
     _require(prepared_manifest_path.exists(), "Prepared training manifest is missing")
@@ -103,6 +124,7 @@ def _audit_training_records(out: Path, spec: dict) -> dict:
             _require(metadata["match"] == path.stem and metadata["source"] == source,
                      f"Wrong regenerated cache identity: {path.stem}")
             expected_input = spec["data_sha256"][str(path.relative_to(oa.ROOT))]
+            _same(sha256(path), expected_input, f"{path.stem}.raw_input_sha256")
             _same(metadata["input_sha256"], expected_input, f"{path.stem}.input_sha256")
             inputs, labels = ms.view(path)
             raw_y = np.full(len(labels), -1, dtype=np.int8)
@@ -153,8 +175,7 @@ def _audit_training_records(out: Path, spec: dict) -> dict:
                 expected_alternate = (
                     supervised.swap_team_features(alternate["x"], alternate["names"])
                     if team_swap else alternate["x"])
-                expected_y = np.where((original["y"] < 2) & (original["y"] >= 0),
-                                      1-original["y"], original["y"])
+                expected_y = _expected_paired_labels(original["y"], team_swap)
                 _same(paired["x"], expected_x, f"{path.stem}.paired[{index}].x")
                 _same(paired["alternate"], expected_alternate,
                       f"{path.stem}.paired[{index}].alternate")
@@ -414,6 +435,14 @@ def _verify_saved_rows(out: Path, spec: dict, report: dict) -> tuple[list[dict],
                   for row in report_parity} == expected_parity
              and all(row.get("passed") is True for row in report_parity),
              "Report control parity receipts are incomplete or failed")
+    report_parity_by_key = {
+        (row["source"], row["match"], row["view"], row["replicate"], row["seed"]): row
+        for row in report_parity
+    }
+    for key, source_row in {(row["source"], row["match"], row["view"],
+                             row["replicate"], row["seed"]): row
+                            for row in parity_rows}.items():
+        _same(report_parity_by_key[key], source_row, f"report_control_parity/{key}")
     _require(report["declaration_sha256"] == sha256(out / "predeclared.json"),
              "Report is bound to a different declaration")
     _require(report["checkpoint_manifest_sha256"] == sha256(out / "checkpoints_frozen.json"),
@@ -449,7 +478,19 @@ def _verify_saved_rows(out: Path, spec: dict, report: dict) -> tuple[list[dict],
                     cache_row = spec["evaluation_feature_cache"]["files"].get(cache_key)
                     _require(cache_row is not None, f"Missing evaluation cache declaration: {cache_key}")
                     cache_path = oa.ROOT / cache_row["path"]
-                    _require(cache_path.exists() and sha256(cache_path) == cache_row["sha256"],
+                    feature_name = f"{match}_{view}_{replicate}.joblib"
+                    feature_archive_key = f"experiments/seed_gap_context_v1/{feature_name}"
+                    feature_archive_entry = archive_entries.get(feature_archive_key)
+                    _require(feature_archive_entry is not None,
+                             f"Archived evaluation features absent: {feature_archive_key}")
+                    expected_feature_path = str((oa.EVAL_CACHE / feature_name).relative_to(oa.ROOT))
+                    _same((cache_row["path"], cache_row["bytes"], cache_row["sha256"]),
+                          (expected_feature_path, feature_archive_entry["bytes"],
+                           feature_archive_entry["sha256"]),
+                          f"evaluation_cache/{cache_key}/archive_binding")
+                    _require(cache_path.exists()
+                             and cache_path.stat().st_size == cache_row["bytes"]
+                             and sha256(cache_path) == cache_row["sha256"],
                              f"Frozen evaluation cache changed: {cache_key}")
                     cached = joblib.load(cache_path)
                     inputs, labels, record = cached["inputs"], cached["labels"], cached["record"]
@@ -493,14 +534,15 @@ def _verify_saved_rows(out: Path, spec: dict, report: dict) -> tuple[list[dict],
                             scored = metrics.evaluate_tracking(
                                 labels, prediction, period=inputs.get("period"),
                                 fps=float(inputs["fps"]), timestamps=inputs.get("timestamps"))
-                            _same(int(row["graded_frames"]), graded_count,
-                                  f"{key}.graded_frames")
-                            _same(int(row["n_gt_spells"]), int(scored["n_gt_spells"]),
-                                  f"{key}.n_gt_spells")
+                            scored_values = _official_metric_values(scored, graded_count)
                             for field in metric_fields[:5]:
-                                _require(abs(float(row[field]) - float(scored[field])) <= 1e-9,
+                                _require(abs(float(row[field]) - scored_values[field]) <= 1e-9,
                                          f"Saved prediction score mismatch {key}/{field}")
-                            expected_weighted = .7 * scored["spell_f1_mean"] + .3 * scored["macro_f1"]
+                            for field in ("n_gt_spells", "n_pred_spells", "graded_frames"):
+                                _same(int(row[field]), scored_values[field],
+                                      f"{key}.{field}")
+                            expected_weighted = (.7 * scored_values["spell_f1"]
+                                                 + .3 * scored_values["macro_f1"])
                             _require(abs(float(row["weighted_70_30"]) - expected_weighted) <= 1e-9,
                                      f"Saved prediction weighted summary mismatch: {key}")
                             for iou, values in scored["spell_f1"].items():
@@ -687,10 +729,22 @@ def _audit_aggregates(rows: list[dict], report: dict) -> dict:
         actual = screen_map.get((expected["arm"], expected["seed"]))
         _require(actual is not None, f"Missing screen {expected['arm']}/{expected['seed']}")
         for key, value in expected.items():
-            if isinstance(value, bool):
+            if key == "arm":
+                _require(type(actual.get(key)) is str,
+                         f"Screen arm must be a string for {expected['seed']}")
+                _same(actual[key], value,
+                      f"screen/{expected['arm']}/{expected['seed']}/{key}")
+            elif key == "seed":
+                _require(type(actual.get(key)) is int,
+                         f"Screen seed must be an integer for {expected['arm']}")
+                _same(actual[key], value,
+                      f"screen/{expected['arm']}/{expected['seed']}/{key}")
+            elif isinstance(value, bool):
                 _same(actual[key], value, f"screen/{expected['arm']}/{expected['seed']}/{key}")
             else:
-                _require(abs(float(actual[key]) - float(value)) <= 1e-12,
+                actual_value = float(actual[key])
+                _require(np.isfinite(actual_value)
+                         and abs(actual_value - float(value)) <= 1e-12,
                          f"Screen mismatch {expected['arm']}/{expected['seed']}/{key}")
     return dict(summaries=len(recomputed), screens=len(expected_screens))
 
