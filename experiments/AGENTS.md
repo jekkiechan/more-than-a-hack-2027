@@ -2,8 +2,8 @@
 
 Dense map of what has been tried here, so you can resume without reading 40
 reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
-below are snapshots as of 2026-10-28 (after PR #27 and the verified
-architecture-ensemble study). [STATUS](../docs/research/STATUS.md) is the
+below are snapshots as of 2026-10-28 after combined-objective ensemble adoption;
+the earlier architecture studies remain historical evidence. [STATUS](../docs/research/STATUS.md) is the
 coordination summary for adoption and next work. Before model-choice
 advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
 verify the active manifest/policy and recent PR evidence. STATUS and this guide
@@ -16,22 +16,22 @@ Open a detailed report for the study relevant to the question.
   Ranked by possession **spell F1** (H/A intervals, greedy one-to-one matching,
   mean over IoU .3–.7). **Macro F1** breaks exact ties. The 70/30 weighted
   summary is shown but never ranks.
-- **Adopted baseline:** `joint_gru_seed_ensemble_v1`. Equal native H/A/D
-  probability average of the original slot-dropout GRUs, seeds 2026/2027,
+- **Adopted baseline:** `joint_gru_combined_ensemble_v1`. Equal native H/A/D
+  probabilities from combined-objective slot-dropout GRUs, seeds 2026/2027,
   then Viterbi cost 3. Player-only D paths, ten-second cores/five-second context,
   same 13 external TRAIN matches. See [BASELINE.md](BASELINE.md).
 - **Its evidence (full provider holdout, 5 dev matches):** clean/feed-like spell
-  .6265/.4874 versus former seed2026 .6088/.4742 and seed2027 .6176/.4853.
-  The ensemble has no organizer score; .5818/.8689 belongs to former seed2026.
+  .6332/.4988 versus preceding original-loss ensemble .6265/.4874. Public
+  spell ties .5576; macro .8541 vs preceding .8624. Adopted before this diagnostic.
 - **Known weaknesses:** previously exposed development and synthetic stress;
   native clean long-live-gap support is only 108 frames. Component composite
   scores .3180/.3101 remain diagnostics; ensemble composite is unmeasured.
   Full-match performance is unknown.
-- **Current error audit:** H/A errors dominate synthetic feed-like live gaps
+- **Prior original-loss GRU audit:** H/A errors dominate synthetic feed-like live gaps
   >=10s (24.3% wrong team vs 5.1% false D). Native clean support is only 108
   graded live long-gap frames, where false D dominates. Do not generalize the
-  earlier [HEADROOM](HEADROOM.md) diagnosis to the current baseline without
-  that qualification. See [SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md).
+  earlier [HEADROOM](HEADROOM.md) diagnosis to the combined-loss baseline;
+  its long-gap error mix has not been separately audited. See [SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md).
 
 ## 2. Vocabulary you must get right
 
@@ -43,7 +43,7 @@ Open a detailed report for the study relevant to the question.
 | **D-only provider holdout** | The D head excludes the provider, but H/A is pooled. Older studies (≤ PR #19) used this. **Not** a full-pipeline transfer claim. |
 | **Full provider holdout** | Every learned H/A, D and normalization component excludes the provider. Current preferred view (policy v4). |
 | Views | `clean`/native, `legacy` (old coarse augmentation), `composite` stress (frozen [tracking_corruption](tracking_corruption.py)), `feed_like` (composite minus per-frame sampling loss and regional blanking; **the current stress guardrail**), `ball_gaps`, `no_sampling`, `no_regional`. See [stress_components](stress_components.py). |
-| Guardrails | Full recipes against the adopted ensemble: feed-like spell ≥ baseline − .01; each provider's clean D-F1 and macro within .02; clean screen +.01 spell. Report component seeds separately. Exact rules are in [`model_decision_policy.json`](model_decision_policy.json); older declarations retain their original references. |
+| Guardrails | Full recipes against the adopted ensemble: feed-like spell ≥ baseline − .01; each provider's clean D-F1 and macro within .02; default clean screen +.01 spell. The latest adoption used a separately declared practical screen; its historical +.01 failures stay recorded. Report component seeds separately. Exact rules are in [`model_decision_policy.json`](model_decision_policy.json); older declarations retain their original references. |
 | Gate | A one-time exclusive marker for organizer public scoring. Once claimed it stays closed, even after an error. Read saved results; never re-score. |
 | Shortcuts | Sportec freezes the ball during D. Metrica blanks the ball during D. SkillCorner's ≥12-visible filter drops most D frames. This is why ball-based D heads do not transfer and why the D head is player-only. |
 
@@ -82,6 +82,8 @@ Each step reacted to the one before it. ✔ = adopted. ✖ = retained the baseli
 Public-window history (17 possessions, descriptive only): .4190 context ·
 .4300 refinement · .4889 GRU · .5067 PathCRF hybrid · .5257 ballgap25 ·
 .5371 Full127 · .5818 slotdrop GRU · .6194 pooled player-only-D GRU.
+
+The later [combined-objective ensemble](OBJECTIVE_ENSEMBLE.md) is now the working baseline: .6332/.4988 clean/feed-like spell; provider guards pass with a SkillCorner spell tradeoff. Its separate public diagnostic ties the preceding ensemble on spell and loses macro; no tuning follows.
 
 ## 4. Settled: do not re-propose without a new mechanism
 
