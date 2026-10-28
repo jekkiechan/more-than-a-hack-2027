@@ -60,7 +60,7 @@ a failed provider or corruption guardrail.
 
 ## Open work and artifacts
 
-The user separately requested a [competition check of four temporal candidates](../../experiments/TEMPORAL_COMPETITION_CHECK.md). Its new gate is frozen and pooled fits are running; no new competition score is available yet. The parallel confidence-abstention transfer investigation remains external-only and cannot alter that candidate set.
+The user-requested [competition check of four temporal candidates](../../experiments/TEMPORAL_COMPETITION_CHECK.md) is complete and its gate is closed: dropout GRU .5818, robustness blend .5818, clean leader blend .5500, Full127 .5371 spell F1. It was resumed with a [recorded cache-rehash deviation](../../experiments/results/temporal_competition_resume_deviation.json). The [stress-component ablation](../../experiments/STRESS_COMPONENT_ABLATION.md) and the promotion are in PR #20.
 
 
 The completed confidence-abstention cache is uploaded on private
