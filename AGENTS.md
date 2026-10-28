@@ -11,6 +11,8 @@
   The active package is bound by `experiments/baseline_manifest.json`;
   ranking/reporting is defined by `experiments/model_decision_policy.json`.
 - For a new experiment, read [possession-experiment](.agents/skills/possession-experiment/SKILL.md).
+- For reusable feature caches or split planning, read
+  [possession-preparation](.agents/skills/possession-preparation/SKILL.md).
   For score comparisons or adoption advice, read
   [possession-readout](.agents/skills/possession-readout/SKILL.md).
   [Documentation ownership](docs/research/README.md) explains what to update.
