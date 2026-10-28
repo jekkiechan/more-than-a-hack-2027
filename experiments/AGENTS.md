@@ -2,8 +2,9 @@
 
 Dense map of what has been tried here, so you can resume without reading 40
 reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
-below are snapshots as of 2026-10-28 (after PR #22). [STATUS](../docs/research/STATUS.md)
-is the coordination summary for adoption and next work. Before model-choice
+below are snapshots as of 2026-10-28 (after PR #27 and the verified
+architecture-ensemble study). [STATUS](../docs/research/STATUS.md) is the
+coordination summary for adoption and next work. Before model-choice
 advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
 verify the active manifest/policy and recent PR evidence. STATUS and this guide
 can both lag newer work; historical verdicts below are not current adoption rules.
@@ -76,6 +77,7 @@ Each step reacted to the one before it. ✔ = adopted. ✖ = retained the baseli
 | 18 | Stress components ([STRESS_COMPONENT_ABLATION](STRESS_COMPONENT_ABLATION.md), [feed profile](results/feed_defect_profile.json)) | The GRU's composite loss is mostly per-frame sampling loss (53–57%), which the organizer feed lacks. Under feed-like stress the GRU beats the baseline on every provider and seed. LightGBM adds about ±.002. | ✔ guardrail switched to feed-like (decided post hoc, disclosed) → `joint_gru_slotdrop_v1` (PR #20) |
 | 19 | Temporal architecture ([TEMPORAL_ARCHITECTURE](TEMPORAL_ARCHITECTURE.md)) | Fixed-budget BiLSTM/Transformer/TCN comparison against former `joint_gru_slotdrop_v1`: 18 challenger fits / 200 cells. All challengers fail the both-seed screen. Historical GRU clean/feed-like .6132/.4798 is a two-fit arithmetic mean, not an ensemble and not the current baseline's score. | Retain then-current GRU family; no promotion |
 | 20 | Seed ensemble and gap context ([SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md)) | Later, separate study measures the actual two-seed probability ensemble at .6265/.4874 clean/feed-like; fifteen-second context remains experimental. The ensemble was not evaluated in the architecture comparison. | ✔ `joint_gru_seed_ensemble_v1` (PR #22) |
+| 21 | Architecture probability ensembles ([TEMPORAL_ARCHITECTURE_ENSEMBLES](TEMPORAL_ARCHITECTURE_ENSEMBLES.md)) | Zero fits / 900 cells; independent replay passed. All 11 pooled blends fail the declared screen. Closest GRU+TCN .626189/.483176; GRU+BiLSTM+TCN .624938/.487455. Same-seed modes are diagnostic; all 2,101 manifest entries and 184 tests pass. | Retain `joint_gru_seed_ensemble_v1`; no promotion |
 
 Public-window history (17 possessions, descriptive only): .4190 context ·
 .4300 refinement · .4889 GRU · .5067 PathCRF hybrid · .5257 ballgap25 ·

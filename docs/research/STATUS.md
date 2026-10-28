@@ -1,8 +1,10 @@
 # Current research state
 
-Reviewed 2026-10-28 after the seed/gap-context study on
-`possession/seed-ensemble-gap-context`, [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22)
-(frozen runner/evaluation source at `9470336`); earlier review 2026-10-27: fork main `5005115`, PR #16 at `8c704aa`, and the
+Reviewed 2026-10-28 after the completed architecture-ensemble comparison,
+based on fork main after PR #27. The adopted baseline came from the
+[seed/gap-context study, PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22)
+(frozen runner/evaluation source at `9470336`). Earlier review 2026-10-27
+covered fork main `5005115`, PR #16 at `8c704aa`, and the
 `possession/temporal-spell-robustness` follow-up.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
@@ -41,6 +43,29 @@ The report and aggregate/receipt JSON files are published here. Its frozen
 implementation remains only in local working-branch snapshots `c31afbc`
 (implementation) and `9f023de` (comparison result); no code, weights or frame
 outputs are included in this documentation publication.
+
+## Completed architecture-ensemble comparison
+
+The [zero-fit architecture-ensemble study](../../experiments/TEMPORAL_ARCHITECTURE_ENSEMBLES.md)
+scored 900 cells across eleven pooled blends and same-seed diagnostics with no
+new fits. All eleven pooled blends fail the declared screen; retain the adopted
+two-seed GRU. The closest blend, GRU+TCN, scored .626189/.483176 clean/feed-like
+versus .626531/.487419 for the adopted GRU. GRU+BiLSTM+TCN scored
+.624938/.487455: feed-like was effectively flat while primary clean spell
+declined. Same-seed tables are diagnostics, not eligibility results. These are
+reused development matches, not fresh confirmation; no promotion or organizer
+scoring occurred.
+
+Independent verification passed all 900 member-mean probability checks,
+cost-3 decodes and official metric/diagnostic replays, as well as 25 native
+views, 200 member artifacts, 50 original GRU controls and 15 pooled-GRU
+reference cells. It reproduced 108 summaries and all 11 eligibility screens;
+all 2,101 manifest entries validated. The 175 existing contract tests and 9
+ensemble tests passed. The implementation remains on local working-branch
+commit `ce0a159`; no model code, weights, probability arrays or frame-level
+outputs are part of this documentation change. The [verification receipt](../../experiments/results/temporal_architecture_ensembles_verification.json)
+and [artifact inventory](../../experiments/results/temporal_architecture_ensembles_artifacts.json)
+record the replay and manifest results.
 
 [Experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
 shows dated milestones and interactive charts; update it when promising work completes.
