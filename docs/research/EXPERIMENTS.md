@@ -70,3 +70,9 @@ tracks dated numbers without mixing evaluation protocols.
 Add a stable study ID, proposed/running/completed state, protocol, outcome and
 evidence link for a new study. The report should link its exact JSON/receipt
 paths. Replace the proposal outcome when complete; do not duplicate scorecards.
+
+## Objective alignment follow-up
+
+| ID and state | Scope and outcome | Evidence |
+| --- | --- | --- |
+| `objective-ensemble-v1` — comparison completed, deployment preparation | Fixed two-seed combined-loss probability ensemble .633205/.498830 clean/feed-like vs adopted .626531/.487419. All practical guards pass; SkillCorner spell about -.007. Thirty rows, fifteen baseline parity cells and independently verified blends/decodes/aggregates; pooled deployment fits underway. Earlier objective-study selection rules remain unchanged. | [Report](../../experiments/OBJECTIVE_ENSEMBLE.md), [declaration](../../experiments/results/objective_ensemble_declaration.json), [aggregate](../../experiments/results/objective_ensemble.json), [verification](../../experiments/results/objective_ensemble_verification.json), [private archive](../../experiments/results/objective_ensemble_artifacts.json) |
