@@ -22,6 +22,10 @@ The largest gain is on Metrica. SkillCorner loses .007075 clean and .007120 feed
 
 Short-spell recall at IoU .5 rises .035422 clean and .015908 feed-like. The equal-provider official F1 improves at every IoU threshold .3–.7; the clean IoU .7 gain is only .001118. Sportec clean IoU .7 falls .020701, and SkillCorner loses at all five clean thresholds. Full D precision/recall, thresholds, spell counts, fragmentation, boundary censoring and complete-boundary timing are retained in the [per-cell rows](results/objective_ensemble_rows.json).
 
+## Objective change
+
+The combined training objective retains the factorized H/A/D GRU and its original D/live loss. It reweights conditional H/A cross-entropy using complete native H/A spell durations: raw `sqrt(5 seconds / duration)` weights clipped to [.5, 2], then normalized within eligible live rows of each training record. Unknown, D and boundary-censored targets stay neutral. A fixed .1 auxiliary term penalizes adjacent dead/live and conditional H/A change errors, balancing stable and changed pairs. Full-native interval masks prevent bridging unknown targets or time breaks. There is no extra prediction head and no inference-time label dependence. These surrogates improve the matched official metric here; they do not optimize interval matching exactly.
+
 ## Frozen comparison
 
 The two arms average native H/A/D probabilities 50/50 before the unchanged Viterbi decoder (cost 3). They use the same five development matches, native grading/masks and time boundaries: Sportec J03WOY, Metrica Game 3, and SkillCorner 1996435/1996436/2006229. All learned components of each fold exclude the evaluated provider. There are 15 matched cells (five clean and ten feed-like), producing 30 recipe rows. The current ensemble reproduces all 15 saved probability/prediction digests and scores. The candidate uses the already-trained combined-loss seeds 2026/2027, with no fitting, weight search, decoder search or feature rebuild for this comparison.
