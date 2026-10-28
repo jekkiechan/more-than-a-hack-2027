@@ -11,7 +11,14 @@
   The active package is bound by `experiments/baseline_manifest.json`;
   ranking/reporting is defined by `experiments/model_decision_policy.json`.
 - For a new experiment, read [possession-experiment](.agents/skills/possession-experiment/SKILL.md).
-  For score comparisons or adoption advice, read
+- For feature preparation or split planning in new runners, start with
+  [`experiments/preparation.py`](experiments/preparation.py) and read
+  [possession-preparation](.agents/skills/possession-preparation/SKILL.md).
+  Reuse its validated whole-match/provider folds and verified unnormalized
+  caches when the feature recipe matches. Fit normalization and every learned
+  component on the training fold only; declare and test a new recipe for
+  unsupported features. Preserve frozen study runners.
+- For score comparisons or adoption advice, read
   [possession-readout](.agents/skills/possession-readout/SKILL.md).
   [Documentation ownership](docs/research/README.md) explains what to update.
 

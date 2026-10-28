@@ -117,6 +117,7 @@ pinned in [EXPERIMENTS](../docs/research/EXPERIMENTS.md). Check live PR state.
 | `live_gap_experiment.py` | `feature_view(...)` builds the joint-GRU input record. Also used at inference. |
 | `joint_lgbm.py`, `temporal_lgbm.py`, `possession_geometry.py` | Full H/A/D LightGBM features, ordered temporal features, control geometry and anchors |
 | `datasets.py`, `metrica_open.py`, `skillcorner_had.py`, `audit_dataset.py` | Source download and normalization into the shared NPZ contract |
+| `preparation.py` | Validated manifest folds and hash-verified, reusable unnormalized joint feature caches for new runners; see [preparation skill](../.agents/skills/possession-preparation/SKILL.md) |
 | `challenge.py` | Organizer tracking prep. Never loads ground truth. |
 | `current_baseline.py` | `predict` with the active manifest; dispatches on `architecture.kind` |
 
@@ -130,6 +131,14 @@ them to run a new study; write a new runner that imports the libraries.
 
 ## 7. How a study is built here
 
+- Start new preparation code with [`preparation.py`](preparation.py) and the
+  [preparation skill](../.agents/skills/possession-preparation/SKILL.md).
+  Preview `python -m experiments.preparation plan --fold leave_out_<provider>`;
+  use `pooled` for deployment training. Reuse compatible match/view caches
+  across folds and clean seed runs. Freeze the emitted plan hash and recipe;
+  fit normalization and all learned H/A/D components on its training records
+  only. Preserve native grading, X targets, masks and time breaks. Unsupported
+  feature families need a declared, versioned recipe and parity contracts.
 - The runner exposes `freeze` → `run`/`predict` (per match/view) → `report`
   (or `check` for a gate). `freeze` writes
   `results/<id>_declaration.json` with source, config and input hashes before
