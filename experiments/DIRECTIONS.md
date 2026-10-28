@@ -6,6 +6,16 @@ This dated review explains the original preprocessing hypotheses; its
 conclusions describe evidence available on 2026-10-26, before the later joint
 GRU D-repair study. It does not establish today's bottleneck for every model.
 
+The [2026-10-27 matched GRU robustness study](GRU_SLOT_ROBUSTNESS.md) now
+shows a different failure under corrupted external tracking: dead-ball
+overprediction, with high D recall and low precision. Slot dropout preserves
+clean spell F1 but fails the robustness guardrail. The historical team-only
+bottleneck diagnosis below must not be generalized to that joint GRU. The
+completed [full H/A/D LightGBM study](JOINT_LGBM.md) finds useful temporal
+features and a benefit from larger trees, but its promising full-vector GRU
+blends still fail the clean SkillCorner D-recall guardrail. Improving spell F1
+alone does not protect every class. Current priorities belong in STATUS.
+
 The [completed tracking pilot](TOP_THREE_PILOT.md) tested state-conditioned
 views, broadcast recovery and gap/de-duplication features. It found no matched
 overall spell gain; calibration and ball confidence remain unresolved. Read its

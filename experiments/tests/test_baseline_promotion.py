@@ -4,6 +4,8 @@ from pathlib import Path
 import tempfile
 import unittest
 import joblib
+from unittest.mock import patch
+import numpy as np
 from experiments import current_baseline as baseline
 from experiments.promote_ballgap_baseline import evidence
 from experiments.eval_set.protocol import sha256
@@ -45,6 +47,29 @@ class BaselinePromotionContracts(unittest.TestCase):
         new = baseline.default_output({'model': 'gru_hgb_ballgap25'})
         self.assertNotEqual(old, new)
         self.assertEqual(new.name, 'gru_hgb_ballgap25.csv')
+
+
+    def test_manifest_kind_selects_joint_gru_inference(self):
+        inputs = dict(ball=np.zeros((4, 2)))
+        with patch.object(baseline, 'joint_gru_probabilities', return_value='joint') as joint, \
+             patch.object(baseline, 'dead_probability', return_value='dead') as dead:
+            result = baseline.predict_probabilities(inputs, {'joint_gru': object()},
+                                                    {'architecture': {'kind': 'joint_gru'}})
+        self.assertEqual(result, 'joint')
+        joint.assert_called_once()
+        dead.assert_not_called()
+
+    def test_active_manifest_and_policy_agree_on_promoted_model(self):
+        root = baseline.ROOT/'experiments'
+        manifest = json.loads((root/'baseline_manifest.json').read_text())
+        policy = json.loads((root/'model_decision_policy.json').read_text())
+        self.assertEqual(policy['working_candidate']['model'], manifest['model'])
+        self.assertEqual(policy['working_candidate']['baseline_manifest_sha256'],
+                         sha256(root/'baseline_manifest.json'))
+        self.assertTrue(all(seed['passes_feed_like_guardrails']
+                            for seed in manifest['evidence']['seeds'].values()))
+        previous = root.parent/manifest['previous_manifest']
+        self.assertEqual(sha256(previous), manifest['previous_manifest_sha256'])
 
 
 if __name__ == '__main__': unittest.main()

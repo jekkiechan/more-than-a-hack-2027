@@ -22,6 +22,10 @@ Detailed reports own their original selection rules and aggregate JSON paths.
 
 ## Draft-only evidence
 
+| Study | State | Evidence |
+| --- | --- | --- |
+| `temporal-competition-check` | User-requested, frozen four-candidate diagnostic; pooled fits running. No new public score yet. | [Plan](../../experiments/TEMPORAL_COMPETITION_CHECK.md), [declaration](../../experiments/results/temporal_competition_declaration.json) |
+
 Links pin inspected commits. These modules/reports may not exist on main;
 check live PR state before resuming.
 
@@ -33,6 +37,19 @@ check live PR state before resuming.
 | `live-gap-joint` / #16 | Full H/A+D holdouts; live-gap pipeline fails clean screen. Original joint GRU improves clean spell with severe SkillCorner D collapse. | [LIVE_GAP_HAD_GRU at 8c704aa](https://github.com/jekkiechan/more-than-a-hack-2027/blob/8c704aa0d919a942992dd1c493ae1297e5725e30/experiments/LIVE_GAP_HAD_GRU.md) |
 | `joint-d-repair` / #16 | Matched unrestricted/player-only factorization, two seeds; clean D repaired, stress guardrail fails. | [DEADBALL_TRANSFER at 8c704aa](https://github.com/jekkiechan/more-than-a-hack-2027/blob/8c704aa0d919a942992dd1c493ae1297e5725e30/experiments/DEADBALL_TRANSFER.md) |
 | `joint-public-check` / #16 | Requested diagnostic completed; pooled seed 2026, 13 training matches, five development matches excluded. Gate closed, no adoption. | [JOINT_COMPETITION_CHECK at 8c704aa](https://github.com/jekkiechan/more-than-a-hack-2027/blob/8c704aa0d919a942992dd1c493ae1297e5725e30/experiments/JOINT_COMPETITION_CHECK.md) |
+
+## Temporal robustness follow-up
+
+All model comparisons below use previously exposed external development matches;
+no new organizer scoring or baseline promotion is part of this work.
+
+| ID and state | Scope and outcome | Evidence |
+| --- | --- | --- |
+| `spell-metric-audit` — completed | Unchanged official objective; 30 saved external predictions reproduce. Strict-IoU gains, stress losses and substantial SkillCorner boundary censoring motivate expanded diagnostics. | [Metric audit](../../experiments/SPELL_METRIC_AUDIT.md), [aggregate](../../experiments/results/spell_metric_audit.json) |
+| `gru-slot-robustness-v2` — completed | Matched raw player-slot dropout: 12 fits / 60 cells. Mean clean spell .6092 → .6132, stress .2991 → .3141; stress gains are seed-inconsistent and both candidates fail the baseline guardrail. Aborted v1 preserves its pre-fit mask correction receipt. | [GRU study](../../experiments/GRU_SLOT_ROBUSTNESS.md) |
+| `temporal-lgbm-v1` — scope-superseded, unscored | Original D-only target was incorrect for the user's intended full H/A/D task. Twelve fitted checkpoints retained for provenance; planned validation cancelled before scoring. | [Feature implementation](../../experiments/temporal_lgbm.py), [frozen runner](../../experiments/temporal_lgbm_experiment.py) |
+| `capacity-lgbm-v1` — scope-superseded, unscored | D-only capacity extension stopped on target correction; no completed new checkpoints or validation scores. Frozen declaration and cancellation receipt preserved. | [Capacity extension](../../experiments/capacity_lgbm_experiment.py), [LightGBM study](../../experiments/TEMPORAL_LGBM.md) |
+| `joint-lgbm-v1` — completed | Full H/A/D: 12 fits / 300 cells. Geometry alone brings no consistent gain; ordered context improves stress, and 127 leaves/depth 10 improve on 63/depth 8. Full127 standalone .5555/.4345 clean/stress spell; dropout-GRU blends average .6101/.4226 across two separate seeds. All recipes fail a provider guardrail, chiefly SkillCorner D recall. | [Full H/A/D study](../../experiments/JOINT_LGBM.md), [capacity rationale](../../experiments/LGBM_CAPACITY_REASONING.md), [independent verification](../../experiments/results/temporal_followup_verification.json) |
 
 ## Supporting references
 

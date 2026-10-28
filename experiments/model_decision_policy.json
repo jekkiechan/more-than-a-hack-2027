@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "confirmed_utc_date": "2026-10-26",
+  "version": 3,
+  "confirmed_utc_date": "2026-10-28",
   "primary_order": [
     "spell_f1",
     "macro_f1"
@@ -14,25 +14,17 @@
     "purpose": "Additional internal comparison column; weights must be recorded before future experiments"
   },
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
-  "preferred_development_view": "provider_holdout_D",
+  "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "GRU plus boosting",
-    "model": "gru_hgb_ballgap25",
-    "members": {
-      "bigru": 0.5,
-      "ordered_hgb": 0.5
-    },
-    "status": "User-authorized ball-gap team development baseline; independent confirmation pending",
+    "family": "Joint GRU",
+    "model": "joint_gru_slotdrop",
+    "status": "User-authorized working development baseline; independent confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
+    "baseline_manifest_sha256": "caad9b496103a6d4bd8012aef507cd136fb7059d8226a7510fab8a94430602e6",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "numeric_leader_on_current_development": "gru_hgb_lgbm",
-    "reason": "Explicit user-authorized corruption-robustness tradeoff; clean external spell is near-tied but slightly lower",
-    "previous_frozen_competition_selection_changed": false,
-    "team": "Contextual HGB with 25% ball-gap-only training replacement",
-    "baseline_manifest_sha256": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
-    "promotion_record": "experiments/results/baseline_ballgap25_promotion.json",
-    "frozen_clean_rule_winner": "Previous gru_hgb baseline",
-    "prior_external_selection_rewritten": false,
+    "reason": "External clean spell +0.075/+0.084 over the previous baseline in both seeds with full provider holdouts; passes all guardrails with feed-like stress",
+    "promotion_record": "experiments/results/baseline_joint_gru_promotion.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_gru_hgb_ballgap25_v1.json",
     "public_diagnostic_known_before_user_request": true
   },
   "pathcrf_component": {
@@ -47,5 +39,28 @@
     "Record this policy and its weights before future fitting or selection",
     "Do not reclassify historical scorecards as predeclared experiments",
     "Organizer public labels are pipeline checks only, never selection or tuning data"
-  ]
+  ],
+  "stress_guardrail": {
+    "view": "feed_like",
+    "rule": "Each seed: feed-like stress spell F1 no more than 0.01 below the matched baseline",
+    "components": "Calibrated ball gaps, coordinate drift/noise/jumps, per-slot gaps, same-team ID swaps",
+    "diagnostic_only": [
+      "composite",
+      "no_sampling",
+      "no_regional",
+      "ball_gaps"
+    ],
+    "changed_from": "composite",
+    "decided_after_composite_results": true,
+    "evidence": [
+      "experiments/results/feed_defect_profile.json",
+      "experiments/results/stress_component_ablation.json"
+    ]
+  },
+  "lgbm_component": {
+    "default_enabled": false,
+    "status": "Not adopted",
+    "reason": "Full127 blend adds +0.0016/-0.0020 spell over its GRU under feed-like stress, lowers SkillCorner and public D recall",
+    "evidence": "experiments/STRESS_COMPONENT_ABLATION.md"
+  }
 }
