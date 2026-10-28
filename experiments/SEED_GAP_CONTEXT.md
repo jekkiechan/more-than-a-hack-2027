@@ -3,6 +3,11 @@
 Status: completed. Date: 2026-10-28. Branch:
 `possession/seed-ensemble-gap-context`, based on `7615dd5`.
 
+**Subsequent user decision, 2026-10-28:** adopt the original-context probability
+ensemble as `joint_gru_seed_ensemble_v1`; see [BASELINE](BASELINE.md) and the
+[promotion receipt](results/baseline_seed_ensemble_promotion.json). The study's
+original verdicts below remain historical; the fifteen-second context is not adopted.
+
 This study tests the adopted slot-dropout joint GRU on the same five previously
 exposed external development matches. All learned H/A, D and normalization
 components exclude the evaluation provider. It does not establish independent

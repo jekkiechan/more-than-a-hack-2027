@@ -9,21 +9,28 @@ package details belong in [BASELINE](../../experiments/BASELINE.md).
 
 ## Adopted baseline
 
-`joint_gru_slotdrop_v1` (promoted 2026-10-28): pooled slot-dropout joint GRU,
-player-only D head, seed 2026, Viterbi cost 3. External full-provider-holdout
-clean spell .6088/.6176 versus the previous baseline's .5338; feed-like stress
-.4742/.4853 versus .4328. It passes every guardrail once feed-like stress replaces
-composite stress, a change decided after the composite results were known
-([ablation](../../experiments/STRESS_COMPONENT_ABLATION.md)). Public five-minute
-check .5818 spell / .8689 macro versus .5257 / .8588. Single seed, so full-match
-performance is unknown. Package details: [BASELINE](../../experiments/BASELINE.md).
-The previous `gru_hgb_ballgap25_v1` is archived under `experiments/baselines/`.
+`joint_gru_seed_ensemble_v1` (user-adopted 2026-10-28): equal native H/A/D
+probability average of the original slot-dropout GRU seeds 2026/2027, then
+unchanged Viterbi cost 3. The ten-second cores/five-second context and player-only
+D paths stay fixed. Matched full-provider-holdout clean/feed-like spell is
+**.6265/.4874**, versus former seed 2026 **.6088/.4742** and seed 2027
+**.6176/.4853**. All adoption guardrails pass relative to the former baseline.
+The feed-like guardrail retains its earlier post-result change from composite;
+that history remains disclosed in the [ablation](../../experiments/STRESS_COMPONENT_ABLATION.md).
+The new ensemble has no organizer score; the old .5818/.8689 result is single-seed
+only. Seed 2026 was restored and one missing pooled seed 2027 was fitted on the
+same 13 TRAIN matches with exact normalization/capacity/budget parity. Package
+details and restore commands: [BASELINE](../../experiments/BASELINE.md).
+The prior single-seed manifest/policy are archived under `experiments/baselines/`.
+
+[Experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
+shows dated milestones and interactive charts; update it when promising work completes.
 
 ## Latest evidence
 
 | Scope / evidence | Finding | Decision |
 | --- | --- | --- |
-| Completed [seed ensemble / gap-context study](../../experiments/SEED_GAP_CONTEXT.md), full provider holdouts | Actual probability ensemble clean/feed-like spell .6265/.4874; 30/30 parity. Feed-like live gaps >=10s have 24.3% wrong team versus 5.1% false D; native clean support is only 108 live frames. Six matched 15s-context fits improve long-gap team accuracy +1.85/+1.36 pp, but clean spell declines in both seeds and seed 2026 fails the SkillCorner D guard. | Retain adopted package. Ensemble is a modest candidate for confirmation; longer context helps local recovery without a consistent spell win. Need independent labeled broadcast gaps. No organizer scoring. |
+| Completed [seed ensemble / gap-context study](../../experiments/SEED_GAP_CONTEXT.md), full provider holdouts | Actual ensemble .6265/.4874; 30/30 parity. Live feed-like gaps >=10s have 24.3% wrong team versus 5.1% false D; native clean support is only 108 live frames. Longer context helps local recovery but not spell consistently. | User adopts the original-context ensemble; fifteen-second context remains experimental. Independent labeled broadcast confirmation is pending. No organizer scoring. |
 | Previous adopted recipe (`gru_hgb_ballgap25_v1`), historical **D-only provider holdout, pooled H/A**; [baseline](../../experiments/BASELINE.md) | Clean spell/macro .5740/.8439; composite-stress .4315/.7866. Previous .5746/.8449 and .4205/.7699. | Adopted robustness tradeoff, not a clean-score win. |
 | Merged [tracking pilot](../../experiments/TOP_THREE_PILOT.md), PR #15 | 80 pooled development evaluations; matched gap/suppression arms lose overall spell. Fusion recovers 4,419 missing-ball frames (6.84%), with >10% overlapping ball positions disagreeing by >5 m. | No preprocessing/fusion adoption. |
 | Completed [confidence abstention](../../experiments/CONFIDENCE_ABSTENTION.md); **D-only provider holdout, pooled H/A** | 135 evaluations; 15/15 baseline parity. Primary .60 X gate: clean spell .57402→.58240, stress .43152→.42608; macro .84394→.82607 / .78659→.73476. All eight gates fail guardrails. X/hold differences occur on SkillCorner native unknown-label gaps. | Retain baseline; no organizer scoring or promotion. |

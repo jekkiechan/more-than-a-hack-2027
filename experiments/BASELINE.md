@@ -1,50 +1,74 @@
-# Current joint GRU baseline
+# Current two seed GRU ensemble baseline
 
-The current user-authorized working baseline is the **slot-dropout joint GRU**,
-package `joint_gru_slotdrop_v1`. One bidirectional GRU (24 hidden units) outputs
-full H/A/D probabilities; its dead-ball head sees player evidence only. It was
-trained once, pooled on the 13 external TRAIN matches with seed 2026, using
-clean/legacy views, 25% ball-gap replacement and ~25% player-slot dropout.
-Viterbi switch cost remains 3. The checkpoint is the one sealed by the
-[four-candidate competition check](TEMPORAL_COMPETITION_CHECK.md); promotion
-copied it without retraining or rescoring.
+The user-authorized working baseline is **the equal 2026/2027 probability
+ensemble**, package `joint_gru_seed_ensemble_v1`, adopted on 2026-10-28.
+Both networks are the original slot-dropout joint GRU with a player-only D
+path: hidden24, ten-second output cores and five seconds of context per side.
+The runner shares one feature pass, averages their native H/A/D probabilities
+50/50, then uses the unchanged Viterbi switch cost 3.
 
-| Full provider holdout, 5 external matches | Previous baseline | Seed 2026 | Seed 2027 |
+| Full provider holdout on the same five external matches | Former seed 2026 | Seed 2027 | Adopted ensemble |
 | --- | ---: | ---: | ---: |
-| Clean spell F1 | .5338 | .6088 (+.075) | .6176 (+.084) |
-| Feed-like stress spell F1 | .4328 | .4742 (+.041) | .4853 (+.053) |
-| Composite stress spell F1 (diagnostic only) | .4129 | .3180 | .3101 |
-| Worst provider clean D-F1/macro change | — | −.0155 | −.0007 |
+| Clean spell F1 | .608763 | .617600 | **.626531** |
+| Feed-like spell F1 | .474237 | .485302 | **.487419** |
+| Clean macro F1 | .843432 | .854336 | **.854559** |
+| Feed-like macro F1 | .801255 | .810874 | **.811127** |
 
-Both seeds pass every guardrail with **feed-like stress in place of composite
-stress**. That change was decided after the composite results were known. Its
-justification is label-free: the organizer feed has no whole-frame player loss,
-and the composite failure is driven by per-frame sampling loss. See the
-[stress-component ablation](STRESS_COMPONENT_ABLATION.md) and the
-[feed profile](results/feed_defect_profile.json). The deployed model is one
-seed. The later [probability-ensemble / gap-context study](SEED_GAP_CONTEXT.md)
-tests seed averaging externally; that research does not change this package.
+The ensemble improves clean/feed-like spell by .01777/.01318 over the former
+working seed and .00893/.00212 over seed 2027. It passes the same clean screen,
+feed-like floor and provider D/macro guards relative to the former baseline.
+These remain previously exposed development matches with synthetic stress;
+independent confirmation is pending. See the [matched study](SEED_GAP_CONTEXT.md)
+and [promotion receipt](results/baseline_seed_ensemble_promotion.json).
 
-| Public five-minute check (17 possessions) | Spell F1 | Macro F1 | D F1 |
-| --- | ---: | ---: | ---: |
-| Previous baseline (saved) | .5257 | .8588 | .8568 |
-| Joint GRU, slot dropout | .5818 | .8689 | .8393 |
+The fifteen-second-context recipe is **not** adopted. It improves some long-gap
+frames but does not give consistent spell gains, and its seed 2026 fails a
+SkillCorner D guardrail. The ensemble retains the original five-second context.
 
-The spell gap is about one possession and the intervals overlap. Full-match
-performance is unknown. The public result was known before the promotion request.
+## Deployment package and restore
 
-`baseline_manifest.json` records the request, the guardrail change, model hashes
-and evidence. `results/baseline_joint_gru_promotion.json` records the package.
-`python -m experiments.current_baseline predict` writes
-`data/experiments/current_baseline/joint_gru_slotdrop.csv`, byte-identical to the
-sealed candidate (`d8973971…a5e0`). The private cache's default
-`baseline_cache_manifest.json` restores `models/joint_gru_slotdrop_v1/`.
+Seed 2026 was restored from the sealed former package. The archive had only
+provider-held-out 2027 models, so one pooled deployment checkpoint was fitted
+on the same thirteen TRAIN matches, excluding all five selection matches. Its
+normalization, feature schema, 62,643 parameters, 30,560 windows per epoch and
+3,824 optimizer updates match pooled seed 2026 exactly. No ensemble-comparison
+control was retrained; no organizer labels were read or scored. The separate
+[deployment declaration](results/seed_ensemble_deployment_declaration.json)
+records that one fit; the promotion operation only packages and predicts.
+
+The private cache's default `baseline_cache_manifest.json` restores the two
+weights and matching manifest under `models/joint_gru_seed_ensemble_v1/`.
+The versioned copy is `baseline_cache_manifest_joint_gru_seed_ensemble_v1.json`.
+Use `baseline_source_cache_manifest.json` for the matching code snapshot.
 
 ```sh
 python ../mtah-data/scripts/competition_cache.py fetch --data-dir data
 python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest.json --data-dir data
 python -m experiments.current_baseline predict
+python evaluation/validate_submission.py data/experiments/current_baseline/joint_gru_seed_ensemble.csv
 ```
+
+The label-free 199,319-row CSV was format-validated and replayed byte-for-byte
+through the actual baseline entrypoint. Original seed-2026 prediction parity
+also reproduces its previously sealed CSV. Generated candidates are never
+overwritten; use `--output` when replaying in an existing workspace.
+
+The new ensemble has **no organizer public score**. The saved .5818 spell /
+.8689 macro result belongs to the former single-seed GRU on only 17 reference
+possessions. That historical result is retained separately in the manifest,
+and every public scoring gate stays closed.
+
+[Experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
+shows dated external milestones and the separately qualified organizer checks.
+
+## Previous single seed GRU package
+
+`joint_gru_slotdrop_v1` remains archived under
+[its original manifest](baselines/joint_gru_slotdrop_v1.json) and
+[policy](baselines/model_decision_policy_joint_gru_slotdrop_v1.json).
+Its private restore manifest is `baseline_cache_manifest_joint_gru_slotdrop_v1.json`.
+It can still be replayed with `--manifest experiments/baselines/joint_gru_slotdrop_v1.json`.
+Promotion preserves those bytes and all earlier evidence.
 
 ## Previous GRU/HGB ball-gap baseline
 

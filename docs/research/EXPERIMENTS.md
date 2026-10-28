@@ -54,6 +54,12 @@ no new organizer scoring or baseline promotion is part of this work.
 
 ## Supporting references
 
+The user adopted the actual original-context two-seed ensemble after this study.
+The [promotion receipt](../../experiments/results/baseline_seed_ensemble_promotion.json)
+records the separate deployment completion and versioned package. The
+[progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
+tracks dated numbers without mixing evaluation protocols.
+
 [Data](../../experiments/DATASETS.md), [licenses](../../experiments/LICENSES.md),
 [literature/metric compatibility](../../experiments/REFERENCE_METHODS.md),
 [early error analysis](../../experiments/ERROR_ANALYSIS.md),

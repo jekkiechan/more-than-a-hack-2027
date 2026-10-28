@@ -66,8 +66,12 @@ class BaselinePromotionContracts(unittest.TestCase):
         self.assertEqual(policy['working_candidate']['model'], manifest['model'])
         self.assertEqual(policy['working_candidate']['baseline_manifest_sha256'],
                          sha256(root/'baseline_manifest.json'))
-        self.assertTrue(all(seed['passes_feed_like_guardrails']
-                            for seed in manifest['evidence']['seeds'].values()))
+        if manifest['architecture']['kind']=='joint_gru_ensemble':
+            self.assertTrue(manifest['evidence']['guardrails']['passes'])
+            self.assertEqual(sorted(manifest['architecture']['members'].values()),[.5,.5])
+        else:
+            self.assertTrue(all(seed['passes_feed_like_guardrails']
+                                for seed in manifest['evidence']['seeds'].values()))
         previous = root.parent/manifest['previous_manifest']
         self.assertEqual(sha256(previous), manifest['previous_manifest_sha256'])
 
