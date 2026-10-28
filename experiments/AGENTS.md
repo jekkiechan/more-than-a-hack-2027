@@ -2,7 +2,7 @@
 
 Dense map of what has been tried here, so you can resume without reading 40
 reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
-below are snapshots as of 2026-10-28 (after PR #20). [STATUS](../docs/research/STATUS.md)
+below are snapshots as of 2026-10-28 (after PR #22). [STATUS](../docs/research/STATUS.md)
 is the coordination summary for adoption and next work. Before model-choice
 advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
 verify the active manifest/policy and recent PR evidence. STATUS and this guide
@@ -74,6 +74,8 @@ Each step reacted to the one before it. ✔ = adopted. ✖ = retained the baseli
 | 16 | Metric audit ([SPELL_METRIC_AUDIT](SPELL_METRIC_AUDIT.md)) | 30 saved rows reproduce. 70% of SkillCorner spells touch grading edges. Report all five IoUs, duration recall and fragmentation. | reporting rule |
 | 17 | Competition check ([TEMPORAL_COMPETITION_CHECK](TEMPORAL_COMPETITION_CHECK.md)) | Four pooled candidates: dropout GRU .5818, robustness blend .5818, clean blend .5500, Full127 .5371. | gate closed |
 | 18 | Stress components ([STRESS_COMPONENT_ABLATION](STRESS_COMPONENT_ABLATION.md), [feed profile](results/feed_defect_profile.json)) | The GRU's composite loss is mostly per-frame sampling loss (53–57%), which the organizer feed lacks. Under feed-like stress the GRU beats the baseline on every provider and seed. LightGBM adds about ±.002. | ✔ guardrail switched to feed-like (decided post hoc, disclosed) → `joint_gru_slotdrop_v1` (PR #20) |
+| 19 | Temporal architecture ([TEMPORAL_ARCHITECTURE](TEMPORAL_ARCHITECTURE.md)) | Fixed-budget BiLSTM/Transformer/TCN comparison against former `joint_gru_slotdrop_v1`: 18 challenger fits / 200 cells. All challengers fail the both-seed screen. Historical GRU clean/feed-like .6132/.4798 is a two-fit arithmetic mean, not an ensemble and not the current baseline's score. | Retain then-current GRU family; no promotion |
+| 20 | Seed ensemble and gap context ([SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md)) | Later, separate study measures the actual two-seed probability ensemble at .6265/.4874 clean/feed-like; fifteen-second context remains experimental. The ensemble was not evaluated in the architecture comparison. | ✔ `joint_gru_seed_ensemble_v1` (PR #22) |
 
 Public-window history (17 possessions, descriptive only): .4190 context ·
 .4300 refinement · .4889 GRU · .5067 PathCRF hybrid · .5257 ballgap25 ·
