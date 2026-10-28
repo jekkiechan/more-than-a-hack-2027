@@ -22,7 +22,8 @@ justification is label-free: the organizer feed has no whole-frame player loss,
 and the composite failure is driven by per-frame sampling loss. See the
 [stress-component ablation](STRESS_COMPONENT_ABLATION.md) and the
 [feed profile](results/feed_defect_profile.json). The deployed model is one
-seed; seed averaging is untested.
+seed. The later [probability-ensemble / gap-context study](SEED_GAP_CONTEXT.md)
+tests seed averaging externally; that research does not change this package.
 
 | Public five-minute check (17 possessions) | Spell F1 | Macro F1 | D F1 |
 | --- | ---: | ---: | ---: |

@@ -55,6 +55,13 @@ def diagnostic_summary(rows):
             result[section][stratum]['summed_exposures']={
                 k:sum(r['diagnostics'][section][stratum][k] for r in rows)
                 for k in sorted(set(v for pair in mappings.values() for v in pair))}
+    def long_counts(row):
+        bins=[row['diagnostics']['frames'][k] for k in ('gap:10-20s','gap:20-40s','gap:40-infs')]
+        return {k:sum(b[k] for b in bins) for k in ('live_frames','dead_frames','wrong_team','false_dead','missed_dead','abstained_live')}
+    error_keys=('wrong_team','false_dead','missed_dead','abstained_live')
+    result['long_gap_error_partition']={k:balanced(rows,lambda r,k=k:gd.ratio(
+        long_counts(r)[k],sum(long_counts(r)[e] for e in error_keys))) for k in error_keys}
+    result['long_gap_error_partition']['summed_exposures']={k:sum(long_counts(r)[k] for r in rows) for k in ('live_frames','dead_frames',*error_keys)}
     return result
 
 
@@ -83,6 +90,12 @@ def mechanism(base,long):
                     rows.append(dict(source=source,match=path.stem,view=view,replicate=replicate,seed=seed,
                         group=group,live_frames=n,control_correct=int((mask&(prediction==labels)).sum()),
                         context_correct=int((mask&(q==labels)).sum()),
+                        control_wrong_team=int((mask&np.isin(prediction,('H','A'))&(prediction!=labels)).sum()),
+                        context_wrong_team=int((mask&np.isin(q,('H','A'))&(q!=labels)).sum()),
+                        control_false_dead=int((mask&(prediction=='D')).sum()),
+                        context_false_dead=int((mask&(q=='D')).sum()),
+                        corrected_from_wrong_team=int((mask&np.isin(prediction,('H','A'))&(prediction!=labels)&(q==labels)).sum()),
+                        corrected_from_false_dead=int((mask&(prediction=='D')&(q==labels)).sum()),
                         corrected=int((mask&(prediction!=labels)&(q==labels)).sum()),
                         regressed=int((mask&(prediction==labels)&(q!=labels)).sum())))
     summary=[]
@@ -93,6 +106,10 @@ def mechanism(base,long):
                 summary.append(dict(seed=seed,view=view,group=group,
                     control_accuracy=balanced(selected,lambda r:gd.ratio(r['control_correct'],r['live_frames'])),
                     context_accuracy=balanced(selected,lambda r:gd.ratio(r['context_correct'],r['live_frames'])),
+                    control_wrong_team_rate=balanced(selected,lambda r:gd.ratio(r['control_wrong_team'],r['live_frames'])),
+                    context_wrong_team_rate=balanced(selected,lambda r:gd.ratio(r['context_wrong_team'],r['live_frames'])),
+                    control_false_dead_rate=balanced(selected,lambda r:gd.ratio(r['control_false_dead'],r['live_frames'])),
+                    context_false_dead_rate=balanced(selected,lambda r:gd.ratio(r['context_false_dead'],r['live_frames'])),
                     paired_accuracy_delta=balanced(selected,lambda r:gd.ratio(r['context_correct']-r['control_correct'],r['live_frames'])),
                     summed_frame_exposures=sum(r['live_frames'] for r in selected)))
     return dict(rows=rows,summary=summary,

@@ -14,6 +14,8 @@ The actual probability ensemble improves both headline views. Its extra gain
 over seed 2027 is modest: +.0089 clean and +.0021 feed-like spell F1. Keep the
 adopted single-seed package unchanged while the context experiment runs.
 
+![Matched clean and feed-like spell scores](results/seed_gap_context_scores.png)
+
 | Recipe / view | Spell F1 | Macro F1 | Auxiliary 70/30 | D precision | D recall |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Seed 2026 / clean | .608763 | .843432 | .679164 | .894689 | .786376 |
@@ -45,10 +47,14 @@ The adopted seed's feed-like long-gap wrong-team rate is **24.32%**, versus
 This satisfies the frozen condition for the longer-context fits. It supports
 the H/A diagnosis on the synthetic feed-like views, with a material false-D
 component still present.
+Including reference-dead errors, the provider-balanced long-gap error partition
+is 57.92% wrong team, 12.21% false D and 29.88% missed D. The diagnosis is a
+majority H/A problem in this view, not an absence of dead-ball errors.
 
 Native clean data does **not** support a broad long-live-gap claim: across all
 five matches there are only **108 graded live frames** inside gaps >=10 s,
-all from SkillCorner. Their errors are 7 wrong-team and 81 false-D frames;
+all from SkillCorner under the unchanged >=12-visible-player grading filter.
+Their errors are 7 wrong-team and 81 false-D frames;
 20 frames have the correct team. Sportec has no such gap rows; Metrica's long
 native gaps cover dead play. This is a missing evaluation population, not
 evidence that the baseline's real organizer-gap bottleneck is established.
@@ -59,6 +65,12 @@ miss rates are about 92% in 10–<40 s gaps versus 73% on no-gap rows; direct
 turnover recall within one second is about 4–6% versus 44%. Fragmentation is
 about 2.6–2.9% in those gap bins versus 2.7% on no-gap rows. The diagnostic
 points to misses and timing rather than a large rise in fragmentation.
+SkillCorner has 784/1,125 reference spells touching graded-run edges (69.69%),
+versus 1/456 Sportec and 4/382 Metrica. Short-spell counts therefore include
+many censored observations; keep the official population, but avoid treating
+all of these snippets as complete real possessions.
+
+![Wrong-team and false-D errors by gap duration and contact distance](results/seed_gap_context_errors.png)
 
 ## Frozen comparison
 
@@ -139,6 +151,9 @@ provider's clean macro/D-F1 delta >=-.02 versus its own original control. The
 mechanistic hypothesis requires positive spell and long-gap team-accuracy deltas
 in both seeds. Seeing both contacts inside the nominal input window is measured
 at 5 and 15 seconds, independently of target labels.
+These are nominal sampled-window bounds: the unchanged centered feature
+aggregates also have their existing short temporal halos. A bracketing count
+describes contact availability, not proof that the recurrent network used it.
 
 ## Reproduction and artifact handling
 

@@ -22,10 +22,11 @@ Open a detailed report only for the study you are extending.
 - **Known weaknesses:** composite stress .318 (fails if that guardrail were
   used). Single seed. Full-match performance is unknown. All dev matches are
   previously exposed.
-- **Where the error is:** mostly team attribution during long ball gaps, and
-  turnover timing. On Sportec validation, oracle H/A gives .996 spell and oracle
-  dead/live gives nothing ([HEADROOM](HEADROOM.md)). On SkillCorner, D recall
-  is also fragile.
+- **Current error audit:** H/A errors dominate synthetic feed-like live gaps
+  >=10s (24.3% wrong team vs 5.1% false D). Native clean support is only 108
+  graded live long-gap frames, where false D dominates. Do not generalize the
+  earlier [HEADROOM](HEADROOM.md) diagnosis to the current baseline without
+  that qualification. See [SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md).
 
 ## 2. Vocabulary you must get right
 
@@ -93,8 +94,10 @@ Public-window history (17 possessions, descriptive only): .4190 context ·
 2. Native player-frame blanking in the GRU. A six-fit design is proposed in
    [GRU_SLOT_ROBUSTNESS](GRU_SLOT_ROBUSTNESS.md#proposed-native-frame-blanking-experiment).
    Not yet declared.
-3. Untested on the baseline: seed averaging, and a game-state-dependent
-   (turnover/aerial) gap model.
+3. Actual seed averaging is now tested: clean/feed-like .6265/.4874, with modest
+   gains over seed 2027. Its conditional longer-context experiment is running
+   ([SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md)). A game-state-dependent
+   (turnover/aerial) gap model remains untested.
 4. An independent labelled broadcast match. Data-blocked (private mtah-data issue #4).
 5. Calibrated player defects and ball-fusion confidence.
 

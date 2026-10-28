@@ -12,8 +12,15 @@ OUT=ROOT/'experiments/results'
 
 
 def main():
-    data=json.loads((OUT/'seed_gap_context_readout.json').read_text())
-    baseline=next(r for r in data['diagnostic_summaries'] if r['recipe']=='seed_2026' and r['view']=='feed_like')
+    readout=OUT/'seed_gap_context_readout.json'
+    if readout.exists():
+        data=json.loads(readout.read_text())
+        baseline=next(r for r in data['diagnostic_summaries'] if r['recipe']=='seed_2026' and r['view']=='feed_like')
+    else:
+        sys.path.insert(0,str(ROOT))
+        from scripts.summarize_seed_gap_context import diagnostic_summary
+        data=json.loads((OUT/'seed_gap_context.json').read_text())
+        baseline=diagnostic_summary([r for r in data['rows'] if r['recipe']=='seed_2026' and r['view']=='feed_like'])
     plt.rcParams.update({'font.size':10,'axes.spines.top':False,'axes.spines.right':False})
     fig,axes=plt.subplots(1,2,figsize=(12,4),layout='constrained')
     groups=[['gap:no_gap','gap:3-10s','gap:10-20s','gap:20-40s','gap:40-infs'],
@@ -52,6 +59,8 @@ def main():
     for extension in ('png','svg'):
         fig.savefig(OUT/f'seed_gap_context_scores.{extension}',dpi=180)
     plt.close(fig)
+    for path in OUT.glob('seed_gap_context*.svg'):
+        path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
 
 
 if __name__=='__main__': main()
