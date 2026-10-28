@@ -17,6 +17,17 @@ check .5818 spell / .8689 macro versus .5257 / .8588. Single seed, so full-match
 performance is unknown. Package details: [BASELINE](../../experiments/BASELINE.md).
 The previous `gru_hgb_ballgap25_v1` is archived under `experiments/baselines/`.
 
+## Running objective comparison
+
+The user-requested [objective-alignment study](../../experiments/OBJECTIVE_ALIGNMENT.md)
+tests capped short-possession weighting, a cost-sensitive transition auxiliary,
+and their fixed combination against the adopted slot-dropout GRU recipe. All
+13 training feature caches are sealed and six control normalization/budget
+checks pass. Eighteen new full-provider-holdout fits (two seeds) are running;
+no comparative scores, organizer scoring, or adoption change yet. The separate
+[PR22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22) context/seed-ensemble
+study remains distinct.
+
 ## Latest evidence
 
 | Scope / evidence | Finding | Decision |

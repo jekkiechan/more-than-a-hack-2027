@@ -24,6 +24,12 @@ Detailed reports own their original selection rules and aggregate JSON paths.
 | `stress-component-ablation` | GRU composite-stress loss is mostly per-frame sampling loss, absent from the organizer feed; under feed-like stress every GRU seed beats the baseline. Guardrail switched to feed-like (decided after composite results). | [STRESS_COMPONENT_ABLATION](../../experiments/STRESS_COMPONENT_ABLATION.md), [results](../../experiments/results/stress_component_ablation.json) |
 | `joint-gru-slotdrop-promotion` | User-authorized promotion of the sealed slot-dropout joint GRU to `joint_gru_slotdrop_v1`; no refit or rescoring. | [BASELINE](../../experiments/BASELINE.md), [receipt](../../experiments/results/baseline_joint_gru_promotion.json) |
 
+## Running studies
+
+| ID | Scope / state | Report |
+| --- | --- | --- |
+| `objective-alignment-v1` | Three fixed loss variants, three full-provider holdouts, two seeds; 18 new fits and six restored controls. Exact training normalization/budget parity passes; scoring pending. | [OBJECTIVE_ALIGNMENT](../../experiments/OBJECTIVE_ALIGNMENT.md), [declaration](../../experiments/results/objective_alignment_declaration.json) |
+
 ## Draft-only evidence
 
 Links pin inspected commits. These modules/reports may not exist on main;
