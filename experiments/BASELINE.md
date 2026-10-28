@@ -1,65 +1,65 @@
-# Current two seed GRU ensemble baseline
+# Combined-objective two-seed GRU baseline
 
-The user-authorized working baseline is **the equal 2026/2027 probability
-ensemble**, package `joint_gru_seed_ensemble_v1`, adopted on 2026-10-28.
-Both networks are the original slot-dropout joint GRU with a player-only D
-path: hidden24, ten-second output cores and five seconds of context per side.
-The runner shares one feature pass, averages their native H/A/D probabilities
-50/50, then uses the unchanged Viterbi switch cost 3.
+The working baseline is `joint_gru_combined_ensemble_v1`: equal native H/A/D
+probabilities from combined-objective seeds 2026 and 2027, followed by the
+unchanged cost-3 Viterbi decoder. Both networks retain hidden24, player-only
+D inputs, ten-second output cores and five-second context on each side.
 
-| Full provider holdout on the same five external matches | Former seed 2026 | Seed 2027 | Adopted ensemble |
-| --- | ---: | ---: | ---: |
-| Clean spell F1 | .608763 | .617600 | **.626531** |
-| Feed-like spell F1 | .474237 | .485302 | **.487419** |
-| Clean macro F1 | .843432 | .854336 | **.854559** |
-| Feed-like macro F1 | .801255 | .810874 | **.811127** |
+| Matched full provider holdout, five external development matches | Prior original-loss ensemble | Combined-loss ensemble |
+| --- | ---: | ---: |
+| Clean spell F1 | .626531 | **.633205** |
+| Feed-like spell F1 | .487419 | **.498830** |
+| Clean macro F1 | .854559 | .854226 |
+| Feed-like macro F1 | .811127 | .811387 |
 
-The ensemble improves clean/feed-like spell by .01777/.01318 over the former
-working seed and .00893/.00212 over seed 2027. It passes the same clean screen,
-feed-like floor and provider D/macro guards relative to the former baseline.
-These remain previously exposed development matches with synthetic stress;
-independent confirmation is pending. See the [matched study](SEED_GAP_CONTEXT.md)
-and [promotion receipt](results/baseline_seed_ensemble_promotion.json).
+The fixed comparison improves primary spell F1 by .006674 clean and .011410
+feed-like. The declared practical provider guards pass. The gain is uneven:
+SkillCorner spell F1 declines .007075 clean and .007120 feed-like, while
+Metrica improves .025024/.030917. Equal-provider D-F1 declines .002220/.001915;
+Metrica clean D recall falls .026597 while precision rises .018437. These
+tradeoffs are recorded in the [comparison report](OBJECTIVE_ENSEMBLE.md).
 
-The fifteen-second-context recipe is **not** adopted. It improves some long-gap
-frames but does not give consistent spell gains, and its seed 2026 fails a
-SkillCorner D guardrail. The ensemble retains the original five-second context.
+The user requested a comparison and, if it worked, consideration of a baseline
+bump. This is a working development adoption under a new practical screen
+frozen before the ensemble comparison, after inspecting the earlier loss
+study. It does not change that study's failed +.01 both-seed screen. All five
+development matches were previously exposed; feed-like stress is synthetic.
+Independent broadcast confirmation remains pending.
 
 ## Deployment package and restore
 
-Seed 2026 was restored from the sealed former package. The archive had only
-provider-held-out 2027 models, so one pooled deployment checkpoint was fitted
-on the same thirteen TRAIN matches, excluding all five selection matches. Its
-normalization, feature schema, 62,643 parameters, 30,560 windows per epoch and
-3,824 optimizer updates match pooled seed 2026 exactly. No ensemble-comparison
-control was retrained; no organizer labels were read or scored. The separate
-[deployment declaration](results/seed_ensemble_deployment_declaration.json)
-records that one fit; the promotion operation only packages and predicts.
+The comparison used saved full-provider-holdout models, with no new fitting.
+After it qualified, two pooled deployment members were fitted on exactly the
+same thirteen external TRAIN matches, excluding all five selection matches.
+Each uses 52 augmented records, 62,643 parameters, 30,560 windows per epoch and
+3,824 optimizer updates. Normalization and feature schema match the prior
+pooled controls exactly. The separately frozen [deployment declaration](results/combined_objective_deployment_declaration.json)
+and fit receipts record these two fits; promotion only packages their outputs.
 
-The private cache's default `baseline_cache_manifest.json` restores the two
-weights and matching manifest under `models/joint_gru_seed_ensemble_v1/`.
-The versioned copy is `baseline_cache_manifest_joint_gru_seed_ensemble_v1.json`.
-Use `baseline_source_cache_manifest.json` for the matching code snapshot.
+The [verified private cache](results/baseline_combined_objective_artifacts.json) default `baseline_cache_manifest.json` restores the matching
+manifest and two weights under `models/joint_gru_combined_ensemble_v1/`.
+The versioned copy is `baseline_cache_manifest_joint_gru_combined_ensemble_v1.json`;
+`baseline_source_cache_manifest.json` restores the matching inference source.
 
 ```sh
 python ../mtah-data/scripts/competition_cache.py fetch --data-dir data
 python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest.json --data-dir data
 python -m experiments.current_baseline predict
-python evaluation/validate_submission.py data/experiments/current_baseline/joint_gru_seed_ensemble.csv
+python evaluation/validate_submission.py data/experiments/current_baseline/joint_gru_combined_ensemble.csv
 ```
 
-The label-free 199,319-row CSV was format-validated and replayed byte-for-byte
-through the actual baseline entrypoint. Original seed-2026 prediction parity
-also reproduces its previously sealed CSV. Generated candidates are never
-overwritten; use `--output` when replaying in an existing workspace.
+The full 199,319-row label-free candidate is format-validated. The preceding
+original-loss ensemble reproduces its sealed CSV byte-for-byte. The adopted
+package also reproduces its candidate through the actual baseline entrypoint.
+Use `--output` when replaying in a workspace where a candidate already exists.
 
-The new ensemble has **no organizer public score**. The saved .5818 spell /
-.8689 macro result belongs to the former single-seed GRU on only 17 reference
-possessions. That historical result is retained separately in the manifest,
-and every public scoring gate stays closed.
+The separately requested public diagnostic was run after the package and adoption were sealed. Combined and preceding ensembles both scored **0.557576 spell F1**; combined macro was **0.854088** versus **0.862375**. This does not confirm an improvement on the 17-possession public window. The [saved report](results/combined_objective_public_check.json) contains the fixed comparison; its gate is closed and no selection or tuning followed. Full-match performance remains unknown.
 
-[Experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
-shows dated external milestones and the separately qualified organizer checks.
+Historical manifests, policies and closed scoring gates remain preserved. The preceding ensemble is archived under `experiments/baselines/` for rollback.
+
+## Previous original-loss two-seed ensemble
+
+`joint_gru_seed_ensemble_v1` was adopted earlier on 2026-10-28, with matched clean/feed-like spell .626531/.487419. It averaged the original slot-dropout seeds and retained five-second context. Seed 2026 was restored and the pooled 2027 member fitted on the same 13 TRAIN matches with exact normalization/budget parity. See the [original study](SEED_GAP_CONTEXT.md), [promotion receipt](results/baseline_seed_ensemble_promotion.json), and [archived manifest](baselines/joint_gru_seed_ensemble_v1.json). The versioned private restore manifest remains `baseline_cache_manifest_joint_gru_seed_ensemble_v1.json`. Its first public score is now recorded in the separate fixed diagnostic above; it was unknown at its original adoption.
 
 ## Previous single seed GRU package
 

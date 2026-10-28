@@ -1,29 +1,16 @@
 # Current research state
 
-Reviewed 2026-10-28 after the completed architecture-ensemble comparison,
-based on fork main after PR #27. The adopted baseline came from the
-[seed/gap-context study, PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22)
-(frozen runner/evaluation source at `9470336`). Earlier review 2026-10-27
-covered fork main `5005115`, PR #16 at `8c704aa`, and the
-`possession/temporal-spell-robustness` follow-up.
+Reviewed 2026-10-28 after the combined-objective ensemble adoption and separate requested public diagnostic, [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29), based on fork main `9ea487b`. The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
 
 ## Adopted baseline
 
-`joint_gru_seed_ensemble_v1` (user-adopted 2026-10-28): equal native H/A/D
-probability average of the original slot-dropout GRU seeds 2026/2027, then
-unchanged Viterbi cost 3. The ten-second cores/five-second context and player-only
-D paths stay fixed. Matched full-provider-holdout clean/feed-like spell is
-**.6265/.4874**, versus former seed 2026 **.6088/.4742** and seed 2027
-**.6176/.4853**. All adoption guardrails pass relative to the former baseline.
-The feed-like guardrail retains its earlier post-result change from composite;
-that history remains disclosed in the [ablation](../../experiments/STRESS_COMPONENT_ABLATION.md).
-The new ensemble has no organizer score; the old .5818/.8689 result is single-seed
-only. Seed 2026 was restored and one missing pooled seed 2027 was fitted on the
-same 13 TRAIN matches with exact normalization/capacity/budget parity. Package
-details and restore commands: [BASELINE](../../experiments/BASELINE.md).
-The prior single-seed manifest/policy are archived under `experiments/baselines/`.
+`joint_gru_combined_ensemble_v1`: equal native H/A/D probabilities from combined-loss seeds 2026/2027, then unchanged Viterbi cost 3. Hidden24 player-only-D GRUs, ten-second cores and five-second context remain fixed. Matched full-provider clean/feed-like spell improves **.626531/.487419 → .633205/.498830**; macro is .854226/.811387. The practical screen passes, including provider clean spell/macro/D-F1 floors. SkillCorner spell declines about .007 in both views, and clean equal-provider D-F1 declines .002220. See [the report](../../experiments/OBJECTIVE_ENSEMBLE.md).
+
+Two pooled deployment fits used the same 13 TRAIN matches and exact normalization/schema/budget parity. The 199,319-row label-free CSV is format-validated and reproduces through the normal baseline entrypoint. The preceding package/decision policy are archived. This is development adoption on exposed matches and synthetic stress, not independent confirmation; the prior loss study’s failed +.01 both-seed screen remains unchanged.
+
+The separately requested fixed public diagnostic was run **after** adoption: both ensembles score **.557576 spell**, with combined macro **.854088** versus prior **.862375**. D-F1 improves .848746 → .854810. This does not confirm a public-window gain; only 7,500 graded frames and 17 possessions are available. No tuning or adoption changes followed. The [saved public result](../../experiments/results/combined_objective_public_check.json) and exclusive gate are final. Full-match performance remains unknown. Restore/package details: [BASELINE](../../experiments/BASELINE.md).
 
 ## Historical architecture comparison
 
@@ -33,7 +20,7 @@ BiLSTM, Transformer and TCN, under a fixed budget: 18 challenger fits and 200
 cells across two seeds and three full-provider holdouts. Its GRU clean/feed-like
 means of .6132/.4798 summarize two separate fits, not a prediction ensemble.
 All challengers failed the declared both-seed screen, supporting retention of
-the GRU family for that recipe and budget. The currently adopted
+the GRU family for that recipe and budget. The then-adopted
 `joint_gru_seed_ensemble_v1` scored .6265/.4874 in the separate later
 [seed-ensemble study](../../experiments/SEED_GAP_CONTEXT.md); it was not tested
 in the architecture comparison. Do not read the historical GRU mean as a score
@@ -48,8 +35,8 @@ outputs are included in this documentation publication.
 
 The [zero-fit architecture-ensemble study](../../experiments/TEMPORAL_ARCHITECTURE_ENSEMBLES.md)
 scored 900 cells across eleven pooled blends and same-seed diagnostics with no
-new fits. All eleven pooled blends fail the declared screen; retain the adopted
-two-seed GRU. The closest blend, GRU+TCN, scored .626189/.483176 clean/feed-like
+new fits. All eleven pooled blends fail the declared screen; retain the then-adopted
+original-loss two-seed GRU. The closest blend, GRU+TCN, scored .626189/.483176 clean/feed-like
 versus .626531/.487419 for the adopted GRU. GRU+BiLSTM+TCN scored
 .624938/.487455: feed-like was effectively flat while primary clean spell
 declined. Same-seed tables are diagnostics, not eligibility results. These are
@@ -74,7 +61,7 @@ shows dated milestones and interactive charts; update it when promising work com
 
 | Scope / evidence | Finding | Decision |
 | --- | --- | --- |
-| Completed [combined-objective ensemble comparison](../../experiments/OBJECTIVE_ENSEMBLE.md), full provider holdouts | Fixed saved-probability blend improves clean/feed-like spell .626531/.487419 → .633205/.498830; all declared practical guards pass. SkillCorner spell declines about .007 in both views. Independently verified; pooled deployment fits are underway. | Candidate for a user-requested working-baseline bump; active package remains the original-loss ensemble until deployment checks complete. No organizer scoring. |
+| Completed [combined-objective ensemble comparison](../../experiments/OBJECTIVE_ENSEMBLE.md), full provider holdouts | Fixed saved-probability blend improves clean/feed-like spell .626531/.487419 → .633205/.498830; all declared practical guards pass. SkillCorner spell declines about .007 in both views. Independently verified; two pooled deployment fits and entrypoint replay completed. | Working baseline adopted before a separate fixed public diagnostic: spell tied .557576, combined macro lower. No subsequent tuning or adoption change. |
 | Completed [seed ensemble / gap-context study](../../experiments/SEED_GAP_CONTEXT.md), full provider holdouts | Actual ensemble .6265/.4874; 30/30 parity. Live feed-like gaps >=10s have 24.3% wrong team versus 5.1% false D; native clean support is only 108 live frames. Longer context helps local recovery but not spell consistently. | User adopts the original-context ensemble; fifteen-second context remains experimental. Independent labeled broadcast confirmation is pending. No organizer scoring. |
 | Previous adopted recipe (`gru_hgb_ballgap25_v1`), historical **D-only provider holdout, pooled H/A**; [baseline](../../experiments/BASELINE.md) | Clean spell/macro .5740/.8439; composite-stress .4315/.7866. Previous .5746/.8449 and .4205/.7699. | Adopted robustness tradeoff, not a clean-score win. |
 | Merged [tracking pilot](../../experiments/TOP_THREE_PILOT.md), PR #15 | 80 pooled development evaluations; matched gap/suppression arms lose overall spell. Fusion recovers 4,419 missing-ball frames (6.84%), with >10% overlapping ball positions disagreeing by >5 m. | No preprocessing/fusion adoption. |

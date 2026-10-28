@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "confirmed_utc_date": "2026-10-28",
   "primary_order": [
     "spell_f1",
@@ -16,15 +16,15 @@
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
   "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "Two-seed joint GRU probability ensemble",
-    "model": "joint_gru_seed_ensemble",
+    "family": "Two-seed combined-objective joint GRU probability ensemble",
+    "model": "joint_gru_combined_ensemble",
     "status": "User-authorized working development baseline; independent confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
-    "baseline_manifest_sha256": "8a518b549ddd4e3b7ee3a2bc1033375a8190a39d44c52f336e801e155852f852",
+    "baseline_manifest_sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "reason": "User adopted actual equal-probability ensemble: clean/feed-like spell .6265/.4874; passes matched former-baseline guards",
-    "promotion_record": "experiments/results/baseline_seed_ensemble_promotion.json",
-    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_slotdrop_v1.json",
+    "reason": "Post-hoc full-provider comparison passed: clean spell .633205 and feed_like spell .498830 versus .626531/.487419 for the prior ensemble.",
+    "promotion_record": "experiments/results/baseline_combined_objective_promotion.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_seed_ensemble_v1.json",
     "public_diagnostic_known_before_user_request": false
   },
   "pathcrf_component": {
@@ -42,7 +42,7 @@
   ],
   "stress_guardrail": {
     "view": "feed_like",
-    "rule": "Full-pipeline candidate feed-like spell >= adopted ensemble -.01; report component seeds separately and protect provider clean D-F1/macro within .02",
+    "rule": "Full-pipeline candidate feed_like spell >= adopted ensemble -.01; report component seeds separately and protect provider clean D-F1/macro within .02",
     "components": "Calibrated ball gaps, coordinate drift/noise/jumps, per-slot gaps, same-team ID swaps",
     "diagnostic_only": [
       "composite",
@@ -56,7 +56,7 @@
       "experiments/results/feed_defect_profile.json",
       "experiments/results/stress_component_ablation.json"
     ],
-    "reference_recipe": "joint_gru_seed_ensemble"
+    "reference_recipe": "joint_gru_combined_ensemble"
   },
   "lgbm_component": {
     "default_enabled": false,
