@@ -1,6 +1,6 @@
 # Two-seed GRU ensemble and long-gap context
 
-Status: running. Date: 2026-10-28. Branch:
+Status: completed. Date: 2026-10-28. Branch:
 `possession/seed-ensemble-gap-context`, based on `7615dd5`.
 
 This study tests the adopted slot-dropout joint GRU on the same five previously
@@ -11,8 +11,8 @@ broadcast or full organizer-match accuracy.
 ## Ensemble result and current gap diagnosis
 
 The actual probability ensemble improves both headline views. Its extra gain
-over seed 2027 is modest: +.0089 clean and +.0021 feed-like spell F1. Keep the
-adopted single-seed package unchanged while the context experiment runs.
+over seed 2027 is modest: +.0089 clean and +.0021 feed-like spell F1. The adopted package stays unchanged; the ensemble is a modest external
+development improvement, while longer context is not a consistent replacement.
 
 ![Matched clean and feed-like spell scores](results/seed_gap_context_scores.png)
 
@@ -71,6 +71,99 @@ many censored observations; keep the official population, but avoid treating
 all of these snippets as complete real possessions.
 
 ![Wrong-team and false-D errors by gap duration and contact distance](results/seed_gap_context_errors.png)
+
+## Completed longer-context result
+
+Decision: retain the adopted 5s-context package. The actual seed ensemble is a
+candidate for confirmation; do not promote the 15s-context recipe. All six fits
+and all 30 context cells completed, with exact control normalization, feature
+schema, parameter, window and optimizer-update parity. No controls were refit.
+
+| Context recipe / view | Spell F1 | Macro F1 | Auxiliary 70/30 | D precision | D recall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| context15_2026 / clean | 0.605830 | 0.829878 | 0.673045 | 0.916399 | 0.731580 |
+| context15_2026 / feed_like | 0.473933 | 0.789466 | 0.568593 | 0.913189 | 0.729990 |
+| context15_2027 / clean | 0.615305 | 0.854462 | 0.687052 | 0.898431 | 0.815616 |
+| context15_2027 / feed_like | 0.489945 | 0.812794 | 0.586800 | 0.892913 | 0.811328 |
+
+| Seed | Clean spell delta | Feed-like spell delta | Worst provider clean D/macro delta | Guardrails |
+| --- | ---: | ---: | ---: | --- |
+| 2026 | -0.002932 | -0.000304 | -0.057947 | fail |
+| 2027 | -0.002296 | +0.004643 | -0.008303 | pass |
+
+Both seeds lose a little clean spell F1. Feed-like spell is effectively flat
+for seed 2026 and rises .00464 for seed 2027. Provider effects differ: seed 2027
+gains .02239 clean/.02550 feed-like on Sportec but loses .02733/.01240 on
+Metrica. Seed 2026 loses .01042/.01090 on SkillCorner. Its clean SkillCorner
+D F1 falls .71639→.65844 and D recall .62359→.52309; macro falls .02399.
+That violates the .02 clean provider guardrail. Seed 2027 passes the guards
+but does not produce a clean spell gain. Per-provider P/R and all cell counts
+are retained in [context results](results/seed_gap_context_long.json).
+
+### Does the additional window help gap recovery?
+
+Partially. In feed-like live gaps >=10s, nominal windows containing both
+surrounding contact proxies increase from **7.02% to 47.20%** of frames, with
+the same replicate/match/provider weighting. All-long-gap team accuracy rises
+in both seeds, and gains are larger on the pre-existing subset newly bracketed
+by the longer window. The partition is descriptive and was summarized after
+the frozen experiment; it is not a randomized intervention on contacts.
+
+| Seed / long-gap subset | 5s team accuracy | 15s team accuracy | Delta (pp) | 5s→15s wrong-team rate | 5s→15s false-D rate |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 2026 / all_long | 70.59% | 72.43% | +1.85 | 24.32%→23.73% | 5.10%→3.84% |
+| 2026 / newly_bracketed | 70.88% | 73.90% | +3.02 | 24.00%→22.54% | 5.12%→3.56% |
+| 2026 / still_outside_window | 69.68% | 70.37% | +0.68 | 25.27%→25.52% | 5.05%→4.11% |
+| 2027 / all_long | 70.23% | 71.59% | +1.36 | 23.54%→23.00% | 6.23%→5.41% |
+| 2027 / newly_bracketed | 69.77% | 72.75% | +2.97 | 24.25%→22.28% | 5.98%→4.97% |
+| 2027 / still_outside_window | 69.80% | 70.02% | +0.22 | 23.81%→24.45% | 6.39%→5.53% |
+
+The newly bracketed subset has 66,169 repeated frame exposures across the two
+feed-like realizations, versus 163,799 all-long-gap exposures; these are not
+independent samples. All three providers contribute. Wrong-team and false-D
+rates both improve there. Some improvements also occur without a bracketing
+pair, so the entire gain cannot be attributed to seeing contacts. This is
+consistent with the proposed local recovery mechanism, without establishing
+a net possession-spell benefit or a causal contact-only effect.
+
+Short possessions remain difficult: in 10–<20s gaps, the missed-short-spell
+rate changes 92.13%→93.11% for seed 2026 and stays 94.52% for seed 2027.
+At 20–<40s it changes 92.09%→91.89% and 92.02%→90.65%. Fragmentation stays
+low. One-second turnover recall improves in 10–<20s gaps (5.56%→9.16% and
+5.57%→8.63%), with mixed effects in longer gaps. These modest timing/frame
+improvements do not consistently recover short spells at the official IoUs.
+Full gap/contact/joint strata, support counts, misses, fragmentation and
+timing with unmatched events are in the [readout](results/seed_gap_context_readout.json).
+
+### All official matching thresholds
+
+Replicates are averaged within match, then matches within provider and
+providers equally. These are F1 values, not a different matching objective.
+
+| Recipe / view | IoU .3 | .4 | .5 | .6 | .7 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| seed_2026 / clean | 0.70827 | 0.67405 | 0.61886 | 0.55928 | 0.48336 |
+| seed_2026 / feed_like | 0.59206 | 0.54134 | 0.47760 | 0.41294 | 0.34724 |
+| seed_2027 / clean | 0.71117 | 0.67693 | 0.62667 | 0.57319 | 0.50004 |
+| seed_2027 / feed_like | 0.59688 | 0.55038 | 0.48738 | 0.43018 | 0.36169 |
+| equal_probability_ensemble / clean | 0.71444 | 0.68453 | 0.63865 | 0.58325 | 0.51179 |
+| equal_probability_ensemble / feed_like | 0.59804 | 0.55880 | 0.49033 | 0.42937 | 0.36056 |
+| context15_2026 / clean | 0.70449 | 0.66907 | 0.61512 | 0.55911 | 0.48136 |
+| context15_2026 / feed_like | 0.58691 | 0.54133 | 0.47260 | 0.41501 | 0.35382 |
+| context15_2027 / clean | 0.71621 | 0.67676 | 0.61943 | 0.56499 | 0.49914 |
+| context15_2027 / feed_like | 0.59943 | 0.54473 | 0.49607 | 0.43397 | 0.37552 |
+
+The cohort has 1,963 reference spells across the five native matches. Reference
+spells and grading counts stay unchanged in every matched comparison. The
+experiment contains 45 original/ensemble cells plus 30 context cells; the
+independent verifier checks 15 bit-exact full-vector ensembles, all 30 original
+probability hashes and replays 45 ensemble/context score cells through the
+official scorer. The other 30 individual cells reproduce the archived scores.
+
+Next: obtain independent labeled broadcast evidence containing genuine long
+live-ball gaps. The present result supports a local context mechanism under
+synthetic missingness, but does not justify a larger sweep or deployment change
+from these exposed development matches alone.
 
 ## Frozen comparison
 
@@ -177,3 +270,33 @@ Use the pinned CPU research dependencies. Training caches and per-frame arrays
 stay in ignored `data/experiments/seed_gap_context_v1/` and the private cache.
 No organizer labels are read and no full-length organizer CSV is generated by
 this external study. The adopted baseline remains `joint_gru_slotdrop_v1`.
+
+## Verification and archived state
+
+- All 154 repository synthetic/contract tests passed, plus exact plain/file-backed
+  fitted-state and training-history parity. CI runs both contracts.
+- [Independent replay receipt](results/seed_gap_context_verification.json): 15
+  exact probability ensembles, 30 individual probability hashes, and 45 official
+  ensemble/context score replays passed. The frozen sources and inputs still match.
+- The bundled 199,319-row CSV format check passed. This external study generated
+  no organizer CSV and read no organizer ground truth; every old gate stays closed.
+- [Initial ensemble archive](results/seed_gap_context_ensemble_artifacts.json)
+  was independently downloaded and verified. The [complete artifact receipt](results/seed_gap_context_artifacts.json)
+  records the final six checkpoints, outputs, evaluation caches and source snapshot.
+  Regenerable training caches and temporary file-backed raw arrays are omitted.
+- Restore the original `gru_slot_robustness_cache_manifest.json` dependency and
+  then `seed_gap_context_cache_manifest.json` from private branch
+  `experiments/seed-gap-context-v1`. Keep all arrays/checkpoints private.
+
+Standalone PNG/SVG figures are saved beside the JSON results. To regenerate
+post-hoc tables, plots and the independent check after restoring the cache:
+
+```sh
+python scripts/summarize_seed_gap_context.py
+python scripts/plot_seed_gap_context.py
+python scripts/verify_seed_gap_context.py
+```
+
+The report/readout/verifier use exclusive result creation. Read existing frozen
+outputs rather than overwriting them; reproduce in a separate checkout/output
+copy when needed. No adoption or full-match accuracy claim follows this study.

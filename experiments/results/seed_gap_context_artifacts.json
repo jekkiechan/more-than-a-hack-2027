@@ -1,0 +1,101 @@
+{
+ "verified_utc": "2026-10-28T09:33:26.736776+00:00",
+ "private_repository": "jekkiechan/mtah-data",
+ "private_branch": "experiments/seed-gap-context-v1",
+ "private_commit": "6d816d8bbb7f596fbf28c7c45fc0af01639fe676",
+ "manifest": "seed_gap_context_cache_manifest.json",
+ "manifest_sha256": "84f46e6318e8c08aebeaeb1c8a0decca7a1627f3416d017f0939507692af7dfb",
+ "manifest_files": 242,
+ "manifest_total_bytes": 599736613,
+ "completed_score_cells": 75,
+ "new_context_checkpoints": 6,
+ "matched_normalization_and_budget": true,
+ "remote_availability": "Independent remote clone advanced to this exact commit; all 242 manifest files verified by size and SHA256, including actual LFS objects for six checkpoints and all probability/prediction arrays.",
+ "dependency": {
+  "manifest": "gru_slot_robustness_cache_manifest.json",
+  "sha256": "46702a6be49685047e4a748d4154fd0dcee7fabe0e2bdcb27c46e1155210c512",
+  "files": 253
+ },
+ "regenerable_training_caches_archived": false,
+ "evaluation_caches_archived": true,
+ "checkpoint_receipts": {
+  "without_metrica_context15_2026.json": {
+   "sha256": "639df140be5f380495d76550d0a4dd6792ede0f65c7a7f11cdfcb4d0d40df701",
+   "predeclared_sha256": "092220e7961c7bc38f7cf2ef562a463c5588b90640e18b469e0e509477f00015",
+   "source": "metrica",
+   "seed": 2026,
+   "context_seconds": 15,
+   "matched_normalization": true,
+   "parameters": 62643,
+   "optimizer_updates": 3248,
+   "windows_per_epoch": 25976,
+   "seconds": 1911.4606060749998
+  },
+  "without_metrica_context15_2027.json": {
+   "sha256": "3a87e206ff031bd84391c237b8869cb43a9cbeb4ddabc95989e0119c0417cf76",
+   "predeclared_sha256": "092220e7961c7bc38f7cf2ef562a463c5588b90640e18b469e0e509477f00015",
+   "source": "metrica",
+   "seed": 2027,
+   "context_seconds": 15,
+   "matched_normalization": true,
+   "parameters": 62643,
+   "optimizer_updates": 3248,
+   "windows_per_epoch": 25976,
+   "seconds": 1747.0318339290006
+  },
+  "without_skillcorner_context15_2026.json": {
+   "sha256": "abd59bac5c5de1c687a4cfb954a94eba27dde8138118ef0bc3db93285baef2e1",
+   "predeclared_sha256": "092220e7961c7bc38f7cf2ef562a463c5588b90640e18b469e0e509477f00015",
+   "source": "skillcorner",
+   "seed": 2026,
+   "context_seconds": 15,
+   "matched_normalization": true,
+   "parameters": 62643,
+   "optimizer_updates": 1432,
+   "windows_per_epoch": 11396,
+   "seconds": 710.747191294
+  },
+  "without_skillcorner_context15_2027.json": {
+   "sha256": "b3c1ed68b27285aadf1f8471f73386486ff4375a5e84e893f45339ba6f4390f0",
+   "predeclared_sha256": "092220e7961c7bc38f7cf2ef562a463c5588b90640e18b469e0e509477f00015",
+   "source": "skillcorner",
+   "seed": 2027,
+   "context_seconds": 15,
+   "matched_normalization": true,
+   "parameters": 62643,
+   "optimizer_updates": 1432,
+   "windows_per_epoch": 11396,
+   "seconds": 789.6512324669998
+  },
+  "without_sportec_context15_2026.json": {
+   "sha256": "c53b9a0b16fb78603f5d34a80a8daa44506db10e1ebf640cb5b361c11d40e5e7",
+   "predeclared_sha256": "092220e7961c7bc38f7cf2ef562a463c5588b90640e18b469e0e509477f00015",
+   "source": "sportec",
+   "seed": 2026,
+   "context_seconds": 15,
+   "matched_normalization": true,
+   "parameters": 62643,
+   "optimizer_updates": 2976,
+   "windows_per_epoch": 23748,
+   "seconds": 1542.329095472
+  },
+  "without_sportec_context15_2027.json": {
+   "sha256": "fc1d3e3ab9847af5335b6e22b11278882cae10f537d4d6c5f60c9193d432c67e",
+   "predeclared_sha256": "092220e7961c7bc38f7cf2ef562a463c5588b90640e18b469e0e509477f00015",
+   "source": "sportec",
+   "seed": 2027,
+   "context_seconds": 15,
+   "matched_normalization": true,
+   "parameters": 62643,
+   "optimizer_updates": 2976,
+   "windows_per_epoch": 23748,
+   "seconds": 1627.6359389010001
+  }
+ },
+ "organizer_labels_read": false,
+ "baseline_changed": false,
+ "restore_commands": [
+  "python scripts/competition_cache.py fetch --manifest gru_slot_robustness_cache_manifest.json --data-dir /path/to/code/data",
+  "python scripts/competition_cache.py fetch --manifest seed_gap_context_cache_manifest.json --data-dir /path/to/code/data"
+ ]
+}

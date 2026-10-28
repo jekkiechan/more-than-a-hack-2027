@@ -95,7 +95,8 @@ Public-window history (17 possessions, descriptive only): .4190 context ·
    [GRU_SLOT_ROBUSTNESS](GRU_SLOT_ROBUSTNESS.md#proposed-native-frame-blanking-experiment).
    Not yet declared.
 3. Actual seed averaging is now tested: clean/feed-like .6265/.4874, with modest
-   gains over seed 2027. Its conditional longer-context experiment is running
+   gains over seed 2027. Matched 15s context improves local long-gap recovery,
+   but not spell F1 consistently; seed 2026 fails the SkillCorner D guard
    ([SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md)). A game-state-dependent
    (turnover/aerial) gap model remains untested.
 4. An independent labelled broadcast match. Data-blocked (private mtah-data issue #4).

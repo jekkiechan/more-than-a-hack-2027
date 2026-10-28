@@ -1,6 +1,8 @@
 # Current research state
 
-Reviewed 2026-10-28 (promotion); earlier review 2026-10-27: fork main `5005115`, PR #16 at `8c704aa`, and the
+Reviewed 2026-10-28 after the seed/gap-context study on
+`possession/seed-ensemble-gap-context`, [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22)
+(frozen runner/evaluation source at `9470336`); earlier review 2026-10-27: fork main `5005115`, PR #16 at `8c704aa`, and the
 `possession/temporal-spell-robustness` follow-up.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
@@ -21,7 +23,7 @@ The previous `gru_hgb_ballgap25_v1` is archived under `experiments/baselines/`.
 
 | Scope / evidence | Finding | Decision |
 | --- | --- | --- |
-| Running [seed ensemble / gap-context study](../../experiments/SEED_GAP_CONTEXT.md), full provider holdouts | Actual probability ensemble clean/feed-like spell .6265/.4874 versus individual .6088/.4742 and .6176/.4853; 30/30 parity. Wrong-team versus false-D rate in feed-like live gaps >=10s is 24.3% versus 5.1%; native clean support is only 108 live frames, mostly false-D errors. | Conditional six-fit 15s-context comparison running. Retain the adopted package; no organizer scoring. |
+| Completed [seed ensemble / gap-context study](../../experiments/SEED_GAP_CONTEXT.md), full provider holdouts | Actual probability ensemble clean/feed-like spell .6265/.4874; 30/30 parity. Feed-like live gaps >=10s have 24.3% wrong team versus 5.1% false D; native clean support is only 108 live frames. Six matched 15s-context fits improve long-gap team accuracy +1.85/+1.36 pp, but clean spell declines in both seeds and seed 2026 fails the SkillCorner D guard. | Retain adopted package. Ensemble is a modest candidate for confirmation; longer context helps local recovery without a consistent spell win. Need independent labeled broadcast gaps. No organizer scoring. |
 | Previous adopted recipe (`gru_hgb_ballgap25_v1`), historical **D-only provider holdout, pooled H/A**; [baseline](../../experiments/BASELINE.md) | Clean spell/macro .5740/.8439; composite-stress .4315/.7866. Previous .5746/.8449 and .4205/.7699. | Adopted robustness tradeoff, not a clean-score win. |
 | Merged [tracking pilot](../../experiments/TOP_THREE_PILOT.md), PR #15 | 80 pooled development evaluations; matched gap/suppression arms lose overall spell. Fusion recovers 4,419 missing-ball frames (6.84%), with >10% overlapping ball positions disagreeing by >5 m. | No preprocessing/fusion adoption. |
 | Completed [confidence abstention](../../experiments/CONFIDENCE_ABSTENTION.md); **D-only provider holdout, pooled H/A** | 135 evaluations; 15/15 baseline parity. Primary .60 X gate: clean spell .57402→.58240, stress .43152→.42608; macro .84394→.82607 / .78659→.73476. All eight gates fail guardrails. X/hold differences occur on SkillCorner native unknown-label gaps. | Retain baseline; no organizer scoring or promotion. |
@@ -46,7 +48,6 @@ fitting; do not infer that a proposed study has already run.
 
 | Priority / state | Next action | Required evidence |
 | --- | --- | --- |
-| 0 — Running | Complete the user-requested [longer-context comparison](../../experiments/SEED_GAP_CONTEXT.md) after the actual two-seed ensemble and current-GRU gap audit. | Six sealed fits, two seeds/full provider holdouts, exact normalization/capacity/budget parity; matched clean/feed-like spell, long-gap team accuracy, short spells, fragmentation and turnover timing. Preserve native-data support limits. |
 | 1 — Ready to design | Diagnose SkillCorner dead-ball under-recall in the complete H/A/D tree predictor and separate the useful temporal groups: reliable anchors, ordered context and persistence. The full127/dropout-GRU blends are promising robustness candidates, not adopted models. | Attribute source/ball-visibility effects before another capacity increase. Every tree arm must still output full H/A/D. Freeze matched feature/architecture comparisons, preserve both seeds and provider guards, and inspect D recall alongside all five spell IoUs. |
 | 2 — Proposed | Isolate native player-frame blanking in the constrained GRU; compare otherwise identical composite views with that component omitted. [Diagnosis and bounded design](../../experiments/GRU_SLOT_ROBUSTNESS.md#proposed-native-frame-blanking-experiment). | Support loss rises sharply under stress, but causality is unproven. Proposed six new fits / 70 new cells; preserve both-seed clean/provider/stress guardrails and test false-D rates on reference-live frames. Not yet declared or run. |
 | 3 — Data blocked | Obtain an independent labeled broadcast match; follow [private issue #4](https://github.com/jekkiechan/mtah-data/issues/4) for rights, blind annotation, tracking/alignment and sealed confirmation. | PFF access was requested; response not established here. Audio/video or model-generated labels do not supply independent H/A/D ground truth. |
@@ -61,6 +62,13 @@ break, and the fixed 70/30 summary auxiliary. No global weighted score can hide
 a failed provider or corruption guardrail.
 
 ## Open work and artifacts
+
+The user-requested [seed/gap-context study](../../experiments/SEED_GAP_CONTEXT.md)
+is complete: six matched fits, 75 score cells, exact normalization/budget parity,
+15 exact probability ensembles and 45 independent official score replays.
+[Complete private artifact receipt](../../experiments/results/seed_gap_context_artifacts.json)
+records remote verification. Next action is genuine labeled broadcast long-gap
+evidence, rather than another context sweep on this exposed synthetic benchmark.
 
 The user-requested [competition check of four temporal candidates](../../experiments/TEMPORAL_COMPETITION_CHECK.md) is complete and its gate is closed: dropout GRU .5818, robustness blend .5818, clean leader blend .5500, Full127 .5371 spell F1. It was resumed with a [recorded cache-rehash deviation](../../experiments/results/temporal_competition_resume_deviation.json). The [stress-component ablation](../../experiments/STRESS_COMPONENT_ABLATION.md) and the promotion are in PR #20.
 

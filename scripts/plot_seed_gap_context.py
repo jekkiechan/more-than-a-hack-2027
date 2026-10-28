@@ -55,7 +55,9 @@ def main():
     ax.set_xticks(positions,[v for _,v in recipes],rotation=12,ha='right')
     ax.set_ylabel('Official spell F1, mean over IoU .3–.7');ax.set_ylim(0,.78)
     ax.legend(frameon=False);ax.grid(axis='y',alpha=.2)
-    ax.set_title('Matched full-provider-holdout development comparison\nTwo individual runs and an actual probability ensemble')
+    subtitle=('Original seeds, probability ensemble and matched context fits' if long['summaries']
+              else 'Two individual runs and an actual probability ensemble')
+    ax.set_title('Matched full-provider-holdout development comparison\n'+subtitle)
     for extension in ('png','svg'):
         fig.savefig(OUT/f'seed_gap_context_scores.{extension}',dpi=180)
     plt.close(fig)
