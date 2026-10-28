@@ -1,0 +1,15 @@
+{
+  "events": [
+    {
+      "event": "independent_verifier_contract_corrections",
+      "details": "Before successful replay, corrected checker assumptions for static team slot metadata, model-period versus raw-period identity, and official metric wrapper field subsets. Frozen runner, input arrays and scored outputs were unchanged. Corrected historical scalar IoU-F1 versus current full IoU-object comparison; added a matching/mismatching synthetic self-test. A fast saved-row audit then passed all 900 rows, baseline comparisons, 108 summaries and 11 screens before the final full replay."
+    },
+    {
+      "event": "independent_replay_transport_loss",
+      "details": "An audit session lost its execution transport and exited without a verification receipt. It was not counted as verified. Restarted the independent replay with persistent logging and process workers; removed redundant metric passes while retaining all 900 decoded probability/metric/diagnostic checks."
+    }
+  ],
+  "new_fits": 0,
+  "scoring_repeated": false,
+  "frozen_runner_modified_after_scoring": false
+}
