@@ -23,6 +23,25 @@ same 13 TRAIN matches with exact normalization/capacity/budget parity. Package
 details and restore commands: [BASELINE](../../experiments/BASELINE.md).
 The prior single-seed manifest/policy are archived under `experiments/baselines/`.
 
+## Historical architecture comparison
+
+The completed [temporal architecture comparison](../../experiments/TEMPORAL_ARCHITECTURE.md)
+tested the former `joint_gru_slotdrop_v1` recipe as its GRU reference, alongside
+BiLSTM, Transformer and TCN, under a fixed budget: 18 challenger fits and 200
+cells across two seeds and three full-provider holdouts. Its GRU clean/feed-like
+means of .6132/.4798 summarize two separate fits, not a prediction ensemble.
+All challengers failed the declared both-seed screen, supporting retention of
+the GRU family for that recipe and budget. The currently adopted
+`joint_gru_seed_ensemble_v1` scored .6265/.4874 in the separate later
+[seed-ensemble study](../../experiments/SEED_GAP_CONTEXT.md); it was not tested
+in the architecture comparison. Do not read the historical GRU mean as a score
+or matched comparison for the adopted ensemble.
+
+The report and aggregate/receipt JSON files are published here. Its frozen
+implementation remains only in local working-branch snapshots `c31afbc`
+(implementation) and `9f023de` (comparison result); no code, weights or frame
+outputs are included in this documentation publication.
+
 [Experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
 shows dated milestones and interactive charts; update it when promising work completes.
 
