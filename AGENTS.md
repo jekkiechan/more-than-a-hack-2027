@@ -3,6 +3,8 @@
 ## Load only what the task needs
 
 - Start with [current status and next work](docs/research/STATUS.md).
+- Working in `experiments/`? Read [experiments/AGENTS.md](experiments/AGENTS.md)
+  first: vocabulary, study lineage, settled directions and code map.
 - Find prior evidence in the [experiment index](docs/research/EXPERIMENTS.md).
   Read the relevant report, not every historical handoff.
 - For restore/inference, use [BASELINE.md](experiments/BASELINE.md).
