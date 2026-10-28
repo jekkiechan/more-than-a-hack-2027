@@ -100,3 +100,19 @@ will be added after the declared run.
 
 All 156 synthetic/contract tests pass, and the bundled 199,319-row submission
 passes the official format validator. Comparative scores are pending.
+
+## Runtime storage addendum
+
+The first three fits use the original in-memory path: SkillCorner spell seed
+2026, Sportec spell seed 2026, and SkillCorner combined seed 2027. Before the
+remaining fifteen fits began, a separate [runtime addendum](results/objective_alignment_runtime.json)
+was frozen. It maps the unchanged normalizer's exact returned arrays through
+read-only temporary `.npy` files, enabling three fit processes within the memory
+budget. The training source, values, RNG, batches and optimizer remain fixed.
+The addendum was introduced after fitting began and before comparative scoring.
+
+The storage contract tests compare every returned model field, training history
+and prediction bitwise for all three non-control objectives, including genuinely
+non-neutral spell weights, and check cleanup/restoration on failure. Adapter
+fits record separate hash-bound runtime receipts; the independent verifier
+requires them for all fifteen subsequent fits.

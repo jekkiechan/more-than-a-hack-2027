@@ -28,6 +28,7 @@ from experiments import (corruption_experiment as ce,
                          supervised,
                          metrics)
 from experiments.eval_set.protocol import sha256
+from scripts import fit_objective_filebacked as filebacked
 
 
 def _require(condition: bool, message: str) -> None:
@@ -221,6 +222,10 @@ def _audit_models(out: Path, spec: dict, training_audit: dict) -> dict:
     parity_rows = {(row["heldout"], row["seed"]): row for row in parity.get("rows", [])}
     _require(len(parity_rows) == len(dt.SPLITS) * len(oa.SEEDS),
              "Pre-fit training parity rows are incomplete or duplicated")
+    runtime_addendum, runtime_addendum_path = filebacked._check_runtime_addendum(out)
+    _require(runtime_addendum.get("after_initial_fits_started") is True,
+             "Runtime addendum does not disclose its post-hoc timing")
+    initial_unadapted = set(filebacked._INITIAL_FITS_WITHOUT_ADAPTER)
     objective_map = {"spell_sqrt": "spell_sqrt", "transition": "transition",
                      "combined": "combined"}
     declared_controls = spec["training_control"]["checkpoints"]
@@ -256,6 +261,7 @@ def _audit_models(out: Path, spec: dict, training_audit: dict) -> dict:
             for arm in oa.NEW_ARMS:
                 path = oa.checkpoint(out, source, arm, seed)
                 receipt_path = path.with_suffix(".json")
+                runtime_path = path.with_suffix(".runtime.json")
                 manifest_row = next(item for item in rows if item["file"] == path.name)
                 _require(manifest_row["sha256"] == sha256(path)
                          and manifest_row["receipt_sha256"] == sha256(receipt_path),
@@ -264,6 +270,51 @@ def _audit_models(out: Path, spec: dict, training_audit: dict) -> dict:
                 receipt = json.loads(receipt_path.read_text())
                 expected_objective = objective_map[arm]
                 expected_loss = objective_losses.OBJECTIVES[expected_objective]
+                fit_key = f"{source}/{arm}/{seed}"
+                if fit_key in initial_unadapted:
+                    _require(not runtime_path.exists(),
+                             f"Initial in-memory fit must not claim adapter provenance: {fit_key}")
+                else:
+                    _require(runtime_path.exists(),
+                             f"Missing file-backed runtime receipt: {fit_key}")
+                    runtime = json.loads(runtime_path.read_text())
+                    expected_calls = 2 * 4 * len(spec["training_matches"][source])
+                    _same((runtime.get("heldout"), runtime.get("arm"),
+                           runtime.get("objective"), runtime.get("seed")),
+                          (source, arm, expected_objective, seed),
+                          f"runtime_receipt/{fit_key}/identity")
+                    _same((runtime.get("adapter_sha256"),
+                           runtime.get("runtime_addendum_sha256"),
+                           runtime.get("objective_predeclared_sha256")),
+                          (runtime_addendum["adapter_sha256"],
+                           sha256(runtime_addendum_path), sha256(out / "predeclared.json")),
+                          f"runtime_receipt/{fit_key}/source_bindings")
+                    _same(runtime.get("model_sha256"), sha256(path),
+                          f"runtime_receipt/{fit_key}/model_sha256")
+                    _same(runtime.get("model_receipt_sha256"), sha256(receipt_path),
+                          f"runtime_receipt/{fit_key}/model_receipt_sha256")
+                    _same(runtime.get("loss_coefficients"),
+                          dict(spell=expected_loss[0], transition=expected_loss[1]),
+                          f"runtime_receipt/{fit_key}/loss_coefficients")
+                    _same(runtime.get("normalized_mmap_count"), expected_calls,
+                          f"runtime_receipt/{fit_key}/normalization_calls")
+                    for key in ("parameters", "optimizer_updates", "windows_per_epoch"):
+                        _same(runtime.get(key), model[key],
+                              f"runtime_receipt/{fit_key}/{key}")
+                    expected_normalization_hashes = {
+                        key: hashlib.sha256(np.ascontiguousarray(model[key]).tobytes()).hexdigest()
+                        for key in ("median", "scale")
+                    }
+                    _same(runtime.get("normalization_sha256"), expected_normalization_hashes,
+                          f"runtime_receipt/{fit_key}/normalization_sha256")
+                    required_checks = (
+                        "model_loaded_and_validated", "model_provenance_matched",
+                        "model_budget_matches_control", "normalization_matches_control",
+                        "normalizer_restored", "temporary_files_removed",
+                        "all_mappings_read_only", "normalization_call_count_matched")
+                    _require(all(runtime.get("checks", {}).get(key) is True
+                                 for key in required_checks),
+                             f"File-backed runtime checks failed: {fit_key}")
                 _same((receipt.get("heldout"), receipt.get("arm"), receipt.get("seed"),
                        receipt.get("objective")),
                       (source, arm, seed, expected_objective), f"{path.name}.receipt")
@@ -301,6 +352,8 @@ def _audit_models(out: Path, spec: dict, training_audit: dict) -> dict:
                                      updates=int(model["optimizer_updates"]),
                                      windows=int(model["windows_per_epoch"])))
     return dict(candidates=len(verified), models=verified,
+                runtime_receipts=len(expected_files) - len(initial_unadapted),
+                initial_unadapted_candidates=sorted(initial_unadapted),
                 checkpoint_manifest_sha256=sha256(manifest_path))
 
 
