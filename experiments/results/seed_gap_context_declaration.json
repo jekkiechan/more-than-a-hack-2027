@@ -1,0 +1,312 @@
+{
+ "id": "seed_gap_context_v1",
+ "created_utc": "2026-10-28T08:03:05.172460+00:00",
+ "base_commit": "7615dd5c738adbc63e92d19af233962777cc98eb",
+ "hypotheses": [
+  "Equal averaging of the two frozen full H/A/D vectors improves spell recovery if seed errors complement.",
+  "Long ball gaps and distance to reliable observed contact concentrate wrong-team errors on the current GRU.",
+  "Conditional on that diagnosis, 15s rather than 5s context each side improves recovery while keeping 10s output cores."
+ ],
+ "arms": [
+  "seed_2026",
+  "seed_2027",
+  "equal_probability_ensemble"
+ ],
+ "probability_ensemble": "0.5 * (native H/A/D probability seed2026 + seed2027), then unchanged Viterbi cost3. No calibration.",
+ "views": {
+  "clean": [
+   "clean"
+  ],
+  "feed_like": [
+   "corrupt_1",
+   "corrupt_2"
+  ]
+ },
+ "feed_components": [
+  "ball_gaps",
+  "coordinates",
+  "slot_gaps",
+  "id_swaps"
+ ],
+ "calibration": {
+  "ball_missing_fraction": 0.40692572565263097,
+  "gap_edges_seconds": [
+   0.08,
+   0.2,
+   0.5,
+   1.0,
+   2.0,
+   5.0,
+   10.0,
+   30.0
+  ],
+  "gap_bin_probability": [
+   0.08666666666666667,
+   0.02,
+   0.006666666666666667,
+   0.0,
+   0.006666666666666667,
+   0.35333333333333333,
+   0.5266666666666666
+  ],
+  "gap_count": 150,
+  "gap_quantiles_seconds": [
+   0.47200000000000003,
+   10.72,
+   30.0,
+   30.0
+  ],
+  "visible_player_quantiles": [
+   18.0,
+   21.0,
+   22.0,
+   22.0,
+   22.0
+  ],
+  "calibration": "Unlabeled tracking only; missingness does not identify true occlusion causes",
+  "coordinate_errors": "Assumed ranges; no coordinate ground truth available"
+ },
+ "aggregation": "Replicates within match, matches within provider, equal provider mean. Do not pool frames for headline model ranking.",
+ "holdout": "Entire evaluation provider excluded from H/A, D and normalization; same five previously exposed external development matches.",
+ "cohort": {
+  "sportec": {
+   "train": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH"
+   ],
+   "eval": [
+    "J03WOY"
+   ]
+  },
+  "metrica": {
+   "train": [
+    "metrica_1",
+    "metrica_2"
+   ],
+   "eval": [
+    "metrica_3"
+   ]
+  },
+  "skillcorner": {
+   "train": [
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "eval": [
+    "skillcorner_had_1996435",
+    "skillcorner_had_1996436",
+    "skillcorner_had_2006229"
+   ]
+  }
+ },
+ "inputs_sha256": {
+  "data/external_audit/sportec/processed/J03WMX.npz": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+  "data/external_audit/sportec/processed/J03WN1.npz": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+  "data/external_audit/sportec/processed/J03WOH.npz": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+  "data/external_audit/sportec/processed/J03WOY.npz": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+  "data/external/processed/metrica_1.npz": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+  "data/external/processed/metrica_2.npz": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+  "data/external/processed/metrica_3.npz": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+  "data/external/processed/skillcorner_had_1874553.npz": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+  "data/external/processed/skillcorner_had_1886347.npz": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+  "data/external/processed/skillcorner_had_1899585.npz": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+  "data/external/processed/skillcorner_had_1925299.npz": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+  "data/external/processed/skillcorner_had_1927964.npz": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+  "data/external/processed/skillcorner_had_1953632.npz": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+  "data/external/processed/skillcorner_had_1959846.npz": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+  "data/external/processed/skillcorner_had_1986691.npz": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+  "data/external/processed/skillcorner_had_1996435.npz": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+  "data/external/processed/skillcorner_had_1996436.npz": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+  "data/external/processed/skillcorner_had_2006229.npz": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420"
+ },
+ "checkpoint_sha256": {
+  "data/experiments/gru_slot_robustness_v2/without_sportec_slot_dropout_2026.joblib": "be3eafcad23c71fa7661d809a400624530913a4b440db09caec5ae36b3757094",
+  "data/experiments/gru_slot_robustness_v2/without_sportec_slot_dropout_2027.joblib": "42a8bd7629301e7c999775304bb4239a21a817aa9be1670bbac06bd2436b7497",
+  "data/experiments/gru_slot_robustness_v2/without_metrica_slot_dropout_2026.joblib": "9f681359733330445733ddec4c75779fd5a5d58f7ba7717cfd45c5b88a23ce51",
+  "data/experiments/gru_slot_robustness_v2/without_metrica_slot_dropout_2027.joblib": "37df1d2cb93240e3b410280619b5fbf0915a6fef609cc308fb6b24c25e240038",
+  "data/experiments/gru_slot_robustness_v2/without_skillcorner_slot_dropout_2026.joblib": "277e95ca2528384ac44688e7aac69f0cb46859caa32d3fba0cdc4fa331aaa22b",
+  "data/experiments/gru_slot_robustness_v2/without_skillcorner_slot_dropout_2027.joblib": "fceb93d62f8f1b02e44bb84c43f7e7bc142de993af231dc8b3740e4bbeaed1fa"
+ },
+ "source_sha256": {
+  "experiments/audit_dataset.py": "4e445f5a2ffff5fd6b9f3f6892466641f6f3c381fad7d150968e085d9d33fb32",
+  "experiments/benchmark.py": "938d46301a147eff99fc3b39d09bf42186403e1264494a7dad5da152bfbae964",
+  "experiments/broadcast_fusion.py": "2e69e37234e6bb6418a29c96879a335388ba06803ec339316a51124b130ffc97",
+  "experiments/broadcast_quality.py": "09b4be9f95d5c05374f4d75d002919fcffcc07773b7238b3caeabaa6e7525e22",
+  "experiments/capacity_lgbm_experiment.py": "f2945a0ea1c5f20b49d7b31d02d9a545d1549e5c65cb8b906e62f9b193fb8cd9",
+  "experiments/challenge.py": "204ac7ff7a8e530facd9e19fc7d264f2eb35698df1cda60bf32c7f6a720abba1",
+  "experiments/challenge_pathcrf.py": "4813a0bfa3d5e4b4c20de8885de526c53ccf72a57d50a7eb5ecb746faf917778",
+  "experiments/compare_pathcrf.py": "8a796b9808054ebc6725124624a5e60e5c27a89ca799800db25c961da8236edc",
+  "experiments/confidence_abstention.py": "9d4afa08ec49f4f96f810469233467a3a63b552861cbb97aeaa2b8af1bc1af8c",
+  "experiments/corruption_experiment.py": "07b357b7f9f99af444f110d576eaba8e791134c07b1dfc28d229fc242a6c22e7",
+  "experiments/current_baseline.py": "975c151085afa91a86855c2e7cb95aff871dd855be8d0d78616984497a886736",
+  "experiments/datasets.py": "f0d3a4eeda1d0b970fe7677a24ad752952d44a403be0ccd7bcd7469a05e4e958",
+  "experiments/dead_transfer.py": "f38aa33ddf8b7619973cadbe99b9c16c99e37cfa466aa8a5e2a05bb456ad3186",
+  "experiments/deadball_transfer_experiment.py": "5e18e17b29e2de989d94d37414f29546dcd839d6aa32f15e175474a9dd0c2538",
+  "experiments/error_analysis.py": "5d06f61f87a5ca6b831183c56ea97a2a6cffaff12d6db47cc5d9a318ab392a1f",
+  "experiments/eval_set/__init__.py": "a9867abf55e8f4f90e695e64e8cc2479f7277d0be3d1a6537ae7ae7ecde5eb34",
+  "experiments/eval_set/metrics.py": "753150955daafc9fc8aee84f76b9ba645d9205af5c221bd7e6764e92f98b89ee",
+  "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+  "experiments/eval_set/test_protocol.py": "ebc6544d296581f59017115a389432498e3e6247b41d169ec7bd139fa6a39907",
+  "experiments/export_reports.py": "b296b4601717602327e1bd1f934063904d8597cec143892cf9dcf93ff68722f1",
+  "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+  "experiments/feed_defect_profile.py": "2432bec8def87d33b82de5dc4a2b43e242cdfb6dc012379e522fd071192842f3",
+  "experiments/freeze_pathcrf.py": "feb77b5421b1ac6805881f1e6111a519b8458c7036d222bb2d8d73947488c0a4",
+  "experiments/gap_diagnostics.py": "c34e914d6ef122e21c1094450f86fe3a53eba1da13d25cbbe620dbead27a932a",
+  "experiments/gru_robustness_experiment.py": "2b85f8e0a89e0b3012da853c3ad3bebfb5933fb2ce6c94d14174705e02c45c05",
+  "experiments/had_gru.py": "d7597831f2af606a2a68e89747fa4756b5288c620ca710d06e0280bea6d90fa6",
+  "experiments/headroom.py": "eaf264d5aef604765df168b22d5a1573d124b6045ca6a5282609155126eed32d",
+  "experiments/joint_lgbm.py": "781cc406148b54d2e912599099ad452b00081152dc400aaea4ea8d036d28be92",
+  "experiments/joint_lgbm_capacity_audit.py": "c2e58964b5585b22f2ec40dedc64b220234ab9d0283df715521acca9977e7876",
+  "experiments/joint_lgbm_experiment.py": "21a0c7ad8f9a8f5650cec9f6e16c6dcfdd9941dbf7f31a69a87712db5c5f9222",
+  "experiments/joint_lgbm_feature_audit.py": "4549e662a2ad618b4a3db534cf08f5257fc25860d4fc0558449eb01218c06963",
+  "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+  "experiments/lgbm_capacity_audit.py": "64a630065946e6975861440c16b719550b76c7aaa48688d8051a7a6d94dbeb83",
+  "experiments/lgbm_capacity_full_support.py": "e62454d7d2808a7a0ebdbe39cbe17e93469fce2c8167a4f79064268a052a002c",
+  "experiments/light_candidate.py": "0cb31f4041c156413bc43bb38b5a5156500eb7a2da76c8836c14608842b3bedb",
+  "experiments/light_corruption.py": "29f1a5759112172af99d30c59e2e39fef3798b03ec9ee32640e7d7e81fbc0ac4",
+  "experiments/light_public_check.py": "0f0e745523d1bf4a1563ae8b21ae199b3c994c975ff96e71d770039a1b9ca3d1",
+  "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+  "experiments/metrica_open.py": "a0df5791a3ac3d5a1c22cd73fe51f1e522c8f1cabeefd759c9161b8bdde1861e",
+  "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+  "experiments/model_scorecard.py": "9804834a76aaf3aa900efbbabf7badad276c2d5f2da80d538ae6d3c5827fd7b0",
+  "experiments/multisource_eval.py": "1e166cf7169c81ca1393a8cd503f8fd99891ce7693156c73133f8002c847f592",
+  "experiments/pathcrf_ensemble.py": "9f3607aec8a067a088b8f593e122ed4b4e7ab299afc2a7828aea123ca62abca2",
+  "experiments/pathcrf_eval.py": "26a6a192d555fdf6ebea0b2d174fac5c670775ea9782f92b5f20d338a2df09d5",
+  "experiments/pathcrf_visibility.py": "c9db0070a36144320b2efe004c09e000dcf203625978691bea82b36dd8aee7ed",
+  "experiments/plot_results.py": "7632463dc7748412a9883da3e55a07c2acbca7081e9659e7af0b743cfa17e1bf",
+  "experiments/possession_geometry.py": "0d9b24fa2ac1639e1d062205c518ec631f8c2e8ba3b80a4ecb2412d6e4b044c4",
+  "experiments/prepare_corruption_cache.py": "a709ac480dbc44bfe89c9cf1944893aab9c7b9e00d4c301cee689130fd822ec0",
+  "experiments/promote_ballgap_baseline.py": "77412bb52e9bfef62aa83da02d8a71ef4543c0f1839702f484fcf098f72a862e",
+  "experiments/promote_joint_gru_baseline.py": "74efa12f6f59a132ce38013473505d8947775b73bc1775e8917dc5cb16fa304e",
+  "experiments/refine_combined.py": "0e7611042d5aef37324aca3bdda691a8928f3ad78e2027dd647b35b8c9bd5b47",
+  "experiments/refine_decode.py": "710efe78a070b847b278507505b9714209b2541c329e867973d45f560180c87d",
+  "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+  "experiments/refine_ensemble.py": "6737cf7b49814c87a72e8e335ed3703737aeab2354706c77106c371deac43cb1",
+  "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+  "experiments/refine_lgbm.py": "cb0172891ec62c3c08a023eeff7517cd67080e99bcc38f5898085d7ce8eb695c",
+  "experiments/refine_scale.py": "0c3af8da7c0875656daf583677f127c4356e4e688e0857821e1e9aebab21a5ff",
+  "experiments/refine_weighted.py": "97ea2bdb26a23989a69fe54b419ed0bb77ae604d53ea8b0eb73b10648c29b180",
+  "experiments/refinement.py": "1556e80b5a3c516d699e5249d8e4135f25a6076010d51c382459cc7895079f70",
+  "experiments/refinement_errors.py": "55b056beec2df1c53a3b60be981fb8865645cc4fa9d7a1ced46d8452f44bc61b",
+  "experiments/research_directions.py": "a6206b241d64cdf0383916cb9cfad341e0dc45c191a6263a7d2215cb55255368",
+  "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+  "experiments/seed_gap_context.py": "f6d0595e86bf8b4f4c930fdf5f2b298d3bdba87a92174ce66105508c0b49b71d",
+  "experiments/skillcorner_had.py": "4533bc8b974383c99db9de16548a93e40ea224f17dc752ce2aa8257b65f12a87",
+  "experiments/spell_audit_saved.py": "587dfeb2305153dce4f231381a7884c0f0450d7d878bd612803293bef6588043",
+  "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+  "experiments/state_machine.py": "e8d221abe8d2e5a69c1d2e78fe4a64a86223f4d9c8e4fcd714ebce04084a74e4",
+  "experiments/stress.py": "c4d9f47ea8e77e29bac74ea26831f4cd4597ca79ea3cadcb316183f84dcae32e",
+  "experiments/stress_component_ablation.py": "3c8325fb9a9394d7cd4034d468e7b4ecedcfa6e9d6d7265ae0f2fa61f572d91d",
+  "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+  "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+  "experiments/temporal.py": "168e4960004488224bc230bcddedecfc81326c7a470a80f6a9580a5afb6326f8",
+  "experiments/temporal_attribution.py": "dc4a721a389ba741df9254256ffc721e6f8069286bce7658a08f5349ef9ad6a2",
+  "experiments/temporal_challenge.py": "ff976051717aa375e349a773b8d7ecb0d65804aa8aed46b726bd9d14fd582664",
+  "experiments/temporal_competition_check.py": "e79f827a0890330411a14cbda2d47360294aed72b919030e0b668ea1dcb5a5d7",
+  "experiments/temporal_competition_fit.py": "ba931eddb2106915c51e700b0f1980657117a74b4e6783513451817b76658953",
+  "experiments/temporal_competition_resume.py": "a99249d50b15c692d9ce29609728454cb6ff16c9063e954826a851fe2ce25036",
+  "experiments/temporal_ensemble.py": "d9722870bd1910482c39467520095ec3b55c89b803fc452722e8be6bb8e5077d",
+  "experiments/temporal_lgbm.py": "70db7f60db04524da4d38b4fa458550dfbf2d3a27c6907cdcff9f3861a47bc7d",
+  "experiments/temporal_lgbm_experiment.py": "c3e4c1de3fdc4fe72fe1b6b2b7fcbf14a502503a4115093de7b7aa00c8c40251",
+  "experiments/temporal_report.py": "b159edb32e9c34e8bedcbf72cf3d5ae5f9cfae34f199c79b77eeeb8393e9ecf8",
+  "experiments/tests/test_baseline_pathcrf.py": "8f7b5fd66c9ed30eba6a981a6a46ef826c3c4edfc83064643cbb3a16b4b2481a",
+  "experiments/tests/test_baseline_promotion.py": "41998c63326dc182dc064d8e0e752c0ee559b7a0c2bc791fb6f79789718fc7bc",
+  "experiments/tests/test_confidence_abstention.py": "9a8ea9861339c7ae506610b1379bef85ac428ef2fbb07c5eb64a322989f5d28e",
+  "experiments/tests/test_contracts.py": "d12d4828ce7562be2f3684dd6a7b03f68c8310866a186887c5d8516f0b809822",
+  "experiments/tests/test_deadball_transfer.py": "e08067ca32c9730b05218413e1474391e28c743ed92be482f56d4f4920cb7ff2",
+  "experiments/tests/test_domain_features.py": "adf08055b81439c200e44901ff0414fcf9611d5995c14d89253fce43237db04b",
+  "experiments/tests/test_eval_set.py": "a3d20161256dceb205ea0e4d426923c0966f7f2636afe9ac71bd852587de9628",
+  "experiments/tests/test_followup_verifier.py": "2a7507cba7af5835d8f0ca7da81ab3a567793657623288522ad74f015c7a7523",
+  "experiments/tests/test_gru_robustness.py": "4c2d84cdb27757e3e73f1a4d022443bbae085ab6cf301d231670f3a2a8812588",
+  "experiments/tests/test_joint_lgbm.py": "7cf65c90bb285b898c23c9edfb40c32a21ac325e3e5bde257e07acdc7e8aff17",
+  "experiments/tests/test_learned_temporal.py": "fe1d12528e622eded47b92311011bb2177a98f09675c0934ec23c92907d80983",
+  "experiments/tests/test_light_corruption.py": "a18f661bff84b0ec6af7f07bb32df26c3608771358cacb815aa9783787f8e36e",
+  "experiments/tests/test_light_public_check.py": "dced4aed6b780e5447cf5ef8da698c99d79490e7d6bd4dd1bec2d2094aff6259",
+  "experiments/tests/test_live_gap_had.py": "22bf414c36e6e05b70479052fceb5039e7faa937ce4734162a4a9f03d68581b9",
+  "experiments/tests/test_metrics.py": "3ade2ebc0f878b5b6318c3e5df32dc60f6e18defee0d25fb21d71b1735b3d68c",
+  "experiments/tests/test_model_scorecard.py": "e1851ca9781dcda2eb79484d8d77884b1a669d41fb429f4fdfcaea496a709ec0",
+  "experiments/tests/test_open_data.py": "3b1084299a285bbe7ccfd0b0dd8167769a6d92b0074aebcfb287fe8730336235",
+  "experiments/tests/test_possession_geometry.py": "e5324a583b889337ca348217cb360604c04a8c8e47764ea93dd0efad14e2ca1c",
+  "experiments/tests/test_refinement_gate.py": "e4b70f2586632016e031d208a1cef0f87249564c7b2bde5fc0e1a48d8d6f3acc",
+  "experiments/tests/test_seed_gap_context.py": "eacdd86f4e66093b58f87de300887587e5cd5f2e89a7178efca317667767b815",
+  "experiments/tests/test_spell_diagnostics.py": "2ca98b8e308accfb405a5fc44c06f51c6f82bdea6df8bf3577d281b5e80b9b25",
+  "experiments/tests/test_stress.py": "4e40c4061b71a021af1b08a036536e77b38abe5f6cae745f6e0d13c1bfb329e6",
+  "experiments/tests/test_temporal_challenge.py": "345afa39becd00553db0a055d630b74aafdb563a6eca66bc00f84f399ddfa0cc",
+  "experiments/tests/test_temporal_competition_check.py": "c3e2612adb8e4f4c049dbe2b237721e11f720214bffa629aec0a2aeb041965d6",
+  "experiments/tests/test_temporal_ensemble.py": "1970b24057072b971b155fc5fa177e199a10daacdc4d1447d56f78e50b42ce45",
+  "experiments/tests/test_temporal_lgbm.py": "77d4fb7a8b67d7637ba5cd68b7b85ddac203d3e7efb3da6aa57cbfa23ccdd691",
+  "experiments/tests/test_tracking_corruption.py": "6758ace412e24ae0cd7fc193daaaf8e967902fe4fb6089bb544d6d047a6f82b9",
+  "experiments/tests/test_tracking_research.py": "b28727408c4094f2243c140f56f360dd472662e99d8790f3197f40e9785ea74c",
+  "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+  "experiments/tracking_research.py": "e4ea404b2b51ea78fd3a81f302d00c525fb75c56bb0c9b0f3249d84d55355b86",
+  "experiments/verify_temporal_followup.py": "6916fbf03d249856cfdf90b9620ce06a1966446562227a64488ef13a1a44c0c7",
+  "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+  "evaluation/run_evaluation.py": "1c61564fe52499ba4af3006fb5eb4147b825e92bf516651add80de49d267b19f",
+  "evaluation/validate_submission.py": "07ac29499acbd337e1dc1de1832d63f6e1fa1d981e22f6ad08212529e2bbee14"
+ },
+ "archived_manifest_sha256": "46702a6be49685047e4a748d4154fd0dcee7fabe0e2bdcb27c46e1155210c512",
+ "restored_files": 253,
+ "policy_sha256": "71337c4d24caf6989d67f6b0cfa94e89b129ac7695dde612825dd3b9577a9e99",
+ "baseline_manifest_sha256": "caad9b496103a6d4bd8012aef507cd136fb7059d8226a7510fab8a94430602e6",
+ "parity": "All 10 clean individual-seed spell/macro/D-F1 rows and 20 feed-like rows must reproduce saved stress-component ablation to 1e-9; clean native probabilities to atol1e-6.",
+ "diagnostics": {
+  "gap_edges_seconds": [
+   0,
+   3,
+   10,
+   20,
+   40,
+   "infinity"
+  ],
+  "contact_distance_edges_seconds": [
+   0,
+   1,
+   3,
+   5,
+   10,
+   20,
+   "infinity"
+  ],
+  "contacts": "Existing geometry best-control >=.2, absolute H/A margin >=.2, stable .2s, native observed masks; no 10s age cap in diagnostic. Proxy, not ground truth.",
+  "gaps": "Consecutive missing-ball intervals clipped at half/time breaks; frame strata apply inside gaps; no-gap separate. Duration includes whole interval, including unknown-label frames.",
+  "spells": "Global official IoU.5 matches; midpoint strata plus maximum intersected gap; short <3s; fragmentation any positive same-team overlap with >=2 predictions. Graded-run edges reported.",
+  "turnovers": "Direct adjacent H/A changes within graded runs. Greedy nearest same-direction one-to-one matches within 5s; report missed, within1s and signed/absolute timing; X/D breaks excluded.",
+  "distinction": "On reference-live frames, wrong H/A, false D and X are disjoint; missed D reported separately."
+ },
+ "context_condition": "Seed2026 feed-like: provider-balanced wrong-team rate > false-D rate among live gap>=10s; and wrong-team rate there exceeds live no-gap rate. This is a descriptive development trigger, not a significance test.",
+ "context_experiment": {
+  "context_each_side_seconds": [
+   5,
+   15
+  ],
+  "core_seconds": 10,
+  "new_fits": 6,
+  "seeds": [
+   2026,
+   2027
+  ],
+  "folds": [
+   "sportec",
+   "metrica",
+   "skillcorner"
+  ],
+  "hidden": 24,
+  "epochs": 8,
+  "batch": 64,
+  "optimizer": "AdamW .001/.0001, clip1",
+  "fixed": "Features, labels, normalization population, augmentation whole-window choices, source/match weights, parameters, window count, update count, decoder3. Only context span changes.",
+  "falsifier": "No positive matched spell delta and long-gap team-accuracy delta in both seeds; guardrail failure prevents recommending follow-up.",
+  "guardrails": "Each seed clean spell >= own 5s-control -.01; feed-like spell >= own control -.01; each provider clean D-F1 and macro >= own control -.02.",
+  "budget": "Six new fits, no early stopping, eight epochs, 30 new match/view/seed cells. Seal all six before scoring. No extra contexts or seed selection."
+ },
+ "organizer_labels_read": false,
+ "fresh_confirmation": false,
+ "promotion": false
+}

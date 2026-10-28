@@ -1,0 +1,225 @@
+{
+  "version": 1,
+  "updated_utc": "2026-10-28T10:48:17.858142+00:00",
+  "progress_page": "https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9",
+  "current_selection": "joint_gru_seed_ensemble_v1",
+  "development": {
+    "version": 1,
+    "adoptions": [
+      {
+        "id": "ballgap25",
+        "label": "Ball gap mix",
+        "date": "2026-10-26",
+        "clean": {
+          "spell": 0.5338013279246084,
+          "macro": 0.830021059703216
+        },
+        "feed_like": {
+          "spell": 0.43275287113430205,
+          "macro": 0.7934612665206693
+        },
+        "status": "Former baseline; scores re-evaluated under current protocol"
+      },
+      {
+        "id": "single",
+        "label": "Single GRU",
+        "date": "2026-10-28",
+        "clean": {
+          "spell": 0.608762620891123,
+          "macro": 0.843432274966784
+        },
+        "feed_like": {
+          "spell": 0.47423746894142166,
+          "macro": 0.8012548699331711
+        },
+        "status": "Former single-seed baseline"
+      },
+      {
+        "id": "ensemble",
+        "label": "Two seed GRU",
+        "date": "2026-10-28",
+        "clean": {
+          "spell": 0.6265313489075627,
+          "macro": 0.8545588743399181
+        },
+        "feed_like": {
+          "spell": 0.4874194655329933,
+          "macro": 0.8111267189921039
+        },
+        "status": "User-adopted baseline"
+      }
+    ],
+    "comparisons": [
+      {
+        "id": "seed_2026",
+        "label": "5s seed 2026",
+        "date": "2026-10-28",
+        "clean": {
+          "spell": 0.608762620891123,
+          "macro": 0.843432274966784
+        },
+        "feed_like": {
+          "spell": 0.47423746894142166,
+          "macro": 0.8012548699331711
+        },
+        "status": "Original single seed"
+      },
+      {
+        "id": "seed_2027",
+        "label": "5s seed 2027",
+        "date": "2026-10-28",
+        "clean": {
+          "spell": 0.617600335574954,
+          "macro": 0.8543363760770689
+        },
+        "feed_like": {
+          "spell": 0.4853015448357181,
+          "macro": 0.8108736607344529
+        },
+        "status": "Original single seed"
+      },
+      {
+        "id": "equal_probability_ensemble",
+        "label": "Two seed GRU",
+        "date": "2026-10-28",
+        "clean": {
+          "spell": 0.6265313489075627,
+          "macro": 0.8545588743399181
+        },
+        "feed_like": {
+          "spell": 0.4874194655329933,
+          "macro": 0.8111267189921039
+        },
+        "status": "User-adopted baseline"
+      },
+      {
+        "id": "context15_2026",
+        "label": "15s seed 2026",
+        "date": "2026-10-28",
+        "clean": {
+          "spell": 0.6058304079841698,
+          "macro": 0.8298781043541816
+        },
+        "feed_like": {
+          "spell": 0.4739334181816828,
+          "macro": 0.7894661985467968
+        },
+        "status": "Not adopted; D guardrail fails"
+      },
+      {
+        "id": "context15_2027",
+        "label": "15s seed 2027",
+        "date": "2026-10-28",
+        "clean": {
+          "spell": 0.6153047086200124,
+          "macro": 0.8544624408463378
+        },
+        "feed_like": {
+          "spell": 0.4899446935817895,
+          "macro": 0.8127943651666246
+        },
+        "status": "Not adopted; clean spell declines"
+      }
+    ],
+    "protocol": "Full H/A+D provider holdout, five previously exposed matches; replicate \u2192 match \u2192 equal provider mean",
+    "date_basis": "Adoption dates; historical recipes retrospectively compared under the same current protocol"
+  },
+  "organizer": {
+    "version": 1,
+    "checkpoints": [
+      {
+        "id": "temporal",
+        "label": "Temporal GRU",
+        "date": "2026-10-25T23:46:08.839447+00:00",
+        "spell": 0.48888888888888893,
+        "macro": 0.861657387695673,
+        "status": "Historical diagnostic",
+        "source": "experiments/results/learned_temporal_public_check.json"
+      },
+      {
+        "id": "gru_hgb",
+        "label": "GRU HGB",
+        "date": "2026-10-26T01:51:39.506108+00:00",
+        "spell": 0.48888888888888893,
+        "macro": 0.856847566990267,
+        "status": "Former baseline",
+        "source": "experiments/results/current_baseline_public_check.json"
+      },
+      {
+        "id": "ballgap",
+        "label": "Ball gap mix",
+        "date": "2026-10-26T05:23:43.233558+00:00",
+        "spell": 0.5257142857142858,
+        "macro": 0.858782268705506,
+        "status": "Former baseline",
+        "source": "experiments/results/light_corruption_public_check.json"
+      },
+      {
+        "id": "joint",
+        "label": "Joint player D",
+        "date": "2026-10-27T04:49:49.616670+00:00",
+        "spell": 0.6193548387096774,
+        "macro": 0.8574092792542832,
+        "status": "Diagnostic only; earlier stress guard failed",
+        "source": "experiments/results/joint_gru_public_check.json"
+      },
+      {
+        "id": "full127_lgbm",
+        "label": "Full127 tree",
+        "date": "2026-10-27T17:19:41.609753+00:00",
+        "spell": 0.5371428571428571,
+        "macro": 0.7459780649425053,
+        "status": "Diagnostic only",
+        "source": "experiments/results/temporal_competition_check.json"
+      },
+      {
+        "id": "clean_leader_blend",
+        "label": "Clean blend",
+        "date": "2026-10-27T17:19:41.609753+00:00",
+        "spell": 0.55,
+        "macro": 0.8131874244375066,
+        "status": "Diagnostic only",
+        "source": "experiments/results/temporal_competition_check.json"
+      },
+      {
+        "id": "robust_blend",
+        "label": "Robust blend",
+        "date": "2026-10-27T17:19:41.609753+00:00",
+        "spell": 0.5818181818181818,
+        "macro": 0.8419246383119571,
+        "status": "Diagnostic only",
+        "source": "experiments/results/temporal_competition_check.json"
+      },
+      {
+        "id": "dropout_gru",
+        "label": "Single GRU",
+        "date": "2026-10-27T17:19:41.609753+00:00",
+        "spell": 0.5818181818181818,
+        "macro": 0.868854604621891,
+        "status": "Former baseline",
+        "source": "experiments/results/temporal_competition_check.json"
+      },
+      {
+        "id": "ensemble",
+        "label": "Two seed GRU",
+        "date": "2026-10-28",
+        "spell": null,
+        "macro": null,
+        "status": "User-adopted; organizer score unavailable",
+        "source": "experiments/results/seed_gap_context.json"
+      }
+    ],
+    "protocol": "Same public 7500 frames and 17 reference spells; saved diagnostic scores only"
+  },
+  "source_sha256": {
+    "experiments/baselines/gru_hgb_ballgap25_v1.json": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
+    "experiments/results/current_baseline_public_check.json": "32df69c1dfcf13a77ce9bf62229f42ff0ada2c13f5764de6b43ef56c9844603b",
+    "experiments/results/joint_gru_public_check.json": "ff0df28a8311a88cd6293cd8ac08a63daa2737aa746b3485d3c841ef06c7fc59",
+    "experiments/results/learned_temporal_public_check.json": "d8860bf3675c94335116977347bda40f2843d8d1302a393544e5de1799883adc",
+    "experiments/results/light_corruption_public_check.json": "83f53d97d2ab5cd15a5bc6c124ac1cbff93382f67446183dc0f72d82d4ffec6a",
+    "experiments/results/seed_gap_context.json": "bf92d15f0027412781554496f3db64ae9705c4fb502ca4c140c9d538c4c4ba86",
+    "experiments/results/seed_gap_context_long.json": "8517bcfde54d356679a1c85b3feb3cadc431a5f2c49f509a3eb7c96b10542e1e",
+    "experiments/results/stress_component_ablation.json": "b4161056280220d94153c582c84f39910d70f3af789ab1e62a654498e8158e8a",
+    "experiments/results/temporal_competition_check.json": "ec659783bb36f3ea2f7bccfee0a92b1d4139716c00ff53cb2ab360b54e654858"
+  }
+}

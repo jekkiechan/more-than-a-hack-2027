@@ -75,6 +75,8 @@ Pages can contain valid scores but superseded recommendations.
 
 ## Delivery
 
+After a promising experiment completes, update the [experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9) with dated scores, visualizations, evaluation protocol and adoption status.
+
 Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
 `main`. Preserve `upstream` as `metrica-sports/more-than-a-hack-2027`.
 Publish an authorized PR without a separate confirmation step. Documentation

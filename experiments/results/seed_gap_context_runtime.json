@@ -1,0 +1,20 @@
+{
+ "status": "Runtime implementation note recorded before any context scoring",
+ "changes": [
+  "Feature caches parallelized by match while retaining the original within-provider augmentation index.",
+  "The first two Sportec-held-out fits use the frozen in-memory runner. Remaining fits reuse its mathematical factorized_had.fit verbatim with byte-verified read-only file-backed raw records to reduce resident memory."
+ ],
+ "scientific_specification_changed": false,
+ "original_frozen_sources_changed": false,
+ "adapters_added_during_fitting": true,
+ "validation": {
+  "raw_arrays": "Every array checked for shape, dtype and SHA256 before the file-backed fit.",
+  "synthetic_contract": "Exact equality of all state arrays, normalization, training history and budgets between plain and file-backed fits.",
+  "real_fits": "Every completed model must match original seed control normalization exactly, plus parameters, windows and optimizer updates."
+ },
+ "source_sha256": {
+  "scripts/prepare_context_match.py": "20a8b831915afb24f5111c8420d5344f74f8eebc0beef87f419f9e77cde43cdc",
+  "scripts/fit_context_filebacked.py": "7969b0ed0f360ed18d0e22dcdd74c54e21305c3a511782b33f5a2b3d81cb7483"
+ },
+ "organizer_labels_read": false
+}

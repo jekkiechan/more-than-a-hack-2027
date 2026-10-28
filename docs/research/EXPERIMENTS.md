@@ -50,8 +50,15 @@ no new organizer scoring or baseline promotion is part of this work.
 | `temporal-lgbm-v1` — scope-superseded, unscored | Original D-only target was incorrect for the user's intended full H/A/D task. Twelve fitted checkpoints retained for provenance; planned validation cancelled before scoring. | [Feature implementation](../../experiments/temporal_lgbm.py), [frozen runner](../../experiments/temporal_lgbm_experiment.py) |
 | `capacity-lgbm-v1` — scope-superseded, unscored | D-only capacity extension stopped on target correction; no completed new checkpoints or validation scores. Frozen declaration and cancellation receipt preserved. | [Capacity extension](../../experiments/capacity_lgbm_experiment.py), [LightGBM study](../../experiments/TEMPORAL_LGBM.md) |
 | `joint-lgbm-v1` — completed | Full H/A/D: 12 fits / 300 cells. Geometry alone brings no consistent gain; ordered context improves stress, and 127 leaves/depth 10 improve on 63/depth 8. Full127 standalone .5555/.4345 clean/stress spell; dropout-GRU blends average .6101/.4226 across two separate seeds. All recipes fail a provider guardrail, chiefly SkillCorner D recall. | [Full H/A/D study](../../experiments/JOINT_LGBM.md), [capacity rationale](../../experiments/LGBM_CAPACITY_REASONING.md), [independent verification](../../experiments/results/temporal_followup_verification.json) |
+| `seed-gap-context-v1` — completed | Actual archived-seed H/A/D ensemble clean/feed-like spell .6265/.4874; 30/30 individual parity. Six matched 15s-context fits improve long-gap team accuracy +1.85/+1.36 pp and newly bracketed frames ~+3 pp, but clean spell declines in both seeds; feed-like is flat/+.0046 and seed 2026 fails the SkillCorner D guard. Native clean live long-gap support is only 108 frames. Retain package; no organizer scoring or promotion. | [Study](../../experiments/SEED_GAP_CONTEXT.md), [declaration](../../experiments/results/seed_gap_context_declaration.json), [ensemble/audit](../../experiments/results/seed_gap_context.json), [context results](../../experiments/results/seed_gap_context_long.json), [readout](../../experiments/results/seed_gap_context_readout.json), [verification](../../experiments/results/seed_gap_context_verification.json), [archive](../../experiments/results/seed_gap_context_artifacts.json) |
 
 ## Supporting references
+
+The user adopted the actual original-context two-seed ensemble after this study.
+The [promotion receipt](../../experiments/results/baseline_seed_ensemble_promotion.json)
+records the separate deployment completion and versioned package. The
+[progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
+tracks dated numbers without mixing evaluation protocols.
 
 [Data](../../experiments/DATASETS.md), [licenses](../../experiments/LICENSES.md),
 [literature/metric compatibility](../../experiments/REFERENCE_METHODS.md),
