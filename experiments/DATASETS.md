@@ -108,3 +108,13 @@ must select explicit input keys and keep `labels` separate.
 See `BENCHMARK_AUDIT.md` for the independently investigated Sportec Open DFL data
 with explicit ball status and possession, and for the distinction between that
 primary H/A/D benchmark and this auxiliary H/A-only silver-label source.
+
+## Experimental SkillCorner expansion
+
+The [October 2026 expansion study](SKILLCORNER_EXPANSION.md) acquired nine further
+matches at the same source pin and prepared event-derived H/A/D/X silver targets.
+Six were tested as additional training data, two as development matches and one
+remains reserved. The matched-budget experiment failed its clean spell-F1
+screens, so the active thirteen-match training manifest is unchanged. The new
+arrays and provenance are archived privately as experimental data; they are not
+automatically included by the active training configuration.

@@ -44,7 +44,7 @@ The user separately requested competition spell F1. The fixed pooled candidate i
 
 ## Verification and artifacts
 
-Validation includes the existing synthetic/contract suite, new data/sampler contracts, independent score/cache/gate integrity contracts, exact file-backed synthetic-fit parity, and bundled submission format validation. Real checkpoints, normalization, optimizer budgets and saved probabilities require independent replay before delivery. Array/model/frame artifacts stay in private storage; only code, manifests and aggregate evidence belong in this public repository.
+Validation includes the existing synthetic/contract suite, new data/sampler contracts, independent score/cache/gate integrity contracts, exact file-backed synthetic-fit parity, and bundled submission format validation. Real checkpoints, normalization, optimizer budgets and saved probabilities passed independent replay; the [fit](results/skillcorner_expansion_fit_verification.json) and [external](results/skillcorner_expansion_external_verification.json) receipts record the checks. Array/model/frame artifacts stay in private storage; only code, manifests and aggregate evidence belong in this public repository.
 
 ## Outcome
 
@@ -89,7 +89,7 @@ All five IoU scores, short-reference counts, predicted/reference spell counts, f
 
 ### Interpretation and next data work
 
-This fixed-update study does not establish that SkillCorner data are inherently harmful, or test a larger optimization budget. Its result is that automatically adding this batch under the current recipe does not earn adoption. The labels remain provider/event silver; interruption-derived D, broadcast visibility filtering, X margins and weak native long-gap coverage remain limitations. The reserved match stays untouched rather than being spent to rescue a failed development result.
+This fixed-update study does not establish that SkillCorner data are inherently harmful, or test a larger optimization budget. Its result is that automatically adding this batch under the current recipe does not earn adoption. The labels remain provider/event silver; interruption-derived D, broadcast visibility filtering, X margins and weak native long-gap coverage remain limitations. The reserved match has source-quality metadata audits but no model scores; it is not evaluated to rescue a failed development result.
 
 The next useful data task is a blind dense-label pilot on a match with competition-like observation gaps, with independent adjudication of possession boundaries. Additional event-silver volume or model-generated labels alone would not resolve that representativeness gap.
 
@@ -131,3 +131,20 @@ The independent, non-gating diagnostic resets missing-ball runs at period/time b
 | Pooled | 20.89% → 20.08% | 4.97% → 7.21% |
 
 Neither arm emits X on this support. Pooled team identity improves locally while false D increases, and overall spell F1 still falls. Native clean long gaps have only 230 graded live frames across the expanded seven-match cohort; those limited observations cannot confirm competition-like gap robustness.
+
+## Artifact availability
+
+The experimental nine-match corpus, six checkpoints, cached features, predictions, source snapshot and verifier evidence are frozen locally in private-cache commit `5dd0a23fd734fa79a99246cd792e251fe5f20b78` on `archive/skillcorner-expansion-v1`. The study manifest lists 374 files / 2,305,049,329 bytes; a separate manifest identifies 67 existing base dependencies. No organizer reference CSV or new organizer inputs are included.
+
+Automatic approval review rejected pushing this payload to `jekkiechan/mtah-data`, requiring explicit destination-specific authorization for the private tracking data and experiment artifacts. No alternate upload route was attempted. Remote availability and a fresh remote restore are **not** claimed. The active dataset and model remain unchanged.
+
+The [artifact receipt](results/skillcorner_expansion_artifacts.json) records successful local restoration and SHA-256 verification of all 441 unique files / 4,281,194,341 bytes across the new archive and its base dependencies. The corrected unpublished commit contains 105 proper LFS pointers; the initial missing-clean-filter staging issue changed no payload checksums. This is a local restore, not a remote-clone or download check.
+
+From the local archive checkout, reproduce the verified restore with the existing conflict-safe helper:
+
+```sh
+python scripts/competition_cache.py restore --manifest skillcorner_expansion_v1_cache_manifest.json --data-dir /path/to/code/data
+python scripts/competition_cache.py restore --manifest skillcorner_expansion_v1_base_dependencies_manifest.json --data-dir /path/to/code/data
+```
+
+Use the frozen execution checkout or archived snapshot with those restored files. Saved competition diagnostic results are final; do not rerun its scorer. Public receipt JSON retains the original executor paths as provenance; these contain no tracking coordinates or credentials.
