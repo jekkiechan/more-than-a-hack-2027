@@ -46,4 +46,88 @@ The user separately requested competition spell F1. The fixed pooled candidate i
 
 Validation includes the existing synthetic/contract suite, new data/sampler contracts, independent score/cache/gate integrity contracts, exact file-backed synthetic-fit parity, and bundled submission format validation. Real checkpoints, normalization, optimizer budgets and saved probabilities require independent replay before delivery. Array/model/frame artifacts stay in private storage; only code, manifests and aggregate evidence belong in this public repository.
 
-Final outcome, measured scores and remote artifact receipts will be recorded after the frozen comparison completes.
+## Outcome
+
+**Retain the active thirteen-match training manifest and `joint_gru_combined_ensemble_v1`.** The six-match expansion fails both frozen clean-spell screens. It remains an experimental corpus, with no active training or model promotion. The reserved match 2017461 remains unscored.
+
+These are matched seven-match comparisons; their control scores differ from the historical five-match aggregate because the evaluation cohort has expanded. Provider holdout excludes every learned component. The pooled supplement excludes the same seven evaluation matches from training but uses all three providers.
+
+| Protocol / view | Original 13 spell F1 | Expanded 19 spell F1 | Delta | Control / expanded macro F1 |
+| --- | ---: | ---: | ---: | ---: |
+| primary / clean | 0.641468 | 0.643523 | +0.002055 | 0.850920 / 0.851632 |
+| primary / feed_like | 0.510206 | 0.502104 | -0.008102 | 0.809704 / 0.807428 |
+| pooled / clean | 0.696722 | 0.686765 | -0.009958 | 0.877504 / 0.878381 |
+| pooled / feed_like | 0.554822 | 0.546531 | -0.008290 | 0.836023 / 0.838120 |
+
+Primary clean gain is below +.01; pooled clean gain is negative. Both feed-like spell guards and all per-provider clean macro/D-F1 guards pass. Passing frame-quality guards does not compensate for failed spell-F1 criteria. No criteria changed after seeing the results.
+
+### Provider and seed spread
+
+| Protocol | Provider | Control / expanded clean spell | Control / expanded feed-like spell | Expanded clean D precision / recall |
+| --- | --- | ---: | ---: | ---: |
+| primary | sportec | 0.642981 / 0.655319 | 0.473066 / 0.463942 | 0.926117 / 0.891351 |
+| primary | metrica | 0.797222 / 0.791049 | 0.602041 / 0.586858 | 0.913610 / 0.879737 |
+| primary | skillcorner | 0.484201 / 0.484201 | 0.455512 / 0.455512 | 0.865191 / 0.665868 |
+| pooled | sportec | 0.715764 / 0.697199 | 0.521111 / 0.518676 | 0.922278 / 0.933721 |
+| pooled | metrica | 0.833741 / 0.821167 | 0.640623 / 0.620133 | 0.902262 / 0.906068 |
+| pooled | skillcorner | 0.540661 / 0.541929 | 0.502731 / 0.500786 | 0.837408 / 0.836004 |
+
+SkillCorner primary parity is required by the design: those models exclude all SkillCorner training matches. In the pooled supplement, SkillCorner clean spell gains only .001267; Sportec and Metrica regress by .018566 and .012575. More same-provider volume does not establish general transfer.
+
+| Protocol | Member | Clean spell delta | Feed-like spell delta |
+| --- | --- | ---: | ---: |
+| primary | 2026 | -0.003666 | -0.005498 |
+| primary | 2027 | +0.003526 | -0.005124 |
+| primary | ensemble | +0.002055 | -0.008102 |
+| pooled | 2026 | -0.001470 | -0.000469 |
+| pooled | 2027 | -0.008177 | -0.009713 |
+| pooled | ensemble | -0.009958 | -0.008290 |
+
+Under-three-second recall declines by .001168/.008198 in primary clean/feed-like and .014785/.014857 in pooled clean/feed-like. Pooled D recall increases by .028718/.032676 while D precision declines by .020632/.025423. Those changes are descriptive and do not prove why overall spell recovery falls.
+
+All five IoU scores, short-reference counts, predicted/reference spell counts, fragmentation and each member/ensemble cell are retained in the [252 aggregate rows](results/skillcorner_expansion_rows.json). The [decision and summaries](results/skillcorner_expansion.json) preserve every failed guard; the [data audit](results/skillcorner_expansion_data_audit.json) records masks, event-derived target quality and source provenance.
+
+### Interpretation and next data work
+
+This fixed-update study does not establish that SkillCorner data are inherently harmful, or test a larger optimization budget. Its result is that automatically adding this batch under the current recipe does not earn adoption. The labels remain provider/event silver; interruption-derived D, broadcast visibility filtering, X margins and weak native long-gap coverage remain limitations. The reserved match stays untouched rather than being spent to rescue a failed development result.
+
+The next useful data task is a blind dense-label pilot on a match with competition-like observation gaps, with independent adjudication of possession boundaries. Additional event-silver volume or model-generated labels alone would not resolve that representativeness gap.
+
+
+## Requested competition diagnostic
+
+The fixed expanded pooled model was scored once after sealing the failed external adoption decision and its full-match predictions. The normal baseline prediction entrypoint produced two byte-identical, format-valid 199,319-row CSVs; their X masks match invalid input periods. An exclusive marker was claimed before the reference was fetched. The existing baseline result was reused; no historical gate was reset.
+
+| Public five-minute diagnostic | Active baseline | Expanded candidate | Delta |
+| --- | ---: | ---: | ---: |
+| Mean spell F1, IoU .3–.7 | .557576 | .548571 | -.009004 |
+| Macro F1 | .854088 | .874121 | +.020033 |
+| D-F1 | .854810 | .890556 | +.035746 |
+| Predicted / reference H/A spells | 16 / 17 | 18 / 17 | +2 predicted |
+
+Candidate F1 at IoUs .3/.4/.5/.6/.7 is .628571/.628571/.571429/.571429/.342857. At IoU .5 both models recover ten true spells; the candidate has eight spurious spells versus six. Higher frame accuracy therefore does not imply better possession intervals. Candidate spell bootstrap 5th–95th percentiles are [.388571, .708571]; these are descriptive single-model intervals, not paired significance.
+
+Only 7,500 frames and seventeen reference possessions are graded. This already-exposed diagnostic neither establishes full-match performance nor selects a model. Its lower spell point estimate does not change the external decision. No retraining, seed changes, decoder tuning or further candidate scoring followed. See the [saved diagnostic](results/skillcorner_expansion_public_check.json) and [execution receipt](results/skillcorner_expansion_public_execution.json).
+
+## Reproduction and operational verification
+
+The executable comparison was frozen at code commit `b448bb7880997946dce9ee3fc7403b37beb737aa`, before later main changes were integrated in a separate delivery checkout. Its declaration SHA-256 is `8bf2bc36a85c28fe9e6725c90905ab57b1a9142c98af54fcaa5e9f4e7a76963f`. Replays must use that checkout or the archived source snapshot: the seal intentionally checks the complete experiments/evaluation Python-file inventory, so later unrelated modules do not belong in its execution environment. Restore the saved declaration and artifacts; do not freeze a new study or reopen a completed public gate.
+
+All six fit receipts and checkpoint hashes pass. The [independent fit verifier](results/skillcorner_expansion_fit_verification.json) checks all declared input/cache/control/source hashes, model capacity and optimizer updates, and recomputes training-only normalization once per fold with bitwise agreement for both seeds. It verifies source-balanced and within-source match-balanced loss formulas. Initial standalone verifier schema assumptions were corrected and audited; data, frozen runtime sources, models and thresholds were unchanged.
+
+The integrated delivery checkout passes 258 experiment contracts plus seven independent integrity/gate contracts, exact file-backed synthetic-fit parity, and the bundled 199,319-row format check. The real expanded competition CSV is also valid and reproduces byte-for-byte.
+
+The frozen public-check module has weaker generic re-entry handling: its existing-result path precedes seal validation, and its seal does not separately compare complete declaration bytes. This execution used a fresh gate, preflighted all result destinations and the exact declaration hash, and separately hash-bound the resulting private/public files. No existing-result or repeat-score path was used. The archived preflight and execution receipts preserve those additional checks.
+
+The [independent external verifier](results/skillcorner_expansion_external_verification.json) passes all 42 paired cells / 252 rows, including exact candidate probability replay for 84 seed/cell comparisons (maximum absolute difference zero), source/match identities, hashes, probability means, official metric/decoder replay, all fifteen historical control rows, provider/equal-provider summaries and the adoption decision. The [verifier correction audit](results/skillcorner_expansion_verifier_corrections.json) preserves the standalone schema/inventory fixes.
+
+### Long missing-ball behavior
+
+The independent, non-gating diagnostic resets missing-ball runs at period/time breaks. The table pools reference-H/A frames within the two feed-like replicates whose whole missing-ball run lasts at least ten seconds; these are frame-weighted descriptive rates, not equal-provider adoption scores. Both protocols use the same 189,954 reference-H/A frames.
+
+| Feed-like protocol | Wrong team, control → candidate | False dead-ball, control → candidate |
+| --- | ---: | ---: |
+| Full provider holdout | 23.23% → 24.05% | 4.75% → 5.48% |
+| Pooled | 20.89% → 20.08% | 4.97% → 7.21% |
+
+Neither arm emits X on this support. Pooled team identity improves locally while false D increases, and overall spell F1 still falls. Native clean long gaps have only 230 graded live frames across the expanded seven-match cohort; those limited observations cannot confirm competition-like gap robustness.

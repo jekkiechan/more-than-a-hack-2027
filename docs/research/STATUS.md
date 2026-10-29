@@ -4,6 +4,12 @@ Reviewed 2026-10-29 after the short-spell continuation, based on fork main `0659
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
 
+## SkillCorner expansion — 29 October 2026
+
+The user-authorized [matched-budget data study](../../experiments/SKILLCORNER_EXPANSION.md) completes six fits with six additional SkillCorner training matches. On the identical seven-match cohort, full-provider clean/feed-like spell is .641468/.510206 → .643523/.502104; pooled clean/feed-like is .696722/.554822 → .686765/.546531. Both frozen clean screens fail; retain the active thirteen-match training set and combined-objective ensemble. All other feed-like and provider clean frame-quality guards pass. The nine acquired matches remain experimental; reserved 2017461 stays unscored. The separately requested fixed public diagnostic also loses spell F1: .557576 → .548571, despite macro .854088 → .874121. It follows the sealed external decision and causes no selection or tuning.
+
+The new labels are provider/event silver, and the six training matches add 4.66 usable hours under the existing visibility mask. Sparse retained native ball gaps limit competition representativeness. Full methods, paired seed/provider rows and final verification/artifact status belong in the study report.
+
 ## Adopted baseline
 
 `joint_gru_combined_ensemble_v1`: equal native H/A/D probabilities from combined-loss seeds 2026/2027, then unchanged Viterbi cost 3. Hidden24 player-only-D GRUs, ten-second cores and five-second context remain fixed. Matched full-provider clean/feed-like spell improves **.626531/.487419 → .633205/.498830**; macro is .854226/.811387. The practical screen passes, including provider clean spell/macro/D-F1 floors. SkillCorner spell declines about .007 in both views, and clean equal-provider D-F1 declines .002220. See [the report](../../experiments/OBJECTIVE_ENSEMBLE.md).
