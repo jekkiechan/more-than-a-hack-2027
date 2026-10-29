@@ -4,6 +4,10 @@ Reviewed 2026-10-29 after the SkillCorner removal study, frozen at code commit `
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
 
+## Label-free follow-up — 29 October 2026
+
+Three parallel pre-declared studies against the adopted ensemble, all with exact holdout parity and no organizer labels: [summary](../../experiments/LABEL_FREE_FOLLOWUP.md). **All no go.** Context-conditioned ball gaps score .5114 vs feed-like .4988 and hide fewer transitions, so feed-like stays the stress view. The competition prediction has 2.44 possessions/min, consistent with known feed-like under-segmentation; decoder cost 3 remains the holdout optimum. Target normalization loses .078/.094 feed-like/clean spell and self-training .003/.005. Retain the package and policy. Remaining lever: model-side short-spell/transition recall on 25 Hz feeds.
+
 ## SkillCorner removal — 29 October 2026
 
 The [direct source-removal study](../../experiments/SKILLCORNER_REMOVAL.md) completes six matched-budget fits without the original eight SkillCorner training matches. On the unchanged original five-match full-provider benchmark, clean/feed-like spell declines **.633205/.498830 → .625786/.496092**. Both seeds decline in both views. SkillCorner's three primary evaluation cells are exact parity; the changed Sportec/Metrica mean declines .011128/.004106.
