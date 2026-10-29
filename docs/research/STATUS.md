@@ -1,8 +1,14 @@
 # Current research state
 
-Reviewed 2026-10-29 after the short-spell continuation, based on fork main `0659bff` (merged PR #30). The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+Reviewed 2026-10-29 after the short-spell continuation and SkillCorner expansion. The expansion ran on frozen commit `b448bb7` over `0659bff`; its separate delivery checkout integrates fork main `1629969` (merged PR #31). The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
+
+## SkillCorner expansion — 29 October 2026
+
+The user-authorized [matched-budget data study](../../experiments/SKILLCORNER_EXPANSION.md) completes six fits with six additional SkillCorner training matches. On the identical seven-match cohort, full-provider clean/feed-like spell is .641468/.510206 → .643523/.502104; pooled clean/feed-like is .696722/.554822 → .686765/.546531. Both frozen clean screens fail; retain the active thirteen-match training set and combined-objective ensemble. All other feed-like and provider clean frame-quality guards pass. The nine acquired matches remain experimental; reserved 2017461 stays unscored. The separately requested fixed public diagnostic also loses spell F1: .557576 → .548571, despite macro .854088 → .874121. It follows the sealed external decision and causes no selection or tuning.
+
+The new labels are provider/event silver, and the six training matches add 4.66 usable hours under the existing visibility mask. Sparse retained native ball gaps limit competition representativeness. Full methods, paired seed/provider rows and verification evidence belong in the study report. The new private archive is frozen locally; automatic approval review blocked upload to `jekkiechan/mtah-data` pending explicit destination-specific authorization. No remote restore is claimed.
 
 ## Adopted baseline
 

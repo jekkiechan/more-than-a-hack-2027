@@ -1,0 +1,153 @@
+{
+  "external_phase_inventory_correction": {
+    "actual_schema": "The study output directory stores two pooled fit receipts with the same prefix as pooled score-cell JSON files.",
+    "clarification": "The static preflight ran before the exact output-name inventory and did hash/load sealed model metadata. It did not load the scored NPZ arrays or evaluation-cache payloads before failing; no organizer data or scores were read.",
+    "correction": "The exact 42 expected score JSON names remain required; inventory excludes only the six known fold_seed.json fit-receipt names. NPZ inventory remains exact.",
+    "data_or_model_opened_during_failure": null,
+    "failure": "External inventory phase stopped before reading NPZs because the pooled_*.json glob also matched pooled_2026.json and pooled_2027.json fit receipts."
+  },
+  "external_verification": {
+    "candidate_replay_max_absolute_error": 0.0,
+    "candidate_seed_replays": 84,
+    "cells_verified": 42,
+    "decision_adopt_dataset": false,
+    "external_report_source_receipt_sha256_at_run": "1dcbd8b1af7811043da04a3606a8fe143366eda17469e6be41fdceb367524251",
+    "failed_gates": [
+      "pooled:clean:spell",
+      "primary:clean:spell"
+    ],
+    "historical_control_rows_checked": 15,
+    "metric_rows_verified": 252,
+    "organizer_ground_truth_read": false,
+    "path": "skillcorner_expansion_v1_external.json",
+    "reserved_match_scored": false,
+    "sha256": "b5aca7bcde5e755c856a89141932ce6072cbc7aac9ab5bfa6d2d6d746dad68bb",
+    "verifier_sha256": "268defffbe0f4913c064b02d02384314650dd34bc01e84b43fa12cc8322711c9"
+  },
+  "full_verification": {
+    "candidate_model_contracts": 6,
+    "fits_sealed_and_verified": 6,
+    "loader_patch_restored": true,
+    "path": "skillcorner_expansion_v1_full.json",
+    "phase": "full",
+    "sha256": "d9df587e1e32ada432cfb65f0b7d9fa35ca55d55ce1d216693224eb6665b92d2",
+    "train_only_normalization_folds": {
+      "leave_out_metrica": {
+        "both_seeds_bitwise_matched": true,
+        "feature_count": 204,
+        "match_balanced_within_provider": true,
+        "provider_balanced_nll_mass": true,
+        "training_matches": 17
+      },
+      "leave_out_sportec": {
+        "both_seeds_bitwise_matched": true,
+        "feature_count": 204,
+        "match_balanced_within_provider": true,
+        "provider_balanced_nll_mass": true,
+        "training_matches": 16
+      },
+      "pooled": {
+        "both_seeds_bitwise_matched": true,
+        "feature_count": 204,
+        "match_balanced_within_provider": true,
+        "provider_balanced_nll_mass": true,
+        "training_matches": 19
+      }
+    },
+    "verified_artifact_counts": {
+      "cache_count": 38,
+      "cache_sha256": "97bd6d4234c95cb6dcd0d7024bace5823be8e27acd2683f831186ac1b28c5389",
+      "control_count": 8,
+      "control_sha256": "3d7ea8bc45066ac90ff9f064d1b2af657f2538b8a890179cd6cacccfef076415",
+      "evaluation_count": 27,
+      "evaluation_sha256": "b20f5e3cd7ca9a4d28afe4806ef46752fd3a18b8f23181b66e5ec52028674edd",
+      "input_count": 27,
+      "input_sha256": "986fe85f0669e59dcfa528f48559e3678ba349ddec872a9bbcb2b109a3efb90b",
+      "source_count": 146,
+      "source_sha256": "ffe81ae5a7825e8db39c7f00bfcb0e47ef70a6de182db716b90072615236d27e"
+    },
+    "verifier_sha256": "268defffbe0f4913c064b02d02384314650dd34bc01e84b43fa12cc8322711c9"
+  },
+  "initial_failure": "Expansion cache identity mismatch for train_skillcorner_had_2006363.joblib",
+  "logic_bug_and_actual_schema": [
+    {
+      "actual_schema": "Role is identity.role. Training sidecars use identity.role=\"train\"; evaluation sidecars use identity.role=null. No top-level role exists.",
+      "bug": "Verifier read receipt.role at the sidecar top level.",
+      "check": "cache sidecar role",
+      "correction": "Require the exact expected value at identity.role; keep training/evaluation role validation strict."
+    },
+    {
+      "actual_schema": "factorized_had registers dead_input_mask as a fixed buffer of 408 values. It is serialized in state but excluded from model.parameters(); trainable tensors sum to 62643.",
+      "bug": "Verifier summed every state_dict tensor and counted the dead_input_mask buffer as a trainable parameter.",
+      "check": "parameter count from serialized state",
+      "correction": "Require the exact state-key inventory, shape-match candidate/control tensors, count all tensors except dead_input_mask as parameters, and verify the buffer exactly equals the player_indices mask."
+    },
+    {
+      "actual_schema": "Median and scale are each length 204 for raw features; the model input width is 408 after concatenating observation-mask bits.",
+      "bug": "Verifier expected median and scale arrays to have the 408-wide model input dimension.",
+      "check": "normalization width",
+      "correction": "Require 204-wide median/scale, 408-wide input_features, and continue bitwise train-only replay."
+    }
+  ],
+  "long_gap_diagnostic_summary": {
+    "adoption_gate": false,
+    "any_gap_rates": {
+      "candidate": {
+        "X": 0.0,
+        "false_dead": 0.052963,
+        "wrong_team": 0.225789
+      },
+      "control": {
+        "X": 0.0,
+        "false_dead": 0.046108,
+        "wrong_team": 0.218412
+      }
+    },
+    "contiguous_missing_ball_runs": 4356,
+    "ge_10s_rates": {
+      "candidate": {
+        "X": 0.0,
+        "false_dead": 0.055425,
+        "wrong_team": 0.240299
+      },
+      "control": {
+        "X": 0.0,
+        "false_dead": 0.048069,
+        "wrong_team": 0.232102
+      }
+    },
+    "input_views_after_deduplicating_protocols": 21,
+    "interpretation": "Descriptive, non-gating historical development data; one clean plus two synthetic feed-like views per match; rates are among reference H/A frames only.",
+    "missing_frames": 910631,
+    "missing_frames_in_ge_10s_runs": 779201,
+    "native_HA_support_any_gap": 235468,
+    "native_HA_support_ge_10s": 190184,
+    "runs_ge_10s": 1981
+  },
+  "receipt_schema_review": {
+    "evaluation_recipe_kind": "skillcorner_expansion_eval_v1",
+    "evaluation_sidecars_reviewed": 6,
+    "input_hash_aliases_match_identity": true,
+    "sha_aliases_match": true,
+    "source_hash_aliases_match_identity": true,
+    "training_recipe_kind": "skillcorner_expansion_combined_training_v1",
+    "training_sidecars_reviewed": 6,
+    "training_source_indices": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  "schema": 1,
+  "scope": {
+    "cached_data_source_or_model_edited": false,
+    "candidate_fit_performed": false,
+    "external_scoring_performed": false,
+    "organizer_ground_truth_read": false
+  },
+  "status": "corrected_verifier_passed_full_phase",
+  "task": "Independent SkillCorner expansion verification correction audit"
+}

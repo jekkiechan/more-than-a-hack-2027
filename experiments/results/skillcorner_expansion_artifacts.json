@@ -1,0 +1,108 @@
+{
+  "active_baseline_changed": false,
+  "archive": {
+    "base_dependency_bytes": 1976145012,
+    "base_dependency_files": 67,
+    "base_dependency_manifest": "skillcorner_expansion_v1_base_dependencies_manifest.json",
+    "base_dependency_manifest_sha256": "8f796705feabb9fe1305ae78d1f72ea8132b086417e6d61cf8b317e9acc9960c",
+    "bytes": 2305049329,
+    "contents": "Nine SkillCorner 2024/25 match source/processed datasets, model checkpoints and fit receipts, reproducibility caches, sealed declarations, independent audit receipts, the external decision, and public diagnostic predictions/results. Experimental only.",
+    "files": 374,
+    "lfs_object_bytes": 2298006512,
+    "lfs_pointer_files": 105,
+    "main_manifest": "skillcorner_expansion_v1_cache_manifest.json",
+    "main_manifest_sha256": "7318ca7be4e09e7ddc240848eff8c87ee4eb2dbe506c9a8afdf05aa9c352fd57",
+    "new_input_files": 54,
+    "payload_sha256_unchanged_after_lfs_pointer_correction": true
+  },
+  "archive_receipt_path": "/workspace/experiment_restore/archive_manifest_receipt.json",
+  "archive_receipt_sha256": "0ce41786004c9e2e312a30cc1e346890414d941e8bbbf74060aa5e3e00607ce7",
+  "artifact": "skillcorner_expansion_v1_private_archive",
+  "branch": "archive/skillcorner-expansion-v1",
+  "created_utc": "2026-10-29T05:17:24.476840+00:00",
+  "dataset_adopted": false,
+  "local_commit": "5dd0a23fd734fa79a99246cd792e251fe5f20b78",
+  "remote_push_retry_performed": false,
+  "remote_restore_verified": false,
+  "remote_uploaded": false,
+  "repository": "https://github.com/jekkiechan/mtah-data.git",
+  "reserved_match_scored": false,
+  "restore": {
+    "commands": [
+      "python scripts/competition_cache.py fetch --manifest skillcorner_expansion_v1_cache_manifest.json --data-dir /path/to/code/data",
+      "python scripts/competition_cache.py fetch --manifest skillcorner_expansion_v1_base_dependencies_manifest.json --data-dir /path/to/code/data"
+    ],
+    "organizer_input_included": false,
+    "public_reference_csv_included": false,
+    "receipt_path": "/workspace/experiment_restore/cold_restore_receipt.json",
+    "receipt_sha256": "59a7c96f664abb4a86e650ea92bf884aa1f5cb66e443be2c20740ea59fcc94db",
+    "scope": "local-only; official cache helper restored from the local committed archive worktree and previously restored base objects; this does not verify a remote clone or LFS download",
+    "unique_bytes": 4281194341,
+    "unique_files": 441,
+    "verified": true
+  },
+  "schema_version": 1,
+  "split": {
+    "reserved_unscored": [
+      2017461
+    ],
+    "selection": [
+      2015213,
+      2016236
+    ],
+    "train": [
+      2006363,
+      2007448,
+      2007721,
+      2010085,
+      2011166,
+      2013725
+    ]
+  },
+  "status": "local_archive_ready_remote_upload_blocked",
+  "upload_block": {
+    "automatic_review_rejected_remote_upload": true,
+    "destination_specific_approval_needed": true,
+    "reason": "This pushes a large archive containing private tracking data and experiment artifacts to a remote repository, but the user did not explicitly authorize that destination or remote publication; sensitive egress requires destination-specific approval. Do not bypass this rejection through a workaround or indirect execution."
+  },
+  "validation": {
+    "audit_correction": {
+      "path": "/workspace/experiment_verification/audit_correction.json",
+      "sha256": "85308b8adee12d5099ceb7c812e44ac4d3917c737728a801ba0577a1f9b17d96"
+    },
+    "external_adoption_gate": {
+      "active_baseline_unchanged": true,
+      "adopt_dataset": false,
+      "pooled_clean_required": "strictly positive",
+      "pooled_clean_spell_delta": -0.00995763011132178,
+      "primary_clean_required_minimum": 0.01,
+      "primary_clean_spell_delta": 0.0020548371010905564
+    },
+    "full_report": {
+      "path": "/workspace/experiment_verification/skillcorner_expansion_v1_full.json",
+      "sha256": "d9df587e1e32ada432cfb65f0b7d9fa35ca55d55ce1d216693224eb6665b92d2"
+    },
+    "independent_external_verifier": {
+      "path": "/workspace/experiment_verification/skillcorner_expansion_v1_external.json",
+      "result": "passed; 42 cells, 252 rows, 84 seed probabilities, maximum error 0; adoption decision false",
+      "sha256": "b5aca7bcde5e755c856a89141932ce6072cbc7aac9ab5bfa6d2d6d746dad68bb"
+    },
+    "public_diagnostic": {
+      "candidate_spell_f1_mean": 0.5485714285714287,
+      "dead_state_f1_delta": 0.0357456633238773,
+      "delta": -0.009004329004328904,
+      "interpretation": "One already-exposed five-minute diagnostic; no selection or model change followed.",
+      "macro_f1_delta": 0.020033307147041324,
+      "saved_baseline_spell_f1_mean": 0.5575757575757576
+    },
+    "source_receipt": {
+      "path": "/workspace/experiment_verification/source_receipt.json",
+      "sha256": "f6d4169ea00f73c84a0ec19b47c3db270184c63077d33e66edd1b3e8396e2d39"
+    },
+    "source_snapshot_commit": "b448bb7880997946dce9ee3fc7403b37beb737aa",
+    "verifier_script": {
+      "path": "/workspace/experiment_verification/verify_expansion.py",
+      "sha256": "268defffbe0f4913c064b02d02384314650dd34bc01e84b43fa12cc8322711c9"
+    }
+  }
+}
