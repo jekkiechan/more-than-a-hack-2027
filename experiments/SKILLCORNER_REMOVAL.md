@@ -1,6 +1,6 @@
 # Does the current GRU benefit from SkillCorner training data?
 
-Status: implementation and pre-fit verification. Date: 29 October 2026.
+Status: completed; retain the active dataset and baseline. Date: 29 October 2026.
 
 This study tests removing the original eight SkillCorner training matches from
 the current combined-objective GRU. It is separate from the completed
@@ -59,8 +59,9 @@ This tests the practical effect of removing a source at fixed optimizer cost.
 It necessarily changes source diversity, repeated exposure and the normalized
 loss mass of retained providers. For example, Sportec holdout changes from
 equal Metrica/SkillCorner mass to Metrica alone; all-provider training changes
-from thirds to equal Sportec/Metrica halves. The existing source/match weighting
-formula remains fixed. This is not a marginal label-quality experiment holding
+from thirds to equal Sportec/Metrica halves. The existing nominal source/match weighting
+formula remains fixed. Each optimizer step normalizes its sampled batch, so
+nominal balance is not a guarantee of exactly equal realized loss mass per epoch. This is not a marginal label-quality experiment holding
 the remaining providers' loss contributions constant.
 
 ## Frozen screen and evidence limits
@@ -105,3 +106,102 @@ cost-3 predictions, official spell/frame metrics, historical control parity and
 aggregation. The final readout will record tests actually run, all failed guards
 and actual local/remote artifact availability. No prior private-upload rejection
 will be bypassed.
+
+The frozen execution commit is `c4dcbe3decf50d29e7d722c20ca379aeff45ce5c`;
+its declaration SHA-256 is
+`dcd2e6c4518599d8d3aa95aba8ddfceefc5fa9a32a74f5fbf0445b9e8f91a72c`.
+All six checkpoints were sealed before scoring (seal SHA-256
+`348a880e8b31dd14e5226e956d20b34139f935ad4818fbc5eac56a9988b94fc8`).
+The [pre-fit](results/skillcorner_removal_prefit_verification.json) and
+[fit verification](results/skillcorner_removal_fit_verification.json) receipts
+confirm the cache/control hashes, actual optimizer budgets, model shapes and
+bitwise training-only normalizers. The standalone verifier's initial function-
+boundary/null-return error was corrected before accepting any full result;
+its [correction audit](results/skillcorner_removal_verifier_corrections.json)
+preserves the failed invocation and records that frozen code, data and weights
+were unchanged.
+
+## Measured outcome
+
+**Retain the active dataset and baseline.** The current recipe with SkillCorner scores better on these excluded-provider holdouts, while removing it benefits some matches when their provider is represented in training. These development results do not establish a competition improvement from deleting SkillCorner. The frozen removal screen fails; no model or dataset promotion occurs.
+
+### Original five-match benchmark
+
+These are the same five matches and full-provider protocol behind the current .6332 headline. Each row compares matched arms; the model family, inference ensemble and decoder are unchanged.
+
+| View | Current recipe | Remove original 8 SkillCorner TRAIN matches | Removal delta |
+| --- | ---: | ---: | ---: |
+| clean | 0.633205 | 0.625786 | -0.007419 |
+| feed_like | 0.498830 | 0.496092 | -0.002737 |
+
+Both component seeds also lose spell F1 in both primary views after removal. On the two changed provider holdouts (Sportec and Metrica), the ensemble removal effect is -.011128 clean and -.004106 feed-like. The three SkillCorner evaluation matches are exact parity and are excluded from that source-contribution mean. This development evidence is consistent with a transfer benefit from the existing SkillCorner corpus under this recipe; it does not establish its effect on the organizer match.
+
+### Separate training setup with providers represented
+
+The current supplement model trains on all three sources; the removal model trains on Sportec and Metrica only. Every evaluation match is excluded from both arms. Its absolute scores belong to a different training protocol and a two-provider aggregation; they do not replace the .6332 benchmark.
+
+| Tactical Sportec/Metrica mean | Current recipe | Remove SkillCorner | Removal delta |
+| --- | ---: | ---: | ---: |
+| clean | 0.774753 | 0.787806 | +0.013053 |
+| feed_like | 0.580867 | 0.593287 | +0.012420 |
+
+The positive tactical mean is concentrated in Sportec. The Metrica match, which is especially relevant to the competition provider, gains only .002720 clean and loses .007082 under feed-like stress. Removing SkillCorner therefore does not consistently improve even this small target-provider check.
+
+| Provider | Full-provider clean / feed-like removal delta | Pooled-protocol clean / feed-like removal delta |
+| --- | ---: | ---: |
+| sportec | -0.014339 / +0.008319 | +0.023387 / +0.031922 |
+| metrica | -0.007917 / -0.016530 | +0.002720 / -0.007082 |
+| skillcorner | +0.000000 / +0.000000 | -0.059460 / -0.049990 |
+
+Sportec and Metrica are represented in both pooled arms. SkillCorner is represented only in the current control; its pooled row is a diagnostic loss of that specialization. The all-five pooled diagnostic declines .686720 → .675603 clean and .546481 → .538098 feed-like; this includes lost SkillCorner specialization. The predeclared recommendation does not use that decline as a veto. It remains visible alongside the tactical result.
+
+### Seed and frame-quality diagnostics
+
+| Protocol / cohort | Member | Clean removal delta | Feed-like removal delta |
+| --- | --- | ---: | ---: |
+| primary / all | 2026 | -0.014672 | -0.006765 |
+| primary / all | 2027 | -0.028346 | -0.018093 |
+| primary / all | ensemble | -0.007419 | -0.002737 |
+| pooled / tactical | 2026 | +0.009129 | +0.007380 |
+| pooled / tactical | 2027 | +0.002588 | -0.004822 |
+| pooled / tactical | ensemble | +0.013053 | +0.012420 |
+
+Primary Metrica D-F1 improves .010270 clean and .003906 feed-like after removal, despite lower spell F1. Its D recall rises .027041/.026797 while precision falls .009016/.021694. Short-spell recall also rises there, demonstrating that one favorable component does not determine the interval-ranking result. These diagnostics do not isolate a causal mechanism.
+
+Only the original-five primary +.01 clean-spell screen fails; the other thirteen checks pass. A failed deletion recommendation alone would not prove SkillCorner helps. Here the separate raw primary comparisons favor inclusion in both views and both seeds; the provider-represented comparisons show a mixed, provider-dependent effect.
+
+All five IoUs, macro F1, the auxiliary 70/30 summary, D precision/recall/F1, short-spell recall, reference/predicted spell counts, fragmentation and per-match/seed rows are preserved in the [180 rows](results/skillcorner_removal_rows.json) and [readout](results/skillcorner_removal.json).
+
+### Practical conclusion and limits
+
+Keep the original eight SkillCorner training matches in the current baseline. The earlier failed expansion test still says that six additional SkillCorner matches did not earn adoption; it did not establish that the original source was useless. This removal study supplies that missing direct comparison.
+
+Competition usefulness remains uncertain because these are repeatedly exposed development matches, only one tactical match per provider, and synthetic feed-like gaps. The next decisive data investment is an independently labeled match with tactical-camera visibility and real live-ball gaps. The current evidence does not justify automatically deleting SkillCorner or acquiring more of the same source. No new organizer inputs, labels, predictions or scoring gates were used in this study. Historical public diagnostics were already known and were not used to select this candidate.
+
+Verification status: all six model seals passed; the [independent external verification](results/skillcorner_removal_external_verification.json) completed in two documented stages. The repository passed 265 experiment tests and 18 root integrity tests (283 total), exact file-backed synthetic-fit parity and the bundled submission-format check. Two additional root integrity tests were added after the executable freeze; no runtime Python file or candidate manifest changed.
+
+## Independent replay completion
+
+The recorded replay completed all thirty paired cells, 180 decoded/official
+metric rows, sixty candidate/parity seed-probability checks, thirty archived
+primary-control comparisons, 180 period-reset decoder checks and fifteen
+historical primary ensemble rows. A missing constant in the standalone checker
+stopped that run at aggregation. After checking that the sealed data, model
+and output hashes were unchanged, a separate readout completed all twenty-four
+provider/seed summaries and the fourteen frozen guards from the same 180 rows,
+without further inference or scoring. This is a resumed verification, not an
+uninterrupted full run.
+
+Saved/recomputed probability parity uses absolute tolerance 1e-7; the historical
+archive guard uses 1e-6. No numerical tolerance was loosened. The corrected
+verifier and routing/CLI contracts are preserved. Its initial control/candidate
+routing mistake, function-boundary issues and final readout correction changed
+only the standalone verifier; the frozen experiment code, models, predictions
+and criteria were unchanged. The [external replay audit](results/skillcorner_removal_external_replay_audit.json)
+records the exact traceback and captured checker hash.
+
+Exact source bytes for that captured checker version were not recovered after
+its edits. The non-matching reconstruction is explicitly marked non-exact; the
+audit preserves this limitation, the captured execution hash and log, and the
+corrected reproducible checker. The complete frozen training/inference source
+snapshot is intact and all 160 hashes match.
