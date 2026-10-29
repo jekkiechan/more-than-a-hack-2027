@@ -277,19 +277,124 @@ def cmd_competition(names):
     (OUT / "competition_rows.json").write_text(json.dumps(clean_json(rows), indent=1) + "\n")
 
 
-def cmd_costs_competition():
-    """Label-free competition possessions/min per switch cost from the saved-model
-    probabilities is not available (no saved competition probabilities); see report."""
-    raise SystemExit("not implemented: competition probabilities are not saved")
+def cmd_compcosts():
+    """Label-free competition decode of the adopted ensemble at several switch costs."""
+    sys.path.insert(0, str(ROOT))
+    from experiments import current_baseline as cb, supervised
+    manifest_path = ROOT / "experiments/baseline_manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    inputs = cb.load_inputs(ROOT / "data/challenge/inputs.npz")
+    cache = OUT / "adopted_competition_probability.npy"
+    if cache.exists():
+        probability = np.load(cache)
+    else:
+        probability = cb.predict_probabilities(inputs, cb.load_models(None, manifest_path), manifest)
+        np.save(cache, probability)
+    active = np.asarray(inputs["period"]) > 0
+    visible = np.isfinite(np.asarray(inputs["ball"])).all(axis=1)
+    rows = {}
+    for cost in (2, 3, 4, 6, 8):
+        labels = supervised.decode(probability, supervised.model_periods(inputs), float(inputs["fps"]), cost)
+        labels[~active] = "X"
+        if cost == 3:
+            reference = read_prediction(ROOT / "data/experiments/current_baseline/joint_gru_combined_ensemble.csv")
+            rows["cost3_matches_saved_csv"] = bool((labels == reference).all())
+        rows[str(cost)] = structure_stats(labels, active, visible, float(inputs["fps"]), inputs["period"])
+        print("COMPCOST", cost, round(rows[str(cost)]["poss_per_min"], 3), flush=True)
+    (OUT / "competition_cost_rows.json").write_text(json.dumps(clean_json(rows), indent=1) + "\n")
+
+
+def _load(name):
+    return json.loads((OUT / name).read_text())
+
+
+def _nanmean(values):
+    v = [x for x in values if x is not None and math.isfinite(x)]
+    return float(np.mean(v)) if v else math.nan
+
+
+def cmd_report():
+    truth = _load("truth_rows.json")
+    holdout = _load("holdout_rows.json")
+    comp = _load("competition_rows.json")
+    costs = _load("cost_holdout_rows.json")
+    ccost = _load("competition_cost_rows.json")
+    decl = json.loads(DECLARATION.read_text())
+    nan = lambda r: {k: (math.nan if v is None else v) for k, v in r.items()}
+    # (a) truth
+    core = [r for r in truth if r["role"] in ("train", "eval")]
+    per_provider = {}
+    for prov in ("sportec", "metrica", "skillcorner"):
+        rows = [r for r in core if r["provider"] == prov]
+        per_provider[prov] = dict(n=len(rows), **aggregate(rows, KEYS))
+    band = aggregate(core, ("poss_per_min",))["poss_per_min"]
+    band_all = aggregate(truth, ("poss_per_min",))["poss_per_min"]
+    # (b) holdout, replicate-mean within match
+    matches = sorted({r["match"] for r in holdout})
+    per_match = {}
+    for view in ("clean", "feed_like"):
+        for m in matches:
+            rr = [nan(r["stats"]) for r in holdout if r["match"] == m and r["view"] == view]
+            true = nan(next(r["true"] for r in holdout if r["match"] == m))
+            per_match[(view, m)] = dict(stats={k: _nanmean([x[k] for x in rr]) for k in rr[0]}, true=true,
+                                        spell_f1=_nanmean([r["spell_f1"] for r in holdout if r["match"] == m and r["view"] == view]))
+    ratio_keys = ("poss_per_min", "d_stop_per_min", "dur_q50", "dur_mean", "frac_lt3s", "switch_per_min", "share_D")
+    ratios = {view: {m: {k: ratio(per_match[(view, m)]["stats"][k], per_match[(view, m)]["true"][k]) for k in ratio_keys}
+                     for m in matches} for view in ("clean", "feed_like")}
+    ratio_mean = {view: {k: _nanmean([ratios[view][m][k] for m in matches]) for k in ratio_keys} for view in ratios}
+    # (d) flags
+    feed_lt3_max = max(per_match[("feed_like", m)]["stats"]["frac_lt3s"] for m in matches)
+    feed_ratio = _nanmean([per_match[("feed_like", m)]["stats"]["poss_ratio_missing_over_visible"] for m in matches])
+    clean_ratio = _nanmean([per_match[("clean", m)]["stats"]["poss_ratio_missing_over_visible"] for m in matches])
+    vec = {view: [per_match[(view, m)]["stats"] for m in matches] for view in ("clean", "feed_like")}
+    ref = {view: {k: _nanmean([v[k] for v in vec[view]]) for k in VECTOR} for view in vec}
+    allv = vec["clean"] + vec["feed_like"]
+    scale = {k: float(np.std([v[k] for v in allv if math.isfinite(v[k])])) for k in VECTOR}
+    flags = {}
+    for name, s in comp.items():
+        s = nan(s)
+        frag = s["poss_per_min"] > band["max"] or s["frac_lt3s"] > feed_lt3_max
+        merge = s["poss_per_min"] < band["min"]
+        flag = "FRAGMENTING" if frag else "MERGING" if merge else "PLAUSIBLE"
+        dist = {view: standardized_distance(s, ref[view], scale) for view in ref}
+        gap = bool(s["poss_ratio_missing_over_visible"] > 1.5 and not feed_ratio > 1.5)
+        flags[name] = dict(flag=flag, fragmenting_poss=bool(s["poss_per_min"] > band["max"]),
+                           fragmenting_lt3=bool(s["frac_lt3s"] > feed_lt3_max), merging=bool(merge),
+                           distance=dist, closest=min(dist, key=dist.get), gap_driven_switching=gap)
+    # (f) cost table
+    cost_table = {}
+    for c in sorted({r["cost"] for r in costs}):
+        prov = {}
+        for src in ("sportec", "metrica", "skillcorner"):
+            ms_ = sorted({r["match"] for r in costs if r["source"] == src})
+            prov[src] = _nanmean([_nanmean([r["spell_f1"] for r in costs if r["match"] == m and r["cost"] == c]) for m in ms_])
+        pm = {m: _nanmean([r["poss_per_min"] for r in costs if r["match"] == m and r["cost"] == c]) for m in matches}
+        cost_table[str(c)] = dict(holdout_spell_f1=_nanmean(list(prov.values())), per_provider=prov,
+                                  holdout_pred_over_true_poss=_nanmean([ratio(pm[m], per_match[("feed_like", m)]["true"]["poss_per_min"]) for m in matches]),
+                                  competition_poss_per_min=ccost[str(c)]["poss_per_min"],
+                                  competition_frac_lt3s=ccost[str(c)]["frac_lt3s"])
+    result = dict(declaration=decl, truth_rows=truth, truth_per_provider=per_provider, truth_band_core18=band,
+                  truth_band_all_available=band_all, holdout_per_match={f"{v}|{m}": d for (v, m), d in per_match.items()},
+                  holdout_ratios=ratios, holdout_ratio_mean=ratio_mean, holdout_feed_like_max_frac_lt3s=feed_lt3_max,
+                  holdout_poss_ratio_missing_over_visible=dict(clean=clean_ratio, feed_like=feed_ratio),
+                  distance_reference=ref, distance_scale=scale, competition=comp, flags=flags,
+                  cost_table=cost_table, competition_cost3_matches_saved_csv=ccost["cost3_matches_saved_csv"],
+                  organizer_labels_read=False, competition_public_window_used=False, model_changed=False)
+    RESULT.parent.mkdir(parents=True, exist_ok=True)
+    RESULT.write_text(json.dumps(clean_json(result), indent=1) + "\n")
+    print(json.dumps(clean_json(dict(band=band, band_all=band_all, flags=flags, ratio_mean=ratio_mean, cost=cost_table,
+                                      feed_lt3_max=feed_lt3_max, ratio_vis=[clean_ratio, feed_ratio])), indent=1))
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("command", choices=["truth", "holdout", "costs", "competition"])
+    ap.add_argument("command", choices=["truth", "holdout", "costs", "competition", "compcosts", "report"])
     ap.add_argument("--adopted", default=str(ROOT / "data/experiments/current_baseline/joint_gru_combined_ensemble.csv"))
     ap.add_argument("--previous", default=str(OUT / "seed_ensemble.csv"))
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
-    {"truth": cmd_truth, "holdout": cmd_holdout, "costs": cmd_costs}.get(a.command, lambda: None)() \
-        if a.command != "competition" else cmd_competition({"adopted_combined_ensemble": a.adopted,
-                                                            "previous_seed_ensemble": a.previous})
+    if a.command == "competition":
+        cmd_competition({"adopted_combined_ensemble": a.adopted, "previous_seed_ensemble": a.previous})
+    else:
+        {"truth": cmd_truth, "holdout": cmd_holdout, "costs": cmd_costs, "compcosts": cmd_compcosts,
+         "report": cmd_report}[a.command]()
