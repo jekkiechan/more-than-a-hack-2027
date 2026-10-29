@@ -68,4 +68,4 @@ The downloaded sample files are ignored by Git under `more-than-a-hack-2027/data
 | `117093_player_nodes.csv` | 550,228 | `808326901dbca78cbf447ac79cbdffcffeb7723905e999514e7235a56ed322bc` |
 | `117093_padding_info.csv` | 154 | `0b7e73f40dad775807790860df61fcaada818fcbd634f105d454bb4fdd43ead5` |
 
-The [shared artifact receipt](results/spell_f1_followup_artifacts.json) records the locally verified archive. Remote upload was blocked by automatic approval review pending explicit authorization; no fresh remote restore is claimed.
+The [shared artifact receipt](results/spell_f1_followup_artifacts.json) records the private archive, uploaded after explicit authorization. A [fresh remote restore](results/spell_f1_followup_remote_verification.json) verified all 295 files and their size/SHA-256 hashes. The earlier upload rejection remains recorded as history.
