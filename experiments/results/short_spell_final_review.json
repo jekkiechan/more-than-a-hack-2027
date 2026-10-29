@@ -1,0 +1,109 @@
+{
+  "review_id": "short_spell_final_review",
+  "reviewed_utc_date": "2026-10-29",
+  "scope": "Read-only review of frozen declarations, runtime amendment, readouts, provenance receipts, and saved private artifacts. No fitting, inference, or organizer scoring was run.",
+  "disposition": "No essential blocker found; retain the cost-3 baseline and report these as negative development diagnostics.",
+  "source_hash_review": [
+    {
+      "study": "short_spell_recoverability_v2",
+      "declaration": "experiments/results/short_spell_recoverability_v2_declaration.json",
+      "declaration_sha256": "ef50ea46bfe3cd9a75c4f3862061d4205c1b2fae6408325a77e69ee40709a3ec",
+      "source_files": 13,
+      "all_source_hashes_match_current_files": true,
+      "result_sha256": "bd088d91abd60fedf872c346a27dc162d2947c9ee1f7ac9a5623a6669c314efb"
+    },
+    {
+      "study": "native_short_spell_v1",
+      "declaration": "experiments/results/native_short_spell_declaration.json",
+      "declaration_sha256": "89bb479fc2d7993bc6125026ad3af38c057f8e013c66ffd5aa2e88cff5c663f9",
+      "source_files": 24,
+      "all_source_hashes_match_current_files": true,
+      "runtime_amendment_sha256": "af9ec5746e9985ea7ad4f75a091494fbf7b936f7c5641458681b74381d3adbbe",
+      "runtime_wrapper_sha256": "83b6cbb00d76ab714bc5bf920b0b98d0788657dc8509aa093841b600979b693a",
+      "fit_seal_sha256": "0e9313cfd398b066469dd62d1ad2de1b42805d9751bd82d422e27fea7b99fe26",
+      "readout_sha256": "85705938998d485bd43a9333bb56acf5c2894ba54657b4f12ed31f4c267caacf",
+      "artifact_receipt_sha256": "1e83bbc63e1274f9a84e70bbcff87c72965945ad22bfbdb3fba8c529e4770bb2"
+    },
+    {
+      "study": "turnover_decoder_v1",
+      "declaration": "experiments/results/turnover_decoder_declaration.json",
+      "declaration_sha256": "8a5a125cfdad8073968af389ae631334b451b38413a6c0e4a58d1b6f9b09cbcf",
+      "source_files": 13,
+      "all_source_hashes_match_current_files": true,
+      "score_receipt_sha256": "e813bfb51a2218e767235c87bd9a66c59ea87509ab338147c34378f2422d9b16",
+      "independent_replay_receipt_sha256": "f9386a762c6a9644041dd6e9ce6f8f627e8a5a0610a29f24d2b573daba3c4beb"
+    },
+    {
+      "study": "turnover_decoder_v2_unit_weights",
+      "declaration": "experiments/results/turnover_decoder_v2_declaration.json",
+      "declaration_sha256": "2f110d0619a8f640950f12da22c59f98c9484da7f71680c3b793cbc670bd840d",
+      "source_files": 22,
+      "all_source_hashes_match_current_files": true,
+      "score_receipt_sha256": "04972b3694c31a54ac3a9324b391a9d6a59d61944bca13151107c430bb78cd13",
+      "independent_replay_receipt_sha256": "13d02c64831437695c70a33ba2664c9fbc4b356812b411e5f4c2b4ad759f9191"
+    }
+  ],
+  "artifact_checks": {
+    "native_short_spell": {
+      "candidate_member_and_ensemble_files_listed": 90,
+      "file_hash_failures": 0,
+      "sealed_heads_and_fit_receipts": 12,
+      "head_hash_failures": 0,
+      "independent_replay_status": "passed",
+      "independent_replay_mismatches": 0,
+      "checks_include_exact_dead_probability_and_seed_blend": true
+    },
+    "turnover_decoder_v2": {
+      "artifact_entries_checked_including_private_outputs_and_reports": 51,
+      "file_hash_or_size_failures": 0,
+      "independent_replay_status": "passed",
+      "independent_replay_mismatches": 0
+    }
+  },
+  "provider_fold_checks": {
+    "native_short_spell": [
+      {"held_out": "sportec", "training_sources": ["metrica", "skillcorner"], "training_matches": 10},
+      {"held_out": "metrica", "training_sources": ["skillcorner", "sportec"], "training_matches": 11},
+      {"held_out": "skillcorner", "training_sources": ["metrica", "sportec"], "training_matches": 5}
+    ],
+    "turnover_decoder_v1_and_v2": [
+      {"held_out": "sportec", "training_sources": ["metrica", "skillcorner"], "training_matches": 10},
+      {"held_out": "metrica", "training_sources": ["skillcorner", "sportec"], "training_matches": 11},
+      {"held_out": "skillcorner", "training_sources": ["metrica", "sportec"], "training_matches": 5}
+    ],
+    "native_runtime_mass_contract": "For each fold and arm, the two active training providers each carry mass 1, the held-out provider carries mass 0, and total weight is 2. The pre-fit amendment changes the validation guard only; it leaves features, targets, weights, loss, and optimizer settings unchanged."
+  },
+  "score_summary": {
+    "native_short_spell": {
+      "saved_baseline_clean_feed_like_spell_f1": [0.633205, 0.498830],
+      "matched_5hz_clean_feed_like_spell_f1": [0.630100, 0.499242],
+      "native_rate_clean_feed_like_spell_f1": [0.629784, 0.498723],
+      "native_rate_delta_clean_feed_like_spell_f1": [-0.003421, -0.000106],
+      "native_rate_delta_clean_feed_like_short_spell_recall": [-0.006030, 0.004307],
+      "decision": "Both arms fail the predeclared +0.01 clean spell-F1 screen; the native-rate arm is slightly below matched 5 Hz on both aggregate views."
+    },
+    "turnover_decoder_v1": {
+      "baseline_clean_feed_like_spell_f1": [0.633205, 0.498830],
+      "candidate_clean_feed_like_spell_f1": [0.633205, 0.498996],
+      "decision": "Clean spell F1 is unchanged and the +0.01 clean screen fails."
+    },
+    "turnover_decoder_v2": {
+      "baseline_clean_feed_like_spell_f1": [0.633205, 0.498830],
+      "candidate_clean_feed_like_spell_f1": [0.631627, 0.495856],
+      "candidate_delta_clean_feed_like_short_spell_recall": [0.021727, 0.008559],
+      "decision": "Short recall rises while overall spell F1 and IoUs fall; the primary screen fails and no promotion is supported."
+    },
+    "recoverability_audit": {
+      "saved_cost3_complete_under_3s_recall_clean_feed_like": [0.307, 0.137],
+      "raw_argmax_complete_under_3s_recall_clean_feed_like": [0.384, 0.196],
+      "raw_argmax_spell_f1_clean_feed_like": [0.561, 0.419],
+      "interpretation": "Raw argmax is a descriptive counterfactual, not a deployable candidate; the recall increase accompanies lower overall spell F1."
+    }
+  },
+  "limitations": [
+    "All five scored development matches were previously exposed; Metrica and SkillCorner targets are event-derived silver labels.",
+    "Feed-like stress is synthetic. These results are not independent confirmation or an estimate of full-match performance.",
+    "For the native-rate comparison, Sportec and Metrica are 25 Hz while SkillCorner is 10 Hz; equal support weights control provider/match/view/swap mass, while row counts differ by design."
+  ],
+  "tests": "This review did not run tests; the parent completed the repository test suite and study checks."
+}
