@@ -1,6 +1,6 @@
 # Current research state
 
-Reviewed 2026-10-29 after the bounded spell-F1 follow-up, based on fork main `2146276`. The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+Reviewed 2026-10-29 after the short-spell continuation, based on fork main `0659bff` (merged PR #30). The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
 
@@ -51,6 +51,44 @@ model files changed in this follow-up.
 Both candidate studies have independent official-score replay receipts and
 226 passing contracts. The [shared private archive](../../experiments/results/spell_f1_followup_artifacts.json)
 was uploaded after explicit user authorization. A [fresh remote restore](../../experiments/results/spell_f1_followup_remote_verification.json) verified all 295 files and hashes at private commit `7231018`. The earlier automatic approval rejection is retained as history.
+
+## Short-spell continuation — 29 October 2026
+
+The [recoverability audit](../../experiments/SHORT_SPELL_RECOVERABILITY.md)
+separates complete under-three-second misses from grading-edge spells. Among
+complete short misses, 15% clean / 10% feed-like have correct-team raw emissions
+that cost 3 entirely suppresses; 40% / 39% have insufficiently aligned intervals,
+and 45% / 51% have no local correct-team top-1 emission. Raw argmax raises
+complete-short recall but lowers overall spell F1 to .561/.419. This is a
+saved-output diagnostic, not an oracle gain estimate or a decoder candidate.
+
+The [native-rate emission study](../../experiments/NATIVE_SHORT_SPELL.md)
+completed twelve frozen-backbone residual fits: native 10/25 Hz versus matched
+5 Hz, two seeds and three whole-provider exclusions. Native clean/feed-like
+spell is .629784/.498723; matched 5 Hz is .630100/.499242, against the saved
+baseline .633205/.498830. Native timing therefore shows no aggregate advantage
+in this instantaneous linear-residual recipe. Both arms fail the +.01 clean
+screen; provider guards pass. A reviewed pre-fit correction fixed only an
+active-provider mass assertion and preparation scheduling, preserving frozen
+source, data, weights and fitting choices.
+
+The [turnover-edge decoder](../../TURNOVER_DECODER.md) completed three heads
+and fifteen paired cells with unchanged emissions. V1 weights summed to one,
+so its fixed L2 penalty kept costs near 3: clean spell was unchanged and
+feed-like improved only .000166. The separately declared
+[mean-one-weight follow-up](../../TURNOVER_DECODER_V2.md) changed only the
+regularization units and completed three new heads before scoring. Short-spell
+recall rises .021727/.008559, but false extra spells rise 6.889/3.500 per match,
+and spell F1 falls to .631627/.495856. Both recipes fail the clean screen.
+No cost, threshold or regularization sweep follows these results.
+
+All three fitted studies have saved-array independent replay receipts with
+zero mismatches. The full repository suite passes 248 tests; the file-backed
+fit contract and bundled CSV format check also pass. No organizer labels or
+scoring gates were accessed. Keep `joint_gru_combined_ensemble_v1`; none of
+these candidates is adopted. The [private archive receipt](../../experiments/results/short_spell_recovery_remote_verification.json)
+verifies all 420 files (452,899,231 bytes) from a fresh remote clone at private
+commit `0ff246b`. Earlier per-study local-only receipts are preserved as history.
 
 ## Historical architecture comparison
 
@@ -122,10 +160,13 @@ contains exact scoring rules, worked examples and an interactive timeline.
 
 ## Next work
 
-The current priorities are a blind, continuously labeled ten-minute SoccerTrack
-panorama pilot, while pursuing authorized true-broadcast access, and a distinct
-short-possession event/timing hypothesis. The completed contact-memory and
-window-overlap packages do not justify more variants on these exposed matches.
+The next recommended investment is a [blind, continuously labeled ten-minute
+SoccerTrack panorama pilot](../../experiments/SHORT_SPELL_NEXT.md), while pursuing
+authorized true-broadcast access. A new short-possession emission/interval
+hypothesis needs a distinct mechanism and stronger interval labels. Instantaneous native geometry
+and learned H/A transition costs are now tested and fail the clean screen.
+The completed contact-memory, window-overlap and turnover-decoder packages do
+not justify more local parameter variants on these exposed matches.
 The data pilot needs new H/A/D/X annotation and measured-ball provenance; its
 event-interpolated ball coordinates are not independent input evidence.
 

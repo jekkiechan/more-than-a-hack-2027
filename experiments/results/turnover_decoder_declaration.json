@@ -1,0 +1,1016 @@
+{
+  "study_id": "turnover_decoder_v1",
+  "status": "frozen_before_fitting",
+  "created_utc": "2026-10-29T02:47:28.042979+00:00",
+  "branch": "possession/short-spell-recovery",
+  "hypothesis": "A compact natural-prevalence event head over the current frozen GRU ensemble's 5 Hz probability trajectory and local tracking context can identify an exact directed H/A turnover interval, allowing a bounded edge-specific H/A Viterbi cost to retain short spells suppressed by uniform cost 3.",
+  "falsification": "The candidate fails the predeclared clean +.01 spell screen, feed_like -0.01 floor, or any held-out provider clean macro/D-F1 -0.02 guard; report all outcomes without further arms.",
+  "prior_distinction": "PR #13 directional head targeted dead/live stoppage/restart events and altered only D/live costs; earlier H/A boundary decoder targeted a class-balanced +/-0.16 s neighborhood and used non-calibrated evidence. This head targets exact directed H/A changes between native-eligible adjacent 5 Hz samples, uses natural prevalence and LLR costs, and adapts only H/A edges under the current full-provider-held-out GRU ensemble.",
+  "baseline": {
+    "manifest": "experiments/baseline_manifest.json",
+    "manifest_sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "policy": "experiments/model_decision_policy.json",
+    "policy_sha256": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+    "ensemble": "joint_gru_combined_ensemble_v1",
+    "decoder": "Viterbi switch cost 3, native fps scaled by fps/10"
+  },
+  "question_and_mechanism": {
+    "mechanism": "One L2 logistic edge-event head per held-out provider, fit only on that fold's existing TRAIN matches. Head predicts two oriented edge rows per valid 5 Hz interval. Features combine source/destination H/A/D ensemble probabilities at both endpoints, oriented H/A log-odds/change, and destination-versus-source control/contact impulse, nearest distance, nearby-player support, plus global ball speed/availability.",
+    "target": "For each valid pair, H->A positive only for an exact H then A target pair; A->H positive only for A then H. Both orientations are present for every eligible pair. No class balancing or event undersampling.",
+    "native_eligibility": "Training pair requires consecutive 5 Hz indices in the same tracking-derived model_period and every native target in the sampled interval known H/A. D/X-containing intervals are excluded. Unknown X never creates a block reset; time blocks are built from period/timestamps only.",
+    "sampling": "5 Hz uniform block-local samples from frozen caches. No forced minimum duration; one-native-frame spells remain representable by the decoder.",
+    "training_weighting": "Equal provider mass, then equal match mass within provider, then equal edge-row mass within match; natural weighted event prevalence is retained.",
+    "training_prediction_provenance": "For leave_out_X, the exact same without_X two-seed frozen combined models generate ensemble probabilities on every TRAIN record. These backbone predictions are in-sample for training matches, disclosed; evaluation provider X is excluded from every learned component.",
+    "features": [
+      "p_source_prev",
+      "p_destination_prev",
+      "p_dead_prev",
+      "p_source_now",
+      "p_destination_now",
+      "p_dead_now",
+      "edge_logodds_prev",
+      "edge_logodds_now",
+      "edge_logodds_change",
+      "control_advantage_now",
+      "control_advantage_change",
+      "contact_impulse_advantage_now",
+      "contact_impulse_advantage_change",
+      "nearest_distance_advantage_now",
+      "nearest_distance_advantage_change",
+      "within5m_advantage_now",
+      "visible_player_advantage_now",
+      "ball_speed_now",
+      "ball_available_now"
+    ],
+    "transform": "Weighted training-only feature median imputation, weighted mean and standard deviation; no evaluation-derived statistic.",
+    "head": {
+      "class": "sklearn.linear_model.LogisticRegression",
+      "penalty": "l2",
+      "C": 0.1,
+      "solver": "lbfgs",
+      "max_iter": 300,
+      "head_fits": 3,
+      "random_state": 0
+    },
+    "fixed_cost_mapping": {
+      "q": "predicted natural-prevalence probability for one directed edge over the adjacent 0.2 s event window",
+      "llr": "logit(q) - logit(weighted training event prevalence)",
+      "cost": "clip(3 - llr, 1.5, 4.5), in supervised.decode 10 Hz log-likelihood units",
+      "native_time_grid": "Hold each sampled 0.2 s interval's two directed costs across native rows (left_sample+1 ... right_sample inclusive); the decoder multiplies by fps/10. At block starts/discontinuities and uncovered rows, cost remains 3.",
+      "D_live": "all H/A<->D transition penalties remain exactly 3*fps/10"
+    },
+    "emissions": "Use archived current equal-probability seed ensemble unchanged; no P(H/A/D) modification or renormalization.",
+    "seeds": "One deterministic head per held-out provider trained on the actual 50/50 two-seed ensemble trajectory; no separate head-seed fits."
+  },
+  "cohort": {
+    "development_matches": [
+      "J03WOY",
+      "J03WOY",
+      "J03WOY",
+      "metrica_3",
+      "metrica_3",
+      "metrica_3",
+      "skillcorner_had_1996435",
+      "skillcorner_had_1996435",
+      "skillcorner_had_1996435",
+      "skillcorner_had_1996436",
+      "skillcorner_had_1996436",
+      "skillcorner_had_1996436",
+      "skillcorner_had_2006229",
+      "skillcorner_had_2006229",
+      "skillcorner_had_2006229"
+    ],
+    "cells": [
+      {
+        "cell": {
+          "source": "sportec",
+          "match": "J03WOY",
+          "view": "clean",
+          "replicate": "clean"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+        "inputs_labels_record_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_J03WOY_clean_clean.npz",
+        "candidate_ensemble_sha256": "a726076045a822ef9aca68c7507a0ad22932ae59dd1caa3ce119a0f87cdc873d",
+        "candidate_probability_sha256": "bd5d2cb9ae1e5b673d116b063c58124d9ed09ce4e813661ac5595fcf189eafc5",
+        "candidate_prediction_sha256": "8612cf0ff039b2d58605e3d879c17026f94c5aebaea873ffacf4734cbb7daba3",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2026.npz",
+            "sha256": "a0a2394498a0616ea5ce6cca85f5b2770dd362e99cdaf4be3648db8738445adc",
+            "probability_sha256": "01ebf52aae3bb0fb20a4416c66468a4560d7a2bf31bd4c94461374c3f498c4a7"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2027.npz",
+            "sha256": "5dfdb90c76099ff622338ee8295270a86ec7dc9ff7ac6eb150bb23344097ac91",
+            "probability_sha256": "54581df8147b071d86c625e7096e117391a3a3641fd9958d1039905cc1c54405"
+          }
+        },
+        "frames": 142536
+      },
+      {
+        "cell": {
+          "source": "sportec",
+          "match": "J03WOY",
+          "view": "feed_like",
+          "replicate": "corrupt_1"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib",
+        "inputs_labels_record_sha256": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_1.npz",
+        "candidate_ensemble_sha256": "7748451902d3f60545b05a8d755bf3b042ce0256fbad4da44f158a106524d698",
+        "candidate_probability_sha256": "1c9abd24c61da209feb991931746c4af30fd19d69d2b5d7a3f634fd2c17c1684",
+        "candidate_prediction_sha256": "dee685979e89d8b4fabeb482d3a8e1bc37a769f419ae4536c6266f7a86e56cdc",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2026.npz",
+            "sha256": "dbc65a66c72e332e1a8256c82c13e762802b583628f9ce074d73fa4ced5ff4d9",
+            "probability_sha256": "7b132957f6a03737b98048a3f9c1be1de16898101bc6a1eb1763e0d280c466c0"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2027.npz",
+            "sha256": "9f77f2677666b37f30015e0cbf7bf94dff80a3aa590c96792d97dc1028d57d8d",
+            "probability_sha256": "e00aef42539ef70a824b422fcec86e19932ee6a526a0260561e5d251a02c791b"
+          }
+        },
+        "frames": 142536
+      },
+      {
+        "cell": {
+          "source": "sportec",
+          "match": "J03WOY",
+          "view": "feed_like",
+          "replicate": "corrupt_2"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib",
+        "inputs_labels_record_sha256": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_2.npz",
+        "candidate_ensemble_sha256": "b4793ecc13a3b61b593b4d04b26735aaff99e9b6b08f77ce0132ff02dcb9830c",
+        "candidate_probability_sha256": "486c0af854fc28d35ce2cbb7a7149712fef67f0cd792dcf1c60ac78aa0c78bdf",
+        "candidate_prediction_sha256": "a52616ca91035eedb01c42e9c7c420a2c0a31b239233bedca12c0d7e54ae57da",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2026.npz",
+            "sha256": "120f4e085a17cabf8c3fb07249097427c661183a14c9cf4dfd28a5508f3489fd",
+            "probability_sha256": "d672adea99d2f2ee8b5578aae436dd739563e95ce37c92e4297d26b489c6f025"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2027.npz",
+            "sha256": "f2ae1ff85a3d46726788b0df7d6191b10ffe4e22cf851d592fef476e3c18f65a",
+            "probability_sha256": "4c3600b71b998956c4ed07cb85bc27df1e98250b3bca78eed603d9066dbdf44e"
+          }
+        },
+        "frames": 142536
+      },
+      {
+        "cell": {
+          "source": "metrica",
+          "match": "metrica_3",
+          "view": "clean",
+          "replicate": "clean"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib",
+        "inputs_labels_record_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_metrica_3_clean_clean.npz",
+        "candidate_ensemble_sha256": "44f52ad86adb70235331dde58ba952f656a7f3253c55b2794d9db282e8d66c59",
+        "candidate_probability_sha256": "26557ba38eb5bb62da91e76ec240542434acef54482f5381c2cc08a576d1c755",
+        "candidate_prediction_sha256": "41ff26b3c1e6c08649e9d9ab0ebefa1fa9c44301ce3cb01d8d05dfb2e45b8d85",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2026.npz",
+            "sha256": "2c41bd8205df7ad082a44ab8caee72079f0ebf3ac3ce5e7e9a93a265b8dc807b",
+            "probability_sha256": "ab33450ff7e13eb893da38774046ab77b20bae93959a5574bb7a3fce5933483d"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2027.npz",
+            "sha256": "61de5f13db9b0bee2bbdecf37eb8803e5cf52e4e8a686f8d5ebaf775d386b865",
+            "probability_sha256": "8fa0a8a0d0dd9feb7f32965584cc4c45e72aefcc5325af3f45b4a1dbaa092384"
+          }
+        },
+        "frames": 143761
+      },
+      {
+        "cell": {
+          "source": "metrica",
+          "match": "metrica_3",
+          "view": "feed_like",
+          "replicate": "corrupt_1"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib",
+        "inputs_labels_record_sha256": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_1.npz",
+        "candidate_ensemble_sha256": "c1226e367d31aeeb0951f14970e39f3a6174cb0970ef2b6b4a3ad3ad2d7dcf99",
+        "candidate_probability_sha256": "581940abffbea1f3bcee2a7b28654f5083cd3913969f0cfe44231909fd22e0af",
+        "candidate_prediction_sha256": "6a68279894fea55bd83a9ee1129ccd8f28ba6359e3227573ed550acc6902cf22",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2026.npz",
+            "sha256": "e3bb185860c2840b9248c99384baf0902d18ed12037b2665d88dcc50423b8304",
+            "probability_sha256": "9bc72c1ac8391938998a346970d58e80cb6291d8143daa769bccf173d2c4dce9"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2027.npz",
+            "sha256": "6d015cf2bc7ba1e913ced2cb79429377806c8f5a4f4ac139f9b3228053f514c4",
+            "probability_sha256": "2db20a15b86ce6851672512dfc9dd2a6f6b5af71d2c88d88fdbd4b1f5a2d18f9"
+          }
+        },
+        "frames": 143761
+      },
+      {
+        "cell": {
+          "source": "metrica",
+          "match": "metrica_3",
+          "view": "feed_like",
+          "replicate": "corrupt_2"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib",
+        "inputs_labels_record_sha256": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_2.npz",
+        "candidate_ensemble_sha256": "781831c309b14b4bb75568eeeb2bfa281efb9f5227fc90e4f82a126669794abd",
+        "candidate_probability_sha256": "95af0d026bddf4075fd6b36cf88dd6fd393ee9d85d33f165e1c6773868760d7b",
+        "candidate_prediction_sha256": "318bf1248863c4e5add1c44044ec10e8422c304740b05058ff1a20896f3b21e4",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2026.npz",
+            "sha256": "dd66a6990478bb3495f43916606b88c7710184357dd41c0e220672f67c008f68",
+            "probability_sha256": "f8eeca73dba8caf3d9b0172da59188d5353f487107f986fe96b8a1b10827282d"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2027.npz",
+            "sha256": "751a1f56d3b52ce57a94a15c99a71bc9a47289e7cc08b3621b8737e7fc146ac9",
+            "probability_sha256": "41c5522501a6a9b7fe37f5f25d2032dd0848e842a124151457b458d245c830ff"
+          }
+        },
+        "frames": 143761
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1996435",
+          "view": "clean",
+          "replicate": "clean"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib",
+        "inputs_labels_record_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_clean_clean.npz",
+        "candidate_ensemble_sha256": "885e9fb57687ed7832b683dc39ec67e3ebf8d6db848fc745aae19bf888805234",
+        "candidate_probability_sha256": "89187c31666f23a2d86f4d3885c76a3a536f7fdfe17ea7186b7ede9fa1964bc9",
+        "candidate_prediction_sha256": "5c00072274044daed453ba37f23b96ea8a53e770deacf4c27c2394ce5f72a92d",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2026.npz",
+            "sha256": "34ccb6db2ca675b6572afeb7bf9bb5c1c89dba626d834f2d8ff308f768d32b63",
+            "probability_sha256": "912f1969423396f0023169cc22a84fd058511b5d2efbba2299ffc72eb237c5ee"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2027.npz",
+            "sha256": "cb853d3ab2a8e9b304c90db4b282f76d23b5b0bafac752bac7db7d70e74caa11",
+            "probability_sha256": "9fa8d2689b1b4f8f7d9c781b9b2ce229b282138ef3149a0ae2daae7cb65617d4"
+          }
+        },
+        "frames": 57621
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1996435",
+          "view": "feed_like",
+          "replicate": "corrupt_1"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib",
+        "inputs_labels_record_sha256": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_1.npz",
+        "candidate_ensemble_sha256": "2a0638ba69eb45ee401608f5f2fedcbb488a11760c0b21564615f8014cfdc8b9",
+        "candidate_probability_sha256": "fdd7f16701c9b056d099b3246d3cf128af5735c043a365cdf47eacb9cbfa5020",
+        "candidate_prediction_sha256": "73c5c1c5908c83297a32d59d5725697930047ea143f913bb7dce4130913d97bf",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2026.npz",
+            "sha256": "61a2615709343478cc3c21edb0384430aadef4226a0de116afe17e883af81326",
+            "probability_sha256": "f49726d021cd41ee819b6df6f21f4ebda0f1adad745d730d5264c30526b93410"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2027.npz",
+            "sha256": "f1af48b9376d241881279e0011d33aba9243e8f35708dd8c9005836d4a0dcb70",
+            "probability_sha256": "a2cc8d8e1e1c63b850dde7594c814b842843fa09fbe8dc2c3730a939feebb54d"
+          }
+        },
+        "frames": 57621
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1996435",
+          "view": "feed_like",
+          "replicate": "corrupt_2"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib",
+        "inputs_labels_record_sha256": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_2.npz",
+        "candidate_ensemble_sha256": "acfc20adbcd4afb5dac45e2f289fe3032a9a12737f0168daddc4ff6128829112",
+        "candidate_probability_sha256": "8ea186e5497458d8f132c7c90a4531149840b89b607910e4f2ebd13e2b51f037",
+        "candidate_prediction_sha256": "a75cc83f075c1eab8491fe6948c062af8fc171262bb16cdd9c8f91175444a9bb",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2026.npz",
+            "sha256": "251e1563f4d93f9f40f682bc173ed7999c43022b0d9135b7230b0b3f88b92ec3",
+            "probability_sha256": "662cccddc86b49cc7454591a5270cd49c429de19a5ca9b1dd2b6f51752dc0f4d"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2027.npz",
+            "sha256": "f8390143ed51c16e2189ea49e370b4796d6f5782872510a53b0c1b550ceaa8e2",
+            "probability_sha256": "e99d3282aa8ba25c8d0ab14fdd48858b06277ebb6825cc586c8a6fa002f1e054"
+          }
+        },
+        "frames": 57621
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1996436",
+          "view": "clean",
+          "replicate": "clean"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib",
+        "inputs_labels_record_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_clean_clean.npz",
+        "candidate_ensemble_sha256": "06416813dc8498a384bc92fe6de95aa38b680cf435ad8b09e5aaba40ef14bb2d",
+        "candidate_probability_sha256": "0e4601f6a4a6f1d3cc1f9d7ae37a9287045d49afcbbcd8d812568de2520b5ccc",
+        "candidate_prediction_sha256": "bb92ee1382a126233037f7b40137c246c1cdc209bc72d236831e93478d7a868d",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2026.npz",
+            "sha256": "053a6722b290bffc97faec796ba3f0c251b1270fc458792c7a14ad0554e28ab3",
+            "probability_sha256": "413fb4be602bfe4bbd5610548196976482a358d912f42ff116b1edf26c49be49"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2027.npz",
+            "sha256": "f0acddab4ab9c7ec2f1e8a7b13cabedcd54ce463a52b8296d09ce7a598cc032c",
+            "probability_sha256": "6c86c318fcb9835cd9266a38aaabcc62d937cbf00efde965e10e7efb4b0849be"
+          }
+        },
+        "frames": 60280
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1996436",
+          "view": "feed_like",
+          "replicate": "corrupt_1"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib",
+        "inputs_labels_record_sha256": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_1.npz",
+        "candidate_ensemble_sha256": "fb510c24aa8c0a017ba18c0cc2e4a0dc66875d60d0676d406ed123d3fbb1362e",
+        "candidate_probability_sha256": "b3258ad3588dc8a3d208a4d4466d9858fdf60c2dbf0258762231e6624dbf69f0",
+        "candidate_prediction_sha256": "5c14a699add240470b1672658eaa05310b13b46bd49d973d9c3cc5b9a50ed37e",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2026.npz",
+            "sha256": "a6d58d92c8e735782ffd1cb342ed7394e6a960494a8db0d221bd1be0d6caf236",
+            "probability_sha256": "ea089879674520dfa5454e7c3cf13fc295ffb7604997af9224e253cd9e44c895"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2027.npz",
+            "sha256": "53500f4ff20e3f2da405feac30d43929cb13b9917307620e5c33fdcd5bb1f2f6",
+            "probability_sha256": "391f218c8d1c8c377c92e269549f0e79c28d27b61141e417f9f86e1dd824bcba"
+          }
+        },
+        "frames": 60280
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1996436",
+          "view": "feed_like",
+          "replicate": "corrupt_2"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib",
+        "inputs_labels_record_sha256": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_2.npz",
+        "candidate_ensemble_sha256": "836b72c2b981201655d7edcbb84b9784864439419ccfe89a89b6a5d3adc2c6d7",
+        "candidate_probability_sha256": "50ac97226bc592cea7780a5ae7b72dc8e9c61beb8d91bc96f9726f9deaf1f28c",
+        "candidate_prediction_sha256": "83b2174b267cde31458dfdebd6a01c22af0e4796aea7156827bd557a3f770cf1",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2026.npz",
+            "sha256": "0e54444f0e28a3018a6818ddc74a45731f27027e956ddc033667ac110e3c3dbf",
+            "probability_sha256": "387eed6f1ee7cd4db3b21c6afaecc374d88453e7d57538bcb9ff778c2aff0317"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2027.npz",
+            "sha256": "576c9e9d3e1be6ce2a55f2c5b68061f9e550c854815a14dfc9eec3782665f619",
+            "probability_sha256": "b77faaf48f548481176adb055916aa82628d733d9098daf91fec1bfafb3bd5e4"
+          }
+        },
+        "frames": 60280
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_2006229",
+          "view": "clean",
+          "replicate": "clean"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+        "inputs_labels_record_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_clean_clean.npz",
+        "candidate_ensemble_sha256": "a595b03e32690afd4c58d7139c14f17d17fd3dde76c3016a0b354a420e6ae7a9",
+        "candidate_probability_sha256": "103779a344bab6966c18cf5f76e92040aa93b75100d133d33709ee49b471020e",
+        "candidate_prediction_sha256": "921d180a9db014645cc9dfae48b5c964c655f68623c2f0c229d08b18add0900b",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2026.npz",
+            "sha256": "d262c27c0b20d5c49e7e0efcc0868f9d447f2fe03245d9a7b82bf4bbb0ead02b",
+            "probability_sha256": "c8ac92a9f5befbca9a9dfafad780364ca4f8b99e4ee33e0f9b9afb8d26c16833"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2027.npz",
+            "sha256": "259e6f12b53f9f03abd9ec3f8da534fe32fb0e5678cfc9e457933fc8a60cd5c4",
+            "probability_sha256": "848b7b273fc0840375f9bc18cbc0ddf5d79fd17c309b27c21ff4f504e24cc1f2"
+          }
+        },
+        "frames": 59270
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_2006229",
+          "view": "feed_like",
+          "replicate": "corrupt_1"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib",
+        "inputs_labels_record_sha256": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_1.npz",
+        "candidate_ensemble_sha256": "e0fddb4110601d210cddff190d9c3f3e1ed8e1b2d014127208972542fdb5782f",
+        "candidate_probability_sha256": "962b81ea44b9b7d0a1b78a1ea1919a72b11e4ebbe33b47e87bf85c7b2984a986",
+        "candidate_prediction_sha256": "0c54516d0534b4c9935433f3a0ba7a78c82d22266601508becae5df6db0884dd",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2026.npz",
+            "sha256": "392f68ddb47b09159b3c61f5dbdc7485420fee56c1b0575351a75d9bde41dc62",
+            "probability_sha256": "323e1c08f6ab13a7913c05f31a58000af74751b690ba42882d6fe71115372d47"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2027.npz",
+            "sha256": "7b61a85535fc67bbc9272d6bab6994fe628f94c496d601edd9a018a10eb2f0b9",
+            "probability_sha256": "048fa3452447ce270afa360659d8bea891f6453cb47d253753c9de173f624ff6"
+          }
+        },
+        "frames": 59270
+      },
+      {
+        "cell": {
+          "source": "skillcorner",
+          "match": "skillcorner_had_2006229",
+          "view": "feed_like",
+          "replicate": "corrupt_2"
+        },
+        "inputs_labels_record": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib",
+        "inputs_labels_record_sha256": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d",
+        "candidate_ensemble": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_2.npz",
+        "candidate_ensemble_sha256": "747889bced4376b66a7494ce862efc1dc3ddd749ef0d6245013eba5573a21776",
+        "candidate_probability_sha256": "c15b8e3467c2146642d458fd828016a85a87d1ce38eca709a2227ffafa99753a",
+        "candidate_prediction_sha256": "d18cf442bdd2d7f7f305f9c0582c863c7ff53f63b464d16257f4f4bb63e25530",
+        "member_probabilities": {
+          "2026": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2026.npz",
+            "sha256": "c2ef3a1cc1b9c71f985748c2f7a24684350e518be5ea37b2cd0c96075afa7116",
+            "probability_sha256": "f99166c4959e709c4fa95ddfc865c6225f7fadaa5f43d80126179c2f42f704ce"
+          },
+          "2027": {
+            "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2027.npz",
+            "sha256": "97799791bf1aec78cf6d71d853b53b9750b02b6827072dba8f2a3aabd636cc2b",
+            "probability_sha256": "184e2be9415e1f8e43cab1a0abb86517fa94165d72a1004c3ad0f3ad6f449265"
+          }
+        },
+        "frames": 59270
+      }
+    ],
+    "provider_folds": {
+      "sportec": {
+        "fold": {
+          "schema": 1,
+          "manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+          "fold": "leave_out_sportec",
+          "train": [
+            {
+              "match": "metrica_1",
+              "group_id": "metrica_1",
+              "path": "data/external/processed/metrica_1.npz",
+              "sha256": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+              "prior_exposure": "previously_used_for_training",
+              "source": "metrica",
+              "role": "train"
+            },
+            {
+              "match": "metrica_2",
+              "group_id": "metrica_2",
+              "path": "data/external/processed/metrica_2.npz",
+              "sha256": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+              "prior_exposure": "previously_used_for_training",
+              "source": "metrica",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1874553",
+              "group_id": "skillcorner_had_1874553",
+              "path": "data/external/processed/skillcorner_had_1874553.npz",
+              "sha256": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1886347",
+              "group_id": "skillcorner_had_1886347",
+              "path": "data/external/processed/skillcorner_had_1886347.npz",
+              "sha256": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1899585",
+              "group_id": "skillcorner_had_1899585",
+              "path": "data/external/processed/skillcorner_had_1899585.npz",
+              "sha256": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1925299",
+              "group_id": "skillcorner_had_1925299",
+              "path": "data/external/processed/skillcorner_had_1925299.npz",
+              "sha256": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1927964",
+              "group_id": "skillcorner_had_1927964",
+              "path": "data/external/processed/skillcorner_had_1927964.npz",
+              "sha256": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1953632",
+              "group_id": "skillcorner_had_1953632",
+              "path": "data/external/processed/skillcorner_had_1953632.npz",
+              "sha256": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1959846",
+              "group_id": "skillcorner_had_1959846",
+              "path": "data/external/processed/skillcorner_had_1959846.npz",
+              "sha256": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1986691",
+              "group_id": "skillcorner_had_1986691",
+              "path": "data/external/processed/skillcorner_had_1986691.npz",
+              "sha256": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            }
+          ],
+          "selection": [
+            {
+              "match": "J03WOY",
+              "group_id": "J03WOY",
+              "path": "data/external_audit/sportec/processed/J03WOY.npz",
+              "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+              "prior_exposure": "previously_evaluated_development_match",
+              "source": "sportec",
+              "role": "selection"
+            }
+          ],
+          "interpretation": "Unseen-source transfer on historically evaluated development matches",
+          "normalization": "Fit on these training records only, separately for every learned component",
+          "evidence": "Historical development; splitting does not create fresh confirmation"
+        },
+        "train_cache_sha256": {
+          "metrica_1": "2445e56b7704d2669080552aac0415803c8393e3b901fe7c0696446ecbfb01ba",
+          "metrica_2": "e5189a5ffdcc6142aced86d47612f9f4aad29399052cf8eddeb172b75c98e0bb",
+          "skillcorner_had_1874553": "929fda060548385596ee47db27346e315759870ca21ed8648460fc92e09280fa",
+          "skillcorner_had_1886347": "baff2f2feabd1c43b7c82a6d93ef25d7fe1d4d1049ac7603c3e05efc3f542249",
+          "skillcorner_had_1899585": "ace42e94689a4d9ebcae21a0ecb40358d33cc831151766aaf4f9fe24b09d5c6b",
+          "skillcorner_had_1925299": "d10c99821d9944170e0587a50a26770326994c7e9465465eaa0bf30e3c979f7a",
+          "skillcorner_had_1927964": "6a884b98a613351e0eefd1935a5704401a26f18892be7598943159c2ace44bbf",
+          "skillcorner_had_1953632": "7c104dee9fdbb57bc4dc4a23c1783f7bd0455a1101b70681bd0ad9cb39817cc7",
+          "skillcorner_had_1959846": "0bece376878c1b0aadc98cfd24a2e08c140aea2b287ea912b2181a4db48965a4",
+          "skillcorner_had_1986691": "6be26d49dd20bc5e69f7c033954c7e22de98e2cc2c2e5b398f176ba786ba4ae8"
+        },
+        "training_sources": [
+          "metrica",
+          "skillcorner"
+        ],
+        "training_matches": [
+          "metrica_1",
+          "metrica_2",
+          "skillcorner_had_1874553",
+          "skillcorner_had_1886347",
+          "skillcorner_had_1899585",
+          "skillcorner_had_1925299",
+          "skillcorner_had_1927964",
+          "skillcorner_had_1953632",
+          "skillcorner_had_1959846",
+          "skillcorner_had_1986691"
+        ],
+        "heldout_provider_excluded": "sportec",
+        "base_prediction_policy": "Apply the exact two frozen without_<heldout provider> combined checkpoints to that fold's TRAIN records, then arithmetic-average their full H/A/D probabilities. Train-record base predictions are in-sample for the backbone; all learned components exclude the held-out evaluation provider.",
+        "checkpoint_facts": {
+          "checkpoint_manifest_sha256": "27a6ebad6d2fa21a23711d0be40419c4999e1d8d9e75f805e85d40209e8c65c8",
+          "backbone_declaration_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+          "models": {
+            "2026": {
+              "model": "experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+              "sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+              "fit_receipt": "experiments/objective_alignment_v1/without_sportec_combined_2026.json",
+              "fit_receipt_sha256": "acfa6fbf53f2f15ad7fc1768c1d8e4b74cea64498611fb1896a4aedb2d818836"
+            },
+            "2027": {
+              "model": "experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+              "sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+              "fit_receipt": "experiments/objective_alignment_v1/without_sportec_combined_2027.json",
+              "fit_receipt_sha256": "defb4eec4cb707eb3641c058842d066bcac613fae78c0197b5e1574cb3c8ab4d"
+            }
+          }
+        }
+      },
+      "metrica": {
+        "fold": {
+          "schema": 1,
+          "manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+          "fold": "leave_out_metrica",
+          "train": [
+            {
+              "match": "J03WMX",
+              "group_id": "J03WMX",
+              "path": "data/external_audit/sportec/processed/J03WMX.npz",
+              "sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+              "prior_exposure": "previously_used_for_training",
+              "source": "sportec",
+              "role": "train"
+            },
+            {
+              "match": "J03WN1",
+              "group_id": "J03WN1",
+              "path": "data/external_audit/sportec/processed/J03WN1.npz",
+              "sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+              "prior_exposure": "previously_used_for_training",
+              "source": "sportec",
+              "role": "train"
+            },
+            {
+              "match": "J03WOH",
+              "group_id": "J03WOH",
+              "path": "data/external_audit/sportec/processed/J03WOH.npz",
+              "sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+              "prior_exposure": "previously_used_for_training",
+              "source": "sportec",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1874553",
+              "group_id": "skillcorner_had_1874553",
+              "path": "data/external/processed/skillcorner_had_1874553.npz",
+              "sha256": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1886347",
+              "group_id": "skillcorner_had_1886347",
+              "path": "data/external/processed/skillcorner_had_1886347.npz",
+              "sha256": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1899585",
+              "group_id": "skillcorner_had_1899585",
+              "path": "data/external/processed/skillcorner_had_1899585.npz",
+              "sha256": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1925299",
+              "group_id": "skillcorner_had_1925299",
+              "path": "data/external/processed/skillcorner_had_1925299.npz",
+              "sha256": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1927964",
+              "group_id": "skillcorner_had_1927964",
+              "path": "data/external/processed/skillcorner_had_1927964.npz",
+              "sha256": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1953632",
+              "group_id": "skillcorner_had_1953632",
+              "path": "data/external/processed/skillcorner_had_1953632.npz",
+              "sha256": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1959846",
+              "group_id": "skillcorner_had_1959846",
+              "path": "data/external/processed/skillcorner_had_1959846.npz",
+              "sha256": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            },
+            {
+              "match": "skillcorner_had_1986691",
+              "group_id": "skillcorner_had_1986691",
+              "path": "data/external/processed/skillcorner_had_1986691.npz",
+              "sha256": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+              "prior_exposure": "previously_used_for_training",
+              "source": "skillcorner",
+              "role": "train"
+            }
+          ],
+          "selection": [
+            {
+              "match": "metrica_3",
+              "group_id": "metrica_3",
+              "path": "data/external/processed/metrica_3.npz",
+              "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+              "prior_exposure": "previously_evaluated_development_match",
+              "source": "metrica",
+              "role": "selection"
+            }
+          ],
+          "interpretation": "Unseen-source transfer on historically evaluated development matches",
+          "normalization": "Fit on these training records only, separately for every learned component",
+          "evidence": "Historical development; splitting does not create fresh confirmation"
+        },
+        "train_cache_sha256": {
+          "J03WMX": "ab75cb7199d52eab7fd60fdd34ce29ded919bb77b6bf1c301fd90d4b6368dd23",
+          "J03WN1": "a6494dd9753f19e3e4a2cea45bde0081b2586ed8d1657bd7e3732de3e5722a5b",
+          "J03WOH": "3d2fb5068e459905c82e2319415de7181e614f84b7f11e5fea50bea0c7275946",
+          "skillcorner_had_1874553": "929fda060548385596ee47db27346e315759870ca21ed8648460fc92e09280fa",
+          "skillcorner_had_1886347": "baff2f2feabd1c43b7c82a6d93ef25d7fe1d4d1049ac7603c3e05efc3f542249",
+          "skillcorner_had_1899585": "ace42e94689a4d9ebcae21a0ecb40358d33cc831151766aaf4f9fe24b09d5c6b",
+          "skillcorner_had_1925299": "d10c99821d9944170e0587a50a26770326994c7e9465465eaa0bf30e3c979f7a",
+          "skillcorner_had_1927964": "6a884b98a613351e0eefd1935a5704401a26f18892be7598943159c2ace44bbf",
+          "skillcorner_had_1953632": "7c104dee9fdbb57bc4dc4a23c1783f7bd0455a1101b70681bd0ad9cb39817cc7",
+          "skillcorner_had_1959846": "0bece376878c1b0aadc98cfd24a2e08c140aea2b287ea912b2181a4db48965a4",
+          "skillcorner_had_1986691": "6be26d49dd20bc5e69f7c033954c7e22de98e2cc2c2e5b398f176ba786ba4ae8"
+        },
+        "training_sources": [
+          "skillcorner",
+          "sportec"
+        ],
+        "training_matches": [
+          "J03WMX",
+          "J03WN1",
+          "J03WOH",
+          "skillcorner_had_1874553",
+          "skillcorner_had_1886347",
+          "skillcorner_had_1899585",
+          "skillcorner_had_1925299",
+          "skillcorner_had_1927964",
+          "skillcorner_had_1953632",
+          "skillcorner_had_1959846",
+          "skillcorner_had_1986691"
+        ],
+        "heldout_provider_excluded": "metrica",
+        "base_prediction_policy": "Apply the exact two frozen without_<heldout provider> combined checkpoints to that fold's TRAIN records, then arithmetic-average their full H/A/D probabilities. Train-record base predictions are in-sample for the backbone; all learned components exclude the held-out evaluation provider.",
+        "checkpoint_facts": {
+          "checkpoint_manifest_sha256": "27a6ebad6d2fa21a23711d0be40419c4999e1d8d9e75f805e85d40209e8c65c8",
+          "backbone_declaration_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+          "models": {
+            "2026": {
+              "model": "experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+              "sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+              "fit_receipt": "experiments/objective_alignment_v1/without_metrica_combined_2026.json",
+              "fit_receipt_sha256": "45f3e4d6a62b9b2e122c1dca5a82d638b6ed7570e3a67645cf1199f420828ce3"
+            },
+            "2027": {
+              "model": "experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+              "sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+              "fit_receipt": "experiments/objective_alignment_v1/without_metrica_combined_2027.json",
+              "fit_receipt_sha256": "76c20b89a7fee43bc1e518d64d86bd0cd2b1e5f87e976903862c80852b65e770"
+            }
+          }
+        }
+      },
+      "skillcorner": {
+        "fold": {
+          "schema": 1,
+          "manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+          "fold": "leave_out_skillcorner",
+          "train": [
+            {
+              "match": "J03WMX",
+              "group_id": "J03WMX",
+              "path": "data/external_audit/sportec/processed/J03WMX.npz",
+              "sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+              "prior_exposure": "previously_used_for_training",
+              "source": "sportec",
+              "role": "train"
+            },
+            {
+              "match": "J03WN1",
+              "group_id": "J03WN1",
+              "path": "data/external_audit/sportec/processed/J03WN1.npz",
+              "sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+              "prior_exposure": "previously_used_for_training",
+              "source": "sportec",
+              "role": "train"
+            },
+            {
+              "match": "J03WOH",
+              "group_id": "J03WOH",
+              "path": "data/external_audit/sportec/processed/J03WOH.npz",
+              "sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+              "prior_exposure": "previously_used_for_training",
+              "source": "sportec",
+              "role": "train"
+            },
+            {
+              "match": "metrica_1",
+              "group_id": "metrica_1",
+              "path": "data/external/processed/metrica_1.npz",
+              "sha256": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+              "prior_exposure": "previously_used_for_training",
+              "source": "metrica",
+              "role": "train"
+            },
+            {
+              "match": "metrica_2",
+              "group_id": "metrica_2",
+              "path": "data/external/processed/metrica_2.npz",
+              "sha256": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+              "prior_exposure": "previously_used_for_training",
+              "source": "metrica",
+              "role": "train"
+            }
+          ],
+          "selection": [
+            {
+              "match": "skillcorner_had_1996435",
+              "group_id": "skillcorner_had_1996435",
+              "path": "data/external/processed/skillcorner_had_1996435.npz",
+              "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+              "prior_exposure": "previously_evaluated_development_match",
+              "source": "skillcorner",
+              "role": "selection"
+            },
+            {
+              "match": "skillcorner_had_1996436",
+              "group_id": "skillcorner_had_1996436",
+              "path": "data/external/processed/skillcorner_had_1996436.npz",
+              "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+              "prior_exposure": "previously_evaluated_development_match",
+              "source": "skillcorner",
+              "role": "selection"
+            },
+            {
+              "match": "skillcorner_had_2006229",
+              "group_id": "skillcorner_had_2006229",
+              "path": "data/external/processed/skillcorner_had_2006229.npz",
+              "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+              "prior_exposure": "previously_evaluated_development_match",
+              "source": "skillcorner",
+              "role": "selection"
+            }
+          ],
+          "interpretation": "Unseen-source transfer on historically evaluated development matches",
+          "normalization": "Fit on these training records only, separately for every learned component",
+          "evidence": "Historical development; splitting does not create fresh confirmation"
+        },
+        "train_cache_sha256": {
+          "J03WMX": "ab75cb7199d52eab7fd60fdd34ce29ded919bb77b6bf1c301fd90d4b6368dd23",
+          "J03WN1": "a6494dd9753f19e3e4a2cea45bde0081b2586ed8d1657bd7e3732de3e5722a5b",
+          "J03WOH": "3d2fb5068e459905c82e2319415de7181e614f84b7f11e5fea50bea0c7275946",
+          "metrica_1": "2445e56b7704d2669080552aac0415803c8393e3b901fe7c0696446ecbfb01ba",
+          "metrica_2": "e5189a5ffdcc6142aced86d47612f9f4aad29399052cf8eddeb172b75c98e0bb"
+        },
+        "training_sources": [
+          "metrica",
+          "sportec"
+        ],
+        "training_matches": [
+          "J03WMX",
+          "J03WN1",
+          "J03WOH",
+          "metrica_1",
+          "metrica_2"
+        ],
+        "heldout_provider_excluded": "skillcorner",
+        "base_prediction_policy": "Apply the exact two frozen without_<heldout provider> combined checkpoints to that fold's TRAIN records, then arithmetic-average their full H/A/D probabilities. Train-record base predictions are in-sample for the backbone; all learned components exclude the held-out evaluation provider.",
+        "checkpoint_facts": {
+          "checkpoint_manifest_sha256": "27a6ebad6d2fa21a23711d0be40419c4999e1d8d9e75f805e85d40209e8c65c8",
+          "backbone_declaration_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+          "models": {
+            "2026": {
+              "model": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+              "sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+              "fit_receipt": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.json",
+              "fit_receipt_sha256": "4c994e05feee5a28943c2d6357a58b5cdf4cb565d2a5c9ea6f3bfda012b4a26c"
+            },
+            "2027": {
+              "model": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+              "sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+              "fit_receipt": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.json",
+              "fit_receipt_sha256": "189a2ffdb24653d5d4d971575664d3813f0241627765997d4a8cb4dabac097f1"
+            }
+          }
+        }
+      }
+    },
+    "historical_exposure": "All five evaluation matches are previously exposed development data; Metrica/SkillCorner labels are event-derived silver; feed_like is synthetic."
+  },
+  "evaluation": {
+    "cells": 15,
+    "views": [
+      "clean",
+      "feed_like"
+    ],
+    "stress_replicates": [
+      "corrupt_1",
+      "corrupt_2"
+    ],
+    "primary": "official greedy H/A spell F1, mean IoU 0.3/0.4/0.5/0.6/0.7",
+    "tie_break": "macro F1 on exact spell ties",
+    "auxiliary": "0.70 spell + 0.30 macro; not a ranking metric",
+    "aggregation": "average feed_like replicates within match; matches within provider; providers equally",
+    "guardrails": {
+      "clean_spell": "candidate >= exact cost-3 baseline + 0.01",
+      "feed_like_spell": "candidate >= exact cost-3 baseline - 0.01",
+      "each_provider_clean_macro": "candidate delta >= -0.02",
+      "each_provider_clean_d_f1": "candidate delta >= -0.02"
+    },
+    "diagnostics": [
+      "both frozen component seeds and actual probability ensemble",
+      "all five spell IoUs",
+      "under-3s recall",
+      "false extra spells",
+      "fragmented references",
+      "merged references",
+      "D precision/recall",
+      "graded-edge censoring",
+      "complete-boundary timing",
+      "edge-cost distribution"
+    ],
+    "public_labels": "Never read, score, select or tune on organizer public labels; no organizer scoring gate is opened.",
+    "automatic_promotion": false
+  },
+  "budgets": {
+    "fits": 3,
+    "fit_method": "CPU L2 logistic only; no GRU refits",
+    "evaluation_cells": 15,
+    "extra_arms": 0,
+    "sweeps": 0
+  },
+  "source_sha256": {
+    "experiments/turnover_decoder.py": "841a5ec57810e6df71fcaffd2ac40cade3a4bbfe71339561e4029e18daa7dac6",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+    "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+    "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+    "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "experiments/baseline_manifest.json": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "experiments/model_decision_policy.json": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+    "experiments/tests/test_turnover_decoder.py": "916e96025fd73d99fd99051760aa640429bdfa50869fc0498e86aa81d4205e11"
+  },
+  "dependency_versions": {
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3",
+    "torch": "2.8.0+cpu"
+  },
+  "data_root": "/workspace/more-than-a-hack-2027/data",
+  "output_directory": "experiments/turnover_decoder_v1"
+}

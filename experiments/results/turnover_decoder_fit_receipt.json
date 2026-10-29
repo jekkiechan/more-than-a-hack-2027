@@ -1,0 +1,740 @@
+{
+  "study_id": "turnover_decoder_v1",
+  "declaration_sha256": "8a5a125cfdad8073968af389ae631334b451b38413a6c0e4a58d1b6f9b09cbcf",
+  "source_sha256": {
+    "experiments/turnover_decoder.py": "841a5ec57810e6df71fcaffd2ac40cade3a4bbfe71339561e4029e18daa7dac6",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+    "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+    "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+    "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "experiments/baseline_manifest.json": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "experiments/model_decision_policy.json": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+    "experiments/tests/test_turnover_decoder.py": "916e96025fd73d99fd99051760aa640429bdfa50869fc0498e86aa81d4205e11"
+  },
+  "fitted_utc": "2026-10-29T02:55:10.969624+00:00",
+  "fit_count": 3,
+  "heads": [
+    {
+      "provider_excluded": "sportec",
+      "path": "experiments/turnover_decoder_v1/head_sportec.joblib",
+      "sha256": "122c1b420bd720fbf1a70998aeb62e3b21aaaed3d6d9d408510b41cb1f679f53",
+      "fit": {
+        "sources": [
+          "metrica",
+          "skillcorner"
+        ],
+        "matches": [
+          "metrica_1",
+          "metrica_2",
+          "skillcorner_had_1874553",
+          "skillcorner_had_1886347",
+          "skillcorner_had_1899585",
+          "skillcorner_had_1925299",
+          "skillcorner_had_1927964",
+          "skillcorner_had_1953632",
+          "skillcorner_had_1959846",
+          "skillcorner_had_1986691"
+        ],
+        "directed_edges": 260156,
+        "directed_events": 1775,
+        "source_match_balanced_weights": true,
+        "weighted_natural_prevalence": 0.006912670008792454,
+        "class_balancing": false,
+        "event_undersampling": false,
+        "target": "exact directed H/A change across adjacent eligible native-checked 5 Hz rows",
+        "training_is_in_sample_for_backbone": true,
+        "training_backbone_provider_exclusion": "sportec",
+        "n_iter": 13,
+        "converged": true
+      },
+      "training_cache_sha256": {
+        "metrica_1": "2445e56b7704d2669080552aac0415803c8393e3b901fe7c0696446ecbfb01ba",
+        "metrica_2": "e5189a5ffdcc6142aced86d47612f9f4aad29399052cf8eddeb172b75c98e0bb",
+        "skillcorner_had_1874553": "929fda060548385596ee47db27346e315759870ca21ed8648460fc92e09280fa",
+        "skillcorner_had_1886347": "baff2f2feabd1c43b7c82a6d93ef25d7fe1d4d1049ac7603c3e05efc3f542249",
+        "skillcorner_had_1899585": "ace42e94689a4d9ebcae21a0ecb40358d33cc831151766aaf4f9fe24b09d5c6b",
+        "skillcorner_had_1925299": "d10c99821d9944170e0587a50a26770326994c7e9465465eaa0bf30e3c979f7a",
+        "skillcorner_had_1927964": "6a884b98a613351e0eefd1935a5704401a26f18892be7598943159c2ace44bbf",
+        "skillcorner_had_1953632": "7c104dee9fdbb57bc4dc4a23c1783f7bd0455a1101b70681bd0ad9cb39817cc7",
+        "skillcorner_had_1959846": "0bece376878c1b0aadc98cfd24a2e08c140aea2b287ea912b2181a4db48965a4",
+        "skillcorner_had_1986691": "6be26d49dd20bc5e69f7c033954c7e22de98e2cc2c2e5b398f176ba786ba4ae8"
+      },
+      "checkpoint_facts": {
+        "checkpoint_manifest_sha256": "27a6ebad6d2fa21a23711d0be40419c4999e1d8d9e75f805e85d40209e8c65c8",
+        "backbone_declaration_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+        "models": {
+          "2026": {
+            "model": "experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+            "sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+            "fit_receipt": "experiments/objective_alignment_v1/without_sportec_combined_2026.json",
+            "fit_receipt_sha256": "acfa6fbf53f2f15ad7fc1768c1d8e4b74cea64498611fb1896a4aedb2d818836"
+          },
+          "2027": {
+            "model": "experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+            "sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+            "fit_receipt": "experiments/objective_alignment_v1/without_sportec_combined_2027.json",
+            "fit_receipt_sha256": "defb4eec4cb707eb3641c058842d066bcac613fae78c0197b5e1574cb3c8ab4d"
+          }
+        }
+      },
+      "train_probability_facts": {
+        "metrica_1": {
+          "seed_probability_sha256": {
+            "2026": "9578b35cb888bc5bc9d399c4d02d33ee67833874191c061fdf0d691eb156b606",
+            "2027": "d27913318b9108e7839c5baf60c7a023ecbf4d35255e6bb5901c0240fd0aa1b7"
+          },
+          "ensemble_probability_sha256": "414ba7dff03f324396c3e2be74171698f7e357a512b4152a9419ec2b53a056c5",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "metrica_2": {
+          "seed_probability_sha256": {
+            "2026": "b217bf9226a260761bcdbd227087abfa541c7fc6c4fa5d492526b0549180e2f9",
+            "2027": "9c6b98a8a592f67610dfe67f529a22643a92827ae5f769ea359431110530aa41"
+          },
+          "ensemble_probability_sha256": "b82bea60573a3a7e67756852963aa36ea23a49789e2490f30fdd4bb38293434e",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "skillcorner_had_1874553": {
+          "seed_probability_sha256": {
+            "2026": "bda43ac6c561b6542f26947982d2f85c822f16758211eaccdeee2caf31240d7d",
+            "2027": "1a266784a080b20c6a7f3129d49ea75e43e7163504b85f21825bc572df2a15e2"
+          },
+          "ensemble_probability_sha256": "6e8d784a288116c47e764570c93e63f4dc7d0c476a76cca94859a7f9cf8ea8ec",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "skillcorner_had_1886347": {
+          "seed_probability_sha256": {
+            "2026": "b4eba97366fa06ddf6ab829fcbc5eb32b9167ec626fdcb0b8c521ad758a7d83d",
+            "2027": "a792a963c89363cb7913d279cc0f9d951a2e4a4fc08a0c859fcf27e8de796e45"
+          },
+          "ensemble_probability_sha256": "6841b32b333fa962c1228b902e125c8238f864c7c1c691423dc95d6417f403f8",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "skillcorner_had_1899585": {
+          "seed_probability_sha256": {
+            "2026": "a79b725dcd96a16166ddde09d5c7e08ba8d450274f38241cb3a8d6b1176cbbcd",
+            "2027": "39c0853f3a2139cdf9949fcdfb21e3062e0cb4974e978f9ef8670355951cb7ff"
+          },
+          "ensemble_probability_sha256": "8ff566bed7f7439e4c74bc8c19de64e8b1c99a64dd05d30db4c1eb8f520f412c",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "skillcorner_had_1925299": {
+          "seed_probability_sha256": {
+            "2026": "a6b387053273a6a200b3dfbbe9d6a45021424b53fb237198316c41c76accc3d2",
+            "2027": "6b32bb913807678f7cbe6f0afc1a054d6c281b0acf3b61d551ab82a6e8f29015"
+          },
+          "ensemble_probability_sha256": "effafcd92486acb6d09d394cb00f811d18160ab52cbd3412c68bf0161418ba52",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "skillcorner_had_1927964": {
+          "seed_probability_sha256": {
+            "2026": "48e039ea903f86ec0607362c97a8f74b124242339c70314cb5f161dd7dc318e7",
+            "2027": "76e5154a40946920150e4dc6015114b938b2428ca086feb755e24542f5cb3cc8"
+          },
+          "ensemble_probability_sha256": "07c204096f17c1867b835ac85a63ae0ac684b9451185d26bfbe541e9593141a7",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "skillcorner_had_1953632": {
+          "seed_probability_sha256": {
+            "2026": "662edb31ed14a92a713f334a2296dcc94b9f3777e5de713026467e2112d01ea1",
+            "2027": "7575114ad8947b358eae342f9b17185bb4d0fb9de916ea5e43747ef91f05cefa"
+          },
+          "ensemble_probability_sha256": "daa9d6d318bd18bd254531078cfd0229f921876eb60644cf9ad09332c4342335",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "skillcorner_had_1959846": {
+          "seed_probability_sha256": {
+            "2026": "ccebaffcba34f50918c1dc6bdb527f269921994cc0a60ecf53adbe6049025ff6",
+            "2027": "1293f432097b5ca3154a9ab91863a89145beed475b74dba96a7bd6441fc0cfe8"
+          },
+          "ensemble_probability_sha256": "2eb27a50a2c02e57d473b47b8f3c35e439aad0484a4d1868538c6c8f83da1ebc",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        },
+        "skillcorner_had_1986691": {
+          "seed_probability_sha256": {
+            "2026": "4679ca5cd782c36af83e71c747d6976433d203bfdc71c780512b8daf1feb7eea",
+            "2027": "7b8035c586aa995641a5ab5cbba38f6a39a4c3ca222acebf954f924eec4ef7c7"
+          },
+          "ensemble_probability_sha256": "96e2f1ad69a582fedbdf56a5e0a92ba69af18bb0f7cb867caaa30ed3990609ab",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "sportec"
+        }
+      },
+      "training_blocks": [
+        {
+          "source": "metrica",
+          "match": "metrica_1",
+          "eligible_intervals": 16805,
+          "directed_edges": 33610,
+          "directed_events": 251,
+          "full_y_sha256": "5c9a554ac7aa7a4bd81dde92a588a9b4ea694aef7837649b2686a60c87ea6bb7",
+          "full_period_sha256": "73d0f92f945a5055def5135bdc48d61fd72cf17bd1d79e2242d80967692671a9",
+          "record_x_sha256": "b46378c5e4ad6e829e2e04e3521ae3fa8b48668cec47624788b4a3f20925ffa9",
+          "ensemble_train_probability_sha256": "414ba7dff03f324396c3e2be74171698f7e357a512b4152a9419ec2b53a056c5"
+        },
+        {
+          "source": "metrica",
+          "match": "metrica_2",
+          "eligible_intervals": 16592,
+          "directed_edges": 33184,
+          "directed_events": 217,
+          "full_y_sha256": "c02c77bbb026c1fb901988ba115b80e32ebb47deb587efa4fbb0a15858081a2f",
+          "full_period_sha256": "49895c20fb98b9aac20a52c3c9eb3ec9119889bff715849d444d73423021ab24",
+          "record_x_sha256": "e5bdb4a8bd39a455c85c0a37db1f298554c389e4a89062e82f45ba50ecb90d80",
+          "ensemble_train_probability_sha256": "b82bea60573a3a7e67756852963aa36ea23a49789e2490f30fdd4bb38293434e"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1874553",
+          "eligible_intervals": 11994,
+          "directed_edges": 23988,
+          "directed_events": 165,
+          "full_y_sha256": "aa5db0324de5f55c34d541a52e026991a827a1381046fa5da94e500b8a1c7ece",
+          "full_period_sha256": "7b82b3673b61f375d32253565fa497606c3bf0f2069f301a5a3eedd28ffaaa8b",
+          "record_x_sha256": "f5547dd898d5d9b8dc028c518181a709b93ad5251dc02dfc0a4f7f0da9194fe1",
+          "ensemble_train_probability_sha256": "6e8d784a288116c47e764570c93e63f4dc7d0c476a76cca94859a7f9cf8ea8ec"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1886347",
+          "eligible_intervals": 11894,
+          "directed_edges": 23788,
+          "directed_events": 165,
+          "full_y_sha256": "00c002afbba778f220dc5a3bc1057ba09169c2d1d005057b08d44b89e1999417",
+          "full_period_sha256": "eef26ab3d160c12223a15d915c9c1ab1716be60d978dbe5c0776f206548f651a",
+          "record_x_sha256": "61850950882ec24c3fdf2fbbc203e389f581b03bcb93401fcf68810bb4ca28f6",
+          "ensemble_train_probability_sha256": "6841b32b333fa962c1228b902e125c8238f864c7c1c691423dc95d6417f403f8"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1899585",
+          "eligible_intervals": 9867,
+          "directed_edges": 19734,
+          "directed_events": 144,
+          "full_y_sha256": "5e9c4f6453e89cf4091333f42bee7fca7dd3c60e90131e88be4131d9c94883d7",
+          "full_period_sha256": "efe9e9d1d9e28de05615bdc00a059a24e4f5f8a7846656fe4829671ea75aa047",
+          "record_x_sha256": "62a53357e839596b76583d65e6db34bd64d2cad1bc48f92b91f0dc28752bc376",
+          "ensemble_train_probability_sha256": "8ff566bed7f7439e4c74bc8c19de64e8b1c99a64dd05d30db4c1eb8f520f412c"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1925299",
+          "eligible_intervals": 12272,
+          "directed_edges": 24544,
+          "directed_events": 175,
+          "full_y_sha256": "cdb5f4d4c29629cb96b6bddbabbcb706996be49d8756c5389166dcca079d5c7d",
+          "full_period_sha256": "8eab882e5b5a2a881b9c00dfa9ef3c02f521cf3fe1bdf30ae8caff4ac993567e",
+          "record_x_sha256": "065ecf44fd28bc5e26df177a2fe121762fc361b9f1d3af53f3a4acd5608a252e",
+          "ensemble_train_probability_sha256": "effafcd92486acb6d09d394cb00f811d18160ab52cbd3412c68bf0161418ba52"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1927964",
+          "eligible_intervals": 14714,
+          "directed_edges": 29428,
+          "directed_events": 159,
+          "full_y_sha256": "e95d99d6acebe94b3039a3a06461db926c8cca486ee2bc5c6aa79e64ca36ae4a",
+          "full_period_sha256": "554bfdbfb5b9ff1afe744d9cc155b78f03299733aadcd9b2cd45d345f59b809b",
+          "record_x_sha256": "59220776f0b356f74ee850f10f0edd9664784d9d4623f4a7ecbfbc8d2956a1ab",
+          "ensemble_train_probability_sha256": "07c204096f17c1867b835ac85a63ae0ac684b9451185d26bfbe541e9593141a7"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1953632",
+          "eligible_intervals": 13114,
+          "directed_edges": 26228,
+          "directed_events": 166,
+          "full_y_sha256": "46d66246c5174b30ed650e6ab4e66c5165a28b1724c2f424beb9322e70a00e7d",
+          "full_period_sha256": "71013cf259b9a7b735d5a82314c1e55aaf07f1d0b68de7d0a21547fe177da4f2",
+          "record_x_sha256": "2256655b6658dcdd7cdd0e1a8e9aee550db537d9c27e02d9cfd4c480895295c2",
+          "ensemble_train_probability_sha256": "daa9d6d318bd18bd254531078cfd0229f921876eb60644cf9ad09332c4342335"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1959846",
+          "eligible_intervals": 10959,
+          "directed_edges": 21918,
+          "directed_events": 163,
+          "full_y_sha256": "341619009c9e16aaaa8e45304b2c1b2129075dfb0319c6da8c7c75867c5e661b",
+          "full_period_sha256": "585bce790e4c89fa6a89fc4d2a7e29a998bc7f3eec9e9f95b81fdc5a1e911ab4",
+          "record_x_sha256": "0f947e4d9c4e72ac5337e10df084a6bf110e36771c3dc9429788be46ca73ee94",
+          "ensemble_train_probability_sha256": "2eb27a50a2c02e57d473b47b8f3c35e439aad0484a4d1868538c6c8f83da1ebc"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1986691",
+          "eligible_intervals": 11867,
+          "directed_edges": 23734,
+          "directed_events": 170,
+          "full_y_sha256": "1367e63778138c5cf33010b4a5ac6a80721332e6f693400f06f78359bd267e07",
+          "full_period_sha256": "731ade5a4ae1352ae72c08213883b31669ddb26ed7a2ae2a352205c22b101a18",
+          "record_x_sha256": "ff226ace4f76065de782f1d636787f6970216083ff905761ea74eac93fe41522",
+          "ensemble_train_probability_sha256": "96e2f1ad69a582fedbdf56a5e0a92ba69af18bb0f7cb867caaa30ed3990609ab"
+        }
+      ]
+    },
+    {
+      "provider_excluded": "metrica",
+      "path": "experiments/turnover_decoder_v1/head_metrica.joblib",
+      "sha256": "069d8b5f4a02d8dd493076f0ea6e8bf7ae77e68c1fc5858739cc6ebe57c5956b",
+      "fit": {
+        "sources": [
+          "skillcorner",
+          "sportec"
+        ],
+        "matches": [
+          "J03WMX",
+          "J03WN1",
+          "J03WOH",
+          "skillcorner_had_1874553",
+          "skillcorner_had_1886347",
+          "skillcorner_had_1899585",
+          "skillcorner_had_1925299",
+          "skillcorner_had_1927964",
+          "skillcorner_had_1953632",
+          "skillcorner_had_1959846",
+          "skillcorner_had_1986691"
+        ],
+        "directed_edges": 283012,
+        "directed_events": 2390,
+        "source_match_balanced_weights": true,
+        "weighted_natural_prevalence": 0.009481892370851881,
+        "class_balancing": false,
+        "event_undersampling": false,
+        "target": "exact directed H/A change across adjacent eligible native-checked 5 Hz rows",
+        "training_is_in_sample_for_backbone": true,
+        "training_backbone_provider_exclusion": "metrica",
+        "n_iter": 13,
+        "converged": true
+      },
+      "training_cache_sha256": {
+        "J03WMX": "ab75cb7199d52eab7fd60fdd34ce29ded919bb77b6bf1c301fd90d4b6368dd23",
+        "J03WN1": "a6494dd9753f19e3e4a2cea45bde0081b2586ed8d1657bd7e3732de3e5722a5b",
+        "J03WOH": "3d2fb5068e459905c82e2319415de7181e614f84b7f11e5fea50bea0c7275946",
+        "skillcorner_had_1874553": "929fda060548385596ee47db27346e315759870ca21ed8648460fc92e09280fa",
+        "skillcorner_had_1886347": "baff2f2feabd1c43b7c82a6d93ef25d7fe1d4d1049ac7603c3e05efc3f542249",
+        "skillcorner_had_1899585": "ace42e94689a4d9ebcae21a0ecb40358d33cc831151766aaf4f9fe24b09d5c6b",
+        "skillcorner_had_1925299": "d10c99821d9944170e0587a50a26770326994c7e9465465eaa0bf30e3c979f7a",
+        "skillcorner_had_1927964": "6a884b98a613351e0eefd1935a5704401a26f18892be7598943159c2ace44bbf",
+        "skillcorner_had_1953632": "7c104dee9fdbb57bc4dc4a23c1783f7bd0455a1101b70681bd0ad9cb39817cc7",
+        "skillcorner_had_1959846": "0bece376878c1b0aadc98cfd24a2e08c140aea2b287ea912b2181a4db48965a4",
+        "skillcorner_had_1986691": "6be26d49dd20bc5e69f7c033954c7e22de98e2cc2c2e5b398f176ba786ba4ae8"
+      },
+      "checkpoint_facts": {
+        "checkpoint_manifest_sha256": "27a6ebad6d2fa21a23711d0be40419c4999e1d8d9e75f805e85d40209e8c65c8",
+        "backbone_declaration_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+        "models": {
+          "2026": {
+            "model": "experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+            "sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+            "fit_receipt": "experiments/objective_alignment_v1/without_metrica_combined_2026.json",
+            "fit_receipt_sha256": "45f3e4d6a62b9b2e122c1dca5a82d638b6ed7570e3a67645cf1199f420828ce3"
+          },
+          "2027": {
+            "model": "experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+            "sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+            "fit_receipt": "experiments/objective_alignment_v1/without_metrica_combined_2027.json",
+            "fit_receipt_sha256": "76c20b89a7fee43bc1e518d64d86bd0cd2b1e5f87e976903862c80852b65e770"
+          }
+        }
+      },
+      "train_probability_facts": {
+        "J03WMX": {
+          "seed_probability_sha256": {
+            "2026": "4a27bcb69daf09c9bed279f835875366b9906ace785a4de8e3f8d1e08ffb3a0e",
+            "2027": "34f71d119a3c87235490e5e5f8b38b55e4236ec6a294af4736aa1716d1adbd07"
+          },
+          "ensemble_probability_sha256": "c8560ca6cef9687dde0bbddaaf272ff0f14385b81427504bd378fe69943dee7f",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "J03WN1": {
+          "seed_probability_sha256": {
+            "2026": "e41aa6197593ec69bab47f95905b10dd1b5060a1dc3ab54613358e33aef0c7d7",
+            "2027": "a9447b0b85e8c242935c93ef78b1519bb9bf6e1fa9950a9c7c534674380bf736"
+          },
+          "ensemble_probability_sha256": "b4549fb637ec321962491768a022519a6d4e15d490e51decf388b5013fdc7805",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "J03WOH": {
+          "seed_probability_sha256": {
+            "2026": "d02268622737e59e8890686c8406340cd805dcb319e535b57af70d0f46bed787",
+            "2027": "ad41bf84f357cfe295df9c8a7abfb8154ddba43fd44d012c57861926d8b5e3f2"
+          },
+          "ensemble_probability_sha256": "da86089500a65b013f800f2a444232435593782fe828b09eca2f54ae76651047",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "skillcorner_had_1874553": {
+          "seed_probability_sha256": {
+            "2026": "ea2f48dc796755488aa64083f275804cb33bee34b0c7a3223d6256f2b753f3ac",
+            "2027": "94ecd9228c1d60c76313b8e3d4e0a135d62b29d900045970d83a12eec1e8a108"
+          },
+          "ensemble_probability_sha256": "fc7dbc0afc488dea1d72cd2093c85b9f103ac77fe7a265e973c38d582d93be25",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "skillcorner_had_1886347": {
+          "seed_probability_sha256": {
+            "2026": "b75b339cb4cde02d376adf4ff3f699c04af710fbf0a302b84f24936e3a7fbb33",
+            "2027": "3d4149964f1a01205d41c59503936b88aed91ebc912181525b605448eb29b1de"
+          },
+          "ensemble_probability_sha256": "d0083f1ff267d80f50508129a32ad9ac1145263eb2591bb3f10b903101a2239d",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "skillcorner_had_1899585": {
+          "seed_probability_sha256": {
+            "2026": "d2e27ffd3e86be245e3d2ea079dc6fc175c5ee34f08cd2882ff555c9cb19b7ec",
+            "2027": "27342be13dbf66263b958cf70c8bf8d6ad3269b227ec087aea4ddb9e5d0beca2"
+          },
+          "ensemble_probability_sha256": "d79688b3420b50533b2598cd9f9bb8c83caca4fd79e2ca8a1b37eaf4088470cb",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "skillcorner_had_1925299": {
+          "seed_probability_sha256": {
+            "2026": "b957b7173db5140176605b8dffca5a49f879bd2148b1a3ef4f114163ade0b9f1",
+            "2027": "502b218b0d4ebf4184b53448cb17d9e389beef1485840a661927e7a37829c3e9"
+          },
+          "ensemble_probability_sha256": "623b2245333d378ecc6c6bcb20aa4ce921f13cbee51ea1c70bf98e055d703481",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "skillcorner_had_1927964": {
+          "seed_probability_sha256": {
+            "2026": "7a701268c286e9bdc64792c16dcd0082332eb6a31e23cee8fc6eb974b19be408",
+            "2027": "1551e42986b9b46fa6fd595067a73fb1cc41cad177ed83d633cc343ff5212f13"
+          },
+          "ensemble_probability_sha256": "88732ae1fc45a726d1f980275acd3ce2fc09bdfc81c7cbd23db96d094775c9fa",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "skillcorner_had_1953632": {
+          "seed_probability_sha256": {
+            "2026": "49e64a628c15a78c4f0428224eb760b30638a4e018a18d4e30c83b1af1955d7e",
+            "2027": "8d092b714a7a6f7bc448b622d091987522332d0a8ddf378a1fe42d3ef7b87129"
+          },
+          "ensemble_probability_sha256": "6619502fde6ea19591c95774af1d23d93a14df82c9863cc895ce8c47307d99a6",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "skillcorner_had_1959846": {
+          "seed_probability_sha256": {
+            "2026": "273d4413a64596c9eb2f4322def0006cce55641783764fa9ca6055cd39f1eed1",
+            "2027": "5bf4e0832fff4b15aa6c719ff98b39f465b0bf8ff0ee11deb18302f1b178d327"
+          },
+          "ensemble_probability_sha256": "a21cfa447c6c0a7eea597d22773cdeb2a5474db150147d823f89a9f16e0bff8f",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        },
+        "skillcorner_had_1986691": {
+          "seed_probability_sha256": {
+            "2026": "b96d6a65562345dfe5a1f3740b22dcd5a42faa445b09dfc4901eeef1ce927a6e",
+            "2027": "309ffb2a8e283e4658fd90e0718bcbfef7b043293fec76c82be8e663c879124e"
+          },
+          "ensemble_probability_sha256": "4364856306dcb61adaaef48293cb91dcef8b7ae73179d7bb14d1195e34dd5259",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "metrica"
+        }
+      },
+      "training_blocks": [
+        {
+          "source": "sportec",
+          "match": "J03WMX",
+          "eligible_intervals": 16968,
+          "directed_edges": 33936,
+          "directed_events": 397,
+          "full_y_sha256": "3f8c9130045d8e9583346987e3d56eb48689b470d6df94815adcc6492114a959",
+          "full_period_sha256": "a858f2039f26aa1e3e516f5702e02638209862507fb97b5bb11a11f4fd2e736c",
+          "record_x_sha256": "73e7ca1b34177c80e6906f9e5a0527eea26b3a33a7dbcee0ec331251a65e1674",
+          "ensemble_train_probability_sha256": "c8560ca6cef9687dde0bbddaaf272ff0f14385b81427504bd378fe69943dee7f"
+        },
+        {
+          "source": "sportec",
+          "match": "J03WN1",
+          "eligible_intervals": 13568,
+          "directed_edges": 27136,
+          "directed_events": 389,
+          "full_y_sha256": "eafe8ec3e23055d34a3566b8618abe38d026020c66fb1a395115f0e8df98cc2a",
+          "full_period_sha256": "587b4861d4e6e80b6dff69f78e7323326a262e7be011c793d4ae70c9d0cfa7eb",
+          "record_x_sha256": "e839e7078607e06a38a9155cf331434cf6893c69b921f771e6dac5daff9d99bb",
+          "ensemble_train_probability_sha256": "b4549fb637ec321962491768a022519a6d4e15d490e51decf388b5013fdc7805"
+        },
+        {
+          "source": "sportec",
+          "match": "J03WOH",
+          "eligible_intervals": 14289,
+          "directed_edges": 28578,
+          "directed_events": 297,
+          "full_y_sha256": "4c38fc0d7f43b87e7247c55549538529f5ac1e09abc1b3fb2ffc24f7c8cd788b",
+          "full_period_sha256": "6c28e266a833abc956d7909a3d19e14f4418cd99124b482b25b20cd75678dd39",
+          "record_x_sha256": "492734b74ded211c82c7fce2a63e70018a8af123421911b5d25a5f3e756383ac",
+          "ensemble_train_probability_sha256": "da86089500a65b013f800f2a444232435593782fe828b09eca2f54ae76651047"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1874553",
+          "eligible_intervals": 11994,
+          "directed_edges": 23988,
+          "directed_events": 165,
+          "full_y_sha256": "aa5db0324de5f55c34d541a52e026991a827a1381046fa5da94e500b8a1c7ece",
+          "full_period_sha256": "7b82b3673b61f375d32253565fa497606c3bf0f2069f301a5a3eedd28ffaaa8b",
+          "record_x_sha256": "f5547dd898d5d9b8dc028c518181a709b93ad5251dc02dfc0a4f7f0da9194fe1",
+          "ensemble_train_probability_sha256": "fc7dbc0afc488dea1d72cd2093c85b9f103ac77fe7a265e973c38d582d93be25"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1886347",
+          "eligible_intervals": 11894,
+          "directed_edges": 23788,
+          "directed_events": 165,
+          "full_y_sha256": "00c002afbba778f220dc5a3bc1057ba09169c2d1d005057b08d44b89e1999417",
+          "full_period_sha256": "eef26ab3d160c12223a15d915c9c1ab1716be60d978dbe5c0776f206548f651a",
+          "record_x_sha256": "61850950882ec24c3fdf2fbbc203e389f581b03bcb93401fcf68810bb4ca28f6",
+          "ensemble_train_probability_sha256": "d0083f1ff267d80f50508129a32ad9ac1145263eb2591bb3f10b903101a2239d"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1899585",
+          "eligible_intervals": 9867,
+          "directed_edges": 19734,
+          "directed_events": 144,
+          "full_y_sha256": "5e9c4f6453e89cf4091333f42bee7fca7dd3c60e90131e88be4131d9c94883d7",
+          "full_period_sha256": "efe9e9d1d9e28de05615bdc00a059a24e4f5f8a7846656fe4829671ea75aa047",
+          "record_x_sha256": "62a53357e839596b76583d65e6db34bd64d2cad1bc48f92b91f0dc28752bc376",
+          "ensemble_train_probability_sha256": "d79688b3420b50533b2598cd9f9bb8c83caca4fd79e2ca8a1b37eaf4088470cb"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1925299",
+          "eligible_intervals": 12272,
+          "directed_edges": 24544,
+          "directed_events": 175,
+          "full_y_sha256": "cdb5f4d4c29629cb96b6bddbabbcb706996be49d8756c5389166dcca079d5c7d",
+          "full_period_sha256": "8eab882e5b5a2a881b9c00dfa9ef3c02f521cf3fe1bdf30ae8caff4ac993567e",
+          "record_x_sha256": "065ecf44fd28bc5e26df177a2fe121762fc361b9f1d3af53f3a4acd5608a252e",
+          "ensemble_train_probability_sha256": "623b2245333d378ecc6c6bcb20aa4ce921f13cbee51ea1c70bf98e055d703481"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1927964",
+          "eligible_intervals": 14714,
+          "directed_edges": 29428,
+          "directed_events": 159,
+          "full_y_sha256": "e95d99d6acebe94b3039a3a06461db926c8cca486ee2bc5c6aa79e64ca36ae4a",
+          "full_period_sha256": "554bfdbfb5b9ff1afe744d9cc155b78f03299733aadcd9b2cd45d345f59b809b",
+          "record_x_sha256": "59220776f0b356f74ee850f10f0edd9664784d9d4623f4a7ecbfbc8d2956a1ab",
+          "ensemble_train_probability_sha256": "88732ae1fc45a726d1f980275acd3ce2fc09bdfc81c7cbd23db96d094775c9fa"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1953632",
+          "eligible_intervals": 13114,
+          "directed_edges": 26228,
+          "directed_events": 166,
+          "full_y_sha256": "46d66246c5174b30ed650e6ab4e66c5165a28b1724c2f424beb9322e70a00e7d",
+          "full_period_sha256": "71013cf259b9a7b735d5a82314c1e55aaf07f1d0b68de7d0a21547fe177da4f2",
+          "record_x_sha256": "2256655b6658dcdd7cdd0e1a8e9aee550db537d9c27e02d9cfd4c480895295c2",
+          "ensemble_train_probability_sha256": "6619502fde6ea19591c95774af1d23d93a14df82c9863cc895ce8c47307d99a6"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1959846",
+          "eligible_intervals": 10959,
+          "directed_edges": 21918,
+          "directed_events": 163,
+          "full_y_sha256": "341619009c9e16aaaa8e45304b2c1b2129075dfb0319c6da8c7c75867c5e661b",
+          "full_period_sha256": "585bce790e4c89fa6a89fc4d2a7e29a998bc7f3eec9e9f95b81fdc5a1e911ab4",
+          "record_x_sha256": "0f947e4d9c4e72ac5337e10df084a6bf110e36771c3dc9429788be46ca73ee94",
+          "ensemble_train_probability_sha256": "a21cfa447c6c0a7eea597d22773cdeb2a5474db150147d823f89a9f16e0bff8f"
+        },
+        {
+          "source": "skillcorner",
+          "match": "skillcorner_had_1986691",
+          "eligible_intervals": 11867,
+          "directed_edges": 23734,
+          "directed_events": 170,
+          "full_y_sha256": "1367e63778138c5cf33010b4a5ac6a80721332e6f693400f06f78359bd267e07",
+          "full_period_sha256": "731ade5a4ae1352ae72c08213883b31669ddb26ed7a2ae2a352205c22b101a18",
+          "record_x_sha256": "ff226ace4f76065de782f1d636787f6970216083ff905761ea74eac93fe41522",
+          "ensemble_train_probability_sha256": "4364856306dcb61adaaef48293cb91dcef8b7ae73179d7bb14d1195e34dd5259"
+        }
+      ]
+    },
+    {
+      "provider_excluded": "skillcorner",
+      "path": "experiments/turnover_decoder_v1/head_skillcorner.joblib",
+      "sha256": "fd139a79238ee896f42358a017e832a650402e8d586471028135c4ab34175fe5",
+      "fit": {
+        "sources": [
+          "metrica",
+          "sportec"
+        ],
+        "matches": [
+          "J03WMX",
+          "J03WN1",
+          "J03WOH",
+          "metrica_1",
+          "metrica_2"
+        ],
+        "directed_edges": 156444,
+        "directed_events": 1551,
+        "source_match_balanced_weights": true,
+        "weighted_natural_prevalence": 0.00957287812099603,
+        "class_balancing": false,
+        "event_undersampling": false,
+        "target": "exact directed H/A change across adjacent eligible native-checked 5 Hz rows",
+        "training_is_in_sample_for_backbone": true,
+        "training_backbone_provider_exclusion": "skillcorner",
+        "n_iter": 11,
+        "converged": true
+      },
+      "training_cache_sha256": {
+        "J03WMX": "ab75cb7199d52eab7fd60fdd34ce29ded919bb77b6bf1c301fd90d4b6368dd23",
+        "J03WN1": "a6494dd9753f19e3e4a2cea45bde0081b2586ed8d1657bd7e3732de3e5722a5b",
+        "J03WOH": "3d2fb5068e459905c82e2319415de7181e614f84b7f11e5fea50bea0c7275946",
+        "metrica_1": "2445e56b7704d2669080552aac0415803c8393e3b901fe7c0696446ecbfb01ba",
+        "metrica_2": "e5189a5ffdcc6142aced86d47612f9f4aad29399052cf8eddeb172b75c98e0bb"
+      },
+      "checkpoint_facts": {
+        "checkpoint_manifest_sha256": "27a6ebad6d2fa21a23711d0be40419c4999e1d8d9e75f805e85d40209e8c65c8",
+        "backbone_declaration_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+        "models": {
+          "2026": {
+            "model": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+            "sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+            "fit_receipt": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.json",
+            "fit_receipt_sha256": "4c994e05feee5a28943c2d6357a58b5cdf4cb565d2a5c9ea6f3bfda012b4a26c"
+          },
+          "2027": {
+            "model": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+            "sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+            "fit_receipt": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.json",
+            "fit_receipt_sha256": "189a2ffdb24653d5d4d971575664d3813f0241627765997d4a8cb4dabac097f1"
+          }
+        }
+      },
+      "train_probability_facts": {
+        "J03WMX": {
+          "seed_probability_sha256": {
+            "2026": "390e3fad94f3613774f08f23a69307edacc43a2cfcad0b0076528c2eb4cfd6d3",
+            "2027": "be25800676549fdbd0c9ef2f6004eea0c911575134ea7ccacf6f5373ed3250fa"
+          },
+          "ensemble_probability_sha256": "460ef9a304db7214814d02e06b950724c5300b3ef3006a756bd7ae337a7d61c7",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "skillcorner"
+        },
+        "J03WN1": {
+          "seed_probability_sha256": {
+            "2026": "0e0f451866329b21bf6ee2ce0e27139d121c9cb5998584f930d2504f4058fa64",
+            "2027": "a67308a3497b495e0460fc34459cf620752e911a60751cea4b019766f0188aa8"
+          },
+          "ensemble_probability_sha256": "b573f5c4d76b4e7fdf89effe27ab66e783667632baebbebff2473bde40ff650f",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "skillcorner"
+        },
+        "J03WOH": {
+          "seed_probability_sha256": {
+            "2026": "959e258d34bbb6ddb3944a7882b9ee7018e965a64a00fe487e5b2cff1176444f",
+            "2027": "09a063ad2c272d7f9204cb76dfb7287371907465a50a11df5e21f2eec01e1297"
+          },
+          "ensemble_probability_sha256": "046db603f817619fbda9437f2f6ba36decda208262add1a646e1c7d46df930f1",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "skillcorner"
+        },
+        "metrica_1": {
+          "seed_probability_sha256": {
+            "2026": "92994056226b8a612749aba59e5a029239294cd113c2fdd031b3162830265921",
+            "2027": "8d92da553443e3f880d3c9532820f1ec2d73c7dec6d0c3148a4c6d75e850484c"
+          },
+          "ensemble_probability_sha256": "9a612b5f0fb1f97686b0db39c0f6e2aac709eb61882eb47d2f9bb8c8671b8b9f",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "skillcorner"
+        },
+        "metrica_2": {
+          "seed_probability_sha256": {
+            "2026": "d72a817f7886335212f15b84723f378f7789f827ba3db2b101692a0bc68a3a83",
+            "2027": "7e5c9088ccbd79d729ab0c8c656df48def08409d1a99f6754e2bef5803fbc936"
+          },
+          "ensemble_probability_sha256": "f1f456ba837101911e9f8048e126419a67ba84332f98ae87ecc4f79e3a0c65e5",
+          "training_is_in_sample_for_backbone": true,
+          "backbone_fold": "skillcorner"
+        }
+      },
+      "training_blocks": [
+        {
+          "source": "sportec",
+          "match": "J03WMX",
+          "eligible_intervals": 16968,
+          "directed_edges": 33936,
+          "directed_events": 397,
+          "full_y_sha256": "3f8c9130045d8e9583346987e3d56eb48689b470d6df94815adcc6492114a959",
+          "full_period_sha256": "a858f2039f26aa1e3e516f5702e02638209862507fb97b5bb11a11f4fd2e736c",
+          "record_x_sha256": "73e7ca1b34177c80e6906f9e5a0527eea26b3a33a7dbcee0ec331251a65e1674",
+          "ensemble_train_probability_sha256": "460ef9a304db7214814d02e06b950724c5300b3ef3006a756bd7ae337a7d61c7"
+        },
+        {
+          "source": "sportec",
+          "match": "J03WN1",
+          "eligible_intervals": 13568,
+          "directed_edges": 27136,
+          "directed_events": 389,
+          "full_y_sha256": "eafe8ec3e23055d34a3566b8618abe38d026020c66fb1a395115f0e8df98cc2a",
+          "full_period_sha256": "587b4861d4e6e80b6dff69f78e7323326a262e7be011c793d4ae70c9d0cfa7eb",
+          "record_x_sha256": "e839e7078607e06a38a9155cf331434cf6893c69b921f771e6dac5daff9d99bb",
+          "ensemble_train_probability_sha256": "b573f5c4d76b4e7fdf89effe27ab66e783667632baebbebff2473bde40ff650f"
+        },
+        {
+          "source": "sportec",
+          "match": "J03WOH",
+          "eligible_intervals": 14289,
+          "directed_edges": 28578,
+          "directed_events": 297,
+          "full_y_sha256": "4c38fc0d7f43b87e7247c55549538529f5ac1e09abc1b3fb2ffc24f7c8cd788b",
+          "full_period_sha256": "6c28e266a833abc956d7909a3d19e14f4418cd99124b482b25b20cd75678dd39",
+          "record_x_sha256": "492734b74ded211c82c7fce2a63e70018a8af123421911b5d25a5f3e756383ac",
+          "ensemble_train_probability_sha256": "046db603f817619fbda9437f2f6ba36decda208262add1a646e1c7d46df930f1"
+        },
+        {
+          "source": "metrica",
+          "match": "metrica_1",
+          "eligible_intervals": 16805,
+          "directed_edges": 33610,
+          "directed_events": 251,
+          "full_y_sha256": "5c9a554ac7aa7a4bd81dde92a588a9b4ea694aef7837649b2686a60c87ea6bb7",
+          "full_period_sha256": "73d0f92f945a5055def5135bdc48d61fd72cf17bd1d79e2242d80967692671a9",
+          "record_x_sha256": "b46378c5e4ad6e829e2e04e3521ae3fa8b48668cec47624788b4a3f20925ffa9",
+          "ensemble_train_probability_sha256": "9a612b5f0fb1f97686b0db39c0f6e2aac709eb61882eb47d2f9bb8c8671b8b9f"
+        },
+        {
+          "source": "metrica",
+          "match": "metrica_2",
+          "eligible_intervals": 16592,
+          "directed_edges": 33184,
+          "directed_events": 217,
+          "full_y_sha256": "c02c77bbb026c1fb901988ba115b80e32ebb47deb587efa4fbb0a15858081a2f",
+          "full_period_sha256": "49895c20fb98b9aac20a52c3c9eb3ec9119889bff715849d444d73423021ab24",
+          "record_x_sha256": "e5bdb4a8bd39a455c85c0a37db1f298554c389e4a89062e82f45ba50ecb90d80",
+          "ensemble_train_probability_sha256": "f1f456ba837101911e9f8048e126419a67ba84332f98ae87ecc4f79e3a0c65e5"
+        }
+      ]
+    }
+  ],
+  "scores_read_before_fit_seal": false
+}

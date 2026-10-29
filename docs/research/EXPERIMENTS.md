@@ -63,6 +63,22 @@ no new organizer scoring or baseline promotion is part of this work.
 | `contact_memory_v1` — completed, retain baseline | Six H/A residual adapters on frozen combined backbones, 15 ensemble cells and 30 seed diagnostics. Spell .628430/.499523 clean/feed-like versus .633205/.498830; -.004775/+.000694 fails the original clean-gain and stricter high-value screens. Exact archived P(D); numerical replay-guard correction preserved. | [Study](../../experiments/CONTACT_MEMORY.md), [aggregate](../../experiments/results/contact_memory_readout.json), [declaration](../../experiments/results/contact_memory_declaration.json), [runtime correction](../../experiments/results/contact_memory_runtime_correction.json) |
 | `independent-data-search` — acquired sample, no possession evaluation | SoccerTrack v2 117093 public sample acquired with exact hashes; panorama/player tracking and event points, no dense possession gold. Ball paths are event-interpolated. True broadcast PFF/SNGAR access remains pending/gated. | [Search and acquisition plan](../../experiments/INDEPENDENT_DATA_SEARCH.md), [metadata receipt](../../experiments/results/soccertrack_v2_acquisition_manifest.json) |
 
+## Short-spell continuation
+
+All studies reuse five previously exposed development matches with full-provider
+exclusion. Feed-like stress is synthetic; no organizer scoring or promotion.
+The [private archive restore receipt](../../experiments/results/short_spell_recovery_remote_verification.json)
+verifies all 420 files at private commit `0ff246b`; per-study local-only
+receipts remain unchanged. The [next-work proposal](../../experiments/SHORT_SPELL_NEXT.md)
+prioritizes blind interval labels over further local tuning.
+
+| ID and state | Scope and outcome | Evidence |
+| --- | --- | --- |
+| `short_spell_recoverability_v2` — completed diagnostic | All 15 saved controls reproduce. Complete under-3s misses split into cost-suppressed evidence / insufficient intervals / no local correct top-1 signal: 15/40/45% clean and 10/39/51% feed-like. Argmax improves complete-short recall but reduces overall spell F1 to .561/.419. | [Audit](../../experiments/SHORT_SPELL_RECOVERABILITY.md), [aggregate](../../experiments/results/short_spell_recoverability_v2.json), [declaration](../../experiments/results/short_spell_recoverability_v2_declaration.json) |
+| `native_short_spell_v1` — completed, retain baseline | Twelve H/A residual heads, native 10/25 Hz versus matched 5 Hz, 30 ensemble cells. Native spell .629784/.498723 versus matched .630100/.499242 and baseline .633205/.498830 clean/feed-like. Neither arm passes +.01 clean; no resolution advantage established. | [Study](../../experiments/NATIVE_SHORT_SPELL.md), [readout](../../experiments/results/native_short_spell_readout.json), [declaration](../../experiments/results/native_short_spell_declaration.json), [independent replay](../../experiments/results/native_short_spell_independent_replay_verification.json) |
+| `turnover_decoder_v1` — completed, retain baseline | Three H/A edge heads; unchanged emissions and D-edge costs. Sum-one weights strongly regularize the head; clean spell unchanged, feed-like +.000166. Fails clean screen. | [Study](../../TURNOVER_DECODER.md), [declaration](../../experiments/results/turnover_decoder_declaration.json), [score receipt](../../experiments/results/turnover_decoder_score_receipt.json), [replay](../../experiments/results/turnover_decoder_independent_replay_verification.json) |
+| `turnover_decoder_v2_unit_weights` — completed, retain baseline | Separately declared post-v1 mean-one-weight convention, otherwise identical three heads and fifteen cells. Short recall +.021727/+.008559, extra spells +6.889/+3.500 per match; spell falls to .631627/.495856. Fails clean screen; no sweep follows. | [Study](../../TURNOVER_DECODER_V2.md), [declaration](../../experiments/results/turnover_decoder_v2_declaration.json), [score receipt](../../experiments/results/turnover_decoder_v2_score_receipt.json), [replay](../../experiments/results/turnover_decoder_v2_independent_replay_verification.json) |
+
 ## Supporting references
 
 The user adopted the actual original-context two-seed ensemble after this study.

@@ -2,7 +2,7 @@
 
 Dense map of what has been tried here, so you can resume without reading 40
 reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
-below are snapshots as of 2026-10-29 after the spell-F1 follow-up;
+below are snapshots as of 2026-10-29 after the short-spell continuation;
 the earlier architecture studies remain historical evidence. [STATUS](../docs/research/STATUS.md) is the
 coordination summary for adoption and next work. Before model-choice
 advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
@@ -102,6 +102,15 @@ The later [combined-objective ensemble](OBJECTIVE_ENSEMBLE.md) is now the workin
   and [contact memory](CONTACT_MEMORY.md). A new contact method needs a distinct
   mechanism, not another offset, weight or adapter sweep on the same cohort.
 
+The short-spell continuation also has completed negative comparisons:
+[native-rate instantaneous H/A geometry](NATIVE_SHORT_SPELL.md) loses to both
+the saved baseline and its matched 5 Hz control; [learned turnover costs](../TURNOVER_DECODER_V2.md)
+recover short references but add false spells and lower overall F1. Do not
+repeat residual-resolution or decoder parameter sweeps on this cohort. The
+[recoverability audit](SHORT_SPELL_RECOVERABILITY.md) distinguishes complete
+short spells from censored grading-edge references; its percentages are
+mechanism descriptions, not achievable gain estimates.
+
 ## 5. Open threads (priorities live in STATUS)
 
 1. SkillCorner dead-ball under-recall in tree predictors. Separate anchors,
@@ -143,7 +152,9 @@ pinned in [EXPERIMENTS](../docs/research/EXPERIMENTS.md). Check live PR state.
 **Study runners** (one per study, frozen): `*_experiment.py`,
 `confidence_abstention.py`, `stress_component_ablation.py`,
 `temporal_competition_{fit,check,resume}.py`, `light_corruption.py`,
-`refine_*.py`, `promote_*_baseline.py`. Treat these as records. Do not edit
+`refine_*.py`, `promote_*_baseline.py`, `native_short_spell*.py`,
+`turnover_decoder*.py`. The native runtime wrapper preserves its reviewed
+pre-fit mass-assertion amendment; it is not a general training API. Treat these as records. Do not edit
 them to run a new study; write a new runner that imports the libraries.
 **Read-only audits:** `*_audit*.py`, `spell_*`, `feed_defect_profile.py`,
 `headroom.py`, `error_analysis.py`, `verify_temporal_followup.py`.
