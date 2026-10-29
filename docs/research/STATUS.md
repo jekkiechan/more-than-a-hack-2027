@@ -50,9 +50,7 @@ model files changed in this follow-up.
 
 Both candidate studies have independent official-score replay receipts and
 226 passing contracts. The [shared private archive](../../experiments/results/spell_f1_followup_artifacts.json)
-is locally committed and hash-verified. Its upload was rejected by automatic
-approval review pending explicit authorization for that payload and destination;
-remote availability and a fresh remote restore are not claimed.
+was uploaded after explicit user authorization. A [fresh remote restore](../../experiments/results/spell_f1_followup_remote_verification.json) verified all 295 files and hashes at private commit `7231018`. The earlier automatic approval rejection is retained as history.
 
 ## Historical architecture comparison
 

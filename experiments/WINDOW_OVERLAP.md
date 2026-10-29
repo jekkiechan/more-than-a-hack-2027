@@ -134,4 +134,4 @@ pending. The aggregate links the full spell diagnostics and paired cells.
 
 Independent replay of all 15 candidate/control cells verifies official decodes, score rows, exact archived controls, aggregation and guardrails. See the [independent verification receipt](results/window_overlap_independent_verification.json).
 
-The [shared artifact receipt](results/spell_f1_followup_artifacts.json) records the locally verified archive. Remote upload was blocked by automatic approval review pending explicit authorization; no fresh remote restore is claimed.
+The [shared artifact receipt](results/spell_f1_followup_artifacts.json) records the private archive, uploaded after explicit authorization. A [fresh remote restore](results/spell_f1_followup_remote_verification.json) verified all 295 files and their size/SHA-256 hashes. The earlier upload rejection remains recorded as history.
