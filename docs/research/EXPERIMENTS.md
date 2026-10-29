@@ -1,6 +1,6 @@
 # Experiment index
 
-Reviewed 2026-10-28. Find evidence here; adoption and next work live in
+Reviewed 2026-10-29. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
@@ -53,6 +53,15 @@ no new organizer scoring or baseline promotion is part of this work.
 | `capacity-lgbm-v1` — scope-superseded, unscored | D-only capacity extension stopped on target correction; no completed new checkpoints or validation scores. Frozen declaration and cancellation receipt preserved. | [Capacity extension](../../experiments/capacity_lgbm_experiment.py), [LightGBM study](../../experiments/TEMPORAL_LGBM.md) |
 | `joint-lgbm-v1` — completed | Full H/A/D: 12 fits / 300 cells. Geometry alone brings no consistent gain; ordered context improves stress, and 127 leaves/depth 10 improve on 63/depth 8. Full127 standalone .5555/.4345 clean/stress spell; dropout-GRU blends average .6101/.4226 across two separate seeds. All recipes fail a provider guardrail, chiefly SkillCorner D recall. | [Full H/A/D study](../../experiments/JOINT_LGBM.md), [capacity rationale](../../experiments/LGBM_CAPACITY_REASONING.md), [independent verification](../../experiments/results/temporal_followup_verification.json) |
 | `seed-gap-context-v1` — completed | Actual archived-seed H/A/D ensemble clean/feed-like spell .6265/.4874; 30/30 individual parity. Six matched 15s-context fits improve long-gap team accuracy +1.85/+1.36 pp and newly bracketed frames ~+3 pp, but clean spell declines in both seeds; feed-like is flat/+.0046 and seed 2026 fails the SkillCorner D guard. Native clean live long-gap support is only 108 frames. Retain package; no organizer scoring or promotion. | [Study](../../experiments/SEED_GAP_CONTEXT.md), [declaration](../../experiments/results/seed_gap_context_declaration.json), [ensemble/audit](../../experiments/results/seed_gap_context.json), [context results](../../experiments/results/seed_gap_context_long.json), [readout](../../experiments/results/seed_gap_context_readout.json), [verification](../../experiments/results/seed_gap_context_verification.json), [archive](../../experiments/results/seed_gap_context_artifacts.json) |
+
+## Spell-F1 follow-up
+
+| ID and state | Scope and outcome | Evidence |
+| --- | --- | --- |
+| `spell_opportunity_audit_v2` — completed | Read-only current combined-ensemble audit; all 15 saved cells reproduce. Short-spell recovery is the broadest supported opportunity: under-3s recall .384/.203 clean/feed-like, with strong synthetic-gap H/A errors and limited native long-gap support. | [Audit](../../experiments/SPELL_OPPORTUNITY_AUDIT.md), [results](../../experiments/results/spell_opportunity_audit.json), [corrected receipt](../../experiments/results/spell_opportunity_audit_declaration_v2.json) |
+| `window_overlap_v4` — completed, retain baseline | Zero fits, one fixed shifted-core arm, 15 paired cells. Spell .633939/.498330 versus .633205/.498830 clean/feed-like; +.000734/-.000500 fails the +.01 clean screen. Earlier unscored failures and numerical replay drift are preserved. | [Study](../../experiments/WINDOW_OVERLAP.md), [aggregate](../../experiments/results/window_overlap_v4.json), [declaration](../../experiments/results/window_overlap_declaration_v4.json) |
+| `contact_memory_v1` — completed, retain baseline | Six H/A residual adapters on frozen combined backbones, 15 ensemble cells and 30 seed diagnostics. Spell .628430/.499523 clean/feed-like versus .633205/.498830; -.004775/+.000694 fails the original clean-gain and stricter high-value screens. Exact archived P(D); numerical replay-guard correction preserved. | [Study](../../experiments/CONTACT_MEMORY.md), [aggregate](../../experiments/results/contact_memory_readout.json), [declaration](../../experiments/results/contact_memory_declaration.json), [runtime correction](../../experiments/results/contact_memory_runtime_correction.json) |
+| `independent-data-search` — acquired sample, no possession evaluation | SoccerTrack v2 117093 public sample acquired with exact hashes; panorama/player tracking and event points, no dense possession gold. Ball paths are event-interpolated. True broadcast PFF/SNGAR access remains pending/gated. | [Search and acquisition plan](../../experiments/INDEPENDENT_DATA_SEARCH.md), [metadata receipt](../../experiments/results/soccertrack_v2_acquisition_manifest.json) |
 
 ## Supporting references
 

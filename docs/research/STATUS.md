@@ -1,6 +1,6 @@
 # Current research state
 
-Reviewed 2026-10-28 after the combined-objective ensemble adoption and separate requested public diagnostic, [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29), based on fork main `9ea487b`. The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+Reviewed 2026-10-29 after the bounded spell-F1 follow-up, based on fork main `2146276`. The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
 
@@ -11,6 +11,48 @@ package details belong in [BASELINE](../../experiments/BASELINE.md).
 Two pooled deployment fits used the same 13 TRAIN matches and exact normalization/schema/budget parity. The 199,319-row label-free CSV is format-validated and reproduces through the normal baseline entrypoint. The preceding package/decision policy are archived. This is development adoption on exposed matches and synthetic stress, not independent confirmation; the prior loss study’s failed +.01 both-seed screen remains unchanged.
 
 The separately requested fixed public diagnostic was run **after** adoption: both ensembles score **.557576 spell**, with combined macro **.854088** versus prior **.862375**. D-F1 improves .848746 → .854810. This does not confirm a public-window gain; only 7,500 graded frames and 17 possessions are available. No tuning or adoption changes followed. The [saved public result](../../experiments/results/combined_objective_public_check.json) and exclusive gate are final. Full-match performance remains unknown. Restore/package details: [BASELINE](../../experiments/BASELINE.md).
+
+## Spell-F1 follow-up — 29 October 2026
+
+The [current-baseline opportunity audit](../../experiments/SPELL_OPPORTUNITY_AUDIT.md)
+reproduces all fifteen saved full-provider cells. Under-three-second spells are
+about 40% of reference possessions but 61% of clean misses; their IoU-.5 recall
+is .384 clean and .203 feed-like. Wrong-team errors remain a promising target,
+especially in synthetic long ball gaps. Native clean long-live-gap support
+remains only 108 frames, and SkillCorner grading-edge censoring still limits
+boundary conclusions.
+
+The completed [window-overlap study](../../experiments/WINDOW_OVERLAP.md)
+uses zero new fits and one fixed five-second shifted tiling. Clean/feed-like
+spell is .633939/.498330 versus the adopted .633205/.498830: +.000734/-.000500.
+It fails the declared +.01 clean screen. Independent replay verifies all fifteen
+candidate/control cells and the aggregate. Retain the baseline; do not sweep
+offsets or weights on these results.
+
+The [contact-memory study](../../experiments/CONTACT_MEMORY.md) completed six
+small adapters on frozen combined-objective backbones and fifteen ensemble
+cells. Clean/feed-like spell is .628430/.499523: -.004775/+.000694 versus the
+baseline. It fails even its original positive-clean-gain screen, as well as
+the separately recorded +.01 high-value screen. Short-spell recall rises
+slightly, but overall possession recovery falls on every clean provider.
+Archived member/ensemble P(D) remains exact; decoded D metrics can still change.
+The numerical replay-guard correction is documented separately and changes no
+models, predictions, decoder settings, or criteria. No candidate is adopted.
+
+The [independent-data search](../../experiments/INDEPENDENT_DATA_SEARCH.md)
+acquired and hash-verified small SoccerTrack v2 match-117093 samples from its
+official public Drive mirror. Full panorama video and player tracks are
+available, but continuous H/A/D labels are absent and the ball coordinates are
+interpolated from event annotations. This is a new event-silver/annotation-pilot
+route, not native broadcast confirmation. PFF access remains pending; legacy
+full-match SNGAR requires access. No organizer labels, scoring gates or working
+model files changed in this follow-up.
+
+Both candidate studies have independent official-score replay receipts and
+226 passing contracts. The [shared private archive](../../experiments/results/spell_f1_followup_artifacts.json)
+is locally committed and hash-verified. Its upload was rejected by automatic
+approval review pending explicit authorization for that payload and destination;
+remote availability and a fresh remote restore are not claimed.
 
 ## Historical architecture comparison
 
@@ -82,8 +124,16 @@ contains exact scoring rules, worked examples and an interactive timeline.
 
 ## Next work
 
-These are proposals. Freeze a [declaration](templates/EXPERIMENT.md) before
-fitting; do not infer that a proposed study has already run.
+The current priorities are a blind, continuously labeled ten-minute SoccerTrack
+panorama pilot, while pursuing authorized true-broadcast access, and a distinct
+short-possession event/timing hypothesis. The completed contact-memory and
+window-overlap packages do not justify more variants on these exposed matches.
+The data pilot needs new H/A/D/X annotation and measured-ball provenance; its
+event-interpolated ball coordinates are not independent input evidence.
+
+The earlier proposals below remain historical leads, not a new ranking after
+this follow-up. Freeze a [declaration](templates/EXPERIMENT.md) before fitting;
+do not infer that a proposed study has already run.
 
 | Priority / state | Next action | Required evidence |
 | --- | --- | --- |
