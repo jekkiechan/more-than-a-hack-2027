@@ -8,6 +8,35 @@ package details belong in [BASELINE](../../experiments/BASELINE.md).
 
 Three parallel pre-declared studies against the adopted ensemble, all with exact holdout parity and no organizer labels: [summary](../../experiments/LABEL_FREE_FOLLOWUP.md). **All no go.** Context-conditioned ball gaps score .5114 vs feed-like .4988 and hide fewer transitions, so feed-like stays the stress view. The competition prediction has 2.44 possessions/min, consistent with known feed-like under-segmentation; decoder cost 3 remains the holdout optimum. Target normalization loses .078/.094 feed-like/clean spell and self-training .003/.005. Retain the package and policy. Remaining lever: model-side short-spell/transition recall on 25 Hz feeds.
 
+## Smart Tagging — 29 October 2026
+
+The [fixed Smart Tagging study](../../experiments/SMART_TAGGING_VALIDATION.md)
+completed a genuine-XML audit, label-free predictions and one separately
+user-requested public diagnostic. Its bounded missing-ball H/A prior lowers
+spell F1 **.557576 → .537143** while macro rises **.854088 → .866346**.
+Predicted possessions rise 16 → 18 against 17 references; at IoU .5 matched
+references stay ten and spurious predictions rise six → eight. Native P(D)
+is bitwise unchanged; public D metrics are also unchanged. Keep
+`joint_gru_combined_ensemble_v1`; no tuning or adoption follows.
+
+The public window contains only 7,500 graded frames/17 possessions. No external
+Smart Tagging accuracy comparison or new feed-like evaluation ran, and
+full-match performance remains unknown. Genuine tags supply directional prior
+evidence on 32.98% of missing-ball frames after taper/conflict handling. An
+independent match with same-system tags and blind continuous possession labels
+is needed for calibration or credible efficacy evidence.
+
+Luna subagents implemented/reviewed the adapter and audit, found pre-reference
+checker-only issues, and independently verified the final prior/decoder replay
+without rescoring labels. Original/final predictions are byte-identical. The
+[single public gate](../../experiments/results/smart_tagging_public_check_started.json)
+is closed; historical gates and active manifests/policy remain unchanged.
+291 experiment contracts, 18 root tests, file-backed fit parity and format
+checks pass. New artifacts are locally verified, without a new private upload.
+[Verification](../../experiments/results/smart_tagging_verification.json) and
+[artifact inventory](../../experiments/results/smart_tagging_artifacts.json)
+record exact scope and availability.
+
 ## SkillCorner removal — 29 October 2026
 
 The [direct source-removal study](../../experiments/SKILLCORNER_REMOVAL.md) completes six matched-budget fits without the original eight SkillCorner training matches. On the unchanged original five-match full-provider benchmark, clean/feed-like spell declines **.633205/.498830 → .625786/.496092**. Both seeds decline in both views. SkillCorner's three primary evaluation cells are exact parity; the changed Sportec/Metrica mean declines .011128/.004106.
