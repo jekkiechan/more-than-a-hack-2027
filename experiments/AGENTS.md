@@ -2,7 +2,7 @@
 
 Dense map of what has been tried here, so you can resume without reading 40
 reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
-below are snapshots as of 2026-10-28 after combined-objective ensemble adoption;
+below are snapshots as of 2026-10-29 after the spell-F1 follow-up;
 the earlier architecture studies remain historical evidence. [STATUS](../docs/research/STATUS.md) is the
 coordination summary for adoption and next work. Before model-choice
 advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
@@ -27,11 +27,11 @@ Open a detailed report for the study relevant to the question.
   native clean long-live-gap support is only 108 frames. Component composite
   scores .3180/.3101 remain diagnostics; ensemble composite is unmeasured.
   Full-match performance is unknown.
-- **Prior original-loss GRU audit:** H/A errors dominate synthetic feed-like live gaps
-  >=10s (24.3% wrong team vs 5.1% false D). Native clean support is only 108
-  graded live long-gap frames, where false D dominates. Do not generalize the
-  earlier [HEADROOM](HEADROOM.md) diagnosis to the combined-loss baseline;
-  its long-gap error mix has not been separately audited. See [SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md).
+- **Current combined-loss audit:** short spells are the broadest supported
+  opportunity; under-3s recall is .384 clean/.203 feed-like. Synthetic long-gap
+  H/A errors remain substantial, but native clean support is only 108 live
+  frames. Read [the current audit](SPELL_OPPORTUNITY_AUDIT.md), not the older
+  [HEADROOM](HEADROOM.md) diagnosis, before proposing a mechanism.
 
 ## 2. Vocabulary you must get right
 
@@ -96,6 +96,11 @@ The later [combined-objective ensemble](OBJECTIVE_ENSEMBLE.md) is now the workin
 - Adding LightGBM to the GRU: no feed-like value, and it lowers D recall.
 - Decoder or threshold tuning, and anything else selected on the public window.
 - Treating a mean of separate seeds as an ensemble.
+- The fixed five-second shifted-core tiling and frozen-backbone contact-memory
+  adapter now have completed negative comparisons. Their small short-recall
+  gains do not establish an overall spell-F1 gain; see [window overlap](WINDOW_OVERLAP.md)
+  and [contact memory](CONTACT_MEMORY.md). A new contact method needs a distinct
+  mechanism, not another offset, weight or adapter sweep on the same cohort.
 
 ## 5. Open threads (priorities live in STATUS)
 
@@ -109,7 +114,10 @@ The later [combined-objective ensemble](OBJECTIVE_ENSEMBLE.md) is now the workin
    but not spell F1 consistently; seed 2026 fails the SkillCorner D guard
    ([SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md)). A game-state-dependent
    (turnover/aerial) gap model remains untested.
-4. An independent labelled broadcast match. Data-blocked (private mtah-data issue #4).
+4. An independent labelled broadcast match. PFF/SNGAR access remains pending or
+   gated. [SoccerTrack v2 samples are acquired](INDEPENDENT_DATA_SEARCH.md) for a
+   blind panorama annotation pilot; they have no dense possession gold and their
+   ball coordinates are event-interpolated, not measured observations.
 5. Calibrated player defects and ball-fusion confidence.
 
 Draft PRs #8, #11, #13, #16 and #18 hold evidence that is not on main. They are

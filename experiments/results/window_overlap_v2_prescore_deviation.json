@@ -1,0 +1,19 @@
+{
+  "study_id": "window_overlap_v2",
+  "declaration": "experiments/results/window_overlap_declaration_v2.json",
+  "declaration_sha256": "5c46df2d799f3071419951202aa0aa554c5cb5a993f69165ae75059bb04d5d0e",
+  "preflight_receipt": "data/experiments/window_overlap_v2/preflight.json",
+  "recorded_utc": "2026-10-29T01:45:14Z",
+  "status": "stopped on exact control parity before candidate scoring",
+  "attempted_cells": 1,
+  "persisted_score_cells": 0,
+  "control_metric_rows_computed_in_memory": 1,
+  "candidate_metric_rows_computed": 0,
+  "error": "Recomputed original-tiling ensemble probabilities were within 1e-6 of, but not byte-identical to, the saved original probability array. The control score parity verifier correctly rejected the digest mismatch.",
+  "correction": "The v3 run will use the saved per-seed original-tiling native probabilities as the exact control side and run only the declared shifted tiling from the same held-out checkpoints. Candidate, cohort, blend weights and decoder remain fixed.",
+  "score_values_inspected": false,
+  "candidate_predictions_written": false,
+  "organizer_labels_read": false,
+  "organizer_scored": false,
+  "public_gate_touched": false
+}
