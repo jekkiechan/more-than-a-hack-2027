@@ -111,6 +111,12 @@ repeat residual-resolution or decoder parameter sweeps on this cohort. The
 short spells from censored grading-edge references; its percentages are
 mechanism descriptions, not achievable gain estimates.
 
+The fixed [Smart Tagging missing-ball prior](SMART_TAGGING_VALIDATION.md) is also
+completed: its single requested public diagnostic loses spell (.5576 → .5371)
+while improving macro. Do not sweep the cap, taper or taxonomy on that window.
+The integration is isolated from the active baseline; credible efficacy or
+calibration needs another genuinely tagged match with independent labels.
+
 ## 5. Open threads (priorities live in STATUS)
 
 1. SkillCorner dead-ball under-recall in tree predictors. Separate anchors,
