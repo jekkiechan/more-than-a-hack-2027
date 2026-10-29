@@ -1,8 +1,16 @@
 # Current research state
 
-Reviewed 2026-10-29 after the short-spell continuation and SkillCorner expansion. The expansion ran on frozen commit `b448bb7` over `0659bff`; its separate delivery checkout integrates fork main `1629969` (merged PR #31). The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+Reviewed 2026-10-29 after the SkillCorner removal study, frozen at code commit `c4dcbe3` over fork main `22fc2d5` (merged PR #32). The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
+
+## SkillCorner removal — 29 October 2026
+
+The [direct source-removal study](../../experiments/SKILLCORNER_REMOVAL.md) completes six matched-budget fits without the original eight SkillCorner training matches. On the unchanged original five-match full-provider benchmark, clean/feed-like spell declines **.633205/.498830 → .625786/.496092**. Both seeds decline in both views. SkillCorner's three primary evaluation cells are exact parity; the changed Sportec/Metrica mean declines .011128/.004106.
+
+A separate provider-represented Sportec/Metrica supplement improves after removal (+.013053 clean / +.012420 feed-like), largely from Sportec. Metrica gains only .002720 clean and loses .007082 feed-like. The result shows a transfer/specialization tradeoff, not a demonstrated competition gain from deletion. Only the frozen primary clean-spell screen fails; the other thirteen guards pass. Retain the active dataset, combined-objective ensemble and policy; no automatic promotion or organizer scoring occurs.
+
+The six sealed checkpoints pass independent budget/model/normalizer checks. All 283 repository contracts, exact file-backed fit parity and the bundled submission format pass. Independent external verification completed in a documented replay-prefix/aggregation sequence; all thirty cells, 180 rows and twenty-four summaries pass. Its checker-only corrections and executed-source-byte limitation are audited. The local archive is SHA-256 verified after restoring 370 files; no new private upload was attempted. The detailed report owns its availability.
 
 ## SkillCorner expansion — 29 October 2026
 
