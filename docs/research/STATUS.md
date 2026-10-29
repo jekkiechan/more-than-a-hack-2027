@@ -10,7 +10,7 @@ The [direct source-removal study](../../experiments/SKILLCORNER_REMOVAL.md) comp
 
 A separate provider-represented Sportec/Metrica supplement improves after removal (+.013053 clean / +.012420 feed-like), largely from Sportec. Metrica gains only .002720 clean and loses .007082 feed-like. The result shows a transfer/specialization tradeoff, not a demonstrated competition gain from deletion. Only the frozen primary clean-spell screen fails; the other thirteen guards pass. Retain the active dataset, combined-objective ensemble and policy; no automatic promotion or organizer scoring occurs.
 
-The six sealed checkpoints pass independent budget/model/normalizer checks. All 283 repository contracts, exact file-backed fit parity and the bundled submission format pass. Independent external verification completed in a documented replay-prefix/aggregation sequence; all thirty cells, 180 rows and twenty-four summaries pass. Its checker-only corrections and executed-source-byte limitation are audited. Local artifact packaging is being finalized; the detailed report owns its availability.
+The six sealed checkpoints pass independent budget/model/normalizer checks. All 283 repository contracts, exact file-backed fit parity and the bundled submission format pass. Independent external verification completed in a documented replay-prefix/aggregation sequence; all thirty cells, 180 rows and twenty-four summaries pass. Its checker-only corrections and executed-source-byte limitation are audited. The local archive is SHA-256 verified after restoring 370 files; no new private upload was attempted. The detailed report owns its availability.
 
 ## SkillCorner expansion — 29 October 2026
 

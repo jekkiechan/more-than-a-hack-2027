@@ -205,3 +205,29 @@ its edits. The non-matching reconstruction is explicitly marked non-exact; the
 audit preserves this limitation, the captured execution hash and log, and the
 corrected reproducible checker. The complete frozen training/inference source
 snapshot is intact and all 160 hashes match.
+
+## Local artifact availability
+
+The [artifact receipt](results/skillcorner_removal_artifacts.json) records the
+local private-cache commit `6abe1fc20090265c75b3246baf05657d7e3474e5` on
+`archive/skillcorner-removal-v1`: 261 new payload files / 233,525,134 bytes and
+109 reusable base files / 2,013,304,812 bytes. All 37 new LFS pointer objects
+verify by size and SHA-256. The official conflict-safe restore helper verified
+all 370 unique files / 2,246,829,946 bytes into an empty local directory.
+
+No private upload was attempted for this study, and no new upload rejection
+occurred. The earlier destination-specific authorization restriction remains;
+remote availability and remote restore are not claimed. The current baseline
+manifest, model files, evaluation manifest and decision policy are unchanged.
+From the local archive checkout, restore with:
+
+```sh
+python scripts/competition_cache.py restore --manifest skillcorner_removal_v1_cache_manifest.json --data-dir /path/to/code/data
+python scripts/competition_cache.py restore --manifest skillcorner_removal_v1_base_dependencies_manifest.json --data-dir /path/to/code/data
+```
+
+Use the frozen public execution checkout or the archived 160-file source
+snapshot and set `MTAH_DATA_DIR` to that restored data directory. Future
+unrelated Python modules change the runner's full-source seal; do not rewrite
+the saved declaration to accommodate them. No organizer scoring is needed
+to reproduce this external comparison.
