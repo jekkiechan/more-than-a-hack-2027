@@ -1,6 +1,6 @@
 # Current research state
 
-Updated 2026-10-30 after SoccerNet extension stage 1; earlier merged-study history below remains unchanged. The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+Updated 2026-10-30 during the SoccerNet capacity/data-scaling continuation; earlier merged-study history below remains unchanged. The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
 
@@ -25,6 +25,22 @@ dense possession labels. GAR valid/test data and organizer labels were not
 opened. Artifacts remain in the local ignored data directory; no private
 upload was made. Independent data/replay verification is still being
 finalized. Read the report for the numeric parity and receipt corrections.
+
+### SoccerNet capacity/data-scaling continuation — running
+
+The new frozen `soccernet_capacity_v1` study widens only conditional H/A GRUs
+and uses 42,919 sparse event-team anchors from 45 disjoint 2022 World Cup
+fixtures. Its feature/label integrity audit rehashed the TRAIN source and all
+45 prepared game caches; 60 conflicting event-team centers remain unknown.
+The study preserves the baseline normalizer, D path, and original-data
+spell/transition objectives. It has 18 seed-2026 Stage-A fits, nine seed-2027
+confirmation fits, a matched old-data-only control, and two pooled fits; the
+public diagnostic remains deferred until external selection. At the latest
+progress check, Stage A had started 2/18 fits and no new evaluation results had
+been inspected. The methods and data-QA draft is
+[SOCCERNET_CAPACITY](../../experiments/SOCCERNET_CAPACITY.md). The preparation
+integrity receipt passes; independent final study QC and the later CSV-format
+check remain pending. No model is promoted.
 
 ## Smart Tagging — 29 October 2026
 
