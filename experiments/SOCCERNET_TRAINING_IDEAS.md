@@ -108,12 +108,16 @@ not accept them as the original 2,048-update package. No promotion is implied.
 ## Current verification and blocker
 
 The [preflight receipt](results/soccernet_training_ideas_preflight.json) records
-the checked availability. The six original fold teachers were initially LFS
+the initial availability. The six original fold teachers were initially LFS
 pointers; selective restore downloaded the real objects and verified all six
 against the published capacity declaration. The SoccerNet width-96 heads,
-inventory, prepared merged segments and raw data are absent. Their historical
-inventory explicitly says no remote archive was uploaded. No new private data
-or model upload was attempted.
+inventory and prepared merged segments remain absent. The user's correction
+identified Hugging Face as the raw-data recovery route: all seven pinned TRAIN
+files are now downloaded and hash-verified (5,037,010,355 bytes). See the
+[new restore receipt](results/soccernet_huggingface_restore.json) and
+[durable access guide](SOCCERNET_DATA_ACCESS.md). Historical declarations and
+the earlier availability receipt remain unchanged. No new private data or
+model upload was attempted.
 
 Synthetic tests cover all four optimizing arms, deterministic continuation,
 identical supervised sampling, exact D retention, target-independent inference,
@@ -123,7 +127,8 @@ declaration/bundle tampering, and output overwrite prevention. The experiment
 suite, root suite, file-backed fit parity and bundled CSV validation results
 are recorded in [verification](results/soccernet_training_ideas_verification.json).
 
-Next: supply the original local SoccerNet archive location, verify its inventory
-and selected fold checkpoints, prepare paired raw gap views, freeze the six
-fold/seed bundles, then execute the matched study. No arm is recommended for
-adoption until that comparison completes.
+Next: restore or explicitly rebuild the derived artifacts, verify the selected
+fold checkpoints and provenance, prepare paired raw gap views, freeze the six
+fold/seed bundles, then execute the matched study. Raw dataset availability is
+no longer the blocker. No arm is recommended for adoption until that comparison
+completes.

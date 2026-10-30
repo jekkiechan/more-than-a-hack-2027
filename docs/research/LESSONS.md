@@ -7,6 +7,7 @@ not to a direct chat review. Results-derived procedures are our interpretation.
 
 | Source / type | Durable lesson | Where applied |
 | --- | --- | --- |
+| User correction, 2026-10-30, direct guidance; [data access](../../experiments/SOCCERNET_DATA_ACCESS.md) | SoccerNet-GAR is available from Hugging Face. Check the pinned `OpenSportsLab/SoccerNet-GAR` tracking branch before asking for a local data archive. Raw dataset access and recovery of our trained checkpoints are separate. | AGENTS; SoccerNet data access |
 | [Decision policy](../../experiments/model_decision_policy.json), recorded guidance | Spell first, macro for exact ties; fixed 70/30 is an additional summary, not competition ranking. | Readout skill |
 | [PR #10](https://github.com/jekkiechan/more-than-a-hack-2027/pull/10), recorded choice | User chose simpler GRU/HGB although the three-way blend is numerically higher. Explain simplicity as a tradeoff; do not relabel the numerical winner. | Readout skill |
 | [Promotion manifest](../../experiments/baseline_manifest.json), recorded request | User explicitly adopted ball-gap robustness after seeing diagnostics. Preserve the old clean-rule winner and disclose prior public exposure. | Readout skill; BASELINE |
