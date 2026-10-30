@@ -8,7 +8,7 @@ Detailed reports own their original selection rules and aggregate JSON paths.
 
 | ID | Scope / state | Evidence |
 | --- | --- | --- |
-| `soccernet-training-ideas-v1` | Three parallel Luna mechanisms and a matched continuation control: event-balanced anchors, raw ball-gap consistency, masked context reconstruction. Synthetic training tested; 24 real fits and evaluation not run because the local-only SoccerNet archive is missing. No adoption. | [Implementation/protocol](../../experiments/SOCCERNET_TRAINING_IDEAS.md), [preflight](../../experiments/results/soccernet_training_ideas_preflight.json), [verification](../../experiments/results/soccernet_training_ideas_verification.json) |
+| `soccernet-training-ideas-v1` | Three parallel Luna mechanisms and a matched continuation control: event-balanced anchors, raw ball-gap consistency, masked context reconstruction. Synthetic training tested; raw TRAIN data restored from Hugging Face. Derived artifacts/checkpoints still require recovery before the 24-fit comparison. No adoption. | [Implementation/protocol](../../experiments/SOCCERNET_TRAINING_IDEAS.md), [raw-data restore](../../experiments/results/soccernet_huggingface_restore.json), [preflight](../../experiments/results/soccernet_training_ideas_preflight.json), [verification](../../experiments/results/soccernet_training_ideas_verification.json) |
 
 ## Merged studies
 

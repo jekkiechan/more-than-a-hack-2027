@@ -10,12 +10,18 @@ score has run**. The current SoccerNet baseline remains unchanged.
 The [implementation report](../../experiments/SOCCERNET_TRAINING_IDEAS.md)
 records fixed recipes, interfaces and the planned 24-fit comparison.
 
-Six historical fold teachers have been restored and hash-verified. The promoted
-width-96 heads, private inventory, merged SoccerNet segments and raw source data
-are missing from this workspace; prior records say they were local-only.
-Next action is restoration from the original local archive, followed by paired
-view preparation and frozen matched training/evaluation. See the
+Six historical fold teachers have been restored and hash-verified. Following
+the user's source correction, all seven pinned SoccerNet TRAIN files were
+downloaded from Hugging Face and verified against the capacity declaration:
+5,037,010,355 bytes. The raw dataset is now available locally. The promoted
+width-96 heads, private inventory and prepared merged segments remain separate
+missing artifacts. Next: restore or explicitly rebuild those derived artifacts,
+then prepare paired views and run the frozen matched study. The
+[Hugging Face restore receipt](../../experiments/results/soccernet_huggingface_restore.json)
+supersedes the raw-data availability portion of the earlier
 [preflight](../../experiments/results/soccernet_training_ideas_preflight.json).
+Use the [data-access guide](../../experiments/SOCCERNET_DATA_ACCESS.md) before
+requesting a local dataset archive.
 
 Updated 2026-10-30 after the user-authorized SoccerNet-capacity promotion;
 the working baseline is `joint_gru_soccernet_capacity_ensemble_v1`.
