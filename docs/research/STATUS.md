@@ -1,5 +1,22 @@
 # Current research state
 
+## SoccerNet training ideas — 30 October 2026
+
+Three Luna implementations plus a shared matched continuation runner are ready
+for artifact-backed experimentation: sparse event-type balancing, raw ball-gap
+teacher consistency, and masked temporal context reconstruction. Synthetic
+optimization and inference contracts are covered; **no real-data fit or new
+score has run**. The current SoccerNet baseline remains unchanged.
+The [implementation report](../../experiments/SOCCERNET_TRAINING_IDEAS.md)
+records fixed recipes, interfaces and the planned 24-fit comparison.
+
+Six historical fold teachers have been restored and hash-verified. The promoted
+width-96 heads, private inventory, merged SoccerNet segments and raw source data
+are missing from this workspace; prior records say they were local-only.
+Next action is restoration from the original local archive, followed by paired
+view preparation and frozen matched training/evaluation. See the
+[preflight](../../experiments/results/soccernet_training_ideas_preflight.json).
+
 Updated 2026-10-30 after the user-authorized SoccerNet-capacity promotion;
 the working baseline is `joint_gru_soccernet_capacity_ensemble_v1`.
 Earlier study records below remain historical. The former combined-objective

@@ -4,6 +4,12 @@ Reviewed 2026-10-30. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
+## Implemented, awaiting artifacts
+
+| ID | Scope / state | Evidence |
+| --- | --- | --- |
+| `soccernet-training-ideas-v1` | Three parallel Luna mechanisms and a matched continuation control: event-balanced anchors, raw ball-gap consistency, masked context reconstruction. Synthetic training tested; 24 real fits and evaluation not run because the local-only SoccerNet archive is missing. No adoption. | [Implementation/protocol](../../experiments/SOCCERNET_TRAINING_IDEAS.md), [preflight](../../experiments/results/soccernet_training_ideas_preflight.json), [verification](../../experiments/results/soccernet_training_ideas_verification.json) |
+
 ## Merged studies
 
 | ID | Scope / outcome | Reports |
