@@ -1,6 +1,11 @@
 # Current research state
 
-Updated 2026-10-30 during the SoccerNet capacity/data-scaling continuation; earlier merged-study history below remains unchanged. The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+Updated 2026-10-30 after the user-authorized SoccerNet-capacity promotion;
+the working baseline is `joint_gru_soccernet_capacity_ensemble_v1`.
+Earlier study records below remain historical. The former combined-objective
+package came from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29)
+and remains the unchanged D-teacher source. Package and restore details live in
+[BASELINE](../../experiments/BASELINE.md).
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
 
@@ -13,7 +18,8 @@ matched old-data-only control .629253/.495753. GAR50 gains .002703 clean over
 old-only but loses .001248 clean and .003709 feed-like to baseline; it fails
 the predeclared +.01 clean improvement screen. Provider clean D/macro and
 feed-like spell guards pass. Keep `joint_gru_combined_ensemble_v1` with no
-promotion.
+promotion at the stage-1 decision. This remains stage 1's frozen outcome; the
+later capacity package was promoted under a separately authorized exception.
 
 The requested larger-capacity continuation is complete; its results and the
 single post-selection public diagnostic are recorded below. The five
@@ -37,16 +43,19 @@ spell/transition objectives. The selected width-96 two-seed ensemble scores
 equal-budget old-only control scores .633652/.494188; the SoccerNet result
 gains .008138/.008398 over that control. All declared provider/feed-like
 guards pass, but width 96 misses the separate +.01 clean improvement screen
-by .001415. Keep the active baseline; no automatic promotion.
+by .001415. The frozen study did not automatically promote the model; the user
+later authorized adoption with this exception disclosed.
 
 The external selection and six-fit old-only attribution control are complete.
 The one-time post-selection public diagnostic scores .569697 mean spell F1,
 .861288 macro F1, and .855417 D-F1 versus the saved baseline .557576/.854088/
 .854810. Both candidates predict 16 spells against 17 references over 7,500
 graded frames; the mean spell-F1 bootstrap intervals overlap broadly. The
-public window is a small noisy pipeline check, not confirmation. It was not
-used to tune, select, or adopt a model. Retain the active baseline because the
-external width-96 ensemble misses the frozen +.01 clean screen.
+public window is a small noisy pipeline check, not confirmation. Its score was
+already known when the user authorized the later promotion, but it was not a
+model-selection or tuning input. The frozen study did not adopt width 96
+because it misses the +.01 clean screen; the later user approval explicitly
+accepted that exception.
 
 All final independent receipts pass: coarse 195-row replay, selected-final
 180-row replay, matched control 45-row replay, pooled weight seals, and exact
@@ -104,13 +113,44 @@ The user-authorized [matched-budget data study](../../experiments/SKILLCORNER_EX
 
 The new labels are provider/event silver, and the six training matches add 4.66 usable hours under the existing visibility mask. Sparse retained native ball gaps limit competition representativeness. Full methods, paired seed/provider rows and verification evidence belong in the study report. The new private archive is frozen locally; automatic approval review blocked upload to `jekkiechan/mtah-data` pending explicit destination-specific authorization. No remote restore is claimed.
 
-## Adopted baseline
+## Current adopted baseline
 
-`joint_gru_combined_ensemble_v1`: equal native H/A/D probabilities from combined-loss seeds 2026/2027, then unchanged Viterbi cost 3. Hidden24 player-only-D GRUs, ten-second cores and five-second context remain fixed. Matched full-provider clean/feed-like spell improves **.626531/.487419 → .633205/.498830**; macro is .854226/.811387. The practical screen passes, including provider clean spell/macro/D-F1 floors. SkillCorner spell declines about .007 in both views, and clean equal-provider D-F1 declines .002220. See [the report](../../experiments/OBJECTIVE_ENSEMBLE.md).
+`joint_gru_soccernet_capacity_ensemble_v1` uses width-96 pooled conditional H/A
+heads and the unchanged combined-objective seed-2026/2027 hidden-24 D teachers,
+followed by the unchanged cost-3 Viterbi decoder. Its external clean/feed-like
+spell scores are .641790/.502586 versus .633205/.498830 for the prior package;
+matched equal-budget old-only is .633652/.494188. The frozen study missed the
++0.01 clean screen by .001415, while passing provider D/macro and feed-like
+guards. The user authorized adoption afterward with that exception disclosed.
+The public diagnostic was already known at adoption but was not selection
+evidence; its score is .569697 versus .557576 on only 7,500 frames and 17
+references. No fresh confirmation or full-match result is established. See the
+[promotion guide](../../experiments/BASELINE.md) and
+[capacity report](../../experiments/SOCCERNET_CAPACITY.md).
+The promotion has local restore only: the generic private-cache default still
+restores the former package, and no remote cache/archive was updated.
 
-Two pooled deployment fits used the same 13 TRAIN matches and exact normalization/schema/budget parity. The 199,319-row label-free CSV is format-validated and reproduces through the normal baseline entrypoint. The preceding package/decision policy are archived. This is development adoption on exposed matches and synthetic stress, not independent confirmation; the prior loss study’s failed +.01 both-seed screen remains unchanged.
+The [former combined-objective package](../../experiments/OBJECTIVE_ENSEMBLE.md)
+is archived. Its fitted D teachers, old manifest, policy, and historical
+adoption record remain unchanged.
 
-The separately requested fixed public diagnostic was run **after** adoption: both ensembles score **.557576 spell**, with combined macro **.854088** versus prior **.862375**. D-F1 improves .848746 → .854810. This does not confirm a public-window gain; only 7,500 graded frames and 17 possessions are available. No tuning or adoption changes followed. The [saved public result](../../experiments/results/combined_objective_public_check.json) and exclusive gate are final. Full-match performance remains unknown. Restore/package details: [BASELINE](../../experiments/BASELINE.md).
+### Former package: deployment and public check
+
+The former package's two pooled deployment fits used the same 13 TRAIN matches
+and exact normalization/schema/budget parity. Its 199,319-row label-free CSV
+is format-validated and reproduces through the baseline entrypoint. This was a
+development adoption on exposed matches and synthetic stress, not independent
+confirmation; the prior loss study's failed +.01 both-seed screen remains
+unchanged.
+
+Its separately requested fixed public diagnostic was run **after** that
+adoption: both ensembles scored **.557576 spell**, with combined macro **.854088**
+versus prior **.862375**. D-F1 improved .848746 → .854810. This does not
+confirm a public-window gain; only 7,500 graded frames and 17 possessions are
+available. No tuning followed that diagnostic. The [saved public
+result](../../experiments/results/combined_objective_public_check.json) and
+exclusive gate remain final. Full-match performance is unknown. Restore
+details: [BASELINE](../../experiments/BASELINE.md).
 
 ## Spell-F1 follow-up — 29 October 2026
 
@@ -239,7 +279,7 @@ shows dated milestones and interactive charts; update it when promising work com
 
 | Scope / evidence | Finding | Decision |
 | --- | --- | --- |
-| Completed [combined-objective ensemble comparison](../../experiments/OBJECTIVE_ENSEMBLE.md), full provider holdouts | Fixed saved-probability blend improves clean/feed-like spell .626531/.487419 → .633205/.498830; all declared practical guards pass. SkillCorner spell declines about .007 in both views. Independently verified; two pooled deployment fits and entrypoint replay completed. | Working baseline adopted before a separate fixed public diagnostic: spell tied .557576, combined macro lower. No subsequent tuning or adoption change. |
+| Completed [combined-objective ensemble comparison](../../experiments/OBJECTIVE_ENSEMBLE.md), full provider holdouts | Fixed saved-probability blend improved clean/feed-like spell .626531/.487419 → .633205/.498830; its practical guards passed. SkillCorner spell declined about .007 in both views. Independently verified; two pooled deployment fits and entrypoint replay completed. | Adopted at the time and later superseded by the user-authorized SoccerNet-capacity package. Its own fixed public diagnostic and decision remain historical. |
 | Completed [seed ensemble / gap-context study](../../experiments/SEED_GAP_CONTEXT.md), full provider holdouts | Actual ensemble .6265/.4874; 30/30 parity. Live feed-like gaps >=10s have 24.3% wrong team versus 5.1% false D; native clean support is only 108 live frames. Longer context helps local recovery but not spell consistently. | User adopts the original-context ensemble; fifteen-second context remains experimental. Independent labeled broadcast confirmation is pending. No organizer scoring. |
 | Previous adopted recipe (`gru_hgb_ballgap25_v1`), historical **D-only provider holdout, pooled H/A**; [baseline](../../experiments/BASELINE.md) | Clean spell/macro .5740/.8439; composite-stress .4315/.7866. Previous .5746/.8449 and .4205/.7699. | Adopted robustness tradeoff, not a clean-score win. |
 | Merged [tracking pilot](../../experiments/TOP_THREE_PILOT.md), PR #15 | 80 pooled development evaluations; matched gap/suppression arms lose overall spell. Fusion recovers 4,419 missing-ball frames (6.84%), with >10% overlapping ball positions disagreeing by >5 m. | No preprocessing/fusion adoption. |

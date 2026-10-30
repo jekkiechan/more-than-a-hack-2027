@@ -1,10 +1,10 @@
 # Agent guide: `experiments/`
 
 Dense map of what has been tried here, so you can resume without reading 40
-reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
-below are snapshots as of 2026-10-29 after the short-spell continuation;
-the earlier architecture studies remain historical evidence. [STATUS](../docs/research/STATUS.md) is the
-coordination summary for adoption and next work. Before model-choice
+reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Current
+adoption is `joint_gru_soccernet_capacity_ensemble_v1` as of 2026-10-30;
+earlier verdicts below are historical evidence. [STATUS](../docs/research/STATUS.md)
+is the coordination summary for adoption and next work. Before model-choice
 advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
 verify the active manifest/policy and recent PR evidence. STATUS and this guide
 can both lag newer work; historical verdicts below are not current adoption rules.
@@ -16,22 +16,24 @@ Open a detailed report for the study relevant to the question.
   Ranked by possession **spell F1** (H/A intervals, greedy one-to-one matching,
   mean over IoU .3–.7). **Macro F1** breaks exact ties. The 70/30 weighted
   summary is shown but never ranks.
-- **Adopted baseline:** `joint_gru_combined_ensemble_v1`. Equal native H/A/D
-  probabilities from combined-objective slot-dropout GRUs, seeds 2026/2027,
-  then Viterbi cost 3. Player-only D paths, ten-second cores/five-second context,
-  same 13 external TRAIN matches. See [BASELINE.md](BASELINE.md).
-- **Its evidence (full provider holdout, 5 dev matches):** clean/feed-like spell
-  .6332/.4988 versus preceding original-loss ensemble .6265/.4874. Public
-  spell ties .5576; macro .8541 vs preceding .8624. Adopted before this diagnostic.
-- **Known weaknesses:** previously exposed development and synthetic stress;
-  native clean long-live-gap support is only 108 frames. Component composite
-  scores .3180/.3101 remain diagnostics; ensemble composite is unmeasured.
-  Full-match performance is unknown.
-- **Current combined-loss audit:** short spells are the broadest supported
-  opportunity; under-3s recall is .384 clean/.203 feed-like. Synthetic long-gap
-  H/A errors remain substantial, but native clean support is only 108 live
-  frames. Read [the current audit](SPELL_OPPORTUNITY_AUDIT.md), not the older
-  [HEADROOM](HEADROOM.md) diagnosis, before proposing a mechanism.
+- **Adopted baseline:** `joint_gru_soccernet_capacity_ensemble_v1`. Two pooled
+  width-96 conditional H/A GRUs plus unchanged combined-objective seed-2026/2027
+  hidden-24 D teachers; equal native probabilities, cost-3 Viterbi. See
+  [BASELINE.md](BASELINE.md).
+- **External evidence (five previously exposed dev matches):** clean/feed-like
+  spell .641790/.502586 vs old .633205/.498830; matched old-only at equal width
+  and budget .633652/.494188. Provider and feed-like guards pass. Frozen study
+  misses +.01 clean by .001415; the user separately approved promotion with
+  that exception disclosed.
+- **Public evidence and limitations:** the already known, one-time 7,500-frame,
+  17-reference diagnostic is .569697 mean spell F1 vs .557576 old; it was not
+  a selection or tuning input. All five external matches were previously
+  exposed; full-match performance remains unknown. SoccerNet supervision is
+  sparse PASS/CROSS/SHOT event-team points, not dense possession labels.
+- **Current study/readout:** see [the capacity report](SOCCERNET_CAPACITY.md)
+  and [current status](../docs/research/STATUS.md). The older
+  [combined-loss audit](SPELL_OPPORTUNITY_AUDIT.md) describes the previous
+  baseline and remains historical; do not use it as the current package spec.
 
 ## 2. Vocabulary you must get right
 
@@ -41,9 +43,9 @@ Open a detailed report for the study relevant to the question.
 | Confirmation matches | J03WPY (original test), J03WR9 (PathCRF comparison), J03WQQ (refinement confirmation). All are now spent. No fresh independent set exists. |
 | **Pooled** | Trained on all providers. Used for deployment fits. |
 | **D-only provider holdout** | The D head excludes the provider, but H/A is pooled. Older studies (≤ PR #19) used this. **Not** a full-pipeline transfer claim. |
-| **Full provider holdout** | Every learned H/A, D and normalization component excludes the provider. Current preferred view (policy v4). |
+| **Full provider holdout** | Every learned H/A, D and normalization component excludes the provider. The active selection evidence uses full provider holdouts; see the current policy for guards. |
 | Views | `clean`/native, `legacy` (old coarse augmentation), `composite` stress (frozen [tracking_corruption](tracking_corruption.py)), `feed_like` (composite minus per-frame sampling loss and regional blanking; **the current stress guardrail**), `ball_gaps`, `no_sampling`, `no_regional`. See [stress_components](stress_components.py). |
-| Guardrails | Full recipes against the adopted ensemble: feed-like spell ≥ baseline − .01; each provider's clean D-F1 and macro within .02; default clean screen +.01 spell. The latest adoption used a separately declared practical screen; its historical +.01 failures stay recorded. Report component seeds separately. Exact rules are in [`model_decision_policy.json`](model_decision_policy.json); older declarations retain their original references. |
+| Guardrails | Full recipes against the adopted ensemble: feed-like spell ≥ baseline − .01; each provider's clean D-F1 and macro within .02; default clean screen +.01 spell. The current adoption is an explicitly user-approved exception after the frozen capacity study missed +.01 clean; the study result remains unchanged. Report component seeds separately. Exact active rules are in [`model_decision_policy.json`](model_decision_policy.json); older declarations retain their original references. |
 | Gate | A one-time exclusive marker for organizer public scoring. Once claimed it stays closed, even after an error. Read saved results; never re-score. |
 | Shortcuts | Sportec freezes the ball during D. Metrica blanks the ball during D. SkillCorner's ≥12-visible filter drops most D frames. This is why ball-based D heads do not transfer and why the D head is player-only. |
 
@@ -78,12 +80,17 @@ Each step reacted to the one before it. ✔ = adopted. ✖ = retained the baseli
 | 19 | Temporal architecture ([TEMPORAL_ARCHITECTURE](TEMPORAL_ARCHITECTURE.md)) | Fixed-budget BiLSTM/Transformer/TCN comparison against former `joint_gru_slotdrop_v1`: 18 challenger fits / 200 cells. All challengers fail the both-seed screen. Historical GRU clean/feed-like .6132/.4798 is a two-fit arithmetic mean, not an ensemble and not the current baseline's score. | Retain then-current GRU family; no promotion |
 | 20 | Seed ensemble and gap context ([SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md)) | Later, separate study measures the actual two-seed probability ensemble at .6265/.4874 clean/feed-like; fifteen-second context remains experimental. The ensemble was not evaluated in the architecture comparison. | ✔ `joint_gru_seed_ensemble_v1` (PR #22) |
 | 21 | Architecture probability ensembles ([TEMPORAL_ARCHITECTURE_ENSEMBLES](TEMPORAL_ARCHITECTURE_ENSEMBLES.md)) | Zero fits / 900 cells; independent replay passed. All 11 pooled blends fail the declared screen. Closest GRU+TCN .626189/.483176; GRU+BiLSTM+TCN .624938/.487455. Same-seed modes are diagnostic; all 2,101 manifest entries and 184 tests pass. | Retain `joint_gru_seed_ensemble_v1`; no promotion |
+| 22 | SoccerNet capacity/data scale ([SOCCERNET_EXTENSION](SOCCERNET_EXTENSION.md), [SOCCERNET_CAPACITY](SOCCERNET_CAPACITY.md)) | Wider H/A plus sparse SoccerNet event-team anchors; width-96 ensemble .641790/.502586 clean/feed-like, matched old-only .633652/.494188. Frozen +.01 clean screen misses by .001415. Post-selection public check .569697 vs .557576 on 17 references; no tuning from public. | ✔ `joint_gru_soccernet_capacity_ensemble_v1` by explicit user-approved exception; frozen study decision remains `adopt_model: false` |
 
 Public-window history (17 possessions, descriptive only): .4190 context ·
 .4300 refinement · .4889 GRU · .5067 PathCRF hybrid · .5257 ballgap25 ·
-.5371 Full127 · .5818 slotdrop GRU · .6194 pooled player-only-D GRU.
+.5371 Full127 · .5818 slotdrop GRU · .6194 pooled player-only-D GRU ·
+.5697 width-96 SoccerNet-capacity ensemble. These scores use different
+candidates and historical baselines; the latest public score is diagnostic,
+not a selection criterion.
 
-The later [combined-objective ensemble](OBJECTIVE_ENSEMBLE.md) is now the working baseline: .6332/.4988 clean/feed-like spell; provider guards pass with a SkillCorner spell tradeoff. Its separate public diagnostic ties the preceding ensemble on spell and loses macro; no tuning follows.
+The [combined-objective ensemble](OBJECTIVE_ENSEMBLE.md) was the prior working baseline: .6332/.4988 clean/feed-like spell, with the public spell tie and lower macro recorded at its adoption. It is now archived as the unchanged D teacher source for the
+[current SoccerNet-capacity ensemble](SOCCERNET_CAPACITY.md); its historical comparison and closed gate are not rewritten.
 
 ## 4. Settled: do not re-propose without a new mechanism
 
@@ -147,7 +154,7 @@ pinned in [EXPERIMENTS](../docs/research/EXPERIMENTS.md). Check live PR state.
 | `metrics.py` (`evaluate_tracking`), `eval_set/protocol.py` | Official scorer without joining halves; cohort and fold protocol, `sha256`, paired bootstrap, D-boundary summary |
 | `supervised.py`, `refine_features.py`, `refine_domain.py` | Frame features (geometry/motion, physical, player-only D features) and the HGB+Viterbi decoder |
 | `robust.py`, `stress.py`, `tracking_corruption.py`, `stress_components.py` | Ball masks, composite corruption, component-gated corruption |
-| `learned_temporal.py` (`lt`), `had_gru.py`, `factorized_had.py` | Sequence windows, masks, GRU/TCN; the joint H/A/D GRU with player-only D path (the current baseline's network) |
+| `learned_temporal.py` (`lt`), `had_gru.py`, `factorized_had.py`, `soccernet_capacity_model.py` | Sequence windows, masks, GRU/TCN and factorized H/A/D components. Current inference combines capacity-model H/A with the previous package's unchanged player-only D teacher paths. |
 | `live_gap_experiment.py` | `feature_view(...)` builds the joint-GRU input record. Also used at inference. |
 | `joint_lgbm.py`, `temporal_lgbm.py`, `possession_geometry.py` | Full H/A/D LightGBM features, ordered temporal features, control geometry and anchors |
 | `datasets.py`, `metrica_open.py`, `skillcorner_had.py`, `audit_dataset.py` | Source download and normalization into the shared NPZ contract |

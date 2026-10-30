@@ -1,6 +1,6 @@
 # SoccerNet-GAR capacity and data-scaling continuation
 
-Status: **external development and one-time public diagnostic complete; no adoption**
+Status: **study complete; frozen study decision retained baseline; later promotion authorized**
 Frozen: 30 October 2026, source commit `1b63913`  
 Study ID: `soccernet_capacity_v1`  
 Baseline: `joint_gru_combined_ensemble_v1`; manifest SHA-256
@@ -12,9 +12,10 @@ home/away (H/A) GRU can make better use of sparse SoccerNet event-team labels
 than the fixed-capacity warm-start in [stage 1](SOCCERNET_EXTENSION.md). The
 external selection, matched-control stage, and single post-selection public
 diagnostic are complete. Width 96 wins on the previously exposed five-match
-development cohort, but misses the predeclared +0.01 clean-spell screen. Its
-public diagnostic is descriptive only and caused no tuning or adoption; the
-active baseline remains adopted. Final independent replay/QC passed.
+development cohort, but misses the predeclared +0.01 clean-spell screen. The
+public diagnostic is descriptive only and was not a selection or tuning input.
+The later user-authorized promotion is recorded separately below. Final
+independent replay/QC passed.
 
 ## Data preparation and QA
 
@@ -186,8 +187,10 @@ These results characterize performance within the declared capacity/data
 recipe. Widths were compared under the same GAR-augmented schedule, and the
 matched old-only control uses the selected width and equal update budget. The
 comparison does not isolate a capacity-only causal effect from data scaling
-and preparation differences. All five evaluation matches had prior exposure,
-and the +0.01 clean screen fails, so keep the adopted baseline.
+and preparation differences. All five evaluation matches had prior exposure
+and the +0.01 clean screen fails. The frozen study decision retained the
+then-active combined-objective package; see the separate post-study adoption
+exception below.
 
 ## One-time public diagnostic
 
@@ -201,8 +204,10 @@ with five spurious and six missed; the baseline matches ten, with six spurious
 and seven missed. The candidate and baseline bootstrap 5–95% intervals for
 mean spell F1 are [.400000, .739394] and [.387879, .727273], respectively.
 The small exposed window makes this a noisy pipeline diagnostic, not
-confirmation. The score was not used for model selection, tuning, or adoption;
-full-match performance remains unknown. The sealed aggregate is
+confirmation. The score was not used for model selection or tuning. The frozen
+study decision retained the baseline because width 96 missed the +0.01 clean
+screen; the later separately authorized promotion is recorded in the dated
+adoption note below. Full-match performance remains unknown. The sealed aggregate is
 [`soccernet_capacity_public_check.json`](results/soccernet_capacity_public_check.json).
 
 ## Evaluation and limitations
@@ -263,3 +268,29 @@ inventory, not a restorable remote backup. Raw SoccerNet data require
 authorized access. No private archive upload is claimed, consistent with the
 data license. The adopted baseline and negative stage-1 result remain
 unchanged.
+
+## Post-study adoption note — 30 October 2026
+
+After reviewing the frozen external result and its failed +0.01 clean-spell
+screen, the user explicitly authorized promotion with the exception disclosed.
+The capacity study's frozen final decision still records `adopt_model: false`;
+this package decision is separate and does not rewrite the study threshold or
+result. The already-known one-time public diagnostic was considered only as
+descriptive evidence, not as model-selection input. No fitting, rescoring,
+public-gate reopening, or tuning followed this authorization.
+
+The adopted package is `joint_gru_soccernet_capacity_ensemble_v1`
+(`soccernet_capacity_ensemble`): two width-96 pooled conditional H/A models
+paired with the unchanged two combined-objective teacher D paths and frozen
+normalizers. It uses the declared 50% SoccerNet batch mixture, learning rate
+`3e-4`, 2,048 updates, 13 original TRAIN matches and 45 SoccerNet TRAIN games.
+The four package weights have verified hashes. The default prediction path is
+`data/experiments/current_baseline/joint_gru_soccernet_capacity_ensemble.csv`.
+See the separate [promotion receipt](results/baseline_soccernet_capacity_promotion.json).
+
+This promotion has a local restore only. The generic private-cache default
+still restores the former combined-objective package, and no remote cache was
+updated. The four verified weights and local package inventory must accompany
+this checkout to reproduce the adopted output. The old versioned combined
+manifest remains available for restoring the D teachers; it does not include
+the sealed SoccerNet H/A checkpoints.
