@@ -4,7 +4,7 @@ Status: stage 1 completed as a negative primary result; larger H/A capacity and 
 
 Date: 30 October 2026. Study: `soccernet_extension_v1`.
 
-Baseline: `joint_gru_combined_ensemble_v1`, manifest v5 and decision policy v5. Manifest SHA-256 `0c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0`; policy SHA-256 `e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3`.
+Baseline: `joint_gru_combined_ensemble_v1`, manifest v5 and decision policy v5. Manifest SHA-256 `c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0`; policy SHA-256 `e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3`.
 
 Declaration SHA-256: `15e80fe3e7e9499141475f743a2f913edf229cfcd46340ccbcf77e96a53d07ca`. Checkpoint seal SHA-256: `ae8f755ea74a53184dcad2a5f3310564e32c31f50f31cfc10bea90eb8d059cc5`. Source snapshot commit: `6e97f496a4ab2d01cccf76a5fdc795562c56bc58`. Frozen source/config/model seals were preserved through evaluation; only separately sealed runtime drivers handled three numerical/receipt corrections described below.
 
@@ -96,7 +96,7 @@ Seed sensitivity is reported as independent members. GAR50 seed means do not imp
 | gar25 | 0.625991 / 0.486119 | 0.624383 / 0.491096 | 0.625187 / 0.488608 | 0.630438 / 0.494076 |
 | gar50 | 0.621529 / 0.484079 | 0.625780 / 0.490075 | 0.623655 / 0.487077 | 0.631957 / 0.495121 |
 
-The public window has only 17 possessions. The five-match development cohort and the public point labels were previously exposed; these results are development evidence, not independent confirmation. No public result is available yet.
+The public window has only 17 possessions. The five-match development cohort and the public point labels were previously exposed; these results are development evidence, not independent confirmation. This stage was not scored publicly; the later [capacity continuation](SOCCERNET_CAPACITY.md) owns the completed one-time public diagnostic.
 
 ## Corrections and verification record
 
@@ -106,12 +106,12 @@ Three runtime-only corrections were needed; none changed weights, features, targ
 2. The initial baseline replay guard used `atol=1e-7`, stricter than the historical `atol=1e-6` contract. Before any candidate scoring, an independent 30-cell replay found maximum absolute probability drift `8.344650268554688e-7`; all decoded baseline predictions were exactly equal to saved predictions. A sealed runtime amendment changed only that comparison tolerance to `1e-6`.
 3. A float32 categorical sum assertion at `2e-7` rejected two-ULP rounding. Its runtime amendment changed only the assertion to `1e-6`; returned probability values were unchanged, and comparison outcomes were not inspected before correction. Previously completed cells were unchanged.
 
-The declaration, frozen source hashes and checkpoint seal stayed intact. Runtime drivers and executed function bytes have separate receipts. The standard suite (308 experiment tests, 18 root tests) and exact file-backed fit contract passed. An independent data-audit and prediction-replay receipt is still being finalized; this report does not claim that external verification is complete.
+The declaration, frozen source hashes and checkpoint seal stayed intact. Runtime drivers and executed function bytes have separate receipts. The standard suite (308 experiment tests, 18 root tests) and exact file-backed fit contract passed. The independent data audit and all 180 saved metric-row replays passed; see the [verification receipt](results/soccernet_extension_verification.json).
 
 ## Public diagnostic and artifacts
 
-The selected GAR50 arm’s two pooled fits are complete. The user-requested one-time public diagnostic is deferred until the larger capacity/data-scaling continuation is externally selected; it has not run, produced predictions or opened its gate. At that point it must use the predeclared feature-only inference and external decision seal, compare with saved baseline scores, and allow no post-public tuning or selection. The 17-possession public window is a pipeline check, not external efficacy evidence.
+The selected GAR50 arm’s two pooled fits are complete. Its public diagnostic was cancelled in favor of the requested [capacity/data-scaling continuation](SOCCERNET_CAPACITY.md); this stage never produced public predictions or opened its score gate. The continuation selected a new candidate externally, sealed its pooled weights, and completed one public diagnostic without subsequent tuning. The 17-possession public window remains a pipeline check, not independent efficacy evidence.
 
 The aggregate and weights, prepared data, fit receipts, replay validation, and execution receipts are SHA-verified in the local `data/experiments/soccernet_extension_v1/` tree. No new private upload was made; GAR source artifacts are retained locally under the dataset terms and are not included in this repository. The aggregate report is `data/experiments/soccernet_extension_v1/report.json` (180 rows); frozen declaration, decision, preparation manifest, restore manifest, baseline replay and verification receipts are in the same local directory.
 
-Promotion remains separate and was not performed. Keep the combined-objective ensemble during the running capacity/data-scaling continuation. The public diagnostic is deferred until final external selection. A new efficacy claim requires genuinely independent broadcast matches with dense, blind possession labels; neither these sparse SoccerNet event-team anchors nor the previously exposed five-match/public checks provide that evidence.
+Promotion remains separate and was not performed. The capacity/data-scaling continuation is complete and also retains the combined-objective baseline under its frozen screen. A new efficacy claim requires genuinely independent broadcast matches with dense, blind possession labels; neither these sparse SoccerNet event-team anchors nor the previously exposed five-match/public checks provide that evidence.

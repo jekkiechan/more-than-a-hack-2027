@@ -1,0 +1,164 @@
+{
+  "checker_scope_correction": {
+    "corrected_checker_receipt_sha256": "85b313e5aa81439e287dc3e6bd3180bfd92ee813fe478bab4e11ed14793119af",
+    "corrected_checker_sha256": "039fd3b219181afafded9bcb403541739c3d2b3ac98a939c84da59c2619652b5",
+    "exactly_one_declared_block_removed": true,
+    "original_checker_sha256": "ea0b275e378da96497d23f6a18438c63254989bace43b34af7b196bad61a9733",
+    "original_failure_traceback_sha256": "18b501c99f3757dd3c7bd7f1fbdfa64bace7819a1aec8fd879692117273b014b",
+    "reason": "An equal-probability two-seed ensemble P(D) is the mean of the two seed-specific P(D) values and need not equal seed-2026 P(D). The removed assertion incorrectly compared those values. Matching seed-to-seed and ensemble-to-ensemble P(D) parity, exact seed-array averaging, finite/probability checks, decoded predictions, metric replay, guards, selection, and weight replay remain in force."
+  },
+  "cohort_and_preparation": {
+    "exact_duplicate_frames_crosschecked": true,
+    "feature_validation": {
+      "exact_duplicate_geometry_crosschecked": true,
+      "feature_width_204": true,
+      "no_D_targets": true,
+      "no_geometry_conflicts_in_manifest": true,
+      "no_infinite_features": true,
+      "only_H_A_or_unknown": true,
+      "prohibited_metadata_features_absent": true,
+      "sample_fps_native_over_6": true,
+      "source_cohort_is_official_train_only": true,
+      "stride6_indices": true,
+      "visible_masks_crosschecked_on_raw_overlap": true
+    },
+    "geometry_conflicts": 0,
+    "mapped_anchor_points": 42919,
+    "maximum_anchor_mapping_delta_native_frames": 3,
+    "native_fps_range": [
+      29.96999890735396,
+      29.970001172079883
+    ],
+    "native_rows": 4819799,
+    "official_train_games": 45,
+    "prepared_segments": 9905,
+    "sample_fps_range": [
+      4.994999817892327,
+      4.995000195346647
+    ],
+    "sampled_rows": 806877,
+    "target_counts": {
+      "A": 19775,
+      "D": 0,
+      "H": 23144,
+      "unknown": 763958
+    },
+    "unmapped_team_conflict_anchors": 60,
+    "window_context_profile": {
+      "observed_segment_repeat_fraction": 0.37400662887885483,
+      "stage1_fixed_clip_repeat_fraction": 0.76,
+      "unique_source_fraction": 0.6259933711211452,
+      "window_slots": 100
+    }
+  },
+  "independent_verification": {
+    "coarse": {
+      "cells": 15,
+      "max_probability_sum_error": 1.7811544239521027e-07,
+      "models": 36,
+      "saved_metric_rows_replayed": 195,
+      "status": "PASS",
+      "weight_replays": 12
+    },
+    "final": {
+      "cells": 15,
+      "max_probability_sum_error": 1.7695128917694092e-07,
+      "models": 18,
+      "probabilities_exact": true,
+      "saved_metric_rows_replayed": 180,
+      "selected_seed_weight_replays": 90,
+      "status": "PASS"
+    },
+    "matched_control": {
+      "cells": 15,
+      "max_probability_sum_error": 1.778826117515564e-07,
+      "models": 6,
+      "saved_metric_rows_replayed": 45,
+      "status": "PASS"
+    },
+    "pooled_fit_provenance": {
+      "models": 2,
+      "official_soccernet_train_games": 45,
+      "original_training_matches": 13,
+      "status": "PASS"
+    },
+    "public_prediction_integrity": {
+      "csv_matches_replayed_prediction": true,
+      "csv_rows": 199319,
+      "probability_replay_exact": true,
+      "reference_opened_by_verifier": false,
+      "scoring_reperformed": false,
+      "status": "PASS"
+    }
+  },
+  "provenance_hashes": {
+    "aggregate_public_file_sha256": {
+      "coarse_decision": "f72c553328bd6d450f97a56d7ab8c00965cca1ad4ac2e72ed34530373479a216",
+      "coarse_report": "a9451ee60eb6dac2866b5bc2a54ab8e32abdfdf1bae38a62a8fecdcfd3902c3c",
+      "control_report": "b352511347da5e2d9a2aefb9938849bb814a8cbf93bd797c458c377f51b9d2fc",
+      "final_decision": "08814e5ab2bdc56856368c9bcdfc038df6f890291c7a9e08861b910cec997640",
+      "final_report": "29efc13220673935d8717397dffc01f8e9c0d7032f9ea198888db5df49d46fbc"
+    },
+    "checkpoint_seal_sha256": {
+      "coarse": "c49ffd45ea5e4616c5fe36e6a8b1e67adc2a211bfbe4275e748ca13bd99f0b8f",
+      "control": "c5e0ddbe7f5c56f9379317e958d673cc0a2ae3050e0e351a7e95f95f5b082e26",
+      "final": "11336b32519703063010578e6ae29d7d0b92ba1a19e2ee20ce4b36d92d1ba0fd",
+      "pooled": "cfbac5ca485bbfebeb8aedb40d2a61c60dadb58b2ccbde903cfceb50e348538d"
+    },
+    "declaration_sha256": "27e16319fd5d8ab430429732f74f4c3821651cce9f109e9fbabfc037a3951dc7",
+    "segment_manifest_sha256": "765b73d3c9614d2fc8dc98fa701d0aa40380e3c7d80042a765804894bbfc7c36",
+    "segment_verification_sha256": "18ac5380fbbd59f09044de3addeea0b88b0f313f899caa7e71be1ef552538c54",
+    "source_commit": "13d3794f4cfd99cb8665ab10a034d5dd383c836d",
+    "source_overlap_audit_sha256": "ded49c084f28745bb55c62c1f1b8e82adadd712612fa7c3f2df12b589d80de70",
+    "stage_verification_sha256": {
+      "coarse": "786ebbeef16fcb4771a6b66c8911defc81d1680e86ab2f4480d902491c1d8c20",
+      "control": "82500144fc59ff583165cea57f94c5b05c43f4fdd2e2328bd186cb3547cc1440",
+      "final": "d26f21e6d0f8c658288768838e7fbe3fed1a38c5b2b51ca936d1ab740983c75d",
+      "pooled": "ee4d1868ca85d64d42e23c4c92589e7b878a0960c69293925d7d4bdcc9d9c67e",
+      "public": "2e678194d66378fb19ea4c8c1900abf4fcb34a7be1d68ad115bf51a4899aeaf2"
+    }
+  },
+  "public_safety": "Aggregate-only receipt. Excludes raw frames, event/clip/game identifiers, rosters, per-cell rows, model/array bytes, individual cache hashes, and organizer reference labels.",
+  "runtime_amendments": {
+    "checker_scope": {
+      "corrected_checker_sha256": "039fd3b219181afafded9bcb403541739c3d2b3ac98a939c84da59c2619652b5",
+      "original_checker_sha256": "ea0b275e378da96497d23f6a18438c63254989bace43b34af7b196bad61a9733",
+      "receipt_sha256": "85b313e5aa81439e287dc3e6bd3180bfd92ee813fe478bab4e11ed14793119af"
+    },
+    "confirmation_reader": {
+      "frozen_driver_sha256": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+      "receipt_sha256": "6373f8778bec1b591657ce12e3f60313fab3fc89e096c5b013af1fe77834e08b",
+      "runtime_source_sha256": "0d5bffc0fe70895785c3dff574a97c55945d39b7575b325b398febd9464081c4",
+      "stored_seals_changed": false
+    },
+    "final_parity_key": {
+      "executed_function_sha256": "9429a223567f22ad7d0efca0d70cba71f9e3f6beccfd902663ca523216b3e291",
+      "original_function_sha256": "acb1b7608591c89f50a3cef574671bc460c610017b86936ae2173cca9f45f38b",
+      "receipt_sha256": "15135b56feb762d73657c2e507e9e4f8ab8862a9832a9f6ea5d51bfeda38facc",
+      "runtime_source_sha256": "7734199526f7c553161c80e6cbc1b8f73e175a46c22d0ea94f00483917ee5452",
+      "weights_probabilities_metrics_tolerances_selection_changed": false
+    }
+  },
+  "selection_outcome": {
+    "adopt_model": false,
+    "clean_spell_delta_vs_baseline": 0.008584746119773556,
+    "guards_passed": true,
+    "improvement_screen_passed": false,
+    "selected_recipe": "w96_lr3e-4_step2048",
+    "selected_width": 96
+  },
+  "source_identity_and_exclusions": {
+    "all_train_crosswalked_to_world_cup_fixtures": true,
+    "benchmark_fixture_overlap_concern": false,
+    "documented_metrica_pinned_data_predates_2022_world_cup": true,
+    "note": "Only aggregate chronology/identity conclusion is published; no fixture IDs, player/team names, or roster crosswalks are included.",
+    "soccernet_train_game_count": 45,
+    "train_only": true
+  },
+  "status": "PASS",
+  "study_id": "soccernet_capacity_v1",
+  "verification_limits": [
+    "The independent verifier replayed saved development metrics from saved arrays; it did not reopen the organizer reference or rescore public data.",
+    "The public-input check regenerated predictions and validated the saved CSV; it did not read organizer reference labels."
+  ]
+}
