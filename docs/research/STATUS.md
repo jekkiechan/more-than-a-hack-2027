@@ -1,8 +1,30 @@
 # Current research state
 
-Reviewed 2026-10-29 after the SkillCorner removal study, frozen at code commit `c4dcbe3` over fork main `22fc2d5` (merged PR #32). The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+Updated 2026-10-30 after SoccerNet extension stage 1; earlier merged-study history below remains unchanged. The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
+
+## SoccerNet-GAR H/A continuation — 30 October 2026
+
+[Stage 1](../../experiments/SOCCERNET_EXTENSION.md) completed 18 full-provider
+H/A-only warm-start fits. The actual two-seed GAR50 probability ensemble
+scores .631957/.495121 clean/feed-like, against baseline .633205/.498830 and a
+matched old-data-only control .629253/.495753. GAR50 gains .002703 clean over
+old-only but loses .001248 clean and .003709 feed-like to baseline; it fails
+the predeclared +.01 clean improvement screen. Provider clean D/macro and
+feed-like spell guards pass. Keep `joint_gru_combined_ensemble_v1` with no
+promotion.
+
+The user requested more data, larger H/A capacity and more tuning. That
+capacity/data-scaling continuation is running. The one-time public diagnostic
+is deferred until final external model selection; it has not run, produced
+predictions or opened its gate. The five development matches and the 17-spell
+public window are previously exposed, and the public window is only a pipeline
+check. SoccerNet uses sparse PASS/CROSS/SHOT center-team silver labels, not
+dense possession labels. GAR valid/test data and organizer labels were not
+opened. Artifacts remain in the local ignored data directory; no private
+upload was made. Independent data/replay verification is still being
+finalized. Read the report for the numeric parity and receipt corrections.
 
 ## Smart Tagging — 29 October 2026
 
