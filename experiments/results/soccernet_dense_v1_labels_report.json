@@ -1,0 +1,1263 @@
+{
+ "test": {
+  "anchor_agreement": {
+   "agree": 9270,
+   "agree_share_of_dense_known": 0.982824427480916,
+   "anchor_frames": 9667,
+   "dense_D_anchor_HA": 4,
+   "dense_unknown_anchor_filled": 101,
+   "dense_unknown_share": 0.010447915589117616,
+   "disagree_HA": 158,
+   "disagree_HA_anchor_team_run_starts_within_3_frames": 134
+  },
+  "class_transitions_native": {
+   "A->D": 383,
+   "A->H": 625,
+   "D->A": 49,
+   "D->H": 27,
+   "H->A": 659,
+   "H->D": 350
+  },
+  "games": 10,
+  "ha_switches_native": 1284,
+  "ha_switches_per_hour": 124.68023210626896,
+  "ha_switches_sampled_adjacent": 1236,
+  "hours": 10.298344639795069,
+  "label_provenance_names": {
+   "0": "unknown",
+   "1": "touch",
+   "2": "propagated",
+   "3": "dead",
+   "4": "held_uncontrolled",
+   "5": "anchor_only"
+  },
+  "label_share_native": {
+   "A": 0.4919085346262158,
+   "D": 0.06037031470359794,
+   "H": 0.31979130760348445,
+   "unknown": 0.12792984306670183
+  },
+  "label_share_sampled": {
+   "A": 0.4917699676389322,
+   "D": 0.06001849203874727,
+   "H": 0.3199283971057809,
+   "unknown": 0.12828314321653964
+  },
+  "native_frames": 1111109,
+  "provenance_by_class_share": {
+   "A": {
+    "anchor_only": 9.331020703888292e-05,
+    "held_uncontrolled": 0.005891350326768686,
+    "propagated": 0.5179301966466873,
+    "touch": 0.47608514281950515
+   },
+   "D": {
+    "dead": 1.0
+   },
+   "H": {
+    "anchor_only": 0.00014071703773749518,
+    "held_uncontrolled": 0.005870714814408299,
+    "propagated": 0.5510535484615406,
+    "touch": 0.4429350196863136
+   }
+  },
+  "provenance_share_native": {
+   "anchor_only": 9.090017271032815e-05,
+   "dead": 0.06037031470359794,
+   "held_uncontrolled": 0.004775409073277239,
+   "propagated": 0.4309964188931959,
+   "touch": 0.3758371140905168,
+   "unknown": 0.12792984306670183
+  },
+  "records": 2439,
+  "sampled_rows": 186026,
+  "spells": {
+   "all_quantiles_s": {
+    "p05": 0.06673340162087955,
+    "p25": 2.5025024096925432,
+    "p50": 5.4387720154171255,
+    "p75": 10.543876819504582,
+    "p95": 24.125792034995964
+   },
+   "all_share_under_3s": 0.28342245989304815,
+   "complete_mean_s": 6.262313381387435,
+   "complete_quantiles_s": {
+    "p05": 0.03336670081043978,
+    "p25": 1.9352685792374906,
+    "p50": 3.9706374661520214,
+    "p75": 8.05805791998528,
+    "p95": 20.663997018536783
+   },
+   "complete_share_over_10s": 0.1909840038778478,
+   "complete_share_under_1s": 0.12360639844886089,
+   "complete_share_under_3s": 0.3848763936015511,
+   "n_all": 3740,
+   "n_complete": 2063
+  },
+  "spells_literal_rule": {
+   "complete_quantiles_s": {
+    "p05": 0.033366699481086656,
+    "p25": 0.033366701396235474,
+    "p50": 1.8018018305862533,
+    "p75": 4.371037638347041,
+    "p95": 14.481148405966195
+   },
+   "complete_share_under_3s": 0.6469188045490611,
+   "ha_switches_native": 3027,
+   "n_complete": 3781
+  },
+  "split": "test",
+  "tackle_semantics": {
+   "CROSS": {
+    "+-15f": {
+     "same_as_meta": 274,
+     "unknown": 73
+    },
+    "+0f": {
+     "opposite_of_meta": 3,
+     "same_as_meta": 344
+    },
+    "+15f": {
+     "D": 3,
+     "opposite_of_meta": 3,
+     "same_as_meta": 319,
+     "unknown": 22
+    },
+    "+30f": {
+     "D": 11,
+     "opposite_of_meta": 8,
+     "same_as_meta": 295,
+     "unknown": 33
+    },
+    "+60f": {
+     "D": 36,
+     "opposite_of_meta": 39,
+     "same_as_meta": 206,
+     "unknown": 66
+    }
+   },
+   "FREE KICK": {
+    "+-15f": {
+     "D": 16,
+     "unknown": 256
+    },
+    "+0f": {
+     "D": 5,
+     "same_as_meta": 179,
+     "unknown": 88
+    },
+    "+15f": {
+     "same_as_meta": 231,
+     "unknown": 41
+    },
+    "+30f": {
+     "D": 1,
+     "opposite_of_meta": 1,
+     "same_as_meta": 229,
+     "unknown": 40
+    },
+    "+60f": {
+     "D": 4,
+     "opposite_of_meta": 3,
+     "same_as_meta": 218,
+     "unknown": 46
+    }
+   },
+   "GOAL": {
+    "+-15f": {
+     "opposite_of_meta": 3,
+     "same_as_meta": 26,
+     "unknown": 1
+    },
+    "+0f": {
+     "same_as_meta": 29,
+     "unknown": 1
+    },
+    "+15f": {
+     "D": 6,
+     "same_as_meta": 24
+    },
+    "+30f": {
+     "D": 20,
+     "same_as_meta": 10
+    },
+    "+60f": {
+     "D": 30
+    }
+   },
+   "HEADER": {
+    "+-15f": {
+     "opposite_of_meta": 531,
+     "same_as_meta": 298,
+     "unknown": 34
+    },
+    "+0f": {
+     "opposite_of_meta": 324,
+     "same_as_meta": 517,
+     "unknown": 22
+    },
+    "+15f": {
+     "D": 4,
+     "opposite_of_meta": 189,
+     "same_as_meta": 595,
+     "unknown": 75
+    },
+    "+30f": {
+     "D": 23,
+     "opposite_of_meta": 203,
+     "same_as_meta": 562,
+     "unknown": 75
+    },
+    "+60f": {
+     "D": 77,
+     "opposite_of_meta": 252,
+     "same_as_meta": 439,
+     "unknown": 95
+    }
+   },
+   "HIGH PASS": {
+    "+-15f": {
+     "same_as_meta": 12
+    },
+    "+0f": {
+     "same_as_meta": 12
+    },
+    "+15f": {
+     "same_as_meta": 9,
+     "unknown": 3
+    },
+    "+30f": {
+     "same_as_meta": 9,
+     "unknown": 3
+    },
+    "+60f": {
+     "opposite_of_meta": 2,
+     "same_as_meta": 7,
+     "unknown": 3
+    }
+   },
+   "PASS": {
+    "+-15f": {
+     "D": 10,
+     "opposite_of_meta": 469,
+     "same_as_meta": 8245,
+     "unknown": 285
+    },
+    "+0f": {
+     "D": 4,
+     "opposite_of_meta": 164,
+     "same_as_meta": 8841
+    },
+    "+15f": {
+     "D": 21,
+     "opposite_of_meta": 70,
+     "same_as_meta": 8451,
+     "unknown": 467
+    },
+    "+30f": {
+     "D": 51,
+     "opposite_of_meta": 171,
+     "same_as_meta": 8286,
+     "unknown": 501
+    },
+    "+60f": {
+     "D": 160,
+     "opposite_of_meta": 451,
+     "same_as_meta": 7781,
+     "unknown": 613
+    }
+   },
+   "PLAYER SUCCESSFUL TACKLE": {
+    "+-15f": {
+     "opposite_of_meta": 541,
+     "same_as_meta": 1022,
+     "unknown": 121
+    },
+    "+0f": {
+     "D": 2,
+     "opposite_of_meta": 474,
+     "same_as_meta": 1061,
+     "unknown": 147
+    },
+    "+15f": {
+     "D": 52,
+     "opposite_of_meta": 352,
+     "same_as_meta": 1086,
+     "unknown": 194
+    },
+    "+30f": {
+     "D": 152,
+     "opposite_of_meta": 362,
+     "same_as_meta": 1005,
+     "unknown": 165
+    },
+    "+60f": {
+     "D": 350,
+     "opposite_of_meta": 383,
+     "same_as_meta": 797,
+     "unknown": 154
+    }
+   },
+   "SHOT": {
+    "+-15f": {
+     "same_as_meta": 184,
+     "unknown": 2
+    },
+    "+0f": {
+     "same_as_meta": 186
+    },
+    "+15f": {
+     "D": 3,
+     "opposite_of_meta": 1,
+     "same_as_meta": 171,
+     "unknown": 11
+    },
+    "+30f": {
+     "D": 38,
+     "opposite_of_meta": 20,
+     "same_as_meta": 113,
+     "unknown": 15
+    },
+    "+60f": {
+     "D": 80,
+     "opposite_of_meta": 30,
+     "same_as_meta": 56,
+     "unknown": 19
+    }
+   },
+   "THROW IN": {
+    "+-15f": {
+     "D": 54,
+     "unknown": 338
+    },
+    "+0f": {
+     "D": 24,
+     "same_as_meta": 265,
+     "unknown": 103
+    },
+    "+15f": {
+     "same_as_meta": 361,
+     "unknown": 31
+    },
+    "+30f": {
+     "same_as_meta": 361,
+     "unknown": 31
+    },
+    "+60f": {
+     "D": 1,
+     "opposite_of_meta": 33,
+     "same_as_meta": 315,
+     "unknown": 43
+    }
+   },
+   "flip_minus15_to_plus30": {
+    "CROSS": {
+     "before_meta_after_meta": 226,
+     "before_meta_after_opp": 7
+    },
+    "GOAL": {
+     "before_meta_after_meta": 7,
+     "before_opp_after_meta": 2
+    },
+    "HEADER": {
+     "before_meta_after_meta": 246,
+     "before_meta_after_opp": 13,
+     "before_opp_after_meta": 295,
+     "before_opp_after_opp": 190
+    },
+    "HIGH PASS": {
+     "before_meta_after_meta": 9
+    },
+    "PASS": {
+     "before_meta_after_meta": 7649,
+     "before_meta_after_opp": 142,
+     "before_opp_after_meta": 398,
+     "before_opp_after_opp": 29
+    },
+    "PLAYER SUCCESSFUL TACKLE": {
+     "before_meta_after_meta": 832,
+     "before_meta_after_opp": 62,
+     "before_opp_after_meta": 163,
+     "before_opp_after_opp": 289
+    },
+    "SHOT": {
+     "before_meta_after_meta": 112,
+     "before_meta_after_opp": 20
+    }
+   }
+  },
+  "touch_runs": {
+   "censored_share": 0.06120797469285662,
+   "end_codes": {
+    "0": 911,
+    "1": 10127,
+    "2": 950,
+    "3": 385,
+    "4": 253,
+    "5": 372,
+    "6": 217,
+    "7": 378
+   },
+   "median_frames": 27.0,
+   "n": 13593,
+   "out_events": 945,
+   "uncontrolled_share": 0.12344589126756418,
+   "unknown_team_share": 0.005370411241079968
+  }
+ },
+ "train": {
+  "anchor_agreement": {
+   "agree": 41927,
+   "agree_share_of_dense_known": 0.9864712248835349,
+   "anchor_frames": 43406,
+   "dense_D_anchor_HA": 5,
+   "dense_unknown_anchor_filled": 417,
+   "dense_unknown_share": 0.009606966778786342,
+   "disagree_HA": 570,
+   "disagree_HA_anchor_team_run_starts_within_3_frames": 487
+  },
+  "class_transitions_native": {
+   "A->D": 1666,
+   "A->H": 2971,
+   "D->A": 193,
+   "D->H": 176,
+   "H->A": 2940,
+   "H->D": 1759
+  },
+  "games": 45,
+  "ha_switches_native": 5911,
+  "ha_switches_per_hour": 125.95435860218997,
+  "ha_switches_sampled_adjacent": 5702,
+  "hours": 46.92969791279002,
+  "label_provenance_names": {
+   "0": "unknown",
+   "1": "touch",
+   "2": "propagated",
+   "3": "dead",
+   "4": "held_uncontrolled",
+   "5": "anchor_only"
+  },
+  "label_share_native": {
+   "A": 0.38093064675306154,
+   "D": 0.06258380092662175,
+   "H": 0.4308804921021484,
+   "unknown": 0.12560506021816828
+  },
+  "label_share_sampled": {
+   "A": 0.3810728171831943,
+   "D": 0.06219683099920728,
+   "H": 0.431026103204862,
+   "unknown": 0.1257042486127364
+  },
+  "native_frames": 5063339,
+  "provenance_by_class_share": {
+   "A": {
+    "anchor_only": 0.00010524782232923282,
+    "held_uncontrolled": 0.006905397761591389,
+    "propagated": 0.5361894377847978,
+    "touch": 0.4567999166312816
+   },
+   "D": {
+    "dead": 1.0
+   },
+   "H": {
+    "anchor_only": 9.808891622748195e-05,
+    "held_uncontrolled": 0.005575484004631264,
+    "propagated": 0.532419303532026,
+    "touch": 0.4619071235471152
+   }
+  },
+  "provenance_share_native": {
+   "anchor_only": 8.23567215230898e-05,
+   "dead": 0.06258380092662175,
+   "held_uncontrolled": 0.0050328449270333276,
+   "propagated": 0.433660080828086,
+   "touch": 0.37303585637856757,
+   "unknown": 0.12560506021816828
+  },
+  "records": 11249,
+  "sampled_rows": 847712,
+  "spells": {
+   "all_quantiles_s": {
+    "p05": 0.23356689630236963,
+    "p25": 2.602602542320501,
+    "p50": 5.505505295096043,
+    "p75": 10.543877321219917,
+    "p95": 23.42842892887457
+   },
+   "all_share_under_3s": 0.2738994075967011,
+   "complete_mean_s": 6.320488948548017,
+   "complete_quantiles_s": {
+    "p05": 0.03336670030810806,
+    "p25": 1.935268556250452,
+    "p50": 4.070737501262712,
+    "p75": 8.074741255398536,
+    "p95": 20.221888907560356
+   },
+   "complete_share_over_10s": 0.18835164835164836,
+   "complete_share_under_1s": 0.12274725274725275,
+   "complete_share_under_3s": 0.3757142857142857,
+   "n_all": 17218,
+   "n_complete": 9100
+  },
+  "spells_literal_rule": {
+   "complete_quantiles_s": {
+    "p05": 0.03336669907156456,
+    "p25": 0.03336670106793048,
+    "p50": 1.7684350945901994,
+    "p75": 4.371037537318677,
+    "p95": 14.51451468935084
+   },
+   "complete_share_under_3s": 0.6468549950079285,
+   "ha_switches_native": 13922,
+   "n_complete": 17027
+  },
+  "split": "train",
+  "tackle_semantics": {
+   "CROSS": {
+    "+-15f": {
+     "opposite_of_meta": 5,
+     "same_as_meta": 1177,
+     "unknown": 332
+    },
+    "+0f": {
+     "opposite_of_meta": 1,
+     "same_as_meta": 1513
+    },
+    "+15f": {
+     "D": 20,
+     "opposite_of_meta": 10,
+     "same_as_meta": 1381,
+     "unknown": 103
+    },
+    "+30f": {
+     "D": 54,
+     "opposite_of_meta": 44,
+     "same_as_meta": 1273,
+     "unknown": 143
+    },
+    "+60f": {
+     "D": 170,
+     "opposite_of_meta": 170,
+     "same_as_meta": 894,
+     "unknown": 280
+    }
+   },
+   "FREE KICK": {
+    "+-15f": {
+     "D": 60,
+     "same_as_meta": 1,
+     "unknown": 1200
+    },
+    "+0f": {
+     "D": 14,
+     "opposite_of_meta": 2,
+     "same_as_meta": 945,
+     "unknown": 300
+    },
+    "+15f": {
+     "D": 1,
+     "same_as_meta": 1070,
+     "unknown": 190
+    },
+    "+30f": {
+     "D": 4,
+     "opposite_of_meta": 3,
+     "same_as_meta": 1061,
+     "unknown": 193
+    },
+    "+60f": {
+     "D": 20,
+     "opposite_of_meta": 29,
+     "same_as_meta": 992,
+     "unknown": 218
+    }
+   },
+   "GOAL": {
+    "+-15f": {
+     "opposite_of_meta": 1,
+     "same_as_meta": 116,
+     "unknown": 18
+    },
+    "+0f": {
+     "same_as_meta": 129,
+     "unknown": 6
+    },
+    "+15f": {
+     "D": 26,
+     "same_as_meta": 109
+    },
+    "+30f": {
+     "D": 106,
+     "same_as_meta": 29
+    },
+    "+60f": {
+     "D": 132,
+     "opposite_of_meta": 1,
+     "same_as_meta": 2
+    }
+   },
+   "HEADER": {
+    "+-15f": {
+     "opposite_of_meta": 2518,
+     "same_as_meta": 1353,
+     "unknown": 113
+    },
+    "+0f": {
+     "opposite_of_meta": 1406,
+     "same_as_meta": 2526,
+     "unknown": 52
+    },
+    "+15f": {
+     "D": 19,
+     "opposite_of_meta": 974,
+     "same_as_meta": 2698,
+     "unknown": 293
+    },
+    "+30f": {
+     "D": 104,
+     "opposite_of_meta": 1006,
+     "same_as_meta": 2558,
+     "unknown": 316
+    },
+    "+60f": {
+     "D": 341,
+     "opposite_of_meta": 1271,
+     "same_as_meta": 1955,
+     "unknown": 413
+    }
+   },
+   "HIGH PASS": {
+    "+-15f": {
+     "opposite_of_meta": 8,
+     "same_as_meta": 55,
+     "unknown": 1
+    },
+    "+0f": {
+     "opposite_of_meta": 3,
+     "same_as_meta": 61
+    },
+    "+15f": {
+     "opposite_of_meta": 3,
+     "same_as_meta": 50,
+     "unknown": 11
+    },
+    "+30f": {
+     "D": 1,
+     "opposite_of_meta": 3,
+     "same_as_meta": 48,
+     "unknown": 12
+    },
+    "+60f": {
+     "D": 1,
+     "opposite_of_meta": 4,
+     "same_as_meta": 45,
+     "unknown": 14
+    }
+   },
+   "PASS": {
+    "+-15f": {
+     "D": 33,
+     "opposite_of_meta": 2101,
+     "same_as_meta": 37364,
+     "unknown": 1247
+    },
+    "+0f": {
+     "D": 4,
+     "opposite_of_meta": 602,
+     "same_as_meta": 40137,
+     "unknown": 2
+    },
+    "+15f": {
+     "D": 70,
+     "opposite_of_meta": 304,
+     "same_as_meta": 38326,
+     "unknown": 2043
+    },
+    "+30f": {
+     "D": 229,
+     "opposite_of_meta": 739,
+     "same_as_meta": 37601,
+     "unknown": 2163
+    },
+    "+60f": {
+     "D": 730,
+     "opposite_of_meta": 1933,
+     "same_as_meta": 35453,
+     "unknown": 2606
+    }
+   },
+   "PLAYER SUCCESSFUL TACKLE": {
+    "+-15f": {
+     "opposite_of_meta": 2374,
+     "same_as_meta": 4734,
+     "unknown": 577
+    },
+    "+0f": {
+     "D": 9,
+     "opposite_of_meta": 2059,
+     "same_as_meta": 4922,
+     "unknown": 695
+    },
+    "+15f": {
+     "D": 201,
+     "opposite_of_meta": 1609,
+     "same_as_meta": 5011,
+     "unknown": 864
+    },
+    "+30f": {
+     "D": 664,
+     "opposite_of_meta": 1690,
+     "same_as_meta": 4603,
+     "unknown": 728
+    },
+    "+60f": {
+     "D": 1620,
+     "opposite_of_meta": 1916,
+     "same_as_meta": 3510,
+     "unknown": 638
+    }
+   },
+   "SHOT": {
+    "+-15f": {
+     "D": 1,
+     "opposite_of_meta": 14,
+     "same_as_meta": 687,
+     "unknown": 18
+    },
+    "+0f": {
+     "D": 1,
+     "opposite_of_meta": 12,
+     "same_as_meta": 706,
+     "unknown": 1
+    },
+    "+15f": {
+     "D": 21,
+     "opposite_of_meta": 17,
+     "same_as_meta": 632,
+     "unknown": 50
+    },
+    "+30f": {
+     "D": 140,
+     "opposite_of_meta": 66,
+     "same_as_meta": 453,
+     "unknown": 61
+    },
+    "+60f": {
+     "D": 345,
+     "opposite_of_meta": 100,
+     "same_as_meta": 193,
+     "unknown": 82
+    }
+   },
+   "THROW IN": {
+    "+-15f": {
+     "D": 288,
+     "unknown": 1543
+    },
+    "+0f": {
+     "D": 79,
+     "opposite_of_meta": 2,
+     "same_as_meta": 1381,
+     "unknown": 369
+    },
+    "+15f": {
+     "D": 1,
+     "opposite_of_meta": 1,
+     "same_as_meta": 1712,
+     "unknown": 117
+    },
+    "+30f": {
+     "D": 5,
+     "opposite_of_meta": 13,
+     "same_as_meta": 1691,
+     "unknown": 122
+    },
+    "+60f": {
+     "D": 18,
+     "opposite_of_meta": 119,
+     "same_as_meta": 1546,
+     "unknown": 147
+    }
+   },
+   "flip_minus15_to_plus30": {
+    "CROSS": {
+     "before_meta_after_meta": 963,
+     "before_meta_after_opp": 42,
+     "before_opp_after_meta": 3
+    },
+    "FREE KICK": {
+     "before_meta_after_meta": 1
+    },
+    "GOAL": {
+     "before_meta_after_meta": 29
+    },
+    "HEADER": {
+     "before_meta_after_meta": 1136,
+     "before_meta_after_opp": 70,
+     "before_opp_after_meta": 1341,
+     "before_opp_after_opp": 934
+    },
+    "HIGH PASS": {
+     "before_meta_after_meta": 43,
+     "before_opp_after_meta": 5,
+     "before_opp_after_opp": 3
+    },
+    "PASS": {
+     "before_meta_after_meta": 34727,
+     "before_meta_after_opp": 596,
+     "before_opp_after_meta": 1807,
+     "before_opp_after_opp": 134
+    },
+    "PLAYER SUCCESSFUL TACKLE": {
+     "before_meta_after_meta": 3815,
+     "before_meta_after_opp": 353,
+     "before_opp_after_meta": 724,
+     "before_opp_after_opp": 1286
+    },
+    "SHOT": {
+     "before_meta_after_meta": 433,
+     "before_meta_after_opp": 62,
+     "before_opp_after_meta": 11,
+     "before_opp_after_opp": 2
+    }
+   }
+  },
+  "touch_runs": {
+   "censored_share": 0.06650616426182358,
+   "end_codes": {
+    "0": 4522,
+    "1": 45864,
+    "2": 4493,
+    "3": 1725,
+    "4": 976,
+    "5": 1654,
+    "6": 949,
+    "7": 1706
+   },
+   "median_frames": 27.0,
+   "n": 61889,
+   "out_events": 4381,
+   "uncontrolled_share": 0.1249818222947535,
+   "unknown_team_share": 0.005267495031427233
+  }
+ },
+ "valid": {
+  "anchor_agreement": {
+   "agree": 7959,
+   "agree_share_of_dense_known": 0.9838071693448702,
+   "anchor_frames": 8313,
+   "dense_unknown_anchor_filled": 112,
+   "dense_unknown_share": 0.013472873812101528,
+   "disagree_HA": 131,
+   "disagree_HA_anchor_team_run_starts_within_3_frames": 111
+  },
+  "class_transitions_native": {
+   "A->D": 328,
+   "A->H": 628,
+   "D->A": 30,
+   "D->H": 38,
+   "H->A": 590,
+   "H->D": 337
+  },
+  "games": 9,
+  "ha_switches_native": 1218,
+  "ha_switches_per_hour": 134.50637128140798,
+  "ha_switches_sampled_adjacent": 1177,
+  "hours": 9.055333129549359,
+  "label_provenance_names": {
+   "0": "unknown",
+   "1": "touch",
+   "2": "propagated",
+   "3": "dead",
+   "4": "held_uncontrolled",
+   "5": "anchor_only"
+  },
+  "label_share_native": {
+   "A": 0.403757223658595,
+   "D": 0.06354158350375333,
+   "H": 0.4037521059408515,
+   "unknown": 0.1289490868968002
+  },
+  "label_share_sampled": {
+   "A": 0.40384803501993105,
+   "D": 0.06311290993128073,
+   "H": 0.403756327798293,
+   "unknown": 0.12928272725049522
+  },
+  "native_frames": 976998,
+  "provenance_by_class_share": {
+   "A": {
+    "anchor_only": 0.00016477805663295055,
+    "held_uncontrolled": 0.006132278753770882,
+    "propagated": 0.5341242680051715,
+    "touch": 0.4595786751844247
+   },
+   "D": {
+    "dead": 1.0
+   },
+   "H": {
+    "anchor_only": 0.00011914872041879507,
+    "held_uncontrolled": 0.006170382670198877,
+    "propagated": 0.5479522898102493,
+    "touch": 0.445758178799133
+   }
+  },
+  "provenance_share_native": {
+   "anchor_only": 0.00011463687745522509,
+   "dead": 0.06354158350375333,
+   "held_uncontrolled": 0.004967256841876851,
+   "propagated": 0.4368934225044473,
+   "touch": 0.3655340133756671,
+   "unknown": 0.1289490868968002
+  },
+  "records": 2191,
+  "sampled_rows": 163564,
+  "spells": {
+   "all_quantiles_s": {
+    "p05": 0.13346680440281566,
+    "p25": 2.4691357130699974,
+    "p50": 5.405405241124771,
+    "p75": 10.043376783622305,
+    "p95": 23.023022697951166
+   },
+   "all_share_under_3s": 0.2890326374595707,
+   "complete_mean_s": 6.00036272305551,
+   "complete_quantiles_s": {
+    "p05": 0.03336670027781497,
+    "p25": 1.935268543118745,
+    "p50": 4.03737070755474,
+    "p75": 8.041374654774415,
+    "p95": 18.53186484448
+   },
+   "complete_share_over_10s": 0.17515051997810618,
+   "complete_share_under_1s": 0.13136288998357964,
+   "complete_share_under_3s": 0.38149972632731255,
+   "n_all": 3401,
+   "n_complete": 1827
+  },
+  "spells_literal_rule": {
+   "complete_quantiles_s": {
+    "p05": 0.03336669901928871,
+    "p25": 0.03336670120206947,
+    "p50": 1.7684350480223014,
+    "p75": 4.304304324089456,
+    "p95": 13.591925308702038
+   },
+   "complete_share_under_3s": 0.6553030303030303,
+   "ha_switches_native": 2840,
+   "n_complete": 3432
+  },
+  "split": "valid",
+  "tackle_semantics": {
+   "CROSS": {
+    "+-15f": {
+     "opposite_of_meta": 2,
+     "same_as_meta": 241,
+     "unknown": 71
+    },
+    "+0f": {
+     "opposite_of_meta": 2,
+     "same_as_meta": 312
+    },
+    "+15f": {
+     "D": 2,
+     "opposite_of_meta": 5,
+     "same_as_meta": 276,
+     "unknown": 31
+    },
+    "+30f": {
+     "D": 8,
+     "opposite_of_meta": 10,
+     "same_as_meta": 261,
+     "unknown": 35
+    },
+    "+60f": {
+     "D": 29,
+     "opposite_of_meta": 30,
+     "same_as_meta": 186,
+     "unknown": 69
+    }
+   },
+   "FREE KICK": {
+    "+-15f": {
+     "D": 16,
+     "unknown": 239
+    },
+    "+0f": {
+     "D": 9,
+     "same_as_meta": 169,
+     "unknown": 77
+    },
+    "+15f": {
+     "D": 1,
+     "same_as_meta": 218,
+     "unknown": 36
+    },
+    "+30f": {
+     "D": 2,
+     "opposite_of_meta": 1,
+     "same_as_meta": 215,
+     "unknown": 37
+    },
+    "+60f": {
+     "D": 8,
+     "opposite_of_meta": 3,
+     "same_as_meta": 205,
+     "unknown": 39
+    }
+   },
+   "GOAL": {
+    "+-15f": {
+     "same_as_meta": 19,
+     "unknown": 4
+    },
+    "+0f": {
+     "same_as_meta": 22,
+     "unknown": 1
+    },
+    "+15f": {
+     "D": 6,
+     "same_as_meta": 17
+    },
+    "+30f": {
+     "D": 16,
+     "same_as_meta": 7
+    },
+    "+60f": {
+     "D": 22,
+     "same_as_meta": 1
+    }
+   },
+   "HEADER": {
+    "+-15f": {
+     "opposite_of_meta": 552,
+     "same_as_meta": 297,
+     "unknown": 20
+    },
+    "+0f": {
+     "opposite_of_meta": 340,
+     "same_as_meta": 520,
+     "unknown": 9
+    },
+    "+15f": {
+     "D": 3,
+     "opposite_of_meta": 220,
+     "same_as_meta": 580,
+     "unknown": 66
+    },
+    "+30f": {
+     "D": 19,
+     "opposite_of_meta": 230,
+     "same_as_meta": 551,
+     "unknown": 69
+    },
+    "+60f": {
+     "D": 61,
+     "opposite_of_meta": 287,
+     "same_as_meta": 428,
+     "unknown": 93
+    }
+   },
+   "HIGH PASS": {
+    "+-15f": {
+     "opposite_of_meta": 2,
+     "same_as_meta": 9,
+     "unknown": 2
+    },
+    "+0f": {
+     "opposite_of_meta": 1,
+     "same_as_meta": 11,
+     "unknown": 1
+    },
+    "+15f": {
+     "opposite_of_meta": 1,
+     "same_as_meta": 9,
+     "unknown": 3
+    },
+    "+30f": {
+     "opposite_of_meta": 1,
+     "same_as_meta": 9,
+     "unknown": 3
+    },
+    "+60f": {
+     "opposite_of_meta": 2,
+     "same_as_meta": 8,
+     "unknown": 3
+    }
+   },
+   "PASS": {
+    "+-15f": {
+     "D": 5,
+     "opposite_of_meta": 427,
+     "same_as_meta": 7089,
+     "unknown": 241
+    },
+    "+0f": {
+     "opposite_of_meta": 136,
+     "same_as_meta": 7626
+    },
+    "+15f": {
+     "D": 8,
+     "opposite_of_meta": 75,
+     "same_as_meta": 7321,
+     "unknown": 358
+    },
+    "+30f": {
+     "D": 44,
+     "opposite_of_meta": 162,
+     "same_as_meta": 7171,
+     "unknown": 384
+    },
+    "+60f": {
+     "D": 135,
+     "opposite_of_meta": 403,
+     "same_as_meta": 6755,
+     "unknown": 466
+    }
+   },
+   "PLAYER SUCCESSFUL TACKLE": {
+    "+-15f": {
+     "opposite_of_meta": 509,
+     "same_as_meta": 910,
+     "unknown": 114
+    },
+    "+0f": {
+     "D": 3,
+     "opposite_of_meta": 458,
+     "same_as_meta": 943,
+     "unknown": 129
+    },
+    "+15f": {
+     "D": 32,
+     "opposite_of_meta": 369,
+     "same_as_meta": 971,
+     "unknown": 161
+    },
+    "+30f": {
+     "D": 119,
+     "opposite_of_meta": 389,
+     "same_as_meta": 888,
+     "unknown": 137
+    },
+    "+60f": {
+     "D": 313,
+     "opposite_of_meta": 411,
+     "same_as_meta": 701,
+     "unknown": 108
+    }
+   },
+   "SHOT": {
+    "+-15f": {
+     "opposite_of_meta": 1,
+     "same_as_meta": 133,
+     "unknown": 1
+    },
+    "+0f": {
+     "opposite_of_meta": 1,
+     "same_as_meta": 134
+    },
+    "+15f": {
+     "D": 3,
+     "opposite_of_meta": 3,
+     "same_as_meta": 116,
+     "unknown": 13
+    },
+    "+30f": {
+     "D": 27,
+     "opposite_of_meta": 12,
+     "same_as_meta": 82,
+     "unknown": 14
+    },
+    "+60f": {
+     "D": 60,
+     "opposite_of_meta": 24,
+     "same_as_meta": 35,
+     "unknown": 16
+    }
+   },
+   "THROW IN": {
+    "+-15f": {
+     "D": 49,
+     "unknown": 320
+    },
+    "+0f": {
+     "D": 20,
+     "same_as_meta": 247,
+     "unknown": 102
+    },
+    "+15f": {
+     "opposite_of_meta": 1,
+     "same_as_meta": 341,
+     "unknown": 27
+    },
+    "+30f": {
+     "opposite_of_meta": 4,
+     "same_as_meta": 338,
+     "unknown": 27
+    },
+    "+60f": {
+     "opposite_of_meta": 26,
+     "same_as_meta": 308,
+     "unknown": 35
+    }
+   },
+   "flip_minus15_to_plus30": {
+    "CROSS": {
+     "before_meta_after_meta": 193,
+     "before_meta_after_opp": 8,
+     "before_opp_after_meta": 1
+    },
+    "GOAL": {
+     "before_meta_after_meta": 7
+    },
+    "HEADER": {
+     "before_meta_after_meta": 248,
+     "before_meta_after_opp": 21,
+     "before_opp_after_meta": 289,
+     "before_opp_after_opp": 209
+    },
+    "HIGH PASS": {
+     "before_meta_after_meta": 6,
+     "before_opp_after_meta": 1,
+     "before_opp_after_opp": 1
+    },
+    "PASS": {
+     "before_meta_after_meta": 6611,
+     "before_meta_after_opp": 123,
+     "before_opp_after_meta": 357,
+     "before_opp_after_opp": 36
+    },
+    "PLAYER SUCCESSFUL TACKLE": {
+     "before_meta_after_meta": 747,
+     "before_meta_after_opp": 67,
+     "before_opp_after_meta": 131,
+     "before_opp_after_opp": 314
+    },
+    "SHOT": {
+     "before_meta_after_meta": 81,
+     "before_meta_after_opp": 12,
+     "before_opp_after_meta": 1
+    }
+   }
+  },
+  "touch_runs": {
+   "censored_share": 0.06522821576763485,
+   "end_codes": {
+    "0": 860,
+    "1": 8839,
+    "2": 895,
+    "3": 315,
+    "4": 183,
+    "5": 344,
+    "6": 246,
+    "7": 368
+   },
+   "median_frames": 25.0,
+   "n": 12050,
+   "out_events": 861,
+   "uncontrolled_share": 0.12854771784232366,
+   "unknown_team_share": 0.005062240663900415
+  }
+ }
+}
