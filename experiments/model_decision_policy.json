@@ -1,6 +1,6 @@
 {
-  "version": 5,
-  "confirmed_utc_date": "2026-10-28",
+  "version": 6,
+  "confirmed_utc_date": "2026-10-30",
   "primary_order": [
     "spell_f1",
     "macro_f1"
@@ -16,16 +16,16 @@
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
   "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "Two-seed combined-objective joint GRU probability ensemble",
-    "model": "joint_gru_combined_ensemble",
+    "family": "Two-seed SoccerNet conditional H/A GRU ensemble with frozen original D paths",
+    "model": "joint_gru_soccernet_capacity_ensemble",
     "status": "User-authorized working development baseline; independent confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
-    "baseline_manifest_sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "baseline_manifest_sha256": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "reason": "Post-hoc full-provider comparison passed: clean spell .633205 and feed_like spell .498830 versus .626531/.487419 for the prior ensemble.",
-    "promotion_record": "experiments/results/baseline_combined_objective_promotion.json",
-    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_seed_ensemble_v1.json",
-    "public_diagnostic_known_before_user_request": false
+    "reason": "User-authorized post-hoc promotion: positive clean/feed-like gains and matched-control gains; provider guards pass; +.01 clean screen remains failed.",
+    "promotion_record": "experiments/results/baseline_soccernet_capacity_promotion.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_combined_ensemble_v1.json",
+    "public_diagnostic_known_before_user_request": true
   },
   "pathcrf_component": {
     "default_enabled": false,
@@ -56,12 +56,17 @@
       "experiments/results/feed_defect_profile.json",
       "experiments/results/stress_component_ablation.json"
     ],
-    "reference_recipe": "joint_gru_combined_ensemble"
+    "reference_recipe": "joint_gru_soccernet_capacity_ensemble"
   },
   "lgbm_component": {
     "default_enabled": false,
     "status": "Not adopted",
     "reason": "Full127 blend adds +0.0016/-0.0020 spell over its GRU under feed-like stress, lowers SkillCorner and public D recall",
     "evidence": "experiments/STRESS_COMPONENT_ABLATION.md"
+  },
+  "clean_improvement_screen": {
+    "default_delta": 0.01,
+    "historical_failures_preserved": true,
+    "current_adoption_exception": "Explicit user decision; measured clean gain +.008584746; not a retroactive screen pass."
   }
 }

@@ -1,6 +1,82 @@
-# Combined-objective two-seed GRU baseline
+# Current adopted baseline: SoccerNet-capacity H/A with teacher D
 
-The working baseline is `joint_gru_combined_ensemble_v1`: equal native H/A/D
+The current package is `joint_gru_soccernet_capacity_ensemble_v1`, with
+architecture kind `soccernet_capacity_ensemble`. Its default prediction is
+`data/experiments/current_baseline/joint_gru_soccernet_capacity_ensemble.csv`.
+The model averages two pooled width-96 conditional H/A GRUs trained with the
+declared SoccerNet capacity recipe and combines them with the original
+combined-objective seed-2026/2027 hidden-24 D teachers. The D heads, normalizers,
+feature schema, and cost-3 decoder are unchanged. The verified package contains
+four weights: two SoccerNet H/A heads and the two original D teachers. GAR
+training used 45 World Cup TRAIN fixtures, 42,919 mapped event-team points, and
+about 44.67 hours of retained tracking context; that duration is not continuous
+possession ground truth.
+
+The promoted entrypoint reproduces all 199,319 sealed candidate rows and the
+full probability array exactly. Promotion validation passed 363 experiment
+tests and 18 root tests, including interrupted-promotion recovery. See the
+[package and replay receipt](results/baseline_soccernet_capacity_artifacts.json).
+
+The external development ensemble scores .641790/.502586 clean/feed-like,
+versus .633205/.498830 for the former baseline and .633652/.494188 for its
+matched equal-budget old-only control. All provider D/macro and feed-like
+guards pass. The frozen capacity decision nevertheless failed its +.01 clean
+spell screen by .001415. The user explicitly authorized promotion afterward,
+with that exception disclosed; the observed public diagnostic was already
+known at authorization and was used only as a fixed diagnostic, never for model
+selection. Its score is .569697 mean spell F1 versus .557576 for the former
+baseline on 7,500 graded frames and 17 references. It does not establish
+full-match performance. Promotion performs no refit or rescore.
+
+The promotion receipt is
+[baseline_soccernet_capacity_promotion.json](results/baseline_soccernet_capacity_promotion.json).
+The capacity study's original frozen result still records
+`adopt_model: false`; this later user-authorized package promotion is a
+separate decision. Its historical declaration, thresholds, failed screen, and
+public-check record are unchanged.
+
+## Local package and restore
+
+The promotion receipt records hashes for the four package weights. Restore is
+local only: no remote private cache or archive was uploaded or changed. In
+particular, the generic private
+cache default still points to the former `joint_gru_combined_ensemble_v1`.
+Do not use a generic `competition_cache.py fetch` as though it restored the new
+package. The versioned
+`baseline_cache_manifest_joint_gru_combined_ensemble_v1.json` remains useful
+for restoring the old pooled teachers; the width-96 GAR H/A weights are the
+sealed local capacity checkpoints and are not included in that old cache.
+
+With the locally verified package installed, use the standard entrypoint:
+
+```sh
+python -m experiments.current_baseline predict
+python evaluation/validate_submission.py data/experiments/current_baseline/joint_gru_soccernet_capacity_ensemble.csv
+```
+
+The verified candidate already exists in this workspace. Use `--output` with
+a new path for another prediction; the entrypoint refuses to overwrite it.
+
+For a clean machine, a remote restore path does not yet exist. Keep the
+verified local package and the four source weights together; do not substitute
+the old cache's default manifest. The promotion itself did not train, score,
+alter a closed gate, or change the frozen study receipts.
+
+## Previous adopted baseline: Combined-objective two-seed GRU
+
+The former package and its evidence remain below as historical baseline
+documentation. Its archived manifest and policy are
+[joint_gru_combined_ensemble_v1.json](baselines/joint_gru_combined_ensemble_v1.json)
+and
+[model_decision_policy_joint_gru_combined_ensemble_v1.json](baselines/model_decision_policy_joint_gru_combined_ensemble_v1.json).
+The remaining details and restore commands document that former package only;
+the generic cache default described there still points to this archived model.
+
+---
+
+# Historical combined-objective two-seed GRU baseline
+
+At the time, the working baseline was `joint_gru_combined_ensemble_v1`: equal native H/A/D
 probabilities from combined-objective seeds 2026 and 2027, followed by the
 unchanged cost-3 Viterbi decoder. Both networks retain hidden24, player-only
 D inputs, ten-second output cores and five-second context on each side.
@@ -20,7 +96,7 @@ Metrica clean D recall falls .026597 while precision rises .018437. These
 tradeoffs are recorded in the [comparison report](OBJECTIVE_ENSEMBLE.md).
 
 The user requested a comparison and, if it worked, consideration of a baseline
-bump. This is a working development adoption under a new practical screen
+bump. This was a working development adoption under a new practical screen
 frozen before the ensemble comparison, after inspecting the earlier loss
 study. It does not change that study's failed +.01 both-seed screen. All five
 development matches were previously exposed; feed-like stress is synthetic.
