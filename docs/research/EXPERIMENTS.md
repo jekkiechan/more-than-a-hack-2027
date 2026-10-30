@@ -4,11 +4,11 @@ Reviewed 2026-10-30. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
-## Implemented, awaiting artifacts
+## SoccerNet matched training follow-up
 
 | ID | Scope / state | Evidence |
 | --- | --- | --- |
-| `soccernet-training-ideas-v1` | Three parallel Luna mechanisms and a matched continuation control: event-balanced anchors, raw ball-gap consistency, masked context reconstruction. Synthetic training tested; raw TRAIN data restored from Hugging Face. Derived artifacts/checkpoints still require recovery before the 24-fit comparison. No adoption. | [Implementation/protocol](../../experiments/SOCCERNET_TRAINING_IDEAS.md), [raw-data restore](../../experiments/results/soccernet_huggingface_restore.json), [preflight](../../experiments/results/soccernet_training_ideas_preflight.json), [verification](../../experiments/results/soccernet_training_ideas_verification.json) |
+| `soccernet_followup_execution_v1` — completed, retain baseline | Three Luna mechanisms, six reconstructed references and 24 matched continuations; 225 scored outputs and exact weight replay. Reconstruction .642988/.503681 clean/feed-like versus reference .641790/.502586 and control .642896/.504988. Only +.000092 clean over control, with -.001307 feed-like; all continuations miss +.01 clean, all provider/stress guards pass. No promotion. | [Completed report](../../experiments/SOCCERNET_FOLLOWUP.md), [aggregate](../../experiments/results/soccernet_followup_results.json), [readout](../../experiments/results/soccernet_followup_readout.json), [verification](../../experiments/results/soccernet_followup_verification.json), [artifacts](../../experiments/results/soccernet_followup_artifacts.json), [original implementation](../../experiments/SOCCERNET_TRAINING_IDEAS.md) |
 
 ## Merged studies
 

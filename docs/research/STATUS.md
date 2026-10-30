@@ -1,27 +1,32 @@
 # Current research state
 
-## SoccerNet training ideas — 30 October 2026
+## SoccerNet matched follow-up — completed 30 October 2026
 
-Three Luna implementations plus a shared matched continuation runner are ready
-for artifact-backed experimentation: sparse event-type balancing, raw ball-gap
-teacher consistency, and masked temporal context reconstruction. Synthetic
-optimization and inference contracts are covered; **no real-data fit or new
-score has run**. The current SoccerNet baseline remains unchanged.
-The [implementation report](../../experiments/SOCCERNET_TRAINING_IDEAS.md)
-records fixed recipes, interfaces and the planned 24-fit comparison.
+**Retain the adopted SoccerNet baseline.** The three parallel Luna mechanisms
+have completed real training and evaluation: six explicitly rebuilt references,
+24 matched continuation fits, and 225 scored/replayed outputs. The reference
+reproduces the published width-96 metrics exactly. Reconstruction leads clean
+spell at .642988 versus reference .641790 and continuation control .642896;
+its gain over control is only +.000092, with a -.001307 feed-like loss.
+The control leads feed-like at .504988 versus reconstruction .503681 and
+reference .502586. All four continuations miss the +.01 clean screen; all
+provider macro/D and feed-like guards pass. Seed-level clean gains reverse
+direction between 2026 and 2027. No new objective establishes a useful upgrade.
 
-Six historical fold teachers have been restored and hash-verified. Following
-the user's source correction, all seven pinned SoccerNet TRAIN files were
-downloaded from Hugging Face and verified against the capacity declaration:
-5,037,010,355 bytes. The raw dataset is now available locally. The promoted
-width-96 heads, private inventory and prepared merged segments remain separate
-missing artifacts. Next: restore or explicitly rebuild those derived artifacts,
-then prepare paired views and run the frozen matched study. The
-[Hugging Face restore receipt](../../experiments/results/soccernet_huggingface_restore.json)
-supersedes the raw-data availability portion of the earlier
-[preflight](../../experiments/results/soccernet_training_ideas_preflight.json).
-Use the [data-access guide](../../experiments/SOCCERNET_DATA_ACCESS.md) before
-requesting a local dataset archive.
+The [completed report](../../experiments/SOCCERNET_FOLLOWUP.md) owns the
+scorecard, provider/seed diagnostics and artifact receipts. All 45 TRAIN
+fixtures, 9,905 segments and paired raw gap views were rebuilt from the verified
+[Hugging Face source](../../experiments/SOCCERNET_DATA_ACCESS.md). The original
+promoted checkpoint bytes were not recovered; this is an explicit reference
+reconstruction, not an exact package restore. New fold checkpoints, matching D
+teachers and a verified bundle remain local, with no remote upload. Independent
+weight replay reproduces all 225 probabilities and decoded outputs exactly.
+The 406 experiment tests, 18 root tests, file-backed fit parity and bundled CSV
+format checks pass. No organizer scoring or baseline promotion occurred.
+
+Next: preserve the current package and prioritize fresh external dense
+possession labels before another adoption decision. The five development
+matches remain previously exposed and feed-like stress remains synthetic.
 
 Updated 2026-10-30 after the user-authorized SoccerNet-capacity promotion;
 the working baseline is `joint_gru_soccernet_capacity_ensemble_v1`.

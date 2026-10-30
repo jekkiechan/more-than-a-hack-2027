@@ -1,9 +1,11 @@
 # SoccerNet training follow-ups
 
-30 October 2026 — **implemented and synthetically tested; real-data fits and
-comparisons blocked by missing local-only artifacts**. The adopted baseline
-remains `joint_gru_soccernet_capacity_ensemble_v1` from main `a792b09`.
-No new possession scores, promotion, or organizer diagnostic are claimed.
+30 October 2026 — implementation and protocol reference. Real-data fitting and
+evaluation are handled by the separately sealed
+[execution study](SOCCERNET_FOLLOWUP.md), which explicitly rebuilds the missing
+reference checkpoints. The adopted baseline remains
+`joint_gru_soccernet_capacity_ensemble_v1`; no organizer diagnostic is part of
+this follow-up.
 
 Three Luna agents implemented separate mechanisms in parallel. A fourth Luna
 agent reviewed artifact availability and the integrated training contracts.
@@ -52,9 +54,10 @@ the matched continuation control. Spell F1 ranks first; macro breaks exact
 ties. Report the +.01 clean screen, feed-like floor of baseline minus .01,
 provider clean macro/D-F1 floors of minus .02, both seeds, all five IoUs, D
 precision/recall, spell counts and short-spell recall. These are development
-results, not independent confirmation. Evaluation orchestration and actual
-score replay are pending the artifact restore; this runner implements fitting,
-not a new scoring system. No public scoring command is provided.
+results, not independent confirmation. The [execution study](SOCCERNET_FOLLOWUP.md)
+adds evaluation orchestration and score replay around these fixed recipes.
+This module supplies fitting and the original restored-artifact CLI below.
+No public scoring command is provided.
 
 ## Interfaces and restore requirements
 
@@ -105,13 +108,13 @@ candidate, original_teacher)` interface and exact original P(D). They are
 experimental continuations; the adopted baseline loader intentionally does
 not accept them as the original 2,048-update package. No promotion is implied.
 
-## Current verification and blocker
+## Initial verification and artifact recovery
 
 The [preflight receipt](results/soccernet_training_ideas_preflight.json) records
 the initial availability. The six original fold teachers were initially LFS
 pointers; selective restore downloaded the real objects and verified all six
 against the published capacity declaration. The SoccerNet width-96 heads,
-inventory and prepared merged segments remain absent. The user's correction
+inventory and prepared merged segments were absent at that point. The user's correction
 identified Hugging Face as the raw-data recovery route: all seven pinned TRAIN
 files are now downloaded and hash-verified (5,037,010,355 bytes). See the
 [new restore receipt](results/soccernet_huggingface_restore.json) and
@@ -127,8 +130,9 @@ declaration/bundle tampering, and output overwrite prevention. The experiment
 suite, root suite, file-backed fit parity and bundled CSV validation results
 are recorded in [verification](results/soccernet_training_ideas_verification.json).
 
-Next: restore or explicitly rebuild the derived artifacts, verify the selected
-fold checkpoints and provenance, prepare paired raw gap views, freeze the six
-fold/seed bundles, then execute the matched study. Raw dataset availability is
-no longer the blocker. No arm is recommended for adoption until that comparison
-completes.
+The derived segments, six reference heads and paired raw gap views were
+subsequently rebuilt under explicit new declarations; all 24 matched
+continuation fits completed. The [execution report](SOCCERNET_FOLLOWUP.md)
+owns the current scorecard, verification and artifact availability. Its runner
+wraps the low-level training API with separate reconstruction provenance;
+the original CLI's historical inventory requirement remains unchanged.

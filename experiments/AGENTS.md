@@ -30,8 +30,11 @@ Open a detailed report for the study relevant to the question.
   a selection or tuning input. All five external matches were previously
   exposed; full-match performance remains unknown. SoccerNet supervision is
   sparse PASS/CROSS/SHOT event-team points, not dense possession labels.
-- **Current study/readout:** see [the capacity report](SOCCERNET_CAPACITY.md)
-  and [current status](../docs/research/STATUS.md). The older
+- **Current study/readout:** the [matched training follow-up](SOCCERNET_FOLLOWUP.md)
+  completed six reference rebuilds and 24 continuations; no new objective meets
+  the +.01 clean screen, so the adopted package stays unchanged. See the
+  [capacity report](SOCCERNET_CAPACITY.md) for adoption evidence and
+  [current status](../docs/research/STATUS.md). The older
   [combined-loss audit](SPELL_OPPORTUNITY_AUDIT.md) describes the previous
   baseline and remains historical; do not use it as the current package spec.
 
