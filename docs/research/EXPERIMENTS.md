@@ -1,6 +1,6 @@
 # Experiment index
 
-Reviewed 2026-10-29. Find evidence here; adoption and next work live in
+Reviewed 2026-10-30. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
@@ -113,6 +113,9 @@ paths. Replace the proposal outcome when complete; do not duplicate scorecards.
 | ID and state | Scope and outcome | Evidence |
 | --- | --- | --- |
 | `skillcorner_removal_v1` — comparison complete, retain current model | Six fixed-budget fits: remove original eight SkillCorner TRAIN matches. Original-five full-provider clean/feed-like spell .633205/.498830 → .625786/.496092; both seeds decline. Separate provider-represented tactical mean improves +.013053/+.012420, concentrated in Sportec; Metrica +.002720/-.007082. Primary clean removal screen fails; other thirteen guards pass. No organizer scoring or promotion. | [Report](../../experiments/SKILLCORNER_REMOVAL.md), [declaration](../../experiments/results/skillcorner_removal_declaration.json), [readout](../../experiments/results/skillcorner_removal.json), [180 rows](../../experiments/results/skillcorner_removal_rows.json), [fit verification](../../experiments/results/skillcorner_removal_fit_verification.json), [external verification](../../experiments/results/skillcorner_removal_external_verification.json), [local artifacts](../../experiments/results/skillcorner_removal_artifacts.json) |
+
+| `soccernet_extension_v1` — stage 1 complete; no adoption | 18 full-provider H/A-only warm-start fits: baseline .633205/.498830 clean/feed-like; matched old-only .629253/.495753; GAR25 .630438/.494076; selected GAR50 .631957/.495121. GAR50 is +.002703 clean versus old-only but -.001248/-.003709 versus baseline, so its +.01 clean improvement screen fails. Provider/feed-like guards pass. Keep the active baseline. The separately deferred public check was completed later by the capacity study after final external selection; it did not alter stage-1 results or adoption. | [Report](../../experiments/SOCCERNET_EXTENSION.md); aggregate `data/experiments/soccernet_extension_v1/report.json` (180 rows), with declaration, decision and receipts in the local ignored artifact directory |
+| `soccernet_capacity_v1` — external and one-time public check complete; no adoption | 18 Stage-A, 9 Stage-B, and 6 matched old-only fits. Width-96 ensemble scores .641790/.502586 clean/feed-like vs baseline .633205/.498830 and is +.008138/.008398 vs equal-budget old-only, but misses the +.01 clean screen. The post-selection public diagnostic is .569697 spell F1 vs .557576 baseline (+.012121) on 7,500 graded frames/17 references; no tuning, selection, or adoption followed. All independent replay receipts pass. | [Methods and results](../../experiments/SOCCERNET_CAPACITY.md), [public result](../../experiments/results/soccernet_capacity_public_check.json), [aggregate verification](../../experiments/results/soccernet_capacity_verification.json), [local artifact inventory receipt](../../experiments/results/soccernet_capacity_artifacts.json) |
 
 ## Smart Tagging
 

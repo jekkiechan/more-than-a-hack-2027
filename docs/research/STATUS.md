@@ -1,8 +1,65 @@
 # Current research state
 
-Reviewed 2026-10-29 after the SkillCorner removal study, frozen at code commit `c4dcbe3` over fork main `22fc2d5` (merged PR #32). The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+Updated 2026-10-30 during the SoccerNet capacity/data-scaling continuation; earlier merged-study history below remains unchanged. The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
+
+## SoccerNet-GAR H/A continuation — 30 October 2026
+
+[Stage 1](../../experiments/SOCCERNET_EXTENSION.md) completed 18 full-provider
+H/A-only warm-start fits. The actual two-seed GAR50 probability ensemble
+scores .631957/.495121 clean/feed-like, against baseline .633205/.498830 and a
+matched old-data-only control .629253/.495753. GAR50 gains .002703 clean over
+old-only but loses .001248 clean and .003709 feed-like to baseline; it fails
+the predeclared +.01 clean improvement screen. Provider clean D/macro and
+feed-like spell guards pass. Keep `joint_gru_combined_ensemble_v1` with no
+promotion.
+
+The requested larger-capacity continuation is complete; its results and the
+single post-selection public diagnostic are recorded below. The five
+development matches and 17-spell public window are previously exposed, so the
+public result is only a small pipeline check. SoccerNet uses sparse
+PASS/CROSS/SHOT center-team silver labels, not dense possession labels. GAR
+valid/test data were excluded from training and evaluation; the organizer reference was scored once only
+after external selection. Artifacts remain in the local ignored data
+directory; no private upload was made. Read the capacity report for numeric
+parity, verification and amendment details.
+
+### SoccerNet capacity/data-scaling continuation — external and public checks complete
+
+The frozen `soccernet_capacity_v1` study widened only conditional H/A GRUs and
+used 42,919 sparse event-team anchors from 45 disjoint 2022 World Cup TRAIN
+fixtures; 60 conflicting event-team centers remain unknown. The official
+eligible event counts are 40,745 PASS, 1,514 CROSS, and 720 SHOT (94.80% PASS).
+Training preserves the baseline normalizer, D path, and original-data
+spell/transition objectives. The selected width-96 two-seed ensemble scores
+.641790/.502586 clean/feed-like, versus baseline .633205/.498830. A matched
+equal-budget old-only control scores .633652/.494188; the SoccerNet result
+gains .008138/.008398 over that control. All declared provider/feed-like
+guards pass, but width 96 misses the separate +.01 clean improvement screen
+by .001415. Keep the active baseline; no automatic promotion.
+
+The external selection and six-fit old-only attribution control are complete.
+The one-time post-selection public diagnostic scores .569697 mean spell F1,
+.861288 macro F1, and .855417 D-F1 versus the saved baseline .557576/.854088/
+.854810. Both candidates predict 16 spells against 17 references over 7,500
+graded frames; the mean spell-F1 bootstrap intervals overlap broadly. The
+public window is a small noisy pipeline check, not confirmation. It was not
+used to tune, select, or adopt a model. Retain the active baseline because the
+external width-96 ensemble misses the frozen +.01 clean screen.
+
+All final independent receipts pass: coarse 195-row replay, selected-final
+180-row replay, matched control 45-row replay, pooled weight seals, and exact
+public prediction/CSV replay. The public verifier opened no reference file and
+did not rescore metrics; the separate one-time public score gate did access
+the reference once. The final suite has 353 experiment tests and 18 root tests;
+file-backed fit parity and CSV format checks pass. The
+[report](../../experiments/SOCCERNET_CAPACITY.md) records methods, uncertainty,
+the runtime-only metadata/parity amendments, and checker correction. The local
+artifact inventory hashes 1,187 files (about 1.96 GB) across stage 1 and this
+capacity continuation; it is not a remote restoration archive. Source
+snapshots, weights, and verification artifacts remain local, with no private
+archive upload.
 
 ## Smart Tagging — 29 October 2026
 
