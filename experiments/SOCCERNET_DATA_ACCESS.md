@@ -45,3 +45,8 @@ feature caches, saved predictions and experiment inventory are separate
 artifacts. Missing local model artifacts do not mean the dataset is unavailable.
 Restore those artifacts separately or explicitly document a reproducibility
 rebuild; do not silently substitute retraining for a verified checkpoint restore.
+
+The original promoted deployment weights are now restorable from the private
+cache using the [baseline restore instructions](BASELINE.md#private-cache-restore)
+and [verified remote receipt](results/baseline_soccernet_capacity_remote_artifacts.json).
+This package is separate from the follow-up study's reconstructed reference.

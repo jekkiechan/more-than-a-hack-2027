@@ -288,9 +288,11 @@ The four package weights have verified hashes. The default prediction path is
 `data/experiments/current_baseline/joint_gru_soccernet_capacity_ensemble.csv`.
 See the separate [promotion receipt](results/baseline_soccernet_capacity_promotion.json).
 
-This promotion has a local restore only. The generic private-cache default
-still restores the former combined-objective package, and no remote cache was
-updated. The four verified weights and local package inventory must accompany
-this checkout to reproduce the adopted output. The old versioned combined
-manifest remains available for restoring the D teachers; it does not include
-the sealed SoccerNet H/A checkpoints.
+The original promotion was local-only. The four original promoted weights and
+matching code have since been uploaded to the private `mtah-data` cache, with
+default and versioned restore manifests. A fresh remote clone/LFS fetch verified
+all four checkpoint hashes, matching metadata and teacher pairing. See the
+[remote delivery receipt](results/baseline_soccernet_capacity_remote_artifacts.json)
+and [current restore instructions](BASELINE.md#private-cache-restore). This later
+delivery preserves the frozen promotion/study records and does not upload the
+raw SoccerNet dataset or the full research archive.
