@@ -23,7 +23,7 @@ Dev = 15 development cells (provider-held-out fold model on its provider, equal-
 | D2_f050_g45_s2026 | 2048/2048/2048 | 0.6355 | +0.0067 | +0.0091 | 0.8506 | 0.8364 | 0.5018 | +0.0073 | 0.6965 | 0.7791 | 0.5686 | 0.3377 | ok | 28 |
 | D3_f050_g45_s2026 | 8192/7168/7168 (8192/7168/7168) | 0.6192 | -0.0096 | -0.0072 | 0.8390 | 0.8158 | 0.4985 | +0.0039 | 0.7249 | 0.8078 | 0.6280 | 0.3662 | FAIL | 151 |
 
-### C2 fraction sweep (D2 recipe; guards vs R f.5)
+### C2 fraction sweep (D2 recipe)
 
 | tag | steps (best) | dev clean spell | d vs R | d vs .626425 | dev clean macro | dev clean D-F1 | dev feed spell | feed d vs R | valid spell | valid macro | valid D-F1 | valid short-rec | guard | min |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -34,4 +34,25 @@ Dev = 15 development cells (provider-held-out fold model on its provider, equal-
 | D2_f075_g45_s2026 | 2048/2048/2048 | 0.6359 | +0.0071 | +0.0094 | 0.8454 | 0.8230 | 0.4980 | +0.0034 | 0.7070 | 0.7917 | 0.5941 | 0.3472 | FAIL | 28 |
 | D2_f100_g45_s2026 | 2048/2048/2048 | 0.4889 | -0.1399 | -0.1376 | 0.7025 | 0.5580 | 0.4106 | -0.0839 | 0.7246 | 0.8119 | 0.6398 | 0.3601 | FAIL | 27 |
 
+### C3 data scaling (D2, f.5)
+
+| tag | steps (best) | dev clean spell | d vs R | d vs .626425 | dev clean macro | dev clean D-F1 | dev feed spell | feed d vs R | valid spell | valid macro | valid D-F1 | valid short-rec | guard | min |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| teacher (fold) | 0 | 0.6264 | | | 0.8461 | 0.8354 | 0.4872 | | 0.6218 | 0.6970 | 0.3975 | 0.2764 | | |
+| D2_f050_g11_s2026 | 2048/2048/2048 | 0.6334 | +0.0046 | +0.0069 | 0.8495 | 0.8344 | 0.4949 | +0.0003 | 0.6881 | 0.7693 | 0.5525 | 0.3398 | ok | 27 |
+| D2_f050_g22_s2026 | 2048/2048/2048 | 0.6396 | +0.0108 | +0.0131 | 0.8525 | 0.8391 | 0.5040 | +0.0094 | 0.6874 | 0.7716 | 0.5611 | 0.3398 | ok | 28 |
+| D2_f050_g45_s2026 | 2048/2048/2048 | 0.6355 | +0.0067 | +0.0091 | 0.8506 | 0.8364 | 0.5018 | +0.0073 | 0.6965 | 0.7791 | 0.5686 | 0.3377 | ok | 28 |
+
+### C4 seed confirmation (2027 uses teacher 2027; seed-2027 R/teacher not rebuilt)
+
+### C4 seeds
+
+| tag | steps (best) | dev clean spell | d vs R | d vs .626425 | dev clean macro | dev clean D-F1 | dev feed spell | feed d vs R | valid spell | valid macro | valid D-F1 | valid short-rec | guard | min |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| teacher (fold) | 0 | 0.6264 | | | 0.8461 | 0.8354 | 0.4872 | | 0.6218 | 0.6970 | 0.3975 | 0.2764 | | |
+| D2_f050_g45_s2026 | 2048/2048/2048 | 0.6355 | +0.0067 | +0.0091 | 0.8506 | 0.8364 | 0.5018 | +0.0073 | 0.6965 | 0.7791 | 0.5686 | 0.3377 | ok | 28 |
+| D2_f050_g45_s2027 | 2048/2048/2048 | 0.6372 | +0.0085 | +0.0108 | 0.8567 | 0.8511 | 0.4958 | +0.0012 | 0.6992 | 0.7755 | 0.5556 | 0.3333 | ok | 27 |
+
+
+Two-seed probability ensemble (D2 f.5, 45 games): dev clean spell 0.6472 (published adopted ensemble 0.64179), macro 0.8577, D-F1 0.8502; dev feed_like spell 0.5058 (published 0.502586); GAR-valid spell 0.7044, macro 0.7824, D-F1 0.5719, short-rec 0.3394.
 
