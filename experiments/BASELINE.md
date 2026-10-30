@@ -35,32 +35,36 @@ The capacity study's original frozen result still records
 separate decision. Its historical declaration, thresholds, failed screen, and
 public-check record are unchanged.
 
-## Local package and restore
+## Private cache restore
 
-The promotion receipt records hashes for the four package weights. Restore is
-local only: no remote private cache or archive was uploaded or changed. In
-particular, the generic private
-cache default still points to the former `joint_gru_combined_ensemble_v1`.
-Do not use a generic `competition_cache.py fetch` as though it restored the new
-package. The versioned
-`baseline_cache_manifest_joint_gru_combined_ensemble_v1.json` remains useful
-for restoring the old pooled teachers; the width-96 GAR H/A weights are the
-sealed local capacity checkpoints and are not included in that old cache.
-
-With the locally verified package installed, use the standard entrypoint:
+The four promoted weights and matching code are now available in the private
+[`jekkiechan/mtah-data`](https://github.com/jekkiechan/mtah-data) cache. The
+[remote delivery receipt](results/baseline_soccernet_capacity_remote_artifacts.json)
+records a fresh clone and LFS download: all four checkpoint hashes, six
+model/metadata files, 174 source files, active manifest bytes, and teacher
+pairing match the original promoted package. The cache's default model and
+source manifests now select this package. Previous versioned packages remain
+available.
 
 ```sh
-python -m experiments.current_baseline predict
-python evaluation/validate_submission.py data/experiments/current_baseline/joint_gru_soccernet_capacity_ensemble.csv
+python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest.json --data-dir data
+python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_source_cache_manifest.json --data-dir data
+python -m experiments.current_baseline predict --output data/experiments/current_baseline/soccernet_restored.csv
 ```
 
-The verified candidate already exists in this workspace. Use `--output` with
-a new path for another prediction; the entrypoint refuses to overwrite it.
+Use an updated private-cache checkout containing commit `de4e815`. The
+versioned model manifest is
+`baseline_cache_manifest_joint_gru_soccernet_capacity_ensemble_v1.json`; its
+source counterpart has the same suffix. For an older public code checkout,
+overlay the restored package's `source_snapshot/` onto the public base commit
+recorded in `source_metadata.json`. The current public checkout already has the
+matching inference code. Existing candidate files are never overwritten.
 
-For a clean machine, a remote restore path does not yet exist. Keep the
-verified local package and the four source weights together; do not substitute
-the old cache's default manifest. The promotion itself did not train, score,
-alter a closed gate, or change the frozen study receipts.
+The frozen promotion manifest and original artifact receipts describe
+local-only availability at promotion time. The later remote-delivery receipt
+records the completed upload; promotion metadata, model bytes, study results
+and closed scoring gates remain unchanged. Raw SoccerNet TRAIN data still come
+from the authorized [Hugging Face source](SOCCERNET_DATA_ACCESS.md).
 
 ## Previous adopted baseline: Combined-objective two-seed GRU
 
@@ -70,7 +74,8 @@ documentation. Its archived manifest and policy are
 and
 [model_decision_policy_joint_gru_combined_ensemble_v1.json](baselines/model_decision_policy_joint_gru_combined_ensemble_v1.json).
 The remaining details and restore commands document that former package only;
-the generic cache default described there still points to this archived model.
+its versioned restore manifests remain available; the generic defaults now
+select the SoccerNet package above.
 
 ---
 
