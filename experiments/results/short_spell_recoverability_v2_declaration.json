@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "study_id": "short_spell_recoverability_v2",
+  "created_utc": "2026-10-29T02:39:59.126058+00:00",
+  "question": "Among globally matched cost-3 misses, how often do native per-frame emissions contain the correct team and how often did the decoder or interval timing remove it?",
+  "scope": "Read-only diagnostic on five previously exposed full-provider-holdout development matches, one clean and two fixed feed-like views.",
+  "candidate": "joint_gru_combined_ensemble_v1 archived probabilities and cost-3 predictions",
+  "organizer_assets_read": false,
+  "model_fitting_or_inference": false,
+  "threshold_sweeps_or_candidate_selection": false,
+  "reference_informed_prediction": false,
+  "official_scorer": "evaluation.possession_metrics; existing evaluate_tracking wrapper and unchanged global matcher",
+  "active_baseline_manifest_sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+  "active_policy_sha256": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+  "source_sha256": {
+    "experiments/short_spell_recoverability.py": "6b384dbbc1af956320bddaa714ad7adab639f6638d3425a668c9a8e6419c36a6",
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "experiments/baseline_manifest.json": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "experiments/model_decision_policy.json": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+    "data/experiments/objective_ensemble_v1/declaration.json": "686a10993b74234e0bb02134cd4ec79f781c87a140dcf88cfa31cdbc8f4a0c6e",
+    "data/experiments/objective_ensemble_v1/runs.json": "3269e3a08a01d3682fe5ab7c3fd6e60e6b1c722df9c018418e19a8344f2eb329",
+    "data/experiments/objective_ensemble_v1/verification.json": "837bda7c7dbacc1a2215179a73b2c7dfbc7be9ece63c3576bbe17bc1f20e3df2",
+    "data/experiments/objective_ensemble_v1/report.json": "cf267890905ece05aebe366c86c9ea635c07fa5267831f0658ac8932863f51d4",
+    "experiments/results/spell_opportunity_audit_declaration_v2.json": "7a83ec0027209ea774cd7e63fc99d8e1a80fa09819846fb8079dba1549702046",
+    "experiments/results/spell_opportunity_audit.json": "9d2e6e14eae758c3e5a1e45b56f49e6eef4c08502b24c91580682c6088978b6d"
+  },
+  "input_receipts": {
+    "external_tracking_sources": [
+      {
+        "path": "data/external_audit/sportec/processed/J03WOY.npz",
+        "bytes": 17385101,
+        "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84"
+      },
+      {
+        "path": "data/external/processed/metrica_3.npz",
+        "bytes": 23100099,
+        "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187"
+      },
+      {
+        "path": "data/external/processed/skillcorner_had_1996435.npz",
+        "bytes": 5795809,
+        "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a"
+      },
+      {
+        "path": "data/external/processed/skillcorner_had_1996436.npz",
+        "bytes": 5688004,
+        "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be"
+      },
+      {
+        "path": "data/external/processed/skillcorner_had_2006229.npz",
+        "bytes": 5884640,
+        "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420"
+      }
+    ],
+    "tracking_and_label_snapshots": [
+      {
+        "path": "data/experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+        "bytes": 37595123,
+        "sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib",
+        "bytes": 63772461,
+        "sha256": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib",
+        "bytes": 63092004,
+        "sha256": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib",
+        "bytes": 41630166,
+        "sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib",
+        "bytes": 60921765,
+        "sha256": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib",
+        "bytes": 61148402,
+        "sha256": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib",
+        "bytes": 17156906,
+        "sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib",
+        "bytes": 19881567,
+        "sha256": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib",
+        "bytes": 20299503,
+        "sha256": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib",
+        "bytes": 15868178,
+        "sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib",
+        "bytes": 18068220,
+        "sha256": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib",
+        "bytes": 17974485,
+        "sha256": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+        "bytes": 17231158,
+        "sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib",
+        "bytes": 19826101,
+        "sha256": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d"
+      },
+      {
+        "path": "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib",
+        "bytes": 19988307,
+        "sha256": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d"
+      }
+    ],
+    "saved_candidate_probabilities_and_paths": [
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_J03WOY_clean_clean.npz",
+        "bytes": 2077507,
+        "sha256": "a726076045a822ef9aca68c7507a0ad22932ae59dd1caa3ce119a0f87cdc873d"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_1.npz",
+        "bytes": 2077857,
+        "sha256": "7748451902d3f60545b05a8d755bf3b042ce0256fbad4da44f158a106524d698"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_2.npz",
+        "bytes": 2074290,
+        "sha256": "b4793ecc13a3b61b593b4d04b26735aaff99e9b6b08f77ce0132ff02dcb9830c"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_metrica_3_clean_clean.npz",
+        "bytes": 2101672,
+        "sha256": "44f52ad86adb70235331dde58ba952f656a7f3253c55b2794d9db282e8d66c59"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_1.npz",
+        "bytes": 2095887,
+        "sha256": "c1226e367d31aeeb0951f14970e39f3a6174cb0970ef2b6b4a3ad3ad2d7dcf99"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_2.npz",
+        "bytes": 2094600,
+        "sha256": "781831c309b14b4bb75568eeeb2bfa281efb9f5227fc90e4f82a126669794abd"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_clean_clean.npz",
+        "bytes": 774432,
+        "sha256": "885e9fb57687ed7832b683dc39ec67e3ebf8d6db848fc745aae19bf888805234"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_1.npz",
+        "bytes": 770393,
+        "sha256": "2a0638ba69eb45ee401608f5f2fedcbb488a11760c0b21564615f8014cfdc8b9"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_2.npz",
+        "bytes": 770012,
+        "sha256": "acfc20adbcd4afb5dac45e2f289fe3032a9a12737f0168daddc4ff6128829112"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_clean_clean.npz",
+        "bytes": 794842,
+        "sha256": "06416813dc8498a384bc92fe6de95aa38b680cf435ad8b09e5aaba40ef14bb2d"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_1.npz",
+        "bytes": 792107,
+        "sha256": "fb510c24aa8c0a017ba18c0cc2e4a0dc66875d60d0676d406ed123d3fbb1362e"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_2.npz",
+        "bytes": 783116,
+        "sha256": "836b72c2b981201655d7edcbb84b9784864439419ccfe89a89b6a5d3adc2c6d7"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_clean_clean.npz",
+        "bytes": 776074,
+        "sha256": "a595b03e32690afd4c58d7139c14f17d17fd3dde76c3016a0b354a420e6ae7a9"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_1.npz",
+        "bytes": 770164,
+        "sha256": "e0fddb4110601d210cddff190d9c3f3e1ed8e1b2d014127208972542fdb5782f"
+      },
+      {
+        "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_2.npz",
+        "bytes": 771085,
+        "sha256": "747889bced4376b66a7494ce862efc1dc3ddd749ef0d6245013eba5573a21776"
+      }
+    ]
+  },
+  "prior_audit_receipts": {
+    "experiments/results/spell_opportunity_audit_declaration_v2.json": "7a83ec0027209ea774cd7e63fc99d8e1a80fa09819846fb8079dba1549702046",
+    "experiments/results/spell_opportunity_audit.json": "9d2e6e14eae758c3e5a1e45b56f49e6eef4c08502b24c91580682c6088978b6d",
+    "data/experiments/objective_ensemble_v1/declaration.json": "686a10993b74234e0bb02134cd4ec79f781c87a140dcf88cfa31cdbc8f4a0c6e",
+    "data/experiments/objective_ensemble_v1/runs.json": "3269e3a08a01d3682fe5ab7c3fd6e60e6b1c722df9c018418e19a8344f2eb329",
+    "data/experiments/objective_ensemble_v1/verification.json": "837bda7c7dbacc1a2215179a73b2c7dfbc7be9ece63c3576bbe17bc1f20e3df2",
+    "data/experiments/objective_ensemble_v1/report.json": "cf267890905ece05aebe366c86c9ea635c07fa5267831f0658ac8932863f51d4"
+  },
+  "previous_attempt": {
+    "declaration": "experiments/results/short_spell_recoverability_declaration.json",
+    "sha256": "9e03b94e73ddf6291dbb111b4c97cee514d7f2f8e05681fef5a5edd4eecad04b",
+    "status": "aborted during input validation after float32 probability-sum rounding slightly exceeded 1e-7; no result artifact was written or reviewed"
+  },
+  "configuration": {
+    "cohort": [
+      {
+        "match": "J03WOY",
+        "source": "sportec"
+      },
+      {
+        "match": "metrica_3",
+        "source": "metrica"
+      },
+      {
+        "match": "skillcorner_had_1996435",
+        "source": "skillcorner"
+      },
+      {
+        "match": "skillcorner_had_1996436",
+        "source": "skillcorner"
+      },
+      {
+        "match": "skillcorner_had_2006229",
+        "source": "skillcorner"
+      }
+    ],
+    "views": {
+      "clean": [
+        "clean"
+      ],
+      "feed_like": [
+        "corrupt_1",
+        "corrupt_2"
+      ]
+    },
+    "official_iou": 0.5,
+    "official_matcher": "unchanged IoU-descending greedy one-to-one assignment over all same-team spell pairs before subgroup filtering",
+    "duration_bins_seconds": [
+      [
+        "under_0_5s",
+        0.0,
+        0.5
+      ],
+      [
+        "0_5_to_under_1s",
+        0.5,
+        1.0
+      ],
+      [
+        "1_to_under_2s",
+        1.0,
+        2.0
+      ],
+      [
+        "2_to_under_3s",
+        2.0,
+        3.0
+      ],
+      [
+        "3s_or_longer",
+        3.0,
+        null
+      ]
+    ],
+    "primary_cohort": "officially unmatched, complete observed reference spells shorter than 3 seconds",
+    "edge_rule": "complete iff neither interval endpoint touches a valid graded-run boundary",
+    "visibility_rule": "visible_ball iff every native frame in the reference span has a finite observed ball coordinate; any other span is has_ball_gap",
+    "emission_rule": "native saved H/A/D probability argmax, fixed class order H/A/D; no threshold or fit",
+    "decoder_rule": "saved adopted cost-3 path; no decode replay or parameter change",
+    "mechanism_partition": {
+      "viterbi_suppressed_correct_emission": "at least one correct-team raw argmax frame inside the reference span and zero correct-team cost-3 frames inside it",
+      "correct_emission_but_timing_or_duration_insufficient": "some correct-team raw argmax, cost-3 overlap, or raw same-team overlap exists, but neither decoder suppression nor global conflict applies",
+      "no_sufficient_local_correct_team_emission": "no correct-team raw argmax frame or same-team raw/cost-3 overlap inside the reference span",
+      "global_assignment_conflict": "cost-3 has a same-team candidate spell with IoU >= 0.5, but official global one-to-one assignment leaves the reference unmatched"
+    },
+    "raw_argmax_status": "diagnostic counterfactual only; never a candidate for adoption",
+    "probability_sum_tolerance": 2e-07
+  },
+  "limitations": [
+    "Every evaluation match has prior development exposure; results are descriptive and do not establish transfer.",
+    "Metrica and SkillCorner references are event-derived silver labels; boundary censoring can affect spell timing.",
+    "The raw argmax path is a diagnostic counterfactual and is not a deployable alternative.",
+    "No reference-informed repair or oracle prediction is computed."
+  ]
+}

@@ -1,100 +1,109 @@
 {
-  "version": 1,
-  "model": "gru_hgb",
-  "status": "Current adopted development baseline; fresh confirmation pending",
-  "promoted_utc": "2026-10-26T00:45:43.739049+00:00",
-  "replaced_baseline": "ordered_hgb",
-  "model_directory": "data/models/gru_hgb_v1",
+  "version": 7,
+  "model": "joint_gru_sn_dense_ensemble",
+  "package_version": "joint_gru_sn_dense_ensemble_v1",
+  "status": "User-authorized working development baseline; independent confirmation pending",
+  "promoted_utc": "2026-10-31T00:20:41.749359+00:00",
+  "replaced_baseline": "joint_gru_soccernet_capacity_ensemble",
+  "previous_manifest": "experiments/baselines/joint_gru_soccernet_capacity_ensemble_v1.json",
+  "previous_manifest_sha256": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
+  "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_soccernet_capacity_ensemble_v1.json",
+  "previous_policy_sha256": "f6330589fc26396d3861e136e0b6c5a22b196c683adf129dbeaefc760dcce40e",
+  "model_directory": "data/models/joint_gru_sn_dense_ensemble_v1",
   "models_sha256": {
-    "bigru.joblib": "6eceee4c6ea6ac8cdb181cc764ad3a02e309371d477a31014c9141c8cece9bf7",
-    "ordered_hgb.joblib": "a7829557d23a975808698ad78ec9290d4f93f5c06d7b5452e6264d48fa2b9c4c",
-    "attribution.joblib": "c52cfa6df4c3fada11581e19405c36dd26c9b203035040b87c59c2e5b1f5172d"
+    "dense_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+    "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "dense_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+    "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
   },
+  "default_output": "data/experiments/current_baseline/joint_gru_sn_dense_ensemble.csv",
   "architecture": {
-    "D_members": {
-      "bigru": 0.5,
-      "ordered_hgb": 0.5
+    "kind": "sn_dense_ensemble",
+    "members": {
+      "dense_2026": 0.5,
+      "dense_2027": 0.5
     },
-    "team": "Fixed pooled contextual HGB",
-    "decoder_switch_cost": 3
+    "teachers": {
+      "dense_2026": "teacher_2026",
+      "dense_2027": "teacher_2027"
+    },
+    "hidden_ha": 96,
+    "hidden_d": 24,
+    "core_seconds": 10,
+    "context_each_side_seconds": 5,
+    "rate_hz": 5,
+    "decoder_switch_cost": 3,
+    "combination": "Mean of two native H/A/D probability arrays before Viterbi; each member uses its fine-tuned D path and conditional H/A head with its pooled teacher's normalization"
   },
-  "selection_rule": "Spell F1 descending, macro F1 for exact ties",
+  "training": {
+    "recipe": "D2_f050_g45: dense touch-stream H/A/D targets with complete-spell and transition losses on SoccerNet, D-path fine-tune, fraction .5",
+    "original_train_matches": 13,
+    "soccernet_train_games": 45,
+    "learning_rate": 0.0003,
+    "d_learning_rate": 0.0001,
+    "optimizer_updates": 2048,
+    "seeds": [
+      2026,
+      2027
+    ],
+    "dense_gar_possession_labels": true,
+    "d_path_trained": true,
+    "normalization_frozen": true
+  },
   "evidence": {
-    "report": "experiments/results/temporal_ensemble_development.json",
-    "report_sha256": "95450f328a47398693c3fabf503a75386086d44bc3c764e8bff678ef7bd15be2",
-    "view": "provider_holdout_D",
-    "candidate": {
-      "view": "provider_holdout_D",
-      "model": "gru_hgb",
-      "spell_f1": 0.5746313479956742,
-      "macro_f1": 0.8449230220876734,
-      "d_f1": 0.839165263816494,
-      "raw_d_brier": 0.07005591775445145,
-      "per_source": {
-        "sportec": {
-          "spell_f1": 0.5751219512195122,
-          "d_f1": 0.9140971022836308
-        },
-        "metrica": {
-          "spell_f1": 0.6837273991655076,
-          "d_f1": 0.8977357990907888
-        },
-        "skillcorner": {
-          "spell_f1": 0.46504469360200257,
-          "d_f1": 0.7056628900750624
-        }
-      }
+    "declaration": "experiments/results/sn_dense_v1_declaration.json",
+    "declaration_sha256": "9384c959bbd9e5c3cfb45eaaa339200354e96cc0decef64cdf57515677991f09",
+    "progress": "experiments/results/sn_dense_v1_progress.md",
+    "progress_sha256": "1fa767671fe0dd4d509f9144252206d78322ccb50dc469276f54b86bc08f86ce",
+    "development_full_provider_holdout": {
+      "two_seed_ensemble_clean_spell": 0.6472,
+      "two_seed_ensemble_feed_like_spell": 0.5058,
+      "previous_adopted_clean_spell": 0.64179,
+      "previous_adopted_feed_like_spell": 0.502586,
+      "seed_2026_clean_spell_vs_rebuilt_reference": [
+        0.6355,
+        0.6288
+      ],
+      "seed_2027_clean_spell": 0.6372,
+      "provider_and_feed_like_guards_pass": true,
+      "clean_improvement_screen_plus_01_passes": false,
+      "previously_exposed_development_matches": true
     },
-    "previous_baseline": {
-      "view": "provider_holdout_D",
-      "model": "ordered_hgb",
-      "spell_f1": 0.5651738431581991,
-      "macro_f1": 0.8362684956762751,
-      "d_f1": 0.8223083376352273,
-      "raw_d_brier": 0.07641195227840474,
-      "per_source": {
-        "sportec": {
-          "spell_f1": 0.565207100591716,
-          "d_f1": 0.9104286280329104
-        },
-        "metrica": {
-          "spell_f1": 0.6740841248303935,
-          "d_f1": 0.8897217255764911
-        },
-        "skillcorner": {
-          "spell_f1": 0.45623030405248777,
-          "d_f1": 0.6667746592962804
-        }
-      }
-    },
-    "cohort": [
-      [
-        "metrica",
-        "metrica_3"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_1996435"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_1996436"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_2006229"
-      ],
-      [
-        "sportec",
-        "J03WOY"
-      ]
-    ]
+    "gar_valid_silver_note": "GAR-valid dense silver partly rewards agreement with the labelling rule; not neutral evidence",
+    "prediction_seal_sha256": "2afbde9f87492086825b6a79973956cc3247fea9d85965357526f4729d86612a",
+    "prediction_csv_sha256": "57ca788056ccf2f41839730fba492f15885c69f5788f35146ba1610b80b5b22b"
+  },
+  "promotion": {
+    "type": "explicit_user_authorized_post_hoc_screen_exception",
+    "user_request": "let's promote this",
+    "original_screen_passes": false,
+    "automatic_promotion": false,
+    "fitting_during_promotion": false,
+    "organizer_rescoring_performed": false,
+    "public_diagnostic_known_before_authorization": true
+  },
+  "organizer_public_diagnostic": {
+    "report": "experiments/results/sn_dense_v1_public_check.json",
+    "known_at_promotion": true,
+    "diagnostic_only": true,
+    "spell_f1": 0.6303030303030303,
+    "macro_f1": 0.8513871111822523,
+    "previous_spell_f1": 0.5696969696969697,
+    "used_for_model_or_hyperparameter_selection": false,
+    "independent_confirmation": false
   },
   "source_sha256": {
-    "experiments/current_baseline.py": "bddef30d1da2ad968253d8367f1e6b61e0e6ebd86f30bab13f6428f91e067b57",
+    "experiments/current_baseline.py": "dbd220972123ceee6f4ddb9928f3bee0307aad0603259a57782a2419b0d34b15",
+    "experiments/sn_dense_baseline.py": "c9d6e5fc24943b4543862969c18b57f67f76daede49c315a0c8af20867ff8c9b",
+    "experiments/promote_sn_dense_baseline.py": "a7a9d030b32fd518960f1d97fdfa8e9dbb0b928b73fc270483a339dd0f9b01c0",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/sn_dense_public.py": "8fdc2a22373984abfcec3290a2c10b6a228d7d1eec2eb20f6ceb239cf23c677d",
+    "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
     "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
-    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28"
+    "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
   },
-  "organizer_labels_used_for_promotion": false,
+  "organizer_reference_labels_used_for_training": false,
   "historical_selection_records_preserved": true
 }

@@ -19,19 +19,31 @@ All components use the same 0–1 scale.
 
 ## Current working candidate
 
-**GRU plus ordered HGB, averaged 50/50 at P(D), is now the adopted development
-baseline.** Promotion was authorized after it beat ordered HGB on the identical
-five-match provider-holdout cohort: .5746 spell/.8449 macro versus .5652/.8363.
+**The adopted working baseline is GRU plus ordered HGB at 50/50 P(D), with the
+25% ball-gap-only team-training replacement.** The user explicitly authorized
+this robustness tradeoff: external clean spell/macro .5740/.8439 versus previous
+.5746/.8449, and corrupted .4315/.7866 versus .4205/.7699. It does not beat the
+previous model under the frozen clean spell-first rule. That historical
+selection remains intact; the working-baseline promotion is recorded separately.
 The manifest and default inference entrypoint are
 `experiments/baseline_manifest.json` and
 `python -m experiments.current_baseline predict`. Fresh confirmation remains
-pending. The three-way blend is numerically first under
-both headline metrics, with gains too small to establish an additional benefit
-from LightGBM. The pair is a practical simplicity choice, not the numeric winner.
-This promotion does not overwrite historical frozen competition
-selections or bypass the completed organizer check.
+pending. The previously recorded public diagnostic is .5257/.8588 on only
+17 reference possessions and was known before the user's promotion request;
+no public check was repeated. See [BASELINE.md](BASELINE.md) for package versions,
+the exact tradeoff and recovery of the previous model.
 
-Current equal-provider D-head holdout scores:
+Current paired external comparison (equal provider means; H/A pooled):
+
+| Inputs | Model | Spell F1 | Macro F1 | Weighted summary |
+| --- | --- | ---: | ---: | ---: |
+| Clean | Previous GRU/HGB | .5746 | .8449 | .6557 |
+| Clean | Adopted ball-gap team model | .5740 | .8439 | .6550 |
+| Corrupted | Previous GRU/HGB | .4205 | .7699 | .5253 |
+| Corrupted | Adopted ball-gap team model | .4315 | .7866 | .5380 |
+
+Historical temporal-D equal-provider holdout scores, with the previous team
+backbone fixed (not a new ranking of the adopted team model):
 
 | Model | Spell F1 | Macro F1 | Weighted summary |
 | --- | ---: | ---: | ---: |

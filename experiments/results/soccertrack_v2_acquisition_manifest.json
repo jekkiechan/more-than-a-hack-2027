@@ -1,0 +1,89 @@
+{
+  "dataset": "SoccerTrack v2",
+  "match_id": "117093",
+  "match": "University of Tsukuba vs University of Tsukuba - B",
+  "date_local": "2023-11-25 10:00:00+09:00",
+  "annotation_source": "SoccerTrack v2 authors' BAS annotations and BePro raw event-node export; not dense possession truth",
+  "source_root": "https://drive.google.com/drive/folders/1N2Qx2qkFgRtpbHitl2Vh6sLVYGgqkWwn?usp=sharing",
+  "official_landing_page": "https://atomscott.github.io/SoccerTrack-v2/",
+  "license_url": "https://github.com/AtomScott/SoccerTrack-v2/blob/main/LICENSE-DATA",
+  "license_summary": "CC BY 4.0 is declared for the panoramic videos and GSR/BAS/MOT annotations; attribution required. The license text does not enumerate the separate ball NPZ and raw metadata files by name.",
+  "acquired_utc": "2026-10-29",
+  "directory_is_gitignored": true,
+  "not_downloaded": [
+    {
+      "asset": "117093_panorama_1st_half.mp4",
+      "drive_file_id": "1gPoN2h2SxEjWORK6FwKTEsCuKPylar53",
+      "bytes": 3346094631,
+      "url": "https://drive.google.com/file/d/1gPoN2h2SxEjWORK6FwKTEsCuKPylar53/view"
+    },
+    {
+      "asset": "117093_panorama_2nd_half.mp4",
+      "drive_file_id": "1dJNSKYtiuynakFDO7Hj7dCp7yjb2iMXy",
+      "bytes": 3481770525,
+      "url": "https://drive.google.com/file/d/1dJNSKYtiuynakFDO7Hj7dCp7yjb2iMXy/view"
+    },
+    {
+      "asset": "117093_1st.json",
+      "drive_file_id": "18fRzxM5vEExz0WXOxVqGoOIPeEEFaur2",
+      "bytes": 2712752520,
+      "url": "https://drive.google.com/file/d/18fRzxM5vEExz0WXOxVqGoOIPeEEFaur2/view"
+    },
+    {
+      "asset": "117093_2nd.json",
+      "drive_file_id": "1hMhlqrg5E28NSvYkGb4P_mlZmRO0IaZ6",
+      "bytes": 2830326845,
+      "url": "https://drive.google.com/file/d/1hMhlqrg5E28NSvYkGb4P_mlZmRO0IaZ6/view"
+    }
+  ],
+  "files": [
+    {
+      "name": "117093_12_class_events.json",
+      "drive_file_id": "1IkpBlr7-i8C0CxrGzq0r4CJ44Yiazf4v",
+      "bytes": 479053,
+      "sha256": "3af71f3c1c30184a3deddb9485299dc2d4e6faa8c629e5966ca500e7eddf768f",
+      "url": "https://drive.google.com/file/d/1IkpBlr7-i8C0CxrGzq0r4CJ44Yiazf4v/view",
+      "schema": "match_id, fps, clock, actions[]; each action has gameTime, label, position, frame, team, player_id"
+    },
+    {
+      "name": "117093_1st_ball.npz",
+      "drive_file_id": "1JKMOAZfz_BtrupE28qV7rj7aBsZzg-Oa",
+      "bytes": 127549,
+      "sha256": "0ba048240689069999642209c81d08e9d2cafa068ae43e69e6554b6ff2b97232",
+      "url": "https://drive.google.com/file/d/1JKMOAZfz_BtrupE28qV7rj7aBsZzg-Oa/view",
+      "schema": "frame, x, y, status arrays of 67,625 rows; y_flipped scalar; status code semantics not documented; project issue says ball paths are reconstructed from event anchors"
+    },
+    {
+      "name": "117093_2nd_ball.npz",
+      "drive_file_id": "1zVk2pu9G2EgIY6k3_tZ2xmBI7m2yU7fM",
+      "bytes": 132493,
+      "sha256": "f26ce5a6527fff7f1d9d2fd57b8db00e7bac940ac22c6621b0cad12ae98be9fb",
+      "url": "https://drive.google.com/file/d/1zVk2pu9G2EgIY6k3_tZ2xmBI7m2yU7fM/view",
+      "schema": "frame, x, y, status arrays of 70,475 rows; y_flipped scalar; status code semantics not documented; project issue says ball paths are reconstructed from event anchors"
+    },
+    {
+      "name": "117093_tracker_box_metadata.xml",
+      "drive_file_id": "1If6eYkFtOccIp6n34DlW_qyLQ8_wtvmG",
+      "bytes": 14079,
+      "sha256": "715d1699ba9a06326c30ddd05e149941ad7ef392043d4b3d88cd4ac40d59d9d5",
+      "url": "https://drive.google.com/file/d/1If6eYkFtOccIp6n34DlW_qyLQ8_wtvmG/view",
+      "schema": "match, period timing/frame metadata, pitch, teams and roster; personal names blank"
+    },
+    {
+      "name": "117093_player_nodes.csv",
+      "drive_file_id": "1FcrQsf9rsrwyHrjjNzehmmu1uL__R8Mp",
+      "bytes": 550228,
+      "sha256": "808326901dbca78cbf447ac79cbdffcffeb7723905e999514e7235a56ed322bc",
+      "url": "https://drive.google.com/file/d/1FcrQsf9rsrwyHrjjNzehmmu1uL__R8Mp/view",
+      "schema": "2,581 event-oriented rows; includes event_time, event_period, event_types, filtered_event_types, team/player IDs and normalized x/y; no possession interval field"
+    },
+    {
+      "name": "117093_padding_info.csv",
+      "drive_file_id": "1U8WcAX2U3xkaG7yxFPduHofW1Zf35dVw",
+      "bytes": 154,
+      "sha256": "0b7e73f40dad775807790860df61fcaada818fcbd634f105d454bb4fdd43ead5",
+      "url": "https://drive.google.com/file/d/1U8WcAX2U3xkaG7yxFPduHofW1Zf35dVw/view",
+      "schema": "per-period video padding and match-time intervals; retain for alignment audit"
+    }
+  ]
+}

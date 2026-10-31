@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "study_id": "spell_opportunity_audit_v1",
+  "created_utc": "2026-10-29T01:39:45.505717+00:00",
+  "question": "Which observed failure mechanism has the largest supported spell-F1 headroom in the saved combined-objective two-seed ensemble?",
+  "scope": "Post-hoc diagnostic of the five historically exposed full-provider-holdout external matches; clean and two fixed feed-like replicates.",
+  "prior_attempt": {
+    "status": "aborted before result write",
+    "reason": "The first implementation looked for n_gt under a per-IoU diagnostic object; the official diagnostics expose that count at the top level.",
+    "metric_values_reviewed": false,
+    "result_artifact_written": false,
+    "original_receipt_retained": false,
+    "corrective_action": "Freeze this corrected source and inputs under declaration v2 before rerunning."
+  },
+  "candidate": "combined_objective_equal_probability_ensemble",
+  "matched_control": "current_baseline_equal_probability_ensemble from the sealed objective_ensemble_v1 rows, used only for parity and matched-cell context",
+  "official_metric": "Unchanged evaluate_tracking scorer; global IoU-descending greedy H/A assignment at .3/.4/.5/.6/.7.",
+  "cohort": [
+    {
+      "source": "sportec",
+      "matches": [
+        "J03WOY"
+      ]
+    },
+    {
+      "source": "metrica",
+      "matches": [
+        "metrica_3"
+      ]
+    },
+    {
+      "source": "skillcorner",
+      "matches": [
+        "skillcorner_had_1996435",
+        "skillcorner_had_1996436",
+        "skillcorner_had_2006229"
+      ]
+    }
+  ],
+  "views": {
+    "clean": [
+      "clean"
+    ],
+    "feed_like": [
+      "corrupt_1",
+      "corrupt_2"
+    ]
+  },
+  "oracle": "none",
+  "organizer_assets_read": false,
+  "model_fitting_or_model_inference": false,
+  "saved_baseline_decoder_replayed_for_parity": true,
+  "tuning_or_selection": false,
+  "aggregate_only": true,
+  "active_baseline_manifest_sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+  "active_policy_sha256": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+  "objective_comparison_receipts": {
+    "data/experiments/objective_ensemble_v1/declaration.json": "686a10993b74234e0bb02134cd4ec79f781c87a140dcf88cfa31cdbc8f4a0c6e",
+    "data/experiments/objective_ensemble_v1/runs.json": "3269e3a08a01d3682fe5ab7c3fd6e60e6b1c722df9c018418e19a8344f2eb329",
+    "data/experiments/objective_ensemble_v1/verification.json": "837bda7c7dbacc1a2215179a73b2c7dfbc7be9ece63c3576bbe17bc1f20e3df2",
+    "data/experiments/objective_ensemble_v1/report.json": "cf267890905ece05aebe366c86c9ea635c07fa5267831f0658ac8932863f51d4",
+    "experiments/results/seed_gap_context.json": "bf92d15f0027412781554496f3db64ae9705c4fb502ca4c140c9d538c4c4ba86"
+  },
+  "external_input_receipts": [
+    {
+      "path": "data/external_audit/sportec/processed/J03WOY.npz",
+      "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+      "bytes": 17385101
+    },
+    {
+      "path": "data/external/processed/metrica_3.npz",
+      "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+      "bytes": 23100099
+    },
+    {
+      "path": "data/external/processed/skillcorner_had_1996435.npz",
+      "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+      "bytes": 5795809
+    },
+    {
+      "path": "data/external/processed/skillcorner_had_1996436.npz",
+      "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+      "bytes": 5688004
+    },
+    {
+      "path": "data/external/processed/skillcorner_had_2006229.npz",
+      "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+      "bytes": 5884640
+    }
+  ],
+  "matched_tracking_snapshot_receipts": [
+    {
+      "path": "data/experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+      "sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+      "bytes": 37595123
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib",
+      "sha256": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc",
+      "bytes": 63772461
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib",
+      "sha256": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274",
+      "bytes": 63092004
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib",
+      "sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+      "bytes": 41630166
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib",
+      "sha256": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334",
+      "bytes": 60921765
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib",
+      "sha256": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259",
+      "bytes": 61148402
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib",
+      "sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+      "bytes": 17156906
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib",
+      "sha256": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f",
+      "bytes": 19881567
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib",
+      "sha256": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0",
+      "bytes": 20299503
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib",
+      "sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+      "bytes": 15868178
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib",
+      "sha256": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66",
+      "bytes": 18068220
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib",
+      "sha256": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0",
+      "bytes": 17974485
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+      "sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+      "bytes": 17231158
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib",
+      "sha256": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d",
+      "bytes": 19826101
+    },
+    {
+      "path": "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib",
+      "sha256": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d",
+      "bytes": 19988307
+    }
+  ],
+  "candidate_output_receipts": [
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_J03WOY_clean_clean.npz",
+      "sha256": "a726076045a822ef9aca68c7507a0ad22932ae59dd1caa3ce119a0f87cdc873d",
+      "bytes": 2077507
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_1.npz",
+      "sha256": "7748451902d3f60545b05a8d755bf3b042ce0256fbad4da44f158a106524d698",
+      "bytes": 2077857
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_2.npz",
+      "sha256": "b4793ecc13a3b61b593b4d04b26735aaff99e9b6b08f77ce0132ff02dcb9830c",
+      "bytes": 2074290
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_metrica_3_clean_clean.npz",
+      "sha256": "44f52ad86adb70235331dde58ba952f656a7f3253c55b2794d9db282e8d66c59",
+      "bytes": 2101672
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_1.npz",
+      "sha256": "c1226e367d31aeeb0951f14970e39f3a6174cb0970ef2b6b4a3ad3ad2d7dcf99",
+      "bytes": 2095887
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_2.npz",
+      "sha256": "781831c309b14b4bb75568eeeb2bfa281efb9f5227fc90e4f82a126669794abd",
+      "bytes": 2094600
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_clean_clean.npz",
+      "sha256": "885e9fb57687ed7832b683dc39ec67e3ebf8d6db848fc745aae19bf888805234",
+      "bytes": 774432
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_1.npz",
+      "sha256": "2a0638ba69eb45ee401608f5f2fedcbb488a11760c0b21564615f8014cfdc8b9",
+      "bytes": 770393
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_2.npz",
+      "sha256": "acfc20adbcd4afb5dac45e2f289fe3032a9a12737f0168daddc4ff6128829112",
+      "bytes": 770012
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_clean_clean.npz",
+      "sha256": "06416813dc8498a384bc92fe6de95aa38b680cf435ad8b09e5aaba40ef14bb2d",
+      "bytes": 794842
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_1.npz",
+      "sha256": "fb510c24aa8c0a017ba18c0cc2e4a0dc66875d60d0676d406ed123d3fbb1362e",
+      "bytes": 792107
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_2.npz",
+      "sha256": "836b72c2b981201655d7edcbb84b9784864439419ccfe89a89b6a5d3adc2c6d7",
+      "bytes": 783116
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_clean_clean.npz",
+      "sha256": "a595b03e32690afd4c58d7139c14f17d17fd3dde76c3016a0b354a420e6ae7a9",
+      "bytes": 776074
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_1.npz",
+      "sha256": "e0fddb4110601d210cddff190d9c3f3e1ed8e1b2d014127208972542fdb5782f",
+      "bytes": 770164
+    },
+    {
+      "path": "data/experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_2.npz",
+      "sha256": "747889bced4376b66a7494ce862efc1dc3ddd749ef0d6245013eba5573a21776",
+      "bytes": 771085
+    }
+  ],
+  "source_sha256": {
+    "experiments/spell_opportunity_audit.py": "70ce922c6acce56e2d13db60ac4500e45d995fb986b42fbac6dcacf3955a8eb5",
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+    "experiments/gap_diagnostics.py": "c34e914d6ef122e21c1094450f86fe3a53eba1da13d25cbbe620dbead27a932a",
+    "experiments/possession_geometry.py": "0d9b24fa2ac1639e1d062205c518ec631f8c2e8ba3b80a4ecb2412d6e4b044c4",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/model_decision_policy.json": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+    "experiments/baseline_manifest.json": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "experiments/seed_gap_context.py": "f6d0595e86bf8b4f4c930fdf5f2b298d3bdba87a92174ce66105508c0b49b71d"
+  }
+}

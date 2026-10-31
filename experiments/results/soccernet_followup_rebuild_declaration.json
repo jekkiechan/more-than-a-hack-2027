@@ -1,0 +1,593 @@
+{
+  "automatic_promotion": false,
+  "capacity_declaration_sha256": "6dc1aa6df8786aca2b42222cef9d9866ab1383f7988eb304eb4828746febf797",
+  "capacity_report_sha256": "29efc13220673935d8717397dffc01f8e9c0d7032f9ea198888db5df49d46fbc",
+  "created_utc": "2026-10-30T09:12:43.919409+00:00",
+  "folds": [
+    "leave_out_sportec",
+    "leave_out_metrica",
+    "leave_out_skillcorner"
+  ],
+  "historical_source_audit": {
+    "allowed_metadata_mismatches": [
+      "experiments/baseline_manifest.json",
+      "experiments/current_baseline.py",
+      "experiments/model_decision_policy.json"
+    ],
+    "allowed_metadata_paths": [
+      "experiments/baseline_manifest.json",
+      "experiments/current_baseline.py",
+      "experiments/model_decision_policy.json"
+    ],
+    "current_source_sha256": {
+      "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+      "experiments/baseline_manifest.json": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
+      "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+      "experiments/combined_objective_public_check.py": "c51d6ad24ccbd05314d96d874d917c143ce7134005e06c2d3a869c6bc7869dfb",
+      "experiments/current_baseline.py": "5873f6552174152b7d5baaa76fac7c352f65bbb8f36cea10c92a6bf992b42956",
+      "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+      "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+      "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+      "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+      "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+      "experiments/model_decision_policy.json": "f6330589fc26396d3861e136e0b6c5a22b196c683adf129dbeaefc760dcce40e",
+      "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+      "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+      "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+      "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+      "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+      "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+      "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+      "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+      "experiments/soccernet_capacity_public.py": "d3d13d1e47ae2a467bf28565123b8cc1f49fe828bcd30b2abf4c465d9289c79a",
+      "experiments/soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+      "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+      "experiments/soccernet_finetune.py": "df934186ee659550348640c646695c687c3b54a8f6e9895bddabe2d5aef5979d",
+      "experiments/soccernet_segments.py": "83ea686a452976f2b4724e6e48c8a94766525e02f2ed6e9af716386b4788363e",
+      "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+      "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+    },
+    "exact_training_core_sha256": {
+      "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+      "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+      "experiments/combined_objective_public_check.py": "c51d6ad24ccbd05314d96d874d917c143ce7134005e06c2d3a869c6bc7869dfb",
+      "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+      "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+      "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+      "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+      "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+      "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+      "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+      "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+      "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+      "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+      "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+      "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+      "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+      "experiments/soccernet_capacity_public.py": "d3d13d1e47ae2a467bf28565123b8cc1f49fe828bcd30b2abf4c465d9289c79a",
+      "experiments/soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+      "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+      "experiments/soccernet_finetune.py": "df934186ee659550348640c646695c687c3b54a8f6e9895bddabe2d5aef5979d",
+      "experiments/soccernet_segments.py": "83ea686a452976f2b4724e6e48c8a94766525e02f2ed6e9af716386b4788363e",
+      "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+      "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+    },
+    "historical_source_sha256": {
+      "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+      "experiments/baseline_manifest.json": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+      "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+      "experiments/combined_objective_public_check.py": "c51d6ad24ccbd05314d96d874d917c143ce7134005e06c2d3a869c6bc7869dfb",
+      "experiments/current_baseline.py": "a15270893060ee4ee1055bdc0bbf90f64763b6558a5d0826a9599d30d9d8ab36",
+      "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+      "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+      "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+      "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+      "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+      "experiments/model_decision_policy.json": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+      "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+      "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+      "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+      "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+      "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+      "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+      "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+      "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+      "experiments/soccernet_capacity_public.py": "d3d13d1e47ae2a467bf28565123b8cc1f49fe828bcd30b2abf4c465d9289c79a",
+      "experiments/soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+      "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+      "experiments/soccernet_finetune.py": "df934186ee659550348640c646695c687c3b54a8f6e9895bddabe2d5aef5979d",
+      "experiments/soccernet_segments.py": "83ea686a452976f2b4724e6e48c8a94766525e02f2ed6e9af716386b4788363e",
+      "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+      "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+    },
+    "outcome": "exact training-core source parity; only named current adoption metadata may differ"
+  },
+  "old_restore_file_sha256": {
+    "/workspace/mtah-data/experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2026.npz": "2c41bd8205df7ad082a44ab8caee72079f0ebf3ac3ce5e7e9a93a265b8dc807b",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2027.npz": "61de5f13db9b0bee2bbdecf37eb8803e5cf52e4e8a686f8d5ebaf775d386b865",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2026.npz": "e3bb185860c2840b9248c99384baf0902d18ed12037b2665d88dcc50423b8304",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2027.npz": "6d015cf2bc7ba1e913ced2cb79429377806c8f5a4f4ac139f9b3228053f514c4",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2026.npz": "dd66a6990478bb3495f43916606b88c7710184357dd41c0e220672f67c008f68",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2027.npz": "751a1f56d3b52ce57a94a15c99a71bc9a47289e7cc08b3621b8737e7fc146ac9",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2026.npz": "34ccb6db2ca675b6572afeb7bf9bb5c1c89dba626d834f2d8ff308f768d32b63",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2027.npz": "cb853d3ab2a8e9b304c90db4b282f76d23b5b0bafac752bac7db7d70e74caa11",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2026.npz": "61a2615709343478cc3c21edb0384430aadef4226a0de116afe17e883af81326",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2027.npz": "f1af48b9376d241881279e0011d33aba9243e8f35708dd8c9005836d4a0dcb70",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2026.npz": "251e1563f4d93f9f40f682bc173ed7999c43022b0d9135b7230b0b3f88b92ec3",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2027.npz": "f8390143ed51c16e2189ea49e370b4796d6f5782872510a53b0c1b550ceaa8e2",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2026.npz": "053a6722b290bffc97faec796ba3f0c251b1270fc458792c7a14ad0554e28ab3",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2027.npz": "f0acddab4ab9c7ec2f1e8a7b13cabedcd54ce463a52b8296d09ce7a598cc032c",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2026.npz": "a6d58d92c8e735782ffd1cb342ed7394e6a960494a8db0d221bd1be0d6caf236",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2027.npz": "53500f4ff20e3f2da405feac30d43929cb13b9917307620e5c33fdcd5bb1f2f6",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2026.npz": "0e54444f0e28a3018a6818ddc74a45731f27027e956ddc033667ac110e3c3dbf",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2027.npz": "576c9e9d3e1be6ce2a55f2c5b68061f9e550c854815a14dfc9eec3782665f619",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2026.npz": "d262c27c0b20d5c49e7e0efcc0868f9d447f2fe03245d9a7b82bf4bbb0ead02b",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2027.npz": "259e6f12b53f9f03abd9ec3f8da534fe32fb0e5678cfc9e457933fc8a60cd5c4",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2026.npz": "392f68ddb47b09159b3c61f5dbdc7485420fee56c1b0575351a75d9bde41dc62",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2027.npz": "7b61a85535fc67bbc9272d6bab6994fe628f94c496d601edd9a018a10eb2f0b9",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2026.npz": "c2ef3a1cc1b9c71f985748c2f7a24684350e518be5ea37b2cd0c96075afa7116",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2027.npz": "97799791bf1aec78cf6d71d853b53b9750b02b6827072dba8f2a3aabd636cc2b",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2026.npz": "a0a2394498a0616ea5ce6cca85f5b2770dd362e99cdaf4be3648db8738445adc",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2027.npz": "5dfdb90c76099ff622338ee8295270a86ec7dc9ff7ac6eb150bb23344097ac91",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2026.npz": "dbc65a66c72e332e1a8256c82c13e762802b583628f9ce074d73fa4ced5ff4d9",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2027.npz": "9f77f2677666b37f30015e0cbf7bf94dff80a3aa590c96792d97dc1028d57d8d",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2026.npz": "120f4e085a17cabf8c3fb07249097427c661183a14c9cf4dfd28a5508f3489fd",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2027.npz": "f2ae1ff85a3d46726788b0df7d6191b10ffe4e22cf851d592fef476e3c18f65a",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_J03WMX.joblib": "ab75cb7199d52eab7fd60fdd34ce29ded919bb77b6bf1c301fd90d4b6368dd23",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_J03WMX.json": "c94d4b1a2a4e2a506ed5974d5562b4a49ed7c55b3029e3682016eeddfcd2950f",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_J03WN1.joblib": "a6494dd9753f19e3e4a2cea45bde0081b2586ed8d1657bd7e3732de3e5722a5b",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_J03WN1.json": "57217f499a045a4f1697249dc80bbcb58be413bfc2ba0528cf7e7a565e85a690",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_J03WOH.joblib": "3d2fb5068e459905c82e2319415de7181e614f84b7f11e5fea50bea0c7275946",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_J03WOH.json": "6de39c1d9205372b8bb003b0833dfb1863a3afb987081125f8873d488c42e50e",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_metrica_1.joblib": "2445e56b7704d2669080552aac0415803c8393e3b901fe7c0696446ecbfb01ba",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_metrica_1.json": "718f02427c335c656dff9b48883f342998050799957ec64cd9b59a23cf2447e2",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_metrica_2.joblib": "e5189a5ffdcc6142aced86d47612f9f4aad29399052cf8eddeb172b75c98e0bb",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_metrica_2.json": "47f4720cb394a03d3bc39d2b53d3ba9274a5d0039174d7051765e8952932ebda",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1874553.joblib": "929fda060548385596ee47db27346e315759870ca21ed8648460fc92e09280fa",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1874553.json": "c53f325bfc513f14bde7b493bf65d5694cc956aee65a299988f24a9e86b11d77",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1886347.joblib": "baff2f2feabd1c43b7c82a6d93ef25d7fe1d4d1049ac7603c3e05efc3f542249",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1886347.json": "537088160a974202d92b526611ff54da3b9ea3bc9dbbb19e768b6b40b003fc49",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1899585.joblib": "ace42e94689a4d9ebcae21a0ecb40358d33cc831151766aaf4f9fe24b09d5c6b",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1899585.json": "372516753d855b674505861a3560e801b5bd7ee3614207651e2199b66b54789d",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1925299.joblib": "d10c99821d9944170e0587a50a26770326994c7e9465465eaa0bf30e3c979f7a",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1925299.json": "ab49645ddbca9f87c0ec64e08fa9d05dee32bff7dc1055ba67f7ba3b1e982ba0",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1927964.joblib": "6a884b98a613351e0eefd1935a5704401a26f18892be7598943159c2ace44bbf",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1927964.json": "048f39ab5566afbd9c791ca1f9cd3404fc8e50b1bdc6b351059ba8d2b9ed3b6a",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1953632.joblib": "7c104dee9fdbb57bc4dc4a23c1783f7bd0455a1101b70681bd0ad9cb39817cc7",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1953632.json": "4b380951d4d16be8d1f3bd89819af42e45966700c2d6a1304c510f77ede58210",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1959846.joblib": "0bece376878c1b0aadc98cfd24a2e08c140aea2b287ea912b2181a4db48965a4",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1959846.json": "2fd2af0801d8528bfff9bedb93b3e4c8217857083cc9ad9f4a92e2bc3b42bf7f",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1986691.joblib": "6be26d49dd20bc5e69f7c033954c7e22de98e2cc2c2e5b398f176ba786ba4ae8",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/train_skillcorner_had_1986691.json": "f6cff1fbae6d9e5127b8fff13b0defb82a324d06aa7068189bdb4978e666a0e4",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d",
+    "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d"
+  },
+  "old_restore_receipt_sha256": "d12d8186261220b2e2a0b91bfeb71b8eefdbb9fbdcbc5d4e7fe5855154943432",
+  "old_training": {
+    "leave_out_metrica": {
+      "matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "record_count": 44,
+      "sources": [
+        "skillcorner",
+        "sportec"
+      ]
+    },
+    "leave_out_skillcorner": {
+      "matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "metrica_1",
+        "metrica_2"
+      ],
+      "record_count": 20,
+      "sources": [
+        "metrica",
+        "sportec"
+      ]
+    },
+    "leave_out_sportec": {
+      "matches": [
+        "metrica_1",
+        "metrica_2",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "record_count": 40,
+      "sources": [
+        "metrica",
+        "skillcorner"
+      ]
+    }
+  },
+  "organizer_labels_read": false,
+  "purpose": "Rebuild the selected historical width-96 reference from original fold teachers and verified sparse SoccerNet TRAIN records; no package restore is claimed.",
+  "reference_training": {
+    "batch_size": 32,
+    "fraction": 0.5,
+    "gradient_clip": 1.0,
+    "input_dropout": 0.1,
+    "lr": 0.0003,
+    "milestones": [
+      512,
+      2048
+    ],
+    "require_full_native": true,
+    "steps": 2048,
+    "weight_decay": 0.0001,
+    "width": 96
+  },
+  "runtime_versions": {
+    "joblib": "1.5.3",
+    "numpy": "2.3.5",
+    "pyarrow": "20.0.0",
+    "python": "3.12.14",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "torch": "2.8.0+cpu"
+  },
+  "schema_version": 1,
+  "seeds": [
+    2026,
+    2027
+  ],
+  "segments": {
+    "audit": {
+      "duplicate_rows_conflicting": 0,
+      "duplicate_rows_exact": 3875675,
+      "eligible_anchors": 42979,
+      "mapped_anchor_retention": 0.9986039693803951,
+      "mapped_anchors": 42919,
+      "metadata_clips": 62159,
+      "nominal_sample_rate_hz": 5,
+      "rejected_anchors": {
+        "center_home_team_metadata_conflict": 0,
+        "center_invalid_period": 0,
+        "center_removed_after_merge": 0,
+        "center_team_conflict": 60,
+        "center_unobserved": 0,
+        "grid_conflict": 0,
+        "out_of_grid_tolerance": 0
+      },
+      "sample_stride": 6,
+      "train_games": 45,
+      "validation": {
+        "anchor_policy": "nearest sampled source frame within 3 native frames; out-of-tolerance anchors remain in anchor_frame_mapping/full_y and do not receive grid loss; conflicting teams at one grid sample remain unknown",
+        "breaks": [
+          "invalid/conflicting row",
+          "nonmonotonic timestamps",
+          "period change",
+          "timestamp delta > 1.5/fps",
+          "uncovered frameNum gap"
+        ],
+        "d_targets": 0,
+        "duplicate_policy": "Exact row signature equality across period/time/tracking validity/raw entity arrays and visibility; exact copies retained once; geometry conflicts exclude the key and split the segment; never average. Sparse home_team metadata is compared separately, never changes geometry, and only marks a center anchor unknown."
+      }
+    },
+    "current_runtime_versions": {
+      "joblib": "1.5.3",
+      "numpy": "2.3.5",
+      "pyarrow": "20.0.0",
+      "python": "3.12.14",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.0",
+      "torch": "2.8.0+cpu"
+    },
+    "files": [
+      {
+        "bytes": 23302500,
+        "path": "games/10502.joblib",
+        "sha256": "41225aefda7973b3232f366c55805ebf96bbc9e94edb550150760f0dc0a4e210"
+      },
+      {
+        "bytes": 24830750,
+        "path": "games/10503.joblib",
+        "sha256": "8a0d8fb281b9b05dba6eaf11743d9e8f9267b5eb16fd32ccd57af1c31b315058"
+      },
+      {
+        "bytes": 22971068,
+        "path": "games/10504.joblib",
+        "sha256": "c144f3cb06df6523a4cd98d71227f6d1f79afa526344475b9a6c58f635c4d91f"
+      },
+      {
+        "bytes": 22136154,
+        "path": "games/10505.joblib",
+        "sha256": "2ac0a764c700880065d8268dfd7b69b1cfb29f1e9f283f4dfb9b699386f29838"
+      },
+      {
+        "bytes": 29167072,
+        "path": "games/10506.joblib",
+        "sha256": "f7aa3cba459a116b01e7580f27426a71ee216574f3a404667fc72dcee74de640"
+      },
+      {
+        "bytes": 23590135,
+        "path": "games/10507.joblib",
+        "sha256": "ef2e52b63bc861c3eada59e765b0d2849a9490a3a421a08286177dbd760597e0"
+      },
+      {
+        "bytes": 29742279,
+        "path": "games/10508.joblib",
+        "sha256": "451a1ded2cc4975b8c23ac9ca810482ecbbdb118cb74086306d4329f3dc0bd16"
+      },
+      {
+        "bytes": 21740949,
+        "path": "games/10509.joblib",
+        "sha256": "58e1111fc124e8e25a3aa19a52d87361cf250abf698266d408c73e4033b09861"
+      },
+      {
+        "bytes": 23832676,
+        "path": "games/10510.joblib",
+        "sha256": "d36446c09e041dbef1b67a4965a6f346366a23f79dae75983547f5b433820985"
+      },
+      {
+        "bytes": 21942186,
+        "path": "games/10511.joblib",
+        "sha256": "e4d22cebcd42bd2bc0756ed3d0c4981a9c944afebf7930dc7ce7d12209684fb1"
+      },
+      {
+        "bytes": 21710391,
+        "path": "games/10512.joblib",
+        "sha256": "7191c6f7872c190eea389b046be3fad6d63d76da42d951e35becb3b4b680931f"
+      },
+      {
+        "bytes": 20468395,
+        "path": "games/10513.joblib",
+        "sha256": "79aab29f7c1ace965959ee4e32f16f8dea4e25fa26a6de9486c403c964dc3fbe"
+      },
+      {
+        "bytes": 22202754,
+        "path": "games/10514.joblib",
+        "sha256": "c55bcd67a9a13e0800da4940c7a86b5de30e35526679fae4acf8e080238b2451"
+      },
+      {
+        "bytes": 22085545,
+        "path": "games/10515.joblib",
+        "sha256": "8606f130f80d3dfef11cf68b33219ecba8fcfff227ffcf89b090281bc298dc21"
+      },
+      {
+        "bytes": 22601163,
+        "path": "games/10516.joblib",
+        "sha256": "b866215106436e4ffea2898625d8c3932c96ed9f1ce9a8df46a51bb2391b3f84"
+      },
+      {
+        "bytes": 27811327,
+        "path": "games/10517.joblib",
+        "sha256": "40173abb8187d1e3f9b08e40bf2ac25ddc1782110774bc3f9f2879365de7b0a8"
+      },
+      {
+        "bytes": 20862859,
+        "path": "games/3812.joblib",
+        "sha256": "3419c8371ad7b3ad0d7ca174c775ca2e17b0be445273cf08e54883da67cdb983"
+      },
+      {
+        "bytes": 22040193,
+        "path": "games/3813.joblib",
+        "sha256": "4a11e75125578a74320e1fde48bd2e94f4a80c27f1552e19210cc76ea65d6e61"
+      },
+      {
+        "bytes": 19576913,
+        "path": "games/3814.joblib",
+        "sha256": "fc844bfa5f4a8aea9d8a3bbcd217571beb1f72665c5b02cb4ee711afb1586912"
+      },
+      {
+        "bytes": 22930730,
+        "path": "games/3815.joblib",
+        "sha256": "bf9d8116dd8e1f7bd85281dfd993e7d10170664036187f15397f420e889e9369"
+      },
+      {
+        "bytes": 20776423,
+        "path": "games/3816.joblib",
+        "sha256": "4164b2109f3b249a0f2feafc2e7f69c68e7f0528467c5896870b9a6f8f1d0dd4"
+      },
+      {
+        "bytes": 22380580,
+        "path": "games/3817.joblib",
+        "sha256": "eef352042c0922f4397f51355463140f107e6f94e6ce744fe6edf782692ce07c"
+      },
+      {
+        "bytes": 20426201,
+        "path": "games/3818.joblib",
+        "sha256": "56eedaf3daf0dab5889ad188f95fce1b251b683772cea3743922706eb49b5c7e"
+      },
+      {
+        "bytes": 25037869,
+        "path": "games/3819.joblib",
+        "sha256": "8aada698ccd5f1247f25352188e4dea0caa79923a46634ccc9a23f1cc8459225"
+      },
+      {
+        "bytes": 22519566,
+        "path": "games/3820.joblib",
+        "sha256": "a671f0765dab09347480549e1b79a73d9d1dd5ecde04cd0d7c8d652fe2373c31"
+      },
+      {
+        "bytes": 23346414,
+        "path": "games/3821.joblib",
+        "sha256": "a56488b092a116ae4e9b6bad0d977f3478f9541c6d16b137af533dc6d872b143"
+      },
+      {
+        "bytes": 25849368,
+        "path": "games/3822.joblib",
+        "sha256": "70782f8f0d218fd01f16f5b45519b108ab6d29934b5523d647c0ae7c5ccb46ef"
+      },
+      {
+        "bytes": 22652067,
+        "path": "games/3823.joblib",
+        "sha256": "cbcf6dcb30fecc082d93e17f7272e82b449a78e7ad81d3b7dac3a549a925cb53"
+      },
+      {
+        "bytes": 22964883,
+        "path": "games/3824.joblib",
+        "sha256": "fdec6dacd8df2b2a19029968cedcdfd626dc4616c06b9a0f42b33497be2a1b98"
+      },
+      {
+        "bytes": 21603796,
+        "path": "games/3825.joblib",
+        "sha256": "3410b2f6a5ede7b7367c8357e3e8cfb56296713f8ee55994f12e849909d758d1"
+      },
+      {
+        "bytes": 22429407,
+        "path": "games/3826.joblib",
+        "sha256": "d89c08c0363059a26cd260722a2c04442e2cb8839ea90943dd3eabef03c8eca4"
+      },
+      {
+        "bytes": 22031495,
+        "path": "games/3827.joblib",
+        "sha256": "44c4858341feb7a7059eeb303cf13468ff4d3ee6f9e99ca1a35f7756085cbfcf"
+      },
+      {
+        "bytes": 20232335,
+        "path": "games/3828.joblib",
+        "sha256": "8c38182e49ee42d21193e96dc1b3e437e8841fa161c1cda357dbaf11ad5d7d55"
+      },
+      {
+        "bytes": 22721306,
+        "path": "games/3829.joblib",
+        "sha256": "17a495aec9e1e7412675b434ae4f74c7c8f899e779772bed6aa76764517bc7fe"
+      },
+      {
+        "bytes": 21250051,
+        "path": "games/3830.joblib",
+        "sha256": "72216df07da57b3465336b6f7099478a46c99f8f86cbcd1f4fc9b0db238011b5"
+      },
+      {
+        "bytes": 22192543,
+        "path": "games/3831.joblib",
+        "sha256": "3b0a14a3d28851b82f59d56ff5a0cb1f85422ce001fe00d4087cb22c99bb22ef"
+      },
+      {
+        "bytes": 20949964,
+        "path": "games/3832.joblib",
+        "sha256": "4ede1456a4567866f60163a32f9df41d2be8242f5ed21918b330a55ecfc8dc66"
+      },
+      {
+        "bytes": 20002479,
+        "path": "games/3833.joblib",
+        "sha256": "860a05afcbffbfa5363fe9dc243dbb148e2c2f386d7d4727cf089ac5e29c795a"
+      },
+      {
+        "bytes": 23613534,
+        "path": "games/3834.joblib",
+        "sha256": "19c5bce6a5f8e3ef1e4328cfc912fbeea3a1ad2e9e68634617319b8372154ff1"
+      },
+      {
+        "bytes": 20835012,
+        "path": "games/3835.joblib",
+        "sha256": "0aadb3b3c9a16d270e006a7a7f14b7112833053e4f91ff6a3ca9af682deb614e"
+      },
+      {
+        "bytes": 22347745,
+        "path": "games/3836.joblib",
+        "sha256": "936dcf09e483ff1967c644999b7bc6c111dcddeffa9b92bc4b6754928264eb84"
+      },
+      {
+        "bytes": 21951921,
+        "path": "games/3837.joblib",
+        "sha256": "76b771f7b672c510543ac84e3e4796139cab9c6dba75f953cce8e0b01187c380"
+      },
+      {
+        "bytes": 22603894,
+        "path": "games/3838.joblib",
+        "sha256": "a0822dc520776e43bc1d2ef8ef53d1ddfd912826474b4247d6d22a4e7d211077"
+      },
+      {
+        "bytes": 21283555,
+        "path": "games/3839.joblib",
+        "sha256": "3ac450b0768241eb2854558582b847b08a72d1dd5f3187f100e020411564b0c7"
+      },
+      {
+        "bytes": 20706051,
+        "path": "games/3840.joblib",
+        "sha256": "77e2c795b3e20db83244a7e840ab98c5c1d0e442d033bc312e78ca9a42d3bd9c"
+      }
+    ],
+    "game_count": 45,
+    "historical_dependency_versions": {
+      "joblib": "1.5.3",
+      "numpy": "2.3.5",
+      "pyarrow": "20.0.0",
+      "python": "3.12.14",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.0"
+    },
+    "manifest_sha256": "51cea9fd298c9a9e94772fbc4c5c2c3a1df18515f6b284e52c0c494aa7fe2fb5",
+    "record_count": 9905
+  },
+  "selected_historical_recipe": "w96_lr3e-4_step2048",
+  "source_sha256": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/baseline_manifest.json": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
+    "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+    "experiments/combined_objective_public_check.py": "c51d6ad24ccbd05314d96d874d917c143ce7134005e06c2d3a869c6bc7869dfb",
+    "experiments/current_baseline.py": "5873f6552174152b7d5baaa76fac7c352f65bbb8f36cea10c92a6bf992b42956",
+    "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/model_decision_policy.json": "f6330589fc26396d3861e136e0b6c5a22b196c683adf129dbeaefc760dcce40e",
+    "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+    "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+    "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/results/soccernet_capacity_declaration.json": "6dc1aa6df8786aca2b42222cef9d9866ab1383f7988eb304eb4828746febf797",
+    "experiments/results/soccernet_capacity_final_report.json": "29efc13220673935d8717397dffc01f8e9c0d7032f9ea198888db5df49d46fbc",
+    "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+    "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+    "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+    "experiments/soccernet_capacity_public.py": "d3d13d1e47ae2a467bf28565123b8cc1f49fe828bcd30b2abf4c465d9289c79a",
+    "experiments/soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+    "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+    "experiments/soccernet_finetune.py": "df934186ee659550348640c646695c687c3b54a8f6e9895bddabe2d5aef5979d",
+    "experiments/soccernet_followup_execute.py": "8ff6c0ce0be2957ac143816d0ef8114eec98602b04647894f6b31e8992b32bfd",
+    "experiments/soccernet_segments.py": "83ea686a452976f2b4724e6e48c8a94766525e02f2ed6e9af716386b4788363e",
+    "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+  },
+  "study_id": "soccernet_followup_execution_v1",
+  "teacher_files": {
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2026.joblib": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2026.json": "45f3e4d6a62b9b2e122c1dca5a82d638b6ed7570e3a67645cf1199f420828ce3",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2027.joblib": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2027.json": "76c20b89a7fee43bc1e518d64d86bd0cd2b1e5f87e976903862c80852b65e770",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2026.json": "4c994e05feee5a28943c2d6357a58b5cdf4cb565d2a5c9ea6f3bfda012b4a26c",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2027.json": "189a2ffdb24653d5d4d971575664d3813f0241627765997d4a8cb4dabac097f1",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2026.joblib": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2026.json": "acfa6fbf53f2f15ad7fc1768c1d8e4b74cea64498611fb1896a4aedb2d818836",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2027.joblib": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+    "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2027.json": "defb4eec4cb707eb3641c058842d066bcac613fae78c0197b5e1574cb3c8ab4d"
+  }
+}

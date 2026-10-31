@@ -10,34 +10,18 @@ question to answer with it.
 
 ---
 
-## Current fork baseline
+## Fork research
 
-This fork's current development head is **GRU + ordered HGB** for dead-ball
-probability, contextual HGB for home/away attribution, and Viterbi decoding.
-The [baseline guide](experiments/BASELINE.md) records its frozen models,
-reproduction commands, and comparisons with the archived PathCRF approach.
+The adopted package, open experiments and next actions are tracked in
+[current research status](docs/research/STATUS.md). Use the
+[experiment index](docs/research/EXPERIMENTS.md) to find results and
+[BASELINE.md](experiments/BASELINE.md) for model versions, exact evidence and
+private-cache restore/inference commands. Start agent work at [AGENTS.md](AGENTS.md).
 
-External D-head provider-holdout development scores are **0.5746 spell F1 /
-0.8449 macro F1**. The organizer's public five-minute pipeline check is
-**0.4889 / 0.8568**. That window contains only 17 possessions, is not a tuning
-set, and does not establish full-match performance or superiority over PathCRF.
-No candidate has been submitted to the organizers.
-
-Authorized team members can restore competition inputs and the packaged models
-from the private `mtah-data` checkout alongside this repository:
-
-```sh
-python -m pip install -r experiments/requirements-temporal.txt
-python ../mtah-data/scripts/competition_cache.py fetch --data-dir data
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest.json --data-dir data
-python -m experiments.current_baseline predict
-```
-
-The generated candidate is `data/experiments/current_baseline/gru_hgb.csv`.
-Competition assets, trained model weights and frame-level outputs stay outside
-the public repository. [Research directions](experiments/DIRECTIONS.md) prioritize
-realistic tracking corruption and fresh broadcast-match validation next; those
-experiments are not part of the current head.
+Research reports distinguish external development from the organizer's small
+public pipeline check. No full-match performance or organizer submission is
+established. The original challenge guide below is retained as upstream context;
+its quick-start scorer is not the fork's research iteration loop.
 
 ---
 

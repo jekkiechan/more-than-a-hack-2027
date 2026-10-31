@@ -1,0 +1,2927 @@
+{
+  "spec": {
+    "version": 1,
+    "training_hz": 2,
+    "hgb_iterations": 160,
+    "hgb_leaves": 31,
+    "learning_rate": 0.08,
+    "train_seed": 192026,
+    "evaluation_seeds": [
+      2026,
+      2027,
+      2028
+    ],
+    "arms": [
+      "matched",
+      "gap",
+      "gap_dedup"
+    ],
+    "training": "50% clean, 50% state-conditioned gaps and slot defects; team symmetry",
+    "weighting": "Equal provider, match, view and team-swap mass",
+    "D": "Unchanged pooled GRU/HGB probabilities shared by every team arm",
+    "decoder_switch_cost": 3,
+    "ranking": "Provider/seed mean official spell F1, exact ties macro F1",
+    "auxiliary": "0.7 spell + 0.3 macro, never used for competition ranking",
+    "scope": "Reused pooled external development; NOT unseen-provider transfer or fresh confirmation",
+    "organizer": "Tracking-only first-half calibration; no possession labels or public scoring",
+    "uncertainty": "Three evaluation-view seeds; one frozen training draw, not training-seed uncertainty"
+  },
+  "rows": [
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "clean",
+      "arm": "current",
+      "spell_f1": 0.5915356711003628,
+      "macro_f1": 0.8758117802764555,
+      "auxiliary_70_30": 0.6768185038531905,
+      "d_precision": 0.9432684033481968,
+      "d_recall": 0.910022641509434,
+      "gap_live_frames": 0,
+      "gap_live_team_accuracy": null,
+      "transition_f1": {
+        "0.5": 0.3938223938223938,
+        "1.0": 0.5598455598455598
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.27918781725888325,
+      "n_gt_spells": 456,
+      "n_pred_spells": 371
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "clean",
+      "arm": "matched",
+      "spell_f1": 0.5547305389221557,
+      "macro_f1": 0.8690408493747518,
+      "auxiliary_70_30": 0.6490236320579346,
+      "d_precision": 0.943455268016397,
+      "d_recall": 0.910188679245283,
+      "gap_live_frames": 0,
+      "gap_live_team_accuracy": null,
+      "transition_f1": {
+        "0.5": 0.367816091954023,
+        "1.0": 0.5536398467432949
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.25380710659898476,
+      "n_gt_spells": 456,
+      "n_pred_spells": 379
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "clean",
+      "arm": "gap",
+      "spell_f1": 0.5521058965102286,
+      "macro_f1": 0.8691698737420168,
+      "auxiliary_70_30": 0.647225089679765,
+      "d_precision": 0.9437066433347916,
+      "d_recall": 0.9117132075471698,
+      "gap_live_frames": 0,
+      "gap_live_team_accuracy": null,
+      "transition_f1": {
+        "0.5": 0.36730769230769234,
+        "1.0": 0.551923076923077
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.23857868020304568,
+      "n_gt_spells": 456,
+      "n_pred_spells": 375
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "clean",
+      "arm": "gap_dedup",
+      "spell_f1": 0.5543269230769231,
+      "macro_f1": 0.8694595881111562,
+      "auxiliary_70_30": 0.6488667225871929,
+      "d_precision": 0.9439651130075963,
+      "d_recall": 0.9115924528301886,
+      "gap_live_frames": 0,
+      "gap_live_team_accuracy": null,
+      "transition_f1": {
+        "0.5": 0.3857965451055662,
+        "1.0": 0.5585412667946258
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.24873096446700507,
+      "n_gt_spells": 456,
+      "n_pred_spells": 376
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2026",
+      "arm": "current",
+      "spell_f1": 0.45749690210656757,
+      "macro_f1": 0.8339183649450028,
+      "auxiliary_70_30": 0.5704233409580981,
+      "d_precision": 0.9417046683277702,
+      "d_recall": 0.9070641509433962,
+      "gap_live_frames": 31016,
+      "gap_live_team_accuracy": 0.7236265153469177,
+      "transition_f1": {
+        "0.5": 0.2857142857142857,
+        "1.0": 0.44729064039408867
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.15228426395939088,
+      "n_gt_spells": 456,
+      "n_pred_spells": 351
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2026",
+      "arm": "matched",
+      "spell_f1": 0.44981132075471686,
+      "macro_f1": 0.8216596847980361,
+      "auxiliary_70_30": 0.5613658299677126,
+      "d_precision": 0.941378015582465,
+      "d_recall": 0.9082415094339623,
+      "gap_live_frames": 31016,
+      "gap_live_team_accuracy": 0.6850657725045138,
+      "transition_f1": {
+        "0.5": 0.28315054835493514,
+        "1.0": 0.45064805583250245
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.14720812182741116,
+      "n_gt_spells": 456,
+      "n_pred_spells": 339
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2026",
+      "arm": "gap",
+      "spell_f1": 0.4381194409148666,
+      "macro_f1": 0.8269631762498033,
+      "auxiliary_70_30": 0.5547725615153476,
+      "d_precision": 0.9428938785750125,
+      "d_recall": 0.9076830188679246,
+      "gap_live_frames": 31016,
+      "gap_live_team_accuracy": 0.7083763218983751,
+      "transition_f1": {
+        "0.5": 0.29518072289156627,
+        "1.0": 0.4497991967871486
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.12690355329949238,
+      "n_gt_spells": 456,
+      "n_pred_spells": 331
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2026",
+      "arm": "gap_dedup",
+      "spell_f1": 0.4378109452736319,
+      "macro_f1": 0.8271266551023503,
+      "auxiliary_70_30": 0.5546056582222474,
+      "d_precision": 0.9427465362673186,
+      "d_recall": 0.9079396226415094,
+      "gap_live_frames": 31016,
+      "gap_live_team_accuracy": 0.7042494196543719,
+      "transition_f1": {
+        "0.5": 0.28825271470878583,
+        "1.0": 0.4501480750246792
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.15228426395939088,
+      "n_gt_spells": 456,
+      "n_pred_spells": 348
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2027",
+      "arm": "current",
+      "spell_f1": 0.45771643663739014,
+      "macro_f1": 0.83252358424282,
+      "auxiliary_70_30": 0.570158580919019,
+      "d_precision": 0.940813926135027,
+      "d_recall": 0.9055245283018868,
+      "gap_live_frames": 27595,
+      "gap_live_team_accuracy": 0.6925892371806487,
+      "transition_f1": {
+        "0.5": 0.3070787637088734,
+        "1.0": 0.45064805583250245
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.15736040609137056,
+      "n_gt_spells": 456,
+      "n_pred_spells": 341
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2027",
+      "arm": "matched",
+      "spell_f1": 0.4277634961439589,
+      "macro_f1": 0.8215049202081918,
+      "auxiliary_70_30": 0.5458859233632287,
+      "d_precision": 0.9404914496514208,
+      "d_recall": 0.9081811320754717,
+      "gap_live_frames": 27595,
+      "gap_live_team_accuracy": 0.6659902156187715,
+      "transition_f1": {
+        "0.5": 0.28832487309644667,
+        "1.0": 0.44467005076142124
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.17258883248730963,
+      "n_gt_spells": 456,
+      "n_pred_spells": 322
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2027",
+      "arm": "gap",
+      "spell_f1": 0.43579766536964976,
+      "macro_f1": 0.8271379658519301,
+      "auxiliary_70_30": 0.5531997555143339,
+      "d_precision": 0.9385248456886339,
+      "d_recall": 0.9088603773584906,
+      "gap_live_frames": 27595,
+      "gap_live_team_accuracy": 0.682116325421272,
+      "transition_f1": {
+        "0.5": 0.28688524590163933,
+        "1.0": 0.4344262295081967
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.15228426395939088,
+      "n_gt_spells": 456,
+      "n_pred_spells": 315
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2027",
+      "arm": "gap_dedup",
+      "spell_f1": 0.4361757105943152,
+      "macro_f1": 0.8252855665574018,
+      "auxiliary_70_30": 0.5529086673832412,
+      "d_precision": 0.9376489091673544,
+      "d_recall": 0.9088754716981132,
+      "gap_live_frames": 27595,
+      "gap_live_team_accuracy": 0.6767530349701033,
+      "transition_f1": {
+        "0.5": 0.27811860940695293,
+        "1.0": 0.443762781186094
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.15736040609137056,
+      "n_gt_spells": 456,
+      "n_pred_spells": 318
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2028",
+      "arm": "current",
+      "spell_f1": 0.461656050955414,
+      "macro_f1": 0.828680943348043,
+      "auxiliary_70_30": 0.5717635186732026,
+      "d_precision": 0.9404403858440729,
+      "d_recall": 0.9109283018867924,
+      "gap_live_frames": 29050,
+      "gap_live_team_accuracy": 0.6741480206540448,
+      "transition_f1": {
+        "0.5": 0.2946518668012109,
+        "1.0": 0.45610494450050454
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.15228426395939088,
+      "n_gt_spells": 456,
+      "n_pred_spells": 329
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2028",
+      "arm": "matched",
+      "spell_f1": 0.4420785804816223,
+      "macro_f1": 0.819338937400271,
+      "auxiliary_70_30": 0.5552566875572169,
+      "d_precision": 0.9401515269372579,
+      "d_recall": 0.9121811320754717,
+      "gap_live_frames": 29050,
+      "gap_live_team_accuracy": 0.6512220309810671,
+      "transition_f1": {
+        "0.5": 0.2733668341708542,
+        "1.0": 0.43216080402010054
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.1319796954314721,
+      "n_gt_spells": 456,
+      "n_pred_spells": 333
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2028",
+      "arm": "gap",
+      "spell_f1": 0.43431498079385406,
+      "macro_f1": 0.8167314899583382,
+      "auxiliary_70_30": 0.5490399335431992,
+      "d_precision": 0.9410867908091037,
+      "d_recall": 0.9131169811320755,
+      "gap_live_frames": 29050,
+      "gap_live_team_accuracy": 0.634974182444062,
+      "transition_f1": {
+        "0.5": 0.26720647773279355,
+        "1.0": 0.4392712550607287
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.1218274111675127,
+      "n_gt_spells": 456,
+      "n_pred_spells": 325
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2028",
+      "arm": "gap_dedup",
+      "spell_f1": 0.43431498079385406,
+      "macro_f1": 0.8164717299094241,
+      "auxiliary_70_30": 0.548962005528525,
+      "d_precision": 0.9400923809079457,
+      "d_recall": 0.9124075471698113,
+      "gap_live_frames": 29050,
+      "gap_live_team_accuracy": 0.6314629948364888,
+      "transition_f1": {
+        "0.5": 0.2816616008105369,
+        "1.0": 0.4437689969604864
+      },
+      "short_spells": 197,
+      "short_spell_recall": 0.12690355329949238,
+      "n_gt_spells": 456,
+      "n_pred_spells": 325
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "clean",
+      "arm": "current",
+      "spell_f1": 0.7001394700139469,
+      "macro_f1": 0.9055898853167298,
+      "auxiliary_70_30": 0.7617745946047818,
+      "d_precision": 0.9224579541999017,
+      "d_recall": 0.8755189485602647,
+      "gap_live_frames": 322,
+      "gap_live_team_accuracy": 0.5807453416149069,
+      "transition_f1": {
+        "0.5": 0.43673012318029114,
+        "1.0": 0.5957446808510638
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.36507936507936506,
+      "n_gt_spells": 382,
+      "n_pred_spells": 335
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "clean",
+      "arm": "matched",
+      "spell_f1": 0.6853146853146852,
+      "macro_f1": 0.9044742693894947,
+      "auxiliary_70_30": 0.7510625605371279,
+      "d_precision": 0.9231575514767539,
+      "d_recall": 0.8798925471216393,
+      "gap_live_frames": 322,
+      "gap_live_team_accuracy": 0.5186335403726708,
+      "transition_f1": {
+        "0.5": 0.4107744107744108,
+        "1.0": 0.5903479236812571
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.3333333333333333,
+      "n_gt_spells": 382,
+      "n_pred_spells": 333
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "clean",
+      "arm": "gap",
+      "spell_f1": 0.683008356545961,
+      "macro_f1": 0.9061696606526609,
+      "auxiliary_70_30": 0.749956747777971,
+      "d_precision": 0.9230251398593282,
+      "d_recall": 0.8827786781519881,
+      "gap_live_frames": 322,
+      "gap_live_team_accuracy": 0.6956521739130435,
+      "transition_f1": {
+        "0.5": 0.42058165548098436,
+        "1.0": 0.5771812080536913
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.3333333333333333,
+      "n_gt_spells": 382,
+      "n_pred_spells": 336
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "clean",
+      "arm": "gap_dedup",
+      "spell_f1": 0.675,
+      "macro_f1": 0.9054034668666434,
+      "auxiliary_70_30": 0.7441210400599929,
+      "d_precision": 0.9225786981149596,
+      "d_recall": 0.8822902559776213,
+      "gap_live_frames": 322,
+      "gap_live_team_accuracy": 0.7111801242236024,
+      "transition_f1": {
+        "0.5": 0.4102564102564103,
+        "1.0": 0.5774804905239688
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.3412698412698413,
+      "n_gt_spells": 382,
+      "n_pred_spells": 338
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2026",
+      "arm": "current",
+      "spell_f1": 0.6596590909090908,
+      "macro_f1": 0.8929266035816731,
+      "auxiliary_70_30": 0.7296393447108654,
+      "d_precision": 0.9225165718033401,
+      "d_recall": 0.8743866971560509,
+      "gap_live_frames": 12424,
+      "gap_live_team_accuracy": 0.7517707662588539,
+      "transition_f1": {
+        "0.5": 0.3977272727272727,
+        "1.0": 0.5409090909090909
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.3253968253968254,
+      "n_gt_spells": 382,
+      "n_pred_spells": 322
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2026",
+      "arm": "matched",
+      "spell_f1": 0.6402266288951842,
+      "macro_f1": 0.8862367073720012,
+      "auxiliary_70_30": 0.7140296524382292,
+      "d_precision": 0.9217427792153298,
+      "d_recall": 0.8778278533845436,
+      "gap_live_frames": 12424,
+      "gap_live_team_accuracy": 0.6966355441081777,
+      "transition_f1": {
+        "0.5": 0.36961451247165533,
+        "1.0": 0.5374149659863945
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.30952380952380953,
+      "n_gt_spells": 382,
+      "n_pred_spells": 324
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2026",
+      "arm": "gap",
+      "spell_f1": 0.6411428571428572,
+      "macro_f1": 0.8871477369224241,
+      "auxiliary_70_30": 0.7149443210767272,
+      "d_precision": 0.9229535256782833,
+      "d_recall": 0.8813578136447394,
+      "gap_live_frames": 12424,
+      "gap_live_team_accuracy": 0.6847231165486156,
+      "transition_f1": {
+        "0.5": 0.39269406392694073,
+        "1.0": 0.541095890410959
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.31746031746031744,
+      "n_gt_spells": 382,
+      "n_pred_spells": 318
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2026",
+      "arm": "gap_dedup",
+      "spell_f1": 0.6323319027181687,
+      "macro_f1": 0.8875599372168951,
+      "auxiliary_70_30": 0.7089003130677867,
+      "d_precision": 0.9220628240600804,
+      "d_recall": 0.8804253713118576,
+      "gap_live_frames": 12424,
+      "gap_live_team_accuracy": 0.7025112685125563,
+      "transition_f1": {
+        "0.5": 0.3817142857142857,
+        "1.0": 0.5302857142857142
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.29365079365079366,
+      "n_gt_spells": 382,
+      "n_pred_spells": 317
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2027",
+      "arm": "current",
+      "spell_f1": 0.6672340425531915,
+      "macro_f1": 0.8962145860454239,
+      "auxiliary_70_30": 0.7359282056008611,
+      "d_precision": 0.9280444549538898,
+      "d_recall": 0.871322958062296,
+      "gap_live_frames": 12422,
+      "gap_live_team_accuracy": 0.758654000966028,
+      "transition_f1": {
+        "0.5": 0.4108967082860386,
+        "1.0": 0.5516458569807037
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.31746031746031744,
+      "n_gt_spells": 382,
+      "n_pred_spells": 323
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2027",
+      "arm": "matched",
+      "spell_f1": 0.6451798561151079,
+      "macro_f1": 0.8939977800148015,
+      "auxiliary_70_30": 0.7198252332850159,
+      "d_precision": 0.9268189707744993,
+      "d_recall": 0.8772506271784739,
+      "gap_live_frames": 12422,
+      "gap_live_team_accuracy": 0.7402994686845918,
+      "transition_f1": {
+        "0.5": 0.3880597014925373,
+        "1.0": 0.5510907003444317
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.30158730158730157,
+      "n_gt_spells": 382,
+      "n_pred_spells": 313
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2027",
+      "arm": "gap",
+      "spell_f1": 0.6387464387464388,
+      "macro_f1": 0.8904792903662102,
+      "auxiliary_70_30": 0.7142662942323701,
+      "d_precision": 0.9263946280991735,
+      "d_recall": 0.8759851697267056,
+      "gap_live_frames": 12422,
+      "gap_live_team_accuracy": 0.6953791659958138,
+      "transition_f1": {
+        "0.5": 0.3917995444191344,
+        "1.0": 0.5444191343963554
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.30158730158730157,
+      "n_gt_spells": 382,
+      "n_pred_spells": 320
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2027",
+      "arm": "gap_dedup",
+      "spell_f1": 0.6332859174964438,
+      "macro_f1": 0.8891354545209881,
+      "auxiliary_70_30": 0.710040778603807,
+      "d_precision": 0.9248950688207845,
+      "d_recall": 0.8756965566236707,
+      "gap_live_frames": 12422,
+      "gap_live_team_accuracy": 0.6919175656094027,
+      "transition_f1": {
+        "0.5": 0.3799772468714448,
+        "1.0": 0.5392491467576792
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.30952380952380953,
+      "n_gt_spells": 382,
+      "n_pred_spells": 321
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2028",
+      "arm": "current",
+      "spell_f1": 0.6593103448275862,
+      "macro_f1": 0.8925733042628203,
+      "auxiliary_70_30": 0.7292892326581564,
+      "d_precision": 0.9274322544222807,
+      "d_recall": 0.8753191394889328,
+      "gap_live_frames": 12421,
+      "gap_live_team_accuracy": 0.7195072860478222,
+      "transition_f1": {
+        "0.5": 0.4088888888888889,
+        "1.0": 0.5555555555555556
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.3333333333333333,
+      "n_gt_spells": 382,
+      "n_pred_spells": 343
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2028",
+      "arm": "matched",
+      "spell_f1": 0.6444755244755245,
+      "macro_f1": 0.8853545644796473,
+      "auxiliary_70_30": 0.7167392364767613,
+      "d_precision": 0.9268252627627628,
+      "d_recall": 0.877050818107142,
+      "gap_live_frames": 12421,
+      "gap_live_team_accuracy": 0.6476129136140407,
+      "transition_f1": {
+        "0.5": 0.38202247191011235,
+        "1.0": 0.5550561797752809
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.2857142857142857,
+      "n_gt_spells": 382,
+      "n_pred_spells": 333
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2028",
+      "arm": "gap",
+      "spell_f1": 0.6408045977011494,
+      "macro_f1": 0.8832918301058292,
+      "auxiliary_70_30": 0.7135507674225533,
+      "d_precision": 0.9275763403536751,
+      "d_recall": 0.8780498634638012,
+      "gap_live_frames": 12421,
+      "gap_live_team_accuracy": 0.620078898639401,
+      "transition_f1": {
+        "0.5": 0.39265212399540755,
+        "1.0": 0.5350172215843858
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.2777777777777778,
+      "n_gt_spells": 382,
+      "n_pred_spells": 314
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2028",
+      "arm": "gap_dedup",
+      "spell_f1": 0.6518518518518519,
+      "macro_f1": 0.8860721945751241,
+      "auxiliary_70_30": 0.7221179546688336,
+      "d_precision": 0.9266581932872004,
+      "d_recall": 0.8740536820371645,
+      "gap_live_frames": 12421,
+      "gap_live_team_accuracy": 0.660735850575638,
+      "transition_f1": {
+        "0.5": 0.3885714285714286,
+        "1.0": 0.5462857142857144
+      },
+      "short_spells": 126,
+      "short_spell_recall": 0.30952380952380953,
+      "n_gt_spells": 382,
+      "n_pred_spells": 320
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "clean",
+      "arm": "current",
+      "spell_f1": 0.4470906630581868,
+      "macro_f1": 0.8165117853369139,
+      "auxiliary_70_30": 0.5579169997418049,
+      "d_precision": 0.8707302709069493,
+      "d_recall": 0.7784651836251152,
+      "gap_live_frames": 665,
+      "gap_live_team_accuracy": 0.5954887218045113,
+      "transition_f1": {
+        "0.5": 0.09210526315789473,
+        "1.0": 0.16228070175438597
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.18064516129032257,
+      "n_gt_spells": 384,
+      "n_pred_spells": 355
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "clean",
+      "arm": "matched",
+      "spell_f1": 0.44219178082191785,
+      "macro_f1": 0.8158676057606552,
+      "auxiliary_70_30": 0.554294528303539,
+      "d_precision": 0.8704595185995624,
+      "d_recall": 0.7854416216927734,
+      "gap_live_frames": 665,
+      "gap_live_team_accuracy": 0.5338345864661654,
+      "transition_f1": {
+        "0.5": 0.09734513274336282,
+        "1.0": 0.1592920353982301
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.16774193548387098,
+      "n_gt_spells": 384,
+      "n_pred_spells": 346
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "clean",
+      "arm": "gap",
+      "spell_f1": 0.44256480218281025,
+      "macro_f1": 0.8167651580772802,
+      "auxiliary_70_30": 0.5548249089511512,
+      "d_precision": 0.8704700916897103,
+      "d_recall": 0.7872844543898907,
+      "gap_live_frames": 665,
+      "gap_live_team_accuracy": 0.5548872180451128,
+      "transition_f1": {
+        "0.5": 0.1013215859030837,
+        "1.0": 0.15418502202643172
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.17419354838709677,
+      "n_gt_spells": 384,
+      "n_pred_spells": 349
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "clean",
+      "arm": "gap_dedup",
+      "spell_f1": 0.44092769440654844,
+      "macro_f1": 0.8164930862929781,
+      "auxiliary_70_30": 0.5535973119724773,
+      "d_precision": 0.8705591147350029,
+      "d_recall": 0.7870211925760169,
+      "gap_live_frames": 665,
+      "gap_live_team_accuracy": 0.5639097744360902,
+      "transition_f1": {
+        "0.5": 0.10154525386313466,
+        "1.0": 0.15452538631346577
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.17419354838709677,
+      "n_gt_spells": 384,
+      "n_pred_spells": 349
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2026",
+      "arm": "current",
+      "spell_f1": 0.44986449864498645,
+      "macro_f1": 0.8155186455990601,
+      "auxiliary_70_30": 0.5595607427312085,
+      "d_precision": 0.8616944243301955,
+      "d_recall": 0.7832038962748453,
+      "gap_live_frames": 1068,
+      "gap_live_team_accuracy": 0.6161048689138576,
+      "transition_f1": {
+        "0.5": 0.10457516339869281,
+        "1.0": 0.17429193899782133
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.18064516129032257,
+      "n_gt_spells": 384,
+      "n_pred_spells": 354
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2026",
+      "arm": "matched",
+      "spell_f1": 0.4357142857142858,
+      "macro_f1": 0.812830239929789,
+      "auxiliary_70_30": 0.5488490719789367,
+      "d_precision": 0.8592560677868735,
+      "d_recall": 0.7875477162037646,
+      "gap_live_frames": 1068,
+      "gap_live_team_accuracy": 0.5823970037453183,
+      "transition_f1": {
+        "0.5": 0.10199556541019955,
+        "1.0": 0.15521064301552104
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.16774193548387098,
+      "n_gt_spells": 384,
+      "n_pred_spells": 344
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2026",
+      "arm": "gap",
+      "spell_f1": 0.43492496589358803,
+      "macro_f1": 0.8114564463859382,
+      "auxiliary_70_30": 0.5478844100412931,
+      "d_precision": 0.8590941768511862,
+      "d_recall": 0.786494668948269,
+      "gap_live_frames": 1068,
+      "gap_live_team_accuracy": 0.5739700374531835,
+      "transition_f1": {
+        "0.5": 0.10572687224669602,
+        "1.0": 0.1629955947136564
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.17419354838709677,
+      "n_gt_spells": 384,
+      "n_pred_spells": 349
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2026",
+      "arm": "gap_dedup",
+      "spell_f1": 0.43901098901098906,
+      "macro_f1": 0.8097063934885186,
+      "auxiliary_70_30": 0.5502196103542479,
+      "d_precision": 0.8588912886969042,
+      "d_recall": 0.7851783598788996,
+      "gap_live_frames": 1068,
+      "gap_live_team_accuracy": 0.548689138576779,
+      "transition_f1": {
+        "0.5": 0.10666666666666667,
+        "1.0": 0.15111111111111108
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.17419354838709677,
+      "n_gt_spells": 384,
+      "n_pred_spells": 344
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2027",
+      "arm": "current",
+      "spell_f1": 0.45606469002695427,
+      "macro_f1": 0.8174915401350935,
+      "auxiliary_70_30": 0.564492745059396,
+      "d_precision": 0.8701661520364652,
+      "d_recall": 0.7789917072528629,
+      "gap_live_frames": 1072,
+      "gap_live_team_accuracy": 0.6875,
+      "transition_f1": {
+        "0.5": 0.11739130434782609,
+        "1.0": 0.1826086956521739
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.1935483870967742,
+      "n_gt_spells": 384,
+      "n_pred_spells": 358
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2027",
+      "arm": "matched",
+      "spell_f1": 0.4443835616438355,
+      "macro_f1": 0.8179113016938668,
+      "auxiliary_70_30": 0.556441883658845,
+      "d_precision": 0.8701090909090909,
+      "d_recall": 0.7874160852968277,
+      "gap_live_frames": 1072,
+      "gap_live_team_accuracy": 0.6389925373134329,
+      "transition_f1": {
+        "0.5": 0.11504424778761062,
+        "1.0": 0.17699115044247785
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.16129032258064516,
+      "n_gt_spells": 384,
+      "n_pred_spells": 346
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2027",
+      "arm": "gap",
+      "spell_f1": 0.4408163265306123,
+      "macro_f1": 0.8167028743187935,
+      "auxiliary_70_30": 0.5535822908670667,
+      "d_precision": 0.8696789190759843,
+      "d_recall": 0.7879426089245755,
+      "gap_live_frames": 1072,
+      "gap_live_team_accuracy": 0.6100746268656716,
+      "transition_f1": {
+        "0.5": 0.10964912280701754,
+        "1.0": 0.17105263157894737
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.16774193548387098,
+      "n_gt_spells": 384,
+      "n_pred_spells": 351
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2027",
+      "arm": "gap_dedup",
+      "spell_f1": 0.44799999999999995,
+      "macro_f1": 0.8179766753729711,
+      "auxiliary_70_30": 0.5589930026118912,
+      "d_precision": 0.8710147037414471,
+      "d_recall": 0.7875477162037646,
+      "gap_live_frames": 1072,
+      "gap_live_team_accuracy": 0.6707089552238806,
+      "transition_f1": {
+        "0.5": 0.11235955056179774,
+        "1.0": 0.16179775280898875
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.16774193548387098,
+      "n_gt_spells": 384,
+      "n_pred_spells": 341
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2028",
+      "arm": "current",
+      "spell_f1": 0.4475033738191633,
+      "macro_f1": 0.8131212480535014,
+      "auxiliary_70_30": 0.5571887360894646,
+      "d_precision": 0.8647817169645473,
+      "d_recall": 0.7770172436488088,
+      "gap_live_frames": 1156,
+      "gap_live_team_accuracy": 0.7032871972318339,
+      "transition_f1": {
+        "0.5": 0.08695652173913043,
+        "1.0": 0.16956521739130434
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.18064516129032257,
+      "n_gt_spells": 384,
+      "n_pred_spells": 357
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2028",
+      "arm": "matched",
+      "spell_f1": 0.44287652645861597,
+      "macro_f1": 0.8114209581074808,
+      "auxiliary_70_30": 0.5534398559532754,
+      "d_precision": 0.8618728121353559,
+      "d_recall": 0.7778070290904304,
+      "gap_live_frames": 1156,
+      "gap_live_team_accuracy": 0.6980968858131488,
+      "transition_f1": {
+        "0.5": 0.09628008752735229,
+        "1.0": 0.16630196936542668
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.16774193548387098,
+      "n_gt_spells": 384,
+      "n_pred_spells": 353
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2028",
+      "arm": "gap",
+      "spell_f1": 0.43962008141112613,
+      "macro_f1": 0.8117345358548312,
+      "auxiliary_70_30": 0.5512544177442377,
+      "d_precision": 0.858748918996829,
+      "d_recall": 0.7842569435303409,
+      "gap_live_frames": 1156,
+      "gap_live_team_accuracy": 0.6782006920415224,
+      "transition_f1": {
+        "0.5": 0.10043668122270742,
+        "1.0": 0.15720524017467247
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.17419354838709677,
+      "n_gt_spells": 384,
+      "n_pred_spells": 353
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2028",
+      "arm": "gap_dedup",
+      "spell_f1": 0.442876526458616,
+      "macro_f1": 0.8123847708629258,
+      "auxiliary_70_30": 0.5537289997799089,
+      "d_precision": 0.8586236682983012,
+      "d_recall": 0.7850467289719626,
+      "gap_live_frames": 1156,
+      "gap_live_team_accuracy": 0.6937716262975778,
+      "transition_f1": {
+        "0.5": 0.09586056644880174,
+        "1.0": 0.15250544662309368
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.17419354838709677,
+      "n_gt_spells": 384,
+      "n_pred_spells": 353
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "clean",
+      "arm": "current",
+      "spell_f1": 0.49408528198074275,
+      "macro_f1": 0.7959602971564085,
+      "auxiliary_70_30": 0.5846477865334424,
+      "d_precision": 0.8548773987206824,
+      "d_recall": 0.829776225585306,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.3258426966292135,
+      "transition_f1": {
+        "0.5": 0.1395348837209302,
+        "1.0": 0.20155038759689922
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 366
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "clean",
+      "arm": "matched",
+      "spell_f1": 0.5008264462809917,
+      "macro_f1": 0.7955749640523463,
+      "auxiliary_70_30": 0.5892510016123981,
+      "d_precision": 0.8567048786990136,
+      "d_recall": 0.8313284180571724,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.3258426966292135,
+      "transition_f1": {
+        "0.5": 0.13367609254498714,
+        "1.0": 0.18508997429305915
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.3548387096774194,
+      "n_gt_spells": 361,
+      "n_pred_spells": 365
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "clean",
+      "arm": "gap",
+      "spell_f1": 0.4953168044077135,
+      "macro_f1": 0.7945022345293248,
+      "auxiliary_70_30": 0.5850724334441968,
+      "d_precision": 0.8577148958889482,
+      "d_recall": 0.8311990686845169,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.24157303370786518,
+      "transition_f1": {
+        "0.5": 0.13989637305699482,
+        "1.0": 0.19689119170984457
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.3548387096774194,
+      "n_gt_spells": 361,
+      "n_pred_spells": 365
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "clean",
+      "arm": "gap_dedup",
+      "spell_f1": 0.4964187327823691,
+      "macro_f1": 0.7952286940396195,
+      "auxiliary_70_30": 0.5860617211595441,
+      "d_precision": 0.8577724358974359,
+      "d_recall": 0.8308110205665502,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.21910112359550563,
+      "transition_f1": {
+        "0.5": 0.12886597938144329,
+        "1.0": 0.19587628865979384
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.3548387096774194,
+      "n_gt_spells": 361,
+      "n_pred_spells": 365
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2026",
+      "arm": "current",
+      "spell_f1": 0.48175582990397814,
+      "macro_f1": 0.7963342817190844,
+      "auxiliary_70_30": 0.57612936544851,
+      "d_precision": 0.8500587237374396,
+      "d_recall": 0.8425818134782046,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.3258426966292135,
+      "transition_f1": {
+        "0.5": 0.12531328320802004,
+        "1.0": 0.19047619047619044
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.33548387096774196,
+      "n_gt_spells": 361,
+      "n_pred_spells": 368
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2026",
+      "arm": "matched",
+      "spell_f1": 0.49120879120879124,
+      "macro_f1": 0.795032853203741,
+      "auxiliary_70_30": 0.5823560098072762,
+      "d_precision": 0.8496407576747224,
+      "d_recall": 0.8412883197516492,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.3258426966292135,
+      "transition_f1": {
+        "0.5": 0.11557788944723618,
+        "1.0": 0.1758793969849246
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.33548387096774196,
+      "n_gt_spells": 361,
+      "n_pred_spells": 367
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2026",
+      "arm": "gap",
+      "spell_f1": 0.4954230235783633,
+      "macro_f1": 0.7958341479521104,
+      "auxiliary_70_30": 0.5855463608904874,
+      "d_precision": 0.8503064284782892,
+      "d_recall": 0.8434872590867935,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.24157303370786518,
+      "transition_f1": {
+        "0.5": 0.12307692307692307,
+        "1.0": 0.18461538461538463
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 360
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2026",
+      "arm": "gap_dedup",
+      "spell_f1": 0.4903047091412742,
+      "macro_f1": 0.7950794128193777,
+      "auxiliary_70_30": 0.5817371202447053,
+      "d_precision": 0.8509860258586914,
+      "d_recall": 0.8428405122235157,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.21910112359550563,
+      "transition_f1": {
+        "0.5": 0.1173469387755102,
+        "1.0": 0.17857142857142855
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 361
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2027",
+      "arm": "current",
+      "spell_f1": 0.48547945205479454,
+      "macro_f1": 0.7937436601573514,
+      "auxiliary_70_30": 0.5779587144855616,
+      "d_precision": 0.8458534045046218,
+      "d_recall": 0.8403828741430605,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.3258426966292135,
+      "transition_f1": {
+        "0.5": 0.13032581453634084,
+        "1.0": 0.18546365914786966
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 369
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2027",
+      "arm": "matched",
+      "spell_f1": 0.4921810699588477,
+      "macro_f1": 0.7952773256760777,
+      "auxiliary_70_30": 0.5831099466740166,
+      "d_precision": 0.8479760510217363,
+      "d_recall": 0.8427111628508601,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.3258426966292135,
+      "transition_f1": {
+        "0.5": 0.13533834586466167,
+        "1.0": 0.1804511278195489
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 368
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2027",
+      "arm": "gap",
+      "spell_f1": 0.48273972602739734,
+      "macro_f1": 0.7919823593762784,
+      "auxiliary_70_30": 0.5755125160320615,
+      "d_precision": 0.8480666579872412,
+      "d_recall": 0.8425818134782046,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.24157303370786518,
+      "transition_f1": {
+        "0.5": 0.1313131313131313,
+        "1.0": 0.19191919191919193
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 369
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2027",
+      "arm": "gap_dedup",
+      "spell_f1": 0.4936986301369862,
+      "macro_f1": 0.7954033529968986,
+      "auxiliary_70_30": 0.5842100469949599,
+      "d_precision": 0.8499478079331941,
+      "d_recall": 0.8425818134782046,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.21910112359550563,
+      "transition_f1": {
+        "0.5": 0.13602015113350127,
+        "1.0": 0.1964735516372796
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 369
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2028",
+      "arm": "current",
+      "spell_f1": 0.4821768707482993,
+      "macro_f1": 0.7947856618663248,
+      "auxiliary_70_30": 0.575959508083707,
+      "d_precision": 0.8489651558815824,
+      "d_recall": 0.8383132841805717,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.3258426966292135,
+      "transition_f1": {
+        "0.5": 0.14105793450881612,
+        "1.0": 0.19143576826196476
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.3419354838709677,
+      "n_gt_spells": 361,
+      "n_pred_spells": 374
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2028",
+      "arm": "matched",
+      "spell_f1": 0.4953168044077135,
+      "macro_f1": 0.7957987912984702,
+      "auxiliary_70_30": 0.5854614004749404,
+      "d_precision": 0.8498158863755918,
+      "d_recall": 0.8358556461001164,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.3258426966292135,
+      "transition_f1": {
+        "0.5": 0.14213197969543145,
+        "1.0": 0.18274111675126903
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 365
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2028",
+      "arm": "gap",
+      "spell_f1": 0.48551724137931035,
+      "macro_f1": 0.7910009932631995,
+      "auxiliary_70_30": 0.5771623669444771,
+      "d_precision": 0.850019786307875,
+      "d_recall": 0.8335273573923166,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.24157303370786518,
+      "transition_f1": {
+        "0.5": 0.14432989690721648,
+        "1.0": 0.18556701030927836
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.34838709677419355,
+      "n_gt_spells": 361,
+      "n_pred_spells": 364
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2028",
+      "arm": "gap_dedup",
+      "spell_f1": 0.4871724137931034,
+      "macro_f1": 0.7936615751962518,
+      "auxiliary_70_30": 0.5791191622140479,
+      "d_precision": 0.8509881422924901,
+      "d_recall": 0.8354675979821498,
+      "gap_live_frames": 178,
+      "gap_live_team_accuracy": 0.21910112359550563,
+      "transition_f1": {
+        "0.5": 0.13333333333333336,
+        "1.0": 0.18461538461538463
+      },
+      "short_spells": 155,
+      "short_spell_recall": 0.3419354838709677,
+      "n_gt_spells": 361,
+      "n_pred_spells": 364
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "clean",
+      "arm": "current",
+      "spell_f1": 0.5283018867924528,
+      "macro_f1": 0.8505666532283614,
+      "auxiliary_70_30": 0.6249813167232254,
+      "d_precision": 0.88129010469436,
+      "d_recall": 0.8099006828057107,
+      "gap_live_frames": 196,
+      "gap_live_team_accuracy": 0.7806122448979592,
+      "transition_f1": {
+        "0.5": 0.14761904761904762,
+        "1.0": 0.2095238095238095
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.31333333333333335,
+      "n_gt_spells": 380,
+      "n_pred_spells": 362
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "clean",
+      "arm": "matched",
+      "spell_f1": 0.5375515818431912,
+      "macro_f1": 0.8497864553498191,
+      "auxiliary_70_30": 0.6312220438951796,
+      "d_precision": 0.8789101917255298,
+      "d_recall": 0.8109869646182495,
+      "gap_live_frames": 196,
+      "gap_live_team_accuracy": 0.7857142857142857,
+      "transition_f1": {
+        "0.5": 0.1326781326781327,
+        "1.0": 0.22113022113022113
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.30666666666666664,
+      "n_gt_spells": 380,
+      "n_pred_spells": 347
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "clean",
+      "arm": "gap",
+      "spell_f1": 0.5414030261348005,
+      "macro_f1": 0.8494655183011481,
+      "auxiliary_70_30": 0.6338217737847047,
+      "d_precision": 0.8776541961577351,
+      "d_recall": 0.8081936685288641,
+      "gap_live_frames": 196,
+      "gap_live_team_accuracy": 0.7908163265306123,
+      "transition_f1": {
+        "0.5": 0.11330049261083742,
+        "1.0": 0.21182266009852216
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.31333333333333335,
+      "n_gt_spells": 380,
+      "n_pred_spells": 347
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "clean",
+      "arm": "gap_dedup",
+      "spell_f1": 0.5449035812672177,
+      "macro_f1": 0.8498858828839827,
+      "auxiliary_70_30": 0.6363982717522472,
+      "d_precision": 0.8773791477177025,
+      "d_recall": 0.8083488516449411,
+      "gap_live_frames": 196,
+      "gap_live_team_accuracy": 0.7806122448979592,
+      "transition_f1": {
+        "0.5": 0.12776412776412777,
+        "1.0": 0.22604422604422605
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.30666666666666664,
+      "n_gt_spells": 380,
+      "n_pred_spells": 346
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2026",
+      "arm": "current",
+      "spell_f1": 0.5206521739130435,
+      "macro_f1": 0.8445145815930161,
+      "auxiliary_70_30": 0.6178108962170352,
+      "d_precision": 0.8676446349101697,
+      "d_recall": 0.8168839230291745,
+      "gap_live_frames": 759,
+      "gap_live_team_accuracy": 0.8194993412384717,
+      "transition_f1": {
+        "0.5": 0.1291866028708134,
+        "1.0": 0.20574162679425836
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.3,
+      "n_gt_spells": 380,
+      "n_pred_spells": 356
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2026",
+      "arm": "matched",
+      "spell_f1": 0.5362637362637362,
+      "macro_f1": 0.847129518477063,
+      "auxiliary_70_30": 0.6295234709277342,
+      "d_precision": 0.8643455411397603,
+      "d_recall": 0.8167287399130975,
+      "gap_live_frames": 759,
+      "gap_live_team_accuracy": 0.8853754940711462,
+      "transition_f1": {
+        "0.5": 0.13559322033898308,
+        "1.0": 0.2082324455205811
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.3,
+      "n_gt_spells": 380,
+      "n_pred_spells": 348
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2026",
+      "arm": "gap",
+      "spell_f1": 0.5362517099863201,
+      "macro_f1": 0.848001017175041,
+      "auxiliary_70_30": 0.6297765021429363,
+      "d_precision": 0.8689336414658303,
+      "d_recall": 0.8168839230291745,
+      "gap_live_frames": 759,
+      "gap_live_team_accuracy": 0.8642951251646904,
+      "transition_f1": {
+        "0.5": 0.12106537530266344,
+        "1.0": 0.20338983050847456
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.31333333333333335,
+      "n_gt_spells": 380,
+      "n_pred_spells": 351
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2026",
+      "arm": "gap_dedup",
+      "spell_f1": 0.5373626373626373,
+      "macro_f1": 0.8475606796249916,
+      "auxiliary_70_30": 0.6304220500413436,
+      "d_precision": 0.8666886109282422,
+      "d_recall": 0.8171942892613284,
+      "gap_live_frames": 759,
+      "gap_live_team_accuracy": 0.8603425559947299,
+      "transition_f1": {
+        "0.5": 0.13559322033898308,
+        "1.0": 0.2179176755447942
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.30666666666666664,
+      "n_gt_spells": 380,
+      "n_pred_spells": 348
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2027",
+      "arm": "current",
+      "spell_f1": 0.5347767253044655,
+      "macro_f1": 0.8494444861804826,
+      "auxiliary_70_30": 0.6291770535672707,
+      "d_precision": 0.8741699867197875,
+      "d_recall": 0.8171942892613284,
+      "gap_live_frames": 912,
+      "gap_live_team_accuracy": 0.8070175438596491,
+      "transition_f1": {
+        "0.5": 0.13238770685579196,
+        "1.0": 0.20803782505910168
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.32666666666666666,
+      "n_gt_spells": 380,
+      "n_pred_spells": 359
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2027",
+      "arm": "matched",
+      "spell_f1": 0.5445983379501385,
+      "macro_f1": 0.8510066923468181,
+      "auxiliary_70_30": 0.6365208442691423,
+      "d_precision": 0.8723193665456945,
+      "d_recall": 0.8206083178150217,
+      "gap_live_frames": 912,
+      "gap_live_team_accuracy": 0.8234649122807017,
+      "transition_f1": {
+        "0.5": 0.1326781326781327,
+        "1.0": 0.22604422604422605
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.31333333333333335,
+      "n_gt_spells": 380,
+      "n_pred_spells": 342
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2027",
+      "arm": "gap",
+      "spell_f1": 0.5516483516483517,
+      "macro_f1": 0.8514513449675786,
+      "auxiliary_70_30": 0.6415892496441198,
+      "d_precision": 0.872583044124938,
+      "d_recall": 0.819366852886406,
+      "gap_live_frames": 912,
+      "gap_live_team_accuracy": 0.8245614035087719,
+      "transition_f1": {
+        "0.5": 0.12195121951219512,
+        "1.0": 0.22926829268292684
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.3333333333333333,
+      "n_gt_spells": 380,
+      "n_pred_spells": 348
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2027",
+      "arm": "gap_dedup",
+      "spell_f1": 0.54716459197787,
+      "macro_f1": 0.8504182972860997,
+      "auxiliary_70_30": 0.6381407035703389,
+      "d_precision": 0.8727001491795127,
+      "d_recall": 0.8170391061452514,
+      "gap_live_frames": 912,
+      "gap_live_team_accuracy": 0.8223684210526315,
+      "transition_f1": {
+        "0.5": 0.1326781326781327,
+        "1.0": 0.22113022113022113
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.32,
+      "n_gt_spells": 380,
+      "n_pred_spells": 343
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2028",
+      "arm": "current",
+      "spell_f1": 0.5132978723404256,
+      "macro_f1": 0.8459674821809035,
+      "auxiliary_70_30": 0.6130987552925689,
+      "d_precision": 0.8743551339657181,
+      "d_recall": 0.8153320918684047,
+      "gap_live_frames": 834,
+      "gap_live_team_accuracy": 0.829736211031175,
+      "transition_f1": {
+        "0.5": 0.13698630136986303,
+        "1.0": 0.19634703196347028
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.30666666666666664,
+      "n_gt_spells": 380,
+      "n_pred_spells": 372
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2028",
+      "arm": "matched",
+      "spell_f1": 0.5262872628726287,
+      "macro_f1": 0.8461971137409637,
+      "auxiliary_70_30": 0.6222602181331292,
+      "d_precision": 0.8758115531879473,
+      "d_recall": 0.8164183736809435,
+      "gap_live_frames": 834,
+      "gap_live_team_accuracy": 0.8213429256594724,
+      "transition_f1": {
+        "0.5": 0.13301662707838477,
+        "1.0": 0.1995249406175772
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.30666666666666664,
+      "n_gt_spells": 380,
+      "n_pred_spells": 358
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2028",
+      "arm": "gap",
+      "spell_f1": 0.5291891891891891,
+      "macro_f1": 0.8454332779407349,
+      "auxiliary_70_30": 0.6240624158146528,
+      "d_precision": 0.8717225356787255,
+      "d_recall": 0.8151769087523277,
+      "gap_live_frames": 834,
+      "gap_live_team_accuracy": 0.8273381294964028,
+      "transition_f1": {
+        "0.5": 0.12826603325415678,
+        "1.0": 0.1995249406175772
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.32,
+      "n_gt_spells": 380,
+      "n_pred_spells": 360
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2028",
+      "arm": "gap_dedup",
+      "spell_f1": 0.5396481732070364,
+      "macro_f1": 0.8493544914578973,
+      "auxiliary_70_30": 0.6325600686822946,
+      "d_precision": 0.8738543576070655,
+      "d_recall": 0.813780260707635,
+      "gap_live_frames": 834,
+      "gap_live_team_accuracy": 0.934052757793765,
+      "transition_f1": {
+        "0.5": 0.14285714285714285,
+        "1.0": 0.21904761904761905
+      },
+      "short_spells": 150,
+      "short_spell_recall": 0.32666666666666666,
+      "n_gt_spells": 380,
+      "n_pred_spells": 359
+    }
+  ],
+  "view_profiles": [
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "clean",
+      "active_frames": 142536,
+      "slots": 40,
+      "ball_missing_fraction": 0.0,
+      "ball_gap_count": 0,
+      "ball_gap_seconds": [],
+      "tracklet_seconds": [
+        754.768,
+        2764.44,
+        2937.0,
+        2937.0
+      ],
+      "visible_players": [
+        22.0,
+        22.0,
+        22.0,
+        22.0
+      ],
+      "close_pair_frame_fraction": 0.09925211876297918,
+      "suppressed_observation_fraction": 0.007484552546852597,
+      "mean_suppressed_per_frame": 0.16466015603075715,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2026",
+      "active_frames": 142536,
+      "slots": 46,
+      "ball_missing_fraction": 0.4065078296009429,
+      "ball_gap_count": 178,
+      "ball_gap_seconds": [
+        5.2,
+        8.0,
+        29.8,
+        76.72999999999968
+      ],
+      "tracklet_seconds": [
+        1.0,
+        12.8,
+        81.64,
+        156.88
+      ],
+      "visible_players": [
+        22.0,
+        22.0,
+        24.0,
+        24.0
+      ],
+      "close_pair_frame_fraction": 0.2066846270415895,
+      "suppressed_observation_fraction": 0.018171513013934368,
+      "mean_suppressed_per_frame": 0.4037506314194309,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2027",
+      "active_frames": 142536,
+      "slots": 46,
+      "ball_missing_fraction": 0.4065078296009429,
+      "ball_gap_count": 193,
+      "ball_gap_seconds": [
+        5.2,
+        8.0,
+        28.880000000000052,
+        56.903999999999776
+      ],
+      "tracklet_seconds": [
+        1.0,
+        13.88,
+        80.56,
+        178.19600000000068
+      ],
+      "visible_players": [
+        22.0,
+        22.0,
+        24.0,
+        24.0
+      ],
+      "close_pair_frame_fraction": 0.20691614749957907,
+      "suppressed_observation_fraction": 0.018330865475991272,
+      "mean_suppressed_per_frame": 0.40734270640399617,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "challenge_2028",
+      "active_frames": 142536,
+      "slots": 46,
+      "ball_missing_fraction": 0.4065078296009429,
+      "ball_gap_count": 193,
+      "ball_gap_seconds": [
+        5.040000000000001,
+        8.2,
+        26.512000000000018,
+        56.903999999999776
+      ],
+      "tracklet_seconds": [
+        1.0,
+        16.92,
+        85.28,
+        184.32
+      ],
+      "visible_players": [
+        22.0,
+        22.0,
+        24.0,
+        24.0
+      ],
+      "close_pair_frame_fraction": 0.19995650221698377,
+      "suppressed_observation_fraction": 0.01732142044621506,
+      "mean_suppressed_per_frame": 0.3845905595779312,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "clean",
+      "active_frames": 143761,
+      "slots": 35,
+      "ball_missing_fraction": 0.3222362114899034,
+      "ball_gap_count": 161,
+      "ball_gap_seconds": [
+        0.04,
+        6.64,
+        36.76,
+        62.87200000000003
+      ],
+      "tracklet_seconds": [
+        1045.6200000000001,
+        2786.44,
+        2964.0,
+        2964.0
+      ],
+      "visible_players": [
+        22.0,
+        22.0,
+        22.0,
+        22.0
+      ],
+      "close_pair_frame_fraction": 0.06713225422750259,
+      "suppressed_observation_fraction": 0.004132173917442523,
+      "mean_suppressed_per_frame": 0.09090782618373551,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2026",
+      "active_frames": 143761,
+      "slots": 46,
+      "ball_missing_fraction": 0.40650802373383604,
+      "ball_gap_count": 170,
+      "ball_gap_seconds": [
+        0.04,
+        8.26,
+        38.916000000000004,
+        72.66280000000002
+      ],
+      "tracklet_seconds": [
+        1.0,
+        15.76,
+        73.4,
+        156.72
+      ],
+      "visible_players": [
+        22.0,
+        22.0,
+        24.0,
+        24.0
+      ],
+      "close_pair_frame_fraction": 0.18120352529545566,
+      "suppressed_observation_fraction": 0.015074126427470537,
+      "mean_suppressed_per_frame": 0.33499349614985985,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2027",
+      "active_frames": 143761,
+      "slots": 46,
+      "ball_missing_fraction": 0.40650802373383604,
+      "ball_gap_count": 170,
+      "ball_gap_seconds": [
+        0.04,
+        7.699999999999999,
+        37.53999999999999,
+        75.62640000000005
+      ],
+      "tracklet_seconds": [
+        1.0,
+        12.8,
+        74.8,
+        184.84
+      ],
+      "visible_players": [
+        22.0,
+        22.0,
+        24.0,
+        24.0
+      ],
+      "close_pair_frame_fraction": 0.1789497847121264,
+      "suppressed_observation_fraction": 0.014971455585140937,
+      "mean_suppressed_per_frame": 0.3326423717141645,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "challenge_2028",
+      "active_frames": 143761,
+      "slots": 46,
+      "ball_missing_fraction": 0.40650802373383604,
+      "ball_gap_count": 176,
+      "ball_gap_seconds": [
+        0.04,
+        7.84,
+        38.099999999999994,
+        76.22
+      ],
+      "tracklet_seconds": [
+        1.0,
+        14.56,
+        76.88,
+        145.0
+      ],
+      "visible_players": [
+        22.0,
+        22.0,
+        24.0,
+        24.0
+      ],
+      "close_pair_frame_fraction": 0.1713677562064816,
+      "suppressed_observation_fraction": 0.014002830272636227,
+      "mean_suppressed_per_frame": 0.31083534477361735,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "clean",
+      "active_frames": 57602,
+      "slots": 36,
+      "ball_missing_fraction": 0.39757300093746745,
+      "ball_gap_count": 210,
+      "ball_gap_seconds": [
+        1.2,
+        4.1,
+        29.909999999999997,
+        71.20399999999995
+      ],
+      "tracklet_seconds": [
+        2.9,
+        11.8,
+        36.5,
+        75.88299999999981
+      ],
+      "visible_players": [
+        0.0,
+        14.0,
+        20.0,
+        20.0
+      ],
+      "close_pair_frame_fraction": 0.02142286726155342,
+      "suppressed_observation_fraction": 0.0022106023216878655,
+      "mean_suppressed_per_frame": 0.02418318808374709,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2026",
+      "active_frames": 57602,
+      "slots": 46,
+      "ball_missing_fraction": 0.40651366272004447,
+      "ball_gap_count": 211,
+      "ball_gap_seconds": [
+        1.2,
+        4.1,
+        29.9,
+        74.4800000000001
+      ],
+      "tracklet_seconds": [
+        1.0,
+        6.9,
+        24.63000000000002,
+        52.74599999999992
+      ],
+      "visible_players": [
+        0.0,
+        15.0,
+        20.0,
+        22.0
+      ],
+      "close_pair_frame_fraction": 0.09610777403562376,
+      "suppressed_observation_fraction": 0.015790943784679504,
+      "mean_suppressed_per_frame": 0.1746987951807229,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2027",
+      "active_frames": 57602,
+      "slots": 46,
+      "ball_missing_fraction": 0.40651366272004447,
+      "ball_gap_count": 211,
+      "ball_gap_seconds": [
+        1.2,
+        4.2,
+        30.0,
+        71.06000000000009
+      ],
+      "tracklet_seconds": [
+        1.0,
+        6.2,
+        24.7,
+        48.12600000000002
+      ],
+      "visible_players": [
+        0.0,
+        15.0,
+        20.0,
+        22.0
+      ],
+      "close_pair_frame_fraction": 0.10001388840665254,
+      "suppressed_observation_fraction": 0.016453126862721722,
+      "mean_suppressed_per_frame": 0.18209437172320406,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "challenge_2028",
+      "active_frames": 57602,
+      "slots": 46,
+      "ball_missing_fraction": 0.40651366272004447,
+      "ball_gap_count": 212,
+      "ball_gap_seconds": [
+        1.2,
+        4.25,
+        29.88,
+        70.9159999999998
+      ],
+      "tracklet_seconds": [
+        1.0,
+        6.4,
+        25.7,
+        53.4
+      ],
+      "visible_players": [
+        0.0,
+        15.0,
+        20.0,
+        22.0
+      ],
+      "close_pair_frame_fraction": 0.09129891323217944,
+      "suppressed_observation_fraction": 0.01504021451930187,
+      "mean_suppressed_per_frame": 0.16631366966424777,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "clean",
+      "active_frames": 60261,
+      "slots": 35,
+      "ball_missing_fraction": 0.455949951046282,
+      "ball_gap_count": 210,
+      "ball_gap_seconds": [
+        1.5,
+        6.8,
+        30.2,
+        103.81699999999991
+      ],
+      "tracklet_seconds": [
+        2.0,
+        7.7,
+        24.4,
+        49.19799999999996
+      ],
+      "visible_players": [
+        0.0,
+        11.0,
+        18.0,
+        20.0
+      ],
+      "close_pair_frame_fraction": 0.02198768689533861,
+      "suppressed_observation_fraction": 0.0029666183979879584,
+      "mean_suppressed_per_frame": 0.025837606412107333,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2026",
+      "active_frames": 60261,
+      "slots": 46,
+      "ball_missing_fraction": 0.455949951046282,
+      "ball_gap_count": 210,
+      "ball_gap_seconds": [
+        1.5,
+        6.8,
+        30.2,
+        103.81699999999991
+      ],
+      "tracklet_seconds": [
+        1.0,
+        5.0,
+        18.0,
+        34.9
+      ],
+      "visible_players": [
+        0.0,
+        11.0,
+        19.0,
+        21.0
+      ],
+      "close_pair_frame_fraction": 0.0889630109025738,
+      "suppressed_observation_fraction": 0.018161432446770487,
+      "mean_suppressed_per_frame": 0.1602031164434709,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2027",
+      "active_frames": 60261,
+      "slots": 46,
+      "ball_missing_fraction": 0.455949951046282,
+      "ball_gap_count": 210,
+      "ball_gap_seconds": [
+        1.5,
+        6.8,
+        30.2,
+        103.81699999999991
+      ],
+      "tracklet_seconds": [
+        1.0,
+        5.0,
+        18.0,
+        34.907999999999994
+      ],
+      "visible_players": [
+        0.0,
+        11.0,
+        19.0,
+        21.0
+      ],
+      "close_pair_frame_fraction": 0.08990889630109025,
+      "suppressed_observation_fraction": 0.018376089270334614,
+      "mean_suppressed_per_frame": 0.16216126516320672,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "challenge_2028",
+      "active_frames": 60261,
+      "slots": 46,
+      "ball_missing_fraction": 0.455949951046282,
+      "ball_gap_count": 210,
+      "ball_gap_seconds": [
+        1.5,
+        6.8,
+        30.2,
+        103.81699999999991
+      ],
+      "tracklet_seconds": [
+        1.0,
+        5.4,
+        18.0,
+        34.82099999999991
+      ],
+      "visible_players": [
+        0.0,
+        11.0,
+        19.0,
+        20.0
+      ],
+      "close_pair_frame_fraction": 0.084631851446209,
+      "suppressed_observation_fraction": 0.01723800380263926,
+      "mean_suppressed_per_frame": 0.15195565954763446,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "clean",
+      "active_frames": 59251,
+      "slots": 36,
+      "ball_missing_fraction": 0.3944237228063661,
+      "ball_gap_count": 189,
+      "ball_gap_seconds": [
+        1.58,
+        5.3,
+        28.380000000000006,
+        84.26
+      ],
+      "tracklet_seconds": [
+        2.3,
+        8.6,
+        30.0,
+        63.38400000000019
+      ],
+      "visible_players": [
+        0.0,
+        14.0,
+        19.0,
+        21.0
+      ],
+      "close_pair_frame_fraction": 0.016995493746940978,
+      "suppressed_observation_fraction": 0.0018430722886640424,
+      "mean_suppressed_per_frame": 0.019020776020657878,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2026",
+      "active_frames": 59251,
+      "slots": 46,
+      "ball_missing_fraction": 0.40650790703954365,
+      "ball_gap_count": 190,
+      "ball_gap_seconds": [
+        1.5900000000000003,
+        5.55,
+        28.34,
+        84.255
+      ],
+      "tracklet_seconds": [
+        1.0,
+        5.5,
+        21.620000000000072,
+        44.9
+      ],
+      "visible_players": [
+        0.0,
+        14.0,
+        19.0,
+        22.0
+      ],
+      "close_pair_frame_fraction": 0.09054699498742637,
+      "suppressed_observation_fraction": 0.01596549294408926,
+      "mean_suppressed_per_frame": 0.16673136318374374,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2027",
+      "active_frames": 59251,
+      "slots": 46,
+      "ball_missing_fraction": 0.40650790703954365,
+      "ball_gap_count": 191,
+      "ball_gap_seconds": [
+        1.6,
+        5.3,
+        28.7,
+        84.25
+      ],
+      "tracklet_seconds": [
+        1.0,
+        5.4,
+        20.9,
+        44.2
+      ],
+      "visible_players": [
+        0.0,
+        14.0,
+        19.0,
+        22.0
+      ],
+      "close_pair_frame_fraction": 0.09431064454608361,
+      "suppressed_observation_fraction": 0.01665439109956777,
+      "mean_suppressed_per_frame": 0.17402237936912457,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "challenge_2028",
+      "active_frames": 59251,
+      "slots": 46,
+      "ball_missing_fraction": 0.40650790703954365,
+      "ball_gap_count": 190,
+      "ball_gap_seconds": [
+        1.4900000000000002,
+        5.4,
+        28.7,
+        84.255
+      ],
+      "tracklet_seconds": [
+        1.0,
+        5.3,
+        21.1,
+        41.38099999999995
+      ],
+      "visible_players": [
+        0.0,
+        14.0,
+        19.0,
+        21.0
+      ],
+      "close_pair_frame_fraction": 0.08821792037265194,
+      "suppressed_observation_fraction": 0.01575309903657397,
+      "mean_suppressed_per_frame": 0.16441916592125028,
+      "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+    }
+  ],
+  "baseline_changed": false,
+  "organizer_scored": false,
+  "target_masks_unchanged": true,
+  "summaries": [
+    {
+      "condition": "clean",
+      "arm": "current",
+      "spell_f1": 0.593833695019368,
+      "macro_f1": 0.8674715258334711,
+      "auxiliary_70_30": 0.6759250442635989,
+      "gap_live_team_accuracy": 0.5740299480294008,
+      "short_spell_recall": 0.308351904268066,
+      "transition_f1.0.5": 0.3189907495006586,
+      "transition_f1.1.0": 0.4489028467738851,
+      "per_source": {
+        "sportec": {
+          "spell_f1": 0.5915356711003628,
+          "macro_f1": 0.8758117802764555,
+          "auxiliary_70_30": 0.6768185038531905,
+          "gap_live_team_accuracy": null,
+          "short_spell_recall": 0.27918781725888325,
+          "transition_f1.0.5": 0.3938223938223938,
+          "transition_f1.1.0": 0.5598455598455598
+        },
+        "metrica": {
+          "spell_f1": 0.7001394700139469,
+          "macro_f1": 0.9055898853167298,
+          "auxiliary_70_30": 0.7617745946047818,
+          "gap_live_team_accuracy": 0.5807453416149069,
+          "short_spell_recall": 0.36507936507936506,
+          "transition_f1.0.5": 0.43673012318029114,
+          "transition_f1.1.0": 0.5957446808510638
+        },
+        "skillcorner": {
+          "spell_f1": 0.48982594394379414,
+          "macro_f1": 0.8210129119072279,
+          "auxiliary_70_30": 0.5891820343328242,
+          "gap_live_team_accuracy": 0.5673145544438947,
+          "short_spell_recall": 0.2807885304659498,
+          "transition_f1.0.5": 0.12641973149929087,
+          "transition_f1.1.0": 0.19111829962503157
+        }
+      }
+    },
+    {
+      "condition": "clean",
+      "arm": "matched",
+      "spell_f1": 0.5778561646285137,
+      "macro_f1": 0.8646415979395067,
+      "auxiliary_70_30": 0.6638917946218116,
+      "gap_live_team_accuracy": 0.5335486983212796,
+      "short_spell_recall": 0.2878520701805457,
+      "transition_f1.0.5": 0.2999412073501982,
+      "transition_f1.1.0": 0.44416394912168516,
+      "per_source": {
+        "sportec": {
+          "spell_f1": 0.5547305389221557,
+          "macro_f1": 0.8690408493747518,
+          "auxiliary_70_30": 0.6490236320579346,
+          "gap_live_team_accuracy": null,
+          "short_spell_recall": 0.25380710659898476,
+          "transition_f1.0.5": 0.367816091954023,
+          "transition_f1.1.0": 0.5536398467432949
+        },
+        "metrica": {
+          "spell_f1": 0.6853146853146852,
+          "macro_f1": 0.9044742693894947,
+          "auxiliary_70_30": 0.7510625605371279,
+          "gap_live_team_accuracy": 0.5186335403726708,
+          "short_spell_recall": 0.3333333333333333,
+          "transition_f1.0.5": 0.4107744107744108,
+          "transition_f1.1.0": 0.5903479236812571
+        },
+        "skillcorner": {
+          "spell_f1": 0.49352326964870025,
+          "macro_f1": 0.8204096750542735,
+          "auxiliary_70_30": 0.5915891912703722,
+          "gap_live_team_accuracy": 0.5484638562698883,
+          "short_spell_recall": 0.276415770609319,
+          "transition_f1.0.5": 0.1212331193221609,
+          "transition_f1.1.0": 0.18850407694050345
+        }
+      }
+    },
+    {
+      "condition": "clean",
+      "arm": "gap",
+      "spell_f1": 0.5760697102104325,
+      "macro_f1": 0.865194612676865,
+      "auxiliary_70_30": 0.6628071809503623,
+      "gap_live_team_accuracy": 0.6123721833371201,
+      "short_spell_recall": 0.2842335146674429,
+      "transition_f1.0.5": 0.30202072165966065,
+      "transition_f1.1.0": 0.43891241430723366,
+      "per_source": {
+        "sportec": {
+          "spell_f1": 0.5521058965102286,
+          "macro_f1": 0.8691698737420168,
+          "auxiliary_70_30": 0.647225089679765,
+          "gap_live_team_accuracy": null,
+          "short_spell_recall": 0.23857868020304568,
+          "transition_f1.0.5": 0.36730769230769234,
+          "transition_f1.1.0": 0.551923076923077
+        },
+        "metrica": {
+          "spell_f1": 0.683008356545961,
+          "macro_f1": 0.9061696606526609,
+          "auxiliary_70_30": 0.749956747777971,
+          "gap_live_team_accuracy": 0.6956521739130435,
+          "short_spell_recall": 0.3333333333333333,
+          "transition_f1.0.5": 0.42058165548098436,
+          "transition_f1.1.0": 0.5771812080536913
+        },
+        "skillcorner": {
+          "spell_f1": 0.4930948775751081,
+          "macro_f1": 0.8202443036359176,
+          "auxiliary_70_30": 0.5912397053933509,
+          "gap_live_team_accuracy": 0.5290921927611968,
+          "short_spell_recall": 0.2807885304659498,
+          "transition_f1.0.5": 0.11817281719030531,
+          "transition_f1.1.0": 0.18763295794493282
+        }
+      }
+    },
+    {
+      "condition": "clean",
+      "arm": "gap_dedup",
+      "spell_f1": 0.5744700864096561,
+      "macro_f1": 0.8651329809055532,
+      "auxiliary_70_30": 0.6616689547584251,
+      "gap_live_team_accuracy": 0.6161939192667271,
+      "short_spell_recall": 0.289522371326858,
+      "transition_f1.0.5": 0.30514824745495944,
+      "transition_f1.1.0": 0.4427234636636965,
+      "per_source": {
+        "sportec": {
+          "spell_f1": 0.5543269230769231,
+          "macro_f1": 0.8694595881111562,
+          "auxiliary_70_30": 0.6488667225871929,
+          "gap_live_team_accuracy": null,
+          "short_spell_recall": 0.24873096446700507,
+          "transition_f1.0.5": 0.3857965451055662,
+          "transition_f1.1.0": 0.5585412667946258
+        },
+        "metrica": {
+          "spell_f1": 0.675,
+          "macro_f1": 0.9054034668666434,
+          "auxiliary_70_30": 0.7441210400599929,
+          "gap_live_team_accuracy": 0.7111801242236024,
+          "short_spell_recall": 0.3412698412698413,
+          "transition_f1.0.5": 0.4102564102564103,
+          "transition_f1.1.0": 0.5774804905239688
+        },
+        "skillcorner": {
+          "spell_f1": 0.49408333615204514,
+          "macro_f1": 0.8205358877388601,
+          "auxiliary_70_30": 0.5920191016280896,
+          "gap_live_team_accuracy": 0.5212077143098517,
+          "short_spell_recall": 0.2785663082437276,
+          "transition_f1.0.5": 0.11939178700290191,
+          "transition_f1.1.0": 0.1921486336724952
+        }
+      }
+    },
+    {
+      "condition": "conditioned",
+      "arm": "current",
+      "spell_f1": 0.5355848181749566,
+      "macro_f1": 0.8482012498800803,
+      "auxiliary_70_30": 0.6293697476864937,
+      "gap_live_team_accuracy": 0.681539286352799,
+      "short_spell_recall": 0.25290136019353854,
+      "transition_f1.0.5": 0.2747797774524076,
+      "transition_f1.1.0": 0.3966826068985738,
+      "per_source": {
+        "sportec": {
+          "spell_f1": 0.45895646323312395,
+          "macro_f1": 0.8317076308452886,
+          "auxiliary_70_30": 0.5707818135167733,
+          "gap_live_team_accuracy": 0.6967879243938704,
+          "short_spell_recall": 0.15397631133671744,
+          "transition_f1.0.5": 0.29581497207478996,
+          "transition_f1.1.0": 0.4513478802423652
+        },
+        "metrica": {
+          "spell_f1": 0.6620678260966227,
+          "macro_f1": 0.8939048312966391,
+          "auxiliary_70_30": 0.7316189276566276,
+          "gap_live_team_accuracy": 0.7433106844242348,
+          "short_spell_recall": 0.32539682539682535,
+          "transition_f1.0.5": 0.4058376233007334,
+          "transition_f1.1.0": 0.5493701678151167
+        },
+        "skillcorner": {
+          "spell_f1": 0.48573016519512335,
+          "macro_f1": 0.8189912874983131,
+          "auxiliary_70_30": 0.5857085018860803,
+          "gap_live_team_accuracy": 0.604519250240292,
+          "short_spell_recall": 0.27933094384707285,
+          "transition_f1.0.5": 0.12268673698169942,
+          "transition_f1.1.0": 0.1893297726382394
+        }
+      },
+      "seed_results": [
+        {
+          "seed": 2026,
+          "spell_f1": 0.533748942389887,
+          "macro_f1": 0.8485447127212432,
+          "auxiliary_70_30": 0.6281876734892937,
+          "gap_live_team_accuracy": 0.6875154168443176,
+          "short_spell_recall": 0.24990803336963482,
+          "transition_f1.0.5": 0.26771108053357795,
+          "transition_f1.1.0": 0.3927898833530899
+        },
+        {
+          "seed": 2027,
+          "spell_f1": 0.5390191449953288,
+          "macro_f1": 0.8496549108152954,
+          "auxiliary_70_30": 0.6322098747413188,
+          "gap_live_team_accuracy": 0.6860099949920991,
+          "short_spell_recall": 0.2547849245769665,
+          "transition_f1.0.5": 0.2815590268582994,
+          "transition_f1.1.0": 0.3981102131443071
+        },
+        {
+          "seed": 2028,
+          "spell_f1": 0.5339863671396543,
+          "macro_f1": 0.8464041261037022,
+          "auxiliary_70_30": 0.6277116948288687,
+          "gap_live_team_accuracy": 0.6710924472219802,
+          "short_spell_recall": 0.25401112263401443,
+          "transition_f1.0.5": 0.27506922496534547,
+          "transition_f1.1.0": 0.3991477241983244
+        }
+      ],
+      "seed_spell_sd": 0.002976582463127089
+    },
+    {
+      "condition": "conditioned",
+      "arm": "matched",
+      "spell_f1": 0.5243495035954421,
+      "macro_f1": 0.8428475028627082,
+      "auxiliary_70_30": 0.6198989033756219,
+      "gap_live_team_accuracy": 0.6550990994557165,
+      "short_spell_recall": 0.24054957028812166,
+      "transition_f1.0.5": 0.2615286266784302,
+      "transition_f1.1.0": 0.3920184921008128,
+      "per_source": {
+        "sportec": {
+          "spell_f1": 0.4398844657934327,
+          "macro_f1": 0.8208345141354996,
+          "auxiliary_70_30": 0.5541694802960527,
+          "gap_live_team_accuracy": 0.6674260063681174,
+          "short_spell_recall": 0.1505922165820643,
+          "transition_f1.0.5": 0.281614085207412,
+          "transition_f1.1.0": 0.44249297020467476
+        },
+        "metrica": {
+          "spell_f1": 0.6432940031619389,
+          "macro_f1": 0.8885296839554834,
+          "auxiliary_70_30": 0.7168647074000022,
+          "gap_live_team_accuracy": 0.6948493088022701,
+          "short_spell_recall": 0.29894179894179895,
+          "transition_f1.0.5": 0.379898895291435,
+          "transition_f1.1.0": 0.5478539487020356
+        },
+        "skillcorner": {
+          "spell_f1": 0.4898700418309548,
+          "macro_f1": 0.8191783104971412,
+          "auxiliary_70_30": 0.5886625224308107,
+          "gap_live_team_accuracy": 0.6030219831967623,
+          "short_spell_recall": 0.2721146953405018,
+          "transition_f1.0.5": 0.1230728995364436,
+          "transition_f1.1.0": 0.18570855739572806
+        }
+      },
+      "seed_results": [
+        {
+          "seed": 2026,
+          "spell_f1": 0.5259222957929462,
+          "macro_f1": 0.8420757542356339,
+          "auxiliary_70_30": 0.6207683333257525,
+          "gap_live_team_accuracy": 0.6598576826981949,
+          "short_spell_recall": 0.24149128894503055,
+          "transition_f1.0.5": 0.2568290952973545,
+          "transition_f1.1.0": 0.38927906121974637
+        },
+        {
+          "seed": 2027,
+          "spell_f1": 0.5222214473700024,
+          "macro_f1": 0.8456337133761935,
+          "auxiliary_70_30": 0.6192451271718598,
+          "gap_live_team_accuracy": 0.6674632443481597,
+          "short_spell_recall": 0.24950435054577844,
+          "transition_f1.0.5": 0.26802382778859524,
+          "transition_f1.1.0": 0.39675208418042357
+        },
+        {
+          "seed": 2028,
+          "spell_f1": 0.5249047676233777,
+          "macro_f1": 0.8408330409762966,
+          "auxiliary_70_30": 0.6196832496292534,
+          "gap_live_team_accuracy": 0.6379763713207953,
+          "short_spell_recall": 0.23065307137355606,
+          "transition_f1.0.5": 0.2597329569493409,
+          "transition_f1.1.0": 0.3900243309022686
+        }
+      ],
+      "seed_spell_sd": 0.001911886076088444
+    },
+    {
+      "condition": "conditioned",
+      "arm": "gap",
+      "spell_f1": 0.521589205838915,
+      "macro_f1": 0.842920424651782,
+      "auxiliary_70_30": 0.617988571482775,
+      "gap_live_team_accuracy": 0.6363001166109798,
+      "short_spell_recall": 0.2378325505556552,
+      "transition_f1.0.5": 0.265372955268339,
+      "transition_f1.1.0": 0.3895416629764234,
+      "per_source": {
+        "sportec": {
+          "spell_f1": 0.43607736235945677,
+          "macro_f1": 0.8236108773533571,
+          "auxiliary_70_30": 0.5523374168576268,
+          "gap_live_team_accuracy": 0.6751556099212364,
+          "short_spell_recall": 0.13367174280879865,
+          "transition_f1.0.5": 0.2830908155086664,
+          "transition_f1.1.0": 0.44116556045202465
+        },
+        "metrica": {
+          "spell_f1": 0.6402312978634818,
+          "macro_f1": 0.8869729524648212,
+          "auxiliary_70_30": 0.7142537942438835,
+          "gap_live_team_accuracy": 0.6667270603946102,
+          "short_spell_recall": 0.29894179894179895,
+          "transition_f1.0.5": 0.3923819107804942,
+          "transition_f1.1.0": 0.5401774154639001
+        },
+        "skillcorner": {
+          "spell_f1": 0.4884589572938065,
+          "macro_f1": 0.8181774441371673,
+          "auxiliary_70_30": 0.5873745033468146,
+          "gap_live_team_accuracy": 0.5670176795170933,
+          "short_spell_recall": 0.280884109916368,
+          "transition_f1.0.5": 0.12064613951585636,
+          "transition_f1.1.0": 0.18728201301334554
+        }
+      },
+      "seed_results": [
+        {
+          "seed": 2026,
+          "spell_f1": 0.5227096215146048,
+          "macro_f1": 0.8441804834477523,
+          "auxiliary_70_30": 0.619150880094549,
+          "gap_live_team_accuracy": 0.6510151679629679,
+          "short_spell_recall": 0.24100062119711704,
+          "transition_f1.0.5": 0.26816594789797815,
+          "transition_f1.1.0": 0.39152067460353757
+        },
+        {
+          "seed": 2027,
+          "spell_f1": 0.5220929685060697,
+          "macro_f1": 0.8458875941463413,
+          "auxiliary_70_30": 0.6192313561981511,
+          "gap_live_team_accuracy": 0.6454106153703963,
+          "short_spell_recall": 0.24567522913683057,
+          "transition_f1.0.5": 0.26655198273274056,
+          "transition_f1.1.0": 0.39208624532163583
+        },
+        {
+          "seed": 2028,
+          "spell_f1": 0.5199650274960707,
+          "macro_f1": 0.838693196361252,
+          "auxiliary_70_30": 0.615583478155625,
+          "gap_live_team_accuracy": 0.6124745664995755,
+          "short_spell_recall": 0.22682180133301796,
+          "transition_f1.0.5": 0.26140093517429824,
+          "transition_f1.1.0": 0.3850180690040968
+        }
+      ],
+      "seed_spell_sd": 0.0014399762846163033
+    },
+    {
+      "condition": "conditioned",
+      "arm": "gap_dedup",
+      "spell_f1": 0.5223167628619745,
+      "macro_f1": 0.843203713435277,
+      "auxiliary_70_30": 0.6185828480339652,
+      "gap_live_team_accuracy": 0.6440787862296875,
+      "short_spell_recall": 0.24281155374654637,
+      "transition_f1.0.5": 0.26324456892756204,
+      "transition_f1.1.0": 0.3905063509848527,
+      "per_source": {
+        "sportec": {
+          "spell_f1": 0.43610054555393374,
+          "macro_f1": 0.8229613171897254,
+          "auxiliary_70_30": 0.5521587770446712,
+          "gap_live_team_accuracy": 0.670821816486988,
+          "short_spell_recall": 0.1455160744500846,
+          "transition_f1.0.5": 0.2826776416420919,
+          "transition_f1.1.0": 0.4458932843904198
+        },
+        "metrica": {
+          "spell_f1": 0.6391565573554882,
+          "macro_f1": 0.887589195437669,
+          "auxiliary_70_30": 0.7136863487801425,
+          "gap_live_team_accuracy": 0.6850548948991989,
+          "short_spell_recall": 0.30423280423280424,
+          "transition_f1.0.5": 0.38342098705238636,
+          "transition_f1.1.0": 0.5386068584430359
+        },
+        "skillcorner": {
+          "spell_f1": 0.49169318567650144,
+          "macro_f1": 0.8190606276784369,
+          "auxiliary_70_30": 0.589903418277082,
+          "gap_live_team_accuracy": 0.5763596473028757,
+          "short_spell_recall": 0.2786857825567503,
+          "transition_f1.0.5": 0.12363507808820774,
+          "transition_f1.1.0": 0.1870189101211023
+        }
+      },
+      "seed_results": [
+        {
+          "seed": 2026,
+          "spell_f1": 0.5196785421655892,
+          "macro_f1": 0.8440451403211804,
+          "auxiliary_70_30": 0.6169885216122665,
+          "gap_live_team_accuracy": 0.6498238758519777,
+          "short_spell_recall": 0.24078360940650115,
+          "transition_f1.0.5": 0.26327864745004165,
+          "transition_f1.1.0": 0.38765573146205706
+        },
+        {
+          "seed": 2027,
+          "spell_f1": 0.521916456265237,
+          "macro_f1": 0.8452290432101265,
+          "auxiliary_70_30": 0.6189102323487038,
+          "gap_live_team_accuracy": 0.6464655890678372,
+          "short_spell_recall": 0.2485312976781783,
+          "transition_f1.0.5": 0.2617050448009583,
+          "transition_f1.1.0": 0.392048589934201
+        },
+        {
+          "seed": 2028,
+          "spell_f1": 0.5253552901550971,
+          "macro_f1": 0.8403369567745244,
+          "auxiliary_70_30": 0.6198497901409252,
+          "gap_live_team_accuracy": 0.6359468937692476,
+          "short_spell_recall": 0.23911975415495967,
+          "transition_f1.0.5": 0.26475001453168606,
+          "transition_f1.1.0": 0.3918147315583
+        }
+      ],
+      "seed_spell_sd": 0.0028594669018261313
+    }
+  ],
+  "paired_deltas": [
+    {
+      "condition": "clean",
+      "candidate": "gap",
+      "baseline": "matched",
+      "delta": {
+        "spell_f1": -0.0017864544180812292,
+        "macro_f1": 0.0005530147373583594,
+        "auxiliary_70_30": -0.001084613671449297,
+        "gap_live_team_accuracy": 0.07882348501584047,
+        "short_spell_recall": -0.0036185555131028058,
+        "transition_f1.0.5": 0.00207951430946246,
+        "transition_f1.1.0": -0.005251534814451508
+      },
+      "per_source_spell_delta": {
+        "sportec": -0.0026246424119271694,
+        "metrica": -0.002306328768724164,
+        "skillcorner": -0.00042839207359213205
+      }
+    },
+    {
+      "condition": "clean",
+      "candidate": "gap_dedup",
+      "baseline": "gap",
+      "delta": {
+        "spell_f1": -0.001599623800776384,
+        "macro_f1": -6.163177131179864e-05,
+        "auxiliary_70_30": -0.0011382261919371528,
+        "gap_live_team_accuracy": 0.0038217359296069953,
+        "short_spell_recall": 0.0052888566594150865,
+        "transition_f1.0.5": 0.003127525795298791,
+        "transition_f1.1.0": 0.00381104935646287
+      },
+      "per_source_spell_delta": {
+        "sportec": 0.0022210265666945395,
+        "metrica": -0.008008356545960993,
+        "skillcorner": 0.0009884585769370235
+      }
+    },
+    {
+      "condition": "clean",
+      "candidate": "gap_dedup",
+      "baseline": "matched",
+      "delta": {
+        "spell_f1": -0.0033860782188576133,
+        "macro_f1": 0.0004913829660465607,
+        "auxiliary_70_30": -0.00222283986338645,
+        "gap_live_team_accuracy": 0.08264522094544746,
+        "short_spell_recall": 0.0016703011463122808,
+        "transition_f1.0.5": 0.005207040104761251,
+        "transition_f1.1.0": -0.0014404854579886384
+      },
+      "per_source_spell_delta": {
+        "sportec": -0.00040361584523262994,
+        "metrica": -0.010314685314685157,
+        "skillcorner": 0.0005600665033448915
+      }
+    },
+    {
+      "condition": "conditioned",
+      "candidate": "gap",
+      "baseline": "matched",
+      "delta": {
+        "spell_f1": -0.002760297756527086,
+        "macro_f1": 7.292178907380986e-05,
+        "auxiliary_70_30": -0.0019103318928469504,
+        "gap_live_team_accuracy": -0.01879898284473669,
+        "short_spell_recall": -0.0027170197324664636,
+        "transition_f1.0.5": 0.0038443285899087964,
+        "transition_f1.1.0": -0.0024768291243894014
+      },
+      "per_source_spell_delta": {
+        "sportec": -0.0038071034339759446,
+        "metrica": -0.0030627052984570913,
+        "skillcorner": -0.0014110845371482772
+      }
+    },
+    {
+      "condition": "conditioned",
+      "candidate": "gap_dedup",
+      "baseline": "gap",
+      "delta": {
+        "spell_f1": 0.0007275570230594886,
+        "macro_f1": 0.0002832887834950393,
+        "auxiliary_70_30": 0.0005942765511902648,
+        "gap_live_team_accuracy": 0.0077786696187076565,
+        "short_spell_recall": 0.004979003190891174,
+        "transition_f1.0.5": -0.0021283863407769443,
+        "transition_f1.1.0": 0.0009646880084293041
+      },
+      "per_source_spell_delta": {
+        "sportec": 2.3183194476972258e-05,
+        "metrica": -0.00107474050799361,
+        "skillcorner": 0.003234228382694937
+      }
+    },
+    {
+      "condition": "conditioned",
+      "candidate": "gap_dedup",
+      "baseline": "matched",
+      "delta": {
+        "spell_f1": -0.0020327407334675973,
+        "macro_f1": 0.00035621057256884914,
+        "auxiliary_70_30": -0.0013160553416566856,
+        "gap_live_team_accuracy": -0.011020313226029033,
+        "short_spell_recall": 0.00226198345842471,
+        "transition_f1.0.5": 0.0017159422491318521,
+        "transition_f1.1.0": -0.0015121411159600973
+      },
+      "per_source_spell_delta": {
+        "sportec": -0.0037839202394989724,
+        "metrica": -0.004137445806450701,
+        "skillcorner": 0.0018231438455466598
+      }
+    }
+  ],
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3",
+    "torch": "2.8.0+cpu",
+    "python": "3.12.14"
+  },
+  "model_sha256": {
+    "matched": "daae4b2719b46fa9d53437c16517ebb7464d0cc286e9d2a5b44fc20e265465fc",
+    "gap": "daeb8ad76f25fde1b0670d98e582d4fdeffa63db07088321326ec5981cf8ce1e",
+    "gap_dedup": "746ef3e7dfd0f9e90c52d637bb6fca281b76e1cba318f15de57ae208593f2285"
+  },
+  "protocol_sha256": "364d565509b992a6c58886080e7cb071bf7666b7292be3306afb41b9dc32d83d",
+  "calibration_sha256": "dec94f304b145d0c8c82793c699de20ddfe0f62ecd75e9ae0261d7310a8bd308",
+  "cache_reuse": {
+    "reused_training_caches": 12,
+    "same_spec": true,
+    "same_external_inputs": true,
+    "same_feature_source": true,
+    "difference": "Runner gained independent fitting/evaluation shards before any model fit or development scoring",
+    "organizer_scored": false
+  },
+  "aggregation": "Equal provider mean; matches and view seeds equally weighted within provider. Null gap metrics exclude providers without eligible gap-live frames.",
+  "limitations": "Five reused development matches; pooled D/team training; shared simulation family; three view seeds but one training draw; no independent broadcast confirmation or organizer label scoring."
+}

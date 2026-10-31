@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "baseline_probability_emissions_identical_to_candidate": 15,
+    "comparison_tolerance_absolute": 1e-12,
+    "cost3_baseline_rows_replayed": 15,
+    "custom_dynamic_decoder_matches_saved_baseline_and_candidate_predictions": 30,
+    "independent_provider_view_aggregates_match_saved_report": true,
+    "mismatches": 0,
+    "per_cell_official_metric_and_spell_diagnostic_rows_match": 30,
+    "saved_rows_replayed": 30
+  },
+  "method": "Loaded saved NPZ probabilities/predictions/edge_costs and frozen development evaluation caches. Reimplemented Viterbi recurrence independently for both cost-3 and time-varying H/A costs; checked saved candidate emissions equal baseline emissions; recomputed per-cell official development metrics and spell diagnostics from saved predictions; recomputed per-provider/per-view and equal-provider means independently.",
+  "provenance": {
+    "declaration_sha256": "8a5a125cfdad8073968af389ae631334b451b38413a6c0e4a58d1b6f9b09cbcf",
+    "fit_receipt_sha256": "a05d5c16289b076042fc3283d9b0cd1b784b8454ce2cf8653e8bad48908f02df",
+    "model_seal_sha256": "9413d64264292b306444738febc77bdd0c10783a9d9653896703a1863148d2f9",
+    "saved_runs_sha256": "e134815997e538f8f73d7d43d1b9302b1bc44d60e00989c320c28a5e2e8bc7c6"
+  },
+  "replayed_utc": "2026-10-29",
+  "scope": "Independent replay of saved predictions and scorer only; no model inference, refitting, public labels, or organizer gate.",
+  "status": "passed",
+  "study_id": "turnover_decoder_v1"
+}

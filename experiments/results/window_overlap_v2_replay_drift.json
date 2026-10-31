@@ -1,0 +1,38 @@
+{
+  "study_id": "window_overlap_v2",
+  "recorded_utc": "2026-10-29T01:50:01Z",
+  "purpose": "Pre-score numerical replay diagnostic; no candidate or baseline metrics computed.",
+  "cell": {
+    "source": "sportec",
+    "match": "J03WOY",
+    "view": "clean",
+    "replicate": "clean"
+  },
+  "cached_feature_record": {
+    "path": "experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+    "sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+    "dtype": "float32",
+    "reconstructed_all_x_features_match_including_nan": true,
+    "names_indices_and_period_blocks_match": true
+  },
+  "checkpoint_replay": {
+    "2026": {
+      "saved_probability_sha256": "01ebf52aae3bb0fb20a4416c66468a4560d7a2bf31bd4c94461374c3f498c4a7",
+      "replayed_probability_sha256": "f97993e0522081ca553c39b04904ac772406d9b951c5a9ee29d2787457e38cad",
+      "max_absolute_difference": 4.172325134277344e-7,
+      "different_values": 337494,
+      "total_values": 427608
+    },
+    "2027": {
+      "saved_probability_sha256": "54581df8147b071d86c625e7096e117391a3a3641fd9958d1039905cc1c54405",
+      "replayed_probability_sha256": "5ad2ecb3d25b4608110af3c6df9116f12f333f552792cdcdc79ee5ed9e30fd17",
+      "max_absolute_difference": 6.854534149169922e-7,
+      "different_values": 348640,
+      "total_values": 427608
+    }
+  },
+  "interpretation": "The cached float32 feature arrays are exact, but re-inference differs by sub-micro probability rounding. The v3 candidate therefore uses the frozen archived per-seed original probabilities as the exact control side and only infers the shifted tiling.",
+  "organizer_labels_read": false,
+  "organizer_scored": false,
+  "metrics_computed": false
+}

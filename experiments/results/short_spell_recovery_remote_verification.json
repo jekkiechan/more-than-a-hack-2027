@@ -1,0 +1,33 @@
+{
+  "verified_utc": "2026-10-29T04:03:20.586452+00:00",
+  "repository": "jekkiechan/mtah-data",
+  "branch": "experiments/short-spell-recovery-v1",
+  "archive_commit": "0ff246b229f9310d249af9aa4624c32b027d2810",
+  "manifest": "short_spell_recovery_cache_manifest.json",
+  "manifest_sha256": "980375b96f44b094c9f49a8848a30b1cd14a757d34d9a3c8f2ed82021b664c89",
+  "files_verified": 420,
+  "bytes_verified": 452899231,
+  "fresh_remote_clone": true,
+  "all_size_and_sha256_checks_passed": true,
+  "models_and_frame_outputs_kept_private": true,
+  "organizer_assets_included": false,
+  "studies": [
+    "native_short_spell_v1",
+    "turnover_decoder_v1",
+    "turnover_decoder_v2_unit_weights"
+  ],
+  "dependencies": [
+    "objective_alignment_cache_manifest.json",
+    "objective_ensemble_cache_manifest.json",
+    "seed_gap_context_cache_manifest.json"
+  ],
+  "previous_archive_commit": "723101824d4244d91ea37b82168923200f36784f",
+  "authorization": "User explicitly authorized private upload and continuation of short-spell research.",
+  "source_snapshot_note": "Snapshot captures completed frozen study source and evidence before final public delivery notes; later STATUS/index/proposed-next-work updates are tracked in the public PR.",
+  "historical_local_receipts": "The per-study artifact receipts describe local-only availability at their creation time and remain frozen; this receipt supersedes that availability status without changing their hashes.",
+  "restore_commands": [
+    "git clone --single-branch --branch experiments/short-spell-recovery-v1 https://github.com/jekkiechan/mtah-data.git mtah-short-spell-cache",
+    "python mtah-short-spell-cache/scripts/competition_cache.py fetch --manifest short_spell_recovery_cache_manifest.json --data-dir /path/to/research-repo/data"
+  ],
+  "dependency_restore_note": "The three dependency manifests are present on the same archive commit; fetch/restore each with competition_cache.py as needed before rerunning inference or fitting. Fetching only the short-spell manifest restores the saved results, heads, native geometry and TRAIN priors, not all original raw inputs or backbone checkpoints."
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "event": "execution_transport_unavailable_then_recovered",
+    "observed_utc_date": "2026-10-28",
+    "details": "Execution access temporarily unavailable around09:46UTC; training child processes and completed files remained available on recovery. Some original exec-session handles were lost."
+  },
+  {
+    "event": "launcher_resume",
+    "details": "BiLSTM launcher observed defunct after its third completed checkpoint; TCN launcher observed defunct before any fit. Exact exit codes unavailable; exits followed lost stdout transports. After verifying no corresponding live child, restarted identical launch wrappers detached with persistent logs. Existing complete checkpoints are verified and skipped. Model source, seeds, epoch/update budgets unchanged; no validation scores read.",
+    "approximate_utc_window": "2026-10-28 09:52\u201309:54 UTC"
+  },
+  {
+    "event": "transformer_launcher_resume",
+    "approximate_utc_window": "2026-10-28 09:56\u201309:58 UTC",
+    "details": "Transformer launcher observed defunct after completed Sportec seed2026 fit. Child exited, checkpoint and receipt verified; resumed same wrapper detached to persistent log, skipping completed checkpoints. No model retraining or configuration change."
+  },
+  {
+    "event": "transformer_queue_reorder",
+    "details": "Metrica seed 2027 launched through a one-off sharing the same two-worker locks while the original Transformer wrapper handled Sportec seed 2027 and Metrica seed 2026. Original wrapper verified and skipped the completed Metrica 2027 checkpoint. Exactly 18 candidate fits completed; no duplicate fit, altered budget or pre-seal score."
+  }
+]

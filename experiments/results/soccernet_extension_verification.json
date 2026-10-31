@@ -1,0 +1,96 @@
+{
+  "source_commit": "6e97f496a4ab2d01cccf76a5fdc795562c56bc58",
+  "verified_at_utc": "2026-10-30T01:49:14.633683+00:00",
+  "counts": {
+    "eligible_hash_selected_clips": 2880,
+    "feature_names": 204,
+    "feature_schema_sha256": "957c8be7bdc3fd8e13926c6c7ac53eaad2b30c6d2e764d6660c8d827f3105cd0",
+    "initial_models_checked": 8,
+    "official_train_game_ids": 45,
+    "official_train_metadata_rows": 62159,
+    "prepared_records": 2877,
+    "raw_clips_recomputed": 16,
+    "selected_clips_rejected": 3
+  },
+  "saved_metric_and_selection_replay": {
+    "aggregate_and_seed_summaries_independently_recomputed": true,
+    "all_row_fields_match_within": 1e-12,
+    "automatic_adoption": false,
+    "cells": 15,
+    "complete": true,
+    "frozen_checkpoint_cohort_verified": 18,
+    "historical_cache_files_verified": 15,
+    "improvement_screen_passes": false,
+    "maximum_numeric_difference": 0.0,
+    "official_metric_rows_replayed": 180,
+    "organizer_reference_access": false,
+    "report_rows": 180,
+    "saved_predictions_decoded_exactly": 180,
+    "selected_arm": "gar50",
+    "selected_arm_guardrail_eligible": true,
+    "selection_and_all_guardrails_independently_recomputed": true,
+    "unique_evaluation_keys": 180
+  },
+  "probability_runtime_validation": {
+    "evaluation_guard_change": "only atol 1e-7 -> 1e-6 in baseline numeric comparison",
+    "evaluation_runtime_amendment_sha256": "6e3b84f973778ed815b56bed28038a3b673a9b064865549626de6455962e17bb",
+    "executed_function_bytes_match_declared_edits": true,
+    "model_probability_decoder_metric_selection_changes": false,
+    "organizer_reference_access": false,
+    "probability_guard_change": "only atol 2e-7 -> 1e-6 in categorical sum assertion",
+    "probability_runtime_amendment_sha256": "e2f0c2477501af81caf508e6e194ff901d16adb2214d9daf0bd161ea0e77c4c4"
+  },
+  "prefit_checks": {
+    "all_per_clip_temporal_chunks_stay_within_local_period_blocks": true,
+    "all_prepared_sample_ids_match_official_train_only": true,
+    "all_records_144_native_24_sampled_center_HA_only": true,
+    "fit_or_scoring_not_performed": true,
+    "frozen_source_hashes_match": true,
+    "native_visible_masks_consistent_with_invalid_rows": true,
+    "new_feature_names_exactly_match_all_initial_models": true,
+    "no_D_or_unknown_feature_schema_deviation": true,
+    "prepared_cache_and_manifest_seals_match_declaration": true,
+    "selection_independently_recomputed_from_train_metadata": true,
+    "sixteen_raw_tar_clips_recomputed_exactly": true,
+    "source_commit_available": true,
+    "three_rejected_centers_confirmed_conflicting": true,
+    "train_acquisition_receipts_and_file_sizes_match": true,
+    "valid_test_and_organizer_inputs_not_opened": true
+  },
+  "model_checks": {
+    "GAR_training_game_exposure_cohort_and_totals_exact": true,
+    "all_18_match_frozen_old_data_cohort": true,
+    "all_18_model_files_match_receipts_and_frozen_seal": true,
+    "all_18_use_256_updates_and_declared_mixture": true,
+    "all_initial_checkpoint_hashes_match_declaration": true,
+    "all_initial_fold_normalizers_exact": true,
+    "identifier_receipt_recovery_changed_no_weights_features_or_targets": true,
+    "provider_exclusions_hold": true
+  },
+  "identifier_conversion": {
+    "all_completed_model_hashes_equal_pre_recovery_hashes": true,
+    "all_other_record_fields_equal_exactly": true,
+    "model_or_feature_retraining": false,
+    "only_changed_fields": [
+      "source",
+      "match",
+      "clip_id"
+    ],
+    "prepared_cache_seal_unchanged": true,
+    "records_checked": 2877,
+    "runtime_helper": "scripts/soccernet_extension_runtime.py:scalar_ids"
+  },
+  "probability_checks": {
+    "all_probabilities_finite_and_bounded": true,
+    "all_saved_predictions_valid_classes": true,
+    "all_tuned_P_D_arrays_exactly_match_baseline": true,
+    "arrays_checked": 180,
+    "arrays_per_cell": 12,
+    "cells_checked": 15,
+    "complete": true,
+    "expected_cells": 15,
+    "max_categorical_row_sum_error": 1.7881393432617188e-07,
+    "maximum_allowed_error": 1e-06
+  },
+  "scope": "Completed sparse-clip stage only; capacity/segmented-data continuation and public diagnostic remain pending."
+}

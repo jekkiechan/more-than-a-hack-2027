@@ -1,0 +1,81 @@
+{
+  "archive": {
+    "base_dependency_bytes": 2013304812,
+    "base_dependency_files": 109,
+    "base_dependency_manifest": "skillcorner_removal_v1_base_dependencies_manifest.json",
+    "base_dependency_manifest_sha256": "9ba9699943eb6eff8adf9842133daba670b3ceaa1e6dd5227a282ee213eb66fd",
+    "bytes": 233525134,
+    "files": 261,
+    "lfs_bytes": 229752172,
+    "lfs_files": 37,
+    "manifest": "skillcorner_removal_v1_cache_manifest.json",
+    "manifest_sha256": "8622f644e60e478d8e1ce6f7e6b2757aedbf9c356f2e2e6e6e0b9f99111c24fc",
+    "runtime_python_source_bytes": 1911905,
+    "runtime_python_source_count": 160,
+    "source_snapshot_manifest": "experiments/skillcorner_removal_v1/source_snapshot_manifest.json",
+    "source_snapshot_manifest_sha256": "e1ec714d2894df872b33a1045721c662f4db7feb9d7f59afa0bf5a8b2651fd69"
+  },
+  "artifact": "skillcorner_removal_v1_private_archive",
+  "base_commit": "fdd881ead58fc1b68135668ba8c17abf53a6000f",
+  "branch": "archive/skillcorner-removal-v1",
+  "created_utc": "2026-10-29T09:43:01.372733+00:00",
+  "local_commit": "6abe1fc20090265c75b3246baf05657d7e3474e5",
+  "local_restore": {
+    "destination": "/workspace/removal_verification/cold_restore_skillcorner_removal_v1_6abe1fc",
+    "organizer_input_included": false,
+    "organizer_reference_labels_included": false,
+    "receipt_path": "/workspace/removal_verification/archive_manifest_receipt.json",
+    "receipt_sha256": "4ccd2b046621aa4054e0a3b12fb88d61b8b8e215f8dcd856fe37b8baf1e9a260",
+    "scope": "Local-only restore using the official scripts/competition_cache.py restore helper from the local committed archive worktree, with reused base inputs sourced from the previously restored canonical data directory. Not a remote clone or remote restore.",
+    "unique_bytes": 2246829946,
+    "unique_files": 370,
+    "verified": true
+  },
+  "local_worktree": "/workspace/experiment_restore/mtah-data-removal",
+  "new_payload_remote_rejection": false,
+  "private_upload_attempted": false,
+  "remote_restore_verified": false,
+  "remote_status": "This payload was not uploaded. The prior destination-specific approval requirement remains the reason the archive is local; no new rejection occurred for this payload.",
+  "remote_uploaded": false,
+  "repository": "https://github.com/jekkiechan/mtah-data.git",
+  "restore_commands": [
+    "python scripts/competition_cache.py restore --manifest skillcorner_removal_v1_cache_manifest.json --data-dir /path/to/code/data",
+    "python scripts/competition_cache.py restore --manifest skillcorner_removal_v1_base_dependencies_manifest.json --data-dir /path/to/code/data"
+  ],
+  "schema_version": 1,
+  "status": "local_archive_ready_not_uploaded",
+  "study": {
+    "active_baseline_changed": false,
+    "adopt_skillcorner_removal": false,
+    "automatic_promotion": false,
+    "declaration_sha256": "dcd2e6c4518599d8d3aa95aba8ddfceefc5fa9a32a74f5fbf0445b9e8f91a72c",
+    "new_fits": 6,
+    "organizer_inputs_labels_or_scores_used": false,
+    "prediction_cells": 30,
+    "primary_clean_gate_passed": false,
+    "primary_clean_required_delta": 0.01,
+    "primary_clean_spell_f1_delta": -0.007419,
+    "score_rows": 180,
+    "summary": "The predeclared primary clean removal gate failed; retain the SkillCorner-inclusive 13-match baseline. Feed-like and pooled tactical analyses are secondary evidence."
+  },
+  "verification": {
+    "approximate_reconstruction_is_exact": false,
+    "approximate_reconstruction_sha256": "0c87268bc7ef6b6e0abbd45856dbb30e13e43503e65309a77da6413c0694dfe5",
+    "corrected_verifier_sha256": "96986885efd4ecf3a18cb365a876eeecdeccc970bd22e8b9c26b87e4168ffdad",
+    "exact_executed_verifier_source_recovered": false,
+    "executed_verifier_hash_recorded_in_failure_log": "0a9eb4aaf73a0ae4f0c064b465ea42bea43336d6ec1387cfdc3001a5342f50f3",
+    "external_check": "Passed 30 cells / 180 metrics, 60 candidate/parity probability checks, 30 archived-primary checks, and 15 historical score checks. The aggregation/gate tail resumed from sealed outputs after a checker-only NameError; inference was not rerun.",
+    "external_correction_audit_sha256": "d815f9c450108ce0b34dac239f867fa276ba580f3e3cb4eb0a3335aa8dd8414c",
+    "external_receipt_sha256": "75876392c015caa4860ccd83c0db82b97aa11bb78023073932bb94e443843af8",
+    "failure_log_sha256": "fd3e50470633a1cf7eccfad141d38f7df9be5a5a0691868deff335b919f31960",
+    "full_preflight_sha256": "05e50821b17a148006d9ce1cf3dae1b13041f8a3778586cb0f813c0ed02942fd",
+    "static_preflight_sha256": "41d97691e1fb3b09026d683a175cd3705d08fed1253feaa39fbcae68cc190865",
+    "test_status": {
+      "bundled_format": "passed",
+      "core_tests": 265,
+      "file_backed_contract": "passed",
+      "root_integrity_tests": 18,
+      "total_tests": 283
+    }
+  }
+}

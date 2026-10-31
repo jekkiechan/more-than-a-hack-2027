@@ -1,4 +1,8 @@
-# Possession challenge work plan
+# Historical possession challenge setup
+
+This is the original task/setup record, not the active work queue. Resume at
+[current research status](research/STATUS.md) and the [experiment index](research/EXPERIMENTS.md).
+Statements about locally available assets and branches describe the dated session below.
 
 Status: 2026-10-24. Based on upstream commit `f8f2629`.
 
