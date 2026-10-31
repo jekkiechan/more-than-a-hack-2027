@@ -1,0 +1,911 @@
+{
+  "candidate_count": 4,
+  "declaration_sha256": "50685cbbf136acf99ddc2c07cd041db50b55b4c7b2c8f4452ddbeaab22b22908",
+  "full_report_sha256": "23858874fc7fef863efd35f7033dd0fac2d1524921019eb96f405d29785e639b",
+  "interpretation": "Nested whole-match development calibration on previously exposed Sportec TRAIN only; not fresh confirmation, not full-provider transfer.",
+  "outer_folds": [
+    {
+      "event_audit": {
+        "event_rows": 1715,
+        "event_rows_without_control_operation": 64,
+        "ops_challenge": 165,
+        "ops_control": 1263,
+        "ops_dead_start": 121,
+        "ops_restart": 102,
+        "top_level_types:BallClaiming": 29,
+        "top_level_types:BallDeflection": 1,
+        "top_level_types:Caution": 3,
+        "top_level_types:ChanceWithoutShot": 2,
+        "top_level_types:CornerKick": 10,
+        "top_level_types:Delete": 108,
+        "top_level_types:FinalWhistle": 2,
+        "top_level_types:Foul": 19,
+        "top_level_types:FreeKick": 20,
+        "top_level_types:GoalDisallowed": 1,
+        "top_level_types:GoalKick": 14,
+        "top_level_types:KickOff": 5,
+        "top_level_types:Offside": 2,
+        "top_level_types:OtherBallAction": 287,
+        "top_level_types:OtherPlayerAction": 1,
+        "top_level_types:Penalty": 1,
+        "top_level_types:PenaltyNotAwarded": 2,
+        "top_level_types:Play": 883,
+        "top_level_types:PlayerNotSentOff": 3,
+        "top_level_types:PossessionLossBeforeGoal": 1,
+        "top_level_types:RefereeBall": 2,
+        "top_level_types:Run": 3,
+        "top_level_types:ShotAtGoal": 20,
+        "top_level_types:SitterPrevented": 1,
+        "top_level_types:SpectacularPlay": 1,
+        "top_level_types:Substitution": 10,
+        "top_level_types:TacklingGame": 229,
+        "top_level_types:ThrowIn": 52,
+        "top_level_types:VideoAssistantAction": 3
+      },
+      "inner_candidate_scores": [
+        {
+          "config": {
+            "id": "contest_hold_tail_0s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7651982470724138,
+              "match": "J03WN1",
+              "spell_f1_mean": 0.4797297297297297
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7527713734920286,
+              "match": "J03WOH",
+              "spell_f1_mean": 0.44965893587994543
+            }
+          ],
+          "mean_macro_f1": 0.7589848102822212,
+          "mean_spell_f1": 0.4646943328048376
+        },
+        {
+          "config": {
+            "id": "contest_hold_tail_3s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7690805420462455,
+              "match": "J03WN1",
+              "spell_f1_mean": 0.47761852260198456
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7524697774288645,
+              "match": "J03WOH",
+              "spell_f1_mean": 0.4407843137254902
+            }
+          ],
+          "mean_macro_f1": 0.7607751597375549,
+          "mean_spell_f1": 0.4592014181637374
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_0s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7646271925038269,
+              "match": "J03WN1",
+              "spell_f1_mean": 0.4232380952380952
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7521792124048723,
+              "match": "J03WOH",
+              "spell_f1_mean": 0.3484848484848485
+            }
+          ],
+          "mean_macro_f1": 0.7584032024543497,
+          "mean_spell_f1": 0.38586147186147185
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_3s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7684297751187236,
+              "match": "J03WN1",
+              "spell_f1_mean": 0.4128558310376492
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7518481883695528,
+              "match": "J03WOH",
+              "spell_f1_mean": 0.3332650972364381
+            }
+          ],
+          "mean_macro_f1": 0.7601389817441382,
+          "mean_spell_f1": 0.37306046413704363
+        }
+      ],
+      "inner_training_matches": [
+        "J03WN1",
+        "J03WOH"
+      ],
+      "outer_match": "J03WMX",
+      "outer_metrics": {
+        "accuracy": 0.7749491323381312,
+        "alive_dead_f1": 0.908031622364803,
+        "bootstrap_high": null,
+        "bootstrap_low": null,
+        "bootstrap_n": 0,
+        "confusion": [
+          [
+            30384,
+            5837,
+            2015,
+            875
+          ],
+          [
+            6941,
+            36091,
+            1794,
+            1432
+          ],
+          [
+            4426,
+            5512,
+            46642,
+            4018
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "fragmentation": 0.7850162866449512,
+        "gt_home_share": 0.4581405428199932,
+        "gt_home_share_spells": 0.4581405428199932,
+        "gt_mean_spell_duration_s": 6.682504892367906,
+        "kappa": 0.6675145689552109,
+        "label_coverage": 1.0,
+        "macro_f1": 0.787298921782332,
+        "macro_f1_present_classes": 0.787298921782332,
+        "mean_spell_duration_s": 9.944270833333334,
+        "n_abstain_on_graded": 6325,
+        "n_frames": 145968,
+        "n_graded": 145967,
+        "n_gt_segments": 614,
+        "n_gt_spells": 511,
+        "n_pred_segments": 482,
+        "n_pred_spells": 384,
+        "original_n_frames": 145967,
+        "per_class": {
+          "A": {
+            "f1": 0.770368631134069,
+            "precision": 0.7607715008431704,
+            "recall": 0.7802109905313676,
+            "support": 46258
+          },
+          "D": {
+            "f1": 0.8400255742960315,
+            "precision": 0.9245010009712394,
+            "recall": 0.7696953694841414,
+            "support": 60598
+          },
+          "H": {
+            "f1": 0.7515025599168954,
+            "precision": 0.7277430480707049,
+            "recall": 0.7768658433688732,
+            "support": 39111
+          }
+        },
+        "period_or_time_separators": 1,
+        "pred_home_share": 0.4681077687210593,
+        "sampling_fps": 25.0,
+        "share_defined": true,
+        "share_err": 0.009967225901066079,
+        "spell_bootstrap_high": null,
+        "spell_bootstrap_low": null,
+        "spell_count_error": -127,
+        "spell_f1": {
+          "0.3": {
+            "f1": 0.5698324022346368,
+            "n_matched": 255,
+            "n_missed": 256,
+            "n_spurious": 129,
+            "precision": 0.6640625,
+            "recall": 0.49902152641878667
+          },
+          "0.4": {
+            "f1": 0.4893854748603352,
+            "n_matched": 219,
+            "n_missed": 292,
+            "n_spurious": 165,
+            "precision": 0.5703125,
+            "recall": 0.42857142857142855
+          },
+          "0.5": {
+            "f1": 0.3932960893854749,
+            "n_matched": 176,
+            "n_missed": 335,
+            "n_spurious": 208,
+            "precision": 0.4583333333333333,
+            "recall": 0.34442270058708413
+          },
+          "0.6": {
+            "f1": 0.31508379888268156,
+            "n_matched": 141,
+            "n_missed": 370,
+            "n_spurious": 243,
+            "precision": 0.3671875,
+            "recall": 0.2759295499021526
+          },
+          "0.7": {
+            "f1": 0.23687150837988827,
+            "n_matched": 106,
+            "n_missed": 405,
+            "n_spurious": 278,
+            "precision": 0.2760416666666667,
+            "recall": 0.20743639921722112
+          }
+        },
+        "spell_f1_at_headline": 0.3932960893854749,
+        "spell_f1_mean": 0.4008938547486034,
+        "spell_iou_headline": 0.5,
+        "team_acc_both_alive": 0.8387695103024492,
+        "team_acc_gt_alive": 0.7786784429945296,
+        "three_class_benchmark": true,
+        "transitions": {
+          "12": {
+            "f1": 0.18498168498168496,
+            "mean_abs_latency": 6.4950495049504955,
+            "mean_latency": 2.633663366336634,
+            "median_latency": 5.0,
+            "n_ambiguous": 0,
+            "n_gt": 612,
+            "n_matched": 101,
+            "n_missed": 511,
+            "n_pred": 480,
+            "n_spurious": 379,
+            "p90_abs_latency": 11.0,
+            "precision": 0.21041666666666667,
+            "recall": 0.1650326797385621
+          },
+          "25": {
+            "f1": 0.3553113553113553,
+            "mean_abs_latency": 12.525773195876289,
+            "mean_latency": 6.845360824742268,
+            "median_latency": 9.0,
+            "n_ambiguous": 0,
+            "n_gt": 612,
+            "n_matched": 194,
+            "n_missed": 418,
+            "n_pred": 480,
+            "n_spurious": 286,
+            "p90_abs_latency": 23.0,
+            "precision": 0.4041666666666667,
+            "recall": 0.31699346405228757
+          }
+        }
+      },
+      "selected_config": {
+        "id": "contest_hold_tail_0s",
+        "nonchanging_duel": "hold",
+        "out_tail_grace_seconds": 0.0
+      }
+    },
+    {
+      "event_audit": {
+        "event_rows": 1363,
+        "event_rows_without_control_operation": 45,
+        "events_outside_tracking_coverage": 1,
+        "ops_challenge": 129,
+        "ops_control": 963,
+        "ops_dead_start": 125,
+        "ops_restart": 101,
+        "top_level_types:BallClaiming": 23,
+        "top_level_types:BallDeflection": 1,
+        "top_level_types:Caution": 11,
+        "top_level_types:CautionTeamofficial": 2,
+        "top_level_types:ChanceWithoutShot": 4,
+        "top_level_types:CornerKick": 7,
+        "top_level_types:Delete": 83,
+        "top_level_types:FinalWhistle": 2,
+        "top_level_types:Foul": 24,
+        "top_level_types:FreeKick": 27,
+        "top_level_types:GoalKick": 16,
+        "top_level_types:KickOff": 5,
+        "top_level_types:Offside": 3,
+        "top_level_types:OtherBallAction": 247,
+        "top_level_types:PenaltyNotAwarded": 4,
+        "top_level_types:Play": 629,
+        "top_level_types:PlayerNotSentOff": 2,
+        "top_level_types:PossessionLossBeforeGoal": 1,
+        "top_level_types:RefereeBall": 3,
+        "top_level_types:ShotAtGoal": 20,
+        "top_level_types:SpectacularPlay": 2,
+        "top_level_types:Substitution": 7,
+        "top_level_types:TacklingGame": 193,
+        "top_level_types:ThrowIn": 46,
+        "top_level_types:VideoAssistantAction": 1
+      },
+      "inner_candidate_scores": [
+        {
+          "config": {
+            "id": "contest_hold_tail_0s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.787298921782332,
+              "match": "J03WMX",
+              "spell_f1_mean": 0.4008938547486034
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7527713734920286,
+              "match": "J03WOH",
+              "spell_f1_mean": 0.44965893587994543
+            }
+          ],
+          "mean_macro_f1": 0.7700351476371803,
+          "mean_spell_f1": 0.4252763953142744
+        },
+        {
+          "config": {
+            "id": "contest_hold_tail_3s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7866761799410685,
+              "match": "J03WMX",
+              "spell_f1_mean": 0.3965179542981502
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7524697774288645,
+              "match": "J03WOH",
+              "spell_f1_mean": 0.4407843137254902
+            }
+          ],
+          "mean_macro_f1": 0.7695729786849665,
+          "mean_spell_f1": 0.4186511340118202
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_0s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7868174980696877,
+              "match": "J03WMX",
+              "spell_f1_mean": 0.3349419124218052
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7521792124048723,
+              "match": "J03WOH",
+              "spell_f1_mean": 0.3484848484848485
+            }
+          ],
+          "mean_macro_f1": 0.76949835523728,
+          "mean_spell_f1": 0.3417133804533269
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_3s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.78624501848544,
+              "match": "J03WMX",
+              "spell_f1_mean": 0.3280276816608997
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7518481883695528,
+              "match": "J03WOH",
+              "spell_f1_mean": 0.3332650972364381
+            }
+          ],
+          "mean_macro_f1": 0.7690466034274964,
+          "mean_spell_f1": 0.33064638944866886
+        }
+      ],
+      "inner_training_matches": [
+        "J03WMX",
+        "J03WOH"
+      ],
+      "outer_match": "J03WN1",
+      "outer_metrics": {
+        "accuracy": 0.7671109980856309,
+        "alive_dead_f1": 0.8654786421776713,
+        "bootstrap_high": null,
+        "bootstrap_low": null,
+        "bootstrap_n": 0,
+        "confusion": [
+          [
+            26742,
+            5998,
+            1273,
+            2408
+          ],
+          [
+            4702,
+            24335,
+            1349,
+            1570
+          ],
+          [
+            8131,
+            4473,
+            57516,
+            3064
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "fragmentation": 0.7940691927512356,
+        "gt_home_share": 0.5326498676455533,
+        "gt_home_share_spells": 0.5326498676455533,
+        "gt_mean_spell_duration_s": 5.47016,
+        "kappa": 0.6433266964564053,
+        "label_coverage": 1.0,
+        "macro_f1": 0.7651982470724138,
+        "macro_f1_present_classes": 0.7651982470724138,
+        "mean_spell_duration_s": 8.272268041237114,
+        "n_abstain_on_graded": 7042,
+        "n_frames": 141562,
+        "n_graded": 141561,
+        "n_gt_segments": 607,
+        "n_gt_spells": 500,
+        "n_pred_segments": 482,
+        "n_pred_spells": 388,
+        "original_n_frames": 141561,
+        "per_class": {
+          "A": {
+            "f1": 0.7290075192474761,
+            "precision": 0.699161064184336,
+            "recall": 0.7615158342721242,
+            "support": 31956
+          },
+          "D": {
+            "f1": 0.8628133391338264,
+            "precision": 0.9564002793574778,
+            "recall": 0.7859094884127679,
+            "support": 73184
+          },
+          "H": {
+            "f1": 0.7037738828359388,
+            "precision": 0.6757296272899558,
+            "recall": 0.7342467257900662,
+            "support": 36421
+          }
+        },
+        "period_or_time_separators": 1,
+        "pred_home_share": 0.5320579180166978,
+        "sampling_fps": 25.0,
+        "share_defined": true,
+        "share_err": 0.0005919496288555592,
+        "spell_bootstrap_high": null,
+        "spell_bootstrap_low": null,
+        "spell_count_error": -112,
+        "spell_f1": {
+          "0.3": {
+            "f1": 0.6554054054054055,
+            "n_matched": 291,
+            "n_missed": 209,
+            "n_spurious": 97,
+            "precision": 0.75,
+            "recall": 0.582
+          },
+          "0.4": {
+            "f1": 0.5765765765765766,
+            "n_matched": 256,
+            "n_missed": 244,
+            "n_spurious": 132,
+            "precision": 0.6597938144329897,
+            "recall": 0.512
+          },
+          "0.5": {
+            "f1": 0.49549549549549554,
+            "n_matched": 220,
+            "n_missed": 280,
+            "n_spurious": 168,
+            "precision": 0.5670103092783505,
+            "recall": 0.44
+          },
+          "0.6": {
+            "f1": 0.39864864864864863,
+            "n_matched": 177,
+            "n_missed": 323,
+            "n_spurious": 211,
+            "precision": 0.45618556701030927,
+            "recall": 0.354
+          },
+          "0.7": {
+            "f1": 0.2725225225225225,
+            "n_matched": 121,
+            "n_missed": 379,
+            "n_spurious": 267,
+            "precision": 0.3118556701030928,
+            "recall": 0.242
+          }
+        },
+        "spell_f1_at_headline": 0.49549549549549554,
+        "spell_f1_mean": 0.4797297297297297,
+        "spell_iou_headline": 0.5,
+        "team_acc_both_alive": 0.8267963805299707,
+        "team_acc_gt_alive": 0.7469909472483437,
+        "three_class_benchmark": true,
+        "transitions": {
+          "12": {
+            "f1": 0.2285714285714286,
+            "mean_abs_latency": 5.935483870967742,
+            "mean_latency": -0.5483870967741935,
+            "median_latency": -0.5,
+            "n_ambiguous": 0,
+            "n_gt": 605,
+            "n_matched": 124,
+            "n_missed": 481,
+            "n_pred": 480,
+            "n_spurious": 356,
+            "p90_abs_latency": 11.0,
+            "precision": 0.25833333333333336,
+            "recall": 0.2049586776859504
+          },
+          "25": {
+            "f1": 0.4626728110599079,
+            "mean_abs_latency": 12.147410358565738,
+            "mean_latency": -0.7848605577689243,
+            "median_latency": -1.0,
+            "n_ambiguous": 0,
+            "n_gt": 605,
+            "n_matched": 251,
+            "n_missed": 354,
+            "n_pred": 480,
+            "n_spurious": 229,
+            "p90_abs_latency": 21.0,
+            "precision": 0.5229166666666667,
+            "recall": 0.41487603305785126
+          }
+        }
+      },
+      "selected_config": {
+        "id": "contest_hold_tail_0s",
+        "nonchanging_duel": "hold",
+        "out_tail_grace_seconds": 0.0
+      }
+    },
+    {
+      "event_audit": {
+        "event_rows": 1389,
+        "event_rows_without_control_operation": 22,
+        "ops_challenge": 138,
+        "ops_control": 1003,
+        "ops_dead_start": 128,
+        "ops_restart": 98,
+        "top_level_types:BallClaiming": 48,
+        "top_level_types:Caution": 5,
+        "top_level_types:ChanceWithoutShot": 2,
+        "top_level_types:CornerKick": 6,
+        "top_level_types:Delete": 52,
+        "top_level_types:FinalWhistle": 2,
+        "top_level_types:Foul": 31,
+        "top_level_types:FreeKick": 32,
+        "top_level_types:GoalKick": 17,
+        "top_level_types:KickOff": 6,
+        "top_level_types:Nutmeg": 4,
+        "top_level_types:Offside": 3,
+        "top_level_types:OtherBallAction": 228,
+        "top_level_types:OtherPlayerAction": 1,
+        "top_level_types:Penalty": 1,
+        "top_level_types:PenaltyNotAwarded": 3,
+        "top_level_types:Play": 667,
+        "top_level_types:PossessionLossBeforeGoal": 3,
+        "top_level_types:RefereeBall": 2,
+        "top_level_types:Run": 2,
+        "top_level_types:ShotAtGoal": 26,
+        "top_level_types:SitterPrevented": 1,
+        "top_level_types:SpectacularPlay": 1,
+        "top_level_types:Substitution": 10,
+        "top_level_types:TacklingGame": 198,
+        "top_level_types:ThrowIn": 36,
+        "top_level_types:VideoAssistantAction": 2
+      },
+      "inner_candidate_scores": [
+        {
+          "config": {
+            "id": "contest_hold_tail_0s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.787298921782332,
+              "match": "J03WMX",
+              "spell_f1_mean": 0.4008938547486034
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7651982470724138,
+              "match": "J03WN1",
+              "spell_f1_mean": 0.4797297297297297
+            }
+          ],
+          "mean_macro_f1": 0.7762485844273729,
+          "mean_spell_f1": 0.44031179223916656
+        },
+        {
+          "config": {
+            "id": "contest_hold_tail_3s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7866761799410685,
+              "match": "J03WMX",
+              "spell_f1_mean": 0.3965179542981502
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7690805420462455,
+              "match": "J03WN1",
+              "spell_f1_mean": 0.47761852260198456
+            }
+          ],
+          "mean_macro_f1": 0.777878360993657,
+          "mean_spell_f1": 0.43706823845006737
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_0s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7868174980696877,
+              "match": "J03WMX",
+              "spell_f1_mean": 0.3349419124218052
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7646271925038269,
+              "match": "J03WN1",
+              "spell_f1_mean": 0.4232380952380952
+            }
+          ],
+          "mean_macro_f1": 0.7757223452867573,
+          "mean_spell_f1": 0.3790900038299502
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_3s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.78624501848544,
+              "match": "J03WMX",
+              "spell_f1_mean": 0.3280276816608997
+            },
+            {
+              "coverage": 1.0,
+              "macro_f1": 0.7684297751187236,
+              "match": "J03WN1",
+              "spell_f1_mean": 0.4128558310376492
+            }
+          ],
+          "mean_macro_f1": 0.7773373968020818,
+          "mean_spell_f1": 0.37044175634927445
+        }
+      ],
+      "inner_training_matches": [
+        "J03WMX",
+        "J03WN1"
+      ],
+      "outer_match": "J03WOH",
+      "outer_metrics": {
+        "accuracy": 0.7457256548165639,
+        "alive_dead_f1": 0.8722215665447107,
+        "bootstrap_high": null,
+        "bootstrap_low": null,
+        "bootstrap_n": 0,
+        "confusion": [
+          [
+            30058,
+            6565,
+            1511,
+            992
+          ],
+          [
+            5179,
+            24711,
+            1774,
+            1155
+          ],
+          [
+            10596,
+            3460,
+            47555,
+            3658
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "fragmentation": 0.8353174603174603,
+        "gt_home_share": 0.5438320939606643,
+        "gt_home_share_spells": 0.5438320939606643,
+        "gt_mean_spell_duration_s": 7.158706467661691,
+        "kappa": 0.6193271319977238,
+        "label_coverage": 1.0,
+        "macro_f1": 0.7527713734920286,
+        "macro_f1_present_classes": 0.7527713734920286,
+        "mean_spell_duration_s": 10.386586102719034,
+        "n_abstain_on_graded": 5805,
+        "n_frames": 137215,
+        "n_graded": 137214,
+        "n_gt_segments": 504,
+        "n_gt_spells": 402,
+        "n_pred_segments": 421,
+        "n_pred_spells": 331,
+        "original_n_frames": 137214,
+        "per_class": {
+          "A": {
+            "f1": 0.7315816741913996,
+            "precision": 0.7113945186549977,
+            "recall": 0.7529479874462963,
+            "support": 32819
+          },
+          "D": {
+            "f1": 0.8191440801316004,
+            "precision": 0.9353855232100708,
+            "recall": 0.7286001011199804,
+            "support": 65269
+          },
+          "H": {
+            "f1": 0.7075883661530856,
+            "precision": 0.6558156786594812,
+            "recall": 0.768235955630527,
+            "support": 39126
+          }
+        },
+        "period_or_time_separators": 1,
+        "pred_home_share": 0.5688664374635406,
+        "sampling_fps": 25.0,
+        "share_defined": true,
+        "share_err": 0.025034343502876255,
+        "spell_bootstrap_high": null,
+        "spell_bootstrap_low": null,
+        "spell_count_error": -71,
+        "spell_f1": {
+          "0.3": {
+            "f1": 0.5893587994542974,
+            "n_matched": 216,
+            "n_missed": 186,
+            "n_spurious": 115,
+            "precision": 0.6525679758308157,
+            "recall": 0.5373134328358209
+          },
+          "0.4": {
+            "f1": 0.5184174624829468,
+            "n_matched": 190,
+            "n_missed": 212,
+            "n_spurious": 141,
+            "precision": 0.5740181268882175,
+            "recall": 0.472636815920398
+          },
+          "0.5": {
+            "f1": 0.4638472032742155,
+            "n_matched": 170,
+            "n_missed": 232,
+            "n_spurious": 161,
+            "precision": 0.513595166163142,
+            "recall": 0.4228855721393035
+          },
+          "0.6": {
+            "f1": 0.38199181446111874,
+            "n_matched": 140,
+            "n_missed": 262,
+            "n_spurious": 191,
+            "precision": 0.4229607250755287,
+            "recall": 0.3482587064676617
+          },
+          "0.7": {
+            "f1": 0.2946793997271487,
+            "n_matched": 108,
+            "n_missed": 294,
+            "n_spurious": 223,
+            "precision": 0.32628398791540786,
+            "recall": 0.26865671641791045
+          }
+        },
+        "spell_f1_at_headline": 0.4638472032742155,
+        "spell_f1_mean": 0.44965893587994543,
+        "spell_iou_headline": 0.5,
+        "team_acc_both_alive": 0.8234330130951844,
+        "team_acc_gt_alive": 0.7612620751963305,
+        "three_class_benchmark": true,
+        "transitions": {
+          "12": {
+            "f1": 0.17806731813246468,
+            "mean_abs_latency": 5.2560975609756095,
+            "mean_latency": 0.012195121951219513,
+            "median_latency": 0.0,
+            "n_ambiguous": 0,
+            "n_gt": 502,
+            "n_matched": 82,
+            "n_missed": 420,
+            "n_pred": 419,
+            "n_spurious": 337,
+            "p90_abs_latency": 10.0,
+            "precision": 0.1957040572792363,
+            "recall": 0.16334661354581673
+          },
+          "25": {
+            "f1": 0.3887079261672095,
+            "mean_abs_latency": 13.027932960893855,
+            "mean_latency": 2.111731843575419,
+            "median_latency": 2.0,
+            "n_ambiguous": 0,
+            "n_gt": 502,
+            "n_matched": 179,
+            "n_missed": 323,
+            "n_pred": 419,
+            "n_spurious": 240,
+            "p90_abs_latency": 23.0,
+            "precision": 0.42720763723150357,
+            "recall": 0.3565737051792829
+          }
+        }
+      },
+      "selected_config": {
+        "id": "contest_hold_tail_0s",
+        "nonchanging_duel": "hold",
+        "out_tail_grace_seconds": 0.0
+      }
+    }
+  ],
+  "private_full_report_path": "data/experiments/provider_touch_sportec_train_nested_v1/full_scored_report.json",
+  "publication_scope": "Aggregate metrics only; per-interval match arrays omitted without recomputing scores.",
+  "selection_metric": "equal-match mean official spell_f1_mean; macro_f1 tie-break",
+  "study_id": "provider_touch_sportec_train_nested_v1",
+  "validity": "INVALID: kickoff clock origin; see v1_alignment_correction.json. Do not use for conclusions."
+}
