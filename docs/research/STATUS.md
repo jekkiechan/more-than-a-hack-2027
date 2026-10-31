@@ -113,6 +113,10 @@ capacity continuation; it is not a remote restoration archive. Source
 snapshots, weights, and verification artifacts remain local, with no private
 archive upload.
 
+## Label-free follow-up — 29 October 2026
+
+Three parallel pre-declared studies against the adopted ensemble, all with exact holdout parity and no organizer labels: [summary](../../experiments/LABEL_FREE_FOLLOWUP.md). **All no go.** Context-conditioned ball gaps score .5114 vs feed-like .4988 and hide fewer transitions, so feed-like stays the stress view. The competition prediction has 2.44 possessions/min, consistent with known feed-like under-segmentation; decoder cost 3 remains the holdout optimum. Target normalization loses .078/.094 feed-like/clean spell and self-training .003/.005. Retain the package and policy. Remaining lever: model-side short-spell/transition recall on 25 Hz feeds.
+
 ## Smart Tagging — 29 October 2026
 
 The [fixed Smart Tagging study](../../experiments/SMART_TAGGING_VALIDATION.md)
