@@ -41,9 +41,25 @@ Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
 `main`. Preserve `upstream` as `metrica-sports/more-than-a-hack-2027` when configured.
 Publish an authorized PR without another confirmation. Existing
 [CI/auto-merge](docs/CI.md) applies. Docs maintenance never promotes a model.
-After a promising experiment, update the
-[progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
-with dated scores, protocol, visualizations and adoption status.
+Whenever a promising or useful experiment completes, update and publish the
+[research progress site](https://more-than-a-hack-progress.buffhen.chatgpt.site/)
+as part of delivery. Useful negative results and diagnostics count, even when
+the model is not adopted. The site replaces the progress Page as the team-facing
+update destination; repository reports remain the source of evidence.
+
+- Use the Sites workflow and the existing project
+  `appgprj_6ae53c78f96081919913c25e24a6b637`; preserve its restricted audience.
+- Update Experiments with the question, method, matched controls, dated results,
+  interpretation, limitations, decision and links to the report/PR. Update
+  Progress and the model timeline when the findings change the research story;
+  update Data, Metrics or Method when their content changes.
+- Keep comparisons within the same evaluation protocol and distinguish adopted
+  models, completed experiments and proposals. Preserve failed guards and
+  separate historical/public diagnostics from matched development charts.
+- Use direct headings, a coherent narrative and useful visualizations. Verify
+  affected layouts and interactions on desktop and mobile, publish the update,
+  and include the site URL in the handoff. If access or deployment is blocked,
+  report the blocker and outstanding update instead of silently skipping it.
 
 Run commands from the repo root. Full suites need pinned experiment/SoccerNet
 dependencies and CPU PyTorch; activate the repo `.venv` when present (`python`
