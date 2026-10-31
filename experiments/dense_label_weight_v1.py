@@ -241,7 +241,9 @@ def verify_declared_inputs() -> dict:
 def frame_weight_vectors(records: list[dict]) -> tuple[list[np.ndarray], dict]:
     vectors = []
     summary = {"records": 0, "native_frames": 0, "sampled_frames": 0,
-               "ambiguous_native_frames": 0, "weighted_sampled_frames": 0,
+               "ambiguous_native_frames": 0, "known_sampled_frames": 0,
+               "weighted_sampled_frames": 0, "weighted_ha_frames": 0,
+               "weighted_d_frames": 0,
                "qualifying_boundary_count": 0, "native_mask_sha256": {}}
     for r in records:
         mask = ambiguous_native_mask(r)
@@ -256,13 +258,19 @@ def frame_weight_vectors(records: list[dict]) -> tuple[list[np.ndarray], dict]:
         summary["native_frames"] += int(len(mask))
         summary["sampled_frames"] += int(len(w))
         summary["ambiguous_native_frames"] += int(mask.sum())
-        summary["weighted_sampled_frames"] += int((w < 1).sum())
+        y_sample=np.asarray(r["y"])
+        known=np.isin(y_sample,(0,1,2))
+        ha=np.isin(y_sample,(0,1)); dead=(y_sample==2)
+        summary["known_sampled_frames"] += int(known.sum())
+        summary["weighted_sampled_frames"] += int(((w<1)&known).sum())
+        summary["weighted_ha_frames"] += int(((w<1)&ha).sum())
+        summary["weighted_d_frames"] += int(((w<1)&dead).sum())
         summary["qualifying_boundary_count"] += int(eligible.sum())
         vectors.append(w)
     summary["ambiguous_native_fraction"]=(summary["ambiguous_native_frames"]/summary["native_frames"]
                                            if summary["native_frames"] else 0.0)
-    summary["weighted_sampled_fraction"]=(summary["weighted_sampled_frames"]/summary["sampled_frames"]
-                                           if summary["sampled_frames"] else 0.0)
+    summary["weighted_sampled_fraction"]=(summary["weighted_sampled_frames"]/summary["known_sampled_frames"]
+                                           if summary["known_sampled_frames"] else 0.0)
     return vectors, summary
 
 
@@ -418,13 +426,15 @@ def run_fit(arm: str, fold: str, seed: int, records=None) -> dict:
     if model_path.exists() or receipt_path.exists(): raise ValueError("Fit artifacts already exist; no implicit rerun")
     teacher=joblib.load(control_cache(fold,seed)); old_records=old.load_old(fold)
     if records is None: records=dl.load_dense_records("train",output=RECORDS)
-    vectors,mask_info=frame_weight_vectors(records)
     start=time.monotonic()
     if arm=="control_D2":
+        mask_info={"applied":False}
         out=sn.train(teacher,old_records,records,width=96,lr=3e-4,seed=seed,steps=2048,
                      fraction=.5,batch_size=32,ha_target="dense",train_d=True,
                      require_full_native=True,log_every=256,verbose=True)
     else:
+        vectors,mask_info=frame_weight_vectors(records)
+        mask_info["applied"]=True
         out=train_weighted(teacher,old_records,records,vectors,seed=seed,steps=2048)
     model=out["model"]
     model_path.parent.mkdir(parents=True,exist_ok=True); FITS.mkdir(parents=True,exist_ok=True)
@@ -532,6 +542,19 @@ def require_control_gate() -> dict:
     gate=json.loads(path.read_text())
     if gate.get("passed") is not True:
         raise RuntimeError("Weight candidate blocked because D2 replay gate failed")
+    verify_declared_sources()
+    member_path=RESULTS/"dense_label_weight_v1_member_scores_control_D2.json"
+    ensemble_path=RESULTS/"dense_label_weight_v1_ensemble_scores_control_D2.json"
+    checks={
+        "declaration_sha256":sha256(RESULTS/"dense_label_weight_v1_declaration.json"),
+        "member_scores_sha256":sha256(member_path),
+        "ensemble_scores_sha256":sha256(ensemble_path),
+        "dense_train_manifest_sha256":sha256(RECORDS/"train/manifest.json"),
+        "raw_train_restore_receipt_sha256":sha256(RESULTS/"soccernet_huggingface_restore.json"),
+        "original_training_manifest_sha256":sha256(old.DATA/"experiments/objective_alignment_v1/predeclared.json"),
+    }
+    for key,actual in checks.items():
+        if gate.get(key)!=actual: raise RuntimeError(f"Control replay gate is stale or corrupted: {key}")
     return gate
 
 
@@ -710,7 +733,7 @@ def render_report(readout: dict) -> str:
             lines.append(f"| {arm} | {view} | {provider['metrica']['spell_f1']:.6f} | {provider['skillcorner']['spell_f1']:.6f} | {provider['sportec']['spell_f1']:.6f} |")
     lines += ["", "### Weight coverage", ""]
     if mask:
-        lines += [f"Across {mask['records']} dense records and {mask['native_frames']:,} native TRAIN frames, {mask['qualifying_boundary_count']:,} transitions qualified. The mask covered {mask['ambiguous_native_frames']:,} native frames ({mask['ambiguous_native_fraction']:.2%}); {mask['weighted_sampled_frames']:,} sampled H/A frames ({mask['weighted_sampled_fraction']:.2%}) received reduced weight.", ""]
+        lines += [f"Across {mask['records']} dense records and {mask['native_frames']:,} native TRAIN frames, {mask['qualifying_boundary_count']:,} transitions qualified. The mask covered {mask['ambiguous_native_frames']:,} native frames ({mask['ambiguous_native_fraction']:.2%}); {mask['weighted_sampled_frames']:,} known sampled frames ({mask['weighted_sampled_fraction']:.2%}) received reduced weight, including {mask['weighted_ha_frames']:,} H/A and {mask['weighted_d_frames']:,} D targets.", ""]
     else:
         lines += ["No candidate fit receipt was available.", ""]
     lines += ["## Interpretation and limits", "",

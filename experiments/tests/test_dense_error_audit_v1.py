@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from experiments.dense_error_audit_v1 import audit, audit_archive, frame_table
+from experiments.dense_error_audit_v1 import audit, audit_archive, frame_table, summarize_archives
 
 
 def rows(gt, pred, missing=None, segment="p1"):
@@ -60,10 +60,41 @@ class DenseErrorAuditTests(unittest.TestCase):
         self.assertEqual(report["match_segments"][0]["missed_dead_frames"], 1)
         self.assertEqual(len(report["archive_sha256"]), 64)
 
+    def test_summary_uses_equal_provider_and_match_rates_separate_from_raw_counts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            paths = []
+            def save(provider, match, seed, gt, pred):
+                path = Path(tmp) / f"{provider}_{match}_{seed}.npz"
+                n = len(gt)
+                np.savez_compressed(path, prediction=np.array(list(pred)), labels=np.array(list(gt)),
+                    period=np.ones(n), fps=np.array(25.), timestamps=np.arange(n)/25,
+                    ball_observed=np.ones(n, dtype=bool), source=np.array(provider),
+                    match=np.array(match), view=np.array("clean"), replicate=np.array("clean"),
+                    seed=np.array(str(seed)), arm=np.array("D2"), fold=np.array("fold"))
+                paths.append(path)
+            save("A", "a1", 2026, "H", "A")
+            save("A", "a1", 2027, "H", "H")
+            save("B", "b1", 2026, "H" * 100, "A" + "H" * 99)
+            cell = summarize_archives(paths)["cells"][0]
+        self.assertAlmostEqual(cell["provider_balanced_match_rates"]["wrong_team_rate_scored"], .255)
+        self.assertEqual(cell["raw_counts_across_archives"]["scored_frames"], 102)
+        self.assertEqual(cell["raw_counts_across_archives"]["wrong_team_frames"], 2)
+        self.assertIn("Raw frame/event totals are separate", summarize_archives.__doc__ or "")
+
     def test_rejects_noncontiguous_frames_inside_segment(self):
         f = rows("HHH", "HHH")
         f.loc[2, "frame"] = 4
         with self.assertRaisesRegex(ValueError, "contiguous"):
+            audit(f)
+
+    def test_rejects_infinite_or_mixed_segment_fps(self):
+        f = rows("HH", "HH")
+        f.loc[0, "fps"] = float("inf")
+        with self.assertRaisesRegex(ValueError, "fps"):
+            audit(f)
+        f = rows("HH", "HH")
+        f.loc[1, "fps"] = 24.0
+        with self.assertRaisesRegex(ValueError, "constant"):
             audit(f)
 
     def test_rejects_duplicate_frame(self):

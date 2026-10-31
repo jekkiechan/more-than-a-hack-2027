@@ -128,6 +128,11 @@ def _audit_segment(gt: np.ndarray, pred: np.ndarray, missing: np.ndarray, fps: f
                                       if missing_scored.any() else None),
         "false_d_rate_ball_observed": (float((false_d & ~missing).sum() / observed_scored.sum())
                                        if observed_scored.any() else None),
+        "wrong_team_frames_ball_missing": int((wrong_team & missing).sum()),
+        "wrong_team_frames_ball_observed": int((wrong_team & ~missing).sum()),
+        "false_d_frames_ball_missing": int((false_d & missing).sum()),
+        "false_d_frames_ball_observed": int((false_d & ~missing).sum()),
+        "scored_frames_ball_observed": int(observed_scored.sum()),
     }
 
 
@@ -166,7 +171,7 @@ def audit(frame: pd.DataFrame) -> dict:
         if not f[col].isin(LABELS).all():
             raise ValueError(f"{col} contains labels outside H/A/D/X")
     f["fps"] = pd.to_numeric(f["fps"], errors="coerce")
-    if f["fps"].isna().any() or (f["fps"] <= 0).any():
+    if f["fps"].isna().any() or not np.isfinite(f["fps"].to_numpy()).all() or (f["fps"] <= 0).any():
         raise ValueError("fps must contain positive finite values")
     key = ["provider", "match_id", "segment_id"]
     if f.duplicated(key + ["frame"]).any():
@@ -174,6 +179,8 @@ def audit(frame: pd.DataFrame) -> dict:
     groups = []
     for identity, g in f.groupby(key, sort=True):
         g = g.sort_values("frame")
+        if not np.allclose(g["fps"].to_numpy(), float(g["fps"].iloc[0]), rtol=0, atol=1e-9):
+            raise ValueError(f"fps must be constant within segment {identity}")
         frames = g["frame"].to_numpy()
         if not np.issubdtype(frames.dtype, np.integer) or (len(frames) > 1 and np.any(np.diff(frames) != 1)):
             raise ValueError(f"frames must be contiguous integers in {identity}")
@@ -212,10 +219,91 @@ def audit_archive(path: Path) -> dict:
         frame = frame_table(scalar("source"), scalar("match"), archive["labels"],
                             archive["prediction"], archive["ball_observed"], archive["period"],
                             archive["timestamps"], float(np.asarray(archive["fps"]).reshape(())))
-        details = {name: scalar(name) for name in ("view", "replicate", "seed", "arm", "fold")}
+        details = {name: scalar(name) for name in
+                   ("source", "match", "view", "replicate", "seed", "arm", "fold")}
         details["archive"] = path.name
         details["archive_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
     return {**details, **audit(frame)}
+
+
+def summarize_archives(paths) -> dict:
+    """Summarize matched archive realizations equally by provider, then match.
+
+    Raw totals are retained separately. For rates, seeds are averaged within a
+    provider-match first, matches within provider next, and providers equally
+    last. Views and corruption replicates remain separate cells.
+    """
+    reports = [audit_archive(Path(p)) for p in paths]
+    cells = {}
+    rate_fields = ("wrong_team_rate_scored", "false_d_rate_scored", "missed_dead_rate_scored",
+                   "wrong_team_rate_ball_missing", "wrong_team_rate_ball_observed",
+                   "false_d_rate_ball_missing", "false_d_rate_ball_observed")
+    for r in reports:
+        cell = (r["arm"], r["view"], r["replicate"])
+        provider, match, seed = r["source"], r["match"], r["seed"]
+        c = cells.setdefault(cell, {"raw_counts": {}, "match_realizations": {}})
+        totals = c["raw_counts"]
+        for field in ("frames", "scored_frames", "wrong_team_frames", "false_d_frames",
+                      "missed_dead_frames", "split_ground_truth_spells", "merge_predicted_spells",
+                      "gt_alive_spells", "pred_alive_spells", "matched_transition_count",
+                      "unmatched_gt_transition_count", "unmatched_pred_transition_count",
+                      "scored_frames_ball_missing", "scored_frames_ball_observed",
+                      "wrong_team_frames_ball_missing", "wrong_team_frames_ball_observed",
+                      "false_d_frames_ball_missing", "false_d_frames_ball_observed"):
+            totals[field] = totals.get(field, 0) + sum(s[field] for s in r["match_segments"])
+        for (provider2, match2), segments in _group_segments(r).items():
+            scored = sum(s["scored_frames"] for s in segments)
+            missing = sum(s["scored_frames_ball_missing"] for s in segments)
+            observed = sum(s["scored_frames_ball_observed"] for s in segments)
+            gt_spells = sum(s["gt_alive_spells"] for s in segments)
+            pred_spells = sum(s["pred_alive_spells"] for s in segments)
+            def ratio(num, den): return float(num / den) if den else None
+            val = {
+                "provider": provider2, "match": match2, "seed": seed,
+                "wrong_team_rate_scored": ratio(sum(s["wrong_team_frames"] for s in segments), scored),
+                "false_d_rate_scored": ratio(sum(s["false_d_frames"] for s in segments), scored),
+                "missed_dead_rate_scored": ratio(sum(s["missed_dead_frames"] for s in segments), scored),
+                "wrong_team_rate_ball_missing": ratio(sum(s["wrong_team_frames_ball_missing"] for s in segments), missing),
+                "wrong_team_rate_ball_observed": ratio(sum(s["wrong_team_frames_ball_observed"] for s in segments), observed),
+                "false_d_rate_ball_missing": ratio(sum(s["false_d_frames_ball_missing"] for s in segments), missing),
+                "false_d_rate_ball_observed": ratio(sum(s["false_d_frames_ball_observed"] for s in segments), observed),
+                "split_per_gt_spell": ratio(sum(s["split_ground_truth_spells"] for s in segments), gt_spells),
+                "merge_per_pred_spell": ratio(sum(s["merge_predicted_spells"] for s in segments), pred_spells),
+                "transition_abs_error_seconds": _mean_defined(
+                    [s["transition_shift_abs_median_seconds"] for s in segments]),
+            }
+            c["match_realizations"].setdefault((provider2, match2), []).append(val)
+    result_cells = []
+    for (arm, view, replicate), value in sorted(cells.items()):
+        by_provider = {}
+        for (provider, match), realizations in value["match_realizations"].items():
+            p = by_provider.setdefault(provider, {})
+            for field in rate_fields + ("split_per_gt_spell", "merge_per_pred_spell",
+                                        "transition_abs_error_seconds"):
+                means = [_mean_defined([r[field] for r in realizations])]
+                p.setdefault(field, []).append(means[0])
+        provider_summary = {provider: {"matches": len(next(iter(metrics.values()), [])),
+                                       **{k: _mean_defined(v) for k, v in metrics.items()}}
+                            for provider, metrics in sorted(by_provider.items())}
+        balanced = {field: _mean_defined([entry.get(field) for entry in provider_summary.values()])
+                    for field in rate_fields + ("split_per_gt_spell", "merge_per_pred_spell",
+                                                "transition_abs_error_seconds")}
+        result_cells.append({"arm": arm, "view": view, "replicate": replicate,
+                             "provider_balanced_match_rates": balanced,
+                             "provider_rates": provider_summary,
+                             "raw_counts_across_archives": value["raw_counts"]})
+    return {"schema": 1, "archive_count": len(reports), "cells": result_cells,
+            "aggregation": "Rates: mean seeds within each match, mean matches within each provider, equal mean across providers. Raw frame/event totals are separate and are not used for provider-balanced conclusions.",
+            "interpretation": "Descriptive non-mutually-exclusive error categories. Rates do not estimate counterfactual F1 loss."}
+
+
+def _group_segments(report):
+    return {(report["source"], report["match"]): report["match_segments"]}
+
+
+def _mean_defined(values):
+    kept = [float(v) for v in values if v is not None and np.isfinite(v)]
+    return float(np.mean(kept)) if kept else None
 
 
 def main(argv=None):
@@ -223,7 +311,8 @@ def main(argv=None):
     parser.add_argument("input", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
-    report = (audit_archive(args.input) if args.input.suffix.lower() == ".npz"
+    report = (summarize_archives(sorted(args.input.glob("*.npz"))) if args.input.is_dir()
+              else audit_archive(args.input) if args.input.suffix.lower() == ".npz"
               else audit(pd.read_csv(args.input)))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
