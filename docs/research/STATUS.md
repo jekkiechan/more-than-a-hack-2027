@@ -22,8 +22,10 @@ is synthetic, and dense GAR labels are derived silver labels.
 1. Execute the [supervision alignment plan](../../experiments/SUPERVISION_ALIGNMENT_PLAN.md):
    compare shared versus source-specific output projections under matched dense
    D2 training. Exact fold teachers/caches are restored and the dense TRAIN
-   manifest reproduces D2 byte-for-byte. Head controls precede candidate fits;
-   current execution state is recorded in the study report when complete.
+   manifest reproduces D2 byte-for-byte. Six reconstructed shared-head controls
+   reproduce clean/feed-like spell .64721456/.50581079, independently verified
+   from sealed probabilities. The fixed twelve H/HD candidate fits are running;
+   candidate efficacy remains unscored until their models are sealed.
    The [Sportec TRAIN rule diagnostic](../../experiments/PROVIDER_TOUCH_CALIBRATION.md)
    is complete: hold-through-contest beats literal challenger attribution, while
    a zero-second gap trades more unknown predictions for a small spell gain.
