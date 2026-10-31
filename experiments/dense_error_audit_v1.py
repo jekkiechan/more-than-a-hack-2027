@@ -93,6 +93,9 @@ def _audit_segment(gt: np.ndarray, pred: np.ndarray, missing: np.ndarray, fps: f
         count = len(selected)
         length_breakdown[name] = {
             "gt_spells": count,
+            "gt_alive_frames": int(active.sum()),
+            "wrong_team_frames": int((wrong_team & active).sum()),
+            "false_d_frames": int((false_d & active).sum()),
             "wrong_team_rate": float((wrong_team & active).sum() / max(1, active.sum())) if count else None,
             "false_d_rate": float((false_d & active).sum() / max(1, active.sum())) if count else None,
             "false_d_spells": int(sum(bool(false_d[s:e].any()) for s, e in selected)),
@@ -230,9 +233,10 @@ def audit_archive(path: Path) -> dict:
 def summarize_archives(paths) -> dict:
     """Summarize matched archive realizations equally by provider, then match.
 
-    Raw totals are retained separately. For rates, seeds are averaged within a
-    provider-match first, matches within provider next, and providers equally
-    last. Views and corruption replicates remain separate cells.
+    Raw totals are retained separately. For rates, ensemble realizations are
+    averaged within provider-match first, matches within provider next, and
+    providers equally last. Views and corruption replicates remain separate
+    cells.
     """
     reports = [audit_archive(Path(p)) for p in paths]
     cells = {}
@@ -273,7 +277,18 @@ def summarize_archives(paths) -> dict:
                 "merge_per_pred_spell": ratio(sum(s["merge_predicted_spells"] for s in segments), pred_spells),
                 "transition_abs_error_seconds": _mean_defined(
                     [s["transition_shift_abs_median_seconds"] for s in segments]),
+                "spell_length_bins": {},
             }
+            for bin_name in ("short_le_1s", "medium_1_to_5s", "long_gt_5s"):
+                denom = sum(s["gt_spell_length_bins"][bin_name]["gt_alive_frames"] for s in segments)
+                val["spell_length_bins"][bin_name] = {
+                    "gt_spells": sum(s["gt_spell_length_bins"][bin_name]["gt_spells"] for s in segments),
+                    "gt_alive_frames": denom,
+                    "wrong_team_rate": ratio(sum(s["gt_spell_length_bins"][bin_name]["wrong_team_frames"]
+                                                   for s in segments), denom),
+                    "false_d_rate": ratio(sum(s["gt_spell_length_bins"][bin_name]["false_d_frames"]
+                                              for s in segments), denom),
+                }
             c["match_realizations"].setdefault((provider2, match2), []).append(val)
     result_cells = []
     for (arm, view, replicate, realization_kind), value in sorted(cells.items()):
@@ -284,6 +299,37 @@ def summarize_archives(paths) -> dict:
                                         "transition_abs_error_seconds"):
                 means = [_mean_defined([r[field] for r in realizations])]
                 p.setdefault(field, []).append(means[0])
+        provider_length_bins = {}
+        for (provider, match), realizations in value["match_realizations"].items():
+            pb = provider_length_bins.setdefault(provider, {})
+            for bin_name in ("short_le_1s", "medium_1_to_5s", "long_gt_5s"):
+                b = pb.setdefault(bin_name, {"wrong_team_rate_by_match": [], "false_d_rate_by_match": [],
+                                             "gt_spells_by_match": [], "gt_alive_frames_by_match": []})
+                for metric, output in (("wrong_team_rate", "wrong_team_rate_by_match"),
+                                       ("false_d_rate", "false_d_rate_by_match"),
+                                       ("gt_spells", "gt_spells_by_match"),
+                                       ("gt_alive_frames", "gt_alive_frames_by_match")):
+                    b[output].append(_mean_defined([r["spell_length_bins"][bin_name][metric]
+                                                    for r in realizations]))
+        provider_length_summary = {}
+        for provider, bins in sorted(provider_length_bins.items()):
+            provider_length_summary[provider] = {}
+            for bin_name, metrics in bins.items():
+                provider_length_summary[provider][bin_name] = {
+                    "matches": len(metrics["gt_spells_by_match"]),
+                    "mean_match_wrong_team_rate": _mean_defined(metrics["wrong_team_rate_by_match"]),
+                    "mean_match_false_d_rate": _mean_defined(metrics["false_d_rate_by_match"]),
+                    "mean_gt_spells_per_match": _mean_defined(metrics["gt_spells_by_match"]),
+                    "mean_gt_alive_frames_per_match": _mean_defined(metrics["gt_alive_frames_by_match"]),
+                }
+        balanced_length_summary = {}
+        for bin_name in ("short_le_1s", "medium_1_to_5s", "long_gt_5s"):
+            balanced_length_summary[bin_name] = {
+                "wrong_team_rate": _mean_defined([v[bin_name]["mean_match_wrong_team_rate"]
+                                                   for v in provider_length_summary.values()]),
+                "false_d_rate": _mean_defined([v[bin_name]["mean_match_false_d_rate"]
+                                                for v in provider_length_summary.values()]),
+            }
         provider_summary = {provider: {"matches": len(next(iter(metrics.values()), [])),
                                        **{k: _mean_defined(v) for k, v in metrics.items()}}
                             for provider, metrics in sorted(by_provider.items())}
@@ -293,10 +339,12 @@ def summarize_archives(paths) -> dict:
         result_cells.append({"arm": arm, "view": view, "replicate": replicate,
                              "realization_kind": realization_kind,
                              "provider_balanced_match_rates": balanced,
+                             "provider_balanced_spell_length_rates": balanced_length_summary,
+                             "spell_length_rates_by_provider": provider_length_summary,
                              "provider_rates": provider_summary,
                              "raw_counts_across_archives": value["raw_counts"]})
     return {"schema": 1, "archive_count": len(reports), "cells": result_cells,
-            "aggregation": "Rates: mean seeds within each match, mean matches within each provider, equal mean across providers. Raw frame/event totals are separate and are not used for provider-balanced conclusions.",
+            "aggregation": "Rates: mean realizations within each match, mean matches within each provider, equal mean across providers. For ensemble archives there is one realization per match. Raw frame/event totals are separate and are not used for provider-balanced conclusions.",
             "denominator_scope": "Ball-missing and observed rates use all GT-scored H/A/D frames, including D frames; no long-gap-only subset is applied.",
             "interpretation": "Descriptive non-mutually-exclusive error categories. Rates do not estimate counterfactual F1 loss."}
 

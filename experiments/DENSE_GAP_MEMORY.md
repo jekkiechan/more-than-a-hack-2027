@@ -1,9 +1,9 @@
 # Dense gap memory v1
 
-Status: mechanism and contract tests implemented; provider-holdout evaluation
-awaits the declared reconstruction and replay of current dense control fits.
-The pre-score scope correction is recorded in
-`experiments/results/dense_gap_memory_v1_amendment_pre_score.json`.
+Status: completed; no-go on the predeclared clean screen. The pre-score scope
+correction is recorded in
+`experiments/results/dense_gap_memory_v1_amendment_pre_score.json`; aggregate
+readout is `experiments/results/dense_gap_memory_v1_readout.json`.
 
 ## Declared question and method
 
@@ -22,6 +22,14 @@ to be byte-identical to original holdout checkpoints. The parent-authorized
 control rebuild must pass its replay and source/input audit before the frozen
 candidate transform runs. There are no candidate model fits, tuning on
 organizer labels, promotions, or changes to the completed dense study.
+
+The producer audit confirms the original trained D2 fold binaries were
+unavailable. It reconstructed controls from the exact raw TRAIN source, source
+modules, frozen fold teachers, and declared D2 recipe. Byte identity with the
+historical fold checkpoints cannot be established. The separate control replay
+matched its saved clean/feed-like aggregate with maximum error about `2.5e-11`,
+inside the predeclared `5.1e-5` tolerance. The provenance receipt hash is
+`90ce3366a85b1377d6c136af90f335c37f1825be247c231f48264483ad07c7f2`.
 
 The runner requires a complete first pass across all 15 match/view/replicate
 cells (five matches, three views), covering 45 member rows across two seeds
@@ -76,15 +84,23 @@ use those earlier unmatched scores as a control.
 
 ## Results and limits
 
-No holdout scores have been computed. The current workspace initially had no
-dense provider-held-out arrays or saved control probabilities. The private
-cache manifests contain pooled baseline checkpoints and explicitly exclude raw
-SoccerNet data and frame outputs. The parent has authorized a separately
-declared reconstruction of the current dense controls; those controls need
-parity validation before candidate scoring. Pooled deployment weights do not
-serve as holdout evidence.
+The memory candidate misses the +0.01 clean ensemble spell-F1 screen. The
+feed-like guard and every provider's clean macro-F1/D-F1 guard pass.
 
-The inference helper and runner's nine contract tests pass: invalid inputs are rejected,
-the rule is team-symmetric, effects are limited to gaps, and memory clears at
-period breaks or unreliable observed-ball frames. These tests do not establish
-holdout efficacy.
+| Member | Clean spell F1 | Δ vs control | Feed-like spell F1 | Δ vs control |
+|---|---:|---:|---:|---:|
+| Seed 2026 | 0.636252 | +0.000730 | 0.502275 | +0.000428 |
+| Seed 2027 | 0.636994 | −0.000251 | 0.493456 | −0.002303 |
+| Equal-probability ensemble | 0.647582 | +0.000367 | 0.504678 | −0.001133 |
+
+The ensemble control was 0.647215 clean and 0.505811 feed-like. The worst
+per-provider clean macro-F1 or D-F1 delta was −0.000162 (Metrica D-F1), above
+the declared −0.02 floor. Keep this as a no-go; the small clean change does not
+justify a follow-up sweep or promotion.
+
+The inference helper and runner's nine contract tests pass: invalid inputs are
+rejected, the rule is team-symmetric, effects are limited to gaps, and memory
+clears at period breaks or unreliable observed-ball frames. This evaluation is
+still limited to five previously exposed development matches and reconstructed
+controls; it is not fresh independent confirmation. No organizer labels were
+read, and no candidate model was fitted or promoted.

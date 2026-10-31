@@ -1,0 +1,29 @@
+{
+  "study_id": "dense_boundary_v1",
+  "status": "frozen_before_candidate_scoring",
+  "created_utc": "2026-10-31",
+  "candidate_and_control": "unchanged from dense_boundary_v1_declaration.json; confidence_boundary_v1 vs exact cost-3 decoder",
+  "prediction_source": {
+    "source_study_id": "dense_label_weight_v1",
+    "source_status": "reconstructed D2 control; original trained fold weights unavailable",
+    "source_arm": "control_D2",
+    "inference_seed": "seedensemble",
+    "fold_mapping": {"metrica": "leave_out_metrica", "sportec": "leave_out_sportec", "skillcorner": "leave_out_skillcorner"},
+    "probability_rule": "mean of reconstructed seeds 2026 and 2027 before decoding",
+    "replay_receipt": "experiments/results/dense_label_weight_v1_control_replay.json",
+    "replay_receipt_sha256": "772aa493c9986f282a947ddfe20d68c40d4e8627760421437fba39e4918a326b",
+    "prediction_audit": "experiments/results/dense_label_weight_v1_control_prediction_audit.json",
+    "prediction_audit_sha256": "90ce3366a85b1377d6c136af90f335c37f1825be247c231f48264483ad07c7f2",
+    "prediction_provenance": "experiments/results/dense_label_weight_v1_prediction_provenance_control_D2.json",
+    "prediction_provenance_sha256": "6d0e53da394b9bb96d0aaa782d6ec277c78e6c1b59c0a632d6cf309d06a2478c",
+    "ensemble_scores_sha256": "7fb9185587cd8916107072a2f4a8e4e63ffb113b47363824d5c44e05407050e6",
+    "replay_passed": true,
+    "replay_cells": 15,
+    "organizer_labels_accessed": false
+  },
+  "row_contract": "Only per-cell seedensemble NPZs; original raw period and timestamps are scored; model_period must equal recomputation from original period/timestamps. Exact 5-match x 3-view cohort, no duplicates.",
+  "declaration_sha256": "3b87d680062588a965bab82b16d243b4722e84177943e43a5d55a84336c8b186",
+  "prerun_addendum_sha256": "74508eaed96a35457ea8d6847832a5311c20e32889748b78f51ffcaa023ddf7a",
+  "current_policy_sha256": "f63c4bd69881acaa8abadccf515308ebd66890106a24e5f550373a4d20859165",
+  "interpretation_limit": "Existing previously exposed external development holdout, with reconstructed controls; not exact checkpoint replay and not a new independent holdout."
+}

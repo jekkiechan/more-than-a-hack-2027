@@ -1,0 +1,18 @@
+{
+  "study_id": "dense_boundary_v1",
+  "status": "recorded_after_scoring",
+  "recorded_utc": "2026-10-31T12:25:12Z",
+  "incident": "The initial boundary scoring process exceeded the 30-second nested-command wait. The orchestration wrapper did not expose its session identifier, and a second invocation was started. The second invocation completed the deterministic scoring pass and then refused to overwrite the already-created report.",
+  "report_path": "experiments/results/dense_boundary_v1.json",
+  "report_sha256": "cf6da1bc5284c4593821e343e4fa80b46b6e5618a39daf5d1290c9295a94d51e",
+  "scoring_runner_sha256": "bc531d74e071040aaee415e8db8d8c10e8ac23c607290d46470a2fa7a1d6548c",
+  "provenance_sha256": "6d0e53da394b9bb96d0aaa782d6ec277c78e6c1b59c0a632d6cf309d06a2478c",
+  "effects": {
+    "report_overwrite": false,
+    "declaration_or_algorithm_changed_between_invocations": false,
+    "input_or_prediction_changed_between_invocations": false,
+    "selection_or_tuning_performed": false,
+    "additional_report_created": false
+  },
+  "handling": "Preserve the single sealed report and its hash. Disclose the duplicate deterministic score read; perform no further scoring. The second invocation's candidate metrics were not persisted as a separate report, so equivalence is inferred from unchanged code and inputs rather than a direct artifact comparison."
+}

@@ -1,0 +1,298 @@
+{
+  "candidate_fits": 0,
+  "cohort": {
+    "match_view_replicate_cells": 15,
+    "members_per_cell": 3,
+    "providers": [
+      "metrica",
+      "skillcorner",
+      "sportec"
+    ],
+    "scored_member_rows": 45
+  },
+  "control": {
+    "arm": "reconstructed control_D2",
+    "control_replay_gate_sha256": "aa4dbc3e8f5f267dec58f86690036def6dfa633c8beba126fc4308d519a1e7b0",
+    "control_replay_max_error": 2.5e-11,
+    "control_replay_tolerance": 5.1e-05,
+    "private_aggregate_path": "data/experiments/dense_gap_memory_v1/aggregate.json",
+    "private_aggregate_sha256": "6dcaa8f1fcc8bec53765ab51aea75eb33bf0fbaa9760b7a7b2d4d63c4dfad5a6",
+    "provenance_sha256": "90ce3366a85b1377d6c136af90f335c37f1825be247c231f48264483ad07c7f2",
+    "reconstruction_status": "Original trained D2 fold binaries unavailable; reconstructed from the exact raw TRAIN source, source modules, frozen fold teachers and declared D2 recipe. Not claimed byte-identical to historical fold checkpoints."
+  },
+  "interpretation": "Memory produced a +0.000367 clean ensemble spell-F1 delta, below the +0.01 screen, and a -0.001133 feed-like delta. Both guard families pass. Retain no-go; do not tune or promote.",
+  "method_limits": [
+    "Only five previously exposed full-provider development matches; not fresh independent confirmation.",
+    "Controls were reconstructed and numerically replayed, not restored original fold checkpoint binaries.",
+    "Memory uses model-predicted control probabilities and ball visibility only; no labels at inference.",
+    "No organizer labels read; no candidate fitting or promotion."
+  ],
+  "organizer_labels_read": false,
+  "predeclared_screen": {
+    "clean_ensemble_required": 0.01,
+    "clean_ensemble_spell_delta": 0.00036730945821861205,
+    "clean_primary_pass": false,
+    "clean_provider_guards_pass": true,
+    "clean_provider_macro_d_floor": -0.02,
+    "feed_like_ensemble_spell_delta": -0.0011327101518467941,
+    "feed_like_floor": -0.01,
+    "feed_like_pass": true,
+    "worst_provider_clean_macro_or_d_f1_delta": {
+      "delta": -0.00016172581748408188,
+      "member": "equal_probability_ensemble",
+      "metric": "d_f1",
+      "provider": "metrica"
+    }
+  },
+  "promotion": false,
+  "results": [
+    {
+      "equal_provider": {
+        "baseline_d_f1": 0.8364493770684898,
+        "baseline_macro_f1": 0.8506313749451802,
+        "baseline_spell_f1": 0.6355214533810217,
+        "d_f1": 0.8364521540520191,
+        "delta_d_f1": 2.7769835293511846e-06,
+        "delta_macro_f1": 1.2184006464299735e-05,
+        "delta_spell_f1": 0.0007303243766916268,
+        "macro_f1": 0.8506435589516445,
+        "spell_f1": 0.6362517777577134
+      },
+      "member": "seed_2026",
+      "per_provider": {
+        "metrica": {
+          "baseline_d_f1": 0.8998301438115729,
+          "baseline_macro_f1": 0.9226021783568202,
+          "baseline_spell_f1": 0.7906464924346631,
+          "d_f1": 0.8998799737300994,
+          "macro_f1": 0.9226479349243348,
+          "spell_f1": 0.7928374655647381
+        },
+        "skillcorner": {
+          "baseline_d_f1": 0.7096187494066174,
+          "baseline_macro_f1": 0.7646911053843608,
+          "baseline_spell_f1": 0.47957670578009565,
+          "d_f1": 0.709577250438679,
+          "macro_f1": 0.7646819008362393,
+          "spell_f1": 0.47957670578009565
+        },
+        "sportec": {
+          "baseline_d_f1": 0.8998992379872788,
+          "baseline_macro_f1": 0.8646008410943593,
+          "baseline_spell_f1": 0.6363411619283065,
+          "d_f1": 0.8998992379872788,
+          "macro_f1": 0.8646008410943593,
+          "spell_f1": 0.6363411619283065
+        }
+      },
+      "view": "clean"
+    },
+    {
+      "equal_provider": {
+        "baseline_d_f1": 0.8511183161731951,
+        "baseline_macro_f1": 0.8566723789533147,
+        "baseline_spell_f1": 0.6372450754837683,
+        "d_f1": 0.8510685262894895,
+        "delta_d_f1": -4.978988370563098e-05,
+        "delta_macro_f1": -1.8539510685422478e-05,
+        "delta_spell_f1": -0.00025057782784998484,
+        "macro_f1": 0.8566538394426293,
+        "spell_f1": 0.6369944976559183
+      },
+      "member": "seed_2027",
+      "per_provider": {
+        "metrica": {
+          "baseline_d_f1": 0.898946511733056,
+          "baseline_macro_f1": 0.9230176158951483,
+          "baseline_spell_f1": 0.7961904761904762,
+          "d_f1": 0.8987971420819392,
+          "macro_f1": 0.9229426663315295,
+          "spell_f1": 0.7956462585034013
+        },
+        "skillcorner": {
+          "baseline_d_f1": 0.7598754916464405,
+          "baseline_macro_f1": 0.78574814219475,
+          "baseline_spell_f1": 0.4808052961665359,
+          "d_f1": 0.7598754916464405,
+          "macro_f1": 0.7857674732263121,
+          "spell_f1": 0.480597780370061
+        },
+        "sportec": {
+          "baseline_d_f1": 0.8945329451400887,
+          "baseline_macro_f1": 0.8612513787700461,
+          "baseline_spell_f1": 0.6347394540942928,
+          "d_f1": 0.8945329451400887,
+          "macro_f1": 0.8612513787700461,
+          "spell_f1": 0.6347394540942928
+        }
+      },
+      "view": "clean"
+    },
+    {
+      "equal_provider": {
+        "baseline_d_f1": 0.8501765773705746,
+        "baseline_macro_f1": 0.8576771953023749,
+        "baseline_spell_f1": 0.6472145590743718,
+        "d_f1": 0.8501226687647465,
+        "delta_d_f1": -5.390860582810131e-05,
+        "delta_macro_f1": 4.142147632224535e-06,
+        "delta_spell_f1": 0.00036730945821861205,
+        "macro_f1": 0.8576813374500071,
+        "spell_f1": 0.6475818685325904
+      },
+      "member": "equal_probability_ensemble",
+      "per_provider": {
+        "metrica": {
+          "baseline_d_f1": 0.9019563419690294,
+          "baseline_macro_f1": 0.9253653236004763,
+          "baseline_spell_f1": 0.8049586776859504,
+          "d_f1": 0.9017946161515453,
+          "macro_f1": 0.9253777500433733,
+          "spell_f1": 0.806060606060606
+        },
+        "skillcorner": {
+          "baseline_d_f1": 0.7485914993807675,
+          "baseline_macro_f1": 0.7818821757165585,
+          "baseline_spell_f1": 0.4869337557560705,
+          "d_f1": 0.7485914993807675,
+          "macro_f1": 0.7818821757165585,
+          "spell_f1": 0.4869337557560705
+        },
+        "sportec": {
+          "baseline_d_f1": 0.8999818907619266,
+          "baseline_macro_f1": 0.8657840865900894,
+          "baseline_spell_f1": 0.6497512437810945,
+          "d_f1": 0.8999818907619266,
+          "macro_f1": 0.8657840865900894,
+          "spell_f1": 0.6497512437810945
+        }
+      },
+      "view": "clean"
+    },
+    {
+      "equal_provider": {
+        "baseline_d_f1": 0.8359561065356488,
+        "baseline_macro_f1": 0.8090865330183009,
+        "baseline_spell_f1": 0.5018471241174439,
+        "d_f1": 0.8360228386780885,
+        "delta_d_f1": 6.673214243968495e-05,
+        "delta_macro_f1": 0.0002256341014019725,
+        "delta_spell_f1": 0.000427525732108025,
+        "macro_f1": 0.8093121671197029,
+        "spell_f1": 0.502274649849552
+      },
+      "member": "seed_2026",
+      "per_provider": {
+        "metrica": {
+          "baseline_d_f1": 0.8969910441179827,
+          "baseline_macro_f1": 0.872667791344886,
+          "baseline_spell_f1": 0.5996374216452605,
+          "d_f1": 0.8970056708197235,
+          "macro_f1": 0.8729982904991556,
+          "spell_f1": 0.6016982580138502
+        },
+        "skillcorner": {
+          "baseline_d_f1": 0.7148386111487564,
+          "baseline_macro_f1": 0.7457459553752495,
+          "baseline_spell_f1": 0.43611850339868835,
+          "d_f1": 0.7148251511108654,
+          "macro_f1": 0.7456010922791743,
+          "spell_f1": 0.4356089848219559
+        },
+        "sportec": {
+          "baseline_d_f1": 0.8960386643402074,
+          "baseline_macro_f1": 0.8088458523347675,
+          "baseline_spell_f1": 0.4697854473083831,
+          "d_f1": 0.8962376941036763,
+          "macro_f1": 0.8093371185807792,
+          "spell_f1": 0.4695167067128498
+        }
+      },
+      "view": "feed_like"
+    },
+    {
+      "equal_provider": {
+        "baseline_d_f1": 0.8464255292257702,
+        "baseline_macro_f1": 0.8097108222445665,
+        "baseline_spell_f1": 0.49575903011619893,
+        "d_f1": 0.8464312791043443,
+        "delta_d_f1": 5.749878574157208e-06,
+        "delta_macro_f1": 0.00027861051354094446,
+        "delta_spell_f1": -0.002303453487348228,
+        "macro_f1": 0.8099894327581074,
+        "spell_f1": 0.4934555766288507
+      },
+      "member": "seed_2027",
+      "per_provider": {
+        "metrica": {
+          "baseline_d_f1": 0.8877161836392959,
+          "baseline_macro_f1": 0.8653400164315648,
+          "baseline_spell_f1": 0.5879279279279279,
+          "d_f1": 0.8876145855949105,
+          "macro_f1": 0.8639984684321063,
+          "spell_f1": 0.5831077694235589
+        },
+        "skillcorner": {
+          "baseline_d_f1": 0.7610744037653715,
+          "baseline_macro_f1": 0.761333687868146,
+          "baseline_spell_f1": 0.4357096666529024,
+          "d_f1": 0.7611325403412742,
+          "macro_f1": 0.7616720237706817,
+          "spell_f1": 0.4341515256193073
+        },
+        "sportec": {
+          "baseline_d_f1": 0.8904860002726428,
+          "baseline_macro_f1": 0.8024587624339886,
+          "baseline_spell_f1": 0.4636394957677665,
+          "d_f1": 0.8905467113768484,
+          "macro_f1": 0.8042978060715342,
+          "spell_f1": 0.4631074348436859
+        }
+      },
+      "view": "feed_like"
+    },
+    {
+      "equal_provider": {
+        "baseline_d_f1": 0.847721042317196,
+        "baseline_macro_f1": 0.8155353136442022,
+        "baseline_spell_f1": 0.5058107894247519,
+        "d_f1": 0.8473179297035789,
+        "delta_d_f1": -0.00040311261361714035,
+        "delta_macro_f1": -0.0003749375565414992,
+        "delta_spell_f1": -0.0011327101518467941,
+        "macro_f1": 0.8151603760876607,
+        "spell_f1": 0.5046780792729051
+      },
+      "member": "equal_probability_ensemble",
+      "per_provider": {
+        "metrica": {
+          "baseline_d_f1": 0.8952920774090436,
+          "baseline_macro_f1": 0.8748678389309077,
+          "baseline_spell_f1": 0.6037671108032736,
+          "d_f1": 0.8943919926929107,
+          "macro_f1": 0.8734178652211452,
+          "spell_f1": 0.6024242424242423
+        },
+        "skillcorner": {
+          "baseline_d_f1": 0.7508328138024286,
+          "baseline_macro_f1": 0.7618938124843049,
+          "baseline_spell_f1": 0.44108848844561505,
+          "d_f1": 0.7505249185836521,
+          "macro_f1": 0.7615761743665533,
+          "spell_f1": 0.44014953259116707
+        },
+        "sportec": {
+          "baseline_d_f1": 0.8970382357401159,
+          "baseline_macro_f1": 0.8098442895173941,
+          "baseline_spell_f1": 0.47257676902536716,
+          "d_f1": 0.8970368778341737,
+          "macro_f1": 0.8104870886752835,
+          "spell_f1": 0.4714604628033059
+        }
+      },
+      "view": "feed_like"
+    }
+  ],
+  "status": "completed; no-go on predeclared primary screen",
+  "study": "dense_gap_memory_v1"
+}

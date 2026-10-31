@@ -1,0 +1,24 @@
+{
+  "study_id": "dense_boundary_v1",
+  "status": "post_score_guardrail_label_correction_no_rescoring",
+  "reason": "The sealed result's field feed_like_noninferior_minus_0_01 reports the active-policy tolerance, while the frozen study declaration separately requires that mean feed_like spell F1 not decline. Preserve the result JSON and report both screens distinctly.",
+  "result_path": "experiments/results/dense_boundary_v1.json",
+  "result_sha256": "cf6da1bc5284c4593821e343e4fa80b46b6e5618a39daf5d1290c9295a94d51e",
+  "declaration_path": "experiments/results/dense_boundary_v1_declaration.json",
+  "declaration_sha256": "3b87d680062588a965bab82b16d243b4722e84177943e43a5d55a84336c8b186",
+  "sealed_aggregate_values": {
+    "clean_spell_delta": -0.00293865130777915,
+    "clean_short_spell_recall_delta": 0.018147896896873517,
+    "feed_like_spell_delta": -0.0037937557455325344
+  },
+  "guardrails": {
+    "declaration_clean_spell_improves": false,
+    "declaration_feed_like_spell_does_not_decline": false,
+    "declaration_short_spell_recall_does_not_decline": true,
+    "active_policy_feed_like_delta_at_least_minus_0_01": true,
+    "active_policy_clean_spell_delta_at_least_plus_0_01": false,
+    "active_policy_provider_clean_d_f1_each_within_minus_0_02": true,
+    "promotion": false
+  },
+  "notes": "Scoring was not repeated. Full paired report, all 15 cells, source receipts and hash bindings remain in the sealed result. The tolerance field in that report is a policy secondary screen, not the frozen declaration's no-decline guard."
+}

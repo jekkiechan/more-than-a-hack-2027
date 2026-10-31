@@ -128,6 +128,9 @@ def _canonical_record_metadata(record: dict) -> tuple[str, str, str, str]:
     match_raw = str(record.get("match", "")).strip().lower().replace("-", "_")
     match_aliases = {"metrica_3": "metrica_3", "j03woy": "J03WOY",
                      "1996435": "1996435", "1996436": "1996436", "2006229": "2006229"}
+    for prefix in ("skillcorner_had_", "skillcorner_"):
+        if match_raw.startswith(prefix):
+            match_raw = match_raw.removeprefix(prefix)
     match = match_aliases.get(match_raw)
     if not match:
         raise ValueError(f"unknown held-out match tag {match_raw!r}")
@@ -136,6 +139,11 @@ def _canonical_record_metadata(record: dict) -> tuple[str, str, str, str]:
             or (provider == "SkillCorner" and match not in {"1996435", "1996436", "2006229"})):
         raise ValueError(f"provider/match mismatch: {provider}/{match}")
     view_raw = str(record.get("view", "")).strip().lower()
+    replicate = str(record.get("replicate", "")).strip().lower()
+    if view_raw == "feed_like" and replicate in {"corrupt_1", "corrupt_2"}:
+        view_raw = f"feed_like_{replicate}"
+    elif view_raw == "clean" and replicate == "clean":
+        view_raw = "clean"
     view_aliases = {"clean": "clean", "feed_like": "feed_like_corrupt_1",
                     "feed_like_corrupt_1": "feed_like_corrupt_1",
                     "feed_like_corrupt_2": "feed_like_corrupt_2"}
@@ -197,7 +205,21 @@ def _equal_hierarchy(rows: list[dict]) -> dict:
     return result
 
 
-def run(input_dir: Path, output: Path, provenance_path: Path | None = None) -> None:
+def _resolve_artifact_path(root: Path, rel: str) -> Path:
+    """Resolve a declared data path in the repo cache or private mtah-data checkout."""
+    relative = Path(rel)
+    candidates = [root / relative]
+    if relative.parts and relative.parts[0] == "data":
+        candidates.append(root.parent / "mtah-data" / Path(*relative.parts[1:]))
+    for path in candidates:
+        if path.is_file():
+            return path
+    raise FileNotFoundError(f"missing provenance artifact {rel}; searched {candidates}")
+
+
+def run(input_dir: Path, output: Path, provenance_path: Path | None = None,
+        replay_path: Path | None = None, audit_path: Path | None = None,
+        binding_path: Path | None = None) -> None:
     """Score declared NPZ records; no input file may contain organizer labels."""
     files = sorted(input_dir.rglob("*.npz"))
     if not files:
@@ -208,7 +230,7 @@ def run(input_dir: Path, output: Path, provenance_path: Path | None = None) -> N
             record = {k: src[k] for k in src.files}
         if str(record.get("arm", "")) != "control_D2":
             continue
-        if str(record.get("seed", "")) != "seedensemble":
+        if str(record.get("seed", "")) not in {"seedensemble", "ensemble"}:
             continue
         tags = _canonical_record_metadata(record)
         expected_fold = {"Metrica": "leave_out_metrica", "Sportec": "leave_out_sportec",
@@ -243,6 +265,44 @@ def run(input_dir: Path, output: Path, provenance_path: Path | None = None) -> N
         if any(not isinstance(digest, str) or len(digest) != 64 or
                any(ch not in "0123456789abcdef" for ch in digest.lower()) for digest in values.values()):
             raise ValueError(f"provenance {field} contains an invalid SHA256")
+    if (replay_path is None or audit_path is None or binding_path is None or
+            not replay_path.is_file() or not audit_path.is_file() or not binding_path.is_file()):
+        raise ValueError("sealed control replay, prediction audit, and pre-score binding are required")
+    replay = json.loads(replay_path.read_text())
+    audit = json.loads(audit_path.read_text())
+    binding = json.loads(binding_path.read_text())
+    provenance_sha = hashlib.sha256(provenance_path.read_bytes()).hexdigest()
+    replay_sha = hashlib.sha256(replay_path.read_bytes()).hexdigest()
+    audit_sha = hashlib.sha256(audit_path.read_bytes()).hexdigest()
+    if (binding.get("status") != "frozen_before_candidate_scoring"
+            or binding.get("prediction_source", {}).get("replay_receipt_sha256") != replay_sha
+            or binding.get("prediction_source", {}).get("prediction_audit_sha256") != audit_sha
+            or binding.get("prediction_source", {}).get("prediction_provenance_sha256") != provenance_sha
+            or binding.get("declaration_sha256") != hashlib.sha256(
+                (Path(__file__).resolve().parents[1] / "experiments/results/dense_boundary_v1_declaration.json").read_bytes()).hexdigest()
+            or binding.get("prerun_addendum_sha256") != hashlib.sha256(
+                (Path(__file__).resolve().parents[1] / "experiments/results/dense_boundary_v1_prerun_addendum.json").read_bytes()).hexdigest()):
+        raise ValueError("execution binding does not match frozen decoder declarations or control receipts")
+    if (replay.get("passed") is not True or replay.get("scored_cells") != 15
+            or replay.get("public_labels_accessed") is not False
+            or replay.get("prediction_provenance_sha256") != provenance_sha
+            or audit.get("ensemble_count") != 15 or audit.get("passed") is not True
+            or audit.get("source_study_id") != provenance.get("source_study_id")
+            or audit.get("source_arm") != provenance.get("source_arm")):
+        raise ValueError("sealed control replay/audit receipt does not validate for this provenance")
+    root = Path(__file__).resolve().parents[1]
+    for field in ("model_checkpoint_hashes", "evaluation_input_hashes", "ensemble_prediction_files"):
+        mapping = provenance.get(field, {})
+        for rel, expected_sha in mapping.items():
+            path = _resolve_artifact_path(root, rel)
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha:
+                raise ValueError(f"provenance hash verification failed for {field}: {rel}")
+    for row in audit.get("files", []):
+        if row.get("member") == "ensemble":
+            rel = row["path"]
+            expected_sha = row["sha256"]
+            if hashlib.sha256(_resolve_artifact_path(root, rel).read_bytes()).hexdigest() != expected_sha:
+                raise ValueError(f"prediction audit hash mismatch: {rel}")
     rows = []
     for path, record, (provider, match, view, realization) in records:
         row = score_record(record)
@@ -260,6 +320,9 @@ def run(input_dir: Path, output: Path, provenance_path: Path | None = None) -> N
         "scoring": "official evaluation/possession_metrics.py via experiments.metrics.evaluate_tracking",
         "prediction_source": provenance,
         "provenance_sha256": hashlib.sha256(provenance_path.read_bytes()).hexdigest(),
+        "control_replay_sha256": replay_sha,
+        "control_prediction_audit_sha256": audit_sha,
+        "execution_binding_sha256": hashlib.sha256(binding_path.read_bytes()).hexdigest(),
         "aggregation": "mean realizations within match, mean matches within provider, mean providers equally; feed_like is mean of two declared corruptions",
         "summary": _equal_hierarchy(rows), "rows": rows}
     if output.exists():
@@ -274,8 +337,11 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--provenance", type=Path, required=True,
                         help="JSON receipt identifying exact/reconstructed prediction source and hashes")
+    parser.add_argument("--replay", type=Path, required=True)
+    parser.add_argument("--audit", type=Path, required=True)
+    parser.add_argument("--binding", type=Path, required=True)
     args = parser.parse_args()
-    run(args.input_dir, args.output, args.provenance)
+    run(args.input_dir, args.output, args.provenance, args.replay, args.audit, args.binding)
 
 
 if __name__ == "__main__":

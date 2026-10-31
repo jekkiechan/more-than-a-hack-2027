@@ -1,6 +1,6 @@
 {
   "study": "dense_error_audit_v1",
-  "status": "blocked_pending_verified_external_predictions",
+  "status": "completed_verified_external_prediction_audit",
   "audit_runner": "experiments/dense_error_audit_v1.py",
   "required_input_contract": [
     "provider",
@@ -88,5 +88,8 @@
       "skillcorner_had_2006229": 59270
     },
     "size_and_sha256_verified": true
-  }
+  },
+  "prediction_archives": "data/experiments/dense_label_weight_v1/predictions/control_D2/ (15 ensemble archives; hashes recorded in dense_error_audit_v1.json)",
+  "audit_report": "experiments/results/dense_error_audit_v1.json",
+  "reconstruction_limitation": "The original per-game GAR joblibs differ by hash for 45/45 games; reconstructed manifest and overlapping TRAIN QA values match frozen references, and control replay passes the unchanged score gate."
 }

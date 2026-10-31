@@ -124,6 +124,15 @@ class DenseErrorAuditTests(unittest.TestCase):
         self.assertEqual(seg["pred_alive_spells"], 2)
         self.assertEqual(seg["gt_spell_length_bins"]["short_le_1s"]["gt_spells"], 2)
 
+    def test_spell_length_bins_partition_exact_one_second_boundary(self):
+        exact = rows("H" * 25 + "D", "H" * 25 + "D", segment="exact")
+        over = rows("H" * 26 + "D", "H" * 26 + "D", segment="over")
+        segments = audit(pd.concat([exact, over], ignore_index=True))["match_segments"]
+        short_count = sum(s["gt_spell_length_bins"]["short_le_1s"]["gt_spells"] for s in segments)
+        medium_count = sum(s["gt_spell_length_bins"]["medium_1_to_5s"]["gt_spells"] for s in segments)
+        self.assertEqual(short_count, 1)  # <= 1 second
+        self.assertEqual(medium_count, 1)  # > 1 and <= 5 seconds
+
     def test_boundary_match_rejects_unrelated_transition_outside_one_second(self):
         f = rows("HHHHDDDD", "DDDDHHHH")
         seg = audit(f)["match_segments"][0]

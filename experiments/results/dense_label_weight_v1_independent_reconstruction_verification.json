@@ -14,6 +14,22 @@
     "same_game_file_keys_as_original": true,
     "sha256": "1f905524123f63c60bd12bd42150c1d111dc779c1760f8d9b4a725077f3706d5"
   },
+  "independent_control_replay": {
+    "absolute_tolerance": 5.1e-05,
+    "clean_abs_error": 2.562827727814465e-11,
+    "clean_expected_spell_f1": 0.6472145591,
+    "clean_observed_spell_f1": 0.6472145590743718,
+    "ensemble_prediction_count": 15,
+    "feed_like_abs_error": 2.4751867222505552e-11,
+    "feed_like_expected_spell_f1": 0.5058107894,
+    "feed_like_observed_spell_f1": 0.5058107894247519,
+    "independent_audit_recomputed": true,
+    "independent_replay_recomputed": true,
+    "member_prediction_count": 30,
+    "passed": true,
+    "provenance_files_verified": 45,
+    "scored_cells": 15
+  },
   "manifest_reconstruction": {
     "binary_drift_cause": "unresolved; no claim that serialization variance caused the differing per-game hashes",
     "interpretation": "The substitution reproduces the previously declared manifest hash. Current per-game joblib hashes differ for all 45 games; byte-identical original payloads are unavailable for comparison.",
@@ -103,6 +119,26 @@
     "train_qa_leaf_values_compared": 273
   },
   "verified_artifacts": {
+    "control_ensemble_scores": {
+      "path": "experiments/results/dense_label_weight_v1_ensemble_scores_control_D2.json",
+      "sha256": "7fb9185587cd8916107072a2f4a8e4e63ffb113b47363824d5c44e05407050e6"
+    },
+    "control_member_scores": {
+      "path": "experiments/results/dense_label_weight_v1_member_scores_control_D2.json",
+      "sha256": "628b66dec9e226fcccc217ce6631fbe641315ca6864095bc8ddc5ace2695f6ba"
+    },
+    "control_prediction_audit": {
+      "path": "experiments/results/dense_label_weight_v1_control_prediction_audit.json",
+      "sha256": "90ce3366a85b1377d6c136af90f335c37f1825be247c231f48264483ad07c7f2"
+    },
+    "control_prediction_provenance": {
+      "path": "experiments/results/dense_label_weight_v1_prediction_provenance_control_D2.json",
+      "sha256": "6d0e53da394b9bb96d0aaa782d6ec277c78e6c1b59c0a632d6cf309d06a2478c"
+    },
+    "control_replay_gate": {
+      "path": "experiments/results/dense_label_weight_v1_control_replay.json",
+      "sha256": "772aa493c9986f282a947ddfe20d68c40d4e8627760421437fba39e4918a326b"
+    },
     "copied_preparation_qa": {
       "path": "experiments/results/dense_label_weight_v1_preparation_qa.json",
       "sha256": "3332bd0d0fbee07f95689f8b3d7e5f35a649cb4ec0dbd2e1d4a59780fd875790"

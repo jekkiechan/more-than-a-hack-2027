@@ -1,0 +1,588 @@
+{
+  "aggregation": "Rates: mean ensemble realizations within each match, mean matches within each provider, then equal mean across providers. These ensemble archives contain one realization per match. Raw frame/event totals are separate and do not drive provider-balanced conclusions.",
+  "archive_count": 15,
+  "cells": [
+    {
+      "arm": "control_D2",
+      "provider_balanced_match_rates": {
+        "false_d_rate_ball_missing": 0.018175586595232288,
+        "false_d_rate_ball_observed": 0.025787164510704716,
+        "false_d_rate_scored": 0.022374776513625568,
+        "merge_per_pred_spell": 0.08404210383720175,
+        "missed_dead_rate_scored": 0.06083689497328009,
+        "split_per_gt_spell": 0.017875284622413015,
+        "transition_abs_error_seconds": 0.22166666666666668,
+        "wrong_team_rate_ball_missing": 0.014444363988052556,
+        "wrong_team_rate_ball_observed": 0.056683105498394615,
+        "wrong_team_rate_scored": 0.05334299289335429
+      },
+      "provider_balanced_spell_length_rates": {
+        "long_gt_5s": {
+          "false_d_rate": 0.022975334308172803,
+          "wrong_team_rate": 0.0490810553528959
+        },
+        "medium_1_to_5s": {
+          "false_d_rate": 0.09371920242053478,
+          "wrong_team_rate": 0.1900882718301704
+        },
+        "short_le_1s": {
+          "false_d_rate": 0.1515271283673573,
+          "wrong_team_rate": 0.3671181097171335
+        }
+      },
+      "provider_rates": {
+        "metrica": {
+          "false_d_rate_ball_missing": 0.0003314038266095179,
+          "false_d_rate_ball_observed": 0.03497680528757338,
+          "false_d_rate_scored": 0.02398772232266745,
+          "matches": 1,
+          "merge_per_pred_spell": 0.046511627906976744,
+          "missed_dead_rate_scored": 0.036664844636925535,
+          "split_per_gt_spell": 0.01832460732984293,
+          "transition_abs_error_seconds": 0.1,
+          "wrong_team_rate_ball_missing": 0.0033140382660951794,
+          "wrong_team_rate_ball_observed": 0.017642349850158053,
+          "wrong_team_rate_scored": 0.013097590716057688
+        },
+        "skillcorner": {
+          "false_d_rate_ball_missing": 0.03601976936385506,
+          "false_d_rate_ball_observed": 0.017092832152044837,
+          "false_d_rate_scored": 0.017844751125713324,
+          "matches": 3,
+          "merge_per_pred_spell": 0.09067215486899637,
+          "missed_dead_rate_scored": 0.08201635159233832,
+          "split_per_gt_spell": 0.026529316712834716,
+          "transition_abs_error_seconds": 0.425,
+          "wrong_team_rate_ball_missing": 0.025574689710009934,
+          "wrong_team_rate_ball_observed": 0.11320283575879353,
+          "wrong_team_rate_scored": 0.10772725707777293
+        },
+        "sportec": {
+          "false_d_rate_ball_missing": null,
+          "false_d_rate_ball_observed": 0.025291856092495933,
+          "false_d_rate_scored": 0.025291856092495933,
+          "matches": 1,
+          "merge_per_pred_spell": 0.11494252873563218,
+          "missed_dead_rate_scored": 0.06382948869057642,
+          "split_per_gt_spell": 0.008771929824561403,
+          "transition_abs_error_seconds": 0.14,
+          "wrong_team_rate_ball_missing": null,
+          "wrong_team_rate_ball_observed": 0.03920413088623225,
+          "wrong_team_rate_scored": 0.03920413088623225
+        }
+      },
+      "raw_counts_across_archives": {
+        "false_d_frames": 8709,
+        "false_d_frames_ball_missing": 192,
+        "false_d_frames_ball_observed": 8517,
+        "frames": 463468,
+        "gt_alive_spells": 1963,
+        "matched_transition_count": 681,
+        "merge_predicted_spells": 161,
+        "missed_dead_frames": 22060,
+        "pred_alive_spells": 1862,
+        "scored_frames": 380457,
+        "scored_frames_ball_missing": 51391,
+        "scored_frames_ball_observed": 329066,
+        "split_ground_truth_spells": 41,
+        "unmatched_gt_transition_count": 962,
+        "unmatched_pred_transition_count": 800,
+        "wrong_team_frames": 17610,
+        "wrong_team_frames_ball_missing": 336,
+        "wrong_team_frames_ball_observed": 17274
+      },
+      "realization_kind": "ensemble",
+      "replicate": "clean",
+      "spell_length_rates_by_provider": {
+        "metrica": {
+          "long_gt_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 87164.0,
+            "mean_gt_spells_per_match": 196.0,
+            "mean_match_false_d_rate": 0.024149878390161077,
+            "mean_match_wrong_team_rate": 0.012436326923959433
+          },
+          "medium_1_to_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 9941.0,
+            "mean_gt_spells_per_match": 153.0,
+            "mean_match_false_d_rate": 0.12201991751332864,
+            "mean_match_wrong_team_rate": 0.07081782516849411
+          },
+          "short_le_1s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 550.0,
+            "mean_gt_spells_per_match": 33.0,
+            "mean_match_false_d_rate": 0.19090909090909092,
+            "mean_match_wrong_team_rate": 0.14727272727272728
+          }
+        },
+        "skillcorner": {
+          "long_gt_5s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 19692.0,
+            "mean_gt_spells_per_match": 151.66666666666666,
+            "mean_match_false_d_rate": 0.015795270486331916,
+            "mean_match_wrong_team_rate": 0.09409845581012581
+          },
+          "medium_1_to_5s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 4424.0,
+            "mean_gt_spells_per_match": 150.66666666666666,
+            "mean_match_false_d_rate": 0.05287513725603543,
+            "mean_match_wrong_team_rate": 0.3230730629895358
+          },
+          "short_le_1s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 367.6666666666667,
+            "mean_gt_spells_per_match": 72.66666666666667,
+            "mean_match_false_d_rate": 0.0512829136620075,
+            "mean_match_wrong_team_rate": 0.5396273245925375
+          }
+        },
+        "sportec": {
+          "long_gt_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 59177.0,
+            "mean_gt_spells_per_match": 164.0,
+            "mean_match_false_d_rate": 0.028980854048025414,
+            "mean_match_wrong_team_rate": 0.040708383324602464
+          },
+          "medium_1_to_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 16431.0,
+            "mean_gt_spells_per_match": 248.0,
+            "mean_match_false_d_rate": 0.10626255249224027,
+            "mean_match_wrong_team_rate": 0.17637392733248128
+          },
+          "short_le_1s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 678.0,
+            "mean_gt_spells_per_match": 44.0,
+            "mean_match_false_d_rate": 0.21238938053097345,
+            "mean_match_wrong_team_rate": 0.4144542772861357
+          }
+        }
+      },
+      "view": "clean"
+    },
+    {
+      "arm": "control_D2",
+      "provider_balanced_match_rates": {
+        "false_d_rate_ball_missing": 0.026463453993324854,
+        "false_d_rate_ball_observed": 0.025436478766220367,
+        "false_d_rate_scored": 0.02512058289340055,
+        "merge_per_pred_spell": 0.13708879147317724,
+        "missed_dead_rate_scored": 0.06122753282630492,
+        "split_per_gt_spell": 0.01859084158395898,
+        "transition_abs_error_seconds": 0.295,
+        "wrong_team_rate_ball_missing": 0.11910516732012488,
+        "wrong_team_rate_ball_observed": 0.06812827771403053,
+        "wrong_team_rate_scored": 0.0918063082930184
+      },
+      "provider_balanced_spell_length_rates": {
+        "long_gt_5s": {
+          "false_d_rate": 0.02638605934134024,
+          "wrong_team_rate": 0.09966436365619015
+        },
+        "medium_1_to_5s": {
+          "false_d_rate": 0.10406286738688819,
+          "wrong_team_rate": 0.3106635630949521
+        },
+        "short_le_1s": {
+          "false_d_rate": 0.153107839087515,
+          "wrong_team_rate": 0.4516595518259409
+        }
+      },
+      "provider_rates": {
+        "metrica": {
+          "false_d_rate_ball_missing": 0.022847983157088855,
+          "false_d_rate_ball_observed": 0.0344489188183141,
+          "false_d_rate_scored": 0.027652805225020675,
+          "matches": 1,
+          "merge_per_pred_spell": 0.11702127659574468,
+          "missed_dead_rate_scored": 0.037800109321784466,
+          "split_per_gt_spell": 0.02356020942408377,
+          "transition_abs_error_seconds": 0.14,
+          "wrong_team_rate_ball_missing": 0.08106847217570219,
+          "wrong_team_rate_ball_observed": 0.027968596663395486,
+          "wrong_team_rate_scored": 0.05907581045284447
+        },
+        "skillcorner": {
+          "false_d_rate_ball_missing": 0.021250168691012816,
+          "false_d_rate_ball_observed": 0.017328183059241154,
+          "false_d_rate_scored": 0.01898637512156701,
+          "matches": 3,
+          "merge_per_pred_spell": 0.10047347152620921,
+          "missed_dead_rate_scored": 0.08052356228953193,
+          "split_per_gt_spell": 0.021247403047091412,
+          "transition_abs_error_seconds": 0.525,
+          "wrong_team_rate_ball_missing": 0.14738272193715493,
+          "wrong_team_rate_ball_observed": 0.12824783090807515,
+          "wrong_team_rate_scored": 0.13674918727798155
+        },
+        "sportec": {
+          "false_d_rate_ball_missing": 0.035292210131872885,
+          "false_d_rate_ball_observed": 0.02453233442110585,
+          "false_d_rate_scored": 0.028722568333613963,
+          "matches": 1,
+          "merge_per_pred_spell": 0.19377162629757785,
+          "missed_dead_rate_scored": 0.06535892686759837,
+          "split_per_gt_spell": 0.010964912280701754,
+          "transition_abs_error_seconds": 0.22000000000000003,
+          "wrong_team_rate_ball_missing": 0.12886430784751748,
+          "wrong_team_rate_ball_observed": 0.04816840557062095,
+          "wrong_team_rate_scored": 0.07959392714822922
+        }
+      },
+      "raw_counts_across_archives": {
+        "false_d_frames": 9819,
+        "false_d_frames_ball_missing": 4779,
+        "false_d_frames_ball_observed": 5040,
+        "frames": 463468,
+        "gt_alive_spells": 1963,
+        "matched_transition_count": 472,
+        "merge_predicted_spells": 203,
+        "missed_dead_frames": 22308,
+        "pred_alive_spells": 1714,
+        "scored_frames": 380457,
+        "scored_frames_ball_missing": 183610,
+        "scored_frames_ball_observed": 196847,
+        "split_ground_truth_spells": 38,
+        "unmatched_gt_transition_count": 1171,
+        "unmatched_pred_transition_count": 883,
+        "wrong_team_frames": 32648,
+        "wrong_team_frames_ball_missing": 20345,
+        "wrong_team_frames_ball_observed": 12303
+      },
+      "realization_kind": "ensemble",
+      "replicate": "corrupt_1",
+      "spell_length_rates_by_provider": {
+        "metrica": {
+          "long_gt_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 87164.0,
+            "mean_gt_spells_per_match": 196.0,
+            "mean_match_false_d_rate": 0.028280023863062734,
+            "mean_match_wrong_team_rate": 0.06463677665091093
+          },
+          "medium_1_to_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 9941.0,
+            "mean_gt_spells_per_match": 153.0,
+            "mean_match_false_d_rate": 0.1378130972739161,
+            "mean_match_wrong_team_rate": 0.2606377628005231
+          },
+          "short_le_1s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 550.0,
+            "mean_gt_spells_per_match": 33.0,
+            "mean_match_false_d_rate": 0.2018181818181818,
+            "mean_match_wrong_team_rate": 0.37272727272727274
+          }
+        },
+        "skillcorner": {
+          "long_gt_5s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 19692.0,
+            "mean_gt_spells_per_match": 151.66666666666666,
+            "mean_match_false_d_rate": 0.017621990448704928,
+            "mean_match_wrong_team_rate": 0.12767635419801845
+          },
+          "medium_1_to_5s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 4424.0,
+            "mean_gt_spells_per_match": 150.66666666666666,
+            "mean_match_false_d_rate": 0.05356727653789566,
+            "mean_match_wrong_team_rate": 0.3838476011845948
+          },
+          "short_le_1s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 367.6666666666667,
+            "mean_gt_spells_per_match": 72.66666666666667,
+            "mean_match_false_d_rate": 0.049540733674451644,
+            "mean_match_wrong_team_rate": 0.5279740966148568
+          }
+        },
+        "sportec": {
+          "long_gt_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 59177.0,
+            "mean_gt_spells_per_match": 164.0,
+            "mean_match_false_d_rate": 0.033256163712253074,
+            "mean_match_wrong_team_rate": 0.10667996011964108
+          },
+          "medium_1_to_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 16431.0,
+            "mean_gt_spells_per_match": 248.0,
+            "mean_match_false_d_rate": 0.12080822834885278,
+            "mean_match_wrong_team_rate": 0.2875053252997383
+          },
+          "short_le_1s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 678.0,
+            "mean_gt_spells_per_match": 44.0,
+            "mean_match_false_d_rate": 0.2079646017699115,
+            "mean_match_wrong_team_rate": 0.45427728613569324
+          }
+        }
+      },
+      "view": "feed_like"
+    },
+    {
+      "arm": "control_D2",
+      "provider_balanced_match_rates": {
+        "false_d_rate_ball_missing": 0.02202127935062696,
+        "false_d_rate_ball_observed": 0.027912768115084207,
+        "false_d_rate_scored": 0.02455687354725335,
+        "merge_per_pred_spell": 0.1362188945725684,
+        "missed_dead_rate_scored": 0.06019848313005652,
+        "split_per_gt_spell": 0.018430800227429354,
+        "transition_abs_error_seconds": 0.25166666666666665,
+        "wrong_team_rate_ball_missing": 0.12446036990375031,
+        "wrong_team_rate_ball_observed": 0.062022244826425287,
+        "wrong_team_rate_scored": 0.09233564982692007
+      },
+      "provider_balanced_spell_length_rates": {
+        "long_gt_5s": {
+          "false_d_rate": 0.02592384253976755,
+          "wrong_team_rate": 0.10501918936020883
+        },
+        "medium_1_to_5s": {
+          "false_d_rate": 0.09860307526987926,
+          "wrong_team_rate": 0.2978648026474564
+        },
+        "short_le_1s": {
+          "false_d_rate": 0.17547327850049896,
+          "wrong_team_rate": 0.4342110360403851
+        }
+      },
+      "provider_rates": {
+        "metrica": {
+          "false_d_rate_ball_missing": 0.019257728916107136,
+          "false_d_rate_ball_observed": 0.03580971000325839,
+          "false_d_rate_scored": 0.026377384406228537,
+          "matches": 1,
+          "merge_per_pred_spell": 0.12903225806451613,
+          "missed_dead_rate_scored": 0.03808742939634753,
+          "split_per_gt_spell": 0.020942408376963352,
+          "transition_abs_error_seconds": 0.12,
+          "wrong_team_rate_ball_missing": 0.08787722275510956,
+          "wrong_team_rate_ball_observed": 0.029048550016291953,
+          "wrong_team_rate_scored": 0.06257270599447785
+        },
+        "skillcorner": {
+          "false_d_rate_ball_missing": 0.02358229777125886,
+          "false_d_rate_ball_observed": 0.016487950117029228,
+          "false_d_rate_scored": 0.019580938991326537,
+          "matches": 3,
+          "merge_per_pred_spell": 0.09532408435626072,
+          "missed_dead_rate_scored": 0.08021498525172178,
+          "split_per_gt_spell": 0.02119209756848261,
+          "transition_abs_error_seconds": 0.42500000000000004,
+          "wrong_team_rate_ball_missing": 0.14886685564574323,
+          "wrong_team_rate_ball_observed": 0.11228462080466972,
+          "wrong_team_rate_scored": 0.12799993917017974
+        },
+        "sportec": {
+          "false_d_rate_ball_missing": 0.02322381136451488,
+          "false_d_rate_ball_observed": 0.031440644224965,
+          "false_d_rate_scored": 0.027712297244204973,
+          "matches": 1,
+          "merge_per_pred_spell": 0.18430034129692832,
+          "missed_dead_rate_scored": 0.06229303474210024,
+          "split_per_gt_spell": 0.013157894736842105,
+          "transition_abs_error_seconds": 0.21,
+          "wrong_team_rate_ball_missing": 0.13663703131039814,
+          "wrong_team_rate_ball_observed": 0.04473356365831418,
+          "wrong_team_rate_scored": 0.08643430431610259
+        }
+      },
+      "raw_counts_across_archives": {
+        "false_d_frames": 9561,
+        "false_d_frames_ball_missing": 4040,
+        "false_d_frames_ball_observed": 5521,
+        "frames": 463468,
+        "gt_alive_spells": 1963,
+        "matched_transition_count": 455,
+        "merge_predicted_spells": 200,
+        "missed_dead_frames": 21873,
+        "pred_alive_spells": 1732,
+        "scored_frames": 380457,
+        "scored_frames_ball_missing": 187482,
+        "scored_frames_ball_observed": 192975,
+        "split_ground_truth_spells": 38,
+        "unmatched_gt_transition_count": 1188,
+        "unmatched_pred_transition_count": 922,
+        "wrong_team_frames": 33363,
+        "wrong_team_frames_ball_missing": 22166,
+        "wrong_team_frames_ball_observed": 11197
+      },
+      "realization_kind": "ensemble",
+      "replicate": "corrupt_2",
+      "spell_length_rates_by_provider": {
+        "metrica": {
+          "long_gt_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 87164.0,
+            "mean_gt_spells_per_match": 196.0,
+            "mean_match_false_d_rate": 0.027040980221192234,
+            "mean_match_wrong_team_rate": 0.07107292001284934
+          },
+          "medium_1_to_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 9941.0,
+            "mean_gt_spells_per_match": 153.0,
+            "mean_match_false_d_rate": 0.128156121114576,
+            "mean_match_wrong_team_rate": 0.25269087616939945
+          },
+          "short_le_1s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 550.0,
+            "mean_gt_spells_per_match": 33.0,
+            "mean_match_false_d_rate": 0.24181818181818182,
+            "mean_match_wrong_team_rate": 0.4036363636363636
+          }
+        },
+        "skillcorner": {
+          "long_gt_5s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 19692.0,
+            "mean_gt_spells_per_match": 151.66666666666666,
+            "mean_match_false_d_rate": 0.01906283865991821,
+            "mean_match_wrong_team_rate": 0.1195951048330745
+          },
+          "medium_1_to_5s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 4424.0,
+            "mean_gt_spells_per_match": 150.66666666666666,
+            "mean_match_false_d_rate": 0.05104425556841089,
+            "mean_match_wrong_team_rate": 0.3538850910207331
+          },
+          "short_le_1s": {
+            "matches": 3,
+            "mean_gt_alive_frames_per_match": 367.6666666666667,
+            "mean_gt_spells_per_match": 72.66666666666667,
+            "mean_match_false_d_rate": 0.04861345309334449,
+            "mean_match_wrong_team_rate": 0.540589664838774
+          }
+        },
+        "sportec": {
+          "long_gt_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 59177.0,
+            "mean_gt_spells_per_match": 164.0,
+            "mean_match_false_d_rate": 0.031667708738192205,
+            "mean_match_wrong_team_rate": 0.12438954323470267
+          },
+          "medium_1_to_5s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 16431.0,
+            "mean_gt_spells_per_match": 248.0,
+            "mean_match_false_d_rate": 0.11660884912665084,
+            "mean_match_wrong_team_rate": 0.28701844075223665
+          },
+          "short_le_1s": {
+            "matches": 1,
+            "mean_gt_alive_frames_per_match": 678.0,
+            "mean_gt_spells_per_match": 44.0,
+            "mean_match_false_d_rate": 0.2359882005899705,
+            "mean_match_wrong_team_rate": 0.3584070796460177
+          }
+        }
+      },
+      "view": "feed_like"
+    }
+  ],
+  "cohort": {
+    "all_folds_exclude_heldout_provider": true,
+    "cells": 15,
+    "matches": 5,
+    "providers": 3,
+    "views": {
+      "clean": 1,
+      "feed_like_replicates": 2
+    }
+  },
+  "control_replay_scores": {
+    "clean_spell_f1": 0.6472145590743718,
+    "feed_like_spell_f1": 0.5058107894247519,
+    "passed": true,
+    "tolerance": 5.1e-05
+  },
+  "denominator_scope": "Ball-missing and observed rates use all GT-scored H/A/D frames, including D frames; no long-gap-only subset is applied.",
+  "interpretation": "Descriptive non-mutually-exclusive error categories. Rates do not estimate counterfactual F1 loss.",
+  "prediction_scope": "Reconstructed control_D2 two-seed native-probability ensemble; external provider-heldout development only.",
+  "provenance": {
+    "audit_source_sha256": "c43535f6b1a4d6b40edac9d40c239618bd4cb87e34635253452e3e39196da773",
+    "control_replay_receipt": "experiments/results/dense_label_weight_v1_control_replay.json",
+    "control_replay_receipt_sha256": "772aa493c9986f282a947ddfe20d68c40d4e8627760421437fba39e4918a326b",
+    "ensemble_score_receipt": "experiments/results/dense_label_weight_v1_ensemble_scores_control_D2.json",
+    "ensemble_score_receipt_sha256": "7fb9185587cd8916107072a2f4a8e4e63ffb113b47363824d5c44e05407050e6",
+    "evaluation_input_cache_hashes_verified": true,
+    "organizer_labels_used": false,
+    "prediction_archives": {
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_metrica/seedensemble__metrica_3__clean__clean.npz": "5198f37edb19fd231d741f917314f2d18a861738939bf63bad369c41230e5f15",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_metrica/seedensemble__metrica_3__feed_like__corrupt_1.npz": "3099a3c11f757392f5dc7814521d01490abb4327e538caf0bf823108ddc65550",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_metrica/seedensemble__metrica_3__feed_like__corrupt_2.npz": "fc1ba3381f33a23a2599dd19c951a66322c37d9e3b80d8ed55721dd0efa6f480",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__clean__clean.npz": "ec4f581af2122bd816d600cf04b5fbb20753b08fa1d56e04cd43f6697a4f7bbd",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__feed_like__corrupt_1.npz": "baa40d9eae73bae8de2e073e2b5d36d2f165b75b98e38bd1c02bdd1b51f5681e",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__feed_like__corrupt_2.npz": "fe62e76516b38a46622554e0b1694a2c7d6802c4c10a6d601352b2ef3efbf092",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__clean__clean.npz": "0eae93808e4b26d0a119e855dba2ea5af5931322bd5fb9417019bb8125b36081",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__feed_like__corrupt_1.npz": "58b63a52fa0698ee7b5483d6185c6982799bf58dc424cef5dc616469becec510",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__feed_like__corrupt_2.npz": "7d4de4b5ce4a85f681c50fcef27d739e314c5d59664de596ebc08ee88227ff18",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__clean__clean.npz": "a1b7be21f04ff8c13d8a1fee9c67eeed489e06d300c14ef8f2112a0aae9c3ef7",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__feed_like__corrupt_1.npz": "a71a753ad0c374992653c04ef4d5c373d1560da2d2b326788c94998475cc5fbb",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__feed_like__corrupt_2.npz": "cdd2fb1fb886e5eb97b6a622879c95db3885837a62098e7b4c373d651276079d",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_sportec/seedensemble__J03WOY__clean__clean.npz": "2c4a18f78612828b2431fb84be88488bcefaba188378867be49fc034b360ad8a",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_sportec/seedensemble__J03WOY__feed_like__corrupt_1.npz": "c9577d2eb2b4fcd5a3e823b58a0e26385dbb40dfc188d14257610a61172226a9",
+      "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_sportec/seedensemble__J03WOY__feed_like__corrupt_2.npz": "695f9cf81e17ead1976770546a51f61cde5edf115aef2feb229ee734b263ee21"
+    },
+    "prediction_provenance_receipt": "experiments/results/dense_label_weight_v1_prediction_provenance_control_D2.json",
+    "prediction_provenance_receipt_sha256": "6d0e53da394b9bb96d0aaa782d6ec277c78e6c1b59c0a632d6cf309d06a2478c",
+    "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+    "reconstruction_verification_receipt": "experiments/results/dense_label_weight_v1_independent_reconstruction_verification.json",
+    "reconstruction_verification_receipt_sha256": "3881cb4e9c24260345eeaa62553757c0faf2a687bb85187899676c23dc667dc4",
+    "saved_labels_masks_timestamps_aligned": true,
+    "source_study_id": "dense_label_weight_v1",
+    "training_input_provenance": {
+      "game_records": 45,
+      "original_expected_manifest_sha256": "d2639fa1a47b38bff1b293e8b2592fb1d7392c09700a2c9873c1a90a72397b51",
+      "per_game_joblib_hashes_differing_from_original": 45,
+      "per_game_joblib_hashes_matching_original": 0,
+      "raw_source_revision": "32c840210b7d08d06976e7f9457dfff79fb2da99",
+      "reconstructed_manifest_matches_frozen_reference": true,
+      "reconstructed_manifest_sha256": "1f905524123f63c60bd12bd42150c1d111dc779c1760f8d9b4a725077f3706d5",
+      "source_module_sha256": {
+        "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+        "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+        "experiments/dense_label_weight_v1.py": "53a76811a0aebacfe357454d28c77f8905fc9ce39d7f9f199a0a31abcdbbe54d",
+        "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+        "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+        "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+        "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+        "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+        "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+        "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+        "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+        "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+        "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+        "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+        "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+        "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+        "experiments/tests/test_dense_label_weight_v1.py": "dd068f233c4f9e544bba71dcc0dcc8a0034a4fe26df164d2a5c31901e5b8c8d2"
+      },
+      "train_qa_comparison": {
+        "common_value_mismatches": 0,
+        "common_values_compared": 273,
+        "frozen_report_sha256": "bed6a0c2e07c8b1f24bf5eb2df7af40b6c87d71630ba7fa31b3b3b9351657398",
+        "note": "Byte-identical per-game GAR joblibs were unavailable; no cause is claimed for the binary hash differences.",
+        "overlapping_values_equal": true,
+        "reconstructed_report_sha256": "3332bd0d0fbee07f95689f8b3d7e5f35a649cb4ec0dbd2e1d4a59780fd875790"
+      }
+    }
+  },
+  "schema": 1,
+  "study": "dense_error_audit_v1"
+}
