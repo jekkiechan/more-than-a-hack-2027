@@ -1,0 +1,66 @@
+{
+  "study_id": "soccernet_training_ideas_v1",
+  "checked_utc_date": "2026-10-30",
+  "base_commit": "a792b09",
+  "status": "implemented_synthetic_validation_only",
+  "real_training_run": false,
+  "real_evaluation_run": false,
+  "baseline_changed": false,
+  "organizer_reference_labels_read": false,
+  "remote_uploaded": false,
+  "old_fold_teachers": [
+    {
+      "fold_seed": "leave_out_metrica:2026",
+      "path": "data/experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+      "expected_sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+      "available": true,
+      "hash_verified": true
+    },
+    {
+      "fold_seed": "leave_out_metrica:2027",
+      "path": "data/experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+      "expected_sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+      "available": true,
+      "hash_verified": true
+    },
+    {
+      "fold_seed": "leave_out_skillcorner:2026",
+      "path": "data/experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+      "expected_sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+      "available": true,
+      "hash_verified": true
+    },
+    {
+      "fold_seed": "leave_out_skillcorner:2027",
+      "path": "data/experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+      "expected_sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+      "available": true,
+      "hash_verified": true
+    },
+    {
+      "fold_seed": "leave_out_sportec:2026",
+      "path": "data/experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+      "expected_sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+      "available": true,
+      "hash_verified": true
+    },
+    {
+      "fold_seed": "leave_out_sportec:2027",
+      "path": "data/experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+      "expected_sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+      "available": true,
+      "hash_verified": true
+    }
+  ],
+  "missing_local_directories": [
+    "experiments/soccernet_capacity_v1",
+    "models/joint_gru_soccernet_capacity_ensemble_v1",
+    "independent/soccernet_gar"
+  ],
+  "artifact_recovery": "Previous SoccerNet artifacts were recorded as local-only; no remote restore claimed.",
+  "hypotheses": [
+    "within-fixture sparse event-type balancing",
+    "raw ball-gap conditional H/A teacher consistency",
+    "masked temporal feature reconstruction"
+  ]
+}

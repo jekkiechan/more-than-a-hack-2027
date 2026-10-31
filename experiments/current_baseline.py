@@ -141,6 +141,12 @@ def joint_gru_ensemble_probabilities(inputs, models, manifest):
 
 
 def predict_probabilities(inputs, models, manifest=None):
+    if manifest and manifest.get('architecture', {}).get('kind') == 'sn_dense_ensemble':
+        from experiments import sn_dense_baseline
+        return sn_dense_baseline.predict_probabilities(inputs, models, manifest)
+    if manifest and manifest.get('architecture', {}).get('kind') == 'soccernet_capacity_ensemble':
+        from experiments import soccernet_baseline
+        return soccernet_baseline.predict_probabilities(inputs, models, manifest)
     if manifest and manifest.get('architecture', {}).get('kind') == 'joint_gru_ensemble':
         return joint_gru_ensemble_probabilities(inputs, models, manifest)
     if manifest and manifest.get('architecture', {}).get('kind') == 'joint_gru':

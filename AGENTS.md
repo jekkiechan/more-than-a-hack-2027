@@ -7,6 +7,14 @@
   first: vocabulary, study lineage, settled directions and code map.
 - Find prior evidence in the [experiment index](docs/research/EXPERIMENTS.md).
   Read the relevant report, not every historical handoff.
+- SoccerNet-GAR data come from [Hugging Face OpenSportsLab/SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR/tree/tracking-full),
+  branch `tracking-full`. Use the pinned revision and TRAIN file hashes in
+  `experiments/results/soccernet_capacity_declaration.json` with configured
+  `HF_TOKEN` access. Remote paths are `train/...`; local paths include the
+  `tracking-full/` prefix. Check this source before asking for a local dataset
+  archive. The dataset source is separate from our locally trained checkpoints
+  and experiment inventory; Hugging Face availability does not restore those.
+  See [data access](experiments/SOCCERNET_DATA_ACCESS.md) for paths and checks.
 - For restore/inference, use [BASELINE.md](experiments/BASELINE.md).
   The active package is bound by `experiments/baseline_manifest.json`;
   ranking/reporting is defined by `experiments/model_decision_policy.json`.

@@ -1,8 +1,117 @@
 # Current research state
 
-Reviewed 2026-10-29 after the SkillCorner removal study, frozen at code commit `c4dcbe3` over fork main `22fc2d5` (merged PR #32). The adopted combined-objective ensemble and separate public diagnostic remain from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29). The preceding original-loss ensemble came from [PR #22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22); architecture studies retain their historical references.
+## Dense SoccerNet supervision (sn_dense_v1) — adopted 31 October 2026
+
+The user adopted `joint_gru_sn_dense_ensemble_v1`. Dense touch-stream H/A/D labels
+plus D-path training on SoccerNet give two-seed development .6472/.5058
+clean/feed-like versus .641790/.502586; dense H/A labels alone do not help, longer
+training and SoccerNet-only training help silver GAR-valid but hurt development,
+and 11/22/45-game scaling is flat. The +.01 clean screen is not met. The one-time
+public diagnostic scores .6303 versus .5697 on 17 references. Details:
+[SOCCERNET_DENSE](../../experiments/SOCCERNET_DENSE.md),
+[progress](../../experiments/results/sn_dense_v1_progress.md),
+[BASELINE](../../experiments/BASELINE.md). Next: fit the touch rule to provider
+possession definitions and test source-conditioned heads.
+
+## SoccerNet matched follow-up — completed 30 October 2026
+
+**Retain the adopted SoccerNet baseline.** The three parallel Luna mechanisms
+have completed real training and evaluation: six explicitly rebuilt references,
+24 matched continuation fits, and 225 scored/replayed outputs. The reference
+reproduces the published width-96 metrics exactly. Reconstruction leads clean
+spell at .642988 versus reference .641790 and continuation control .642896;
+its gain over control is only +.000092, with a -.001307 feed-like loss.
+The control leads feed-like at .504988 versus reconstruction .503681 and
+reference .502586. All four continuations miss the +.01 clean screen; all
+provider macro/D and feed-like guards pass. Seed-level clean gains reverse
+direction between 2026 and 2027. No new objective establishes a useful upgrade.
+
+The [completed report](../../experiments/SOCCERNET_FOLLOWUP.md) owns the
+scorecard, provider/seed diagnostics and artifact receipts. All 45 TRAIN
+fixtures, 9,905 segments and paired raw gap views were rebuilt from the verified
+[Hugging Face source](../../experiments/SOCCERNET_DATA_ACCESS.md). During that study the original
+promoted checkpoint bytes were not recovered; its comparator is an explicit
+reference reconstruction, not an exact package restore. The original promoted
+deployment weights are now separately available through the private baseline
+cache; this does not change the follow-up study's reconstructed reference. New fold checkpoints, matching D
+teachers and a verified bundle remain local, with no remote upload. Independent
+weight replay reproduces all 225 probabilities and decoded outputs exactly.
+The 406 experiment tests, 18 root tests, file-backed fit parity and bundled CSV
+format checks pass. No organizer scoring or baseline promotion occurred.
+
+Next: preserve the current package and prioritize fresh external dense
+possession labels before another adoption decision. The five development
+matches remain previously exposed and feed-like stress remains synthetic.
+
+Updated 2026-10-30 after the user-authorized SoccerNet-capacity promotion;
+the working baseline is `joint_gru_soccernet_capacity_ensemble_v1`.
+Earlier study records below remain historical. The former combined-objective
+package came from [PR #29](https://github.com/jekkiechan/more-than-a-hack-2027/pull/29)
+and remains the unchanged D-teacher source. Package and restore details live in
+[BASELINE](../../experiments/BASELINE.md).
 Check live PR state before resuming. This is the current coordination summary;
 package details belong in [BASELINE](../../experiments/BASELINE.md).
+
+## SoccerNet-GAR H/A continuation — 30 October 2026
+
+[Stage 1](../../experiments/SOCCERNET_EXTENSION.md) completed 18 full-provider
+H/A-only warm-start fits. The actual two-seed GAR50 probability ensemble
+scores .631957/.495121 clean/feed-like, against baseline .633205/.498830 and a
+matched old-data-only control .629253/.495753. GAR50 gains .002703 clean over
+old-only but loses .001248 clean and .003709 feed-like to baseline; it fails
+the predeclared +.01 clean improvement screen. Provider clean D/macro and
+feed-like spell guards pass. Keep `joint_gru_combined_ensemble_v1` with no
+promotion at the stage-1 decision. This remains stage 1's frozen outcome; the
+later capacity package was promoted under a separately authorized exception.
+
+The requested larger-capacity continuation is complete; its results and the
+single post-selection public diagnostic are recorded below. The five
+development matches and 17-spell public window are previously exposed, so the
+public result is only a small pipeline check. SoccerNet uses sparse
+PASS/CROSS/SHOT center-team silver labels, not dense possession labels. GAR
+valid/test data were excluded from training and evaluation; the organizer reference was scored once only
+after external selection. Artifacts remain in the local ignored data
+directory; no private upload was made. Read the capacity report for numeric
+parity, verification and amendment details.
+
+### SoccerNet capacity/data-scaling continuation — external and public checks complete
+
+The frozen `soccernet_capacity_v1` study widened only conditional H/A GRUs and
+used 42,919 sparse event-team anchors from 45 disjoint 2022 World Cup TRAIN
+fixtures; 60 conflicting event-team centers remain unknown. The official
+eligible event counts are 40,745 PASS, 1,514 CROSS, and 720 SHOT (94.80% PASS).
+Training preserves the baseline normalizer, D path, and original-data
+spell/transition objectives. The selected width-96 two-seed ensemble scores
+.641790/.502586 clean/feed-like, versus baseline .633205/.498830. A matched
+equal-budget old-only control scores .633652/.494188; the SoccerNet result
+gains .008138/.008398 over that control. All declared provider/feed-like
+guards pass, but width 96 misses the separate +.01 clean improvement screen
+by .001415. The frozen study did not automatically promote the model; the user
+later authorized adoption with this exception disclosed.
+
+The external selection and six-fit old-only attribution control are complete.
+The one-time post-selection public diagnostic scores .569697 mean spell F1,
+.861288 macro F1, and .855417 D-F1 versus the saved baseline .557576/.854088/
+.854810. Both candidates predict 16 spells against 17 references over 7,500
+graded frames; the mean spell-F1 bootstrap intervals overlap broadly. The
+public window is a small noisy pipeline check, not confirmation. Its score was
+already known when the user authorized the later promotion, but it was not a
+model-selection or tuning input. The frozen study did not adopt width 96
+because it misses the +.01 clean screen; the later user approval explicitly
+accepted that exception.
+
+All final independent receipts pass: coarse 195-row replay, selected-final
+180-row replay, matched control 45-row replay, pooled weight seals, and exact
+public prediction/CSV replay. The public verifier opened no reference file and
+did not rescore metrics; the separate one-time public score gate did access
+the reference once. The final suite has 353 experiment tests and 18 root tests;
+file-backed fit parity and CSV format checks pass. The
+[report](../../experiments/SOCCERNET_CAPACITY.md) records methods, uncertainty,
+the runtime-only metadata/parity amendments, and checker correction. The local
+artifact inventory hashes 1,187 files (about 1.96 GB) across stage 1 and this
+capacity continuation; it is not a remote restoration archive. Source
+snapshots, weights, and verification artifacts remain local, with no private
+archive upload.
 
 ## Label-free follow-up — 29 October 2026
 
@@ -51,13 +160,48 @@ The user-authorized [matched-budget data study](../../experiments/SKILLCORNER_EX
 
 The new labels are provider/event silver, and the six training matches add 4.66 usable hours under the existing visibility mask. Sparse retained native ball gaps limit competition representativeness. Full methods, paired seed/provider rows and verification evidence belong in the study report. The new private archive is frozen locally; automatic approval review blocked upload to `jekkiechan/mtah-data` pending explicit destination-specific authorization. No remote restore is claimed.
 
-## Adopted baseline
+## Current adopted baseline
 
-`joint_gru_combined_ensemble_v1`: equal native H/A/D probabilities from combined-loss seeds 2026/2027, then unchanged Viterbi cost 3. Hidden24 player-only-D GRUs, ten-second cores and five-second context remain fixed. Matched full-provider clean/feed-like spell improves **.626531/.487419 → .633205/.498830**; macro is .854226/.811387. The practical screen passes, including provider clean spell/macro/D-F1 floors. SkillCorner spell declines about .007 in both views, and clean equal-provider D-F1 declines .002220. See [the report](../../experiments/OBJECTIVE_ENSEMBLE.md).
+`joint_gru_soccernet_capacity_ensemble_v1` uses width-96 pooled conditional H/A
+heads and the unchanged combined-objective seed-2026/2027 hidden-24 D teachers,
+followed by the unchanged cost-3 Viterbi decoder. Its external clean/feed-like
+spell scores are .641790/.502586 versus .633205/.498830 for the prior package;
+matched equal-budget old-only is .633652/.494188. The frozen study missed the
++0.01 clean screen by .001415, while passing provider D/macro and feed-like
+guards. The user authorized adoption afterward with that exception disclosed.
+The public diagnostic was already known at adoption but was not selection
+evidence; its score is .569697 versus .557576 on only 7,500 frames and 17
+references. No fresh confirmation or full-match result is established. See the
+[promotion guide](../../experiments/BASELINE.md) and
+[capacity report](../../experiments/SOCCERNET_CAPACITY.md).
+The promoted four-checkpoint package is now uploaded to the private cache; its
+default model/source manifests select this baseline. A fresh clone and LFS
+download verified every model and source hash. The
+[remote delivery receipt](../../experiments/results/baseline_soccernet_capacity_remote_artifacts.json)
+supersedes the original local-only availability note; full research archives
+remain outside this delivery.
 
-Two pooled deployment fits used the same 13 TRAIN matches and exact normalization/schema/budget parity. The 199,319-row label-free CSV is format-validated and reproduces through the normal baseline entrypoint. The preceding package/decision policy are archived. This is development adoption on exposed matches and synthetic stress, not independent confirmation; the prior loss study’s failed +.01 both-seed screen remains unchanged.
+The [former combined-objective package](../../experiments/OBJECTIVE_ENSEMBLE.md)
+is archived. Its fitted D teachers, old manifest, policy, and historical
+adoption record remain unchanged.
 
-The separately requested fixed public diagnostic was run **after** adoption: both ensembles score **.557576 spell**, with combined macro **.854088** versus prior **.862375**. D-F1 improves .848746 → .854810. This does not confirm a public-window gain; only 7,500 graded frames and 17 possessions are available. No tuning or adoption changes followed. The [saved public result](../../experiments/results/combined_objective_public_check.json) and exclusive gate are final. Full-match performance remains unknown. Restore/package details: [BASELINE](../../experiments/BASELINE.md).
+### Former package: deployment and public check
+
+The former package's two pooled deployment fits used the same 13 TRAIN matches
+and exact normalization/schema/budget parity. Its 199,319-row label-free CSV
+is format-validated and reproduces through the baseline entrypoint. This was a
+development adoption on exposed matches and synthetic stress, not independent
+confirmation; the prior loss study's failed +.01 both-seed screen remains
+unchanged.
+
+Its separately requested fixed public diagnostic was run **after** that
+adoption: both ensembles scored **.557576 spell**, with combined macro **.854088**
+versus prior **.862375**. D-F1 improved .848746 → .854810. This does not
+confirm a public-window gain; only 7,500 graded frames and 17 possessions are
+available. No tuning followed that diagnostic. The [saved public
+result](../../experiments/results/combined_objective_public_check.json) and
+exclusive gate remain final. Full-match performance is unknown. Restore
+details: [BASELINE](../../experiments/BASELINE.md).
 
 ## Spell-F1 follow-up — 29 October 2026
 
@@ -186,7 +330,7 @@ shows dated milestones and interactive charts; update it when promising work com
 
 | Scope / evidence | Finding | Decision |
 | --- | --- | --- |
-| Completed [combined-objective ensemble comparison](../../experiments/OBJECTIVE_ENSEMBLE.md), full provider holdouts | Fixed saved-probability blend improves clean/feed-like spell .626531/.487419 → .633205/.498830; all declared practical guards pass. SkillCorner spell declines about .007 in both views. Independently verified; two pooled deployment fits and entrypoint replay completed. | Working baseline adopted before a separate fixed public diagnostic: spell tied .557576, combined macro lower. No subsequent tuning or adoption change. |
+| Completed [combined-objective ensemble comparison](../../experiments/OBJECTIVE_ENSEMBLE.md), full provider holdouts | Fixed saved-probability blend improved clean/feed-like spell .626531/.487419 → .633205/.498830; its practical guards passed. SkillCorner spell declined about .007 in both views. Independently verified; two pooled deployment fits and entrypoint replay completed. | Adopted at the time and later superseded by the user-authorized SoccerNet-capacity package. Its own fixed public diagnostic and decision remain historical. |
 | Completed [seed ensemble / gap-context study](../../experiments/SEED_GAP_CONTEXT.md), full provider holdouts | Actual ensemble .6265/.4874; 30/30 parity. Live feed-like gaps >=10s have 24.3% wrong team versus 5.1% false D; native clean support is only 108 live frames. Longer context helps local recovery but not spell consistently. | User adopts the original-context ensemble; fifteen-second context remains experimental. Independent labeled broadcast confirmation is pending. No organizer scoring. |
 | Previous adopted recipe (`gru_hgb_ballgap25_v1`), historical **D-only provider holdout, pooled H/A**; [baseline](../../experiments/BASELINE.md) | Clean spell/macro .5740/.8439; composite-stress .4315/.7866. Previous .5746/.8449 and .4205/.7699. | Adopted robustness tradeoff, not a clean-score win. |
 | Merged [tracking pilot](../../experiments/TOP_THREE_PILOT.md), PR #15 | 80 pooled development evaluations; matched gap/suppression arms lose overall spell. Fusion recovers 4,419 missing-ball frames (6.84%), with >10% overlapping ball positions disagreeing by >5 m. | No preprocessing/fusion adoption. |

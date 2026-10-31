@@ -1,0 +1,42 @@
+{
+  "adopt_model": false,
+  "baseline_parity": "Both seed probability arrays within 1e-6 of historical arrays; decoded predictions exact; saved seed/member scores match stage 1.",
+  "checkpoint_seal_sha256": "11336b32519703063010578e6ae29d7d0b92ba1a19e2ee20ce4b36d92d1ba0fd",
+  "clean_spell_delta_vs_baseline": 0.008584746119773556,
+  "declaration_sha256": "27e16319fd5d8ab430429732f74f4c3821651cce9f109e9fbabfc037a3951dc7",
+  "eligible": true,
+  "guards": {
+    "w24": {
+      "feed_like_spell": true,
+      "metrica_d_f1": true,
+      "metrica_macro_f1": true,
+      "skillcorner_d_f1": true,
+      "skillcorner_macro_f1": true,
+      "sportec_d_f1": true,
+      "sportec_macro_f1": true
+    },
+    "w48": {
+      "feed_like_spell": true,
+      "metrica_d_f1": true,
+      "metrica_macro_f1": true,
+      "skillcorner_d_f1": true,
+      "skillcorner_macro_f1": true,
+      "sportec_d_f1": true,
+      "sportec_macro_f1": true
+    },
+    "w96": {
+      "feed_like_spell": true,
+      "metrica_d_f1": true,
+      "metrica_macro_f1": true,
+      "skillcorner_d_f1": true,
+      "skillcorner_macro_f1": true,
+      "sportec_d_f1": true,
+      "sportec_macro_f1": true
+    }
+  },
+  "improvement_screen_passes": false,
+  "selected_recipe": "w96_lr3e-4_step2048",
+  "selected_width": 96,
+  "selection_mode": "guard_eligible",
+  "study_id": "soccernet_capacity_v1"
+}
