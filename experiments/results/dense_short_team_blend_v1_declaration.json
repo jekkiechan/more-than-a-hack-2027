@@ -1,0 +1,182 @@
+{
+  "arms": {
+    "control_D2": "Frozen D2 ensemble probabilities.",
+    "short_team_2x": "Frozen short_team_2x ensemble probabilities.",
+    "short_team_blend_50_50": "Exactly 0.5 * control_D2 probabilities + 0.5 * short_team_2x probabilities, then the unchanged cost-3 decoder."
+  },
+  "blend": {
+    "candidate_probability_weight": 0.5,
+    "control_probability_weight": 0.5,
+    "decoder": "unchanged shared supervised decoder, switch cost 3",
+    "fit_count": 0,
+    "weight_search": false
+  },
+  "cohort": {
+    "cells": [
+      {
+        "match": "J03WOY",
+        "replicate": "clean",
+        "source": "sportec",
+        "view": "clean"
+      },
+      {
+        "match": "J03WOY",
+        "replicate": "corrupt_1",
+        "source": "sportec",
+        "view": "feed_like"
+      },
+      {
+        "match": "J03WOY",
+        "replicate": "corrupt_2",
+        "source": "sportec",
+        "view": "feed_like"
+      },
+      {
+        "match": "metrica_3",
+        "replicate": "clean",
+        "source": "metrica",
+        "view": "clean"
+      },
+      {
+        "match": "metrica_3",
+        "replicate": "corrupt_1",
+        "source": "metrica",
+        "view": "feed_like"
+      },
+      {
+        "match": "metrica_3",
+        "replicate": "corrupt_2",
+        "source": "metrica",
+        "view": "feed_like"
+      },
+      {
+        "match": "skillcorner_had_1996435",
+        "replicate": "clean",
+        "source": "skillcorner",
+        "view": "clean"
+      },
+      {
+        "match": "skillcorner_had_1996435",
+        "replicate": "corrupt_1",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      {
+        "match": "skillcorner_had_1996435",
+        "replicate": "corrupt_2",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      {
+        "match": "skillcorner_had_1996436",
+        "replicate": "clean",
+        "source": "skillcorner",
+        "view": "clean"
+      },
+      {
+        "match": "skillcorner_had_1996436",
+        "replicate": "corrupt_1",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      {
+        "match": "skillcorner_had_1996436",
+        "replicate": "corrupt_2",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      {
+        "match": "skillcorner_had_2006229",
+        "replicate": "clean",
+        "source": "skillcorner",
+        "view": "clean"
+      },
+      {
+        "match": "skillcorner_had_2006229",
+        "replicate": "corrupt_1",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      {
+        "match": "skillcorner_had_2006229",
+        "replicate": "corrupt_2",
+        "source": "skillcorner",
+        "view": "feed_like"
+      }
+    ],
+    "description": "The exact 5-match x clean/corrupt_1/corrupt_2 provider-holdout cohort from dense_short_team_v1."
+  },
+  "frame_artifacts": "Private only under data/experiments/dense_short_team_blend_v1/predictions/",
+  "guards": {
+    "clean_spell_f1_delta_vs_control": ">= +0.01",
+    "each_provider_clean_d_f1_delta": ">= -0.02",
+    "each_provider_clean_macro_f1_delta": ">= -0.02",
+    "feed_like_spell_f1_delta_vs_control": ">= -0.01",
+    "no_promotion": true,
+    "ranking": "official spell F1; macro F1 is secondary",
+    "stop_rule": "This is the final follow-up; stop if any declared guard fails."
+  },
+  "input_sha256": {
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_metrica/seedensemble__metrica_3__clean__clean.npz": "5198f37edb19fd231d741f917314f2d18a861738939bf63bad369c41230e5f15",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_metrica/seedensemble__metrica_3__feed_like__corrupt_1.npz": "3099a3c11f757392f5dc7814521d01490abb4327e538caf0bf823108ddc65550",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_metrica/seedensemble__metrica_3__feed_like__corrupt_2.npz": "fc1ba3381f33a23a2599dd19c951a66322c37d9e3b80d8ed55721dd0efa6f480",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__clean__clean.npz": "ec4f581af2122bd816d600cf04b5fbb20753b08fa1d56e04cd43f6697a4f7bbd",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__feed_like__corrupt_1.npz": "baa40d9eae73bae8de2e073e2b5d36d2f165b75b98e38bd1c02bdd1b51f5681e",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__feed_like__corrupt_2.npz": "fe62e76516b38a46622554e0b1694a2c7d6802c4c10a6d601352b2ef3efbf092",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__clean__clean.npz": "0eae93808e4b26d0a119e855dba2ea5af5931322bd5fb9417019bb8125b36081",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__feed_like__corrupt_1.npz": "58b63a52fa0698ee7b5483d6185c6982799bf58dc424cef5dc616469becec510",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__feed_like__corrupt_2.npz": "7d4de4b5ce4a85f681c50fcef27d739e314c5d59664de596ebc08ee88227ff18",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__clean__clean.npz": "a1b7be21f04ff8c13d8a1fee9c67eeed489e06d300c14ef8f2112a0aae9c3ef7",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__feed_like__corrupt_1.npz": "a71a753ad0c374992653c04ef4d5c373d1560da2d2b326788c94998475cc5fbb",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__feed_like__corrupt_2.npz": "cdd2fb1fb886e5eb97b6a622879c95db3885837a62098e7b4c373d651276079d",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_sportec/seedensemble__J03WOY__clean__clean.npz": "2c4a18f78612828b2431fb84be88488bcefaba188378867be49fc034b360ad8a",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_sportec/seedensemble__J03WOY__feed_like__corrupt_1.npz": "c9577d2eb2b4fcd5a3e823b58a0e26385dbb40dfc188d14257610a61172226a9",
+    "data/experiments/dense_label_weight_v1/predictions/control_D2/leave_out_sportec/seedensemble__J03WOY__feed_like__corrupt_2.npz": "695f9cf81e17ead1976770546a51f61cde5edf115aef2feb229ee734b263ee21",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_metrica/seedensemble__metrica_3__clean__clean.npz": "ddfdc4613a1eaff37e7bcd4d121a8f985efbf9684e3afb4e8bc6504c0a7821ef",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_metrica/seedensemble__metrica_3__feed_like__corrupt_1.npz": "7fc5d66833ad0201164739961ab00ee0ea2d4c3378b1efa88899aeff82e38053",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_metrica/seedensemble__metrica_3__feed_like__corrupt_2.npz": "9a0a8fb48e7862f2e15a6f055b4985fb6c96c9ace45a304e63ffe7ae37844bb5",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__clean__clean.npz": "dd537209927151ce4b9b2caf375e8cc6adc2129b1b71dcf7669cd3adfb4a2c65",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__feed_like__corrupt_1.npz": "bbaf7077269f9a502ce46e4a0021ab7bff0384e8afb1920fbafca5b9dbbc46f5",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__feed_like__corrupt_2.npz": "7970d7860e27bba6dca85c9e64dca633325da726d52839aa3401c87b02069353",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__clean__clean.npz": "b1ba5de434501269caa20f48efff8724dc88419fc2febc9d8a87800eb62f1716",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__feed_like__corrupt_1.npz": "aa8909facf086d52f4e3633eed7e9708b5a3e003654a8b8c10976bcb46c07611",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__feed_like__corrupt_2.npz": "33c0bd4818f019954f40c49e1223ded214999256d441d7b823e6713fb0c056cc",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__clean__clean.npz": "7d9f25a58c1814e78b132a9bc5ad5585e1d0486f453e8499a2ea108c3bf14c4c",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__feed_like__corrupt_1.npz": "83d711dea919c3a2e3d7b66ca998836182c410d786872c18364f685c35dd70d2",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__feed_like__corrupt_2.npz": "9f858f3a0532ba4be40d80ce8fe62dbc3eef32ef97bdcd34c5ecace46d419097",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_sportec/seedensemble__J03WOY__clean__clean.npz": "6bcf987ed9f709bec90a61a3041df0843239fa7c60dcd78c7343d6dbb024741a",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_sportec/seedensemble__J03WOY__feed_like__corrupt_1.npz": "e925ada7a50eedd6b621397e399d15de88123922d91f4d4f8b63ee520935d830",
+    "data/experiments/dense_short_team_v1/predictions/short_team_2x/leave_out_sportec/seedensemble__J03WOY__feed_like__corrupt_2.npz": "73d7010532c65c15b6e8a92f7d19641809684ec0a7e66b4ef27628260ba2b706"
+  },
+  "motivation": {
+    "interpretation": "Post-hoc follow-up motivated by both short-team seed members improving clean spell F1 while their probability ensemble was below control. This is development evidence and is not an independent confirmation.",
+    "observed_prior_ensemble_deltas": {
+      "clean": -0.0020495256052929234,
+      "feed_like": -0.002164309228689265
+    },
+    "prior_declaration_sha256": "17fcc4708e2be5135a9dbf3eaf98e8d016a41ecc9f3ef3e998d9da7600ed9e8b",
+    "prior_input_seal_sha256": "670be2f06ef533f0c23aec80b73892ce1675bbd943f638d542de568e234a4268",
+    "prior_readout_sha256": "18ca0dbe11a1a40ca30523e973f5c344ce7ac01460fc301d1316fd4c456eea1d"
+  },
+  "public_or_organizer_labels_accessed": false,
+  "question": "Can a fixed equal-probability average of the frozen D2 control ensemble and short-team candidate ensemble retain complementary seed gains while passing the original practical guards?",
+  "schema": 1,
+  "source_sha256": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/dense_error_audit_v1.py": "c43535f6b1a4d6b40edac9d40c239618bd4cb87e34635253452e3e39196da773",
+    "experiments/dense_label_weight_v1.py": "53a76811a0aebacfe357454d28c77f8905fc9ce39d7f9f199a0a31abcdbbe54d",
+    "experiments/dense_short_team_blend_v1.py": "60233d189dbe46a53fe6beebf1296f86380d47493584a6138d53fd25e7ad9994",
+    "experiments/dense_short_team_eval_v1.py": "97c7d507a362efc812a41a8ac3d357f31a5f1d69b6c55e2fd79901a6dfeeecdd",
+    "experiments/dense_short_team_v1.py": "fce2939c83c5c50d72dbad67a27b3a3ca713f18549ebebf49eaad918658fee5d",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/model_decision_policy.json": "f63c4bd69881acaa8abadccf515308ebd66890106a24e5f550373a4d20859165",
+    "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+    "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+    "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+    "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/tests/test_dense_short_team_blend_v1.py": "8bc3d5860a9200c1d4dd561de250df7b26e59dc0f4f83bdda9ea2c362940184a"
+  },
+  "status": "posthoc_fixed_blend_predeclared",
+  "study": "dense_short_team_blend_v1"
+}

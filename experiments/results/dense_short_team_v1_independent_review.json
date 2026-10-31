@@ -1,0 +1,357 @@
+{
+  "candidate_official_score_replay": {
+    "absolute_tolerance": 1e-12,
+    "all_scores_and_diagnostics_match_readout": true,
+    "cells_replayed": 15
+  },
+  "coverage": {
+    "all_six_arm_member_cohorts_complete": true,
+    "candidate_prediction_archives": 45,
+    "cells_per_arm_member": 15,
+    "prediction_archives": 90,
+    "reused_control_prediction_archives": 45,
+    "score_rows": 90
+  },
+  "d_path_runtime_drift_vs_reused_D2": {
+    "d_state_bit_identical": false,
+    "fits": [
+      {
+        "d_state_tensor_count": 11,
+        "fold": "leave_out_metrica",
+        "max_abs_d_state_parameter_delta": 5.513429641723633e-07,
+        "max_abs_native_pd_delta": 6.258487701416016e-07,
+        "mean_abs_native_pd_delta": 1.5645190544746228e-08,
+        "native_pd_cells": 3,
+        "native_pd_frames": 431283,
+        "seed": 2026
+      },
+      {
+        "d_state_tensor_count": 11,
+        "fold": "leave_out_metrica",
+        "max_abs_d_state_parameter_delta": 2.0489096641540527e-07,
+        "max_abs_native_pd_delta": 5.960464477539062e-07,
+        "mean_abs_native_pd_delta": 1.772959363805189e-08,
+        "native_pd_cells": 3,
+        "native_pd_frames": 431283,
+        "seed": 2027
+      },
+      {
+        "d_state_tensor_count": 11,
+        "fold": "leave_out_skillcorner",
+        "max_abs_d_state_parameter_delta": 1.1920928955078125e-07,
+        "max_abs_native_pd_delta": 5.066394805908203e-07,
+        "mean_abs_native_pd_delta": 1.9486377628293125e-08,
+        "native_pd_cells": 9,
+        "native_pd_frames": 531513,
+        "seed": 2026
+      },
+      {
+        "d_state_tensor_count": 11,
+        "fold": "leave_out_skillcorner",
+        "max_abs_d_state_parameter_delta": 1.4901161193847656e-07,
+        "max_abs_native_pd_delta": 7.450580596923828e-07,
+        "mean_abs_native_pd_delta": 2.159216594562277e-08,
+        "native_pd_cells": 9,
+        "native_pd_frames": 531513,
+        "seed": 2027
+      },
+      {
+        "d_state_tensor_count": 11,
+        "fold": "leave_out_sportec",
+        "max_abs_d_state_parameter_delta": 1.1920928955078125e-07,
+        "max_abs_native_pd_delta": 1.8477439880371094e-06,
+        "mean_abs_native_pd_delta": 2.1694219690727723e-08,
+        "native_pd_cells": 3,
+        "native_pd_frames": 427608,
+        "seed": 2026
+      },
+      {
+        "d_state_tensor_count": 11,
+        "fold": "leave_out_sportec",
+        "max_abs_d_state_parameter_delta": 1.4901161193847656e-07,
+        "max_abs_native_pd_delta": 1.1920928955078125e-06,
+        "mean_abs_native_pd_delta": 3.5227074104748844e-08,
+        "native_pd_cells": 3,
+        "native_pd_frames": 427608,
+        "seed": 2027
+      }
+    ],
+    "max_abs_native_pd_delta": 1.8477439880371094e-06,
+    "native_pd_total_frame_pairs": 2780808,
+    "weighted_mean_abs_native_pd_delta": 2.1780632670291737e-08
+  },
+  "evidence_scope": "Previously exposed external provider-holdout development cohort; Metrica and SkillCorner labels include derived silver targets; feed-like views are synthetic.",
+  "hashes": {
+    "all_prediction_archive_hashes_verified": true,
+    "candidate_and_control_model_sha256": {
+      "candidate/leave_out_metrica/s2026": "723d7968e95115dd6bbb9a7f29de58205abbcb0371d504139418d38f1e44dbea",
+      "candidate/leave_out_metrica/s2027": "dadd3721e602b8f7d4c2db9fe69b45d1a8011b42ed262cb38e758d9bdf342b03",
+      "candidate/leave_out_skillcorner/s2026": "639012a587e3d69d057fe6efdd0a08e6e9bc7e346a95551372c4cfbd10a04753",
+      "candidate/leave_out_skillcorner/s2027": "980d242dc924310c2c127592148dd0db6d87886feb7d0e5ad5c3d816ed8ed587",
+      "candidate/leave_out_sportec/s2026": "877bb9c8a2e4dcf7160008452a47618bc2ffbc461093cea39ffb483138fbce52",
+      "candidate/leave_out_sportec/s2027": "2c61365d6b7d6babb5982162a5c4372228904472e76c03579af51ee540e4d1b7",
+      "control/leave_out_metrica/s2026": "4161e51c45c54806771b9e1e995137a5b5270cc6c3befa755c26591372551fca",
+      "control/leave_out_metrica/s2027": "3b61e5fa57255e83e59f8144b62fddd648e093d235eecf8c37c53d4df47e3eb7",
+      "control/leave_out_skillcorner/s2026": "e7eca636e1ac4a74a32efbfac869bea4b01e030ebe92204ca031236d44e32b14",
+      "control/leave_out_skillcorner/s2027": "2c1d983f23430232c39bd2a9b99cdde28b8bb870e5c0a85a1278469762643f44",
+      "control/leave_out_sportec/s2026": "f5ec355f3122bf95a2ba0313d677b1475c629dd1f2affe31165fec735d9c301c",
+      "control/leave_out_sportec/s2027": "0dfbda3f3c1a927c7911e69ab8085febdf42416c2633ad5f69990f6e944e5f2d"
+    },
+    "declaration_sha256": "17fcc4708e2be5135a9dbf3eaf98e8d016a41ecc9f3ef3e998d9da7600ed9e8b",
+    "evaluation_seal_sha256": "670be2f06ef533f0c23aec80b73892ce1675bbd943f638d542de568e234a4268",
+    "exposure_receipt_sha256": "6aa0e6291dd9d662a416a7748081288ef82511eb76f7317fe30a0d687ebc98e7",
+    "prediction_archive_count": 90,
+    "prediction_archive_path_hash_map_sha256": "175664442d4b3ffff131db2213f4dc6174c7de23181b5562fc4582cb58838dde",
+    "readout_sha256": "18ca0dbe11a1a40ca30523e973f5c344ce7ac01460fc301d1316fd4c456eea1d",
+    "source_sha256": {
+      "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+      "experiments/dense_error_audit_v1.py": "c43535f6b1a4d6b40edac9d40c239618bd4cb87e34635253452e3e39196da773",
+      "experiments/dense_short_team_eval_v1.py": "97c7d507a362efc812a41a8ac3d357f31a5f1d69b6c55e2fd79901a6dfeeecdd",
+      "experiments/dense_short_team_exposure_v1.py": "ada0ad1b28d8d3eb4d8d658d1175886616671ec5bd87c69a03cff5d3c0ea1c02",
+      "experiments/dense_short_team_v1.py": "fce2939c83c5c50d72dbad67a27b3a3ca713f18549ebebf49eaad918658fee5d",
+      "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+      "experiments/model_decision_policy.json": "f63c4bd69881acaa8abadccf515308ebd66890106a24e5f550373a4d20859165",
+      "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+      "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0"
+    }
+  },
+  "readout_primary_and_guards": {
+    "all_guards_pass": false,
+    "candidate_clean_spell_f1": 0.6451650334690788,
+    "candidate_feed_like_spell_f1": 0.5036464801960626,
+    "clean_delta": -0.0020495256052929234,
+    "clean_plus_0_01_screen_pass": false,
+    "clean_provider_macro_d_guards_pass": true,
+    "control_clean_spell_f1": 0.6472145590743718,
+    "control_feed_like_spell_f1": 0.5058107894247519,
+    "feed_like_delta": -0.002164309228689265,
+    "feed_like_floor_pass": true
+  },
+  "review_id": "dense_short_team_v1_independent_review",
+  "schema": 1,
+  "scope": "Independent receipt/hash audit; replayed all 15 candidate ensemble cells with the official scorer; no fitting or organizer scoring.",
+  "short_le_1s_reference_counts": [
+    {
+      "arm": "control_D2",
+      "matched_count_across_cells": 13,
+      "pooled_recall": 0.3939393939393939,
+      "provider": "metrica",
+      "reference_count_across_cells": 33,
+      "view": "clean"
+    },
+    {
+      "arm": "control_D2",
+      "matched_count_across_cells": 0,
+      "pooled_recall": 0.0,
+      "provider": "skillcorner",
+      "reference_count_across_cells": 62,
+      "view": "clean"
+    },
+    {
+      "arm": "control_D2",
+      "matched_count_across_cells": 3,
+      "pooled_recall": 0.06818181818181818,
+      "provider": "sportec",
+      "reference_count_across_cells": 44,
+      "view": "clean"
+    },
+    {
+      "arm": "control_D2",
+      "matched_count_across_cells": 7,
+      "pooled_recall": 0.10606060606060606,
+      "provider": "metrica",
+      "reference_count_across_cells": 66,
+      "view": "feed_like"
+    },
+    {
+      "arm": "control_D2",
+      "matched_count_across_cells": 0,
+      "pooled_recall": 0.0,
+      "provider": "skillcorner",
+      "reference_count_across_cells": 124,
+      "view": "feed_like"
+    },
+    {
+      "arm": "control_D2",
+      "matched_count_across_cells": 5,
+      "pooled_recall": 0.056818181818181816,
+      "provider": "sportec",
+      "reference_count_across_cells": 88,
+      "view": "feed_like"
+    },
+    {
+      "arm": "short_team_2x",
+      "matched_count_across_cells": 11,
+      "pooled_recall": 0.3333333333333333,
+      "provider": "metrica",
+      "reference_count_across_cells": 33,
+      "view": "clean"
+    },
+    {
+      "arm": "short_team_2x",
+      "matched_count_across_cells": 0,
+      "pooled_recall": 0.0,
+      "provider": "skillcorner",
+      "reference_count_across_cells": 62,
+      "view": "clean"
+    },
+    {
+      "arm": "short_team_2x",
+      "matched_count_across_cells": 3,
+      "pooled_recall": 0.06818181818181818,
+      "provider": "sportec",
+      "reference_count_across_cells": 44,
+      "view": "clean"
+    },
+    {
+      "arm": "short_team_2x",
+      "matched_count_across_cells": 8,
+      "pooled_recall": 0.12121212121212122,
+      "provider": "metrica",
+      "reference_count_across_cells": 66,
+      "view": "feed_like"
+    },
+    {
+      "arm": "short_team_2x",
+      "matched_count_across_cells": 0,
+      "pooled_recall": 0.0,
+      "provider": "skillcorner",
+      "reference_count_across_cells": 124,
+      "view": "feed_like"
+    },
+    {
+      "arm": "short_team_2x",
+      "matched_count_across_cells": 5,
+      "pooled_recall": 0.056818181818181816,
+      "provider": "sportec",
+      "reference_count_across_cells": 88,
+      "view": "feed_like"
+    }
+  ],
+  "study": "dense_short_team_v1",
+  "training_sampler_exposure": {
+    "aggregate_rows": [
+      {
+        "cohort": "old",
+        "draws": 32768,
+        "eligible_fraction": 0.009542918244995546,
+        "eligible_le_1s_ha_core_rows": 11120,
+        "fit": "leave_out_metrica/s2026",
+        "known_ha_core_rows": 1165262,
+        "short_containing_draw_fraction": 0.094818115234375,
+        "short_containing_draws": 3107
+      },
+      {
+        "cohort": "gar",
+        "draws": 32768,
+        "eligible_fraction": 0.0009020922574632768,
+        "eligible_le_1s_ha_core_rows": 998,
+        "fit": "leave_out_metrica/s2026",
+        "known_ha_core_rows": 1106317,
+        "short_containing_draw_fraction": 0.009185791015625,
+        "short_containing_draws": 301
+      },
+      {
+        "cohort": "old",
+        "draws": 32768,
+        "eligible_fraction": 0.009473684210526316,
+        "eligible_le_1s_ha_core_rows": 11007,
+        "fit": "leave_out_metrica/s2027",
+        "known_ha_core_rows": 1161850,
+        "short_containing_draw_fraction": 0.09405517578125,
+        "short_containing_draws": 3082
+      },
+      {
+        "cohort": "gar",
+        "draws": 32768,
+        "eligible_fraction": 0.0009299478310969873,
+        "eligible_le_1s_ha_core_rows": 1033,
+        "fit": "leave_out_metrica/s2027",
+        "known_ha_core_rows": 1110815,
+        "short_containing_draw_fraction": 0.009307861328125,
+        "short_containing_draws": 305
+      },
+      {
+        "cohort": "old",
+        "draws": 32768,
+        "eligible_fraction": 0.009440704103509234,
+        "eligible_le_1s_ha_core_rows": 12048,
+        "fit": "leave_out_skillcorner/s2026",
+        "known_ha_core_rows": 1276176,
+        "short_containing_draw_fraction": 0.1041259765625,
+        "short_containing_draws": 3412
+      },
+      {
+        "cohort": "gar",
+        "draws": 32768,
+        "eligible_fraction": 0.0009939655328633818,
+        "eligible_le_1s_ha_core_rows": 1097,
+        "fit": "leave_out_skillcorner/s2026",
+        "known_ha_core_rows": 1103660,
+        "short_containing_draw_fraction": 0.009765625,
+        "short_containing_draws": 320
+      },
+      {
+        "cohort": "old",
+        "draws": 32768,
+        "eligible_fraction": 0.00918798054475621,
+        "eligible_le_1s_ha_core_rows": 11748,
+        "fit": "leave_out_skillcorner/s2027",
+        "known_ha_core_rows": 1278627,
+        "short_containing_draw_fraction": 0.100799560546875,
+        "short_containing_draws": 3303
+      },
+      {
+        "cohort": "gar",
+        "draws": 32768,
+        "eligible_fraction": 0.0009239940655648914,
+        "eligible_le_1s_ha_core_rows": 1027,
+        "fit": "leave_out_skillcorner/s2027",
+        "known_ha_core_rows": 1111479,
+        "short_containing_draw_fraction": 0.00933837890625,
+        "short_containing_draws": 306
+      },
+      {
+        "cohort": "old",
+        "draws": 32768,
+        "eligible_fraction": 0.004192652420646864,
+        "eligible_le_1s_ha_core_rows": 5001,
+        "fit": "leave_out_sportec/s2026",
+        "known_ha_core_rows": 1192801,
+        "short_containing_draw_fraction": 0.046844482421875,
+        "short_containing_draws": 1535
+      },
+      {
+        "cohort": "gar",
+        "draws": 32768,
+        "eligible_fraction": 0.0009633387033569905,
+        "eligible_le_1s_ha_core_rows": 1062,
+        "fit": "leave_out_sportec/s2026",
+        "known_ha_core_rows": 1102416,
+        "short_containing_draw_fraction": 0.009521484375,
+        "short_containing_draws": 312
+      },
+      {
+        "cohort": "old",
+        "draws": 32768,
+        "eligible_fraction": 0.004139459834421606,
+        "eligible_le_1s_ha_core_rows": 4941,
+        "fit": "leave_out_sportec/s2027",
+        "known_ha_core_rows": 1193634,
+        "short_containing_draw_fraction": 0.047119140625,
+        "short_containing_draws": 1544
+      },
+      {
+        "cohort": "gar",
+        "draws": 32768,
+        "eligible_fraction": 0.0009684967030380927,
+        "eligible_le_1s_ha_core_rows": 1070,
+        "fit": "leave_out_sportec/s2027",
+        "known_ha_core_rows": 1104805,
+        "short_containing_draw_fraction": 0.009796142578125,
+        "short_containing_draws": 321
+      }
+    ],
+    "fits_exactly_matched_to_receipts": 6
+  }
+}

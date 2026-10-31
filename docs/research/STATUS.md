@@ -1,7 +1,8 @@
 # Current research state
 
 Reviewed 2026-10-31 against fork `main` through
-[PR #48](https://github.com/jekkiechan/more-than-a-hack-2027/pull/48), with the
+[PR #49](https://github.com/jekkiechan/more-than-a-hack-2027/pull/49), with the completed
+[subsecond-team comparison](../../experiments/DENSE_SHORT_TEAM_V1.md) and the
 completed source-head evidence on open [PR #47](https://github.com/jekkiechan/more-than-a-hack-2027/pull/47).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
@@ -20,12 +21,15 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 ## Next work
 
-1. The [targeted dense follow-ups](../../experiments/DENSE_TARGETED_FOLLOWUPS.md)
-   are complete: fixed gap memory, confidence-dependent decoding and silver-label
-   weighting provide no upgrade. The current error audit points to team attribution
-   in ≤1-second possessions and under synthetic ball-missing corruption. Preserve
-   these fixed results; any next hypothesis needs a new bounded declaration.
-   Exact 199,319-row submission reproduction passed without organizer scoring.
+1. The [subsecond-team follow-up](../../experiments/DENSE_SHORT_TEAM_V1.md)
+   is complete: six fixed 2× H/A-weighted fits and a fixed 50/50 ensemble blend
+   both reduce clean/feed-like spell F1. Short-team errors improve marginally
+   clean but worsen under stress. Exact sampler replay shows only 0.09–0.10%
+   of sampled GAR H/A rows qualify. Stop duration/blend-weight sweeps on these
+   exposed matches; prioritize targeted external supervision and independent
+   dense evaluation. This follows the negative
+   [targeted dense comparisons](../../experiments/DENSE_TARGETED_FOLLOWUPS.md).
+   The adopted model and closed organizer gates remain unchanged.
 2. The source-specific head comparison on open PR #47 is completed and negative:
    retain the shared dense heads. Its provider-definition audit supports holding
    possession through contested touches; it does not justify rebuilding GAR
