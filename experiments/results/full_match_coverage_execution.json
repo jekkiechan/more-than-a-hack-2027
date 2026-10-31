@@ -1,0 +1,4332 @@
+{
+  "aggregate": {
+    "coverage_fraction_within_summed_observed_envelopes": 0.605425,
+    "dead_provenance_hours": 2.937,
+    "first_to_last_clip_envelope_hours": 77.5153,
+    "games": 45,
+    "interpretation_limits": [
+      "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+      "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+      "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+      "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+      "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+    ],
+    "matches": [
+      "soccernet_10502",
+      "soccernet_10503",
+      "soccernet_10504",
+      "soccernet_10505",
+      "soccernet_10506",
+      "soccernet_10507",
+      "soccernet_10508",
+      "soccernet_10509",
+      "soccernet_10510",
+      "soccernet_10511",
+      "soccernet_10512",
+      "soccernet_10513",
+      "soccernet_10514",
+      "soccernet_10515",
+      "soccernet_10516",
+      "soccernet_10517",
+      "soccernet_3812",
+      "soccernet_3813",
+      "soccernet_3814",
+      "soccernet_3815",
+      "soccernet_3816",
+      "soccernet_3817",
+      "soccernet_3818",
+      "soccernet_3819",
+      "soccernet_3820",
+      "soccernet_3821",
+      "soccernet_3822",
+      "soccernet_3823",
+      "soccernet_3824",
+      "soccernet_3825",
+      "soccernet_3826",
+      "soccernet_3827",
+      "soccernet_3828",
+      "soccernet_3829",
+      "soccernet_3830",
+      "soccernet_3831",
+      "soccernet_3832",
+      "soccernet_3833",
+      "soccernet_3834",
+      "soccernet_3835",
+      "soccernet_3836",
+      "soccernet_3837",
+      "soccernet_3838",
+      "soccernet_3839",
+      "soccernet_3840"
+    ],
+    "native_frames_observed": 5063339,
+    "observed_record_hours": 46.9297,
+    "out_to_touch_episodes": {
+      "both_record_edges_censored": 0,
+      "bounded_complete_duration_seconds_total": 1217.584,
+      "bounded_complete_fraction_of_observed_out_runs": 0.084789,
+      "complete_within_same_record_and_bounded": 369,
+      "left_censored_at_record_start": 0,
+      "left_censored_stoppages_not_identifiable_from_clips": true,
+      "observed_duration_seconds": {
+        "max": 4.804804899954649,
+        "median": 2.402402351575123,
+        "p90": 2.4024024805038713
+      },
+      "observed_endpoint_pair_duration_seconds_total": 1217.584,
+      "observed_out_runs": 4352,
+      "out_to_touch_endpoint_pairs_observed": 369,
+      "right_censored_at_record_end": 3983
+    },
+    "record_duration_seconds": {
+      "max": 124.49115788241863,
+      "median": 11.544878409756354,
+      "p90": 30.0700703191666
+    },
+    "records": 11249,
+    "time_blocks": [
+      {
+        "coverage_fraction_within_observed_envelope": 0.696938,
+        "first_to_last_clip_span_seconds": 2739.473,
+        "game_period": 1,
+        "match": "soccernet_10502",
+        "observed_seconds_union": 1909.243,
+        "records": 142,
+        "time_blocks": 142
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.606427,
+        "first_to_last_clip_span_seconds": 3069.336,
+        "game_period": 2,
+        "match": "soccernet_10502",
+        "observed_seconds_union": 1861.328,
+        "records": 115,
+        "time_blocks": 115
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.753724,
+        "first_to_last_clip_span_seconds": 2820.12,
+        "game_period": 1,
+        "match": "soccernet_10503",
+        "observed_seconds_union": 2125.592,
+        "records": 121,
+        "time_blocks": 121
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.622709,
+        "first_to_last_clip_span_seconds": 3142.809,
+        "game_period": 2,
+        "match": "soccernet_10503",
+        "observed_seconds_union": 1957.057,
+        "records": 130,
+        "time_blocks": 130
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.671927,
+        "first_to_last_clip_span_seconds": 2820.587,
+        "game_period": 1,
+        "match": "soccernet_10504",
+        "observed_seconds_union": 1895.229,
+        "records": 129,
+        "time_blocks": 129
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.580102,
+        "first_to_last_clip_span_seconds": 3218.685,
+        "game_period": 2,
+        "match": "soccernet_10504",
+        "observed_seconds_union": 1867.167,
+        "records": 129,
+        "time_blocks": 129
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.625683,
+        "first_to_last_clip_span_seconds": 2840.007,
+        "game_period": 1,
+        "match": "soccernet_10505",
+        "observed_seconds_union": 1776.944,
+        "records": 123,
+        "time_blocks": 123
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.621529,
+        "first_to_last_clip_span_seconds": 2951.485,
+        "game_period": 2,
+        "match": "soccernet_10505",
+        "observed_seconds_union": 1834.434,
+        "records": 130,
+        "time_blocks": 130
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.667453,
+        "first_to_last_clip_span_seconds": 2855.789,
+        "game_period": 1,
+        "match": "soccernet_10506",
+        "observed_seconds_union": 1906.106,
+        "records": 128,
+        "time_blocks": 128
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.565553,
+        "first_to_last_clip_span_seconds": 2940.007,
+        "game_period": 2,
+        "match": "soccernet_10506",
+        "observed_seconds_union": 1662.729,
+        "records": 112,
+        "time_blocks": 112
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.587576,
+        "first_to_last_clip_span_seconds": 1014.615,
+        "game_period": 3,
+        "match": "soccernet_10506",
+        "observed_seconds_union": 596.163,
+        "records": 39,
+        "time_blocks": 39
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.68494,
+        "first_to_last_clip_span_seconds": 921.488,
+        "game_period": 4,
+        "match": "soccernet_10506",
+        "observed_seconds_union": 631.164,
+        "records": 42,
+        "time_blocks": 42
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.638818,
+        "first_to_last_clip_span_seconds": 2999.733,
+        "game_period": 1,
+        "match": "soccernet_10507",
+        "observed_seconds_union": 1916.283,
+        "records": 113,
+        "time_blocks": 113
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.651337,
+        "first_to_last_clip_span_seconds": 2935.469,
+        "game_period": 2,
+        "match": "soccernet_10507",
+        "observed_seconds_union": 1911.979,
+        "records": 102,
+        "time_blocks": 102
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.705594,
+        "first_to_last_clip_span_seconds": 2760.861,
+        "game_period": 1,
+        "match": "soccernet_10508",
+        "observed_seconds_union": 1948.048,
+        "records": 116,
+        "time_blocks": 116
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.578218,
+        "first_to_last_clip_span_seconds": 3007.007,
+        "game_period": 2,
+        "match": "soccernet_10508",
+        "observed_seconds_union": 1738.705,
+        "records": 115,
+        "time_blocks": 115
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.683254,
+        "first_to_last_clip_span_seconds": 974.942,
+        "game_period": 3,
+        "match": "soccernet_10508",
+        "observed_seconds_union": 666.133,
+        "records": 40,
+        "time_blocks": 40
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.617558,
+        "first_to_last_clip_span_seconds": 1046.346,
+        "game_period": 4,
+        "match": "soccernet_10508",
+        "observed_seconds_union": 646.179,
+        "records": 44,
+        "time_blocks": 44
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.626938,
+        "first_to_last_clip_span_seconds": 2937.304,
+        "game_period": 1,
+        "match": "soccernet_10509",
+        "observed_seconds_union": 1841.508,
+        "records": 141,
+        "time_blocks": 141
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.586504,
+        "first_to_last_clip_span_seconds": 2945.012,
+        "game_period": 2,
+        "match": "soccernet_10509",
+        "observed_seconds_union": 1727.261,
+        "records": 114,
+        "time_blocks": 114
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.715226,
+        "first_to_last_clip_span_seconds": 2764.131,
+        "game_period": 1,
+        "match": "soccernet_10510",
+        "observed_seconds_union": 1976.977,
+        "records": 123,
+        "time_blocks": 123
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.692858,
+        "first_to_last_clip_span_seconds": 2918.185,
+        "game_period": 2,
+        "match": "soccernet_10510",
+        "observed_seconds_union": 2021.889,
+        "records": 128,
+        "time_blocks": 128
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.620536,
+        "first_to_last_clip_span_seconds": 3062.462,
+        "game_period": 1,
+        "match": "soccernet_10511",
+        "observed_seconds_union": 1900.367,
+        "records": 124,
+        "time_blocks": 124
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.519029,
+        "first_to_last_clip_span_seconds": 3459.66,
+        "game_period": 2,
+        "match": "soccernet_10511",
+        "observed_seconds_union": 1795.662,
+        "records": 130,
+        "time_blocks": 130
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.627749,
+        "first_to_last_clip_span_seconds": 2855.322,
+        "game_period": 1,
+        "match": "soccernet_10512",
+        "observed_seconds_union": 1792.426,
+        "records": 123,
+        "time_blocks": 123
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.552748,
+        "first_to_last_clip_span_seconds": 3180.213,
+        "game_period": 2,
+        "match": "soccernet_10512",
+        "observed_seconds_union": 1757.858,
+        "records": 118,
+        "time_blocks": 118
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.6581,
+        "first_to_last_clip_span_seconds": 2992.559,
+        "game_period": 1,
+        "match": "soccernet_10513",
+        "observed_seconds_union": 1969.403,
+        "records": 148,
+        "time_blocks": 148
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.461729,
+        "first_to_last_clip_span_seconds": 3308.275,
+        "game_period": 2,
+        "match": "soccernet_10513",
+        "observed_seconds_union": 1527.528,
+        "records": 114,
+        "time_blocks": 114
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.631275,
+        "first_to_last_clip_span_seconds": 2949.683,
+        "game_period": 1,
+        "match": "soccernet_10514",
+        "observed_seconds_union": 1862.062,
+        "records": 107,
+        "time_blocks": 107
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.59013,
+        "first_to_last_clip_span_seconds": 2996.463,
+        "game_period": 2,
+        "match": "soccernet_10514",
+        "observed_seconds_union": 1768.302,
+        "records": 112,
+        "time_blocks": 112
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.630533,
+        "first_to_last_clip_span_seconds": 2895.896,
+        "game_period": 1,
+        "match": "soccernet_10515",
+        "observed_seconds_union": 1825.959,
+        "records": 138,
+        "time_blocks": 138
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.623337,
+        "first_to_last_clip_span_seconds": 3037.137,
+        "game_period": 2,
+        "match": "soccernet_10515",
+        "observed_seconds_union": 1893.16,
+        "records": 117,
+        "time_blocks": 117
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.660864,
+        "first_to_last_clip_span_seconds": 2796.463,
+        "game_period": 1,
+        "match": "soccernet_10516",
+        "observed_seconds_union": 1848.081,
+        "records": 121,
+        "time_blocks": 121
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.603804,
+        "first_to_last_clip_span_seconds": 3068.135,
+        "game_period": 2,
+        "match": "soccernet_10516",
+        "observed_seconds_union": 1852.553,
+        "records": 119,
+        "time_blocks": 119
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.573673,
+        "first_to_last_clip_span_seconds": 3147.681,
+        "game_period": 1,
+        "match": "soccernet_10517",
+        "observed_seconds_union": 1805.739,
+        "records": 119,
+        "time_blocks": 119
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.543257,
+        "first_to_last_clip_span_seconds": 3216.55,
+        "game_period": 2,
+        "match": "soccernet_10517",
+        "observed_seconds_union": 1747.414,
+        "records": 117,
+        "time_blocks": 117
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.59776,
+        "first_to_last_clip_span_seconds": 965.232,
+        "game_period": 3,
+        "match": "soccernet_10517",
+        "observed_seconds_union": 576.977,
+        "records": 37,
+        "time_blocks": 37
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.416628,
+        "first_to_last_clip_span_seconds": 1143.01,
+        "game_period": 4,
+        "match": "soccernet_10517",
+        "observed_seconds_union": 476.21,
+        "records": 41,
+        "time_blocks": 41
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.613723,
+        "first_to_last_clip_span_seconds": 2862.729,
+        "game_period": 1,
+        "match": "soccernet_3812",
+        "observed_seconds_union": 1756.924,
+        "records": 134,
+        "time_blocks": 134
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.523421,
+        "first_to_last_clip_span_seconds": 3300.901,
+        "game_period": 2,
+        "match": "soccernet_3812",
+        "observed_seconds_union": 1727.761,
+        "records": 143,
+        "time_blocks": 143
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.492002,
+        "first_to_last_clip_span_seconds": 3539.973,
+        "game_period": 1,
+        "match": "soccernet_3813",
+        "observed_seconds_union": 1741.675,
+        "records": 94,
+        "time_blocks": 94
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.533067,
+        "first_to_last_clip_span_seconds": 3484.852,
+        "game_period": 2,
+        "match": "soccernet_3813",
+        "observed_seconds_union": 1857.658,
+        "records": 104,
+        "time_blocks": 104
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.526696,
+        "first_to_last_clip_span_seconds": 2993.46,
+        "game_period": 1,
+        "match": "soccernet_3814",
+        "observed_seconds_union": 1576.643,
+        "records": 95,
+        "time_blocks": 95
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.596894,
+        "first_to_last_clip_span_seconds": 3018.852,
+        "game_period": 2,
+        "match": "soccernet_3814",
+        "observed_seconds_union": 1801.935,
+        "records": 115,
+        "time_blocks": 115
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.666356,
+        "first_to_last_clip_span_seconds": 2938.005,
+        "game_period": 1,
+        "match": "soccernet_3815",
+        "observed_seconds_union": 1957.758,
+        "records": 123,
+        "time_blocks": 123
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.552738,
+        "first_to_last_clip_span_seconds": 3330.163,
+        "game_period": 2,
+        "match": "soccernet_3815",
+        "observed_seconds_union": 1840.707,
+        "records": 124,
+        "time_blocks": 124
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.566527,
+        "first_to_last_clip_span_seconds": 3078.779,
+        "game_period": 1,
+        "match": "soccernet_3816",
+        "observed_seconds_union": 1744.211,
+        "records": 118,
+        "time_blocks": 118
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.495249,
+        "first_to_last_clip_span_seconds": 3529.363,
+        "game_period": 2,
+        "match": "soccernet_3816",
+        "observed_seconds_union": 1747.915,
+        "records": 121,
+        "time_blocks": 121
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.597609,
+        "first_to_last_clip_span_seconds": 2980.681,
+        "game_period": 1,
+        "match": "soccernet_3817",
+        "observed_seconds_union": 1781.281,
+        "records": 110,
+        "time_blocks": 110
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.616806,
+        "first_to_last_clip_span_seconds": 3153.687,
+        "game_period": 2,
+        "match": "soccernet_3817",
+        "observed_seconds_union": 1945.212,
+        "records": 128,
+        "time_blocks": 128
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.626244,
+        "first_to_last_clip_span_seconds": 2823.557,
+        "game_period": 1,
+        "match": "soccernet_3818",
+        "observed_seconds_union": 1768.235,
+        "records": 126,
+        "time_blocks": 126
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.536718,
+        "first_to_last_clip_span_seconds": 3134.635,
+        "game_period": 2,
+        "match": "soccernet_3818",
+        "observed_seconds_union": 1682.416,
+        "records": 120,
+        "time_blocks": 120
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.6851,
+        "first_to_last_clip_span_seconds": 3071.772,
+        "game_period": 1,
+        "match": "soccernet_3819",
+        "observed_seconds_union": 2104.471,
+        "records": 131,
+        "time_blocks": 131
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.636157,
+        "first_to_last_clip_span_seconds": 3125.993,
+        "game_period": 2,
+        "match": "soccernet_3819",
+        "observed_seconds_union": 1988.622,
+        "records": 119,
+        "time_blocks": 119
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.7041,
+        "first_to_last_clip_span_seconds": 2812.546,
+        "game_period": 1,
+        "match": "soccernet_3820",
+        "observed_seconds_union": 1980.314,
+        "records": 123,
+        "time_blocks": 123
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.572606,
+        "first_to_last_clip_span_seconds": 3057.691,
+        "game_period": 2,
+        "match": "soccernet_3820",
+        "observed_seconds_union": 1750.851,
+        "records": 122,
+        "time_blocks": 122
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.674201,
+        "first_to_last_clip_span_seconds": 3032.199,
+        "game_period": 1,
+        "match": "soccernet_3821",
+        "observed_seconds_union": 2044.311,
+        "records": 119,
+        "time_blocks": 119
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.571101,
+        "first_to_last_clip_span_seconds": 3190.424,
+        "game_period": 2,
+        "match": "soccernet_3821",
+        "observed_seconds_union": 1822.055,
+        "records": 127,
+        "time_blocks": 127
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.712233,
+        "first_to_last_clip_span_seconds": 3000.801,
+        "game_period": 1,
+        "match": "soccernet_3822",
+        "observed_seconds_union": 2137.271,
+        "records": 113,
+        "time_blocks": 113
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.646029,
+        "first_to_last_clip_span_seconds": 3184.518,
+        "game_period": 2,
+        "match": "soccernet_3822",
+        "observed_seconds_union": 2057.291,
+        "records": 124,
+        "time_blocks": 124
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.643635,
+        "first_to_last_clip_span_seconds": 2998.432,
+        "game_period": 1,
+        "match": "soccernet_3823",
+        "observed_seconds_union": 1929.896,
+        "records": 122,
+        "time_blocks": 122
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.615621,
+        "first_to_last_clip_span_seconds": 3001.601,
+        "game_period": 2,
+        "match": "soccernet_3823",
+        "observed_seconds_union": 1847.848,
+        "records": 129,
+        "time_blocks": 129
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.685073,
+        "first_to_last_clip_span_seconds": 2870.203,
+        "game_period": 1,
+        "match": "soccernet_3824",
+        "observed_seconds_union": 1966.3,
+        "records": 139,
+        "time_blocks": 139
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.594106,
+        "first_to_last_clip_span_seconds": 3058.292,
+        "game_period": 2,
+        "match": "soccernet_3824",
+        "observed_seconds_union": 1816.95,
+        "records": 132,
+        "time_blocks": 132
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.639651,
+        "first_to_last_clip_span_seconds": 2762.029,
+        "game_period": 1,
+        "match": "soccernet_3825",
+        "observed_seconds_union": 1766.733,
+        "records": 118,
+        "time_blocks": 118
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.588566,
+        "first_to_last_clip_span_seconds": 3167.301,
+        "game_period": 2,
+        "match": "soccernet_3825",
+        "observed_seconds_union": 1864.164,
+        "records": 127,
+        "time_blocks": 127
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.684108,
+        "first_to_last_clip_span_seconds": 2819.82,
+        "game_period": 1,
+        "match": "soccernet_3826",
+        "observed_seconds_union": 1929.062,
+        "records": 114,
+        "time_blocks": 114
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.515714,
+        "first_to_last_clip_span_seconds": 3306.039,
+        "game_period": 2,
+        "match": "soccernet_3826",
+        "observed_seconds_union": 1704.972,
+        "records": 111,
+        "time_blocks": 111
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.69051,
+        "first_to_last_clip_span_seconds": 2761.495,
+        "game_period": 1,
+        "match": "soccernet_3827",
+        "observed_seconds_union": 1906.84,
+        "records": 120,
+        "time_blocks": 120
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.551113,
+        "first_to_last_clip_span_seconds": 3125.959,
+        "game_period": 2,
+        "match": "soccernet_3827",
+        "observed_seconds_union": 1722.756,
+        "records": 109,
+        "time_blocks": 109
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.574882,
+        "first_to_last_clip_span_seconds": 2945.579,
+        "game_period": 1,
+        "match": "soccernet_3828",
+        "observed_seconds_union": 1693.36,
+        "records": 111,
+        "time_blocks": 111
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.508825,
+        "first_to_last_clip_span_seconds": 3427.261,
+        "game_period": 2,
+        "match": "soccernet_3828",
+        "observed_seconds_union": 1743.877,
+        "records": 129,
+        "time_blocks": 129
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.604868,
+        "first_to_last_clip_span_seconds": 3122.589,
+        "game_period": 1,
+        "match": "soccernet_3829",
+        "observed_seconds_union": 1888.755,
+        "records": 137,
+        "time_blocks": 137
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.596341,
+        "first_to_last_clip_span_seconds": 3060.427,
+        "game_period": 2,
+        "match": "soccernet_3829",
+        "observed_seconds_union": 1825.058,
+        "records": 124,
+        "time_blocks": 124
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.658619,
+        "first_to_last_clip_span_seconds": 2937.004,
+        "game_period": 1,
+        "match": "soccernet_3830",
+        "observed_seconds_union": 1934.368,
+        "records": 133,
+        "time_blocks": 133
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.551028,
+        "first_to_last_clip_span_seconds": 3066.433,
+        "game_period": 2,
+        "match": "soccernet_3830",
+        "observed_seconds_union": 1689.69,
+        "records": 124,
+        "time_blocks": 124
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.657053,
+        "first_to_last_clip_span_seconds": 2775.509,
+        "game_period": 1,
+        "match": "soccernet_3831",
+        "observed_seconds_union": 1823.657,
+        "records": 143,
+        "time_blocks": 143
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.630713,
+        "first_to_last_clip_span_seconds": 2971.305,
+        "game_period": 2,
+        "match": "soccernet_3831",
+        "observed_seconds_union": 1874.041,
+        "records": 136,
+        "time_blocks": 136
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.546197,
+        "first_to_last_clip_span_seconds": 3001.735,
+        "game_period": 1,
+        "match": "soccernet_3832",
+        "observed_seconds_union": 1639.54,
+        "records": 111,
+        "time_blocks": 111
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.608686,
+        "first_to_last_clip_span_seconds": 3075.375,
+        "game_period": 2,
+        "match": "soccernet_3832",
+        "observed_seconds_union": 1871.939,
+        "records": 128,
+        "time_blocks": 128
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.511079,
+        "first_to_last_clip_span_seconds": 3300.901,
+        "game_period": 1,
+        "match": "soccernet_3833",
+        "observed_seconds_union": 1687.02,
+        "records": 125,
+        "time_blocks": 125
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.543583,
+        "first_to_last_clip_span_seconds": 3124.024,
+        "game_period": 2,
+        "match": "soccernet_3833",
+        "observed_seconds_union": 1698.165,
+        "records": 133,
+        "time_blocks": 133
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.657463,
+        "first_to_last_clip_span_seconds": 2882.182,
+        "game_period": 1,
+        "match": "soccernet_3834",
+        "observed_seconds_union": 1894.928,
+        "records": 126,
+        "time_blocks": 126
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.620372,
+        "first_to_last_clip_span_seconds": 3101.135,
+        "game_period": 2,
+        "match": "soccernet_3834",
+        "observed_seconds_union": 1923.857,
+        "records": 132,
+        "time_blocks": 132
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.549424,
+        "first_to_last_clip_span_seconds": 3027.895,
+        "game_period": 1,
+        "match": "soccernet_3835",
+        "observed_seconds_union": 1663.597,
+        "records": 107,
+        "time_blocks": 107
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.581909,
+        "first_to_last_clip_span_seconds": 3088.622,
+        "game_period": 2,
+        "match": "soccernet_3835",
+        "observed_seconds_union": 1797.297,
+        "records": 120,
+        "time_blocks": 120
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.731206,
+        "first_to_last_clip_span_seconds": 2758.025,
+        "game_period": 1,
+        "match": "soccernet_3836",
+        "observed_seconds_union": 2016.683,
+        "records": 132,
+        "time_blocks": 132
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.56556,
+        "first_to_last_clip_span_seconds": 3079.379,
+        "game_period": 2,
+        "match": "soccernet_3836",
+        "observed_seconds_union": 1741.575,
+        "records": 117,
+        "time_blocks": 117
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.623181,
+        "first_to_last_clip_span_seconds": 2921.922,
+        "game_period": 1,
+        "match": "soccernet_3837",
+        "observed_seconds_union": 1820.888,
+        "records": 119,
+        "time_blocks": 119
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.612594,
+        "first_to_last_clip_span_seconds": 3009.676,
+        "game_period": 2,
+        "match": "soccernet_3837",
+        "observed_seconds_union": 1843.71,
+        "records": 115,
+        "time_blocks": 115
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.634469,
+        "first_to_last_clip_span_seconds": 3000.834,
+        "game_period": 1,
+        "match": "soccernet_3838",
+        "observed_seconds_union": 1903.937,
+        "records": 117,
+        "time_blocks": 117
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.606466,
+        "first_to_last_clip_span_seconds": 3060.227,
+        "game_period": 2,
+        "match": "soccernet_3838",
+        "observed_seconds_union": 1855.923,
+        "records": 138,
+        "time_blocks": 138
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.653395,
+        "first_to_last_clip_span_seconds": 2838.438,
+        "game_period": 1,
+        "match": "soccernet_3839",
+        "observed_seconds_union": 1854.621,
+        "records": 116,
+        "time_blocks": 116
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.574978,
+        "first_to_last_clip_span_seconds": 3047.047,
+        "game_period": 2,
+        "match": "soccernet_3839",
+        "observed_seconds_union": 1751.985,
+        "records": 121,
+        "time_blocks": 121
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.50587,
+        "first_to_last_clip_span_seconds": 3143.543,
+        "game_period": 1,
+        "match": "soccernet_3840",
+        "observed_seconds_union": 1590.224,
+        "records": 113,
+        "time_blocks": 113
+      },
+      {
+        "coverage_fraction_within_observed_envelope": 0.595281,
+        "first_to_last_clip_span_seconds": 3073.106,
+        "game_period": 2,
+        "match": "soccernet_3840",
+        "observed_seconds_union": 1829.363,
+        "records": 127,
+        "time_blocks": 127
+      }
+    ],
+    "time_blocks_with_observed_records": 11249,
+    "union_covered_hours": 46.9297,
+    "unobserved_gaps_inside_observed_envelope": {
+      "count": 11153,
+      "seconds": {
+        "max": 498.09809921148974,
+        "median": 2.4024024026224127,
+        "p90": 28.528528968385714
+      }
+    }
+  },
+  "coverage_audit_module_sha256": "59869127e1b803e194ada07ccf6bf71daa5eec5089eb6d7e43dbbf7224ae7d7d",
+  "created_utc": "2026-10-31T02:43:46.149205+00:00",
+  "dense_game_count": 45,
+  "dense_label_module_sha256": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+  "dense_recipe_source_sha256": {
+    "learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+    "soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+    "soccernet_segments.py": "83ea686a452976f2b4724e6e48c8a94766525e02f2ed6e9af716386b4788363e",
+    "supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+  },
+  "dense_record_count": 11249,
+  "dense_record_manifest": "data/experiments/sn_dense_v1/records/train/manifest.json",
+  "dense_record_manifest_sha256": "d2639fa1a47b38bff1b293e8b2592fb1d7392c09700a2c9873c1a90a72397b51",
+  "local_acquisition_manifest_sha256": "d8e3838a048ee2d97b154b7972836da8ce98a1efe1ba64799a2130fd99e744c1",
+  "per_game": [
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.649113,
+      "dead_provenance_hours": 0.0509,
+      "first_to_last_clip_envelope_hours": 1.6136,
+      "game_file": "10502.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10502"
+      ],
+      "native_frames_observed": 113004,
+      "observed_record_hours": 1.0474,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 8.742,
+        "bounded_complete_fraction_of_observed_out_runs": 0.038961,
+        "complete_within_same_record_and_bounded": 3,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.671337848572413,
+          "median": 2.402402322122955,
+          "p90": 2.402402322122955
+        },
+        "observed_endpoint_pair_duration_seconds_total": 8.742,
+        "observed_out_runs": 77,
+        "out_to_touch_endpoint_pairs_observed": 3,
+        "right_censored_at_record_end": 74
+      },
+      "record_duration_seconds": {
+        "max": 72.30563655611726,
+        "median": 11.277944234410539,
+        "p90": 30.01668234696959
+      },
+      "records": 257,
+      "sha256": "10e12c8e5f9fa272c8e25307c2ebf625fab091dd087dc5d47d8d58e11fcdffd3",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.696938,
+          "first_to_last_clip_span_seconds": 2739.473,
+          "game_period": 1,
+          "match": "soccernet_10502",
+          "observed_seconds_union": 1909.243,
+          "records": 142,
+          "time_blocks": 142
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.606427,
+          "first_to_last_clip_span_seconds": 3069.336,
+          "game_period": 2,
+          "match": "soccernet_10502",
+          "observed_seconds_union": 1861.328,
+          "records": 115,
+          "time_blocks": 115
+        }
+      ],
+      "time_blocks_with_observed_records": 257,
+      "union_covered_hours": 1.0474,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 255,
+        "seconds": {
+          "max": 173.37336757987325,
+          "median": 2.2022021286127087,
+          "p90": 24.03069656101322
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.684672,
+      "dead_provenance_hours": 0.0673,
+      "first_to_last_clip_envelope_hours": 1.6564,
+      "game_file": "10503.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10503"
+      ],
+      "native_frames_observed": 122357,
+      "observed_record_hours": 1.1341,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 40.874,
+        "bounded_complete_fraction_of_observed_out_runs": 0.105263,
+        "complete_within_same_record_and_bounded": 10,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.637971124978451,
+          "median": 2.3690356106005037,
+          "p90": 2.462462367074891
+        },
+        "observed_endpoint_pair_duration_seconds_total": 40.874,
+        "observed_out_runs": 95,
+        "out_to_touch_endpoint_pairs_observed": 10,
+        "right_censored_at_record_end": 85
+      },
+      "record_duration_seconds": {
+        "max": 84.98498169295047,
+        "median": 13.146479303895754,
+        "p90": 31.13112992521507
+      },
+      "records": 251,
+      "sha256": "eb557811e2fa00980c1ace23c1e6a3a6ce043ebd701a617eb960a2b3678061d9",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.753724,
+          "first_to_last_clip_span_seconds": 2820.12,
+          "game_period": 1,
+          "match": "soccernet_10503",
+          "observed_seconds_union": 2125.592,
+          "records": 121,
+          "time_blocks": 121
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.622709,
+          "first_to_last_clip_span_seconds": 3142.809,
+          "game_period": 2,
+          "match": "soccernet_10503",
+          "observed_seconds_union": 1957.057,
+          "records": 130,
+          "time_blocks": 130
+        }
+      ],
+      "time_blocks_with_observed_records": 251,
+      "union_covered_hours": 1.1341,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 249,
+        "seconds": {
+          "max": 80.28027717049031,
+          "median": 2.0687353219328344,
+          "p90": 21.468133969864297
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.622988,
+      "dead_provenance_hours": 0.054,
+      "first_to_last_clip_envelope_hours": 1.6776,
+      "game_file": "10504.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10504"
+      ],
+      "native_frames_observed": 112759,
+      "observed_record_hours": 1.0451,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 22.489,
+        "bounded_complete_fraction_of_observed_out_runs": 0.111111,
+        "complete_within_same_record_and_bounded": 9,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 3.9706372400558245,
+          "median": 2.4024023637312553,
+          "p90": 2.4024023637312553
+        },
+        "observed_endpoint_pair_duration_seconds_total": 22.489,
+        "observed_out_runs": 81,
+        "out_to_touch_endpoint_pairs_observed": 9,
+        "right_censored_at_record_end": 72
+      },
+      "record_duration_seconds": {
+        "max": 66.76676569203113,
+        "median": 11.194527680997723,
+        "p90": 30.69069019666679
+      },
+      "records": 258,
+      "sha256": "d5757a9c0e1bee8aee3d4fc920000366aeee1ee8a2ac11a9d572da4e7bc44926",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.671927,
+          "first_to_last_clip_span_seconds": 2820.587,
+          "game_period": 1,
+          "match": "soccernet_10504",
+          "observed_seconds_union": 1895.229,
+          "records": 129,
+          "time_blocks": 129
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.580102,
+          "first_to_last_clip_span_seconds": 3218.685,
+          "game_period": 2,
+          "match": "soccernet_10504",
+          "observed_seconds_union": 1867.167,
+          "records": 129,
+          "time_blocks": 129
+        }
+      ],
+      "time_blocks_with_observed_records": 258,
+      "union_covered_hours": 1.0451,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 256,
+        "seconds": {
+          "max": 130.630628527887,
+          "median": 1.951951920531645,
+          "p90": 26.226225804066203
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.623566,
+      "dead_provenance_hours": 0.0612,
+      "first_to_last_clip_envelope_hours": 1.6087,
+      "game_file": "10505.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10505"
+      ],
+      "native_frames_observed": 108233,
+      "observed_record_hours": 1.0032,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 26.026,
+        "bounded_complete_fraction_of_observed_out_runs": 0.088889,
+        "complete_within_same_record_and_bounded": 8,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.30430433974594,
+          "median": 2.4024024221837803,
+          "p90": 2.4024024221837803
+        },
+        "observed_endpoint_pair_duration_seconds_total": 26.026,
+        "observed_out_runs": 90,
+        "out_to_touch_endpoint_pairs_observed": 8,
+        "right_censored_at_record_end": 82
+      },
+      "record_duration_seconds": {
+        "max": 71.23790515781072,
+        "median": 10.977644401367552,
+        "p90": 28.16816840010483
+      },
+      "records": 253,
+      "sha256": "115cadc7d6e352b4a865ce3f25d17d418c56922fe34c2df74085a6bca6fe0763",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.625683,
+          "first_to_last_clip_span_seconds": 2840.007,
+          "game_period": 1,
+          "match": "soccernet_10505",
+          "observed_seconds_union": 1776.944,
+          "records": 123,
+          "time_blocks": 123
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.621529,
+          "first_to_last_clip_span_seconds": 2951.485,
+          "game_period": 2,
+          "match": "soccernet_10505",
+          "observed_seconds_union": 1834.434,
+          "records": 130,
+          "time_blocks": 130
+        }
+      ],
+      "time_blocks_with_observed_records": 253,
+      "union_covered_hours": 1.0032,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 251,
+        "seconds": {
+          "max": 92.05872615007014,
+          "median": 2.4357691224918883,
+          "p90": 27.093760650183746
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.620309,
+      "dead_provenance_hours": 0.0827,
+      "first_to_last_clip_envelope_hours": 2.1477,
+      "game_file": "10506.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10506"
+      ],
+      "native_frames_observed": 143741,
+      "observed_record_hours": 1.3323,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 22.122,
+        "bounded_complete_fraction_of_observed_out_runs": 0.057377,
+        "complete_within_same_record_and_bounded": 7,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.137470803450181,
+          "median": 2.4024024020033306,
+          "p90": 2.4024024020033306
+        },
+        "observed_endpoint_pair_duration_seconds_total": 22.122,
+        "observed_out_runs": 122,
+        "out_to_touch_endpoint_pairs_observed": 7,
+        "right_censored_at_record_end": 115
+      },
+      "record_duration_seconds": {
+        "max": 68.10143475678885,
+        "median": 11.811811809849708,
+        "p90": 28.795462124012143
+      },
+      "records": 321,
+      "sha256": "3cb4f1010403421a4df8f601b6feb7edd0ede43e545d8bbbc329c8fef917ad33",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.667453,
+          "first_to_last_clip_span_seconds": 2855.789,
+          "game_period": 1,
+          "match": "soccernet_10506",
+          "observed_seconds_union": 1906.106,
+          "records": 128,
+          "time_blocks": 128
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.565553,
+          "first_to_last_clip_span_seconds": 2940.007,
+          "game_period": 2,
+          "match": "soccernet_10506",
+          "observed_seconds_union": 1662.729,
+          "records": 112,
+          "time_blocks": 112
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.587576,
+          "first_to_last_clip_span_seconds": 1014.615,
+          "game_period": 3,
+          "match": "soccernet_10506",
+          "observed_seconds_union": 596.163,
+          "records": 39,
+          "time_blocks": 39
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.68494,
+          "first_to_last_clip_span_seconds": 921.488,
+          "game_period": 4,
+          "match": "soccernet_10506",
+          "observed_seconds_union": 631.164,
+          "records": 42,
+          "time_blocks": 42
+        }
+      ],
+      "time_blocks_with_observed_records": 321,
+      "union_covered_hours": 1.3323,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 317,
+        "seconds": {
+          "max": 91.6249582764048,
+          "median": 2.6026026021702746,
+          "p90": 25.251918581057286
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.64501,
+      "dead_provenance_hours": 0.0565,
+      "first_to_last_clip_envelope_hours": 1.6487,
+      "game_file": "10507.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10507"
+      ],
+      "native_frames_observed": 114733,
+      "observed_record_hours": 1.0634,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 29.463,
+        "bounded_complete_fraction_of_observed_out_runs": 0.096386,
+        "complete_within_same_record_and_bounded": 8,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.771438106991655,
+          "median": 2.3690357034713814,
+          "p90": 2.402402403520274
+        },
+        "observed_endpoint_pair_duration_seconds_total": 29.463,
+        "observed_out_runs": 83,
+        "out_to_touch_endpoint_pairs_observed": 8,
+        "right_censored_at_record_end": 75
+      },
+      "record_duration_seconds": {
+        "max": 124.49115788241863,
+        "median": 13.01301301906815,
+        "p90": 35.4154154318947
+      },
+      "records": 215,
+      "sha256": "291093e7652e76c63d54193a25b241165d25ffc0b6cbba6b98c81e1fc0a0a3c7",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.638818,
+          "first_to_last_clip_span_seconds": 2999.733,
+          "game_period": 1,
+          "match": "soccernet_10507",
+          "observed_seconds_union": 1916.283,
+          "records": 113,
+          "time_blocks": 113
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.651337,
+          "first_to_last_clip_span_seconds": 2935.469,
+          "game_period": 2,
+          "match": "soccernet_10507",
+          "observed_seconds_union": 1911.979,
+          "records": 102,
+          "time_blocks": 102
+        }
+      ],
+      "time_blocks_with_observed_records": 215,
+      "union_covered_hours": 1.0634,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 213,
+        "seconds": {
+          "max": 121.25458797767605,
+          "median": 2.502502503666952,
+          "p90": 28.35502170154901
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.641798,
+      "dead_provenance_hours": 0.0874,
+      "first_to_last_clip_envelope_hours": 2.1637,
+      "game_file": "10508.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10508"
+      ],
+      "native_frames_observed": 149822,
+      "observed_record_hours": 1.3886,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 44.678,
+        "bounded_complete_fraction_of_observed_out_runs": 0.105263,
+        "complete_within_same_record_and_bounded": 14,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.637971188050448,
+          "median": 2.402402342011743,
+          "p90": 2.402402342011743
+        },
+        "observed_endpoint_pair_duration_seconds_total": 44.678,
+        "observed_out_runs": 133,
+        "out_to_touch_endpoint_pairs_observed": 14,
+        "right_censored_at_record_end": 119
+      },
+      "record_duration_seconds": {
+        "max": 78.87887689605223,
+        "median": 12.045378409253322,
+        "p90": 33.11311228072853
+      },
+      "records": 315,
+      "sha256": "4055989426b1c4ddc3dfdf08144a0f9baa0316dfd8597f7b6deec6402eccece3",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.705594,
+          "first_to_last_clip_span_seconds": 2760.861,
+          "game_period": 1,
+          "match": "soccernet_10508",
+          "observed_seconds_union": 1948.048,
+          "records": 116,
+          "time_blocks": 116
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.578218,
+          "first_to_last_clip_span_seconds": 3007.007,
+          "game_period": 2,
+          "match": "soccernet_10508",
+          "observed_seconds_union": 1738.705,
+          "records": 115,
+          "time_blocks": 115
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.683254,
+          "first_to_last_clip_span_seconds": 974.942,
+          "game_period": 3,
+          "match": "soccernet_10508",
+          "observed_seconds_union": 666.133,
+          "records": 40,
+          "time_blocks": 40
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.617558,
+          "first_to_last_clip_span_seconds": 1046.346,
+          "game_period": 4,
+          "match": "soccernet_10508",
+          "observed_seconds_union": 646.179,
+          "records": 44,
+          "time_blocks": 44
+        }
+      ],
+      "time_blocks_with_observed_records": 315,
+      "union_covered_hours": 1.3886,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 311,
+        "seconds": {
+          "max": 105.20520256059757,
+          "median": 2.16883544764949,
+          "p90": 26.826826152464463
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.606695,
+      "dead_provenance_hours": 0.0696,
+      "first_to_last_clip_envelope_hours": 1.634,
+      "game_file": "10509.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10509"
+      ],
+      "native_frames_observed": 106956,
+      "observed_record_hours": 0.9913,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 28.061,
+        "bounded_complete_fraction_of_observed_out_runs": 0.068627,
+        "complete_within_same_record_and_bounded": 7,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.8048046938327476,
+          "median": 2.4024023469163738,
+          "p90": 2.4024023469163738
+        },
+        "observed_endpoint_pair_duration_seconds_total": 28.061,
+        "observed_out_runs": 102,
+        "out_to_touch_endpoint_pairs_observed": 7,
+        "right_censored_at_record_end": 95
+      },
+      "record_duration_seconds": {
+        "max": 70.50383554214302,
+        "median": 10.944277358174592,
+        "p90": 24.310977082823197
+      },
+      "records": 255,
+      "sha256": "f982ec43e62673d4e6aa271995ded080b62d7ea01e70bcb58ff7908f8165621e",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.626938,
+          "first_to_last_clip_span_seconds": 2937.304,
+          "game_period": 1,
+          "match": "soccernet_10509",
+          "observed_seconds_union": 1841.508,
+          "records": 141,
+          "time_blocks": 141
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.586504,
+          "first_to_last_clip_span_seconds": 2945.012,
+          "game_period": 2,
+          "match": "soccernet_10509",
+          "observed_seconds_union": 1727.261,
+          "records": 114,
+          "time_blocks": 114
+        }
+      ],
+      "time_blocks_with_observed_records": 255,
+      "union_covered_hours": 0.9913,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 253,
+        "seconds": {
+          "max": 97.33066174937588,
+          "median": 2.235568850602737,
+          "p90": 28.621954627567604
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.703739,
+      "dead_provenance_hours": 0.0527,
+      "first_to_last_clip_envelope_hours": 1.5784,
+      "game_file": "10510.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10510"
+      ],
+      "native_frames_observed": 119846,
+      "observed_record_hours": 1.1108,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 23.69,
+        "bounded_complete_fraction_of_observed_out_runs": 0.102564,
+        "complete_within_same_record_and_bounded": 8,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.471137773771756,
+          "median": 2.4024023859072123,
+          "p90": 2.4024023859072123
+        },
+        "observed_endpoint_pair_duration_seconds_total": 23.69,
+        "observed_out_runs": 78,
+        "out_to_touch_endpoint_pairs_observed": 8,
+        "right_censored_at_record_end": 70
+      },
+      "record_duration_seconds": {
+        "max": 83.78378320851402,
+        "median": 11.17784443442939,
+        "p90": 34.00066710054791
+      },
+      "records": 251,
+      "sha256": "2232df1aa2c82527d4708892b03a450c1246ba2500d605e2ac0b457481bb253d",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.715226,
+          "first_to_last_clip_span_seconds": 2764.131,
+          "game_period": 1,
+          "match": "soccernet_10510",
+          "observed_seconds_union": 1976.977,
+          "records": 123,
+          "time_blocks": 123
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.692858,
+          "first_to_last_clip_span_seconds": 2918.185,
+          "game_period": 2,
+          "match": "soccernet_10510",
+          "observed_seconds_union": 2021.889,
+          "records": 128,
+          "time_blocks": 128
+        }
+      ],
+      "time_blocks_with_observed_records": 251,
+      "union_covered_hours": 1.1108,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 249,
+        "seconds": {
+          "max": 69.93660278974329,
+          "median": 2.068735387864544,
+          "p90": 17.28395049861023
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.566691,
+      "dead_provenance_hours": 0.0664,
+      "first_to_last_clip_envelope_hours": 1.8117,
+      "game_file": "10511.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10511"
+      ],
+      "native_frames_observed": 110770,
+      "observed_record_hours": 1.0267,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 35.169,
+        "bounded_complete_fraction_of_observed_out_runs": 0.113402,
+        "complete_within_same_record_and_bounded": 11,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.137470672463387,
+          "median": 2.402402325946482,
+          "p90": 2.402402325946482
+        },
+        "observed_endpoint_pair_duration_seconds_total": 35.169,
+        "observed_out_runs": 97,
+        "out_to_touch_endpoint_pairs_observed": 11,
+        "right_censored_at_record_end": 86
+      },
+      "record_duration_seconds": {
+        "max": 62.429093775637064,
+        "median": 12.37904531841868,
+        "p90": 27.741073524887586
+      },
+      "records": 254,
+      "sha256": "301e3d3c27ee84465f0dca8003f96e96318da9b7da759da55d069f50cb17d2c0",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.620536,
+          "first_to_last_clip_span_seconds": 3062.462,
+          "game_period": 1,
+          "match": "soccernet_10511",
+          "observed_seconds_union": 1900.367,
+          "records": 124,
+          "time_blocks": 124
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.519029,
+          "first_to_last_clip_span_seconds": 3459.66,
+          "game_period": 2,
+          "match": "soccernet_10511",
+          "observed_seconds_union": 1795.662,
+          "records": 130,
+          "time_blocks": 130
+        }
+      ],
+      "time_blocks_with_observed_records": 254,
+      "union_covered_hours": 1.0267,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 252,
+        "seconds": {
+          "max": 112.41240883491248,
+          "median": 2.3857189764607427,
+          "p90": 35.03169725015572
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.58823,
+      "dead_provenance_hours": 0.0629,
+      "first_to_last_clip_envelope_hours": 1.6765,
+      "game_file": "10512.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10512"
+      ],
+      "native_frames_observed": 106402,
+      "observed_record_hours": 0.9862,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 44.978,
+        "bounded_complete_fraction_of_observed_out_runs": 0.141414,
+        "complete_within_same_record_and_bounded": 14,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.5712377570145994,
+          "median": 2.402402324854388,
+          "p90": 2.5091757615145838
+        },
+        "observed_endpoint_pair_duration_seconds_total": 44.978,
+        "observed_out_runs": 99,
+        "out_to_touch_endpoint_pairs_observed": 14,
+        "right_censored_at_record_end": 85
+      },
+      "record_duration_seconds": {
+        "max": 60.493825207791744,
+        "median": 11.177844150364168,
+        "p90": 30.497162846068207
+      },
+      "records": 241,
+      "sha256": "7153e62ca7f6c4c8871c58f3168d1c2c41444f27acca16e3791eaa85e7c32377",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.627749,
+          "first_to_last_clip_span_seconds": 2855.322,
+          "game_period": 1,
+          "match": "soccernet_10512",
+          "observed_seconds_union": 1792.426,
+          "records": 123,
+          "time_blocks": 123
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.552748,
+          "first_to_last_clip_span_seconds": 3180.213,
+          "game_period": 2,
+          "match": "soccernet_10512",
+          "observed_seconds_union": 1757.858,
+          "records": 118,
+          "time_blocks": 118
+        }
+      ],
+      "time_blocks_with_observed_records": 241,
+      "union_covered_hours": 0.9862,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 239,
+        "seconds": {
+          "max": 119.4861489625495,
+          "median": 2.7694360133738085,
+          "p90": 28.221553977247805
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.554995,
+      "dead_provenance_hours": 0.0549,
+      "first_to_last_clip_envelope_hours": 1.7502,
+      "game_file": "10513.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10513"
+      ],
+      "native_frames_observed": 104803,
+      "observed_record_hours": 0.9714,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 35.135,
+        "bounded_complete_fraction_of_observed_out_runs": 0.1375,
+        "complete_within_same_record_and_bounded": 11,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.804804863608916,
+          "median": 2.402402431804458,
+          "p90": 2.4591258225554014
+        },
+        "observed_endpoint_pair_duration_seconds_total": 35.135,
+        "observed_out_runs": 80,
+        "out_to_touch_endpoint_pairs_observed": 11,
+        "right_censored_at_record_end": 69
+      },
+      "record_duration_seconds": {
+        "max": 48.415082340948175,
+        "median": 10.060060183181168,
+        "p90": 27.514181184249395
+      },
+      "records": 262,
+      "sha256": "6569245cdb0ebbb43e1172096071bc84c07374f0c96d9002e82f59eb949f3ed6",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.6581,
+          "first_to_last_clip_span_seconds": 2992.559,
+          "game_period": 1,
+          "match": "soccernet_10513",
+          "observed_seconds_union": 1969.403,
+          "records": 148,
+          "time_blocks": 148
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.461729,
+          "first_to_last_clip_span_seconds": 3308.275,
+          "game_period": 2,
+          "match": "soccernet_10513",
+          "observed_seconds_union": 1527.528,
+          "records": 114,
+          "time_blocks": 114
+        }
+      ],
+      "time_blocks_with_observed_records": 262,
+      "union_covered_hours": 0.9714,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 260,
+        "seconds": {
+          "max": 211.64498090188442,
+          "median": 2.452452482467051,
+          "p90": 31.945279002910947
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.610541,
+      "dead_provenance_hours": 0.0598,
+      "first_to_last_clip_envelope_hours": 1.6517,
+      "game_file": "10514.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10514"
+      ],
+      "native_frames_observed": 108802,
+      "observed_record_hours": 1.0084,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 17.15,
+        "bounded_complete_fraction_of_observed_out_runs": 0.056818,
+        "complete_within_same_record_and_bounded": 5,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.104103947467068,
+          "median": 2.40240231071243,
+          "p90": 2.40240231071243
+        },
+        "observed_endpoint_pair_duration_seconds_total": 17.15,
+        "observed_out_runs": 88,
+        "out_to_touch_endpoint_pairs_observed": 5,
+        "right_censored_at_record_end": 83
+      },
+      "record_duration_seconds": {
+        "max": 84.11744757369495,
+        "median": 11.87854475852257,
+        "p90": 33.88721926054923
+      },
+      "records": 219,
+      "sha256": "74c477f3e2680660339a150034ced680e6496e22380476a8d24b5fc4aab35810",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.631275,
+          "first_to_last_clip_span_seconds": 2949.683,
+          "game_period": 1,
+          "match": "soccernet_10514",
+          "observed_seconds_union": 1862.062,
+          "records": 107,
+          "time_blocks": 107
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.59013,
+          "first_to_last_clip_span_seconds": 2996.463,
+          "game_period": 2,
+          "match": "soccernet_10514",
+          "observed_seconds_union": 1768.302,
+          "records": 112,
+          "time_blocks": 112
+        }
+      ],
+      "time_blocks_with_observed_records": 219,
+      "union_covered_hours": 1.0084,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 217,
+        "seconds": {
+          "max": 127.79445625039732,
+          "median": 2.602602503271799,
+          "p90": 31.131129942981914
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.62685,
+      "dead_provenance_hours": 0.0577,
+      "first_to_last_clip_envelope_hours": 1.6481,
+      "game_file": "10515.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10515"
+      ],
+      "native_frames_observed": 111462,
+      "observed_record_hours": 1.0331,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 30.831,
+        "bounded_complete_fraction_of_observed_out_runs": 0.116279,
+        "complete_within_same_record_and_bounded": 10,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.7714380594689265,
+          "median": 2.4024023795927465,
+          "p90": 2.4024023795927465
+        },
+        "observed_endpoint_pair_duration_seconds_total": 30.831,
+        "observed_out_runs": 86,
+        "out_to_touch_endpoint_pairs_observed": 10,
+        "right_censored_at_record_end": 76
+      },
+      "record_duration_seconds": {
+        "max": 60.12679288925179,
+        "median": 11.077744305899886,
+        "p90": 29.155822212335302
+      },
+      "records": 255,
+      "sha256": "df4f18a8d512bb4fd016d4357f3153175dd08a0c15690697b3023b663602b294",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.630533,
+          "first_to_last_clip_span_seconds": 2895.896,
+          "game_period": 1,
+          "match": "soccernet_10515",
+          "observed_seconds_union": 1825.959,
+          "records": 138,
+          "time_blocks": 138
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.623337,
+          "first_to_last_clip_span_seconds": 3037.137,
+          "game_period": 2,
+          "match": "soccernet_10515",
+          "observed_seconds_union": 1893.16,
+          "records": 117,
+          "time_blocks": 117
+        }
+      ],
+      "time_blocks_with_observed_records": 255,
+      "union_covered_hours": 1.0331,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 253,
+        "seconds": {
+          "max": 116.4164153110985,
+          "median": 2.102102082143653,
+          "p90": 28.40840813868428
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.631012,
+      "dead_provenance_hours": 0.0642,
+      "first_to_last_clip_envelope_hours": 1.6291,
+      "game_file": "10516.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10516"
+      ],
+      "native_frames_observed": 110908,
+      "observed_record_hours": 1.028,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 13.28,
+        "bounded_complete_fraction_of_observed_out_runs": 0.052083,
+        "complete_within_same_record_and_bounded": 5,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.33767110790289,
+          "median": 2.4024024597616003,
+          "p90": 2.4024024597616003
+        },
+        "observed_endpoint_pair_duration_seconds_total": 13.28,
+        "observed_out_runs": 96,
+        "out_to_touch_endpoint_pairs_observed": 5,
+        "right_censored_at_record_end": 91
+      },
+      "record_duration_seconds": {
+        "max": 78.14481334391205,
+        "median": 12.996329973293657,
+        "p90": 27.68435167866944
+      },
+      "records": 240,
+      "sha256": "6418ada29f652d1c9c282e41499c2bd9537ce327ad2744b1c12c2da2a5b2fbe3",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.660864,
+          "first_to_last_clip_span_seconds": 2796.463,
+          "game_period": 1,
+          "match": "soccernet_10516",
+          "observed_seconds_union": 1848.081,
+          "records": 121,
+          "time_blocks": 121
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.603804,
+          "first_to_last_clip_span_seconds": 3068.135,
+          "game_period": 2,
+          "match": "soccernet_10516",
+          "observed_seconds_union": 1852.553,
+          "records": 119,
+          "time_blocks": 119
+        }
+      ],
+      "time_blocks_with_observed_records": 240,
+      "union_covered_hours": 1.028,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 238,
+        "seconds": {
+          "max": 104.00400648717928,
+          "median": 2.0520521010463666,
+          "p90": 30.760761495197496
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.543683,
+      "dead_provenance_hours": 0.0974,
+      "first_to_last_clip_envelope_hours": 2.3535,
+      "game_file": "10517.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_10517"
+      ],
+      "native_frames_observed": 138052,
+      "observed_record_hours": 1.2795,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 44.178,
+        "bounded_complete_fraction_of_observed_out_runs": 0.085106,
+        "complete_within_same_record_and_bounded": 12,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.77143818669121,
+          "median": 2.4024024436487212,
+          "p90": 2.4024024436487212
+        },
+        "observed_endpoint_pair_duration_seconds_total": 44.178,
+        "observed_out_runs": 141,
+        "out_to_touch_endpoint_pairs_observed": 12,
+        "right_censored_at_record_end": 129
+      },
+      "record_duration_seconds": {
+        "max": 55.85585681483277,
+        "median": 11.294628155209612,
+        "p90": 30.423757612762554
+      },
+      "records": 314,
+      "sha256": "95e282cd413ebe357bbc4e4cd979ac98aac3a48a15d2892bb31866556997e001",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.573673,
+          "first_to_last_clip_span_seconds": 3147.681,
+          "game_period": 1,
+          "match": "soccernet_10517",
+          "observed_seconds_union": 1805.739,
+          "records": 119,
+          "time_blocks": 119
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.543257,
+          "first_to_last_clip_span_seconds": 3216.55,
+          "game_period": 2,
+          "match": "soccernet_10517",
+          "observed_seconds_union": 1747.414,
+          "records": 117,
+          "time_blocks": 117
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.59776,
+          "first_to_last_clip_span_seconds": 965.232,
+          "game_period": 3,
+          "match": "soccernet_10517",
+          "observed_seconds_union": 576.977,
+          "records": 37,
+          "time_blocks": 37
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.416628,
+          "first_to_last_clip_span_seconds": 1143.01,
+          "game_period": 4,
+          "match": "soccernet_10517",
+          "observed_seconds_union": 476.21,
+          "records": 41,
+          "time_blocks": 41
+        }
+      ],
+      "time_blocks_with_observed_records": 314,
+      "union_covered_hours": 1.2795,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 310,
+        "seconds": {
+          "max": 137.93794030616408,
+          "median": 3.0530531054702497,
+          "p90": 33.967301217144424
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.565362,
+      "dead_provenance_hours": 0.0734,
+      "first_to_last_clip_envelope_hours": 1.7121,
+      "game_file": "3812.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3812"
+      ],
+      "native_frames_observed": 104436,
+      "observed_record_hours": 0.968,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 25.225,
+        "bounded_complete_fraction_of_observed_out_runs": 0.055046,
+        "complete_within_same_record_and_bounded": 6,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.738071295401258,
+          "median": 2.402402346964018,
+          "p90": 2.402402346964018
+        },
+        "observed_endpoint_pair_duration_seconds_total": 25.225,
+        "observed_out_runs": 109,
+        "out_to_touch_endpoint_pairs_observed": 6,
+        "right_censored_at_record_end": 103
+      },
+      "record_duration_seconds": {
+        "max": 49.68301520318642,
+        "median": 10.510510267967579,
+        "p90": 22.896229034537626
+      },
+      "records": 277,
+      "sha256": "aa3d30ffbabaf3a683aae1b7126389a5852ac045d87d5d6cbe7e26893d7bcdfd",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.613723,
+          "first_to_last_clip_span_seconds": 2862.729,
+          "game_period": 1,
+          "match": "soccernet_3812",
+          "observed_seconds_union": 1756.924,
+          "records": 134,
+          "time_blocks": 134
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.523421,
+          "first_to_last_clip_span_seconds": 3300.901,
+          "game_period": 2,
+          "match": "soccernet_3812",
+          "observed_seconds_union": 1727.761,
+          "records": 143,
+          "time_blocks": 143
+        }
+      ],
+      "time_blocks_with_observed_records": 277,
+      "union_covered_hours": 0.968,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 275,
+        "seconds": {
+          "max": 191.9586208622777,
+          "median": 2.6359692418077416,
+          "p90": 27.634300329938874
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.512373,
+      "dead_provenance_hours": 0.0607,
+      "first_to_last_clip_envelope_hours": 1.9513,
+      "game_file": "3813.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3813"
+      ],
+      "native_frames_observed": 107872,
+      "observed_record_hours": 0.9998,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 18.986,
+        "bounded_complete_fraction_of_observed_out_runs": 0.056818,
+        "complete_within_same_record_and_bounded": 5,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.337671014033606,
+          "median": 2.4024024077724584,
+          "p90": 2.4024024077724584
+        },
+        "observed_endpoint_pair_duration_seconds_total": 18.986,
+        "observed_out_runs": 88,
+        "out_to_touch_endpoint_pairs_observed": 5,
+        "right_censored_at_record_end": 83
+      },
+      "record_duration_seconds": {
+        "max": 90.6906908934103,
+        "median": 13.713713744367784,
+        "p90": 35.70236911550739
+      },
+      "records": 198,
+      "sha256": "26373012d3d6c37fb801eecdaa0da33520f8c25ede585edb1e38fb1ff8bda94f",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.492002,
+          "first_to_last_clip_span_seconds": 3539.973,
+          "game_period": 1,
+          "match": "soccernet_3813",
+          "observed_seconds_union": 1741.675,
+          "records": 94,
+          "time_blocks": 94
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.533067,
+          "first_to_last_clip_span_seconds": 3484.852,
+          "game_period": 2,
+          "match": "soccernet_3813",
+          "observed_seconds_union": 1857.658,
+          "records": 104,
+          "time_blocks": 104
+        }
+      ],
+      "time_blocks_with_observed_records": 198,
+      "union_covered_hours": 0.9998,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 196,
+        "seconds": {
+          "max": 498.09809921148974,
+          "median": 3.336670010795081,
+          "p90": 43.243243339904254
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.561943,
+      "dead_provenance_hours": 0.0613,
+      "first_to_last_clip_envelope_hours": 1.6701,
+      "game_file": "3814.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3814"
+      ],
+      "native_frames_observed": 101256,
+      "observed_record_hours": 0.9385,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 22.155,
+        "bounded_complete_fraction_of_observed_out_runs": 0.065934,
+        "complete_within_same_record_and_bounded": 6,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.404404386526535,
+          "median": 2.3690356927529086,
+          "p90": 2.402402392650837
+        },
+        "observed_endpoint_pair_duration_seconds_total": 22.155,
+        "observed_out_runs": 91,
+        "out_to_touch_endpoint_pairs_observed": 6,
+        "right_censored_at_record_end": 85
+      },
+      "record_duration_seconds": {
+        "max": 77.27727696360192,
+        "median": 11.14447776590805,
+        "p90": 33.96062715611141
+      },
+      "records": 210,
+      "sha256": "1e1c8a04d837f99e1f659cf4b8ede85623e3e9ec6dbeb4f84990ef2cb3d12492",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.526696,
+          "first_to_last_clip_span_seconds": 2993.46,
+          "game_period": 1,
+          "match": "soccernet_3814",
+          "observed_seconds_union": 1576.643,
+          "records": 95,
+          "time_blocks": 95
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.596894,
+          "first_to_last_clip_span_seconds": 3018.852,
+          "game_period": 2,
+          "match": "soccernet_3814",
+          "observed_seconds_union": 1801.935,
+          "records": 115,
+          "time_blocks": 115
+        }
+      ],
+      "time_blocks_with_observed_records": 210,
+      "union_covered_hours": 0.9385,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 208,
+        "seconds": {
+          "max": 155.85585522322305,
+          "median": 2.6860193417832274,
+          "p90": 37.327327175812385
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.605993,
+      "dead_provenance_hours": 0.0657,
+      "first_to_last_clip_envelope_hours": 1.7412,
+      "game_file": "3815.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3815"
+      ],
+      "native_frames_observed": 113840,
+      "observed_record_hours": 1.0551,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 26.76,
+        "bounded_complete_fraction_of_observed_out_runs": 0.102041,
+        "complete_within_same_record_and_bounded": 10,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.337670879303393,
+          "median": 2.402402333152648,
+          "p90": 2.402402333152648
+        },
+        "observed_endpoint_pair_duration_seconds_total": 26.76,
+        "observed_out_runs": 98,
+        "out_to_touch_endpoint_pairs_observed": 10,
+        "right_censored_at_record_end": 88
+      },
+      "record_duration_seconds": {
+        "max": 73.87387174444393,
+        "median": 11.411411082475079,
+        "p90": 31.39139048652794
+      },
+      "records": 247,
+      "sha256": "a9f8fb1b6ad94e81ac42d9f2fe535943364e69d8b3b3a0466e1e3eb1873c995e",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.666356,
+          "first_to_last_clip_span_seconds": 2938.005,
+          "game_period": 1,
+          "match": "soccernet_3815",
+          "observed_seconds_union": 1957.758,
+          "records": 123,
+          "time_blocks": 123
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.552738,
+          "first_to_last_clip_span_seconds": 3330.163,
+          "game_period": 2,
+          "match": "soccernet_3815",
+          "observed_seconds_union": 1840.707,
+          "records": 124,
+          "time_blocks": 124
+        }
+      ],
+      "time_blocks_with_observed_records": 247,
+      "union_covered_hours": 1.0551,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 245,
+        "seconds": {
+          "max": 129.92992618467238,
+          "median": 2.3023022359379546,
+          "p90": 27.681013549769954
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.528458,
+      "dead_provenance_hours": 0.0743,
+      "first_to_last_clip_envelope_hours": 1.8356,
+      "game_file": "3816.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3816"
+      ],
+      "native_frames_observed": 104659,
+      "observed_record_hours": 0.97,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 44.745,
+        "bounded_complete_fraction_of_observed_out_runs": 0.122642,
+        "complete_within_same_record_and_bounded": 13,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.204204357481055,
+          "median": 2.4024024899891745,
+          "p90": 2.769436203737521
+        },
+        "observed_endpoint_pair_duration_seconds_total": 44.745,
+        "observed_out_runs": 106,
+        "out_to_touch_endpoint_pairs_observed": 13,
+        "right_censored_at_record_end": 93
+      },
+      "record_duration_seconds": {
+        "max": 57.35735944849154,
+        "median": 12.145479254945272,
+        "p90": 26.880214526878877
+      },
+      "records": 239,
+      "sha256": "3307c22fe0cb7f03a120857039aab31cc01f30c08055e73d303bcaf8d614087b",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.566527,
+          "first_to_last_clip_span_seconds": 3078.779,
+          "game_period": 1,
+          "match": "soccernet_3816",
+          "observed_seconds_union": 1744.211,
+          "records": 118,
+          "time_blocks": 118
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.495249,
+          "first_to_last_clip_span_seconds": 3529.363,
+          "game_period": 2,
+          "match": "soccernet_3816",
+          "observed_seconds_union": 1747.915,
+          "records": 121,
+          "time_blocks": 121
+        }
+      ],
+      "time_blocks_with_observed_records": 239,
+      "union_covered_hours": 0.97,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 237,
+        "seconds": {
+          "max": 254.988330951351,
+          "median": 2.6359693987381223,
+          "p90": 42.135470338310135
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.607478,
+      "dead_provenance_hours": 0.0664,
+      "first_to_last_clip_envelope_hours": 1.704,
+      "game_file": "3817.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3817"
+      ],
+      "native_frames_observed": 111683,
+      "observed_record_hours": 1.0351,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 19.62,
+        "bounded_complete_fraction_of_observed_out_runs": 0.058824,
+        "complete_within_same_record_and_bounded": 6,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.537871345238545,
+          "median": 2.4024024768909946,
+          "p90": 2.4024024768909946
+        },
+        "observed_endpoint_pair_duration_seconds_total": 19.62,
+        "observed_out_runs": 102,
+        "out_to_touch_endpoint_pairs_observed": 6,
+        "right_censored_at_record_end": 96
+      },
+      "record_duration_seconds": {
+        "max": 97.29730031408528,
+        "median": 11.611611971639807,
+        "p90": 31.131132096379137
+      },
+      "records": 238,
+      "sha256": "0ab4610e562b8d5f138081659ad7af7f155e81eb31d414316a2c6f45715ed2ca",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.597609,
+          "first_to_last_clip_span_seconds": 2980.681,
+          "game_period": 1,
+          "match": "soccernet_3817",
+          "observed_seconds_union": 1781.281,
+          "records": 110,
+          "time_blocks": 110
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.616806,
+          "first_to_last_clip_span_seconds": 3153.687,
+          "game_period": 2,
+          "match": "soccernet_3817",
+          "observed_seconds_union": 1945.212,
+          "records": 128,
+          "time_blocks": 128
+        }
+      ],
+      "time_blocks_with_observed_records": 238,
+      "union_covered_hours": 1.0351,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 236,
+        "seconds": {
+          "max": 123.12312694066347,
+          "median": 3.269936704657187,
+          "p90": 28.011345546527636
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.579144,
+      "dead_provenance_hours": 0.0684,
+      "first_to_last_clip_envelope_hours": 1.6551,
+      "game_file": "3818.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3818"
+      ],
+      "native_frames_observed": 103416,
+      "observed_record_hours": 0.9585,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 30.063,
+        "bounded_complete_fraction_of_observed_out_runs": 0.087379,
+        "complete_within_same_record_and_bounded": 9,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.738071331893112,
+          "median": 2.369035665946556,
+          "p90": 2.40240236546693
+        },
+        "observed_endpoint_pair_duration_seconds_total": 30.063,
+        "observed_out_runs": 103,
+        "out_to_touch_endpoint_pairs_observed": 9,
+        "right_censored_at_record_end": 94
+      },
+      "record_duration_seconds": {
+        "max": 63.730396083914385,
+        "median": 11.745078231171657,
+        "p90": 28.27827784351699
+      },
+      "records": 246,
+      "sha256": "7e1adc6594619448872def0112cc6f452dd0c06352985fe387b8884977240f39",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.626244,
+          "first_to_last_clip_span_seconds": 2823.557,
+          "game_period": 1,
+          "match": "soccernet_3818",
+          "observed_seconds_union": 1768.235,
+          "records": 126,
+          "time_blocks": 126
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.536718,
+          "first_to_last_clip_span_seconds": 3134.635,
+          "game_period": 2,
+          "match": "soccernet_3818",
+          "observed_seconds_union": 1682.416,
+          "records": 120,
+          "time_blocks": 120
+        }
+      ],
+      "time_blocks_with_observed_records": 246,
+      "union_covered_hours": 0.9585,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 244,
+        "seconds": {
+          "max": 229.89655969537702,
+          "median": 3.553553498919834,
+          "p90": 26.212879143205853
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.660414,
+      "dead_provenance_hours": 0.0607,
+      "first_to_last_clip_envelope_hours": 1.7216,
+      "game_file": "3819.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3819"
+      ],
+      "native_frames_observed": 122670,
+      "observed_record_hours": 1.137,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 39.64,
+        "bounded_complete_fraction_of_observed_out_runs": 0.137931,
+        "complete_within_same_record_and_bounded": 12,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.704704690701233,
+          "median": 2.402402395251693,
+          "p90": 2.8161494744339324
+        },
+        "observed_endpoint_pair_duration_seconds_total": 39.64,
+        "observed_out_runs": 87,
+        "out_to_touch_endpoint_pairs_observed": 12,
+        "right_censored_at_record_end": 75
+      },
+      "record_duration_seconds": {
+        "max": 64.69803117212547,
+        "median": 12.228895525829799,
+        "p90": 33.04971628467781
+      },
+      "records": 250,
+      "sha256": "79d1fee808e3dca22e1c32c255df00c5eface82692b7d9777b8d8d346021c127",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.6851,
+          "first_to_last_clip_span_seconds": 3071.772,
+          "game_period": 1,
+          "match": "soccernet_3819",
+          "observed_seconds_union": 2104.471,
+          "records": 131,
+          "time_blocks": 131
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.636157,
+          "first_to_last_clip_span_seconds": 3125.993,
+          "game_period": 2,
+          "match": "soccernet_3819",
+          "observed_seconds_union": 1988.622,
+          "records": 119,
+          "time_blocks": 119
+        }
+      ],
+      "time_blocks_with_observed_records": 250,
+      "union_covered_hours": 1.137,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 248,
+        "seconds": {
+          "max": 161.62829448054447,
+          "median": 1.6850183466695903,
+          "p90": 23.77377370301156
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.635607,
+      "dead_provenance_hours": 0.0648,
+      "first_to_last_clip_envelope_hours": 1.6306,
+      "game_file": "3820.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3820"
+      ],
+      "native_frames_observed": 111823,
+      "observed_record_hours": 1.0364,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 24.391,
+        "bounded_complete_fraction_of_observed_out_runs": 0.084211,
+        "complete_within_same_record_and_bounded": 8,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 3.636970292765993,
+          "median": 2.4024023952215736,
+          "p90": 2.4024023952215736
+        },
+        "observed_endpoint_pair_duration_seconds_total": 24.391,
+        "observed_out_runs": 95,
+        "out_to_touch_endpoint_pairs_observed": 8,
+        "right_censored_at_record_end": 87
+      },
+      "record_duration_seconds": {
+        "max": 95.59559530985844,
+        "median": 11.778445076572437,
+        "p90": 30.363696939605994
+      },
+      "records": 245,
+      "sha256": "a454612acf0ab415d7b35469bd8e0de2d104649ad18a5f838c3ed62ad60f70cf",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.7041,
+          "first_to_last_clip_span_seconds": 2812.546,
+          "game_period": 1,
+          "match": "soccernet_3820",
+          "observed_seconds_union": 1980.314,
+          "records": 123,
+          "time_blocks": 123
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.572606,
+          "first_to_last_clip_span_seconds": 3057.691,
+          "game_period": 2,
+          "match": "soccernet_3820",
+          "observed_seconds_union": 1750.851,
+          "records": 122,
+          "time_blocks": 122
+        }
+      ],
+      "time_blocks_with_observed_records": 245,
+      "union_covered_hours": 1.0364,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 243,
+        "seconds": {
+          "max": 169.3693688631209,
+          "median": 1.868535196283446,
+          "p90": 24.16416409193702
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.62134,
+      "dead_provenance_hours": 0.0734,
+      "first_to_last_clip_envelope_hours": 1.7285,
+      "game_file": "3821.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3821"
+      ],
+      "native_frames_observed": 115875,
+      "observed_record_hours": 1.074,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 26.86,
+        "bounded_complete_fraction_of_observed_out_runs": 0.074074,
+        "complete_within_same_record_and_bounded": 8,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.771438003036379,
+          "median": 2.402402351179156,
+          "p90": 2.402402351179156
+        },
+        "observed_endpoint_pair_duration_seconds_total": 26.86,
+        "observed_out_runs": 108,
+        "out_to_touch_endpoint_pairs_observed": 8,
+        "right_censored_at_record_end": 100
+      },
+      "record_duration_seconds": {
+        "max": 124.35768837284324,
+        "median": 11.978645056573846,
+        "p90": 31.481480810243518
+      },
+      "records": 246,
+      "sha256": "d2f6900a539e730479943b8e43f7645bec449b06f3a213b8209e5da67de6baa2",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.674201,
+          "first_to_last_clip_span_seconds": 3032.199,
+          "game_period": 1,
+          "match": "soccernet_3821",
+          "observed_seconds_union": 2044.311,
+          "records": 119,
+          "time_blocks": 119
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.571101,
+          "first_to_last_clip_span_seconds": 3190.424,
+          "game_period": 2,
+          "match": "soccernet_3821",
+          "observed_seconds_union": 1822.055,
+          "records": 127,
+          "time_blocks": 127
+        }
+      ],
+      "time_blocks_with_observed_records": 246,
+      "union_covered_hours": 1.074,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 244,
+        "seconds": {
+          "max": 106.13947054306797,
+          "median": 2.385719001518189,
+          "p90": 25.325324785346933
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.678148,
+      "dead_provenance_hours": 0.0586,
+      "first_to_last_clip_envelope_hours": 1.7181,
+      "game_file": "3822.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3822"
+      ],
+      "native_frames_observed": 125711,
+      "observed_record_hours": 1.1652,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 23.323,
+        "bounded_complete_fraction_of_observed_out_runs": 0.067416,
+        "complete_within_same_record_and_bounded": 6,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.771438259889633,
+          "median": 2.4024024805038713,
+          "p90": 2.4024024805038713
+        },
+        "observed_endpoint_pair_duration_seconds_total": 23.323,
+        "observed_out_runs": 89,
+        "out_to_touch_endpoint_pairs_observed": 6,
+        "right_censored_at_record_end": 83
+      },
+      "record_duration_seconds": {
+        "max": 114.18085122617009,
+        "median": 12.74607982711776,
+        "p90": 36.42309094052814
+      },
+      "records": 237,
+      "sha256": "1d641878496524717089fe0bb3a71727f2d7e4f4dc80d2426e90335855ae94e9",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.712233,
+          "first_to_last_clip_span_seconds": 3000.801,
+          "game_period": 1,
+          "match": "soccernet_3822",
+          "observed_seconds_union": 2137.271,
+          "records": 113,
+          "time_blocks": 113
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.646029,
+          "first_to_last_clip_span_seconds": 3184.518,
+          "game_period": 2,
+          "match": "soccernet_3822",
+          "observed_seconds_union": 2057.291,
+          "records": 124,
+          "time_blocks": 124
+        }
+      ],
+      "time_blocks_with_observed_records": 237,
+      "union_covered_hours": 1.1652,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 235,
+        "seconds": {
+          "max": 73.23990895424996,
+          "median": 2.0687354693227777,
+          "p90": 25.492159654235518
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.629621,
+      "dead_provenance_hours": 0.0715,
+      "first_to_last_clip_envelope_hours": 1.6667,
+      "game_file": "3823.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3823"
+      ],
+      "native_frames_observed": 113219,
+      "observed_record_hours": 1.0494,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 37.571,
+        "bounded_complete_fraction_of_observed_out_runs": 0.114286,
+        "complete_within_same_record_and_bounded": 12,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.437770934834992,
+          "median": 2.402402310587364,
+          "p90": 2.402402310587364
+        },
+        "observed_endpoint_pair_duration_seconds_total": 37.571,
+        "observed_out_runs": 105,
+        "out_to_touch_endpoint_pairs_observed": 12,
+        "right_censored_at_record_end": 93
+      },
+      "record_duration_seconds": {
+        "max": 65.93259674611988,
+        "median": 11.41141097528998,
+        "p90": 29.996662183583897
+      },
+      "records": 251,
+      "sha256": "41a15bf3f9a1b070fb140f73ddc249b5ffe6c2e0d829dad510f3bd4cb692457f",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.643635,
+          "first_to_last_clip_span_seconds": 2998.432,
+          "game_period": 1,
+          "match": "soccernet_3823",
+          "observed_seconds_union": 1929.896,
+          "records": 122,
+          "time_blocks": 122
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.615621,
+          "first_to_last_clip_span_seconds": 3001.601,
+          "game_period": 2,
+          "match": "soccernet_3823",
+          "observed_seconds_union": 1847.848,
+          "records": 129,
+          "time_blocks": 129
+        }
+      ],
+      "time_blocks_with_observed_records": 251,
+      "union_covered_hours": 1.0494,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 249,
+        "seconds": {
+          "max": 144.5111723215816,
+          "median": 2.669335900652627,
+          "p90": 25.93259827484029
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.638147,
+      "dead_provenance_hours": 0.0565,
+      "first_to_last_clip_envelope_hours": 1.6468,
+      "game_file": "3824.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3824"
+      ],
+      "native_frames_observed": 113384,
+      "observed_record_hours": 1.0509,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 16.75,
+        "bounded_complete_fraction_of_observed_out_runs": 0.070588,
+        "complete_within_same_record_and_bounded": 6,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.637971212597992,
+          "median": 2.402402354727017,
+          "p90": 2.402402354727017
+        },
+        "observed_endpoint_pair_duration_seconds_total": 16.75,
+        "observed_out_runs": 85,
+        "out_to_touch_endpoint_pairs_observed": 6,
+        "right_censored_at_record_end": 79
+      },
+      "record_duration_seconds": {
+        "max": 94.39439252114904,
+        "median": 10.844177295642785,
+        "p90": 27.460793582504653
+      },
+      "records": 271,
+      "sha256": "d917b12a46acab848521ada8dc1ef27d9acdfb1ffca7c9628bff55822df4f335",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.685073,
+          "first_to_last_clip_span_seconds": 2870.203,
+          "game_period": 1,
+          "match": "soccernet_3824",
+          "observed_seconds_union": 1966.3,
+          "records": 139,
+          "time_blocks": 139
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.594106,
+          "first_to_last_clip_span_seconds": 3058.292,
+          "game_period": 2,
+          "match": "soccernet_3824",
+          "observed_seconds_union": 1816.95,
+          "records": 132,
+          "time_blocks": 132
+        }
+      ],
+      "time_blocks_with_observed_records": 271,
+      "union_covered_hours": 1.0509,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 269,
+        "seconds": {
+          "max": 80.41374548461266,
+          "median": 2.3023022566133915,
+          "p90": 28.30830774653335
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.612362,
+      "dead_provenance_hours": 0.0606,
+      "first_to_last_clip_envelope_hours": 1.647,
+      "game_file": "3825.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3825"
+      ],
+      "native_frames_observed": 108818,
+      "observed_record_hours": 1.0086,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 8.008,
+        "bounded_complete_fraction_of_observed_out_runs": 0.043011,
+        "complete_within_same_record_and_bounded": 4,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 3.837170504188576,
+          "median": 2.3690357025859905,
+          "p90": 2.4024024026224127
+        },
+        "observed_endpoint_pair_duration_seconds_total": 8.008,
+        "observed_out_runs": 93,
+        "out_to_touch_endpoint_pairs_observed": 4,
+        "right_censored_at_record_end": 89
+      },
+      "record_duration_seconds": {
+        "max": 108.07474141797215,
+        "median": 11.311311312347193,
+        "p90": 31.27127127413507
+      },
+      "records": 245,
+      "sha256": "bdbf3e4875bca5ccb7d4f413705005882a4446f5bbfc4ad29488d8a65e72d4e7",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.639651,
+          "first_to_last_clip_span_seconds": 2762.029,
+          "game_period": 1,
+          "match": "soccernet_3825",
+          "observed_seconds_union": 1766.733,
+          "records": 118,
+          "time_blocks": 118
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.588566,
+          "first_to_last_clip_span_seconds": 3167.301,
+          "game_period": 2,
+          "match": "soccernet_3825",
+          "observed_seconds_union": 1864.164,
+          "records": 127,
+          "time_blocks": 127
+        }
+      ],
+      "time_blocks_with_observed_records": 245,
+      "union_covered_hours": 1.0086,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 243,
+        "seconds": {
+          "max": 122.82282283407085,
+          "median": 2.268935602476723,
+          "p90": 25.919252588292927
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.593228,
+      "dead_provenance_hours": 0.0524,
+      "first_to_last_clip_envelope_hours": 1.7016,
+      "game_file": "3826.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3826"
+      ],
+      "native_frames_observed": 108912,
+      "observed_record_hours": 1.0095,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 15.916,
+        "bounded_complete_fraction_of_observed_out_runs": 0.049383,
+        "complete_within_same_record_and_bounded": 4,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.704704754088634,
+          "median": 2.3690357272361204,
+          "p90": 2.4024024276197276
+        },
+        "observed_endpoint_pair_duration_seconds_total": 15.916,
+        "observed_out_runs": 81,
+        "out_to_touch_endpoint_pairs_observed": 4,
+        "right_censored_at_record_end": 77
+      },
+      "record_duration_seconds": {
+        "max": 66.36636706299498,
+        "median": 12.712712846154393,
+        "p90": 30.276943928085288
+      },
+      "records": 225,
+      "sha256": "b919bc30b54ce75e7e610daffa5cc9139c7bc779ea595dd852f8f811e381639c",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.684108,
+          "first_to_last_clip_span_seconds": 2819.82,
+          "game_period": 1,
+          "match": "soccernet_3826",
+          "observed_seconds_union": 1929.062,
+          "records": 114,
+          "time_blocks": 114
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.515714,
+          "first_to_last_clip_span_seconds": 3306.039,
+          "game_period": 2,
+          "match": "soccernet_3826",
+          "observed_seconds_union": 1704.972,
+          "records": 111,
+          "time_blocks": 111
+        }
+      ],
+      "time_blocks_with_observed_records": 225,
+      "union_covered_hours": 1.0095,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 223,
+        "seconds": {
+          "max": 138.63864009388845,
+          "median": 2.268935626085298,
+          "p90": 33.046380059924715
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.616497,
+      "dead_provenance_hours": 0.0572,
+      "first_to_last_clip_envelope_hours": 1.6354,
+      "game_file": "3827.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3827"
+      ],
+      "native_frames_observed": 108779,
+      "observed_record_hours": 1.0082,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 15.516,
+        "bounded_complete_fraction_of_observed_out_runs": 0.057471,
+        "complete_within_same_record_and_bounded": 5,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 3.837170397504196,
+          "median": 2.402402335828714,
+          "p90": 2.402402335828714
+        },
+        "observed_endpoint_pair_duration_seconds_total": 15.516,
+        "observed_out_runs": 87,
+        "out_to_touch_endpoint_pairs_observed": 5,
+        "right_censored_at_record_end": 82
+      },
+      "record_duration_seconds": {
+        "max": 110.34367395257719,
+        "median": 12.012011679143571,
+        "p90": 31.338003802921236
+      },
+      "records": 229,
+      "sha256": "b45ddf4e6975ae36ca39ca8dc93980750b527f4519c0534b5510136f12e9ff42",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.69051,
+          "first_to_last_clip_span_seconds": 2761.495,
+          "game_period": 1,
+          "match": "soccernet_3827",
+          "observed_seconds_union": 1906.84,
+          "records": 120,
+          "time_blocks": 120
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.551113,
+          "first_to_last_clip_span_seconds": 3125.959,
+          "game_period": 2,
+          "match": "soccernet_3827",
+          "observed_seconds_union": 1722.756,
+          "records": 109,
+          "time_blocks": 109
+        }
+      ],
+      "time_blocks_with_observed_records": 229,
+      "union_covered_hours": 1.0082,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 227,
+        "seconds": {
+          "max": 136.403065956497,
+          "median": 2.836169424242232,
+          "p90": 27.00033291878605
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.539357,
+      "dead_provenance_hours": 0.0712,
+      "first_to_last_clip_envelope_hours": 1.7702,
+      "game_file": "3828.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3828"
+      ],
+      "native_frames_observed": 103014,
+      "observed_record_hours": 0.9548,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 53.554,
+        "bounded_complete_fraction_of_observed_out_runs": 0.148515,
+        "complete_within_same_record_and_bounded": 15,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.604604681264419,
+          "median": 2.4024024423988277,
+          "p90": 3.0363697535874072
+        },
+        "observed_endpoint_pair_duration_seconds_total": 53.554,
+        "observed_out_runs": 101,
+        "out_to_touch_endpoint_pairs_observed": 15,
+        "right_censored_at_record_end": 86
+      },
+      "record_duration_seconds": {
+        "max": 61.59492928705883,
+        "median": 11.311311499627813,
+        "p90": 27.901235032415272
+      },
+      "records": 240,
+      "sha256": "a45bbc7cf9aabb207dcffc1a3ea019a007efc759c41b23573d6c7ec8cae92bc2",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.574882,
+          "first_to_last_clip_span_seconds": 2945.579,
+          "game_period": 1,
+          "match": "soccernet_3828",
+          "observed_seconds_union": 1693.36,
+          "records": 111,
+          "time_blocks": 111
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.508825,
+          "first_to_last_clip_span_seconds": 3427.261,
+          "game_period": 2,
+          "match": "soccernet_3828",
+          "observed_seconds_union": 1743.877,
+          "records": 129,
+          "time_blocks": 129
+        }
+      ],
+      "time_blocks_with_observed_records": 240,
+      "union_covered_hours": 0.9548,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 238,
+        "seconds": {
+          "max": 216.01601961236125,
+          "median": 2.5692359453431908,
+          "p90": 32.732733277684034
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.600648,
+      "dead_provenance_hours": 0.0715,
+      "first_to_last_clip_envelope_hours": 1.7175,
+      "game_file": "3829.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3829"
+      ],
+      "native_frames_observed": 111303,
+      "observed_record_hours": 1.0316,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 33.967,
+        "bounded_complete_fraction_of_observed_out_runs": 0.096154,
+        "complete_within_same_record_and_bounded": 10,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.604604424525719,
+          "median": 2.402402308448201,
+          "p90": 2.402402308448201
+        },
+        "observed_endpoint_pair_duration_seconds_total": 33.967,
+        "observed_out_runs": 104,
+        "out_to_touch_endpoint_pairs_observed": 10,
+        "right_censored_at_record_end": 94
+      },
+      "record_duration_seconds": {
+        "max": 87.25391717488952,
+        "median": 11.778444651141875,
+        "p90": 26.760092380214683
+      },
+      "records": 261,
+      "sha256": "a1da53b4f5fa9ed07445191b3ab9adb243464f23f320ec638bb74b3f69be050e",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.604868,
+          "first_to_last_clip_span_seconds": 3122.589,
+          "game_period": 1,
+          "match": "soccernet_3829",
+          "observed_seconds_union": 1888.755,
+          "records": 137,
+          "time_blocks": 137
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.596341,
+          "first_to_last_clip_span_seconds": 3060.427,
+          "game_period": 2,
+          "match": "soccernet_3829",
+          "observed_seconds_union": 1825.058,
+          "records": 124,
+          "time_blocks": 124
+        }
+      ],
+      "time_blocks_with_observed_records": 261,
+      "union_covered_hours": 1.0316,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 259,
+        "seconds": {
+          "max": 140.2068680569353,
+          "median": 2.402402308448201,
+          "p90": 27.8345000792707
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.603664,
+      "dead_provenance_hours": 0.0742,
+      "first_to_last_clip_envelope_hours": 1.6676,
+      "game_file": "3830.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3830"
+      ],
+      "native_frames_observed": 108613,
+      "observed_record_hours": 1.0067,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 43.81,
+        "bounded_complete_fraction_of_observed_out_runs": 0.113208,
+        "complete_within_same_record_and_bounded": 12,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.804804899954649,
+          "median": 2.369035749283195,
+          "p90": 2.4024024499773247
+        },
+        "observed_endpoint_pair_duration_seconds_total": 43.81,
+        "observed_out_runs": 106,
+        "out_to_touch_endpoint_pairs_observed": 12,
+        "right_censored_at_record_end": 94
+      },
+      "record_duration_seconds": {
+        "max": 53.586921314771985,
+        "median": 10.710710922815572,
+        "p90": 28.208208766817098
+      },
+      "records": 257,
+      "sha256": "e0a620665bb37b9a65d7a70a754fc0412181d18658f53b36d9c8258fe0753a55",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.658619,
+          "first_to_last_clip_span_seconds": 2937.004,
+          "game_period": 1,
+          "match": "soccernet_3830",
+          "observed_seconds_union": 1934.368,
+          "records": 133,
+          "time_blocks": 133
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.551028,
+          "first_to_last_clip_span_seconds": 3066.433,
+          "game_period": 2,
+          "match": "soccernet_3830",
+          "observed_seconds_union": 1689.69,
+          "records": 124,
+          "time_blocks": 124
+        }
+      ],
+      "time_blocks_with_observed_records": 257,
+      "union_covered_hours": 1.0067,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 255,
+        "seconds": {
+          "max": 193.1598303183157,
+          "median": 2.369035749283195,
+          "p90": 26.03937322169866
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.643434,
+      "dead_provenance_hours": 0.0534,
+      "first_to_last_clip_envelope_hours": 1.5963,
+      "game_file": "3831.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3831"
+      ],
+      "native_frames_observed": 110820,
+      "observed_record_hours": 1.0271,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 8.141,
+        "bounded_complete_fraction_of_observed_out_runs": 0.025,
+        "complete_within_same_record_and_bounded": 2,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.404404380050816,
+          "median": 2.402402389118627,
+          "p90": 2.402402389118627
+        },
+        "observed_endpoint_pair_duration_seconds_total": 8.141,
+        "observed_out_runs": 80,
+        "out_to_touch_endpoint_pairs_observed": 2,
+        "right_censored_at_record_end": 78
+      },
+      "record_duration_seconds": {
+        "max": 65.29863160423824,
+        "median": 10.110110054207556,
+        "p90": 27.427427275771
+      },
+      "records": 279,
+      "sha256": "d2c3b94b3ef3acb2a295fb11ca7e9741e02b68bfc04a67be70c10ea02f44225a",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.657053,
+          "first_to_last_clip_span_seconds": 2775.509,
+          "game_period": 1,
+          "match": "soccernet_3831",
+          "observed_seconds_union": 1823.657,
+          "records": 143,
+          "time_blocks": 143
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.630713,
+          "first_to_last_clip_span_seconds": 2971.305,
+          "game_period": 2,
+          "match": "soccernet_3831",
+          "observed_seconds_union": 1874.041,
+          "records": 136,
+          "time_blocks": 136
+        }
+      ],
+      "time_blocks_with_observed_records": 279,
+      "union_covered_hours": 1.0271,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 277,
+        "seconds": {
+          "max": 120.78745345290875,
+          "median": 2.1354687903276686,
+          "p90": 26.633299819367892
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.57782,
+      "dead_provenance_hours": 0.078,
+      "first_to_last_clip_envelope_hours": 1.6881,
+      "game_file": "3832.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3832"
+      ],
+      "native_frames_observed": 105239,
+      "observed_record_hours": 0.9754,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 49.783,
+        "bounded_complete_fraction_of_observed_out_runs": 0.147826,
+        "complete_within_same_record_and_bounded": 17,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.738071540787572,
+          "median": 2.4024024713852477,
+          "p90": 2.602602677334021
+        },
+        "observed_endpoint_pair_duration_seconds_total": 49.783,
+        "observed_out_runs": 115,
+        "out_to_touch_endpoint_pairs_observed": 17,
+        "right_censored_at_record_end": 98
+      },
+      "record_duration_seconds": {
+        "max": 68.46847043447956,
+        "median": 11.411411739079925,
+        "p90": 29.042376542968345
+      },
+      "records": 239,
+      "sha256": "1feb2378778b52d687d10b25fde66b683dcf5baa62b4024af0063ffb83603bfb",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.546197,
+          "first_to_last_clip_span_seconds": 3001.735,
+          "game_period": 1,
+          "match": "soccernet_3832",
+          "observed_seconds_union": 1639.54,
+          "records": 111,
+          "time_blocks": 111
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.608686,
+          "first_to_last_clip_span_seconds": 3075.375,
+          "game_period": 2,
+          "match": "soccernet_3832",
+          "observed_seconds_union": 1871.939,
+          "records": 128,
+          "time_blocks": 128
+        }
+      ],
+      "time_blocks_with_observed_records": 239,
+      "union_covered_hours": 0.9754,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 237,
+        "seconds": {
+          "max": 83.91725299352636,
+          "median": 3.20320329518033,
+          "p90": 33.533534496419094
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.526883,
+      "dead_provenance_hours": 0.0753,
+      "first_to_last_clip_envelope_hours": 1.7847,
+      "game_file": "3833.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3833"
+      ],
+      "native_frames_observed": 101454,
+      "observed_record_hours": 0.9403,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 15.282,
+        "bounded_complete_fraction_of_observed_out_runs": 0.035398,
+        "complete_within_same_record_and_bounded": 4,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.371037814367707,
+          "median": 2.369035761985551,
+          "p90": 2.402402462858587
+        },
+        "observed_endpoint_pair_duration_seconds_total": 15.282,
+        "observed_out_runs": 113,
+        "out_to_touch_endpoint_pairs_observed": 4,
+        "right_censored_at_record_end": 109
+      },
+      "record_duration_seconds": {
+        "max": 50.6172852243955,
+        "median": 10.944277886355785,
+        "p90": 25.76910308424565
+      },
+      "records": 258,
+      "sha256": "8938d2744f8bcaca74dae1d078ca175ec81b528efcb2f600000812cced3d95a5",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.511079,
+          "first_to_last_clip_span_seconds": 3300.901,
+          "game_period": 1,
+          "match": "soccernet_3833",
+          "observed_seconds_union": 1687.02,
+          "records": 125,
+          "time_blocks": 125
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.543583,
+          "first_to_last_clip_span_seconds": 3124.024,
+          "game_period": 2,
+          "match": "soccernet_3833",
+          "observed_seconds_union": 1698.165,
+          "records": 133,
+          "time_blocks": 133
+        }
+      ],
+      "time_blocks_with_observed_records": 258,
+      "union_covered_hours": 0.9403,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 256,
+        "seconds": {
+          "max": 183.48348810082456,
+          "median": 3.269936685557521,
+          "p90": 29.66299707612894
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.638239,
+      "dead_provenance_hours": 0.0617,
+      "first_to_last_clip_envelope_hours": 1.662,
+      "game_file": "3834.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3834"
+      ],
+      "native_frames_observed": 114449,
+      "observed_record_hours": 1.0608,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 25.225,
+        "bounded_complete_fraction_of_observed_out_runs": 0.076923,
+        "complete_within_same_record_and_bounded": 7,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.671338132421678,
+          "median": 2.402402468102577,
+          "p90": 2.402402468102577
+        },
+        "observed_endpoint_pair_duration_seconds_total": 25.225,
+        "observed_out_runs": 91,
+        "out_to_touch_endpoint_pairs_observed": 7,
+        "right_censored_at_record_end": 84
+      },
+      "record_duration_seconds": {
+        "max": 77.67767980198333,
+        "median": 10.844177807407466,
+        "p90": 30.410411242065127
+      },
+      "records": 258,
+      "sha256": "d49add6f7c70eb9303065b39d448995cee36f9d72f69f6fa48b5a8bd771f96f8",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.657463,
+          "first_to_last_clip_span_seconds": 2882.182,
+          "game_period": 1,
+          "match": "soccernet_3834",
+          "observed_seconds_union": 1894.928,
+          "records": 126,
+          "time_blocks": 126
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.620372,
+          "first_to_last_clip_span_seconds": 3101.135,
+          "game_period": 2,
+          "match": "soccernet_3834",
+          "observed_seconds_union": 1923.857,
+          "records": 132,
+          "time_blocks": 132
+        }
+      ],
+      "time_blocks_with_observed_records": 258,
+      "union_covered_hours": 1.0608,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 256,
+        "seconds": {
+          "max": 100.80080355747063,
+          "median": 1.9352686548604094,
+          "p90": 28.611946061082776
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.565828,
+      "dead_provenance_hours": 0.0686,
+      "first_to_last_clip_envelope_hours": 1.699,
+      "game_file": "3835.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3835"
+      ],
+      "native_frames_observed": 103723,
+      "observed_record_hours": 0.9614,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 32.533,
+        "bounded_complete_fraction_of_observed_out_runs": 0.097087,
+        "complete_within_same_record_and_bounded": 10,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.537871290048761,
+          "median": 2.4024024476728734,
+          "p90": 2.4024024476728734
+        },
+        "observed_endpoint_pair_duration_seconds_total": 32.533,
+        "observed_out_runs": 103,
+        "out_to_touch_endpoint_pairs_observed": 10,
+        "right_censored_at_record_end": 93
+      },
+      "record_duration_seconds": {
+        "max": 86.61995491887194,
+        "median": 11.711711932405258,
+        "p90": 28.895562773398726
+      },
+      "records": 227,
+      "sha256": "010b9a3876e1ad82bee6b476b11e8801145ebc08a86b77ad4f66c5c8561b266c",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.549424,
+          "first_to_last_clip_span_seconds": 3027.895,
+          "game_period": 1,
+          "match": "soccernet_3835",
+          "observed_seconds_union": 1663.597,
+          "records": 107,
+          "time_blocks": 107
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.581909,
+          "first_to_last_clip_span_seconds": 3088.622,
+          "game_period": 2,
+          "match": "soccernet_3835",
+          "observed_seconds_union": 1797.297,
+          "records": 120,
+          "time_blocks": 120
+        }
+      ],
+      "time_blocks_with_observed_records": 227,
+      "union_covered_hours": 0.9614,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 225,
+        "seconds": {
+          "max": 118.48515405119963,
+          "median": 2.769436154956229,
+          "p90": 31.811812411268296
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.643824,
+      "dead_provenance_hours": 0.0594,
+      "first_to_last_clip_envelope_hours": 1.6215,
+      "game_file": "3836.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3836"
+      ],
+      "native_frames_observed": 112635,
+      "observed_record_hours": 1.044,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 6.907,
+        "bounded_complete_fraction_of_observed_out_runs": 0.022472,
+        "complete_within_same_record_and_bounded": 2,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 3.53687011164526,
+          "median": 2.4024023399854597,
+          "p90": 2.4024023399854597
+        },
+        "observed_endpoint_pair_duration_seconds_total": 6.907,
+        "observed_out_runs": 89,
+        "out_to_touch_endpoint_pairs_observed": 2,
+        "right_censored_at_record_end": 87
+      },
+      "record_duration_seconds": {
+        "max": 65.0650633746062,
+        "median": 11.945278301594369,
+        "p90": 29.462795363988356
+      },
+      "records": 249,
+      "sha256": "9e228df5034a1ed4cd5650a9c2a99d20bc85d29f75ae36acadba56e63db10adf",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.731206,
+          "first_to_last_clip_span_seconds": 2758.025,
+          "game_period": 1,
+          "match": "soccernet_3836",
+          "observed_seconds_union": 2016.683,
+          "records": 132,
+          "time_blocks": 132
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.56556,
+          "first_to_last_clip_span_seconds": 3079.379,
+          "game_period": 2,
+          "match": "soccernet_3836",
+          "observed_seconds_union": 1741.575,
+          "records": 117,
+          "time_blocks": 117
+        }
+      ],
+      "time_blocks_with_observed_records": 249,
+      "union_covered_hours": 1.044,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 247,
+        "seconds": {
+          "max": 101.7684324577174,
+          "median": 2.268935543319601,
+          "p90": 22.38905514069783
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.61781,
+      "dead_provenance_hours": 0.0609,
+      "first_to_last_clip_envelope_hours": 1.6477,
+      "game_file": "3837.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3837"
+      ],
+      "native_frames_observed": 109828,
+      "observed_record_hours": 1.0179,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 27.06,
+        "bounded_complete_fraction_of_observed_out_runs": 0.089888,
+        "complete_within_same_record_and_bounded": 8,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.77143806946494,
+          "median": 2.402402384625704,
+          "p90": 2.402402384625704
+        },
+        "observed_endpoint_pair_duration_seconds_total": 27.06,
+        "observed_out_runs": 89,
+        "out_to_touch_endpoint_pairs_observed": 8,
+        "right_censored_at_record_end": 81
+      },
+      "record_duration_seconds": {
+        "max": 88.45512113392698,
+        "median": 10.927594180068308,
+        "p90": 32.58591901146477
+      },
+      "records": 234,
+      "sha256": "12ac4fcd343f6a14d644c4c0d687bdd6516f5df42d18bb4ab8199a1dc29671a8",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.623181,
+          "first_to_last_clip_span_seconds": 2921.922,
+          "game_period": 1,
+          "match": "soccernet_3837",
+          "observed_seconds_union": 1820.888,
+          "records": 119,
+          "time_blocks": 119
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.612594,
+          "first_to_last_clip_span_seconds": 3009.676,
+          "game_period": 2,
+          "match": "soccernet_3837",
+          "observed_seconds_union": 1843.71,
+          "records": 115,
+          "time_blocks": 115
+        }
+      ],
+      "time_blocks_with_observed_records": 234,
+      "union_covered_hours": 1.0179,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 232,
+        "seconds": {
+          "max": 147.71437995469435,
+          "median": 2.135468786333959,
+          "p90": 23.646980138669953
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.62033,
+      "dead_provenance_hours": 0.0663,
+      "first_to_last_clip_envelope_hours": 1.6836,
+      "game_file": "3838.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3838"
+      ],
+      "native_frames_observed": 112683,
+      "observed_record_hours": 1.0444,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 21.522,
+        "bounded_complete_fraction_of_observed_out_runs": 0.071429,
+        "complete_within_same_record_and_bounded": 7,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.804804703942181,
+          "median": 2.4024023519710904,
+          "p90": 2.4024023519710904
+        },
+        "observed_endpoint_pair_duration_seconds_total": 21.522,
+        "observed_out_runs": 98,
+        "out_to_touch_endpoint_pairs_observed": 7,
+        "right_censored_at_record_end": 91
+      },
+      "record_duration_seconds": {
+        "max": 76.91024196240782,
+        "median": 11.311311073863884,
+        "p90": 29.582915628577336
+      },
+      "records": 255,
+      "sha256": "ae1805b78e4580f4cf959aeb0fa1eb0510e4ada83fc400d1ca1f0040c7f61bb0",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.634469,
+          "first_to_last_clip_span_seconds": 3000.834,
+          "game_period": 1,
+          "match": "soccernet_3838",
+          "observed_seconds_union": 1903.937,
+          "records": 117,
+          "time_blocks": 117
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.606466,
+          "first_to_last_clip_span_seconds": 3060.227,
+          "game_period": 2,
+          "match": "soccernet_3838",
+          "observed_seconds_union": 1855.923,
+          "records": 138,
+          "time_blocks": 138
+        }
+      ],
+      "time_blocks_with_observed_records": 255,
+      "union_covered_hours": 1.0444,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 253,
+        "seconds": {
+          "max": 99.63296420813438,
+          "median": 2.3356689533052264,
+          "p90": 26.54654598928055
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.612797,
+      "dead_provenance_hours": 0.0627,
+      "first_to_last_clip_envelope_hours": 1.6349,
+      "game_file": "3839.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3839"
+      ],
+      "native_frames_observed": 108090,
+      "observed_record_hours": 1.0018,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 12.079,
+        "bounded_complete_fraction_of_observed_out_runs": 0.042105,
+        "complete_within_same_record_and_bounded": 4,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.471137700810947,
+          "median": 2.369035647444606,
+          "p90": 2.4024023467043896
+        },
+        "observed_endpoint_pair_duration_seconds_total": 12.079,
+        "observed_out_runs": 95,
+        "out_to_touch_endpoint_pairs_observed": 4,
+        "right_censored_at_record_end": 91
+      },
+      "record_duration_seconds": {
+        "max": 68.53520027959466,
+        "median": 11.3113110490665,
+        "p90": 30.9642969130788
+      },
+      "records": 237,
+      "sha256": "19e84f38999019c7ca36b31459590acc1285ce8717dbd392b0bbf803814f2144",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.653395,
+          "first_to_last_clip_span_seconds": 2838.438,
+          "game_period": 1,
+          "match": "soccernet_3839",
+          "observed_seconds_union": 1854.621,
+          "records": 116,
+          "time_blocks": 116
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.574978,
+          "first_to_last_clip_span_seconds": 3047.047,
+          "game_period": 2,
+          "match": "soccernet_3839",
+          "observed_seconds_union": 1751.985,
+          "records": 121,
+          "time_blocks": 121
+        }
+      ],
+      "time_blocks_with_observed_records": 237,
+      "union_covered_hours": 1.0018,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 235,
+        "seconds": {
+          "max": 115.64897963440853,
+          "median": 2.7694360385620045,
+          "p90": 27.03369974027634
+        }
+      }
+    },
+    {
+      "coverage_fraction_within_summed_observed_envelopes": 0.550069,
+      "dead_provenance_hours": 0.0622,
+      "first_to_last_clip_envelope_hours": 1.7268,
+      "game_file": "3840.joblib",
+      "games": 1,
+      "interpretation_limits": [
+        "Coverage fractions use only the frame-number envelope from the first to last observed clip in each match half, not the full match duration.",
+        "Gaps between records may reflect clip sampling, invalid frames, or time breaks; the report counts full_period blocks separately and does not imply state continuity across gaps.",
+        "An OUT-to-touch pair is complete only when both events occur in one contiguous record; this is clip-level continuity, not full-match stoppage coverage.",
+        "A stoppage whose OUT occurs before a clip begins cannot be identified from that clip's event stream.",
+        "OUT-to-touch events are silver action metadata; no missing stoppage or restart is inferred from event anchors."
+      ],
+      "matches": [
+        "soccernet_3840"
+      ],
+      "native_frames_observed": 102485,
+      "observed_record_hours": 0.9499,
+      "out_to_touch_episodes": {
+        "both_record_edges_censored": 0,
+        "bounded_complete_duration_seconds_total": 25.325,
+        "bounded_complete_fraction_of_observed_out_runs": 0.096774,
+        "complete_within_same_record_and_bounded": 9,
+        "left_censored_at_record_start": 0,
+        "left_censored_stoppages_not_identifiable_from_clips": true,
+        "observed_duration_seconds": {
+          "max": 4.437770954838219,
+          "median": 2.4024023214161785,
+          "p90": 2.4024023214161785
+        },
+        "observed_endpoint_pair_duration_seconds_total": 25.325,
+        "observed_out_runs": 93,
+        "out_to_touch_endpoint_pairs_observed": 9,
+        "right_censored_at_record_end": 84
+      },
+      "record_duration_seconds": {
+        "max": 89.78978676292968,
+        "median": 10.994327290369874,
+        "p90": 25.98932177987585
+      },
+      "records": 240,
+      "sha256": "93c8240fe5de30c57a22343e84a2b523f70b482724a25761f94dbe62c35b93a2",
+      "time_blocks": [
+        {
+          "coverage_fraction_within_observed_envelope": 0.50587,
+          "first_to_last_clip_span_seconds": 3143.543,
+          "game_period": 1,
+          "match": "soccernet_3840",
+          "observed_seconds_union": 1590.224,
+          "records": 113,
+          "time_blocks": 113
+        },
+        {
+          "coverage_fraction_within_observed_envelope": 0.595281,
+          "first_to_last_clip_span_seconds": 3073.106,
+          "game_period": 2,
+          "match": "soccernet_3840",
+          "observed_seconds_union": 1829.363,
+          "records": 127,
+          "time_blocks": 127
+        }
+      ],
+      "time_blocks_with_observed_records": 240,
+      "union_covered_hours": 0.9499,
+      "unobserved_gaps_inside_observed_envelope": {
+        "count": 238,
+        "seconds": {
+          "max": 111.31130755894961,
+          "median": 2.485819068687574,
+          "p90": 31.468133740661095
+        }
+      }
+    }
+  ],
+  "raw_source_revision": "32c840210b7d08d06976e7f9457dfff79fb2da99",
+  "raw_source_train_bytes": 5037010355,
+  "schema": 1,
+  "source_clip_count": 62159,
+  "source_restore_receipt": "experiments/results/full_match_coverage_source_restore.json",
+  "source_restore_receipt_sha256": "1511e145b15adef7715ff2a1465d71115a3630e0bc97e0d690b3688178e1f5df",
+  "source_restore_status": "raw_train_data_restored_and_hash_verified",
+  "split": "train only",
+  "study": "full_match_coverage_execution_v1",
+  "uses_organizer_labels": false,
+  "uses_valid_or_test": false
+}

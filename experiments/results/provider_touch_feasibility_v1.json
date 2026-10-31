@@ -1,0 +1,518 @@
+{
+  "study_id": "provider_touch_feasibility_v1",
+  "purpose": "schema and field coverage feasibility; no labels synthesized/scored and no model fitted",
+  "inputs": {
+    "source_manifest": "/workspace/more-than-a-hack-2027/experiments/eval_set/manifest.json",
+    "source_manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "metrica_commit": "e706dd506b360d69d9d123d5b8026e7294b13996",
+    "skillcorner_commit": "4340d274572876239c154c90bc507a9b3250a656",
+    "event_files": [
+      {
+        "name": "1874553_dynamic_events.csv",
+        "bytes": 4738858,
+        "sha256": "92507490abbbeec7697227581c864cfb0a96c29b214dd63dcaa48929bb6c6408"
+      },
+      {
+        "name": "1886347_dynamic_events.csv",
+        "bytes": 4918599,
+        "sha256": "b21368b9b94eb8f83032fe14a2a8da88ab7eda048b4f8078c06d0e6955d12bfb"
+      },
+      {
+        "name": "1899585_dynamic_events.csv",
+        "bytes": 4375032,
+        "sha256": "14c62ffc99aa5fd62998c238036873509a9d82ced44354697a1db4251424d557"
+      },
+      {
+        "name": "1925299_dynamic_events.csv",
+        "bytes": 5043601,
+        "sha256": "2557acbdcba6547d764b9f7c277c3d7e81a4d58692d6c20c2bfa28625ae0cce3"
+      },
+      {
+        "name": "1927964_dynamic_events.csv",
+        "bytes": 5509112,
+        "sha256": "638747f76b43690974f95958952dfe62c9e50d64648f9456f43f66d5d91201f3"
+      },
+      {
+        "name": "1953632_dynamic_events.csv",
+        "bytes": 4643533,
+        "sha256": "d1f676ebb182da585da128fc80d468e27fb676e254abc47531daf920d977e51f"
+      },
+      {
+        "name": "1959846_dynamic_events.csv",
+        "bytes": 4499680,
+        "sha256": "aa3d08a927a84f2b42d976cc10401e9efc52468744e0a7a86cb0d3dc2e288058"
+      },
+      {
+        "name": "1986691_dynamic_events.csv",
+        "bytes": 4290910,
+        "sha256": "c2f7102092970368cc487353d6e93e06522f8d3f184326cced63fa167ca0d9f5"
+      },
+      {
+        "name": "1996435_dynamic_events.csv",
+        "bytes": 4964532,
+        "sha256": "379e5bbd90df47d2358a2bfc5b741f7626b934db780ff33d3337a8b1d5efc87c"
+      },
+      {
+        "name": "1996436_dynamic_events.csv",
+        "bytes": 3760511,
+        "sha256": "94e7d7cc23ace6fd3eda12fb869eb2a0fef49402d7d72b7fb8155b4b2588da2d"
+      },
+      {
+        "name": "2006229_dynamic_events.csv",
+        "bytes": 4778846,
+        "sha256": "6308c15890803ed5cd44e8bc2fbb1844cce20bd59d63b154aec82977af8c6588"
+      },
+      {
+        "name": "Sample_Game_1_RawEventsData.csv",
+        "bytes": 139446,
+        "sha256": "097dda6345e17390dca095331458fd00e47960c480c76f4356fd4edf2575ef05"
+      },
+      {
+        "name": "Sample_Game_2_RawEventsData.csv",
+        "bytes": 153897,
+        "sha256": "edf31a18599265b77a8baf150f2ce6d89456fb0324b62ea7a391229657a619ba"
+      },
+      {
+        "name": "Sample_Game_3_events.json",
+        "bytes": 1709486,
+        "sha256": "28a53bfe9eaf32535362335553d517cdce0eabb588af6166009081753751f4e0"
+      }
+    ],
+    "code_sha256": {
+      "provider_touch_feasibility.py": "1b387b4b4d06d0a9293196a3fd168487355868ad72779007894bd7ed65b8d9e4",
+      "provider_touch_calibration.py": "4f8b062d6bd98c2da2983ef8cdf863957de5950b30d995cbdebc643a996576b7",
+      "soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+      "metrica_open.py": "a0df5791a3ac3d5a1c22cd73fe51f1e522c8f1cabeefd759c9161b8bdde1861e",
+      "skillcorner_had.py": "4533bc8b974383c99db9de16548a93e40ea224f17dc752ce2aa8257b65f12a87",
+      "audit_dataset.py": "4e445f5a2ffff5fd6b9f3f6892466641f6f3c381fad7d150968e085d9d33fb32"
+    }
+  },
+  "cohorts": {
+    "sportec": {
+      "train": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH"
+      ],
+      "selection": [
+        "J03WOY"
+      ]
+    },
+    "metrica": {
+      "train": [
+        "metrica_1",
+        "metrica_2"
+      ],
+      "selection": [
+        "metrica_3"
+      ]
+    },
+    "skillcorner": {
+      "train": [
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "selection": [
+        "skillcorner_had_1996435",
+        "skillcorner_had_1996436",
+        "skillcorner_had_2006229"
+      ]
+    }
+  },
+  "metrica": {
+    "matches": [
+      {
+        "match": "metrica_1",
+        "events": 1745,
+        "fields": [
+          "End Frame",
+          "End Time [s]",
+          "End X",
+          "End Y",
+          "From",
+          "Period",
+          "Start Frame",
+          "Start Time [s]",
+          "Start X",
+          "Start Y",
+          "Subtype",
+          "Team",
+          "To",
+          "Type"
+        ],
+        "event_types": {
+          "BALL LOST": 257,
+          "BALL OUT": 51,
+          "CARD": 4,
+          "CHALLENGE": 233,
+          "FAULT RECEIVED": 22,
+          "PASS": 799,
+          "RECOVERY": 278,
+          "SET PIECE": 77,
+          "SHOT": 24
+        },
+        "rows_with_start_frame": 1745,
+        "rows_with_end_frame": 1745,
+        "rows_with_team": 1745,
+        "gar_game_event_id_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "metrica_2",
+        "events": 1935,
+        "fields": [
+          "End Frame",
+          "End Time [s]",
+          "End X",
+          "End Y",
+          "From",
+          "Period",
+          "Start Frame",
+          "Start Time [s]",
+          "Start X",
+          "Start Y",
+          "Subtype",
+          "Team",
+          "To",
+          "Type"
+        ],
+        "event_types": {
+          "BALL LOST": 233,
+          "BALL OUT": 49,
+          "CARD": 6,
+          "CHALLENGE": 311,
+          "FAULT RECEIVED": 20,
+          "PASS": 964,
+          "RECOVERY": 248,
+          "SET PIECE": 80,
+          "SHOT": 24
+        },
+        "rows_with_start_frame": 1935,
+        "rows_with_end_frame": 1935,
+        "rows_with_team": 1935,
+        "gar_game_event_id_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "metrica_3",
+        "events": 3620,
+        "fields": [
+          "end",
+          "from",
+          "index",
+          "period",
+          "start",
+          "subtypes",
+          "team",
+          "to",
+          "type"
+        ],
+        "event_types": {
+          "BALL LOST": 288,
+          "BALL OUT": 64,
+          "CARD": 1,
+          "CARRY": 1395,
+          "CHALLENGE": 335,
+          "FAULT RECEIVED": 12,
+          "PASS": 1121,
+          "RECOVERY": 294,
+          "SET PIECE": 90,
+          "SHOT": 20
+        },
+        "rows_with_start_frame": 3620,
+        "rows_with_end_frame": 3620,
+        "rows_with_team": 3620,
+        "gar_game_event_id_present": false,
+        "gar_control_flag_present": false
+      }
+    ],
+    "totals_by_manifest_cohort": {
+      "train": {
+        "events": 3680,
+        "rows_with_start_frame": 3680,
+        "rows_with_end_frame": 3680,
+        "rows_with_team": 3680
+      },
+      "selection": {
+        "events": 3620,
+        "rows_with_start_frame": 3620,
+        "rows_with_end_frame": 3620,
+        "rows_with_team": 3620
+      }
+    },
+    "touch_run_mapping": "unsupported: no GAR event id or controlled flag; events are point/span actions with source-specific meanings"
+  },
+  "skillcorner": {
+    "matches": [
+      {
+        "match": "skillcorner_had_1874553",
+        "events": 4915,
+        "possession_events": 959,
+        "event_types": {
+          "off_ball_run": 535,
+          "on_ball_engagement": 878,
+          "passing_option": 2543,
+          "player_possession": 959
+        },
+        "possession_rows_with_frame_start": 959,
+        "possession_rows_with_frame_end": 959,
+        "possession_rows_with_team": 959,
+        "possession_rows_with_interruption_after": 93,
+        "possession_rows_with_interruption_before": 84,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1886347",
+        "events": 5115,
+        "possession_events": 990,
+        "event_types": {
+          "off_ball_run": 595,
+          "on_ball_engagement": 957,
+          "passing_option": 2573,
+          "player_possession": 990
+        },
+        "possession_rows_with_frame_start": 990,
+        "possession_rows_with_frame_end": 990,
+        "possession_rows_with_team": 990,
+        "possession_rows_with_interruption_after": 99,
+        "possession_rows_with_interruption_before": 94,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1899585",
+        "events": 4565,
+        "possession_events": 898,
+        "event_types": {
+          "off_ball_run": 467,
+          "on_ball_engagement": 934,
+          "passing_option": 2266,
+          "player_possession": 898
+        },
+        "possession_rows_with_frame_start": 898,
+        "possession_rows_with_frame_end": 898,
+        "possession_rows_with_team": 898,
+        "possession_rows_with_interruption_after": 98,
+        "possession_rows_with_interruption_before": 88,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1925299",
+        "events": 5222,
+        "possession_events": 1054,
+        "event_types": {
+          "off_ball_run": 498,
+          "on_ball_engagement": 936,
+          "passing_option": 2734,
+          "player_possession": 1054
+        },
+        "possession_rows_with_frame_start": 1054,
+        "possession_rows_with_frame_end": 1054,
+        "possession_rows_with_team": 1054,
+        "possession_rows_with_interruption_after": 85,
+        "possession_rows_with_interruption_before": 83,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1927964",
+        "events": 5656,
+        "possession_events": 1140,
+        "event_types": {
+          "off_ball_run": 530,
+          "on_ball_engagement": 915,
+          "passing_option": 3071,
+          "player_possession": 1140
+        },
+        "possession_rows_with_frame_start": 1140,
+        "possession_rows_with_frame_end": 1140,
+        "possession_rows_with_team": 1140,
+        "possession_rows_with_interruption_after": 71,
+        "possession_rows_with_interruption_before": 68,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1953632",
+        "events": 4776,
+        "possession_events": 979,
+        "event_types": {
+          "off_ball_run": 459,
+          "on_ball_engagement": 775,
+          "passing_option": 2563,
+          "player_possession": 979
+        },
+        "possession_rows_with_frame_start": 979,
+        "possession_rows_with_frame_end": 979,
+        "possession_rows_with_team": 979,
+        "possession_rows_with_interruption_after": 88,
+        "possession_rows_with_interruption_before": 83,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1959846",
+        "events": 4669,
+        "possession_events": 946,
+        "event_types": {
+          "off_ball_run": 491,
+          "on_ball_engagement": 870,
+          "passing_option": 2362,
+          "player_possession": 946
+        },
+        "possession_rows_with_frame_start": 946,
+        "possession_rows_with_frame_end": 946,
+        "possession_rows_with_team": 946,
+        "possession_rows_with_interruption_after": 95,
+        "possession_rows_with_interruption_before": 87,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1986691",
+        "events": 4434,
+        "possession_events": 915,
+        "event_types": {
+          "off_ball_run": 466,
+          "on_ball_engagement": 809,
+          "passing_option": 2244,
+          "player_possession": 915
+        },
+        "possession_rows_with_frame_start": 915,
+        "possession_rows_with_frame_end": 915,
+        "possession_rows_with_team": 915,
+        "possession_rows_with_interruption_after": 88,
+        "possession_rows_with_interruption_before": 74,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1996435",
+        "events": 5171,
+        "possession_events": 1005,
+        "event_types": {
+          "off_ball_run": 515,
+          "on_ball_engagement": 1025,
+          "passing_option": 2626,
+          "player_possession": 1005
+        },
+        "possession_rows_with_frame_start": 1005,
+        "possession_rows_with_frame_end": 1005,
+        "possession_rows_with_team": 1005,
+        "possession_rows_with_interruption_after": 89,
+        "possession_rows_with_interruption_before": 77,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_1996436",
+        "events": 3923,
+        "possession_events": 786,
+        "event_types": {
+          "off_ball_run": 429,
+          "on_ball_engagement": 754,
+          "passing_option": 1954,
+          "player_possession": 786
+        },
+        "possession_rows_with_frame_start": 786,
+        "possession_rows_with_frame_end": 786,
+        "possession_rows_with_team": 786,
+        "possession_rows_with_interruption_after": 106,
+        "possession_rows_with_interruption_before": 94,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      },
+      {
+        "match": "skillcorner_had_2006229",
+        "events": 4949,
+        "possession_events": 979,
+        "event_types": {
+          "off_ball_run": 494,
+          "on_ball_engagement": 926,
+          "passing_option": 2550,
+          "player_possession": 979
+        },
+        "possession_rows_with_frame_start": 979,
+        "possession_rows_with_frame_end": 979,
+        "possession_rows_with_team": 979,
+        "possession_rows_with_interruption_after": 89,
+        "possession_rows_with_interruption_before": 84,
+        "gar_game_event_type_present": false,
+        "gar_game_event_id_present": false,
+        "gar_possession_event_type_present": false,
+        "gar_control_flag_present": false
+      }
+    ],
+    "totals_by_manifest_cohort": {
+      "train": {
+        "events": 39352,
+        "possession_events": 7881,
+        "possession_rows_with_frame_start": 7881,
+        "possession_rows_with_frame_end": 7881,
+        "possession_rows_with_team": 7881,
+        "possession_rows_with_interruption_after": 717,
+        "possession_rows_with_interruption_before": 661
+      },
+      "selection": {
+        "events": 14043,
+        "possession_events": 2770,
+        "possession_rows_with_frame_start": 2770,
+        "possession_rows_with_frame_end": 2770,
+        "possession_rows_with_team": 2770,
+        "possession_rows_with_interruption_after": 284,
+        "possession_rows_with_interruption_before": 255
+      }
+    },
+    "touch_run_mapping": "unsupported: direct player_possession spans and interruption tags, not GAR OTB touch runs or control flags"
+  },
+  "sportec": {
+    "label_source": "BallStatus/BallPossession frame annotations in DFL XML",
+    "train_matches": [
+      "J03WMX",
+      "J03WN1",
+      "J03WOH"
+    ],
+    "selection_matches": [
+      "J03WOY"
+    ],
+    "local_event_stream_present": false,
+    "processed_cache_present": false,
+    "touch_run_mapping": "unsupported: no event run IDs, event-end type, or controlled/uncontrolled event labels in the documented reference schema"
+  },
+  "local_raw_cache": {
+    "metrica_event_dir_present": true,
+    "skillcorner_dynamic_event_files_present": 11,
+    "sportec_event_dir_present": false,
+    "provider_processed_cache_dir_present": false,
+    "scope": "checks current data_dir only; private mtah-data LFS refs are separate and may be pointer-only"
+  },
+  "decision": "No cross-provider touch-rule calibration is supportable: the matches are distinct, providers do not share GAR run-control fields, and source labels cannot be turned into paired touch annotations without inventing them."
+}

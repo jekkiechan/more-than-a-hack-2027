@@ -1,0 +1,43 @@
+{
+  "correction_id": "provider_touch_sportec_train_nested_v1_alignment_correction",
+  "v1_status": "INVALID_ALIGNMENT; do not use its scores for selection or calibration claims",
+  "cause": "Version 1 treated matchinformation KickoffTime as tracking timestamp zero. The processed timestamps are relative to the first observed position frame, as established by audit_dataset.py; the two clocks differ by match-specific offsets.",
+  "v1_report_preserved": true,
+  "v1_files": {
+    "v1_declaration": {
+      "path": "experiments/results/provider_touch_sportec_train_nested_v1_declaration.json",
+      "sha256": "50685cbbf136acf99ddc2c07cd041db50b55b4c7b2c8f4452ddbeaab22b22908"
+    },
+    "v1_report": {
+      "path": "experiments/results/provider_touch_sportec_train_nested_v1.json",
+      "sha256": "23858874fc7fef863efd35f7033dd0fac2d1524921019eb96f405d29785e639b"
+    },
+    "v2_declaration": {
+      "path": "experiments/results/provider_touch_sportec_train_nested_v2_declaration.json",
+      "sha256": "3b1f41e52ca5ef2cdf7bdbfb0e6848b15bd3c1c4ce0a7226e98ebda26541fed8"
+    },
+    "v2_report": {
+      "path": "experiments/results/provider_touch_sportec_train_nested_v2.json",
+      "sha256": "0cd85035d62fb5a36f230eda134ee808c4cc65759db76aedeaaa1b89a0c02caa"
+    }
+  },
+  "source_clock_evidence": {
+    "J03WMX": {
+      "kickoff_utc": "2023-05-27T13:30:12.220+00:00",
+      "first_frame_utc": "2023-05-27T13:30:12.600+00:00",
+      "offset_seconds": 0.38
+    },
+    "J03WN1": {
+      "kickoff_utc": "2023-05-27T13:31:08.640+00:00",
+      "first_frame_utc": "2023-05-27T13:31:06.400+00:00",
+      "offset_seconds": -2.24
+    },
+    "J03WOH": {
+      "kickoff_utc": "2022-08-26T16:32:08.100+00:00",
+      "first_frame_utc": "2022-08-26T16:32:09.720+00:00",
+      "offset_seconds": 1.62
+    }
+  },
+  "v2_replacement": "provider_touch_sportec_train_nested_v2",
+  "decision": "The v1 report remains byte-preserved for audit. Corrected-origin v2 uses only source clock evidence; v1 scores did not select mappings or candidates."
+}

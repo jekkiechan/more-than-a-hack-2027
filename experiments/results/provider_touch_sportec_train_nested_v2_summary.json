@@ -1,0 +1,990 @@
+{
+  "candidate_count": 4,
+  "declaration_sha256": "3b1f41e52ca5ef2cdf7bdbfb0e6848b15bd3c1c4ce0a7226e98ebda26541fed8",
+  "full_report_sha256": "0cd85035d62fb5a36f230eda134ee808c4cc65759db76aedeaaa1b89a0c02caa",
+  "interpretation": "Nested whole-match development calibration on previously exposed Sportec TRAIN only with first-observed-frame clock origins; not fresh confirmation, not full-provider transfer.",
+  "outer_folds": [
+    {
+      "event_audit": {
+        "event_rows": 1715,
+        "event_rows_without_control_operation": 64,
+        "frame_origin_minus_kickoff_seconds": 0.37999987602233887,
+        "ops_challenge": 165,
+        "ops_control": 1263,
+        "ops_dead_start": 121,
+        "ops_restart": 102,
+        "top_level_types:BallClaiming": 29,
+        "top_level_types:BallDeflection": 1,
+        "top_level_types:Caution": 3,
+        "top_level_types:ChanceWithoutShot": 2,
+        "top_level_types:CornerKick": 10,
+        "top_level_types:Delete": 108,
+        "top_level_types:FinalWhistle": 2,
+        "top_level_types:Foul": 19,
+        "top_level_types:FreeKick": 20,
+        "top_level_types:GoalDisallowed": 1,
+        "top_level_types:GoalKick": 14,
+        "top_level_types:KickOff": 5,
+        "top_level_types:Offside": 2,
+        "top_level_types:OtherBallAction": 287,
+        "top_level_types:OtherPlayerAction": 1,
+        "top_level_types:Penalty": 1,
+        "top_level_types:PenaltyNotAwarded": 2,
+        "top_level_types:Play": 883,
+        "top_level_types:PlayerNotSentOff": 3,
+        "top_level_types:PossessionLossBeforeGoal": 1,
+        "top_level_types:RefereeBall": 2,
+        "top_level_types:Run": 3,
+        "top_level_types:ShotAtGoal": 20,
+        "top_level_types:SitterPrevented": 1,
+        "top_level_types:SpectacularPlay": 1,
+        "top_level_types:Substitution": 10,
+        "top_level_types:TacklingGame": 229,
+        "top_level_types:ThrowIn": 52,
+        "top_level_types:VideoAssistantAction": 3
+      },
+      "inner_candidate_scores": [
+        {
+          "config": {
+            "id": "contest_hold_tail_0s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.6996548824934637,
+              "match": "J03WN1",
+              "prediction_known_rate": 0.9499155840944893,
+              "prediction_x_count": 7090,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.27207207207207207
+            },
+            {
+              "macro_f1": 0.7539134431502731,
+              "match": "J03WOH",
+              "prediction_known_rate": 0.9572711239377906,
+              "prediction_x_count": 5863,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.4650273224043716
+            }
+          ],
+          "mean_macro_f1": 0.7267841628218684,
+          "mean_spell_f1": 0.36854969723822184
+        },
+        {
+          "config": {
+            "id": "contest_hold_tail_3s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.6982161654580676,
+              "match": "J03WN1",
+              "prediction_known_rate": 0.9657674076899712,
+              "prediction_x_count": 4846,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.2703417861080485
+            },
+            {
+              "macro_f1": 0.7551288388890761,
+              "match": "J03WOH",
+              "prediction_known_rate": 0.9733117611905491,
+              "prediction_x_count": 3662,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.4539267015706806
+            }
+          ],
+          "mean_macro_f1": 0.7266725021735718,
+          "mean_spell_f1": 0.36213424383936454
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_0s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.6994553629756454,
+              "match": "J03WN1",
+              "prediction_known_rate": 0.9501910837024322,
+              "prediction_x_count": 7051,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.2563809523809524
+            },
+            {
+              "macro_f1": 0.7533471011490338,
+              "match": "J03WOH",
+              "prediction_known_rate": 0.9574824726339878,
+              "prediction_x_count": 5834,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.352
+            }
+          ],
+          "mean_macro_f1": 0.7264012320623396,
+          "mean_spell_f1": 0.3041904761904762
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_3s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.6980371651474968,
+              "match": "J03WN1",
+              "prediction_known_rate": 0.9657956640600165,
+              "prediction_x_count": 4842,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.2497704315886134
+            },
+            {
+              "macro_f1": 0.7545158953707866,
+              "match": "J03WOH",
+              "prediction_known_rate": 0.9733409127348521,
+              "prediction_x_count": 3658,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.3370143149284254
+            }
+          ],
+          "mean_macro_f1": 0.7262765302591416,
+          "mean_spell_f1": 0.2933923732585194
+        }
+      ],
+      "inner_training_matches": [
+        "J03WN1",
+        "J03WOH"
+      ],
+      "outer_match": "J03WMX",
+      "outer_metrics": {
+        "accuracy": 0.7886508594408325,
+        "alive_dead_f1": 0.9103919243307036,
+        "bootstrap_high": null,
+        "bootstrap_low": null,
+        "bootstrap_n": 0,
+        "confusion": [
+          [
+            31128,
+            5221,
+            1728,
+            1034
+          ],
+          [
+            6263,
+            36842,
+            1600,
+            1553
+          ],
+          [
+            4367,
+            5359,
+            47147,
+            3725
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "fragmentation": 0.7850162866449512,
+        "gt_home_share": 0.4581405428199932,
+        "gt_home_share_spells": 0.4581405428199932,
+        "gt_mean_spell_duration_s": 6.682504892367906,
+        "kappa": 0.6877378239422963,
+        "label_coverage": 1.0,
+        "macro_f1": 0.8017749271354084,
+        "macro_f1_present_classes": 0.8017749271354084,
+        "mean_spell_duration_s": 9.941770833333333,
+        "n_abstain_on_graded": 6312,
+        "n_frames": 145968,
+        "n_graded": 145967,
+        "n_gt_segments": 614,
+        "n_gt_spells": 511,
+        "n_pred_segments": 482,
+        "n_pred_spells": 384,
+        "original_n_frames": 145967,
+        "per_class": {
+          "A": {
+            "f1": 0.7865499573014518,
+            "precision": 0.7768967989540719,
+            "recall": 0.7964460201478664,
+            "support": 46258
+          },
+          "D": {
+            "f1": 0.8489371854546109,
+            "precision": 0.9340663694898464,
+            "recall": 0.7780289778540546,
+            "support": 60598
+          },
+          "H": {
+            "f1": 0.7698376386501625,
+            "precision": 0.74543799990421,
+            "recall": 0.7958886246835929,
+            "support": 39111
+          }
+        },
+        "period_or_time_separators": 1,
+        "pred_home_share": 0.46824400089706214,
+        "prediction_known_count": 139655,
+        "prediction_known_rate": 0.9567573492638747,
+        "prediction_x_count": 6312,
+        "reference_frame_counts": {
+          "A": 46258,
+          "D": 60598,
+          "H": 39111,
+          "X": 0
+        },
+        "sampling_fps": 25.0,
+        "share_defined": true,
+        "share_err": 0.010103458077068916,
+        "spell_bootstrap_high": null,
+        "spell_bootstrap_low": null,
+        "spell_count_error": -127,
+        "spell_f1": {
+          "0.3": {
+            "f1": 0.6033519553072625,
+            "n_matched": 270,
+            "n_missed": 241,
+            "n_spurious": 114,
+            "precision": 0.703125,
+            "recall": 0.5283757338551859
+          },
+          "0.4": {
+            "f1": 0.5407821229050279,
+            "n_matched": 242,
+            "n_missed": 269,
+            "n_spurious": 142,
+            "precision": 0.6302083333333334,
+            "recall": 0.4735812133072407
+          },
+          "0.5": {
+            "f1": 0.43798882681564244,
+            "n_matched": 196,
+            "n_missed": 315,
+            "n_spurious": 188,
+            "precision": 0.5104166666666666,
+            "recall": 0.3835616438356164
+          },
+          "0.6": {
+            "f1": 0.36648044692737436,
+            "n_matched": 164,
+            "n_missed": 347,
+            "n_spurious": 220,
+            "precision": 0.4270833333333333,
+            "recall": 0.32093933463796476
+          },
+          "0.7": {
+            "f1": 0.2748603351955307,
+            "n_matched": 123,
+            "n_missed": 388,
+            "n_spurious": 261,
+            "precision": 0.3203125,
+            "recall": 0.24070450097847357
+          }
+        },
+        "spell_f1_at_headline": 0.43798882681564244,
+        "spell_f1_mean": 0.4446927374301676,
+        "spell_iou_headline": 0.5,
+        "team_acc_both_alive": 0.8554635386512951,
+        "team_acc_gt_alive": 0.7961906546872987,
+        "three_class_benchmark": true,
+        "transitions": {
+          "12": {
+            "f1": 0.23443223443223443,
+            "mean_abs_latency": 5.40625,
+            "mean_latency": 1.140625,
+            "median_latency": 0.5,
+            "n_ambiguous": 0,
+            "n_gt": 612,
+            "n_matched": 128,
+            "n_missed": 484,
+            "n_pred": 480,
+            "n_spurious": 352,
+            "p90_abs_latency": 11.0,
+            "precision": 0.26666666666666666,
+            "recall": 0.20915032679738563
+          },
+          "25": {
+            "f1": 0.4010989010989011,
+            "mean_abs_latency": 10.826484018264841,
+            "mean_latency": 3.6484018264840183,
+            "median_latency": 4.0,
+            "n_ambiguous": 0,
+            "n_gt": 612,
+            "n_matched": 219,
+            "n_missed": 393,
+            "n_pred": 480,
+            "n_spurious": 261,
+            "p90_abs_latency": 21.0,
+            "precision": 0.45625,
+            "recall": 0.35784313725490197
+          }
+        }
+      },
+      "selected_config": {
+        "id": "contest_hold_tail_0s",
+        "nonchanging_duel": "hold",
+        "out_tail_grace_seconds": 0.0
+      }
+    },
+    {
+      "event_audit": {
+        "event_rows": 1363,
+        "event_rows_without_control_operation": 45,
+        "events_outside_tracking_coverage": 1,
+        "frame_origin_minus_kickoff_seconds": -2.240000009536743,
+        "ops_challenge": 129,
+        "ops_control": 963,
+        "ops_dead_start": 125,
+        "ops_restart": 101,
+        "top_level_types:BallClaiming": 23,
+        "top_level_types:BallDeflection": 1,
+        "top_level_types:Caution": 11,
+        "top_level_types:CautionTeamofficial": 2,
+        "top_level_types:ChanceWithoutShot": 4,
+        "top_level_types:CornerKick": 7,
+        "top_level_types:Delete": 83,
+        "top_level_types:FinalWhistle": 2,
+        "top_level_types:Foul": 24,
+        "top_level_types:FreeKick": 27,
+        "top_level_types:GoalKick": 16,
+        "top_level_types:KickOff": 5,
+        "top_level_types:Offside": 3,
+        "top_level_types:OtherBallAction": 247,
+        "top_level_types:PenaltyNotAwarded": 4,
+        "top_level_types:Play": 629,
+        "top_level_types:PlayerNotSentOff": 2,
+        "top_level_types:PossessionLossBeforeGoal": 1,
+        "top_level_types:RefereeBall": 3,
+        "top_level_types:ShotAtGoal": 20,
+        "top_level_types:SpectacularPlay": 2,
+        "top_level_types:Substitution": 7,
+        "top_level_types:TacklingGame": 193,
+        "top_level_types:ThrowIn": 46,
+        "top_level_types:VideoAssistantAction": 1
+      },
+      "inner_candidate_scores": [
+        {
+          "config": {
+            "id": "contest_hold_tail_0s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.8017749271354084,
+              "match": "J03WMX",
+              "prediction_known_rate": 0.9567573492638747,
+              "prediction_x_count": 6312,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.4446927374301676
+            },
+            {
+              "macro_f1": 0.7539134431502731,
+              "match": "J03WOH",
+              "prediction_known_rate": 0.9572711239377906,
+              "prediction_x_count": 5863,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.4650273224043716
+            }
+          ],
+          "mean_macro_f1": 0.7778441851428408,
+          "mean_spell_f1": 0.4548600299172696
+        },
+        {
+          "config": {
+            "id": "contest_hold_tail_3s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.8020881289082215,
+              "match": "J03WMX",
+              "prediction_known_rate": 0.9706783040002193,
+              "prediction_x_count": 4280,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.4422198041349293
+            },
+            {
+              "macro_f1": 0.7551288388890761,
+              "match": "J03WOH",
+              "prediction_known_rate": 0.9733117611905491,
+              "prediction_x_count": 3662,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.4539267015706806
+            }
+          ],
+          "mean_macro_f1": 0.7786084838986488,
+          "mean_spell_f1": 0.44807325285280497
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_0s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.8012902309612859,
+              "match": "J03WMX",
+              "prediction_known_rate": 0.9569902786246206,
+              "prediction_x_count": 6278,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.37033065236818585
+            },
+            {
+              "macro_f1": 0.7533471011490338,
+              "match": "J03WOH",
+              "prediction_known_rate": 0.9574824726339878,
+              "prediction_x_count": 5834,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.352
+            }
+          ],
+          "mean_macro_f1": 0.7773186660551599,
+          "mean_spell_f1": 0.3611653261840929
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_3s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.8016183725537869,
+              "match": "J03WMX",
+              "prediction_known_rate": 0.970692005727322,
+              "prediction_x_count": 4278,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.36262975778546713
+            },
+            {
+              "macro_f1": 0.7545158953707866,
+              "match": "J03WOH",
+              "prediction_known_rate": 0.9733409127348521,
+              "prediction_x_count": 3658,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.3370143149284254
+            }
+          ],
+          "mean_macro_f1": 0.7780671339622867,
+          "mean_spell_f1": 0.34982203635694625
+        }
+      ],
+      "inner_training_matches": [
+        "J03WMX",
+        "J03WOH"
+      ],
+      "outer_match": "J03WN1",
+      "outer_metrics": {
+        "accuracy": 0.7141938810830667,
+        "alive_dead_f1": 0.8726727652242131,
+        "bootstrap_high": null,
+        "bootstrap_low": null,
+        "bootstrap_n": 0,
+        "confusion": [
+          [
+            23892,
+            9875,
+            1239,
+            1415
+          ],
+          [
+            7688,
+            20839,
+            2472,
+            957
+          ],
+          [
+            7995,
+            4100,
+            56371,
+            4718
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "fragmentation": 0.7940691927512356,
+        "gt_home_share": 0.5326498676455533,
+        "gt_home_share_spells": 0.5326498676455533,
+        "gt_mean_spell_duration_s": 5.47016,
+        "kappa": 0.5624117773850184,
+        "label_coverage": 1.0,
+        "macro_f1": 0.6996548824934637,
+        "macro_f1_present_classes": 0.6996548824934637,
+        "mean_spell_duration_s": 8.278041237113403,
+        "n_abstain_on_graded": 7090,
+        "n_frames": 141562,
+        "n_graded": 141561,
+        "n_gt_segments": 607,
+        "n_gt_spells": 500,
+        "n_pred_segments": 482,
+        "n_pred_spells": 388,
+        "original_n_frames": 141561,
+        "per_class": {
+          "A": {
+            "f1": 0.624202486146473,
+            "precision": 0.5985810306198656,
+            "recall": 0.6521154086869445,
+            "support": 31956
+          },
+          "D": {
+            "f1": 0.8459922260741676,
+            "precision": 0.9382344129689425,
+            "recall": 0.7702639921294272,
+            "support": 73184
+          },
+          "H": {
+            "f1": 0.6287699352597506,
+            "precision": 0.6037144662034113,
+            "recall": 0.6559951676230746,
+            "support": 36421
+          }
+        },
+        "period_or_time_separators": 1,
+        "pred_home_share": 0.5320006990280821,
+        "prediction_known_count": 134471,
+        "prediction_known_rate": 0.9499155840944893,
+        "prediction_x_count": 7090,
+        "reference_frame_counts": {
+          "A": 31956,
+          "D": 73184,
+          "H": 36421,
+          "X": 0
+        },
+        "sampling_fps": 25.0,
+        "share_defined": true,
+        "share_err": 0.0006491686174712186,
+        "spell_bootstrap_high": null,
+        "spell_bootstrap_low": null,
+        "spell_count_error": -112,
+        "spell_f1": {
+          "0.3": {
+            "f1": 0.45270270270270274,
+            "n_matched": 201,
+            "n_missed": 299,
+            "n_spurious": 187,
+            "precision": 0.5180412371134021,
+            "recall": 0.402
+          },
+          "0.4": {
+            "f1": 0.35360360360360366,
+            "n_matched": 157,
+            "n_missed": 343,
+            "n_spurious": 231,
+            "precision": 0.40463917525773196,
+            "recall": 0.314
+          },
+          "0.5": {
+            "f1": 0.2725225225225225,
+            "n_matched": 121,
+            "n_missed": 379,
+            "n_spurious": 267,
+            "precision": 0.3118556701030928,
+            "recall": 0.242
+          },
+          "0.6": {
+            "f1": 0.17567567567567569,
+            "n_matched": 78,
+            "n_missed": 422,
+            "n_spurious": 310,
+            "precision": 0.20103092783505155,
+            "recall": 0.156
+          },
+          "0.7": {
+            "f1": 0.10585585585585586,
+            "n_matched": 47,
+            "n_missed": 453,
+            "n_spurious": 341,
+            "precision": 0.1211340206185567,
+            "recall": 0.094
+          }
+        },
+        "spell_f1_at_headline": 0.2725225225225225,
+        "spell_f1_mean": 0.27207207207207207,
+        "spell_iou_headline": 0.5,
+        "team_acc_both_alive": 0.7180627347738144,
+        "team_acc_gt_alive": 0.6541819617707709,
+        "three_class_benchmark": true,
+        "transitions": {
+          "12": {
+            "f1": 0.09585253456221197,
+            "mean_abs_latency": 6.653846153846154,
+            "mean_latency": 2.1923076923076925,
+            "median_latency": 2.5,
+            "n_ambiguous": 0,
+            "n_gt": 605,
+            "n_matched": 52,
+            "n_missed": 553,
+            "n_pred": 480,
+            "n_spurious": 428,
+            "p90_abs_latency": 11.0,
+            "precision": 0.10833333333333334,
+            "recall": 0.0859504132231405
+          },
+          "25": {
+            "f1": 0.23778801843317973,
+            "mean_abs_latency": 13.666666666666666,
+            "mean_latency": 8.317829457364342,
+            "median_latency": 13.0,
+            "n_ambiguous": 1,
+            "n_gt": 605,
+            "n_matched": 129,
+            "n_missed": 476,
+            "n_pred": 480,
+            "n_spurious": 351,
+            "p90_abs_latency": 24.0,
+            "precision": 0.26875,
+            "recall": 0.21322314049586777
+          }
+        }
+      },
+      "selected_config": {
+        "id": "contest_hold_tail_0s",
+        "nonchanging_duel": "hold",
+        "out_tail_grace_seconds": 0.0
+      }
+    },
+    {
+      "event_audit": {
+        "event_rows": 1389,
+        "event_rows_without_control_operation": 22,
+        "events_outside_tracking_coverage": 1,
+        "frame_origin_minus_kickoff_seconds": 1.6200001239776611,
+        "ops_challenge": 138,
+        "ops_control": 1003,
+        "ops_dead_start": 128,
+        "ops_restart": 98,
+        "top_level_types:BallClaiming": 48,
+        "top_level_types:Caution": 5,
+        "top_level_types:ChanceWithoutShot": 2,
+        "top_level_types:CornerKick": 6,
+        "top_level_types:Delete": 52,
+        "top_level_types:FinalWhistle": 2,
+        "top_level_types:Foul": 31,
+        "top_level_types:FreeKick": 32,
+        "top_level_types:GoalKick": 17,
+        "top_level_types:KickOff": 6,
+        "top_level_types:Nutmeg": 4,
+        "top_level_types:Offside": 3,
+        "top_level_types:OtherBallAction": 228,
+        "top_level_types:OtherPlayerAction": 1,
+        "top_level_types:Penalty": 1,
+        "top_level_types:PenaltyNotAwarded": 3,
+        "top_level_types:Play": 667,
+        "top_level_types:PossessionLossBeforeGoal": 3,
+        "top_level_types:RefereeBall": 2,
+        "top_level_types:Run": 2,
+        "top_level_types:ShotAtGoal": 26,
+        "top_level_types:SitterPrevented": 1,
+        "top_level_types:SpectacularPlay": 1,
+        "top_level_types:Substitution": 10,
+        "top_level_types:TacklingGame": 198,
+        "top_level_types:ThrowIn": 36,
+        "top_level_types:VideoAssistantAction": 2
+      },
+      "inner_candidate_scores": [
+        {
+          "config": {
+            "id": "contest_hold_tail_0s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.8017749271354084,
+              "match": "J03WMX",
+              "prediction_known_rate": 0.9567573492638747,
+              "prediction_x_count": 6312,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.4446927374301676
+            },
+            {
+              "macro_f1": 0.6996548824934637,
+              "match": "J03WN1",
+              "prediction_known_rate": 0.9499155840944893,
+              "prediction_x_count": 7090,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.27207207207207207
+            }
+          ],
+          "mean_macro_f1": 0.7507149048144361,
+          "mean_spell_f1": 0.3583824047511198
+        },
+        {
+          "config": {
+            "id": "contest_hold_tail_3s",
+            "nonchanging_duel": "hold",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.8020881289082215,
+              "match": "J03WMX",
+              "prediction_known_rate": 0.9706783040002193,
+              "prediction_x_count": 4280,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.4422198041349293
+            },
+            {
+              "macro_f1": 0.6982161654580676,
+              "match": "J03WN1",
+              "prediction_known_rate": 0.9657674076899712,
+              "prediction_x_count": 4846,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.2703417861080485
+            }
+          ],
+          "mean_macro_f1": 0.7501521471831445,
+          "mean_spell_f1": 0.3562807951214889
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_0s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 0.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.8012902309612859,
+              "match": "J03WMX",
+              "prediction_known_rate": 0.9569902786246206,
+              "prediction_x_count": 6278,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.37033065236818585
+            },
+            {
+              "macro_f1": 0.6994553629756454,
+              "match": "J03WN1",
+              "prediction_known_rate": 0.9501910837024322,
+              "prediction_x_count": 7051,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.2563809523809524
+            }
+          ],
+          "mean_macro_f1": 0.7503727969684657,
+          "mean_spell_f1": 0.3133558023745691
+        },
+        {
+          "config": {
+            "id": "contest_literal_tail_3s",
+            "nonchanging_duel": "literal",
+            "out_tail_grace_seconds": 3.0
+          },
+          "matches": [
+            {
+              "macro_f1": 0.8016183725537869,
+              "match": "J03WMX",
+              "prediction_known_rate": 0.970692005727322,
+              "prediction_x_count": 4278,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.36262975778546713
+            },
+            {
+              "macro_f1": 0.6980371651474968,
+              "match": "J03WN1",
+              "prediction_known_rate": 0.9657956640600165,
+              "prediction_x_count": 4842,
+              "reference_coverage": 1.0,
+              "spell_f1_mean": 0.2497704315886134
+            }
+          ],
+          "mean_macro_f1": 0.7498277688506418,
+          "mean_spell_f1": 0.30620009468704024
+        }
+      ],
+      "inner_training_matches": [
+        "J03WMX",
+        "J03WN1"
+      ],
+      "outer_match": "J03WOH",
+      "outer_metrics": {
+        "accuracy": 0.7452373664494877,
+        "alive_dead_f1": 0.8536833470057424,
+        "bootstrap_high": null,
+        "bootstrap_low": null,
+        "bootstrap_n": 0,
+        "confusion": [
+          [
+            30447,
+            5571,
+            1813,
+            1295
+          ],
+          [
+            4214,
+            24808,
+            2106,
+            1691
+          ],
+          [
+            11161,
+            4229,
+            47002,
+            2877
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "fragmentation": 0.8333333333333334,
+        "gt_home_share": 0.5438320939606643,
+        "gt_home_share_spells": 0.5438320939606643,
+        "gt_mean_spell_duration_s": 7.158706467661691,
+        "kappa": 0.6185762349787829,
+        "label_coverage": 1.0,
+        "macro_f1": 0.7539134431502731,
+        "macro_f1_present_classes": 0.7539134431502731,
+        "mean_spell_duration_s": 10.408363636363635,
+        "n_abstain_on_graded": 5863,
+        "n_frames": 137215,
+        "n_graded": 137214,
+        "n_gt_segments": 504,
+        "n_gt_spells": 402,
+        "n_pred_segments": 420,
+        "n_pred_spells": 330,
+        "original_n_frames": 137214,
+        "per_class": {
+          "A": {
+            "f1": 0.7358476574665935,
+            "precision": 0.7168284789644013,
+            "recall": 0.7559035924312136,
+            "support": 32819
+          },
+          "D": {
+            "f1": 0.8090541354677684,
+            "precision": 0.9230376465505391,
+            "recall": 0.7201274724601265,
+            "support": 65269
+          },
+          "H": {
+            "f1": 0.7168385365164571,
+            "precision": 0.6644624852690847,
+            "recall": 0.7781781935286,
+            "support": 39126
+          }
+        },
+        "period_or_time_separators": 1,
+        "pred_home_share": 0.5697127937336814,
+        "prediction_known_count": 131351,
+        "prediction_known_rate": 0.9572711239377906,
+        "prediction_x_count": 5863,
+        "reference_frame_counts": {
+          "A": 32819,
+          "D": 65269,
+          "H": 39126,
+          "X": 0
+        },
+        "sampling_fps": 25.0,
+        "share_defined": true,
+        "share_err": 0.025880699773017102,
+        "spell_bootstrap_high": null,
+        "spell_bootstrap_low": null,
+        "spell_count_error": -72,
+        "spell_f1": {
+          "0.3": {
+            "f1": 0.6366120218579234,
+            "n_matched": 233,
+            "n_missed": 169,
+            "n_spurious": 97,
+            "precision": 0.706060606060606,
+            "recall": 0.5796019900497512
+          },
+          "0.4": {
+            "f1": 0.5546448087431693,
+            "n_matched": 203,
+            "n_missed": 199,
+            "n_spurious": 127,
+            "precision": 0.6151515151515151,
+            "recall": 0.5049751243781094
+          },
+          "0.5": {
+            "f1": 0.4699453551912568,
+            "n_matched": 172,
+            "n_missed": 230,
+            "n_spurious": 158,
+            "precision": 0.5212121212121212,
+            "recall": 0.42786069651741293
+          },
+          "0.6": {
+            "f1": 0.3770491803278689,
+            "n_matched": 138,
+            "n_missed": 264,
+            "n_spurious": 192,
+            "precision": 0.41818181818181815,
+            "recall": 0.34328358208955223
+          },
+          "0.7": {
+            "f1": 0.2868852459016394,
+            "n_matched": 105,
+            "n_missed": 297,
+            "n_spurious": 225,
+            "precision": 0.3181818181818182,
+            "recall": 0.26119402985074625
+          }
+        },
+        "spell_f1_at_headline": 0.4699453551912568,
+        "spell_f1_mean": 0.4650273224043716,
+        "spell_iou_headline": 0.5,
+        "team_acc_both_alive": 0.8495541205412054,
+        "team_acc_gt_alive": 0.7680172353881437,
+        "three_class_benchmark": true,
+        "transitions": {
+          "12": {
+            "f1": 0.13695652173913042,
+            "mean_abs_latency": 5.634920634920635,
+            "mean_latency": -0.5873015873015873,
+            "median_latency": 0.0,
+            "n_ambiguous": 0,
+            "n_gt": 502,
+            "n_matched": 63,
+            "n_missed": 439,
+            "n_pred": 418,
+            "n_spurious": 355,
+            "p90_abs_latency": 10.0,
+            "precision": 0.1507177033492823,
+            "recall": 0.1254980079681275
+          },
+          "25": {
+            "f1": 0.33043478260869563,
+            "mean_abs_latency": 13.460526315789474,
+            "mean_latency": -4.605263157894737,
+            "median_latency": -8.0,
+            "n_ambiguous": 1,
+            "n_gt": 502,
+            "n_matched": 152,
+            "n_missed": 350,
+            "n_pred": 418,
+            "n_spurious": 266,
+            "p90_abs_latency": 23.0,
+            "precision": 0.36363636363636365,
+            "recall": 0.30278884462151395
+          }
+        }
+      },
+      "selected_config": {
+        "id": "contest_hold_tail_0s",
+        "nonchanging_duel": "hold",
+        "out_tail_grace_seconds": 0.0
+      }
+    }
+  ],
+  "prediction_coverage": "Reported as prediction_known_rate and prediction_x_count; official spell scoring fills X within reference spells, so spell gains are not interpreted without coverage and frame-macro diagnostics.",
+  "private_full_report_path": "data/experiments/provider_touch_sportec_train_nested_v2/full_scored_report.json",
+  "publication_scope": "Aggregate metrics only; per-interval match arrays omitted without recomputing scores.",
+  "selection_metric": "equal-match mean official spell_f1_mean; macro_f1 tie-break",
+  "study_id": "provider_touch_sportec_train_nested_v2"
+}

@@ -1,0 +1,54 @@
+{
+  "checked_utc": "2026-10-31T03:01:04.485662+00:00",
+  "method": "read-only Hugging Face Hub metadata, refs, repository file trees, and dataset search via huggingface_hub 0.35.3 with configured HF_TOKEN",
+  "downloads": 0,
+  "organizer_assets_or_labels_accessed": false,
+  "repositories": [
+    {
+      "repo_id": "OpenSportsLab/SoccerNet-GAR",
+      "repo_type": "dataset",
+      "metadata_status": "accessible",
+      "private": false,
+      "gated": "manual",
+      "repo_info_main_sha": "081ec3786e0967a451c15bfdb73e6785b368dce5",
+      "last_modified_utc": "2026-10-07T18:42:48+00:00",
+      "branches": {
+        "main": {"commit": "081ec3786e0967a451c15bfdb73e6785b368dce5", "files": 2, "paths": [".gitattributes", "README.md"]},
+        "videos": {"commit": "f277480ea5fc1f7bc24270af1656edf60a8d2b36", "files": 254, "layout": {"train": 175, "valid": 37, "test": 41}, "non_shard_metadata": ["train/metadata.parquet", "train/shard_manifest.parquet", "valid/metadata.parquet", "valid/shard_manifest.parquet", "test/metadata.parquet", "test/shard_manifest.parquet"], "direct_video_files": 0, "fullmatch_named_paths": 0, "note": "Tree consists of metadata/manifests and numbered TAR shards; no standalone full-match video or full-match-named asset is exposed."},
+        "tracking-full": {"commit": "32c840210b7d08d06976e7f9457dfff79fb2da99", "files": 15, "layout": {"train": 7, "valid": 3, "test": 4}, "non_shard_metadata": ["train/metadata.parquet", "train/shard_manifest.parquet", "valid/metadata.parquet", "valid/shard_manifest.parquet", "test/metadata.parquet", "test/shard_manifest.parquet"], "direct_video_files": 0, "fullmatch_named_paths": 0, "note": "Tree consists of metadata/manifests and numbered TAR shards; it exposes action-window tracking records, not a separately named whole-match tracking or video asset."},
+        "tracking": {"commit": "589eba2aaa71da6c3fda7c2e6396e9fd6610a369", "files": 26, "layout": {"train": 15, "valid": 5, "test": 5}, "direct_video_files": 0, "fullmatch_named_paths": 0},
+        "frames": {"commit": "629043a5f3fe74e53095c7b8d3c0b489ff0d0269", "files": 185, "layout": {"train": 127, "valid": 27, "test": 30}, "direct_video_files": 0, "fullmatch_named_paths": 0}
+      },
+      "availability_finding": "The accessible branches expose sharded records; the current tracking-full tree is the same pinned 144-frame action-window source already audited. No newly available full-match tracking/video asset appears in the current repository file trees."
+    },
+    {
+      "repo_id": "OpenSportsLab/SNGAR-Action-Spotting-Tracking-deprecated",
+      "repo_type": "dataset",
+      "search_metadata": {"exists": true, "private": false, "gated": "manual"},
+      "dataset_info_status": "GatedRepoError",
+      "http_status": 403,
+      "message": "Access is restricted; the configured token is not on the authorized list. No file tree was returned."
+    },
+    {
+      "repo_id": "OpenSportsLab/SNGAR-Action-Spotting-Video-deprectated",
+      "repo_type": "dataset",
+      "search_metadata": {"exists": true, "private": false, "gated": "manual"},
+      "dataset_info_status": "GatedRepoError",
+      "http_status": 403,
+      "message": "Access is restricted; the configured token is not on the authorized list. No file tree was returned."
+    },
+    {
+      "repo_id": "OpenSportsLab/SNGAR-Action-Spotting",
+      "repo_type": "dataset",
+      "search_metadata": {"exists": true, "private": false, "gated": "manual"},
+      "dataset_info_status": "GatedRepoError",
+      "http_status": 403,
+      "message": "The access request for the gated repository is awaiting review from its authors. No file tree was returned."
+    }
+  ],
+  "searches": [
+    {"query": "SNGAR", "results": ["OpenSportsLab/SNGAR-Action-Spotting-Tracking-deprecated", "OpenSportsLab/SNGAR-Action-Spotting-Video-deprectated", "OpenSportsLab/SNGAR-Action-Spotting"]},
+    {"query": "SoccerNet-Action-Spotting-Tracking", "results": []}
+  ],
+  "conclusion": "No accessible current Hugging Face tree exposes an aligned continuous whole-match tracking/video asset. The known legacy tracking and video repositories remain manually gated for this configured token; the modern action-spotting repository is still awaiting access review."
+}

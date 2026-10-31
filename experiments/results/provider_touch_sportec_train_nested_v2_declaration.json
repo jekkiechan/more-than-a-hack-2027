@@ -1,0 +1,214 @@
+{
+  "study_id": "provider_touch_sportec_train_nested_v2",
+  "frozen_at_utc": "2026-10-31T02:01:49.298806+00:00",
+  "question": "Does an event-derived owner timeline that holds ownership through explicitly non-changing Sportec duels outperform literal challenger assignment on Sportec's own BallPossession reference?",
+  "scope": "Source-specific Sportec event-rule calibration on TRAIN only. Metrica targets are event-derived and SkillCorner interruption spans use a different target definition, so neither is used to select these parameters.",
+  "cohort": {
+    "provider": "sportec",
+    "matches": [
+      "J03WMX",
+      "J03WN1",
+      "J03WOH"
+    ],
+    "status": "previously exposed development TRAIN matches; no fresh confirmation"
+  },
+  "protocol": {
+    "outer": "Leave one whole TRAIN match out; score the selected candidate once on the outer match.",
+    "inner": "On each outer fold, score each fixed candidate separately on each of the other two whole TRAIN matches; select by equal-match mean spell_f1_mean, then mean macro_f1.",
+    "selection_tie_break": "Prefer hold over literal, then 3-second over 0-second tail grace (the current-rule setting).",
+    "target_use": "BallStatus/BallPossession labels are only read by the official scorer; they do not create event anchors, classify event types, or adjust time alignment.",
+    "coverage": "Every outer score reports fixed reference support and prediction known/X coverage; official spell F1 can fill X and is read with the coverage diagnostics.",
+    "fitting": "No learned model or normalization is fit; candidates are fixed rule configurations."
+  },
+  "mapping": {
+    "controlled_events": "Play, OtherBallAction, BallClaiming, and TacklingGame with PossessionChange=true (new owner WinnerTeam).",
+    "uncontrolled_opponent_event": "TacklingGame with PossessionChange=false; challenger is the team whose role is withoutBallControl.",
+    "dead_start": "Restart DecisionTimestamp; otherwise Foul, Offside, FinalWhistle, GoalDisallowed, ShotWide, SuccessfulShot, or Goal event time.",
+    "dead_end": "EventTime for ThrowIn, FreeKick, GoalKick, CornerKick, KickOff, or Penalty; team only from its own nested action annotation.",
+    "time_alignment": "Event times are relative to the first observed tracking-frame T from the pinned Figshare positions XML, not planned or actual KickoffTime; map to nearest NPZ timestamp with a fixed maximum 0.5-second alignment distance.",
+    "out_tail_grace": "Propagate the current owner to dead_start only when the last touch anchor is within the candidate grace; otherwise keep the gap X.",
+    "unsupported_v1_dimensions": "CL run-length behavior and censored-touch-run control cannot be mapped because Sportec event rows do not form GAR contiguous touch runs."
+  },
+  "timestamp_origin_evidence": {
+    "J03WMX": {
+      "file_id": 51643514,
+      "raw_md5": "e4273a2adf5dbd9d4ec42def2f01905c",
+      "frame": 10000,
+      "timestamp": "2023-05-27T13:30:12.600+00:00",
+      "range_bytes": [
+        0,
+        65535
+      ],
+      "prefix_sha256": "1e05e0bbe89a5829baabd63f1a354609741454724a0974b82073ac6805cda822",
+      "kickoff_utc": "2023-05-27T13:30:12.220+00:00",
+      "origin_minus_kickoff_seconds": 0.37999987602233887,
+      "source_url": "https://ndownloader.figshare.com/files/51643514",
+      "sidecar_sha256": "d74d8bea3a0c3c8f51ba5bd240373c24b626a92fea4112a391774e0888fc8d29"
+    },
+    "J03WN1": {
+      "file_id": 51643517,
+      "raw_md5": "bacb2f609c1d1b0bfc906f6b9d4109f2",
+      "frame": 10000,
+      "timestamp": "2023-05-27T13:31:06.400+00:00",
+      "range_bytes": [
+        0,
+        65535
+      ],
+      "prefix_sha256": "8f965a6b08f9a72a782565cd9968a19d87409bb6c5df5166713cf152662c15f7",
+      "kickoff_utc": "2023-05-27T13:31:08.640+00:00",
+      "origin_minus_kickoff_seconds": -2.240000009536743,
+      "source_url": "https://ndownloader.figshare.com/files/51643517",
+      "sidecar_sha256": "3a1530ae0441417fe1f1cad93d3cc2ac83428531dcac1ffc20e1e79fb9434729"
+    },
+    "J03WOH": {
+      "file_id": 51643520,
+      "raw_md5": "3efff25a86a61768e7d253b4bba137a3",
+      "frame": 10000,
+      "timestamp": "2022-08-26T16:32:09.720+00:00",
+      "range_bytes": [
+        0,
+        65535
+      ],
+      "prefix_sha256": "77dc05846daa6156bf54a0aaa3c53102ffaa3f887d2982a2c493a4cc4e821ee0",
+      "kickoff_utc": "2022-08-26T16:32:08.100+00:00",
+      "origin_minus_kickoff_seconds": 1.6200001239776611,
+      "source_url": "https://ndownloader.figshare.com/files/51643520",
+      "sidecar_sha256": "3abda3786408ecac09bab0db4d10b40dabd94fa8af6462e460e00033d7f1ed77"
+    }
+  },
+  "timestamp_origins_utc": {
+    "J03WMX": "2023-05-27T13:30:12.600+00:00",
+    "J03WN1": "2023-05-27T13:31:06.400+00:00",
+    "J03WOH": "2022-08-26T16:32:09.720+00:00"
+  },
+  "candidates": [
+    {
+      "id": "contest_hold_tail_0s",
+      "nonchanging_duel": "hold",
+      "out_tail_grace_seconds": 0.0
+    },
+    {
+      "id": "contest_hold_tail_3s",
+      "nonchanging_duel": "hold",
+      "out_tail_grace_seconds": 3.0
+    },
+    {
+      "id": "contest_literal_tail_0s",
+      "nonchanging_duel": "literal",
+      "out_tail_grace_seconds": 0.0
+    },
+    {
+      "id": "contest_literal_tail_3s",
+      "nonchanging_duel": "literal",
+      "out_tail_grace_seconds": 3.0
+    }
+  ],
+  "selection_metric": "experiments.metrics.evaluate_tracking spell_f1_mean; macro_f1 tie-break; report prediction coverage",
+  "inputs": {
+    "manifest_path": "/workspace/more-than-a-hack-2027/experiments/eval_set/manifest.json",
+    "manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "files": [
+      {
+        "match": "J03WMX",
+        "kind": "provider_event_xml",
+        "path": "/workspace/more-than-a-hack-2027/data/external_audit/sportec/raw/events/J03WMX_events.xml",
+        "bytes": 776578,
+        "sha256": "6f9741ea62e9dee35b604942e1dad2ac0a4dc3fce14ef2f3858aa12b74dafe00"
+      },
+      {
+        "match": "J03WMX",
+        "kind": "match_info_xml",
+        "path": "/workspace/more-than-a-hack-2027/data/external_audit/sportec/raw/DFL_02_01_matchinformation_DFL-COM-000001_DFL-MAT-J03WMX.xml",
+        "bytes": 11930,
+        "sha256": "a884728647a564cf8b20e5223a1d04a5da6f6725e1e506c8651505327c197ba9"
+      },
+      {
+        "match": "J03WMX",
+        "kind": "provider_reference_npz",
+        "path": "/workspace/mtah-data/external_audit/sportec/processed/J03WMX.npz",
+        "bytes": 17797231,
+        "sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0"
+      },
+      {
+        "match": "J03WMX",
+        "kind": "provider_source_receipt",
+        "path": "/workspace/mtah-data/external_audit/sportec/processed/J03WMX.json",
+        "bytes": 1008,
+        "sha256": "d74d8bea3a0c3c8f51ba5bd240373c24b626a92fea4112a391774e0888fc8d29"
+      },
+      {
+        "match": "J03WN1",
+        "kind": "provider_event_xml",
+        "path": "/workspace/more-than-a-hack-2027/data/external_audit/sportec/raw/events/J03WN1_events.xml",
+        "bytes": 612114,
+        "sha256": "d7fa1d4445e3215eb79ec62fabefa4779b4974e496195c2fdc25624c375a9b9b"
+      },
+      {
+        "match": "J03WN1",
+        "kind": "match_info_xml",
+        "path": "/workspace/more-than-a-hack-2027/data/external_audit/sportec/raw/DFL_02_01_matchinformation_DFL-COM-000001_DFL-MAT-J03WN1.xml",
+        "bytes": 11722,
+        "sha256": "5490286436c86e6f80a538d2b1b379d0efd016e0defcaf594bc59d9ef5079f4c"
+      },
+      {
+        "match": "J03WN1",
+        "kind": "provider_reference_npz",
+        "path": "/workspace/mtah-data/external_audit/sportec/processed/J03WN1.npz",
+        "bytes": 16025810,
+        "sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b"
+      },
+      {
+        "match": "J03WN1",
+        "kind": "provider_source_receipt",
+        "path": "/workspace/mtah-data/external_audit/sportec/processed/J03WN1.json",
+        "bytes": 1005,
+        "sha256": "3a1530ae0441417fe1f1cad93d3cc2ac83428531dcac1ffc20e1e79fb9434729"
+      },
+      {
+        "match": "J03WOH",
+        "kind": "provider_event_xml",
+        "path": "/workspace/more-than-a-hack-2027/data/external_audit/sportec/raw/events/J03WOH_events.xml",
+        "bytes": 635747,
+        "sha256": "abc27e3268e6126fb3e6e90bff5cca8d4586a5e0cefe9bd59bf32871e89d8544"
+      },
+      {
+        "match": "J03WOH",
+        "kind": "match_info_xml",
+        "path": "/workspace/more-than-a-hack-2027/data/external_audit/sportec/raw/DFL_02_01_matchinformation_DFL-COM-000002_DFL-MAT-J03WOH.xml",
+        "bytes": 11745,
+        "sha256": "f23b3ee13b988b1ff9a0bce438c416dac47e71355bbc7ee1dab21aaf3e33c18c"
+      },
+      {
+        "match": "J03WOH",
+        "kind": "provider_reference_npz",
+        "path": "/workspace/mtah-data/external_audit/sportec/processed/J03WOH.npz",
+        "bytes": 16594390,
+        "sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980"
+      },
+      {
+        "match": "J03WOH",
+        "kind": "provider_source_receipt",
+        "path": "/workspace/mtah-data/external_audit/sportec/processed/J03WOH.json",
+        "bytes": 1013,
+        "sha256": "3abda3786408ecac09bab0db4d10b40dabd94fa8af6462e460e00033d7f1ed77"
+      }
+    ],
+    "code_sha256": {
+      "provider_touch_calibration_v2.py": "75baf21990f1e9b52451e704609de48226db2c5ee11f4da5aa794a4c9ef89e81",
+      "provider_touch_calibration.py": "db29d94c834c2f3252490f78e297dda0cc961bdf2bf1157cc61fefec0f9c476e",
+      "metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+      "soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+      "audit_dataset.py": "4e445f5a2ffff5fd6b9f3f6892466641f6f3c381fad7d150968e085d9d33fb32"
+    }
+  },
+  "excluded_data": [
+    "all Sportec selection/test matches",
+    "all Metrica labels",
+    "all SkillCorner labels",
+    "SoccerNet valid/test",
+    "organizer labels"
+  ],
+  "artifacts": {
+    "report": "experiments/results/provider_touch_sportec_train_nested_v2.json"
+  }
+}
