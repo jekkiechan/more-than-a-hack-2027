@@ -1,6 +1,37 @@
-# Current adopted baseline: SoccerNet-capacity H/A with teacher D
+# Current adopted baseline: dense-SoccerNet H/A with fine-tuned D
 
-The current package is `joint_gru_soccernet_capacity_ensemble_v1`, with
+The current package is `joint_gru_sn_dense_ensemble_v1`, with architecture kind
+`sn_dense_ensemble`, adopted by explicit user decision on 2026-10-31. Its default
+prediction is `data/experiments/current_baseline/joint_gru_sn_dense_ensemble.csv`.
+Each of the two pooled members (seeds 2026/2027) is a width-96 conditional H/A GRU
+plus a fine-tuned hidden-24 D path, trained from the matching combined-objective
+teacher with the [sn_dense_v1](SOCCERNET_DENSE.md) D2 recipe: dense touch-stream
+H/A/D targets with complete-spell and transition losses on 45 SoccerNet-GAR TRAIN
+games, SoccerNet batch fraction .5, 2,048 updates. Normalizer, feature schema and
+the cost-3 decoder are unchanged. Members average native probabilities before
+decoding. The package holds four weights: two dense members and their teachers.
+
+Full-provider development (five previously exposed matches): two-seed ensemble
+.6472/.5058 clean/feed-like versus .641790/.502586 for the previous package.
+Seed 2026 scores .6355 versus .6288 for the rebuilt previous recipe; seed 2027
+scores .6372. All provider D/macro and feed-like guards pass; the +.01 clean
+screen is not met. The one-time public diagnostic, known before authorization and
+never used for selection, scores .6303 spell / .8514 macro versus .5697 / .8613
+on 17 references. Promotion performed no fitting or rescoring: the baseline CLI
+reproduced the sealed public-check CSV byte for byte. Receipt:
+[baseline_sn_dense_promotion.json](results/baseline_sn_dense_promotion.json);
+evidence: [sn_dense_v1_progress.md](results/sn_dense_v1_progress.md).
+
+Restore with the `mtah-data` manifest
+`baseline_cache_manifest_joint_gru_sn_dense_ensemble_v1.json` (the generic
+`baseline_cache_manifest.json` default selects it once
+[mtah-data#7](https://github.com/jekkiechan/mtah-data/pull/7) is merged), then run
+`python -m experiments.current_baseline predict`. No source snapshot is needed:
+this checkout already contains the matching inference code.
+
+## Previous package: SoccerNet-capacity H/A with teacher D
+
+The previous package is `joint_gru_soccernet_capacity_ensemble_v1`, with
 architecture kind `soccernet_capacity_ensemble`. Its default prediction is
 `data/experiments/current_baseline/joint_gru_soccernet_capacity_ensemble.csv`.
 The model averages two pooled width-96 conditional H/A GRUs trained with the
@@ -35,21 +66,20 @@ The capacity study's original frozen result still records
 separate decision. Its historical declaration, thresholds, failed screen, and
 public-check record are unchanged.
 
-## Private cache restore
+## Previous package: private cache restore
 
-The four promoted weights and matching code are now available in the private
+The previous package's four promoted weights and matching code are now available in the private
 [`jekkiechan/mtah-data`](https://github.com/jekkiechan/mtah-data) cache. The
 [remote delivery receipt](results/baseline_soccernet_capacity_remote_artifacts.json)
 records a fresh clone and LFS download: all four checkpoint hashes, six
 model/metadata files, 174 source files, active manifest bytes, and teacher
-pairing match the original promoted package. The cache's default model and
-source manifests now select this package. Previous versioned packages remain
-available.
+pairing match the original promoted package. Its versioned manifests below
+remain available; the generic model default moves to the dense package above.
 
 ```sh
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest.json --data-dir data
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_source_cache_manifest.json --data-dir data
-python -m experiments.current_baseline predict --output data/experiments/current_baseline/soccernet_restored.csv
+python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_soccernet_capacity_ensemble_v1.json --data-dir data
+python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_source_cache_manifest_joint_gru_soccernet_capacity_ensemble_v1.json --data-dir data
+python -m experiments.current_baseline predict --manifest experiments/baselines/joint_gru_soccernet_capacity_ensemble_v1.json --output data/experiments/current_baseline/soccernet_restored.csv
 ```
 
 Use an updated private-cache checkout containing commit `de4e815`. The

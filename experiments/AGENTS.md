@@ -2,7 +2,7 @@
 
 Dense map of what has been tried here, so you can resume without reading 40
 reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Current
-adoption is `joint_gru_soccernet_capacity_ensemble_v1` as of 2026-10-30;
+adoption is `joint_gru_sn_dense_ensemble_v1` as of 2026-10-31 (previously `joint_gru_soccernet_capacity_ensemble_v1`);
 earlier verdicts below are historical evidence. [STATUS](../docs/research/STATUS.md)
 is the coordination summary for adoption and next work. Before model-choice
 advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
@@ -16,7 +16,7 @@ Open a detailed report for the study relevant to the question.
   Ranked by possession **spell F1** (H/A intervals, greedy one-to-one matching,
   mean over IoU .3–.7). **Macro F1** breaks exact ties. The 70/30 weighted
   summary is shown but never ranks.
-- **Adopted baseline:** `joint_gru_soccernet_capacity_ensemble_v1`. Two pooled
+- **Adopted baseline:** `joint_gru_sn_dense_ensemble_v1` (dense SoccerNet labels + fine-tuned D; see BASELINE.md). Previous: `joint_gru_soccernet_capacity_ensemble_v1`. Two pooled
   width-96 conditional H/A GRUs plus unchanged combined-objective seed-2026/2027
   hidden-24 D teachers; equal native probabilities, cost-3 Viterbi. See
   [BASELINE.md](BASELINE.md).

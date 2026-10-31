@@ -1,5 +1,18 @@
 # Current research state
 
+## Dense SoccerNet supervision (sn_dense_v1) — adopted 31 October 2026
+
+The user adopted `joint_gru_sn_dense_ensemble_v1`. Dense touch-stream H/A/D labels
+plus D-path training on SoccerNet give two-seed development .6472/.5058
+clean/feed-like versus .641790/.502586; dense H/A labels alone do not help, longer
+training and SoccerNet-only training help silver GAR-valid but hurt development,
+and 11/22/45-game scaling is flat. The +.01 clean screen is not met. The one-time
+public diagnostic scores .6303 versus .5697 on 17 references. Details:
+[SOCCERNET_DENSE](../../experiments/SOCCERNET_DENSE.md),
+[progress](../../experiments/results/sn_dense_v1_progress.md),
+[BASELINE](../../experiments/BASELINE.md). Next: fit the touch rule to provider
+possession definitions and test source-conditioned heads.
+
 ## SoccerNet matched follow-up — completed 30 October 2026
 
 **Retain the adopted SoccerNet baseline.** The three parallel Luna mechanisms

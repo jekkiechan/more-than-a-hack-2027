@@ -66,7 +66,14 @@ class BaselinePromotionContracts(unittest.TestCase):
         self.assertEqual(policy['working_candidate']['model'], manifest['model'])
         self.assertEqual(policy['working_candidate']['baseline_manifest_sha256'],
                          sha256(root/'baseline_manifest.json'))
-        if manifest['architecture']['kind']=='soccernet_capacity_ensemble':
+        if manifest['architecture']['kind']=='sn_dense_ensemble':
+            development = manifest['evidence']['development_full_provider_holdout']
+            self.assertTrue(development['provider_and_feed_like_guards_pass'])
+            self.assertFalse(development['clean_improvement_screen_plus_01_passes'])
+            self.assertTrue(manifest['promotion']['public_diagnostic_known_before_authorization'])
+            self.assertFalse(manifest['organizer_public_diagnostic']['used_for_model_or_hyperparameter_selection'])
+            self.assertEqual(sorted(manifest['architecture']['members'].values()), [.5, .5])
+        elif manifest['architecture']['kind']=='soccernet_capacity_ensemble':
             comparison = manifest['evidence']['comparison']
             self.assertTrue(all(comparison['provider_clean_guards'].values()))
             self.assertTrue(comparison['feed_like_guard_passes'])
