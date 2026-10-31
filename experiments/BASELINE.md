@@ -23,8 +23,11 @@ reproduced the sealed public-check CSV byte for byte. Receipt:
 evidence: [sn_dense_v1_progress.md](results/sn_dense_v1_progress.md).
 
 Restore with the `mtah-data` manifest
-`baseline_cache_manifest_joint_gru_sn_dense_ensemble_v1.json`, then run
-`python -m experiments.current_baseline predict`.
+`baseline_cache_manifest_joint_gru_sn_dense_ensemble_v1.json` (the generic
+`baseline_cache_manifest.json` default selects it once
+[mtah-data#7](https://github.com/jekkiechan/mtah-data/pull/7) is merged), then run
+`python -m experiments.current_baseline predict`. No source snapshot is needed:
+this checkout already contains the matching inference code.
 
 ## Previous package: SoccerNet-capacity H/A with teacher D
 
@@ -63,21 +66,20 @@ The capacity study's original frozen result still records
 separate decision. Its historical declaration, thresholds, failed screen, and
 public-check record are unchanged.
 
-## Private cache restore
+## Previous package: private cache restore
 
-The four promoted weights and matching code are now available in the private
+The previous package's four promoted weights and matching code are now available in the private
 [`jekkiechan/mtah-data`](https://github.com/jekkiechan/mtah-data) cache. The
 [remote delivery receipt](results/baseline_soccernet_capacity_remote_artifacts.json)
 records a fresh clone and LFS download: all four checkpoint hashes, six
 model/metadata files, 174 source files, active manifest bytes, and teacher
-pairing match the original promoted package. The cache's default model and
-source manifests now select this package. Previous versioned packages remain
-available.
+pairing match the original promoted package. Its versioned manifests below
+remain available; the generic model default moves to the dense package above.
 
 ```sh
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest.json --data-dir data
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_source_cache_manifest.json --data-dir data
-python -m experiments.current_baseline predict --output data/experiments/current_baseline/soccernet_restored.csv
+python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_soccernet_capacity_ensemble_v1.json --data-dir data
+python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_source_cache_manifest_joint_gru_soccernet_capacity_ensemble_v1.json --data-dir data
+python -m experiments.current_baseline predict --manifest experiments/baselines/joint_gru_soccernet_capacity_ensemble_v1.json --output data/experiments/current_baseline/soccernet_restored.csv
 ```
 
 Use an updated private-cache checkout containing commit `de4e815`. The
