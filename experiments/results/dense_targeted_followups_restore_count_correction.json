@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "study": "dense_targeted_followups_v1",
+  "status": "corrected_restore_count_after_duplicate_mapping_deduplication",
+  "corrected_utc": "2026-10-31T12:58:00Z",
+  "supersedes_fields_in": {
+    "path": "experiments/results/dense_targeted_followups_remote_verification.json",
+    "sha256": "82002e6814fc7a6c52a8cf950d88047101b51f8eb51c5997044ede0219b67f63",
+    "fields": [
+      "verified.original_path_restores",
+      "verified.restored_bytes"
+    ]
+  },
+  "correction": {
+    "original_manifest_restore_entries_counted": 241,
+    "duplicate_original_path_mappings": 6,
+    "duplicate_mappings_had_identical_sha256_and_bytes": true,
+    "actual_unique_files_restored": 235,
+    "actual_unique_restored_bytes": 1277006572,
+    "missing_files": 0,
+    "hash_or_size_mismatches": 0,
+    "final_manifest_canonical_restore_mappings": 235,
+    "final_manifest_restore_bytes": 1277006572
+  },
+  "duplicate_paths_removed_from_canonical_restore_map": [
+    "experiments/results/dense_label_weight_v1_control_prediction_audit.json",
+    "experiments/results/dense_label_weight_v1_control_replay.json",
+    "experiments/results/dense_label_weight_v1_ensemble_scores_control_D2.json",
+    "experiments/results/dense_label_weight_v1_member_scores_control_D2.json",
+    "experiments/results/dense_label_weight_v1_prediction_provenance_control_D2.json",
+    "experiments/results/dense_label_weight_v1_independent_reconstruction_verification.json"
+  ],
+  "final_remote_verification": {
+    "repository": "jekkiechan/mtah-data",
+    "branch": "research/dense-targeted-archive-v1",
+    "head_commit": "64b6eaafef0f25bd3229aae2021efc9e13a8a1c9",
+    "manifest_path": "dense_targeted_followups_cache_manifest_v1.json",
+    "manifest_sha256": "8c70d19c3cc5c86f6ebaaf8cf3743ef8140ae7ee8c1c276a0dbdd12162014eef",
+    "manifest_entries": 338,
+    "manifest_bytes": 1283772135,
+    "fresh_shallow_clone": true,
+    "separate_lfs_object_store": true,
+    "manifest_entries_verified": 338,
+    "manifest_hash_mismatches": 0,
+    "canonical_restore_paths_verified": 235,
+    "restore_missing_files": 0,
+    "restore_hash_or_size_mismatches": 0,
+    "source_snapshot_commit": "d7bbe9d2f270234e3fe790b0b627694d589bc934",
+    "raw_soccernet_shards_included": false,
+    "organizer_reference_labels_included": false
+  },
+  "critical_private_hashes": {
+    "experiments/results/dense_label_weight_v1_preparation_qa.json": "3332bd0d0fbee07f95689f8b3d7e5f35a649cb4ec0dbd2e1d4a59780fd875790",
+    "experiments/results/dense_boundary_v1.json": "cf6da1bc5284c4593821e343e4fa80b46b6e5618a39daf5d1290c9295a94d51e"
+  }
+}

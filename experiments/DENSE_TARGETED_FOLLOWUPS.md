@@ -125,9 +125,10 @@ Code and aggregate evidence: [PR #49](https://github.com/jekkiechan/more-than-a-
 Exact derived inputs, model weights, native predictions and full evaluator
 outputs are archived in private [mtah-data PR #8](https://github.com/jekkiechan/mtah-data/pull/8).
 A fresh isolated remote download verified all 338 manifest entries. The restore
-check recovered 241 original-path files (1,277,182,412 bytes), with zero missing
-files or size/hash mismatches. See the [remote verification receipt](results/dense_targeted_followups_remote_verification.json)
-for pinned commits and manifest hash. The code/results snapshot is `d7bbe9d`;
+check recovered 235 unique original-path files (1,277,006,572 bytes), with zero missing
+files or size/hash mismatches. See the [corrected remote verification receipt](results/dense_targeted_followups_restore_count_correction.json)
+for pinned commits and the final manifest hash. The original receipt counted six
+duplicate restore mappings twice; its unchanged record is linked by the correction. The code/results snapshot is `d7bbe9d`;
 this delivery receipt is added afterward to avoid circular archive hashes.
 The private full boundary output includes transition locations; its public
 aggregate preserves metrics and binds the original digest. Its separate

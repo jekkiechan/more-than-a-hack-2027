@@ -47,7 +47,7 @@ Before another local sweep, consult the index's
 - **Targeted dense follow-ups:** all 12 fits and three comparisons are complete;
   reconstructed controls reproduce saved clean/feed-like scores within 3 × 10⁻¹¹.
   Input byte-hash differences remain documented. Private archive delivery is complete: all 338 entries verified remotely and
-  241 original-path files restored without mismatches.
+  235 unique original-path files restored without mismatches.
   [mtah-data PR #8](https://github.com/jekkiechan/mtah-data/pull/8);
   [coordinated report](../../experiments/DENSE_TARGETED_FOLLOWUPS.md).
 
