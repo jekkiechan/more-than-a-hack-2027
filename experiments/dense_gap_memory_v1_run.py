@@ -28,6 +28,71 @@ def _array_sha(array) -> str:
     return hashlib.sha256(np.ascontiguousarray(array).tobytes()).hexdigest()
 
 
+def _file_sha(path: Path) -> str:
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def verify_producer_provenance(receipt_path: Path, prediction_root: Path,
+                               member_scores_path: Path, ensemble_scores_path: Path,
+                               expected_arm: str = "control_D2") -> str:
+    """Preflight the producer's sealed fold/file manifest once before replay."""
+    receipt_path, prediction_root = Path(receipt_path), Path(prediction_root)
+    receipt_sha = _file_sha(receipt_path)
+    receipt = json.loads(receipt_path.read_text())
+    expected_folds = {source: "leave_out_" + source
+                      for source in ("sportec", "metrica", "skillcorner")}
+    if receipt.get("source_study_id") != "dense_label_weight_v1":
+        raise ValueError("Producer provenance names the wrong source study")
+    if receipt.get("source_arm") != expected_arm or receipt.get("passed") is not True:
+        raise ValueError("Producer provenance did not pass for the declared control arm")
+    if not receipt.get("reconstruction_status"):
+        raise ValueError("Producer provenance lacks reconstruction status")
+    if receipt.get("fold_mapping") != expected_folds:
+        raise ValueError("Producer provenance has an unexpected provider-fold mapping")
+    if receipt.get("member_count") != 30 or receipt.get("ensemble_count") != 15:
+        raise ValueError("Producer provenance does not cover the 30+15 control artifacts")
+    if (_file_sha(member_scores_path) != receipt.get("member_scores_sha256") or
+            _file_sha(ensemble_scores_path) != receipt.get("ensemble_scores_sha256")):
+        raise ValueError("Producer control score files differ from the provenance receipt")
+    entries = receipt.get("files")
+    if not isinstance(entries, list) or len(entries) != 45:
+        raise ValueError("Producer provenance must enumerate 45 prediction files")
+    seen = set()
+    member_counts = {"2026": 0, "2027": 0, "ensemble": 0}
+    for entry in entries:
+        rel = Path(entry["path"])
+        path = rel if rel.is_absolute() else ROOT / rel
+        try:
+            path.resolve().relative_to(prediction_root.resolve())
+        except ValueError as exc:
+            raise ValueError("Provenance prediction path escapes the declared root") from exc
+        if not path.is_file() or _file_sha(path) != entry.get("sha256"):
+            raise ValueError(f"Producer prediction file missing or changed: {path}")
+        fold = entry.get("fold")
+        member = str(entry.get("member"))
+        if fold not in expected_folds.values():
+            raise ValueError(f"Unexpected provider fold in provenance: {fold}")
+        if member not in ("2026", "2027", "ensemble"):
+            raise ValueError(f"Unexpected ensemble member in provenance: {member}")
+        if expected_arm not in path.parts:
+            raise ValueError("Prediction path does not identify the declared control arm")
+        if path in seen:
+            raise ValueError(f"Duplicate prediction file in provenance: {path}")
+        seen.add(path)
+        member_counts[member] += 1
+    if member_counts != {"2026": 15, "2027": 15, "ensemble": 15}:
+        raise ValueError(f"Unexpected control prediction member counts: {member_counts}")
+    for fold in expected_folds.values():
+        fold_entries = [entry for entry in entries if entry.get("fold") == fold]
+        if not fold_entries:
+            raise ValueError(f"No provenance prediction files for {fold}")
+    return receipt_sha
+
+
 def _metric_parity(actual: dict, saved: dict, atol: float = 1e-12) -> None:
     """Recheck all common official metrics and IoU rows before candidate scoring."""
     capacity._metric_parity(actual, saved)
@@ -75,13 +140,83 @@ def replay_control_cell(*, item: dict, view: str, replicate: str, inputs: dict,
     if not np.array_equal(prediction, saved_control_predictions["ensemble"]):
         raise ValueError("Reconstructed ensemble control prediction replay failed")
     rows["ensemble"] = row
-    return {"probabilities": native, "rows": rows, "period": period}
+    return {
+        "control_replay_passed": True,
+        "source": item["source"],
+        "match": item["match"],
+        "fold": item.get("fold", "leave_out_" + item["source"]),
+        "view": view,
+        "replicate": replicate,
+        "probability_sha256": {str(seed): _array_sha(native[seed]) for seed in SEEDS} | {
+            "ensemble": _array_sha(native["ensemble"])},
+        "prediction_sha256": {str(seed): _array_sha(saved_control_predictions[seed])
+                              for seed in SEEDS} | {
+            "ensemble": _array_sha(saved_control_predictions["ensemble"])},
+        "input_sha256": {
+            "labels": _array_sha(np.asarray(labels)),
+            "period": _array_sha(np.asarray(inputs["period"])),
+            "timestamps": _array_sha(np.asarray(inputs["timestamps"])),
+            "ball_observed": _array_sha(np.asarray(inputs["ball_observed"])),
+            "fps": _array_sha(np.asarray(inputs["fps"])),
+        },
+        "rows": {str(key): value for key, value in rows.items()},
+    }
+
+
+def replay_cell_path(source: str, match: str, view: str, replicate: str) -> Path:
+    return OUT / "control_replay" / f"{source}_{match}_{view}_{replicate}.json"
+
+
+def save_replay_cell(result: dict) -> Path:
+    path = replay_cell_path(result["source"], result["match"],
+                            result["view"], result["replicate"])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = json.dumps(capacity._jsonable(result), indent=2, sort_keys=True,
+                         allow_nan=False) + "\n"
+    if path.exists():
+        if path.read_text() != payload:
+            raise ValueError(f"Refusing to overwrite different control replay receipt: {path}")
+    else:
+        path.write_text(payload)
+    return path
+
+
+def verify_replay_inputs(cell: dict, receipt: dict) -> None:
+    """Check restored controls and metadata against a completed replay gate."""
+    item = cell["item"]
+    expected_identity = (item["source"], item["match"], cell["view"], cell["replicate"])
+    actual_identity = (receipt["source"], receipt["match"], receipt["view"], receipt["replicate"])
+    if not receipt.get("control_replay_passed") or actual_identity != expected_identity:
+        raise ValueError("Saved control replay receipt identity is invalid")
+    hashes = {str(seed): _array_sha(np.asarray(cell["probabilities"][seed]))
+              for seed in SEEDS}
+    hashes["ensemble"] = _array_sha(.5 * (np.asarray(cell["probabilities"][2026]) +
+                                           np.asarray(cell["probabilities"][2027])))
+    if hashes != receipt["probability_sha256"]:
+        raise ValueError("Control probabilities changed after the replay gate")
+    inputs, labels = cell["inputs"], np.asarray(cell["labels"])
+    input_hashes = {
+        "labels": _array_sha(labels),
+        "period": _array_sha(np.asarray(inputs["period"])),
+        "timestamps": _array_sha(np.asarray(inputs["timestamps"])),
+        "ball_observed": _array_sha(np.asarray(inputs["ball_observed"])),
+        "fps": _array_sha(np.asarray(inputs["fps"])),
+    }
+    if input_hashes != receipt["input_sha256"]:
+        raise ValueError("Holdout inputs changed after the control replay gate")
+    prediction_hashes = {str(seed): _array_sha(np.asarray(cell["saved_control_predictions"][seed]))
+                         for seed in SEEDS}
+    prediction_hashes["ensemble"] = _array_sha(
+        np.asarray(cell["saved_control_predictions"]["ensemble"]))
+    if prediction_hashes != receipt["prediction_sha256"]:
+        raise ValueError("Saved control predictions changed after the replay gate")
 
 
 def score_cell(*, item: dict, view: str, replicate: str, inputs: dict,
                labels: np.ndarray, probabilities: dict[int, np.ndarray],
                saved_control_rows: dict[int, dict],
-               saved_control_predictions: dict[int, np.ndarray]) -> dict:
+               saved_control_predictions: dict[int, np.ndarray],
+               validated_control_replay: dict | None = None) -> dict:
     """Replay controls, then score memory and ensemble on a single external cell.
 
     `probabilities` are native H/A/D outputs from the separately audited
@@ -105,11 +240,22 @@ def score_cell(*, item: dict, view: str, replicate: str, inputs: dict,
     timestamps = np.asarray(inputs["timestamps"], dtype=np.float64)
     if any(x.shape != (len(labels),) for x in (observed, timestamps)):
         raise ValueError("Native inference metadata does not match labels")
-    replay = replay_control_cell(item=item, view=view, replicate=replicate,
-        inputs=inputs, labels=labels, probabilities=probabilities,
-        saved_control_rows=saved_control_rows,
-        saved_control_predictions=saved_control_predictions)
-    native, baseline_rows, period = (replay["probabilities"], replay["rows"], replay["period"])
+    if validated_control_replay is None or not validated_control_replay.get("control_replay_passed"):
+        raise ValueError("Candidate scoring requires a completed control replay receipt")
+    replay_identity = (validated_control_replay["source"], validated_control_replay["match"],
+                       validated_control_replay["view"], validated_control_replay["replicate"])
+    if replay_identity != (source, match, view, replicate):
+        raise ValueError("Control replay receipt identity does not match candidate cell")
+    native = {seed: np.asarray(probabilities[seed]) for seed in SEEDS}
+    native["ensemble"] = .5 * (native[2026] + native[2027])
+    hashes = {str(seed): _array_sha(native[seed]) for seed in SEEDS}
+    hashes["ensemble"] = _array_sha(native["ensemble"])
+    if hashes != validated_control_replay["probability_sha256"]:
+        raise ValueError("Control probabilities changed after the replay gate")
+    baseline_rows = {2026: validated_control_replay["rows"]["2026"],
+                     2027: validated_control_replay["rows"]["2027"],
+                     "ensemble": validated_control_replay["rows"]["ensemble"]}
+    period = supervised.model_periods(inputs)
 
     # Apply independently to each model, then average their adjusted probabilities.
     adjusted = {seed: apply_memory(native[seed], observed, timestamps, period)
@@ -190,7 +336,7 @@ def summarize_cells(paths) -> list[dict]:
     return summaries
 
 
-def run_study(cell_factory) -> dict:
+def run_study(cell_factory, producer_provenance_sha256: str) -> dict:
     """Score the complete declared five-match/three-view cohort from cell data.
 
     `cell_factory` must be a zero-argument callable returning a fresh iterator.
@@ -203,24 +349,73 @@ def run_study(cell_factory) -> dict:
                 for view, replicate in capacity.VIEWS}
     if not callable(cell_factory):
         raise TypeError("cell_factory must return a fresh iterator for each pass")
-    # First pass validates the entire control cohort. No candidate is scored
-    # until every seed, ensemble, prediction and metric has replayed exactly.
-    replayed = set()
-    for cell in cell_factory():
-        item = cell["item"]
-        key = (item["source"], item["match"], cell["view"], cell["replicate"])
-        if key not in expected or key in replayed:
-            raise ValueError(f"Unexpected or duplicate holdout control cell: {key}")
-        replay_control_cell(**cell)
-        replayed.add(key)
-    if replayed != expected:
-        raise ValueError(f"Incomplete control replay; missing {len(expected - replayed)} cells")
+    if len(producer_provenance_sha256) != 64:
+        raise ValueError("A verified producer provenance SHA-256 is required")
+    gate_path = OUT / "control_replay_gate.json"
+    if gate_path.exists():
+        gate = json.loads(gate_path.read_text())
+        if gate.get("study") != "dense_gap_memory_v1" or gate.get("status") != "PASS":
+            raise ValueError("Existing control replay gate is invalid")
+        if gate.get("producer_provenance_sha256") != producer_provenance_sha256:
+            raise ValueError("Producer provenance changed after the control replay gate")
+        replayed = set()
+        replay_paths = []
+        for cell in cell_factory():
+            item = cell["item"]
+            key = (item["source"], item["match"], cell["view"], cell["replicate"])
+            if key not in expected or key in replayed:
+                raise ValueError(f"Unexpected or duplicate holdout control cell: {key}")
+            receipt_path = replay_cell_path(*key)
+            rel = str(receipt_path.relative_to(ROOT))
+            if gate.get("control_receipts", {}).get(rel) != _file_sha(receipt_path):
+                raise ValueError(f"Control receipt missing or changed: {receipt_path}")
+            verify_replay_inputs(cell, json.loads(receipt_path.read_text()))
+            replayed.add(key); replay_paths.append(receipt_path)
+        if (replayed != expected or gate.get("cell_count") != len(expected) or
+                gate.get("member_rows") != 3 * len(expected)):
+            raise ValueError("Existing control replay gate does not cover the exact cohort")
+    else:
+        # First pass validates and saves the entire control cohort. No candidate
+        # is scored until every seed, ensemble, prediction and metric replays.
+        replayed = set()
+        replay_paths = []
+        for cell in cell_factory():
+            item = cell["item"]
+            key = (item["source"], item["match"], cell["view"], cell["replicate"])
+            if key not in expected or key in replayed:
+                raise ValueError(f"Unexpected or duplicate holdout control cell: {key}")
+            replay = replay_control_cell(**cell)
+            replay_paths.append(save_replay_cell(replay))
+            replayed.add(key)
+        if replayed != expected:
+            raise ValueError(f"Incomplete control replay; missing {len(expected - replayed)} cells")
+        gate = {
+            "study": "dense_gap_memory_v1",
+            "status": "PASS",
+            "cell_count": len(replay_paths),
+            "member_rows": len(replay_paths) * 3,
+            "producer_provenance_sha256": producer_provenance_sha256,
+            "control_receipts": {str(p.relative_to(ROOT)): _file_sha(p)
+                                 for p in sorted(replay_paths)},
+        }
+        gate_path.parent.mkdir(parents=True, exist_ok=True)
+        gate_payload = json.dumps(gate, indent=2, sort_keys=True, allow_nan=False) + "\n"
+        gate_path.write_text(gate_payload)
 
-    # Second pass applies the now-validated, frozen candidate to paired cells.
+    # Second pass applies the candidate using sealed control receipts, without
+    # scoring controls a second time.
     seen = set()
     files = []
     for cell in cell_factory():
-        result = score_cell(**cell)
+        item = cell["item"]
+        receipt_path = replay_cell_path(item["source"], item["match"],
+                                        cell["view"], cell["replicate"])
+        expected_sha = gate["control_receipts"].get(str(receipt_path.relative_to(ROOT)))
+        if not expected_sha or _file_sha(receipt_path) != expected_sha:
+            raise ValueError(f"Missing or changed control replay receipt: {receipt_path}")
+        validated_replay = json.loads(receipt_path.read_text())
+        verify_replay_inputs(cell, validated_replay)
+        result = score_cell(**cell, validated_control_replay=validated_replay)
         key = (result["source"], result["match"], result["view"], result["replicate"])
         if key not in expected or key in seen:
             raise ValueError(f"Unexpected or duplicate holdout cell: {key}")
@@ -232,6 +427,7 @@ def run_study(cell_factory) -> dict:
         "study": "dense_gap_memory_v1",
         "cell_count": len(files),
         "controls_replayed": True,
+        "producer_provenance_sha256": producer_provenance_sha256,
         "organizer_labels_read": False,
         "summaries": summarize_cells(files),
         "cells": [str(p.relative_to(ROOT)) for p in files],
@@ -341,7 +537,7 @@ def load_control_cells(prediction_root: Path, scores_path: Path,
                     inputs=inputs, labels=labels, probabilities=probabilities,
                     saved_control_rows=control_rows,
                     saved_control_predictions=predictions)
-    return cells
+    return cells()
 
 
 def main(argv=None) -> None:
@@ -352,11 +548,16 @@ def main(argv=None) -> None:
         help="saved control member score rows")
     parser.add_argument("--ensemble-scores", type=Path, required=True,
         help="saved control ensemble score rows")
+    parser.add_argument("--provenance", type=Path, required=True,
+        help="sealed dense_label_weight_v1 control prediction provenance receipt")
     parser.add_argument("--arm", default="control_D2",
         help="reconstructed current dense control arm")
     args = parser.parse_args(argv)
+    provenance_sha = verify_producer_provenance(args.provenance,
+        args.prediction_root, args.member_scores, args.ensemble_scores,
+        expected_arm=args.arm)
     aggregate = run_study(lambda: load_control_cells(args.prediction_root,
-        args.member_scores, args.ensemble_scores, arm=args.arm))
+        args.member_scores, args.ensemble_scores, arm=args.arm), provenance_sha)
     print(json.dumps(aggregate, indent=2, sort_keys=True))
 
 

@@ -203,6 +203,7 @@ def audit(frame: pd.DataFrame) -> dict:
                                     "merge_predicted_spells": sum(x["merge_predicted_spells"] for x in summaries),
                                     "segment_details": summaries}
     return {"schema": 1, "input_rows": len(f), "match_segments": groups, "providers": providers,
+            "denominator_scope": "Ball-missing and observed rates use all GT-scored H/A/D frames in that observation group, including D frames; they are not restricted to long live-ball gaps.",
             "interpretation": "Descriptive diagnostics on supplied external predictions; no organizer labels or pooled deployment scores are implied."}
 
 
@@ -239,7 +240,8 @@ def summarize_archives(paths) -> dict:
                    "wrong_team_rate_ball_missing", "wrong_team_rate_ball_observed",
                    "false_d_rate_ball_missing", "false_d_rate_ball_observed")
     for r in reports:
-        cell = (r["arm"], r["view"], r["replicate"])
+        realization_kind = "ensemble" if r["seed"] == "ensemble" else "individual_seed_members"
+        cell = (r["arm"], r["view"], r["replicate"], realization_kind)
         provider, match, seed = r["source"], r["match"], r["seed"]
         c = cells.setdefault(cell, {"raw_counts": {}, "match_realizations": {}})
         totals = c["raw_counts"]
@@ -274,7 +276,7 @@ def summarize_archives(paths) -> dict:
             }
             c["match_realizations"].setdefault((provider2, match2), []).append(val)
     result_cells = []
-    for (arm, view, replicate), value in sorted(cells.items()):
+    for (arm, view, replicate, realization_kind), value in sorted(cells.items()):
         by_provider = {}
         for (provider, match), realizations in value["match_realizations"].items():
             p = by_provider.setdefault(provider, {})
@@ -289,11 +291,13 @@ def summarize_archives(paths) -> dict:
                     for field in rate_fields + ("split_per_gt_spell", "merge_per_pred_spell",
                                                 "transition_abs_error_seconds")}
         result_cells.append({"arm": arm, "view": view, "replicate": replicate,
+                             "realization_kind": realization_kind,
                              "provider_balanced_match_rates": balanced,
                              "provider_rates": provider_summary,
                              "raw_counts_across_archives": value["raw_counts"]})
     return {"schema": 1, "archive_count": len(reports), "cells": result_cells,
             "aggregation": "Rates: mean seeds within each match, mean matches within each provider, equal mean across providers. Raw frame/event totals are separate and are not used for provider-balanced conclusions.",
+            "denominator_scope": "Ball-missing and observed rates use all GT-scored H/A/D frames, including D frames; no long-gap-only subset is applied.",
             "interpretation": "Descriptive non-mutually-exclusive error categories. Rates do not estimate counterfactual F1 loss."}
 
 

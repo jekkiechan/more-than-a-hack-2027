@@ -38,17 +38,19 @@ FOLDS = sc.FOLDS
 SEEDS = (2026, 2027)
 ARMS = ("control_D2", "weight_025")
 STUDY_ID = "dense_label_weight_v1"
-RECONSTRUCTION_STATUS = "reconstructed from exact frozen fold teachers, verified source records, and the declared D2 recipe; original trained D2 fold weights were unavailable"
+RECONSTRUCTION_STATUS = "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable"
 WEIGHT = 0.25
 RADIUS_SECONDS = 0.5
 QUALIFYING_PROVENANCE = (dl.P_TOUCH, dl.P_PROPAGATED, dl.P_HELD)
 EXPECTED_CONTROL = {"clean": 0.6472145591, "feed_like": 0.5058107894}
 CONTROL_TOLERANCE = 0.000051
 EXPECTED_TRAIN_MANIFEST = "d2639fa1a47b38bff1b293e8b2592fb1d7392c09700a2c9873c1a90a72397b51"
+RECONSTRUCTED_TRAIN_MANIFEST = "1f905524123f63c60bd12bd42150c1d111dc779c1760f8d9b4a725077f3706d5"
+PREPARATION_RECEIPT = RESULTS / "dense_label_weight_v1_preparation_reconstruction.json"
 EXPECTED_TEACHERS = {
     "leave_out_metrica/2026": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
     "leave_out_metrica/2027": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
-    "leave_out_skillcorner/2026": "faf05644439996b8afd005d2b65ba3e853f2c7c20f7be24840e1055f72dab56",
+    "leave_out_skillcorner/2026": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
     "leave_out_skillcorner/2027": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
     "leave_out_sportec/2026": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
     "leave_out_sportec/2027": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
@@ -115,6 +117,43 @@ def control_cache(fold: str, seed: int) -> Path:
     return sc.initial_path(fold, seed)
 
 
+def verify_preparation_reconstruction() -> dict:
+    if not PREPARATION_RECEIPT.is_file():
+        raise FileNotFoundError("The explicit dense TRAIN reconstruction receipt is required")
+    receipt=json.loads(PREPARATION_RECEIPT.read_text())
+    manifest_path=RECORDS/"train/manifest.json"
+    manifest=json.loads(manifest_path.read_text())
+    if receipt.get("old_expected_train_manifest_sha256")!=EXPECTED_TRAIN_MANIFEST:
+        raise ValueError("Preparation receipt does not identify the historical manifest")
+    if receipt.get("new_train_manifest_sha256")!=RECONSTRUCTED_TRAIN_MANIFEST or sha256(manifest_path)!=RECONSTRUCTED_TRAIN_MANIFEST:
+        raise ValueError("Preparation receipt does not bind the reconstructed TRAIN manifest")
+    binary=receipt.get("binary_comparison",{})
+    old_game_hashes={name:value["expected_sha256"] for name,value in binary.get("games",{}).items()}
+    new_game_hashes={name:value["reconstructed_sha256"] for name,value in binary.get("games",{}).items()}
+    if len(old_game_hashes)!=45 or set(old_game_hashes)!=set(manifest["game_files"]):
+        raise ValueError("Preparation receipt does not enumerate all 45 historical game files")
+    if binary.get("all_45_game_binaries_differ") is not True or binary.get("matching_game_binary_hashes")!=0:
+        raise ValueError("Preparation receipt does not preserve the known binary mismatch")
+    if new_game_hashes!=manifest["game_files"]:
+        raise ValueError("Reconstructed game files differ from the pre-fit receipt")
+    for name,expected in new_game_hashes.items():
+        if sha256(RECORDS/"train/games"/name)!=expected:
+            raise ValueError(f"Reconstructed game file changed after preparation: {name}")
+    swapped=dict(manifest); swapped["game_files"]=old_game_hashes
+    swapped_sha=hashlib.sha256((json.dumps(swapped,indent=1,sort_keys=True)+"\n").encode()).hexdigest()
+    if (swapped_sha!=EXPECTED_TRAIN_MANIFEST or
+        binary.get("substituting_original_45_hashes_into_new_manifest_reproduces_original_manifest_sha256") is not True or
+        binary.get("substituted_manifest_sha256")!=swapped_sha):
+        raise ValueError("Historical game-hash substitution does not reproduce the frozen manifest")
+    qa=RESULTS/"dense_label_weight_v1_preparation_qa.json"
+    if sha256(qa)!=receipt.get("semantic_validation",{}).get("new_report_sha256"):
+        raise ValueError("Prepared-record QA report hash differs from the reconstruction receipt")
+    raw=OUT/"soccernet_train_restore_receipt.json"
+    if sha256(raw)!=receipt.get("raw_restore_receipt_sha256"):
+        raise ValueError("Raw TRAIN restore receipt differs from the reconstruction receipt")
+    return receipt
+
+
 def declaration() -> dict:
     data_root = Path(os.environ["MTAH_DATA_DIR"])
     train_manifest = RECORDS / "train" / "manifest.json"
@@ -123,8 +162,7 @@ def declaration() -> dict:
     prep_manifest = json.loads(train_manifest.read_text())
     if len(prep_manifest["games"]) != 45:
         raise ValueError("Expected exactly 45 frozen TRAIN games")
-    if sha256(train_manifest) != EXPECTED_TRAIN_MANIFEST:
-        raise ValueError("Restored dense TRAIN record manifest differs from the frozen D2 input")
+    prep_receipt=verify_preparation_reconstruction()
     teacher_hashes = {}
     for fold in FOLDS:
         for seed in SEEDS:
@@ -162,7 +200,7 @@ def declaration() -> dict:
             "learning_rate": 0.0003, "d_learning_rate": 0.0001,
             "input_dropout": 0.1, "initialization": "matching full-provider fold teacher",
             "old_data": "all original TRAIN caches from the two non-held-out providers; provider excluded from every learned component",
-            "soccernet_data": "45 TRAIN games only; no GAR VALID/TEST labels are read",
+            "soccernet_data": "45 reconstructed TRAIN games only, bound by the pre-fit reconstruction receipt; no GAR VALID/TEST labels are read",
             "cohort": "15 previously used full-provider selection cells: 5 matches x clean, corrupt_1, corrupt_2; official scorer and unchanged cost-3 decoder",
             "scoring": "two seed members plus native-probability average ensemble; equal-provider means; paired by source/match/view",
             "cpu_threads_per_fit": 1,
@@ -191,6 +229,9 @@ def declaration() -> dict:
             "prior_raw_train_restore_receipt_sha256": sha256(RESULTS/"soccernet_huggingface_restore.json"),
             "dense_train_manifest_sha256": sha256(train_manifest),
             "expected_dense_train_manifest_sha256": EXPECTED_TRAIN_MANIFEST,
+            "reconstructed_dense_train_manifest_sha256": RECONSTRUCTED_TRAIN_MANIFEST,
+            "preparation_reconstruction_receipt": str(PREPARATION_RECEIPT.relative_to(ROOT)),
+            "preparation_reconstruction_receipt_sha256": sha256(PREPARATION_RECEIPT),
             "dense_train_game_files": prep_manifest["game_files"],
             "fold_teacher_sha256": teacher_hashes,
             "original_training_cache_sha256": old_cache_hashes,
@@ -229,6 +270,13 @@ def verify_declared_inputs() -> dict:
     restore=value["restore"]
     if sha256(RECORDS/"train/manifest.json")!=restore["dense_train_manifest_sha256"]:
         raise RuntimeError("Dense TRAIN record manifest changed after declaration")
+    if sha256(PREPARATION_RECEIPT)!=restore["preparation_reconstruction_receipt_sha256"]:
+        raise RuntimeError("Dense TRAIN reconstruction receipt changed after declaration")
+    if sha256(OUT/"soccernet_train_restore_receipt.json")!=restore["raw_train_restore_receipt_sha256"]:
+        raise RuntimeError("Raw TRAIN restore receipt changed after declaration")
+    prep=verify_preparation_reconstruction()
+    if prep.get("new_train_manifest_sha256")!=restore["dense_train_manifest_sha256"]:
+        raise RuntimeError("Dense TRAIN reconstruction receipt no longer matches the declared input")
     old_manifest=old.DATA/"experiments/objective_alignment_v1/predeclared.json"
     if sha256(old_manifest)!=restore["original_training_manifest_sha256"]:
         raise RuntimeError("Original training-cache manifest changed after declaration")
@@ -416,7 +464,7 @@ def load_training(fold: str) -> tuple[dict, list[dict], list[dict]]:
 
 def run_fit(arm: str, fold: str, seed: int, records=None) -> dict:
     if arm not in ARMS or fold not in FOLDS or seed not in SEEDS: raise ValueError("Undeclared fit identity")
-    declared=verify_declared_sources()
+    declared=verify_declared_inputs()
     if arm=="weight_025": require_control_gate()
     expected_teacher=declared["restore"]["fold_teacher_sha256"][f"{fold}/{seed}"]
     if sha256(control_cache(fold,seed))!=expected_teacher:
@@ -466,7 +514,7 @@ def saved_inputs(item: dict, view: str, replicate: str):
                    if entry["path"]==rel),None)
     if not expected or sha256(path)!=expected:
         raise ValueError(f"Evaluation cache hash differs from frozen dependency manifest: {path}")
-    declared=verify_declared_sources()
+    declared=verify_declared_inputs()
     if declared["restore"]["external_evaluation_cache_sha256"].get(rel)!=expected:
         raise ValueError(f"Evaluation cache is not bound by the frozen declaration: {path}")
     cached=joblib.load(path)
@@ -547,7 +595,7 @@ def require_control_gate() -> dict:
     gate=json.loads(path.read_text())
     if gate.get("passed") is not True:
         raise RuntimeError("Weight candidate blocked because D2 replay gate failed")
-    verify_declared_sources()
+    verify_declared_inputs()
     member_path=RESULTS/"dense_label_weight_v1_member_scores_control_D2.json"
     ensemble_path=RESULTS/"dense_label_weight_v1_ensemble_scores_control_D2.json"
     checks={
@@ -557,6 +605,9 @@ def require_control_gate() -> dict:
         "dense_train_manifest_sha256":sha256(RECORDS/"train/manifest.json"),
         "raw_train_restore_receipt_sha256":sha256(OUT/"soccernet_train_restore_receipt.json"),
         "original_training_manifest_sha256":sha256(old.DATA/"experiments/objective_alignment_v1/predeclared.json"),
+        "preparation_reconstruction_receipt_sha256":sha256(PREPARATION_RECEIPT),
+        "prediction_provenance_sha256":sha256(RESULTS/"dense_label_weight_v1_prediction_provenance_control_D2.json"),
+        "prediction_provenance_receipt_sha256":sha256(RESULTS/"dense_label_weight_v1_control_prediction_audit.json"),
     }
     for key,actual in checks.items():
         if gate.get(key)!=actual: raise RuntimeError(f"Control replay gate is stale or corrupted: {key}")
@@ -568,7 +619,7 @@ def control_replay() -> dict:
     ensemble_path=RESULTS/"dense_label_weight_v1_ensemble_scores_control_D2.json"
     if not member_path.is_file() or not ensemble_path.is_file():
         raise FileNotFoundError("Control member and ensemble scoring must finish before replay gate")
-    verify_declared_inputs()
+    declared=verify_declared_inputs()["restore"]
     members=json.loads(member_path.read_text()); ensembles=json.loads(ensemble_path.read_text())
     rows=ensembles["rows"]
     expected_members={(i["source"],i["match"],v,r,"control_D2",str(seed))
@@ -583,6 +634,7 @@ def control_replay() -> dict:
         raise ValueError("Control member replay does not cover exactly 30 declared cells")
     if len(rows)!=15 or ensemble_keys!=expected_ensembles:
         raise ValueError("Control ensemble replay does not cover exactly 15 declared cells")
+    provenance_receipt = audit_control_prediction_provenance(members, ensembles)
     values={}
     for view in ("clean","feed_like"):
         selected=[r for r in rows if r["view"]==view and r["arm"]=="control_D2" and r["member"]=="ensemble"]
@@ -600,11 +652,116 @@ def control_replay() -> dict:
           "dense_train_manifest_sha256":sha256(RECORDS/"train/manifest.json"),
           "raw_train_restore_receipt_sha256":sha256(OUT/"soccernet_train_restore_receipt.json"),
           "original_training_manifest_sha256":sha256(old.DATA/"experiments/objective_alignment_v1/predeclared.json"),
+          "preparation_reconstruction_receipt_sha256":sha256(PREPARATION_RECEIPT),
+          "prediction_provenance_sha256":sha256(RESULTS/"dense_label_weight_v1_prediction_provenance_control_D2.json"),
+          "prediction_provenance_receipt_sha256":sha256(RESULTS/"dense_label_weight_v1_control_prediction_audit.json"),
           "expected_source":"PR47 source_conditioned_heads_report reconstructed D2 control",
           "scored_cells":len(rows),"public_labels_accessed":False}
     write_once(RESULTS/"dense_label_weight_v1_control_replay.json",gate)
     if not passed: raise RuntimeError("Reconstructed D2 control did not pass the declared replay gate")
     return gate
+
+
+def audit_control_prediction_provenance(members: dict, ensembles: dict) -> dict:
+    """Check each saved control NPZ and bind the complete set in an audit receipt."""
+    declared=verify_declared_inputs()["restore"]
+    provenance_path=RESULTS/"dense_label_weight_v1_prediction_provenance_control_D2.json"
+    provenance=json.loads(provenance_path.read_text())
+    if provenance.get("source_study_id")!=STUDY_ID or provenance.get("source_arm")!="control_D2":
+        raise ValueError("Control provenance receipt has wrong study or arm")
+    expected_mapping={p:f"leave_out_{p}" for p in ("sportec","metrica","skillcorner")}
+    if provenance.get("fold_mapping")!=expected_mapping:
+        raise ValueError("Control provenance fold mapping differs from declaration")
+    if provenance.get("member_prediction_files")!=members.get("prediction_files") or provenance.get("ensemble_prediction_files")!=ensembles.get("prediction_files"):
+        raise ValueError("Control provenance prediction-file hashes differ from score receipts")
+    expected_model_map={str((MODELS/f"control_D2__{fold.removeprefix('leave_out_')}__s{seed}.joblib").relative_to(ROOT)):
+                        sha256(MODELS/f"control_D2__{fold.removeprefix('leave_out_')}__s{seed}.joblib")
+                        for fold in FOLDS for seed in SEEDS}
+    expected_eval_map={rel:sha for rel,sha in declared["external_evaluation_cache_sha256"].items()
+                       if rel in {f"data/{old.eval_path(item,view,replicate).relative_to(old.DATA).as_posix()}"
+                                  for item in old.selection_items() for view,replicate in old.VIEWS}}
+    if provenance.get("model_checkpoint_hashes")!=expected_model_map:
+        raise ValueError("Top-level control provenance checkpoint hashes differ from declared model set")
+    if provenance.get("evaluation_input_hashes")!=expected_eval_map:
+        raise ValueError("Top-level control provenance evaluation hashes differ from declared cache set")
+    member_rows={(r["source"],r["match"],r["view"],r["replicate"],r["member"]):r
+                 for r in members["rows"]}
+    ensemble_rows={(r["source"],r["match"],r["view"],r["replicate"],r["member"]):r
+                   for r in ensembles["rows"]}
+    files=[]
+    items=old.selection_items()
+    for item in items:
+      source,match=item["source"],item["match"]
+      fold="leave_out_"+source
+      for view,replicate in old.VIEWS:
+        member_arrays={}
+        for seed in SEEDS:
+          key=(source,match,view,replicate,str(seed))
+          row=member_rows[key]
+          path=PREDICTIONS/"control_D2"/fold/f"seed{seed}__{match}__{view}__{replicate}.npz"
+          rel=str(path.relative_to(ROOT)); expected_file=members["prediction_files"].get(rel)
+          if not expected_file or sha256(path)!=expected_file:
+              raise ValueError(f"Control member NPZ is not bound to score receipt: {rel}")
+          with np.load(path,allow_pickle=False) as z:
+            def scalar(name): return str(np.asarray(z[name]).reshape(()).item())
+            if scalar("source_study_id")!=STUDY_ID or scalar("reconstruction_status")!=RECONSTRUCTION_STATUS:
+                raise ValueError(f"Control member source provenance mismatch: {rel}")
+            if scalar("source")!=source or scalar("match")!=match or scalar("view")!=view or scalar("replicate")!=replicate:
+                raise ValueError(f"Control member identity mismatch: {rel}")
+            if scalar("arm")!="control_D2" or scalar("source_arm")!="control_D2" or scalar("seed")!=str(seed) or scalar("inference_seed")!=f"seed{seed}" or scalar("fold")!=fold:
+                raise ValueError(f"Control member arm/fold/seed mismatch: {rel}")
+            expected_model=str((MODELS/f"control_D2__{source}__s{seed}.joblib").relative_to(ROOT))
+            model_hash=sha256(ROOT/expected_model)
+            if json.loads(scalar("model_checkpoint_hashes_json"))!={expected_model:model_hash}:
+                raise ValueError(f"Control member checkpoint provenance mismatch: {rel}")
+            eval_rel=scalar("evaluation_input_path"); eval_hash=scalar("evaluation_input_sha256")
+            if eval_rel not in declared["external_evaluation_cache_sha256"] or declared["external_evaluation_cache_sha256"][eval_rel]!=eval_hash:
+                raise ValueError(f"Control member evaluation input provenance mismatch: {rel}")
+            if row["prediction_sha256"]!=hashlib.sha256(np.ascontiguousarray(z["prediction"].astype("U1")).tobytes()).hexdigest():
+                raise ValueError(f"Control member prediction digest mismatch: {rel}")
+            member_arrays[seed]=(z["probabilities"].copy(),z["prediction"].copy())
+          files.append({"path":rel,"sha256":expected_file,"member":str(seed),"fold":fold,
+                        "evaluation_input_path":eval_rel,"evaluation_input_sha256":eval_hash,
+                        "model_checkpoint_path":expected_model,"model_checkpoint_sha256":model_hash})
+        ekey=(source,match,view,replicate,"ensemble")
+        erow=ensemble_rows[ekey]
+        epath=PREDICTIONS/"control_D2"/fold/f"seedensemble__{match}__{view}__{replicate}.npz"
+        erel=str(epath.relative_to(ROOT)); ehash=ensembles["prediction_files"].get(erel)
+        if not ehash or sha256(epath)!=ehash:
+            raise ValueError(f"Control ensemble NPZ is not bound to score receipt: {erel}")
+        with np.load(epath,allow_pickle=False) as z:
+          def escalar(name): return str(np.asarray(z[name]).reshape(()).item())
+          if escalar("source_study_id")!=STUDY_ID or escalar("reconstruction_status")!=RECONSTRUCTION_STATUS or escalar("source_arm")!="control_D2" or escalar("inference_seed")!="seedensemble" or escalar("fold")!=fold:
+              raise ValueError(f"Control ensemble provenance mismatch: {erel}")
+          if json.loads(escalar("fold_mapping_json"))!=expected_mapping:
+              raise ValueError(f"Control ensemble fold mapping mismatch: {erel}")
+          expected_models={str((MODELS/f"control_D2__{source}__s{s}.joblib").relative_to(ROOT)):sha256(MODELS/f"control_D2__{source}__s{s}.joblib") for s in SEEDS}
+          if json.loads(escalar("model_checkpoint_hashes_json"))!=expected_models:
+              raise ValueError(f"Control ensemble checkpoint provenance mismatch: {erel}")
+          eval_hashes=json.loads(escalar("evaluation_input_hashes_json"))
+          expected_eval={f"data/{old.eval_path(item,view,replicate).relative_to(old.DATA).as_posix()}":sha256(old.eval_path(item,view,replicate))}
+          if eval_hashes!=expected_eval:
+              raise ValueError(f"Control ensemble evaluation provenance mismatch: {erel}")
+          mean_prob=(member_arrays[SEEDS[0]][0]+member_arrays[SEEDS[1]][0])/2
+          if not np.array_equal(z["probabilities"],mean_prob):
+              raise ValueError(f"Control ensemble is not the native member probability mean: {erel}")
+          decoded=supervised.decode(mean_prob,z["model_period"],float(z["fps"]),lt.COST)
+          if not np.array_equal(z["prediction"],decoded):
+              raise ValueError(f"Control ensemble prediction does not replay decoder: {erel}")
+          digest=hashlib.sha256(np.ascontiguousarray(np.asarray(decoded,dtype="U1")).tobytes()).hexdigest()
+          if erow["prediction_sha256"]!=digest:
+              raise ValueError(f"Control ensemble score digest mismatch: {erel}")
+        files.append({"path":erel,"sha256":ehash,"member":"ensemble","fold":fold,
+                      "evaluation_input_hashes":expected_eval,"model_checkpoint_hashes":expected_models})
+    receipt={"source_study_id":STUDY_ID,"source_arm":"control_D2",
+             "reconstruction_status":RECONSTRUCTION_STATUS,"fold_mapping":expected_mapping,
+             "member_count":30,"ensemble_count":15,"files":files,
+             "member_scores_sha256":sha256(RESULTS/"dense_label_weight_v1_member_scores_control_D2.json"),
+             "ensemble_scores_sha256":sha256(RESULTS/"dense_label_weight_v1_ensemble_scores_control_D2.json"),
+             "declaration_sha256":sha256(RESULTS/"dense_label_weight_v1_declaration.json"),
+             "passed":True}
+    write_once(RESULTS/"dense_label_weight_v1_control_prediction_audit.json",receipt)
+    return receipt
 
 
 def ensemble_scores(arms: tuple[str,...]=ARMS) -> dict:
@@ -686,6 +843,27 @@ def ensemble_scores(arms: tuple[str,...]=ARMS) -> dict:
     return value
 
 
+def combine_scores() -> tuple[dict,dict]:
+    """Join separately sealed control/candidate score files without rescoring."""
+    values={}
+    for kind in ("member","ensemble"):
+        documents=[json.loads((RESULTS/f"dense_label_weight_v1_{kind}_scores_{arm}.json").read_text())
+                   for arm in ARMS]
+        rows=[row for doc in documents for row in doc["rows"]]
+        files={k:v for doc in documents for k,v in doc["prediction_files"].items()}
+        expected_count=60 if kind=="member" else 30
+        if len(rows)!=expected_count or len(files)!=(60 if kind=="member" else 30):
+            raise ValueError(f"Incomplete paired {kind} artifacts: rows={len(rows)}, files={len(files)}")
+        keys=[(r["source"],r["match"],r["view"],r["replicate"],r["arm"],r["member"]) for r in rows]
+        if len(keys)!=len(set(keys)):
+            raise ValueError(f"Duplicate paired {kind} score row")
+        path=RESULTS/f"dense_label_weight_v1_{kind}_scores_all.json"
+        value={"arm":list(ARMS),"rows":rows,"prediction_files":files}
+        write_once(path,value)
+        values[kind]=value
+    return values["member"],values["ensemble"]
+
+
 def summarize_scores(member: dict, ensemble: dict) -> dict:
     from experiments import objective_ensemble as scoring
     rows=member["rows"]+ensemble["rows"]
@@ -751,8 +929,8 @@ def main() -> None:
     parser=argparse.ArgumentParser(); sub=parser.add_subparsers(dest="cmd",required=True)
     sub.add_parser("declare")
     fitp=sub.add_parser("fit");fitp.add_argument("arm",choices=ARMS);fitp.add_argument("fold",choices=FOLDS);fitp.add_argument("seed",type=int,choices=SEEDS)
-    scorep=sub.add_parser("score");scorep.add_argument("--arms",nargs="+",choices=ARMS,default=list(ARMS))
-    enp=sub.add_parser("ensemble");enp.add_argument("--arms",nargs="+",choices=ARMS,default=list(ARMS))
+    scorep=sub.add_parser("score");scorep.add_argument("--arms",nargs="+",choices=ARMS,default=["control_D2"])
+    enp=sub.add_parser("ensemble");enp.add_argument("--arms",nargs="+",choices=ARMS,default=["control_D2"])
     sub.add_parser("replay");sub.add_parser("summarize")
     sub.add_parser("report")
     args=parser.parse_args()
@@ -768,8 +946,8 @@ def main() -> None:
     elif args.cmd=="replay":
         value=control_replay();print(json.dumps(value,sort_keys=True),flush=True)
     elif args.cmd=="summarize":
-        value=summarize_scores(json.loads((RESULTS/"dense_label_weight_v1_member_scores_all.json").read_text()),
-                               json.loads((RESULTS/"dense_label_weight_v1_ensemble_scores_all.json").read_text()))
+        member,ensemble=combine_scores()
+        value=summarize_scores(member,ensemble)
         print(json.dumps(value,sort_keys=True),flush=True)
     elif args.cmd=="report":
         value=json.loads((RESULTS/"dense_label_weight_v1_readout.json").read_text())

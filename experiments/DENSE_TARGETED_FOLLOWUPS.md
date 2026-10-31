@@ -47,8 +47,29 @@ to the sealed dense candidate; inference took 82.97 seconds on this CPU runtime.
 No organizer reference labels were read. See the [audit report](dense_submission_audit_v1/README.md)
 and [receipt](dense_submission_audit_v1/report.json) for hashes and contract limits.
 
+## Reconstructed training inputs
+
+All 45 TRAIN games were rebuilt: 11,249 records and 5,063,339 native frames.
+The raw-source hashes, preparation source, schema and manifest metadata match
+the earlier study, but all 45 serialized game files have different byte hashes.
+The cause remains unresolved; exact feature-array identity cannot be established
+without the original files. Substituting only the historical game-file hashes
+into the new manifest reproduces the historical manifest digest exactly.
+
+Independent QA comparison found 273 shared values with zero differences; all
+per-game record, frame and period-block counts match. This supports a declared
+same-source reconstruction, not a claim of byte-identical input restoration.
+The failed byte check is preserved in the
+[preparation receipt](results/dense_label_weight_v1_preparation_reconstruction.json).
+The [independent check](results/dense_label_weight_v1_independent_reconstruction_verification.json)
+and [aggregate QA](results/dense_label_weight_v1_preparation_qa_aggregate.json)
+provide public evidence. The unchanged full QA includes frame-level examples and
+is kept privately for exact restore; its frozen hash is recorded in these receipts.
+
 ## Pending results
 
-The three model comparisons and current error audit are not yet scored. Data
-restoration, contract checks, matched control reconstruction, candidate execution
-and independent verification must finish before a research conclusion is drawn.
+The three model comparisons and current error audit are not yet scored. Control
+training is running under the [sealed declaration](results/dense_label_weight_v1_declaration.json).
+The original clean/feed-like control tolerance remains ±0.000051. Candidate
+training cannot proceed unless that score-parity gate passes. No tolerance was
+relaxed in response to a model score.

@@ -1,10 +1,15 @@
 import unittest
+import hashlib
+import json
+import tempfile
+from pathlib import Path
 
 import numpy as np
 from unittest.mock import patch
 
 from experiments.dense_gap_memory_v1 import apply_memory
-from experiments.dense_gap_memory_v1_run import replay_control_cell
+from experiments.dense_gap_memory_v1_run import (
+    replay_control_cell, _array_sha, verify_producer_provenance)
 from experiments import supervised
 
 
@@ -75,7 +80,8 @@ class DenseGapMemoryContractTests(unittest.TestCase):
             return {}, np.argmax(p, axis=1).astype(str)
 
         inputs = {"period": np.array([0, 0]), "fps": np.array(25.),
-                  "timestamps": np.array([0., .04])}
+                  "timestamps": np.array([0., .04]),
+                  "ball_observed": np.array([True, False])}
         with patch("experiments.dense_gap_memory_v1_run.capacity._score_probability",
                    side_effect=fake_score), \
              patch("experiments.dense_gap_memory_v1_run._metric_parity"):
@@ -85,13 +91,13 @@ class DenseGapMemoryContractTests(unittest.TestCase):
                 saved_control_rows={2026: {}, 2027: {}, "ensemble": {}},
                 saved_control_predictions={2026: np.array(["0", "1"]),
                     2027: np.array(["0", "1"]), "ensemble": np.array(["0", "1"])})
-        np.testing.assert_array_equal(result["probabilities"]["ensemble"], ensemble)
-        self.assertEqual(set(result["rows"]), {2026, 2027, "ensemble"})
+        self.assertEqual(result["probability_sha256"]["ensemble"], _array_sha(ensemble))
+        self.assertEqual(set(result["rows"]), {"2026", "2027", "ensemble"})
 
     def test_runner_rejects_control_probability_hash_mismatch(self):
         p = np.array([[.8, .1, .1]])
         inputs = {"period": np.array([1]), "fps": np.array(25.),
-                  "timestamps": np.array([0.])}
+                  "timestamps": np.array([0.]), "ball_observed": np.array([True])}
         with self.assertRaisesRegex(ValueError, "probability hash"):
             replay_control_cell(item={"source": "provider", "match": "game"},
                 view="clean", replicate="clean", inputs=inputs,
@@ -100,6 +106,43 @@ class DenseGapMemoryContractTests(unittest.TestCase):
                     2027: {}, "ensemble": {}},
                 saved_control_predictions={2026: np.array(["0"]),
                     2027: np.array(["0"]), "ensemble": np.array(["0"])})
+
+    def test_producer_provenance_requires_all_declared_control_files(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            pred_root = root / "predictions"
+            entries = []
+            folds = {"sportec": "leave_out_sportec", "metrica": "leave_out_metrica",
+                     "skillcorner": "leave_out_skillcorner"}
+            for fold in folds.values():
+                for member in ("2026", "2027", "ensemble"):
+                    for i in range(5):
+                        path = pred_root / "control_D2" / fold / f"{member}_{i}.npz"
+                        path.parent.mkdir(parents=True, exist_ok=True)
+                        data = f"{fold}:{member}:{i}".encode()
+                        path.write_bytes(data)
+                        entries.append({"path": str(path), "sha256": hashlib.sha256(data).hexdigest(),
+                                        "member": member, "fold": fold})
+            member_scores = root / "member_scores.json"
+            ensemble_scores = root / "ensemble_scores.json"
+            member_scores.write_text("member scores")
+            ensemble_scores.write_text("ensemble scores")
+            receipt = {"source_study_id": "dense_label_weight_v1",
+                       "source_arm": "control_D2", "reconstruction_status": "reconstructed",
+                       "passed": True,
+                       "fold_mapping": folds, "member_count": 30,
+                       "ensemble_count": 15, "files": entries,
+                       "member_scores_sha256": hashlib.sha256(member_scores.read_bytes()).hexdigest(),
+                       "ensemble_scores_sha256": hashlib.sha256(ensemble_scores.read_bytes()).hexdigest()}
+            receipt_path = root / "provenance.json"
+            receipt_path.write_text(json.dumps(receipt))
+            self.assertEqual(len(verify_producer_provenance(receipt_path, pred_root,
+                member_scores, ensemble_scores)), 64)
+            entries.pop()
+            receipt_path.write_text(json.dumps(receipt))
+            with self.assertRaisesRegex(ValueError, "45 prediction files"):
+                verify_producer_provenance(receipt_path, pred_root,
+                    member_scores, ensemble_scores)
 
 
 if __name__ == "__main__":

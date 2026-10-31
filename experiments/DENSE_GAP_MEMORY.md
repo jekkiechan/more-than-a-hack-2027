@@ -28,7 +28,9 @@ cells (five matches, three views), covering 45 member rows across two seeds
 and their ensemble. It compares each reconstructed seed and equal-probability
 ensemble to the saved control predictions and metric rows before it starts a
 second pass that applies the candidate. Each candidate score is paired with its
-replayed control, and only aggregate cell JSON is written.
+replayed control, and only aggregate cell JSON is written. A later invocation
+verifies the sealed replay receipts and their inputs, then continues candidate
+scoring without rescoring control metrics.
 
 The pre-score readout screen is an equal-provider clean ensemble spell-F1 gain
 of at least `0.01`, feed-like ensemble spell-F1 delta no worse than `-0.01`,
@@ -41,7 +43,8 @@ Run after the control artifacts pass their separate audit:
 python -m experiments.dense_gap_memory_v1_run \
   --prediction-root data/experiments/dense_label_weight_v1/predictions \
   --member-scores experiments/results/dense_label_weight_v1_member_scores_control_D2.json \
-  --ensemble-scores experiments/results/dense_label_weight_v1_ensemble_scores_control_D2.json
+  --ensemble-scores experiments/results/dense_label_weight_v1_ensemble_scores_control_D2.json \
+  --provenance experiments/results/dense_label_weight_v1_control_prediction_audit.json
 ```
 
 The dense model emits H/A/D probabilities. The helper accepts that three-class
@@ -81,7 +84,7 @@ declared reconstruction of the current dense controls; those controls need
 parity validation before candidate scoring. Pooled deployment weights do not
 serve as holdout evidence.
 
-The inference helper and runner's eight contract tests pass: invalid inputs are rejected,
+The inference helper and runner's nine contract tests pass: invalid inputs are rejected,
 the rule is team-symmetric, effects are limited to gaps, and memory clears at
 period breaks or unreliable observed-ball frames. These tests do not establish
 holdout efficacy.

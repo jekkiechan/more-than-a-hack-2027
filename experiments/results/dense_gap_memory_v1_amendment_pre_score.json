@@ -13,13 +13,14 @@
     "control_artifacts": "dense_label_weight_v1/predictions/control_D2/{fold}/seed{seed}__{match}__{view}__{replicate}.npz",
     "required_arrays": ["probabilities", "prediction", "labels", "period", "fps", "timestamps", "ball_observed"],
     "control_metric_rows": ["experiments/results/dense_label_weight_v1_member_scores_control_D2.json", "experiments/results/dense_label_weight_v1_ensemble_scores_control_D2.json"],
+    "producer_provenance_receipt": "experiments/results/dense_label_weight_v1_control_prediction_audit.json",
     "period_semantics": "NPZ period is the original input period for official scoring; memory/decoder block IDs are independently derived by supervised.model_periods(inputs).",
     "scoring": "Run full control replay first across 15 match/view/replicate cells, with 45 seed/ensemble member rows; only then apply the fixed candidate transform and score candidates."
   },
   "source_sha256": {
     "experiments/dense_gap_memory_v1.py": "cec02775117e0c3f9d1a414743d702bc46528a2b9b86b61852fbcc192b0860b2",
-    "experiments/dense_gap_memory_v1_run.py": "21db58b15f47d3ff90245045ac554907405868d03f671df44ede1fb88a252a51",
-    "experiments/tests/test_dense_gap_memory_v1.py": "72127a230ae1119ea487465c2a09924a4a18002ea14673e519cd5692dc3e1d66"
+    "experiments/dense_gap_memory_v1_run.py": "943d8d0c11fede78c16988ca6f1f72badd7640b502898a27b65e38f26eafd295",
+    "experiments/tests/test_dense_gap_memory_v1.py": "c6b0f57f9466a3925a9717ac2bb9790b7ce9f2580c547bc7d96c6e502b159aa2"
   },
   "unchanged": {
     "hypothesis_and_parameters": true,

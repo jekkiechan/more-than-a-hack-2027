@@ -75,11 +75,15 @@ class DenseErrorAuditTests(unittest.TestCase):
             save("A", "a1", 2026, "H", "A")
             save("A", "a1", 2027, "H", "H")
             save("B", "b1", 2026, "H" * 100, "A" + "H" * 99)
+            save("A", "a1", "ensemble", "H", "A")
             summary = summarize_archives(paths)
-            cell = summary["cells"][0]
+            cell = next(c for c in summary["cells"] if c["realization_kind"] == "individual_seed_members")
         self.assertAlmostEqual(cell["provider_balanced_match_rates"]["wrong_team_rate_scored"], .255)
         self.assertEqual(cell["raw_counts_across_archives"]["scored_frames"], 102)
         self.assertEqual(cell["raw_counts_across_archives"]["wrong_team_frames"], 2)
+        self.assertEqual(len(summary["cells"]), 2)
+        self.assertEqual(next(c for c in summary["cells"] if c["realization_kind"] == "ensemble")
+                         ["raw_counts_across_archives"]["wrong_team_frames"], 1)
 
     def test_rejects_noncontiguous_frames_inside_segment(self):
         f = rows("HHH", "HHH")

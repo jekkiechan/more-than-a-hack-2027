@@ -1,0 +1,125 @@
+{
+  "control_gate": {
+    "absolute_tolerance": 5.1e-05,
+    "candidate_fits_permitted_by_this_receipt": false,
+    "clean_expected_spell_f1": 0.6472145591,
+    "feed_like_expected_spell_f1": 0.5058107894,
+    "must_pass_before_candidate_fits": true
+  },
+  "current_manifest": {
+    "game_file_hashes_differing_from_original_count": 45,
+    "game_file_hashes_matching_original_count": 0,
+    "game_files_count": 45,
+    "path": "data/experiments/dense_label_weight_v1/records/train/manifest.json",
+    "same_game_file_keys_as_original": true,
+    "sha256": "1f905524123f63c60bd12bd42150c1d111dc779c1760f8d9b4a725077f3706d5"
+  },
+  "manifest_reconstruction": {
+    "binary_drift_cause": "unresolved; no claim that serialization variance caused the differing per-game hashes",
+    "interpretation": "The substitution reproduces the previously declared manifest hash. Current per-game joblib hashes differ for all 45 games; byte-identical original payloads are unavailable for comparison.",
+    "matches_expected_original_manifest_sha256": true,
+    "method": "Substitute the PR47 game_files map into the current manifest, then serialize JSON with indent=1, sort_keys=true, and a trailing newline, matching the manifest writer.",
+    "reconstructed_sha256": "d2639fa1a47b38bff1b293e8b2592fb1d7392c09700a2c9873c1a90a72397b51"
+  },
+  "organizer_labels_read": false,
+  "original_manifest_reference": {
+    "game_files": {
+      "10502.joblib": "10e12c8e5f9fa272c8e25307c2ebf625fab091dd087dc5d47d8d58e11fcdffd3",
+      "10503.joblib": "eb557811e2fa00980c1ace23c1e6a3a6ce043ebd701a617eb960a2b3678061d9",
+      "10504.joblib": "d5757a9c0e1bee8aee3d4fc920000366aeee1ee8a2ac11a9d572da4e7bc44926",
+      "10505.joblib": "115cadc7d6e352b4a865ce3f25d17d418c56922fe34c2df74085a6bca6fe0763",
+      "10506.joblib": "3cb4f1010403421a4df8f601b6feb7edd0ede43e545d8bbbc329c8fef917ad33",
+      "10507.joblib": "291093e7652e76c63d54193a25b241165d25ffc0b6cbba6b98c81e1fc0a0a3c7",
+      "10508.joblib": "4055989426b1c4ddc3dfdf08144a0f9baa0316dfd8597f7b6deec6402eccece3",
+      "10509.joblib": "f982ec43e62673d4e6aa271995ded080b62d7ea01e70bcb58ff7908f8165621e",
+      "10510.joblib": "2232df1aa2c82527d4708892b03a450c1246ba2500d605e2ac0b457481bb253d",
+      "10511.joblib": "301e3d3c27ee84465f0dca8003f96e96318da9b7da759da55d069f50cb17d2c0",
+      "10512.joblib": "7153e62ca7f6c4c8871c58f3168d1c2c41444f27acca16e3791eaa85e7c32377",
+      "10513.joblib": "6569245cdb0ebbb43e1172096071bc84c07374f0c96d9002e82f59eb949f3ed6",
+      "10514.joblib": "74c477f3e2680660339a150034ced680e6496e22380476a8d24b5fc4aab35810",
+      "10515.joblib": "df4f18a8d512bb4fd016d4357f3153175dd08a0c15690697b3023b663602b294",
+      "10516.joblib": "6418ada29f652d1c9c282e41499c2bd9537ce327ad2744b1c12c2da2a5b2fbe3",
+      "10517.joblib": "95e282cd413ebe357bbc4e4cd979ac98aac3a48a15d2892bb31866556997e001",
+      "3812.joblib": "aa3d30ffbabaf3a683aae1b7126389a5852ac045d87d5d6cbe7e26893d7bcdfd",
+      "3813.joblib": "26373012d3d6c37fb801eecdaa0da33520f8c25ede585edb1e38fb1ff8bda94f",
+      "3814.joblib": "1e1c8a04d837f99e1f659cf4b8ede85623e3e9ec6dbeb4f84990ef2cb3d12492",
+      "3815.joblib": "a9f8fb1b6ad94e81ac42d9f2fe535943364e69d8b3b3a0466e1e3eb1873c995e",
+      "3816.joblib": "3307c22fe0cb7f03a120857039aab31cc01f30c08055e73d303bcaf8d614087b",
+      "3817.joblib": "0ab4610e562b8d5f138081659ad7af7f155e81eb31d414316a2c6f45715ed2ca",
+      "3818.joblib": "7e1adc6594619448872def0112cc6f452dd0c06352985fe387b8884977240f39",
+      "3819.joblib": "79d1fee808e3dca22e1c32c255df00c5eface82692b7d9777b8d8d346021c127",
+      "3820.joblib": "a454612acf0ab415d7b35469bd8e0de2d104649ad18a5f838c3ed62ad60f70cf",
+      "3821.joblib": "d2f6900a539e730479943b8e43f7645bec449b06f3a213b8209e5da67de6baa2",
+      "3822.joblib": "1d641878496524717089fe0bb3a71727f2d7e4f4dc80d2426e90335855ae94e9",
+      "3823.joblib": "41a15bf3f9a1b070fb140f73ddc249b5ffe6c2e0d829dad510f3bd4cb692457f",
+      "3824.joblib": "d917b12a46acab848521ada8dc1ef27d9acdfb1ffca7c9628bff55822df4f335",
+      "3825.joblib": "bdbf3e4875bca5ccb7d4f413705005882a4446f5bbfc4ad29488d8a65e72d4e7",
+      "3826.joblib": "b919bc30b54ce75e7e610daffa5cc9139c7bc779ea595dd852f8f811e381639c",
+      "3827.joblib": "b45ddf4e6975ae36ca39ca8dc93980750b527f4519c0534b5510136f12e9ff42",
+      "3828.joblib": "a45bbc7cf9aabb207dcffc1a3ea019a007efc759c41b23573d6c7ec8cae92bc2",
+      "3829.joblib": "a1da53b4f5fa9ed07445191b3ab9adb243464f23f320ec638bb74b3f69be050e",
+      "3830.joblib": "e0a620665bb37b9a65d7a70a754fc0412181d18658f53b36d9c8258fe0753a55",
+      "3831.joblib": "d2c3b94b3ef3acb2a295fb11ca7e9741e02b68bfc04a67be70c10ea02f44225a",
+      "3832.joblib": "1feb2378778b52d687d10b25fde66b683dcf5baa62b4024af0063ffb83603bfb",
+      "3833.joblib": "8938d2744f8bcaca74dae1d078ca175ec81b528efcb2f600000812cced3d95a5",
+      "3834.joblib": "d49add6f7c70eb9303065b39d448995cee36f9d72f69f6fa48b5a8bd771f96f8",
+      "3835.joblib": "010b9a3876e1ad82bee6b476b11e8801145ebc08a86b77ad4f66c5c8561b266c",
+      "3836.joblib": "9e228df5034a1ed4cd5650a9c2a99d20bc85d29f75ae36acadba56e63db10adf",
+      "3837.joblib": "12ac4fcd343f6a14d644c4c0d687bdd6516f5df42d18bb4ab8199a1dc29671a8",
+      "3838.joblib": "ae1805b78e4580f4cf959aeb0fa1eb0510e4ada83fc400d1ca1f0040c7f61bb0",
+      "3839.joblib": "19e84f38999019c7ca36b31459590acc1285ce8717dbd392b0bbf803814f2144",
+      "3840.joblib": "93c8240fe5de30c57a22343e84a2b523f70b482724a25761f94dbe62c35b93a2"
+    },
+    "game_files_count": 45,
+    "game_files_map_key": "data.gar_game_files",
+    "manifest_sha256_expected": "d2639fa1a47b38bff1b293e8b2592fb1d7392c09700a2c9873c1a90a72397b51",
+    "source_path": "/tmp/pr47-declaration.json",
+    "source_sha256": "919946e3753ab9172e5ca8558cfe320f6e0c5c5758ba1ad338e03749dadcf26e"
+  },
+  "schema": 1,
+  "study": "dense_label_weight_v1",
+  "train_qa_comparison": {
+    "all_overlapping_train_qa_values_equal": true,
+    "common_train_leaf_mismatches": 0,
+    "common_train_leaf_values_compared": 273,
+    "current_qa_path": "/tmp/dense_label_weight_v1_qa.json",
+    "current_qa_sha256": "3332bd0d0fbee07f95689f8b3d7e5f35a649cb4ec0dbd2e1d4a59780fd875790",
+    "mismatches": [],
+    "new_only_train_keys": [
+      "spot_check_switches"
+    ],
+    "old_only_train_keys": [],
+    "original_report_path": "experiments/results/soccernet_dense_v1_labels_report.json",
+    "original_report_sha256": "bed6a0c2e07c8b1f24bf5eb2df7af40b6c87d71630ba7fa31b3b3b9351657398"
+  },
+  "training_or_scoring_performed_by_verifier": false,
+  "verification": "independent_pre_fit_reconstruction_check",
+  "verification_scope": {
+    "binary_drift_cause": "unresolved; no serialization-variance attribution",
+    "candidate_fit_authorization": "must remain blocked until control replay passes at declared tolerance",
+    "no_fit_or_scoring_performed": true,
+    "prefit_addendum_validated_by_runner_recomputation": true,
+    "train_qa_leaf_mismatches": 0,
+    "train_qa_leaf_values_compared": 273
+  },
+  "verified_artifacts": {
+    "copied_preparation_qa": {
+      "path": "experiments/results/dense_label_weight_v1_preparation_qa.json",
+      "sha256": "3332bd0d0fbee07f95689f8b3d7e5f35a649cb4ec0dbd2e1d4a59780fd875790"
+    },
+    "declaration": {
+      "declaration_matches_fresh_dry_recomputation": true,
+      "path": "experiments/results/dense_label_weight_v1_declaration.json",
+      "sha256": "4db01fc554ee8628445c3f82371cb3af1a14426339710c5c731194ff93a551f3"
+    },
+    "documented_reconstruction_addendum": {
+      "path": "experiments/results/dense_label_weight_v1_preparation_reconstruction.json",
+      "sha256": "b5363d83112e499645fd33ef1d24902cc366bc2834b32d445aa860ab3ec7c2f6"
+    },
+    "raw_train_restore_receipt": {
+      "path": "data/experiments/dense_label_weight_v1/soccernet_train_restore_receipt.json",
+      "sha256": "1e5b64e104931ad1bcc978c0772d8f9c939871a5cb6fd0ec41a745dd963c4287"
+    }
+  },
+  "verified_utc_date": "2026-10-31"
+}
