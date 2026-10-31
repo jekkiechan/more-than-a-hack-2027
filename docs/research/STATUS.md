@@ -1,7 +1,7 @@
 # Current research state
 
 Reviewed 2026-10-31 against fork `main` through
-[PR #49](https://github.com/jekkiechan/more-than-a-hack-2027/pull/49), with the completed
+[PR #50](https://github.com/jekkiechan/more-than-a-hack-2027/pull/50), including the completed
 [subsecond-team comparison](../../experiments/DENSE_SHORT_TEAM_V1.md) and the
 completed source-head evidence on open [PR #47](https://github.com/jekkiechan/more-than-a-hack-2027/pull/47).
 Check newer merged/open PRs before current-results advice. Detailed historical
@@ -47,6 +47,13 @@ Before another local sweep, consult the index's
 [settled directions](EXPERIMENTS.md#settled-directions).
 
 ## Artifacts and open work
+
+- **Subsecond team attribution:** six fits and the fixed blend are complete;
+  neither improves the adopted ensemble. Code/results are merged in PR #50.
+  Private [mtah-data PR #9](https://github.com/jekkiechan/mtah-data/pull/9)
+  delivers 122 verified archive entries and 118 successfully restored mapped
+  files. The restricted research site is published as version 11.
+  [Report and delivery receipts](../../experiments/DENSE_SHORT_TEAM_V1.md#reproduction-and-artifact-state).
 
 - **Targeted dense follow-ups:** all 12 fits and three comparisons are complete;
   reconstructed controls reproduce saved clean/feed-like scores within 3 × 10⁻¹¹.

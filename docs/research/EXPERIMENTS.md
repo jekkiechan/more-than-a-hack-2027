@@ -1,6 +1,6 @@
 # Experiment index
 
-Reviewed 2026-10-31 through merged PR #49 and the completed subsecond-team study. Find evidence here; adoption and next work live in
+Reviewed 2026-10-31 through merged PR #50 and verified subsecond-study delivery. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
