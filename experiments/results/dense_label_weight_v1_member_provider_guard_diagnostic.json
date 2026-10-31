@@ -1,0 +1,82 @@
+{
+  "all_provider_metric_deltas_pass": true,
+  "declaration_path": "experiments/results/dense_label_weight_v1_declaration.json",
+  "declaration_sha256": "4db01fc554ee8628445c3f82371cb3af1a14426339710c5c731194ff93a551f3",
+  "diagnostic": "Per-provider clean macro-F1 and D-F1 candidate-minus-control deltas for each seed and the ensemble. This supplements the equal-provider primary readout; it does not alter the frozen decision screen or score artifacts.",
+  "minimum_delta": -0.02,
+  "providers": {
+    "2026": {
+      "metrica": {
+        "both_pass": true,
+        "d_f1_delta": 0.00018453169049859053,
+        "d_f1_pass": true,
+        "macro_f1_delta": -2.4528556087477504e-05,
+        "macro_f1_pass": true
+      },
+      "skillcorner": {
+        "both_pass": true,
+        "d_f1_delta": 0.0006191586299235663,
+        "d_f1_pass": true,
+        "macro_f1_delta": 0.0007379035843476656,
+        "macro_f1_pass": true
+      },
+      "sportec": {
+        "both_pass": true,
+        "d_f1_delta": 0.00044012941927706883,
+        "d_f1_pass": true,
+        "macro_f1_delta": 0.0004569515596961615,
+        "macro_f1_pass": true
+      }
+    },
+    "2027": {
+      "metrica": {
+        "both_pass": true,
+        "d_f1_delta": -0.00022965005197517208,
+        "d_f1_pass": true,
+        "macro_f1_delta": -0.00020916730114262094,
+        "macro_f1_pass": true
+      },
+      "skillcorner": {
+        "both_pass": true,
+        "d_f1_delta": 0.0007561840946684883,
+        "d_f1_pass": true,
+        "macro_f1_delta": -0.0002647664292865226,
+        "macro_f1_pass": true
+      },
+      "sportec": {
+        "both_pass": true,
+        "d_f1_delta": 0.0014657921340016644,
+        "d_f1_pass": true,
+        "macro_f1_delta": 0.0015346751515595836,
+        "macro_f1_pass": true
+      }
+    },
+    "ensemble": {
+      "metrica": {
+        "both_pass": true,
+        "d_f1_delta": 3.242309394058118e-05,
+        "d_f1_pass": true,
+        "macro_f1_delta": -3.585774004610798e-05,
+        "macro_f1_pass": true
+      },
+      "skillcorner": {
+        "both_pass": true,
+        "d_f1_delta": 0.0018308168256325752,
+        "d_f1_pass": true,
+        "macro_f1_delta": 0.0015296412578323926,
+        "macro_f1_pass": true
+      },
+      "sportec": {
+        "both_pass": true,
+        "d_f1_delta": 0.0004229802937313343,
+        "d_f1_pass": true,
+        "macro_f1_delta": 0.00042087415520508653,
+        "macro_f1_pass": true
+      }
+    }
+  },
+  "source_readout_path": "experiments/results/dense_label_weight_v1_readout.json",
+  "source_readout_sha256": "9c9cdffe0c0d097e990e7791e2e2e8770ca33822f0e583d94f56bc9ba4a74266",
+  "status": "post_score_provider_guard_diagnostic",
+  "study": "dense_label_weight_v1"
+}

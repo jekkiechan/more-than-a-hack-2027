@@ -1,0 +1,50 @@
+{
+  "audit": "dense_submission_audit_v1",
+  "date_utc": "2026-10-31",
+  "scope": "Submission hardening, artifact restoration/inference replay, and format validation only",
+  "organizer_reference_labels_or_scores_read": false,
+  "package": "joint_gru_sn_dense_ensemble_v1",
+  "baseline_manifest_sha256": "76f18b3fa218e4dde357454dc3206b7eeb28ab97eda2862007fff8c987c04ec5",
+  "checkpoint_sha256": {
+    "dense_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+    "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "dense_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+    "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+  },
+  "replay": {
+    "fresh_process": true,
+    "input_rebuilt_from_raw_atd": true,
+    "raw_input_sha256": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3",
+    "input_rows": 199319,
+    "input_features": [
+      "ball",
+      "players",
+      "teams",
+      "period",
+      "fps",
+      "timestamps",
+      "pitch",
+      "ball_observed",
+      "player_observed",
+      "labels"
+    ],
+    "placeholder_labels_only": [
+      "X"
+    ],
+    "inference_output_sha256": "57ca788056ccf2f41839730fba492f15885c69f5788f35146ba1610b80b5b22b",
+    "sealed_expected_output_sha256": "57ca788056ccf2f41839730fba492f15885c69f5788f35146ba1610b80b5b22b",
+    "byte_identical": true,
+    "inference_runtime_seconds": 82.97,
+    "official_validator": "evaluation/validate_submission.py",
+    "validator_result": "valid; exactly 199319 ordered frame,label rows, frame 0..199318; labels H/A/D/X"
+  },
+  "contract_checks": {
+    "missing_player_observations": "Supported: unobserved slots remain NaN and are accompanied by player_observed masks; full replay exercised 1..35 visible players per frame. An additional fresh inference probe set every player slot missing at one native frame; the H/A/D probabilities remained finite and normalized (0.0163852, 0.0178476, 0.9657672). This does not establish behavior for an entire match with no players.",
+    "timestamp_gaps": "Supported as sequence boundaries: supervised.model_periods starts a new block when delta <= 0 or delta > 1.5/fps. Focused synthetic probe passed.",
+    "period_changes": "Supported as sequence boundaries: every period value transition starts a new block. Full replay included periods 0, 1, 2; focused probe passed.",
+    "coordinate_contract": "Raw ATD preparation scales pitch-normalized coordinates by the declared pitch dimensions into meters. The model consumes that prepared metric geometry; no explicit range/unit validator exists, so supplying normalized coordinates directly is unsupported and may silently degrade predictions.",
+    "team_symmetry": "Feature-level equivariance passed through existing refine_features.self_test; team-swap augmentation swaps H/A channels/labels during training. This is not evidence that arbitrary team IDs are supported: the prepared input expects two team IDs encoded 0/1.",
+    "runtime": "Full raw-input inference took 82.97 s in this environment (Python 3.12.14 CPU). Environment load and hardware affect runtime."
+  },
+  "fresh_format_validation_does_not_score_labels": true
+}

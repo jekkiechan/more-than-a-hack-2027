@@ -1,0 +1,95 @@
+{
+  "study": "dense_error_audit_v1",
+  "status": "completed_verified_external_prediction_audit",
+  "audit_runner": "experiments/dense_error_audit_v1.py",
+  "required_input_contract": [
+    "provider",
+    "match_id",
+    "segment_id",
+    "frame",
+    "gt",
+    "pred",
+    "ball_missing",
+    "fps"
+  ],
+  "verified_model_package": {
+    "path": "data/models/joint_gru_sn_dense_ensemble_v1/",
+    "manifest": "experiments/baseline_manifest.json",
+    "artifact_manifest": "../mtah-data/baseline_cache_manifest_joint_gru_sn_dense_ensemble_v1.json",
+    "four_checkpoint_hashes_match_manifest": true,
+    "scope": "pooled deployment weights, not provider-heldout weights"
+  },
+  "holdout_predictions": {
+    "searched": "Repository data/ and private mtah-data branch research/dense-targeted-archive-v1",
+    "current_dense_predictions_found": false,
+    "archived_reference_predictions_restored": 30,
+    "archived_reference_scope": "objective_alignment_v1 combined checkpoints, 5 external matches x clean/feed_like corrupt_1/2 x seeds 2026/2027; these are historical combined reference predictions, not current dense outputs",
+    "archived_prediction_schema": {
+      "fields": [
+        "prediction",
+        "probability"
+      ],
+      "prediction_dtype": "H/A/D labels",
+      "probability_shape": "N x 3"
+    },
+    "archived_prediction_hashes_verified_against_lfs_oids": true,
+    "match_length_checks": "All 30 archived outputs match the corresponding external raw-label length; 6 outputs per match; 0 mismatches.",
+    "frozen_aggregate_source": "experiments/results/sn_dense_v1_progress.md",
+    "limitation": "No current dense provider-holdout frame predictions yet; no dense error category counts can be attributed until new dense predictions arrive."
+  },
+  "forbidden_substitutes": [
+    "organizer public labels",
+    "pooled deployment predictions as external provider-holdout claims"
+  ],
+  "historical_known_failure_categories": [
+    "SkillCorner boundary censoring reported by spell_metric_audit",
+    "provider-specific D shortcuts reported in historical multisource studies"
+  ],
+  "dense_specific_category_counts": null,
+  "pr47_inspection": {
+    "public_repo_pr_47_head": "6e93eb2218a533b8017ff50f284f655021eec9e6",
+    "changed_files_inspected_via_github_api": true,
+    "contains_dense_holdout_prediction_artifacts": false,
+    "note": "PR 47 concerns definition alignment, not dense holdout prediction storage."
+  },
+  "holdout_ground_truth_inputs": {
+    "restored_matches": {
+      "metrica_3": "../mtah-data/external/processed/metrica_3.npz",
+      "skillcorner_had_1996435": "../mtah-data/external/processed/skillcorner_had_1996435.npz",
+      "skillcorner_had_1996436": "../mtah-data/external/processed/skillcorner_had_1996436.npz",
+      "skillcorner_had_2006229": "../mtah-data/external/processed/skillcorner_had_2006229.npz",
+      "J03WOY": "../mtah-data/external_audit/sportec/processed/J03WOY.npz"
+    },
+    "fields": [
+      "labels",
+      "ball_observed",
+      "period",
+      "timestamps"
+    ],
+    "hashes_verified_against_preparation_declaration": true
+  },
+  "evaluation_inputs": {
+    "status": "restored_verified",
+    "manifest": "../mtah-data/seed_gap_context_cache_manifest.json",
+    "caches": 15,
+    "layout": "../mtah-data/experiments/seed_gap_context_v1/{match}_{clean/feed_like_corrupt_1/feed_like_corrupt_2}.joblib",
+    "verified_fields": [
+      "inputs",
+      "labels",
+      "record",
+      "inputs.ball_observed",
+      "inputs.timestamps"
+    ],
+    "match_rows": {
+      "J03WOY": 142536,
+      "metrica_3": 143761,
+      "skillcorner_had_1996435": 57621,
+      "skillcorner_had_1996436": 60280,
+      "skillcorner_had_2006229": 59270
+    },
+    "size_and_sha256_verified": true
+  },
+  "prediction_archives": "data/experiments/dense_label_weight_v1/predictions/control_D2/ (15 ensemble archives; hashes recorded in dense_error_audit_v1.json)",
+  "audit_report": "experiments/results/dense_error_audit_v1.json",
+  "reconstruction_limitation": "The original per-game GAR joblibs differ by hash for 45/45 games; reconstructed manifest and overlapping TRAIN QA values match frozen references, and control replay passes the unchanged score gate."
+}

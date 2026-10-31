@@ -1,0 +1,31 @@
+{
+  "study": "dense_gap_memory_v1",
+  "status": "declared; scoring pending control replay",
+  "hypothesis": "A last reliable observed-ball H/A control estimate with decaying age bias improves dense ensemble spell recovery through missing-ball gaps without harming clean or feed-like full-provider holdouts.",
+  "arms": ["seed_2026", "seed_2027", "equal_probability_ensemble"],
+  "views": ["clean", "feed_like"],
+  "method": {
+    "inference_only": true,
+    "inference_labels": false,
+    "learned_components": false,
+    "anchor": "Observed-ball frame with max(P(H), P(A)) >= 0.80 and absolute H/A margin >= 0.20; retain that team and timestamp.",
+    "gap_adjustment": "Only during missing-ball frames, add a same-team H/A log-odds bias capped at 0.25 and decaying with a 5-second half-life. Preserve D/X and H+A mass.",
+    "reset": "Clear anchor at period changes, non-increasing timestamps, or an observed-ball frame that does not meet reliability thresholds.",
+    "team_symmetry": true
+  },
+  "comparison": "Exact matched current dense controls, both seeds and their equal-probability ensemble, same full-provider holdout cells under clean and feed-like views. Replay existing control metrics and predictions before candidate scoring.",
+  "guardrails": {
+    "no_organizer_labels": true,
+    "no_pooled_deployment_as_holdout": true,
+    "no_retraining_or_reconstruction_without_explicit_declaration": true,
+    "no_promotion": true,
+    "no_frozen_study_changes": true
+  },
+  "scoring_status": "not started; awaiting exact full-provider holdout control arrays and replay",
+  "fixed_parameters": {
+    "reliability": 0.8,
+    "minimum_team_margin": 0.2,
+    "maximum_log_odds": 0.25,
+    "half_life_seconds": 5.0
+  }
+}

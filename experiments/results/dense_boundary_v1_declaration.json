@@ -1,0 +1,30 @@
+{
+  "study_id": "dense_boundary_v1",
+  "status": "frozen_pre_score",
+  "created_utc": "2026-10-31",
+  "question": "Does a fixed confidence-dependent transition cost improve official external possession spell F1 over exact cost-3 Viterbi on the adopted dense ensemble, while preserving short possessions and feed-like performance?",
+  "hypothesis": "Reducing the cost only for probability-supported directed transitions can recover genuine brief possessions while retaining cost-3 smoothing where an edge lacks support.",
+  "candidate": {
+    "name": "dense_boundary_confidence_v1",
+    "formula": "For a directed state change i->j at adjacent rows t-1,t, penalty = 3 * fps/10 * (1 - sqrt(p[t-1,i] * p[t,j])); same-state penalty is zero.",
+    "parameters_fitted": false,
+    "additional_arms": 0
+  },
+  "control": "Exact replay of experiments.supervised.decode(probabilities, model_periods, fps, switch_cost=3).",
+  "prediction_source": "Frozen current dense ensemble native H/A/D probabilities, averaged before decoding; no refitting or probability alteration.",
+  "cohort": {
+    "protocol": "Existing full-provider external holdout, whole match/provider exclusions respected by upstream models.",
+    "matches": ["Metrica metrica_3", "Sportec J03WOY", "SkillCorner 1996435", "SkillCorner 1996436", "SkillCorner 2006229"],
+    "views": ["clean", "feed_like_corrupt_1", "feed_like_corrupt_2"],
+    "scoring": "Official evaluation/possession_metrics.py via experiments.metrics.evaluate_tracking; paired within each match and view.",
+    "organizer_labels": false
+  },
+  "guardrails": {
+    "primary": "Aggregate clean spell F1 must improve; summarize paired per-match deltas.",
+    "feed_like": "Aggregate mean across the two feed_like views must not decline.",
+    "short_spell": "Report recall for GT alive spells shorter than 3 seconds; candidate must not reduce this aggregate.",
+    "integrity": ["preserve X masks", "break decoding at period and timestamp discontinuities", "same probabilities and rows for both arms", "report provider and view cells"]
+  },
+  "provenance_note": "No dense frame-level fragmentation-versus-merging audit was available at freeze time; this study tests the stated decoder mechanism without choosing a direction or threshold from holdout labels.",
+  "results": null
+}

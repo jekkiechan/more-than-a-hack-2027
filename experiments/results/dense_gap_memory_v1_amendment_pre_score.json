@@ -1,0 +1,41 @@
+{
+  "study": "dense_gap_memory_v1",
+  "amendment": "dense_gap_memory_v1_amendment_pre_score",
+  "status": "declared before holdout scoring",
+  "reason": "Initial artifact audit found pooled deployment checkpoints but no restorable dense full-provider holdout predictions. The parent-authorized plan is to reconstruct the current dense controls on the declared provider-held-out cohort, then apply the already frozen inference transform.",
+  "scope_change": {
+    "control": "Reconstructed matched current dense control fits for the three full-provider folds, both seeds, clean/feed_like views, using the existing dense package architecture, recipe, source exclusions and matching inputs. These controls are explicitly labeled reconstructed; they are not claimed as byte-identical original holdout checkpoints.",
+    "candidate": "No new model fits. Apply the unchanged fixed inference-time memory transform to each reconstructed control's saved native probabilities, then form the equal-probability ensemble.",
+    "fitting_owner": "dense_label_weight_v1 coordinated by the parent task agent",
+    "required_before_candidate_scoring": "Reconstructed control replay/parity audit and source/input/checkpoint receipts must pass. If parity cannot be established, stop and report the blocker."
+  },
+  "input_contract": {
+    "control_artifacts": "dense_label_weight_v1/predictions/control_D2/{fold}/seed{seed}__{match}__{view}__{replicate}.npz",
+    "required_arrays": ["probabilities", "prediction", "labels", "period", "fps", "timestamps", "ball_observed"],
+    "control_metric_rows": ["experiments/results/dense_label_weight_v1_member_scores_control_D2.json", "experiments/results/dense_label_weight_v1_ensemble_scores_control_D2.json"],
+    "producer_provenance_receipt": "experiments/results/dense_label_weight_v1_control_prediction_audit.json",
+    "period_semantics": "NPZ period is the original input period for official scoring; memory/decoder block IDs are independently derived by supervised.model_periods(inputs).",
+    "scoring": "Run full control replay first across 15 match/view/replicate cells, with 45 seed/ensemble member rows; only then apply the fixed candidate transform and score candidates."
+  },
+  "source_sha256": {
+    "experiments/dense_gap_memory_v1.py": "cec02775117e0c3f9d1a414743d702bc46528a2b9b86b61852fbcc192b0860b2",
+    "experiments/dense_gap_memory_v1_run.py": "943d8d0c11fede78c16988ca6f1f72badd7640b502898a27b65e38f26eafd295",
+    "experiments/tests/test_dense_gap_memory_v1.py": "c6b0f57f9466a3925a9717ac2bb9790b7ce9f2580c547bc7d96c6e502b159aa2"
+  },
+  "unchanged": {
+    "hypothesis_and_parameters": true,
+    "cohort_and_provider_exclusions": true,
+    "views_and_seeds": true,
+    "official_metrics_and_guards": true,
+    "no_organizer_labels": true,
+    "no_promotion": true
+  },
+  "readout_screen": {
+    "primary": "Equal-provider clean spell-F1 gain >= +0.01 for the ensemble.",
+    "feed_like_guard": "Equal-provider feed-like ensemble spell-F1 delta >= -0.01.",
+    "provider_guards": "For every held-out provider and each seed/ensemble member, clean macro-F1 and D-F1 deltas >= -0.02.",
+    "role": "Descriptive fixed screen for interpreting this experiment only; no promotion or adoption is authorized."
+  },
+  "organizer_labels_read": false,
+  "candidate_scores_read": false
+}

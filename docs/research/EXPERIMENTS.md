@@ -33,6 +33,7 @@ the matching section/report. These are study families, not one leaderboard.
 
 | ID | Scope / state | Evidence |
 | --- | --- | --- |
+| `dense-targeted-followups` — completed, no upgrade | Matched control replay passed. Ensemble clean/feed-like spell deltas: gap memory +0.000367/−0.001133; boundary decoder −0.002939/−0.003794; silver weighting +0.000701/−0.000583. Audit identifies ≤1s team errors; exact 199,319-row submission replay passed. No promotion. | [Coordinated study](../../experiments/DENSE_TARGETED_FOLLOWUPS.md), [error audit](../../experiments/DENSE_ERROR_AUDIT_V1.md), [submission audit](../../experiments/dense_submission_audit_v1/README.md) |
 | `soccernet_followup_execution_v1` — completed, retain baseline | Three Luna mechanisms, six reconstructed references and 24 matched continuations; 225 scored outputs and exact weight replay. Reconstruction .642988/.503681 clean/feed-like versus reference .641790/.502586 and control .642896/.504988. Only +.000092 clean over control, with -.001307 feed-like; all continuations miss +.01 clean, all provider/stress guards pass. No promotion. | [Completed report](../../experiments/SOCCERNET_FOLLOWUP.md), [aggregate](../../experiments/results/soccernet_followup_results.json), [readout](../../experiments/results/soccernet_followup_readout.json), [verification](../../experiments/results/soccernet_followup_verification.json), [artifacts](../../experiments/results/soccernet_followup_artifacts.json), [original implementation](../../experiments/SOCCERNET_TRAINING_IDEAS.md) |
 
 ## Merged studies

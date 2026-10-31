@@ -1,0 +1,937 @@
+{
+  "arm": "weight_025",
+  "prediction_files": {
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_metrica/seedensemble__metrica_3__clean__clean.npz": "e881e23b4633434178e25173ceffcac9a1d2401377821e55f41f492e96cde6f0",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_metrica/seedensemble__metrica_3__feed_like__corrupt_1.npz": "ccb72ae793b112366d79435e26cfb4df66c5a7a94674aa41d3e8040b8c7fc0eb",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_metrica/seedensemble__metrica_3__feed_like__corrupt_2.npz": "b00c5c8992ebf34343b722fb754df2c5a3da4dc2452d21afd75c16c712a52a50",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__clean__clean.npz": "0e1612aeb53cbb6380e05fbe4bd4cc1388088f78da7265bd012da7bf517d92d5",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__feed_like__corrupt_1.npz": "4cee8132e76a0d3bed55576c06ff46eee83fdb3ca62ec22fe545d955172e1dd9",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_1996435__feed_like__corrupt_2.npz": "15a37d8bc5f03a1f25718fe9298786592eb74061d9143c61b13a11cf4aae9f93",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__clean__clean.npz": "973f6e4d171302489a6b8f65f172cb2e4ab0e16a2576c5bc38809b895f52dceb",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__feed_like__corrupt_1.npz": "d3948bc043c3fbddbf86b42b25ca65caf21bd4a16555c27e62c0ffc0a9dd7966",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_1996436__feed_like__corrupt_2.npz": "c6d90b56c462aeebde76a737530c7ad3a878a8d37932309beebe75a6935650af",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__clean__clean.npz": "cf6489c65383a86667224ffe4f88539576bd9d1c7dc22e2a2502ececfb8fd82b",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__feed_like__corrupt_1.npz": "841ea419ea44444c4fe6091a30140e2d4cfb038d6e4010aef64793cf923d2fd4",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_skillcorner/seedensemble__skillcorner_had_2006229__feed_like__corrupt_2.npz": "0e102c66c1398b7d0cb553d56c5d807781ced4857f7500f757366aea00425774",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_sportec/seedensemble__J03WOY__clean__clean.npz": "c98a963438c78132cac9c9ba4aa31ce471da5422dc0baf3f4d344a8a2793daac",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_sportec/seedensemble__J03WOY__feed_like__corrupt_1.npz": "2d17bd16f8a512926475379ae52c6dc855422b76cc29eca8194f56344acaac5e",
+    "data/experiments/dense_label_weight_v1/predictions/weight_025/leave_out_sportec/seedensemble__J03WOY__feed_like__corrupt_2.npz": "23f3a25a81a79ace6263c6d44952241fa0b6ff1702f83166ae673ae621154966"
+  },
+  "rows": [
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.26232209737827716,
+          "median": -0.08,
+          "n": 267,
+          "p90_abs": 1.8560000000000003
+        },
+        "excluded_run_edge_matches": 1,
+        "start": {
+          "mean": -0.6507865168539325,
+          "median": -0.12,
+          "n": 267,
+          "p90_abs": 2.6320000000000006
+        }
+      },
+      "d_f1": 0.9004048710556579,
+      "d_precision": 0.9415359778597786,
+      "d_recall": 0.8627169811320755,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a"
+      },
+      "fold": "leave_out_sportec",
+      "fragmented_reference_spells": 4,
+      "graded_frames": 142536,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.8662049607452945,
+      "match": "J03WOY",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__sportec__s2026.joblib": "ceae0563303b7fe7aa7747d8fd81d178ae57375be764e2dea9a555b57537445f",
+        "data/experiments/dense_label_weight_v1/models/weight_025__sportec__s2027.joblib": "65a70fae7bc9aacbd48f3e855ea2d0aebd5c52cbc799878c20804f2ad01110ed"
+      },
+      "n_gt_spells": 456,
+      "n_pred_spells": 350,
+      "prediction_sha256": "2c17fbbeaacdc1a00831f2f3f8cf644bd333fd12d7b46f2262b8d95eca3961ed",
+      "probabilities_sha256": "a2c131b0321d09de8e3f5996f5852e780c64d3d6a24b7da12051d4954120df97",
+      "probability_sha256": "a2c131b0321d09de8e3f5996f5852e780c64d3d6a24b7da12051d4954120df97",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 1,
+      "replicate": "clean",
+      "short_matched_spells": 69,
+      "short_reference_spells": 197,
+      "short_spell_recall": 0.350253807106599,
+      "source": "sportec",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.7543424317617865,
+        "0.4": 0.7196029776674939,
+        "0.5": 0.6650124069478908,
+        "0.6": 0.5955334987593052,
+        "0.7": 0.5086848635235732
+      },
+      "spell_f1": 0.6486352357320099,
+      "view": "clean",
+      "weighted_70_30": 0.7139061532359952
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.3253333333333333,
+          "median": -0.04,
+          "n": 180,
+          "p90_abs": 3.8239999999999985
+        },
+        "excluded_run_edge_matches": 1,
+        "start": {
+          "mean": -0.8424444444444443,
+          "median": -0.16,
+          "n": 180,
+          "p90_abs": 4.227999999999999
+        }
+      },
+      "d_f1": 0.8950535232537105,
+      "d_precision": 0.9344402292621241,
+      "d_recall": 0.8588528301886792,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc"
+      },
+      "fold": "leave_out_sportec",
+      "fragmented_reference_spells": 6,
+      "graded_frames": 142536,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.8120547159691339,
+      "match": "J03WOY",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__sportec__s2026.joblib": "ceae0563303b7fe7aa7747d8fd81d178ae57375be764e2dea9a555b57537445f",
+        "data/experiments/dense_label_weight_v1/models/weight_025__sportec__s2027.joblib": "65a70fae7bc9aacbd48f3e855ea2d0aebd5c52cbc799878c20804f2ad01110ed"
+      },
+      "n_gt_spells": 456,
+      "n_pred_spells": 295,
+      "prediction_sha256": "7c557694f813e8776f68ae8dc2b1fff34127660960c3e3568a087446d8f63b8f",
+      "probabilities_sha256": "11c357732c3d410e4b80c665293a41e698987a683e132def9c10e4f4bcb850b3",
+      "probability_sha256": "11c357732c3d410e4b80c665293a41e698987a683e132def9c10e4f4bcb850b3",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 1,
+      "replicate": "corrupt_1",
+      "short_matched_spells": 32,
+      "short_reference_spells": 197,
+      "short_spell_recall": 0.16243654822335024,
+      "source": "sportec",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.6231691078561918,
+        "0.4": 0.5459387483355526,
+        "0.5": 0.48202396804260983,
+        "0.6": 0.40745672436751,
+        "0.7": 0.33022636484687085
+      },
+      "spell_f1": 0.47776298268974704,
+      "view": "feed_like",
+      "weighted_70_30": 0.5780505026735631
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.554090909090909,
+          "median": -0.08,
+          "n": 176,
+          "p90_abs": 4.04
+        },
+        "excluded_run_edge_matches": 1,
+        "start": {
+          "mean": -0.8070454545454545,
+          "median": -0.16,
+          "n": 176,
+          "p90_abs": 3.88
+        }
+      },
+      "d_f1": 0.8998745294855708,
+      "d_precision": 0.9364452423698384,
+      "d_recall": 0.8660528301886793,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274"
+      },
+      "fold": "leave_out_sportec",
+      "fragmented_reference_spells": 6,
+      "graded_frames": 142536,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.8077993994150804,
+      "match": "J03WOY",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__sportec__s2026.joblib": "ceae0563303b7fe7aa7747d8fd81d178ae57375be764e2dea9a555b57537445f",
+        "data/experiments/dense_label_weight_v1/models/weight_025__sportec__s2027.joblib": "65a70fae7bc9aacbd48f3e855ea2d0aebd5c52cbc799878c20804f2ad01110ed"
+      },
+      "n_gt_spells": 456,
+      "n_pred_spells": 292,
+      "prediction_sha256": "f356636c8d1eaa6ef0cd4bfb80d9d353cb8ec67415d3cb18642d612e14e1e5e9",
+      "probabilities_sha256": "d4194f0cbe4867e4fa5b5d1e38240afec26aae9c605f87670f02567c8b20620c",
+      "probability_sha256": "d4194f0cbe4867e4fa5b5d1e38240afec26aae9c605f87670f02567c8b20620c",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 1,
+      "replicate": "corrupt_2",
+      "short_matched_spells": 28,
+      "short_reference_spells": 197,
+      "short_spell_recall": 0.14213197969543148,
+      "source": "sportec",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5989304812834224,
+        "0.4": 0.5427807486631017,
+        "0.5": 0.47326203208556145,
+        "0.6": 0.39572192513368987,
+        "0.7": 0.3315508021390374
+      },
+      "spell_f1": 0.46844919786096256,
+      "view": "feed_like",
+      "weighted_70_30": 0.5702542583271979
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.19216216216216217,
+          "median": 0.04,
+          "n": 296,
+          "p90_abs": 1.64
+        },
+        "excluded_run_edge_matches": 3,
+        "start": {
+          "mean": -0.12797297297297297,
+          "median": 0.0,
+          "n": 296,
+          "p90_abs": 1.34
+        }
+      },
+      "d_f1": 0.90198876506297,
+      "d_precision": 0.9206529026888308,
+      "d_recall": 0.8840663366116822,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087"
+      },
+      "fold": "leave_out_metrica",
+      "fragmented_reference_spells": 7,
+      "graded_frames": 142698,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.9253294658604302,
+      "match": "metrica_3",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__metrica__s2026.joblib": "631b8d57486c10b9fefe532e9a64912055f6d5a75eb5de4ac171313a3684fcd3",
+        "data/experiments/dense_label_weight_v1/models/weight_025__metrica__s2027.joblib": "b125fed46d8cd931fedfb83c3f715ceeb2d9c28c12ea45c9952eb2813c77587e"
+      },
+      "n_gt_spells": 382,
+      "n_pred_spells": 344,
+      "prediction_sha256": "9f95270bae1db5a9419745972df7eaa74bc17bd1617f5fe44e75d1691ec65e3a",
+      "probabilities_sha256": "6eccf8bee6fdaa6148aff036476596ad8a279d34b1430b473f0620de4a476990",
+      "probability_sha256": "6eccf8bee6fdaa6148aff036476596ad8a279d34b1430b473f0620de4a476990",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 4,
+      "replicate": "clean",
+      "short_matched_spells": 71,
+      "short_reference_spells": 126,
+      "short_spell_recall": 0.5634920634920635,
+      "source": "metrica",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.884297520661157,
+        "0.4": 0.8650137741046832,
+        "0.5": 0.8236914600550964,
+        "0.6": 0.7575757575757576,
+        "0.7": 0.6942148760330579
+      },
+      "spell_f1": 0.8049586776859504,
+      "view": "clean",
+      "weighted_70_30": 0.8410699141382944
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.5095918367346939,
+          "median": 0.08,
+          "n": 196,
+          "p90_abs": 2.64
+        },
+        "excluded_run_edge_matches": 3,
+        "start": {
+          "mean": 0.21122448979591832,
+          "median": 0.04,
+          "n": 196,
+          "p90_abs": 3.3200000000000003
+        }
+      },
+      "d_f1": 0.8946020644142365,
+      "d_precision": 0.9093848906013485,
+      "d_recall": 0.880292165264303,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334"
+      },
+      "fold": "leave_out_metrica",
+      "fragmented_reference_spells": 10,
+      "graded_frames": 142698,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.8754604327139935,
+      "match": "metrica_3",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__metrica__s2026.joblib": "631b8d57486c10b9fefe532e9a64912055f6d5a75eb5de4ac171313a3684fcd3",
+        "data/experiments/dense_label_weight_v1/models/weight_025__metrica__s2027.joblib": "b125fed46d8cd931fedfb83c3f715ceeb2d9c28c12ea45c9952eb2813c77587e"
+      },
+      "n_gt_spells": 382,
+      "n_pred_spells": 286,
+      "prediction_sha256": "c66069db70a1ed31ddc2833ac191a11e7d7259af63fad2c035f1abd646fe250f",
+      "probabilities_sha256": "c03353a67215fd852b981b0f728dc5743d220dd96b309d489256733be42512b1",
+      "probability_sha256": "c03353a67215fd852b981b0f728dc5743d220dd96b309d489256733be42512b1",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 4,
+      "replicate": "corrupt_1",
+      "short_matched_spells": 34,
+      "short_reference_spells": 126,
+      "short_spell_recall": 0.2698412698412698,
+      "source": "metrica",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.7065868263473053,
+        "0.4": 0.6826347305389221,
+        "0.5": 0.5958083832335329,
+        "0.6": 0.5419161676646707,
+        "0.7": 0.4850299401197605
+      },
+      "spell_f1": 0.6023952095808383,
+      "view": "feed_like",
+      "weighted_70_30": 0.6843147765207849
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.47738693467336685,
+          "median": 0.04,
+          "n": 199,
+          "p90_abs": 3.0320000000000027
+        },
+        "excluded_run_edge_matches": 2,
+        "start": {
+          "mean": -0.29648241206030157,
+          "median": 0.0,
+          "n": 199,
+          "p90_abs": 3.536000000000005
+        }
+      },
+      "d_f1": 0.89616497829233,
+      "d_precision": 0.9130745305840341,
+      "d_recall": 0.8798703461137135,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259"
+      },
+      "fold": "leave_out_metrica",
+      "fragmented_reference_spells": 8,
+      "graded_frames": 142698,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.8734660110512437,
+      "match": "metrica_3",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__metrica__s2026.joblib": "631b8d57486c10b9fefe532e9a64912055f6d5a75eb5de4ac171313a3684fcd3",
+        "data/experiments/dense_label_weight_v1/models/weight_025__metrica__s2027.joblib": "b125fed46d8cd931fedfb83c3f715ceeb2d9c28c12ea45c9952eb2813c77587e"
+      },
+      "n_gt_spells": 382,
+      "n_pred_spells": 279,
+      "prediction_sha256": "c45e941b934b7b80dfda87b351677c2847ddc176f984e937bafcf3dcc2cdc0fd",
+      "probabilities_sha256": "5e7239418c85e5a2bc4dae3abc92ed0544f9ee5c9065c4558015a7d127013d69",
+      "probability_sha256": "5e7239418c85e5a2bc4dae3abc92ed0544f9ee5c9065c4558015a7d127013d69",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 4,
+      "replicate": "corrupt_2",
+      "short_matched_spells": 27,
+      "short_reference_spells": 126,
+      "short_spell_recall": 0.21428571428571427,
+      "source": "metrica",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.7049924357034795,
+        "0.4": 0.6717095310136157,
+        "0.5": 0.6081694402420575,
+        "0.6": 0.5385779122541604,
+        "0.7": 0.46596066565809374
+      },
+      "spell_f1": 0.5978819969742813,
+      "view": "feed_like",
+      "weighted_70_30": 0.68055720119737
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.17941176470588238,
+          "median": 0.3,
+          "n": 34,
+          "p90_abs": 2.94
+        },
+        "excluded_run_edge_matches": 151,
+        "start": {
+          "mean": -0.6264705882352941,
+          "median": -0.25,
+          "n": 34,
+          "p90_abs": 4.9
+        }
+      },
+      "d_f1": 0.7443449218156976,
+      "d_precision": 0.8791464945311099,
+      "d_recall": 0.64538633671186,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 11,
+      "graded_frames": 33979,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.7868605103656915,
+      "match": "skillcorner_had_1996435",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 384,
+      "n_pred_spells": 367,
+      "prediction_sha256": "eb0c24e729e7f9e89df7c34338a4d1a788242ef36ff70f71a335a44b9a6fe673",
+      "probabilities_sha256": "f43c98c9de2f1111c22da733cd6bb1bed4e944490a993b9e9cd012c496a0a37e",
+      "probability_sha256": "f43c98c9de2f1111c22da733cd6bb1bed4e944490a993b9e9cd012c496a0a37e",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 243,
+      "replicate": "clean",
+      "short_matched_spells": 37,
+      "short_reference_spells": 155,
+      "short_spell_recall": 0.23870967741935484,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5672436750998668,
+        "0.4": 0.540612516644474,
+        "0.5": 0.492676431424767,
+        "0.6": 0.4314247669773635,
+        "0.7": 0.37283621837549935
+      },
+      "spell_f1": 0.48095872170439413,
+      "view": "clean",
+      "weighted_70_30": 0.5727292583027833
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.5793103448275864,
+          "median": 0.3,
+          "n": 29,
+          "p90_abs": 3.999999999999999
+        },
+        "excluded_run_edge_matches": 139,
+        "start": {
+          "mean": -1.503448275862069,
+          "median": -0.4,
+          "n": 29,
+          "p90_abs": 5.94
+        }
+      },
+      "d_f1": 0.7499809958190803,
+      "d_precision": 0.887549478229579,
+      "d_recall": 0.6493352639199684,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 9,
+      "graded_frames": 33979,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.7701222429476667,
+      "match": "skillcorner_had_1996435",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 384,
+      "n_pred_spells": 362,
+      "prediction_sha256": "e2611a1dcb3ffa735b5ab96a8fae7e296c708e7c9634ec2daf80addea00158cb",
+      "probabilities_sha256": "f0a3bc1e2122018a71e8cf04ba4ffabe0c6daeb708793dd8732a5caca5538b18",
+      "probability_sha256": "f0a3bc1e2122018a71e8cf04ba4ffabe0c6daeb708793dd8732a5caca5538b18",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 243,
+      "replicate": "corrupt_1",
+      "short_matched_spells": 33,
+      "short_reference_spells": 155,
+      "short_spell_recall": 0.2129032258064516,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5308310991957105,
+        "0.4": 0.4959785522788204,
+        "0.5": 0.450402144772118,
+        "0.6": 0.39410187667560326,
+        "0.7": 0.32171581769436997
+      },
+      "spell_f1": 0.4386058981233244,
+      "view": "feed_like",
+      "weighted_70_30": 0.5380608015706271
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 1.0956521739130434,
+          "median": 0.6,
+          "n": 23,
+          "p90_abs": 5.140000000000001
+        },
+        "excluded_run_edge_matches": 143,
+        "start": {
+          "mean": -1.039130434782609,
+          "median": -0.4,
+          "n": 23,
+          "p90_abs": 4.9
+        }
+      },
+      "d_f1": 0.7417419697775077,
+      "d_precision": 0.8765254845656856,
+      "d_recall": 0.6428853494800579,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 11,
+      "graded_frames": 33979,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.7686049931840625,
+      "match": "skillcorner_had_1996435",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 384,
+      "n_pred_spells": 369,
+      "prediction_sha256": "bcebcec7ca9386a21549192143a335b802491158ba10f990486f6318c4db14ac",
+      "probabilities_sha256": "4980973a3b6f6143b899e1de473073955cbb21ec3978998805b4a9eeed92c5d4",
+      "probability_sha256": "4980973a3b6f6143b899e1de473073955cbb21ec3978998805b4a9eeed92c5d4",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 243,
+      "replicate": "corrupt_2",
+      "short_matched_spells": 33,
+      "short_reference_spells": 155,
+      "short_spell_recall": 0.2129032258064516,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5312084993359893,
+        "0.4": 0.4940239043824701,
+        "0.5": 0.4409030544488712,
+        "0.6": 0.3904382470119521,
+        "0.7": 0.3399734395750332
+      },
+      "spell_f1": 0.43930942895086317,
+      "view": "feed_like",
+      "weighted_70_30": 0.5380980982208229
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": -0.3263157894736842,
+          "median": 0.3,
+          "n": 19,
+          "p90_abs": 3.52
+        },
+        "excluded_run_edge_matches": 173,
+        "start": {
+          "mean": -1.4947368421052631,
+          "median": -0.7,
+          "n": 19,
+          "p90_abs": 3.3999999999999995
+        }
+      },
+      "d_f1": 0.7601283294784749,
+      "d_precision": 0.8980959097320169,
+      "d_recall": 0.6589057043073341,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 6,
+      "graded_frames": 27701,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.7593288728953785,
+      "match": "skillcorner_had_1996436",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 361,
+      "n_pred_spells": 412,
+      "prediction_sha256": "fa6bc03b9ed77ee2f02bbd4410dd22d73851485b404f24f67d64bc601b773fb7",
+      "probabilities_sha256": "228812806652c53e38ca5d8c21718926a220994bd342640d61edd7400879e545",
+      "probability_sha256": "228812806652c53e38ca5d8c21718926a220994bd342640d61edd7400879e545",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 283,
+      "replicate": "clean",
+      "short_matched_spells": 60,
+      "short_reference_spells": 155,
+      "short_spell_recall": 0.3870967741935484,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5795601552393271,
+        "0.4": 0.5278137128072444,
+        "0.5": 0.49676584734799484,
+        "0.6": 0.44760672703751614,
+        "0.7": 0.4139715394566623
+      },
+      "spell_f1": 0.493143596377749,
+      "view": "clean",
+      "weighted_70_30": 0.5729991793330379
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 1.3166666666666667,
+          "median": 1.05,
+          "n": 12,
+          "p90_abs": 4.8
+        },
+        "excluded_run_edge_matches": 147,
+        "start": {
+          "mean": -2.533333333333333,
+          "median": -2.2,
+          "n": 12,
+          "p90_abs": 4.12
+        }
+      },
+      "d_f1": 0.7614273075788852,
+      "d_precision": 0.8853077318703926,
+      "d_recall": 0.6679601603932221,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 7,
+      "graded_frames": 27701,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.7252709683222407,
+      "match": "skillcorner_had_1996436",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 361,
+      "n_pred_spells": 407,
+      "prediction_sha256": "54247a426f7046c08582bd0f57fe5668eb0323edd23356944bc3431038e3676e",
+      "probabilities_sha256": "78eee60d2318a192d42cfa52d67e5eb062867f6a76f3c078bf55813d50dc86b7",
+      "probability_sha256": "78eee60d2318a192d42cfa52d67e5eb062867f6a76f3c078bf55813d50dc86b7",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 283,
+      "replicate": "corrupt_1",
+      "short_matched_spells": 44,
+      "short_reference_spells": 155,
+      "short_spell_recall": 0.2838709677419355,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5,
+        "0.4": 0.44791666666666663,
+        "0.5": 0.4140625,
+        "0.6": 0.36197916666666663,
+        "0.7": 0.32552083333333337
+      },
+      "spell_f1": 0.4098958333333333,
+      "view": "feed_like",
+      "weighted_70_30": 0.5045083738300055
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.050000000000000044,
+          "median": 0.7,
+          "n": 14,
+          "p90_abs": 3.0100000000000016
+        },
+        "excluded_run_edge_matches": 158,
+        "start": {
+          "mean": -1.9499999999999997,
+          "median": -1.35,
+          "n": 14,
+          "p90_abs": 3.27
+        }
+      },
+      "d_f1": 0.7622714148219443,
+      "d_precision": 0.8912742382271468,
+      "d_recall": 0.6658905704307334,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 4,
+      "graded_frames": 27701,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.7457721916878907,
+      "match": "skillcorner_had_1996436",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 361,
+      "n_pred_spells": 394,
+      "prediction_sha256": "7210cd0a3bcd236be4c9c0e28708dc66a3547ea355687212b5e9f6adcf9edfa1",
+      "probabilities_sha256": "4a19fa35a37e31a7e1899cdf49d3b045c74014dcfcb522f60f0facff3ff3bfec",
+      "probability_sha256": "4a19fa35a37e31a7e1899cdf49d3b045c74014dcfcb522f60f0facff3ff3bfec",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 283,
+      "replicate": "corrupt_2",
+      "short_matched_spells": 52,
+      "short_reference_spells": 155,
+      "short_spell_recall": 0.33548387096774196,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5456953642384106,
+        "0.4": 0.49801324503311256,
+        "0.5": 0.45562913907284763,
+        "0.6": 0.4132450331125828,
+        "0.7": 0.3655629139072848
+      },
+      "spell_f1": 0.45562913907284763,
+      "view": "feed_like",
+      "weighted_70_30": 0.5426720548573605
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.8709677419354839,
+          "median": 0.8,
+          "n": 31,
+          "p90_abs": 5.4
+        },
+        "excluded_run_edge_matches": 159,
+        "start": {
+          "mean": -1.7548387096774192,
+          "median": -0.3,
+          "n": 31,
+          "p90_abs": 5.4
+        }
+      },
+      "d_f1": 0.7467936973250275,
+      "d_precision": 0.9114490161001789,
+      "d_recall": 0.6325263811297331,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 12,
+      "graded_frames": 33543,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.8040460676621025,
+      "match": "skillcorner_had_2006229",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 380,
+      "n_pred_spells": 388,
+      "prediction_sha256": "ba8f47be11348caf7524df1e3cc6f75c4465c2adec73199f7ff3e2eb16ace1e4",
+      "probabilities_sha256": "5eb75090da5a460496828c5d7b767944361965dde70999a7a0e90a4c7c1f72e6",
+      "probability_sha256": "5eb75090da5a460496828c5d7b767944361965dde70999a7a0e90a4c7c1f72e6",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 258,
+      "replicate": "clean",
+      "short_matched_spells": 38,
+      "short_reference_spells": 150,
+      "short_spell_recall": 0.25333333333333335,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5755208333333334,
+        "0.4": 0.5442708333333333,
+        "0.5": 0.49479166666666663,
+        "0.6": 0.45833333333333326,
+        "0.7": 0.4088541666666667
+      },
+      "spell_f1": 0.49635416666666654,
+      "view": "clean",
+      "weighted_70_30": 0.5886617369652973
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": -0.08800000000000006,
+          "median": 0.5,
+          "n": 25,
+          "p90_abs": 6.960000000000001
+        },
+        "excluded_run_edge_matches": 146,
+        "start": {
+          "mean": -0.664,
+          "median": -0.3,
+          "n": 25,
+          "p90_abs": 3.980000000000001
+        }
+      },
+      "d_f1": 0.7395125486998279,
+      "d_precision": 0.8885260178532549,
+      "d_recall": 0.633302296710118,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 11,
+      "graded_frames": 33543,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.7766753241189847,
+      "match": "skillcorner_had_2006229",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 380,
+      "n_pred_spells": 384,
+      "prediction_sha256": "17bfbe85d31d929e763c8d6aa3c3f2911e1697d2a14b10594b5d461efd06a715",
+      "probabilities_sha256": "0a62e98168b366a6d7f702885c1277c93edd52c11d9c02888fcac1cd5e606256",
+      "probability_sha256": "0a62e98168b366a6d7f702885c1277c93edd52c11d9c02888fcac1cd5e606256",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 258,
+      "replicate": "corrupt_1",
+      "short_matched_spells": 34,
+      "short_reference_spells": 150,
+      "short_spell_recall": 0.22666666666666666,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5340314136125656,
+        "0.4": 0.49738219895287955,
+        "0.5": 0.4476439790575917,
+        "0.6": 0.40052356020942403,
+        "0.7": 0.35602094240837695
+      },
+      "spell_f1": 0.44712041884816756,
+      "view": "feed_like",
+      "weighted_70_30": 0.5459868904294127
+    },
+    {
+      "arm": "weight_025",
+      "baseline_probability_file_sha256": null,
+      "complete_spell_boundary_timing_iou_0_5": {
+        "end": {
+          "mean": 0.7900000000000001,
+          "median": 0.7,
+          "n": 30,
+          "p90_abs": 7.410000000000003
+        },
+        "excluded_run_edge_matches": 151,
+        "start": {
+          "mean": -1.2566666666666666,
+          "median": -0.4,
+          "n": 30,
+          "p90_abs": 4.420000000000001
+        }
+      },
+      "d_f1": 0.7465569665533893,
+      "d_precision": 0.8809624314056564,
+      "d_recall": 0.6477343265052762,
+      "evaluation_input_hashes": {
+        "data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d"
+      },
+      "fold": "leave_out_skillcorner",
+      "fragmented_reference_spells": 8,
+      "graded_frames": 33543,
+      "inference_seed": "seedensemble",
+      "macro_f1": 0.7853102489533276,
+      "match": "skillcorner_had_2006229",
+      "member": "ensemble",
+      "model_checkpoint_hashes": {
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2026.joblib": "c3c5b857ad66f02ecbc533360bf999e873358739b88f5d8dfb14c1f007c81aa8",
+        "data/experiments/dense_label_weight_v1/models/weight_025__skillcorner__s2027.joblib": "2f9aa906451acdc53dacb887c9f528519d2c07d17b89aa1b5ade8e1511fa0e8f"
+      },
+      "n_gt_spells": 380,
+      "n_pred_spells": 388,
+      "prediction_sha256": "012d1a3ba7c26130cace23f0a672e74f465b0ee064135fe39a96999d30ca1036",
+      "probabilities_sha256": "73d4a9d5c34c01977430d76cfbe83c1ae33a5dbb0d6a59357595db81b31d10b7",
+      "probability_sha256": "73d4a9d5c34c01977430d76cfbe83c1ae33a5dbb0d6a59357595db81b31d10b7",
+      "recipe": "weight_025",
+      "reconstruction_status": "reconstructed from exact raw TRAIN source, source modules, frozen fold teachers, and declared D2 recipe; per-game joblib binaries differ from historical hashes; original trained D2 fold weights were unavailable",
+      "reference_spells_touching_graded_run_edge": 258,
+      "replicate": "corrupt_2",
+      "short_matched_spells": 34,
+      "short_reference_spells": 150,
+      "short_spell_recall": 0.22666666666666666,
+      "source": "skillcorner",
+      "source_arm": "weight_025",
+      "source_study_id": "dense_label_weight_v1",
+      "spell_by_iou": {
+        "0.3": 0.5494791666666666,
+        "0.4": 0.5182291666666666,
+        "0.5": 0.4713541666666667,
+        "0.6": 0.421875,
+        "0.7": 0.35937499999999994
+      },
+      "spell_f1": 0.4640625,
+      "view": "feed_like",
+      "weighted_70_30": 0.5604368246859983
+    }
+  ]
+}
