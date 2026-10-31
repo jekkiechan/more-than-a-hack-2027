@@ -207,5 +207,25 @@ python -m experiments.dense_short_team_blend_v1 evaluate
 
 The other fit folds are `leave_out_skillcorner` and `leave_out_sportec`; each
 uses seeds 2026 and 2027. Restore the sealed artifacts for readout instead of
-rerunning completed commands. Private archive delivery and the research-site
-publication receipt are being finalized; no new deployment model is created.
+rerunning completed commands. Code and aggregate evidence are merged in
+[PR #50](https://github.com/jekkiechan/more-than-a-hack-2027/pull/50).
+
+Private [mtah-data PR #9](https://github.com/jekkiechan/mtah-data/pull/9) holds
+six candidate models, six fit receipts, 45 candidate and 15 blend probability
+archives, logs, diagnostics and the source/results snapshot at public commit
+`c674648`. A fresh remote checkout with a separate LFS store verified all
+122 archive entries. Restoration to an empty directory recovered 118 mapped
+files (311,153,361 bytes) with zero missing files or size/hash mismatches.
+The [remote verification receipt](results/dense_short_team_v1_remote_verification.json)
+pins archive commit `89a7c47`, manifest hashes and dependency selections.
+Large unchanged inputs remain pinned to the earlier private manifests; these
+were revalidated against the existing restore receipt, not downloaded again.
+Use the archive's README and `scripts/dense_short_team_v1_cache.py` for restore.
+
+The restricted [research site](https://more-than-a-hack-progress.buffhen.chatgpt.site/experiments.html#subsecond-team)
+is published as version 11. Desktop/mobile layout, navigation, metric selectors,
+copy links and aggregate downloads passed checks; its audience is unchanged.
+The [publication receipt](results/dense_short_team_v1_site_publication.json)
+records source/version/deployment identity and the QA font-loading limitation.
+Delivery receipts follow the pinned research snapshot so archive hashes remain
+non-circular. No new deployment model is created.
