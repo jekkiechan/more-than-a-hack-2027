@@ -1,0 +1,109 @@
+{
+  "checks": {
+    "active_provider_weights_one_heldout_zero_total_two": 12,
+    "all_12_head_and_fit_receipt_hashes_match_seal": true,
+    "baseline_ensemble_cost3_decodes": 15,
+    "baseline_ensemble_score_rows_match": 15,
+    "baseline_member_cost3_decodes": 30,
+    "baseline_member_score_rows_match": 30,
+    "candidate_artifact_file_and_array_hashes": 90,
+    "candidate_ensemble_decodes": 30,
+    "candidate_ensemble_equals_seed_probability_blend": 30,
+    "candidate_ensemble_score_rows_match": 30,
+    "candidate_member_decodes": 60,
+    "candidate_member_score_rows_match": 60,
+    "ensemble_p_d_exact": 30,
+    "independent_control_candidate_aggregation_and_guardrails_match": true,
+    "member_p_d_exact": 60,
+    "mismatches": 0,
+    "pre_fit_amendment_function_and_wrapper_hashes_match": true,
+    "readout_artifact_receipt_matches": true
+  },
+  "head_seal_facts": [
+    {
+      "arm": "native_rate",
+      "provider": "sportec",
+      "seed": 2026,
+      "sha256": "c4d0f72b54883060e76beff4bd60904b4ca28af1cc5a329c60bb9e0c79f5cc7a"
+    },
+    {
+      "arm": "native_rate",
+      "provider": "sportec",
+      "seed": 2027,
+      "sha256": "a3dd729304955645edcb7618e192597c4fa48e39424a3493f716b6f19beaafa3"
+    },
+    {
+      "arm": "native_rate",
+      "provider": "metrica",
+      "seed": 2026,
+      "sha256": "b33f229b5fe3ed53751a5ad8c8bbbe9ca79369624631e3bc121ff9677237f0f6"
+    },
+    {
+      "arm": "native_rate",
+      "provider": "metrica",
+      "seed": 2027,
+      "sha256": "accb3642dfef0a5b4eea372cd5e7927f8deed7a06477a6381662e6c7cb29e616"
+    },
+    {
+      "arm": "native_rate",
+      "provider": "skillcorner",
+      "seed": 2026,
+      "sha256": "7a128f9870d3f0be91a0ad584d9da6bb91161249df34e9c6d6e9bbab6c3b1ebf"
+    },
+    {
+      "arm": "native_rate",
+      "provider": "skillcorner",
+      "seed": 2027,
+      "sha256": "e164e03532af2330ef91895c82db09aaaa12cddfbb6d5716a4e648a352a6e2a2"
+    },
+    {
+      "arm": "matched_5hz",
+      "provider": "sportec",
+      "seed": 2026,
+      "sha256": "cb79bfafdf421eac60e8eede1dc9f65d9628905f724bead7ce3a9082367c13c4"
+    },
+    {
+      "arm": "matched_5hz",
+      "provider": "sportec",
+      "seed": 2027,
+      "sha256": "69559c7e2e0c4e84ea7ea5057f6ab10bef01b368a0ef5472cdd3bc459959b9c2"
+    },
+    {
+      "arm": "matched_5hz",
+      "provider": "metrica",
+      "seed": 2026,
+      "sha256": "acb6045278a7a2dbac950eaeff0f6c5680b59cf41f6bf6ef95f8bb146938666a"
+    },
+    {
+      "arm": "matched_5hz",
+      "provider": "metrica",
+      "seed": 2027,
+      "sha256": "5819c4d294400878ec1a519ccf513e62b902a2f4e72204b1af1c8082b102c8c1"
+    },
+    {
+      "arm": "matched_5hz",
+      "provider": "skillcorner",
+      "seed": 2026,
+      "sha256": "2953fcc79f0f41fb5c49b8734ccddeba2ba51112ce2b46d709235d42faa977ca"
+    },
+    {
+      "arm": "matched_5hz",
+      "provider": "skillcorner",
+      "seed": 2027,
+      "sha256": "6bbfc57fb8cc64b49f2f3127a89cf1539a0963823d5b3dea2f6c0fede4a7c5d1"
+    }
+  ],
+  "method": "Loaded all archived baseline member/ensemble arrays and all sealed candidate member/ensemble NPZs. Re-decoded cost-3 baseline and candidate outputs using supervised.decode; recomputed official possession metrics and spell diagnostics from saved predictions for baseline and candidate seed/ensemble rows; checked exact P(D), exact 50/50 member blending, output file/array hashes, provider-weight contracts, and independently recomputed provider/view summaries and guardrails.",
+  "provenance": {
+    "artifact_receipt_sha256": "1e83bbc63e1274f9a84e70bbcff87c72965945ad22bfbdb3fba8c529e4770bb2",
+    "declaration_sha256": "89bb479fc2d7993bc6125026ad3af38c057f8e013c66ffd5aa2e88cff5c663f9",
+    "fit_seal_sha256": "0e9313cfd398b066469dd62d1ad2de1b42805d9751bd82d422e27fea7b99fe26",
+    "pre_fit_runtime_amendment_sha256": "af9ec5746e9985ea7ad4f75a091494fbf7b936f7c5641458681b74381d3adbbe",
+    "readout_sha256": "85705938998d485bd43a9333bb56acf5c2894ba54657b4f12ed31f4c267caacf",
+    "runtime_wrapper_sha256": "83b6cbb00d76ab714bc5bf920b0b98d0788657dc8509aa093841b600979b693a"
+  },
+  "replayed_utc": "2026-10-29",
+  "scope": "Read-only replay of sealed saved member/ensemble arrays, decoding, official development scorer, and aggregation; no model inference or refit during replay.",
+  "status": "passed",
+  "study_id": "native_short_spell_v1"
+}

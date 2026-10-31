@@ -1,0 +1,114 @@
+{
+  "scope": "One descriptive five-minute check after external selection; no fitting, tuning, reselection or full-match claim",
+  "frozen": {
+    "created_utc": "2026-10-26T05:23:43.233558+00:00",
+    "selected_model": "ball_team25",
+    "bootstrap_draws": 1000,
+    "candidate_file": "experimental_candidate.csv",
+    "diagnostic_only": true,
+    "working_model": "baseline",
+    "files_sha256": {
+      "data/experiments/light_corruption_v1/experimental_candidate.csv": "c12854d27e12346640a06ad2d710b622122a4c41e3103588021e0249472f83fc",
+      "data/experiments/light_corruption_v1/experimental_candidate.json": "a4020822e6d5c4f38a747f99a8b1c67b4ba52ac0d2ab157dc8205c2b91a2af6c",
+      "data/experiments/light_corruption_v1/diagnostic_selection.json": "d74f6691f442c039463be1297ef3d4661d6b95dcb1b505f0d3254ccde925fb5b",
+      "data/experiments/light_corruption_v1/selection.json": "2e32960c0653eab2db1f4d0c726ffb16ff06a28f6f6e665d30ee75e4837ef1db",
+      "experiments/results/light_corruption_development.json": "6be2b870365b507bb475307955746ca75b4247bbaf2694ec83c20fb3d55af783",
+      "experiments/results/current_baseline_public_check.json": "32df69c1dfcf13a77ce9bf62229f42ff0ada2c13f5764de6b43ef56c9844603b",
+      "experiments/baseline_manifest.json": "bd3318056c4f3c19b2df7b744b48f967b36a69a850545fa96913d0f0f72706de",
+      "experiments/light_public_check.py": "0f0e745523d1bf4a1563ae8b21ae199b3c994c975ff96e71d770039a1b9ca3d1",
+      "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d"
+    },
+    "user_request": "try next experiment and also report to me the comp's score",
+    "scope": "One descriptive five-minute check after external selection; no fitting, tuning, reselection or full-match claim",
+    "prior_public_gates": "Preserved; this user-requested check has its own exclusive marker",
+    "baseline_policy": "If the selected CSV is byte-identical to the archived baseline, reuse that score without reading GT"
+  },
+  "score_source": "New one-time user-requested public pipeline check",
+  "organizer_reference_labels_read": true,
+  "score": {
+    "spell_f1_mean": 0.5257142857142858,
+    "macro_f1": 0.858782268705506,
+    "accuracy": 0.8589333333333333,
+    "per_class": {
+      "H": {
+        "precision": 0.8740963855421687,
+        "recall": 0.8401852924145917,
+        "f1": 0.8568054325361677,
+        "support": 3454
+      },
+      "A": {
+        "precision": 0.825531914893617,
+        "recall": 0.9033760186263097,
+        "f1": 0.8627015008337966,
+        "support": 2577
+      },
+      "D": {
+        "precision": 0.8911764705882353,
+        "recall": 0.8250510551395507,
+        "f1": 0.8568398727465535,
+        "support": 1469
+      }
+    },
+    "spell_f1": {
+      "0.3": {
+        "precision": 0.6111111111111112,
+        "recall": 0.6470588235294118,
+        "f1": 0.6285714285714287,
+        "n_matched": 11,
+        "n_spurious": 7,
+        "n_missed": 6
+      },
+      "0.4": {
+        "precision": 0.6111111111111112,
+        "recall": 0.6470588235294118,
+        "f1": 0.6285714285714287,
+        "n_matched": 11,
+        "n_spurious": 7,
+        "n_missed": 6
+      },
+      "0.5": {
+        "precision": 0.6111111111111112,
+        "recall": 0.6470588235294118,
+        "f1": 0.6285714285714287,
+        "n_matched": 11,
+        "n_spurious": 7,
+        "n_missed": 6
+      },
+      "0.6": {
+        "precision": 0.3888888888888889,
+        "recall": 0.4117647058823529,
+        "f1": 0.39999999999999997,
+        "n_matched": 7,
+        "n_spurious": 11,
+        "n_missed": 10
+      },
+      "0.7": {
+        "precision": 0.3333333333333333,
+        "recall": 0.35294117647058826,
+        "f1": 0.34285714285714286,
+        "n_matched": 6,
+        "n_spurious": 12,
+        "n_missed": 11
+      }
+    },
+    "n_frames": 199319,
+    "n_graded": 7500,
+    "n_gt_spells": 17,
+    "n_pred_spells": 18,
+    "team_acc_gt_alive": 0.8671862046095175,
+    "spell_bootstrap_low": 0.36571428571428577,
+    "spell_bootstrap_high": 0.6742857142857143,
+    "bootstrap_low": 0.6105594743345725,
+    "bootstrap_high": 0.9084567946013647,
+    "bootstrap_n": 1000
+  },
+  "archived_baseline": {
+    "spell_f1_mean": 0.48888888888888893,
+    "macro_f1": 0.856847566990267,
+    "n_gt_spells": 17
+  },
+  "full_match_score": null,
+  "external_selection_changed": false,
+  "baseline_replaced": false,
+  "bootstrap_interval": "Official 5th\u201395th percentiles when available"
+}

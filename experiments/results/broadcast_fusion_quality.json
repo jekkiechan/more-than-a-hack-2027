@@ -1,0 +1,87 @@
+{
+  "rows": [
+    {
+      "player_error_limit_m": 0.5,
+      "motion_and_persistence_gate": false,
+      "recovered_frames": 3714,
+      "missing_fraction_recovered": 0.05745401667620624,
+      "overlapping_ball_frames": 55048,
+      "overlap_ball_error_quantiles_m": [
+        0.7309264242649078,
+        5.17803182601929,
+        19.81629074096676
+      ],
+      "overlap_error_over5m_fraction": 0.103382502543235
+    },
+    {
+      "player_error_limit_m": 0.5,
+      "motion_and_persistence_gate": true,
+      "recovered_frames": 3660,
+      "missing_fraction_recovered": 0.056618659406277555,
+      "overlapping_ball_frames": 54856,
+      "overlap_ball_error_quantiles_m": [
+        0.7283822000026703,
+        5.135190486907959,
+        19.525804710388158
+      ],
+      "overlap_error_over5m_fraction": 0.10250473968207671
+    },
+    {
+      "player_error_limit_m": 1.0,
+      "motion_and_persistence_gate": false,
+      "recovered_frames": 4373,
+      "missing_fraction_recovered": 0.06764846928515075,
+      "overlapping_ball_frames": 61033,
+      "overlap_ball_error_quantiles_m": [
+        0.745017945766449,
+        5.204161071777345,
+        20.21252098083496
+      ],
+      "overlap_error_over5m_fraction": 0.10397653728310914
+    },
+    {
+      "player_error_limit_m": 1.0,
+      "motion_and_persistence_gate": true,
+      "recovered_frames": 4316,
+      "missing_fraction_recovered": 0.06676670327800381,
+      "overlapping_ball_frames": 60806,
+      "overlap_ball_error_quantiles_m": [
+        0.742621511220932,
+        5.154931306838989,
+        19.691356658935536
+      ],
+      "overlap_error_over5m_fraction": 0.10293392099463869
+    },
+    {
+      "player_error_limit_m": 2.0,
+      "motion_and_persistence_gate": false,
+      "recovered_frames": 4419,
+      "missing_fraction_recovered": 0.06836006992249741,
+      "overlapping_ball_frames": 61927,
+      "overlap_ball_error_quantiles_m": [
+        0.7586140036582947,
+        5.252885341644288,
+        20.481153564453123
+      ],
+      "overlap_error_over5m_fraction": 0.10534984740097211
+    },
+    {
+      "player_error_limit_m": 2.0,
+      "motion_and_persistence_gate": true,
+      "recovered_frames": 4361,
+      "missing_fraction_recovered": 0.06746283433627771,
+      "overlapping_ball_frames": 61688,
+      "overlap_ball_error_quantiles_m": [
+        0.7554856836795807,
+        5.209835433959961,
+        19.95195257186888
+      ],
+      "overlap_error_over5m_fraction": 0.10428284269225781
+    }
+  ],
+  "target_labels_read": false,
+  "organizer_scored": false,
+  "motion_gate": "Both adjacent ball displacements <=65 m/s; contiguous accepted run >=0.2 s",
+  "interpretation": "Proxy sensitivity only. Agreement where both feeds observe does not validate recovered gap coordinates. No gate selected on possession scores.",
+  "source_sha256": "09b4be9f95d5c05374f4d75d002919fcffcc07773b7238b3caeabaa6e7525e22"
+}

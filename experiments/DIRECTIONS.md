@@ -1,88 +1,67 @@
-# Research directions
+# Preprocessing review and research rationale
 
-The current implementation pass uses the existing 18 external matches (13 train,
-5 validation) to test preprocessing, control-context features, probability
-ensembling and separate team/dead decoding costs. See [PIPELINE.md](PIPELINE.md)
-and `pipeline_eval.py` for the bounded leave-one-provider-out protocol. It does
-not depend on acquiring another dataset; additional broadcast data remains useful
-for independent confirmation and subsequent work.
+The active prioritized queue is [STATUS](../docs/research/STATUS.md).
+Completed and draft work is indexed in [EXPERIMENTS](../docs/research/EXPERIMENTS.md).
+This dated review explains the original preprocessing hypotheses; its
+conclusions describe evidence available on 2026-10-26, before the later joint
+GRU D-repair study. It does not establish today's bottleneck for every model.
 
-Ordered by expected payoff. Most of the gain is expected to come from more and
-better data, better validation and better preprocessing. Modelling waits until
-those are in place, so its gains can be measured on data that resembles the
-challenge.
+The [2026-10-27 matched GRU robustness study](GRU_SLOT_ROBUSTNESS.md) now
+shows a different failure under corrupted external tracking: dead-ball
+overprediction, with high D recall and low precision. Slot dropout preserves
+clean spell F1 but fails the robustness guardrail. The historical team-only
+bottleneck diagnosis below must not be generalized to that joint GRU. The
+completed [full H/A/D LightGBM study](JOINT_LGBM.md) finds useful temporal
+features and a benefit from larger trees, but its promising full-vector GRU
+blends still fail the clean SkillCorner D-recall guardrail. Improving spell F1
+alone does not protect every class. Current priorities belong in STATUS.
 
-## 1. More data, closer to the challenge (in progress)
+The [completed tracking pilot](TOP_THREE_PILOT.md) tested state-conditioned
+views, broadcast recovery and gap/de-duplication features. It found no matched
+overall spell gain; calibration and ball confidence remain unresolved. Read its
+results before proposing those arms again.
 
-Done ([OPEN_DATA.md](OPEN_DATA.md)):
-- Metrica's three sample games: same provider, 25 Hz, one in FIFA EPTS format.
-- SkillCorner widened to 11 matches with D labels.
+Superseded proposals and the previous priority list remain in
+[Git history](https://github.com/jekkiechan/more-than-a-hack-2027/blob/1b3fc4a4ed1868bf8c7ca26c99ec443947cf3458/experiments/DIRECTIONS.md).
+They are not an additional active queue.
 
-Next:
-- **PFF FC / Gradient Sports FIFA World Cup 2022.** 64 matches of
-  broadcast-derived tracking with event data. Access is through a free sign-up
-  form on the [Gradient Sports blog](https://www.gradientsports.com/blog/enhanced-2022-world-cup-dataset),
-  which a team member has to request. At 6× the current labelled match count,
-  it is the largest available jump. Its game/possession events should give H/A/D
-  the way Metrica's and SkillCorner's do. Check its D shortcut (camera cuts,
-  frozen ball) before use, as in `OPEN_DATA.md`.
-- **Challenge-like degradation of clean sources.** Sportec and Metrica have
-  near-complete player tracks; the challenge has 46 fragmenting tracklets with
-  identity switches, and the ball missing mostly during play. Simulate tracklet
-  breaks, slot swaps and in-play ball loss, then calibrate them to aggregates
-  measurable on the challenge tracking without labels: tracklet lengths,
-  objects per frame and ball gap lengths.
-- **SoccerTrack v2** ([arXiv 2508.01802](https://arxiv.org/abs/2508.01802)):
-  10 full panoramic 4K university matches with pitch coordinates and
-  ball-action labels. Possession and dead-ball labels would have to be derived
-  from the action spotting; worth a look for the panoramic camera.
+## Why preprocessing has not moved the scores (2026-10-26 review)
 
-## 2. Better validation
+This review reads only existing code and recorded aggregate results; no new
+fitting or scoring was run. The current package applies **no** input
+preprocessing at inference: `current_baseline.py` passes raw tracking to the
+feature extractors. The observation repair in draft PR #8 (isolated spike
+removal, player gaps up to 0.2 s) scored .5251 versus .5259 spell F1 for its
+matched baseline, and was never merged. Corruption training traded clean for
+stress performance. Five reasons explain why neither shows a gain:
 
-- Select on the multi-source suite (`multisource_eval.py`: Sportec J03WOY,
-  Metrica game 3, 3 SkillCorner matches), weighted towards sources unseen in
-  training. Do not select on J03WOY alone: its frozen ball makes D nearly
-  free, and the model it prefers collapses on other providers
-  (`OPEN_DATA.md`).
-- Report per-source spread, and seed variance for any stochastic model.
-- Keep the public five minutes as a pipeline check only (RULES.md).
+1. **Development data lacks the defects being repaired.** Sportec has complete
+   ball XY (frozen during D), Metrica blanks the ball almost only during D, and
+   SkillCorner's gaps come from broadcast cuts. None has the challenge's
+   live-play ball loss, 46 fragmenting tracklets, or up to 19 visible tracks
+   per team. Repairing clean inputs gives a near-zero delta by construction.
+2. **Degraded views do not exercise the repairs.** They come from the same
+   synthetic families used in training augmentation (long gaps, slot swaps),
+   while the repairs target isolated spikes and subsecond gaps.
+3. **The repairs work at the wrong scale.** Organizer ball gaps have a median
+   of 10.7 s and cover about 41% of graded frames; the repairs bridge at most
+   0.5 s (ball) and 0.2 s (players). HGB already handles NaN natively and the
+   feature code already rejects >13 m/s player and >65 m/s ball speeds. During
+   long gaps every ball-relative feature is NaN and H/A rests on player motion
+   and contact memory.
+4. **Synthetic gaps are placed independently of game state.** Real occlusion
+   likely concentrates on aerial balls, duels and crowded areas, i.e. around
+   turnovers. A renewal-process mask teaches "gaps are random", which is why
+   corruption training improves only its own stress family.
+5. **The public window cannot resolve the effect.** The .4889 to .5257 public
+   change is one fewer spurious possession (8 to 7) out of 17 reference
+   possessions; the 90% spell interval is [.3657, .6743]. The wide interval does
+   not establish a reliable model ordering, and the window must not be used for
+   tuning.
 
-## 3. Challenge-specific preprocessing (needs the assets in the environment)
-
-All label-free, so they are allowed on the challenge match:
-- **Second ball source:** align the broadcast feed's tracking to the tactical
-  timeline by matching player positions in pitch coordinates, then use its
-  ball where the tactical ball is missing (broadcast sees the ball on 50.5% of
-  its frames, on a different set of moments).
-- **Smart Tagging as evidence:** SET PIECES intervals mark restarts, which end
-  a D stretch; Team tags give a weak H/A prior.
-- **Homography quality:** use `reprojection_error` and `valid` as observation
-  confidence.
-- **Unused ATD fields:** player speed and the ball's third value.
-- **Tracklet stitching** for all models, not only the PathCRF adapter.
-
-## 4. Modelling: LightGBM hyperparameter tuning (after 1–2)
-
-`REFINE_LGBM.md` shows that tuned LightGBM beats the HGB baseline (+0.017 clean,
-+0.013 masked spell F1 on J03WOY), while default LightGBM does not. So tuning,
-not the library, carries the gain, and a real search should find more. It
-waits for more data, so it optimises against the right target:
-
-- **Objective:** mean spell F1 on the multi-source suite, not J03WOY. Evaluate
-  the decoder switch cost jointly with the booster settings.
-- **Search:** a fixed-budget Bayesian search (e.g. Optuna TPE) over
-  num_leaves, min_child_samples, learning rate × n_estimators, subsample,
-  colsample_bytree, reg_lambda and reg_alpha. Also search the short-spell
-  weight beta and the share of each data source.
-- **Guarding against overfitting the validation set:** re-fit the top few
-  configs with 3 seeds, choose by the seed mean, and confirm once on a frozen
-  held-out set never used during the search.
-- **Compute:** about 10 minutes per fit on 4 cores at the current size. With
-  PFF data, cache features once per source and sample rows per trial.
-
-## 5. Post-processing
-
-- Decoder: spell-length priors fitted on the external labels (Metrica: median
-  live spell ~5 s, about 30% under 3 s), and team-specific D→H/A restart costs.
-- Abstention (X) during long ball gaps has no value for spell F1, which fills
-  X with the last label (EVALUATION.md). Leave it out unless macro F1 needs it.
+The recorded public diagnostics also locate the remaining error: alive/dead F1
+is .968 and reference-live team accuracy 86–87%, but only 2 of 20 H/A/D
+transitions fall within ±0.5 s (5 of 20 within ±1 s). Externally, 98% of wrong
+frames are H/A swaps and oracle-perfect H/A gives .996 spell F1 on J03WOY
+([HEADROOM.md](HEADROOM.md)). The bottleneck is team attribution during ball
+gaps and turnover timing, not dead-ball detection or subsecond repair.

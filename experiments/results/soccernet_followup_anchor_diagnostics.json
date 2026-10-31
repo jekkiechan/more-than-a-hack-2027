@@ -1,0 +1,72 @@
+{
+  "contains_fixture_ids_or_raw_labels": false,
+  "created_utc": "2026-10-30T09:13:48.665489+00:00",
+  "fixture_spread": {
+    "fixtures_with_anchors": 45,
+    "mean_row_weight": {
+      "max": 0.7664041922787043,
+      "mean": 0.5958420187018771,
+      "min": 0.46226161771201013,
+      "p10": 0.511391062031674,
+      "p25": 0.5402029743425367,
+      "p50": 0.5932890756006262,
+      "p75": 0.6363636264295289,
+      "p90": 0.7026746737834799,
+      "std": 0.07164274200591857
+    },
+    "postcap_weight_mass": {
+      "max": 826.666669845581,
+      "mean": 564.5851863271661,
+      "min": 433.33333802223206,
+      "p10": 489.8000015974045,
+      "p25": 515.6666700541973,
+      "p50": 561.3333389759064,
+      "p75": 601.6666691303253,
+      "p90": 654.0666775405407,
+      "std": 72.85755294702804
+    }
+  },
+  "overall": {
+    "event_counts_by_action": {
+      "CROSS": 1510,
+      "PASS": 40699,
+      "SHOT": 710
+    },
+    "fraction_weighted_rows_at_cap": 0.05172534308814278,
+    "mapped_event_count": 42919,
+    "mean_assigned_postcap_weight_by_action": {
+      "CROSS": 5.0,
+      "PASS": 0.35151559951651073,
+      "SHOT": 5.0
+    },
+    "mean_postcap_positive_row_weight": 0.591960049971399,
+    "postcap_positive_row_weight_mass": 25406.33338472247,
+    "postcap_weight_mass_by_action": {
+      "CROSS": 7550.0,
+      "PASS": 14306.333384722471,
+      "SHOT": 3550.0
+    },
+    "rows_at_cap": 2220,
+    "weighted_anchor_row_count": 42919
+  },
+  "recipe": {
+    "max_weight": 5.0,
+    "mechanism": "within_fixture_event_balance_weights_v1",
+    "normalization_order": "positive unique anchor-row weights normalized to global mean 1, then capped; no post-cap renormalization"
+  },
+  "source": {
+    "game_count": 45,
+    "record_count": 9905,
+    "segments_manifest_sha256": "51cea9fd298c9a9e94772fbc4c5c2c3a1df18515f6b284e52c0c494aa7fe2fb5",
+    "source_manifest_sha256": {
+      "learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+      "refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+      "refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+      "robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+      "soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+      "soccernet_segments.py": "83ea686a452976f2b4724e6e48c8a94766525e02f2ed6e9af716386b4788363e",
+      "supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+    }
+  },
+  "study_id": "soccernet_followup_anchor_balance_diagnostics_v1"
+}

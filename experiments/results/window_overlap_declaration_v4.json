@@ -1,0 +1,666 @@
+{
+  "schema_version": 1,
+  "study_id": "window_overlap_v4",
+  "status": "frozen before shifted-tiling scoring",
+  "created_utc": "2026-10-29T01:54:15.244624+00:00",
+  "question": "Does equal averaging of original and five-second-shifted inference cores improve full-provider spell F1 for the adopted combined-objective GRU ensemble?",
+  "hypothesis": "Inference core alignment variance at ten-second seams obscures short possession boundaries; averaging probabilities from a five-second shifted tiling will improve official spell F1 without changing the trained model or decoder.",
+  "falsifier": "No increase in equal-provider spell F1 or a failed current clean/feed_like guardrail will falsify the practical value of this tiling change. Seam probability disagreement is descriptive and is not an independent selection criterion.",
+  "intervention": {
+    "training_fits": 0,
+    "candidate_arm_count": 1,
+    "control": "The exact saved native H/A/D probabilities from the completed original 10-second-core/5-second-context tiling, with its existing cost-3 decode and score receipt.",
+    "candidate": "Reuse each seed's exact saved original-tiling native probability array, then run one additional tiling shifted forward by 5 seconds on the pinned float32 evaluation feature record within each continuous sampled block. Average those native H/A/D probabilities 50/50 where the shifted tiling has retained-core support. At a block's leading 5-second region, retain the original prediction because shifted cores have not begun. Average each seed's two tilings first, average seeds 2026/2027 equally next, then use the existing cost-3 decoder.",
+    "changed_mechanism": "Inference tiling phase only; saved original native probabilities provide the exact matched control. Shifted inference uses the frozen float32 feature record and the same combined-objective held-out checkpoints, features, full-provider exclusions, probability classes and decoder.",
+    "sampling_rate_hz": 5,
+    "core_seconds": 10,
+    "context_each_side_seconds": 5,
+    "shift_seconds": 5,
+    "shift_sample_frames": 25,
+    "partial_edges": "Tiling windows are clipped to their own continuous block. The shifted grid begins 25 samples after each block start, ends with a partial retained core if needed, and leaves its first 25 samples to the original prediction. No window crosses a period or timestamp break.",
+    "decoder_switch_cost": 3,
+    "seed_weights": {
+      "2026": 0.5,
+      "2027": 0.5
+    },
+    "tiling_weights_where_available": {
+      "original": 0.5,
+      "shifted": 0.5
+    }
+  },
+  "cohort": [
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "source": "sportec",
+      "match": "J03WOY",
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "source": "metrica",
+      "match": "metrica_3",
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996435",
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_1996436",
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "source": "skillcorner",
+      "match": "skillcorner_had_2006229",
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    }
+  ],
+  "cohort_interpretation": "Previously exposed full-provider development: Sportec J03WOY, Metrica Game 3, SkillCorner 1996435/1996436/2006229; one clean view plus two fixed feed_like replicates per match. No new holdout is created.",
+  "provider_exclusions": "Every full-provider checkpoint, including normalization, excludes all matches from the evaluated provider; the two seed checkpoints are 2026 and 2027.",
+  "prior_exposure": "All five development matches were previously exposed in earlier studies. feed_like is synthetic tracking stress. This is development evidence, not independent confirmation.",
+  "inputs": {
+    "labels": "Native labels are read only after shifted inference, to score the saved candidate and parity control. No label, target or label-derived feature is passed to inference.",
+    "tracking": "Existing full-provider clean/feed_like evaluation cache records, their sealed float32 joint feature matrices, 5 Hz sampled blocks, native visibility and time boundaries.",
+    "native_masks_and_breaks": "Unchanged saved cache inputs, official evaluator masks, period boundaries, and timestamp discontinuities."
+  },
+  "metrics": {
+    "primary": "Official possession spell F1, equal provider mean; rank by unrounded spell F1 and macro F1 only for exact ties.",
+    "auxiliary": "0.70 spell F1 + 0.30 macro F1, shown but not ranked.",
+    "diagnostics": [
+      "D precision/recall/F1",
+      "spell F1 at IoU .3/.4/.5/.6/.7",
+      "short spell recall under 3 s at IoU .5",
+      "reference and predicted spell counts",
+      "fragmented reference spells",
+      "graded-edge-censored spells",
+      "complete-boundary timing errors",
+      "per-seed metrics",
+      "boundary seam probability disagreement"
+    ]
+  },
+  "aggregation": "Average matches and feed_like replicates within provider, then average three providers equally.",
+  "guardrails": {
+    "source": "Current experiments/model_decision_policy.json and docs/research/STATUS.md; values are evaluated against the adopted combined-objective ensemble.",
+    "clean_spell_f1": "At least +0.01 equal-provider spell F1 for the default clean screen.",
+    "feed_like_spell_f1": "No worse than -0.01 equal-provider spell F1 versus the adopted ensemble.",
+    "per_provider_clean_d_f1": "No provider decline greater than 0.02.",
+    "per_provider_clean_macro_f1": "No provider decline greater than 0.02.",
+    "automatic_promotion": false
+  },
+  "baseline": {
+    "package_version": "joint_gru_combined_ensemble_v1",
+    "manifest_sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "decision_policy_sha256": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+    "prior_objective_report_sha256": "cf267890905ece05aebe366c86c9ea635c07fa5267831f0658ac8932863f51d4",
+    "prior_objective_runs_sha256": "3269e3a08a01d3682fe5ab7c3fd6e60e6b1c722df9c018418e19a8344f2eb329",
+    "prior_declaration_sha256": "686a10993b74234e0bb02134cd4ec79f781c87a140dcf88cfa31cdbc8f4a0c6e",
+    "prior_verification_sha256": "837bda7c7dbacc1a2215179a73b2c7dfbc7be9ece63c3576bbe17bc1f20e3df2"
+  },
+  "original_replay_diagnostic": {
+    "receipt": "experiments/results/window_overlap_v2_replay_drift.json",
+    "interpretation": "On the first clean Sportec cell, cached and recomputed all-X float32 feature matrices match exactly, while current Torch re-inference differs from saved member probabilities by less than 7e-7. The frozen saved probabilities are the exact control; the replay drift is descriptive only.",
+    "used_for_candidate_or_selection": false
+  },
+  "source_files": [
+    {
+      "path": "experiments/window_overlap_experiment.py",
+      "bytes": 65049,
+      "sha256": "e7e2a91b416d62eb464f075f36e56e78ef0b617e74687ce9699f6162109df7c5"
+    },
+    {
+      "path": "experiments/factorized_had.py",
+      "bytes": 5790,
+      "sha256": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa"
+    },
+    {
+      "path": "experiments/live_gap_experiment.py",
+      "bytes": 21993,
+      "sha256": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac"
+    },
+    {
+      "path": "experiments/learned_temporal.py",
+      "bytes": 18206,
+      "sha256": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad"
+    },
+    {
+      "path": "experiments/supervised.py",
+      "bytes": 19966,
+      "sha256": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+    },
+    {
+      "path": "experiments/current_baseline.py",
+      "bytes": 9371,
+      "sha256": "a15270893060ee4ee1055bdc0bbf90f64763b6558a5d0826a9599d30d9d8ab36"
+    },
+    {
+      "path": "experiments/objective_ensemble.py",
+      "bytes": 46707,
+      "sha256": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278"
+    },
+    {
+      "path": "experiments/metrics.py",
+      "bytes": 3466,
+      "sha256": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846"
+    },
+    {
+      "path": "experiments/eval_set/metrics.py",
+      "bytes": 385,
+      "sha256": "753150955daafc9fc8aee84f76b9ba645d9205af5c221bd7e6764e92f98b89ee"
+    },
+    {
+      "path": "evaluation/possession_metrics.py",
+      "bytes": 33370,
+      "sha256": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d"
+    },
+    {
+      "path": "experiments/spell_diagnostics.py",
+      "bytes": 5480,
+      "sha256": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0"
+    },
+    {
+      "path": "experiments/eval_set/manifest.json",
+      "bytes": 10594,
+      "sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d"
+    },
+    {
+      "path": "experiments/baseline_manifest.json",
+      "bytes": 27054,
+      "sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0"
+    },
+    {
+      "path": "experiments/model_decision_policy.json",
+      "bytes": 3268,
+      "sha256": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3"
+    },
+    {
+      "path": "experiments/results/objective_ensemble_declaration.json",
+      "bytes": 48199,
+      "sha256": "686a10993b74234e0bb02134cd4ec79f781c87a140dcf88cfa31cdbc8f4a0c6e"
+    },
+    {
+      "path": "experiments/results/objective_ensemble.json",
+      "bytes": 30006,
+      "sha256": "cf267890905ece05aebe366c86c9ea635c07fa5267831f0658ac8932863f51d4"
+    },
+    {
+      "path": "experiments/results/objective_ensemble_verification.json",
+      "bytes": 2829,
+      "sha256": "837bda7c7dbacc1a2215179a73b2c7dfbc7be9ece63c3576bbe17bc1f20e3df2"
+    },
+    {
+      "path": "experiments/results/window_overlap_v1_prescore_deviation.json",
+      "bytes": 927,
+      "sha256": "1e9320606dae81aa67d3e7616533df967080d5524fc8b19684ed25528977db18"
+    },
+    {
+      "path": "experiments/results/window_overlap_v2_prescore_deviation.json",
+      "bytes": 1188,
+      "sha256": "47829eda69ebab1811c029dbda6ab4f63daf6999acbe2b36721055932a71bc04"
+    },
+    {
+      "path": "experiments/results/window_overlap_v2_replay_drift.json",
+      "bytes": 1701,
+      "sha256": "d3d4e6a9a88c170f326dfec5c05a9663eb4b50d9ac5acf971900366d2acda584"
+    },
+    {
+      "path": "experiments/results/window_overlap_v3_prescore_deviation.json",
+      "bytes": 1104,
+      "sha256": "2a2017d5db1fc9b085f04cbebc4ee84476ea0082c89ba0ac26db5f33dd13e222"
+    }
+  ],
+  "input_artifacts": [
+    {
+      "path": "experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2026.npz",
+      "bytes": 1991765,
+      "sha256": "2c41bd8205df7ad082a44ab8caee72079f0ebf3ac3ce5e7e9a93a265b8dc807b"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2027.npz",
+      "bytes": 1983681,
+      "sha256": "61de5f13db9b0bee2bbdecf37eb8803e5cf52e4e8a686f8d5ebaf775d386b865"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2026.npz",
+      "bytes": 1982324,
+      "sha256": "e3bb185860c2840b9248c99384baf0902d18ed12037b2665d88dcc50423b8304"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2027.npz",
+      "bytes": 1975142,
+      "sha256": "6d015cf2bc7ba1e913ced2cb79429377806c8f5a4f4ac139f9b3228053f514c4"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2026.npz",
+      "bytes": 1983205,
+      "sha256": "dd66a6990478bb3495f43916606b88c7710184357dd41c0e220672f67c008f68"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2027.npz",
+      "bytes": 1974497,
+      "sha256": "751a1f56d3b52ce57a94a15c99a71bc9a47289e7cc08b3621b8737e7fc146ac9"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2026.npz",
+      "bytes": 741833,
+      "sha256": "34ccb6db2ca675b6572afeb7bf9bb5c1c89dba626d834f2d8ff308f768d32b63"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2027.npz",
+      "bytes": 741452,
+      "sha256": "cb853d3ab2a8e9b304c90db4b282f76d23b5b0bafac752bac7db7d70e74caa11"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2026.npz",
+      "bytes": 739283,
+      "sha256": "61a2615709343478cc3c21edb0384430aadef4226a0de116afe17e883af81326"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2027.npz",
+      "bytes": 737309,
+      "sha256": "f1af48b9376d241881279e0011d33aba9243e8f35708dd8c9005836d4a0dcb70"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2026.npz",
+      "bytes": 737661,
+      "sha256": "251e1563f4d93f9f40f682bc173ed7999c43022b0d9135b7230b0b3f88b92ec3"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2027.npz",
+      "bytes": 737164,
+      "sha256": "f8390143ed51c16e2189ea49e370b4796d6f5782872510a53b0c1b550ceaa8e2"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2026.npz",
+      "bytes": 759430,
+      "sha256": "053a6722b290bffc97faec796ba3f0c251b1270fc458792c7a14ad0554e28ab3"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2027.npz",
+      "bytes": 761141,
+      "sha256": "f0acddab4ab9c7ec2f1e8a7b13cabedcd54ce463a52b8296d09ce7a598cc032c"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2026.npz",
+      "bytes": 757642,
+      "sha256": "a6d58d92c8e735782ffd1cb342ed7394e6a960494a8db0d221bd1be0d6caf236"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2027.npz",
+      "bytes": 758132,
+      "sha256": "53500f4ff20e3f2da405feac30d43929cb13b9917307620e5c33fdcd5bb1f2f6"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2026.npz",
+      "bytes": 749955,
+      "sha256": "0e54444f0e28a3018a6818ddc74a45731f27027e956ddc033667ac110e3c3dbf"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2027.npz",
+      "bytes": 750303,
+      "sha256": "576c9e9d3e1be6ce2a55f2c5b68061f9e550c854815a14dfc9eec3782665f619"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2026.npz",
+      "bytes": 743481,
+      "sha256": "d262c27c0b20d5c49e7e0efcc0868f9d447f2fe03245d9a7b82bf4bbb0ead02b"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2027.npz",
+      "bytes": 743248,
+      "sha256": "259e6f12b53f9f03abd9ec3f8da534fe32fb0e5678cfc9e457933fc8a60cd5c4"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2026.npz",
+      "bytes": 737666,
+      "sha256": "392f68ddb47b09159b3c61f5dbdc7485420fee56c1b0575351a75d9bde41dc62"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2027.npz",
+      "bytes": 736905,
+      "sha256": "7b61a85535fc67bbc9272d6bab6994fe628f94c496d601edd9a018a10eb2f0b9"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2026.npz",
+      "bytes": 739236,
+      "sha256": "c2ef3a1cc1b9c71f985748c2f7a24684350e518be5ea37b2cd0c96075afa7116"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2027.npz",
+      "bytes": 738149,
+      "sha256": "97799791bf1aec78cf6d71d853b53b9750b02b6827072dba8f2a3aabd636cc2b"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2026.npz",
+      "bytes": 1961211,
+      "sha256": "a0a2394498a0616ea5ce6cca85f5b2770dd362e99cdaf4be3648db8738445adc"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2027.npz",
+      "bytes": 1952093,
+      "sha256": "5dfdb90c76099ff622338ee8295270a86ec7dc9ff7ac6eb150bb23344097ac91"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2026.npz",
+      "bytes": 1958334,
+      "sha256": "dbc65a66c72e332e1a8256c82c13e762802b583628f9ce074d73fa4ced5ff4d9"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2027.npz",
+      "bytes": 1951337,
+      "sha256": "9f77f2677666b37f30015e0cbf7bf94dff80a3aa590c96792d97dc1028d57d8d"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2026.npz",
+      "bytes": 1955929,
+      "sha256": "120f4e085a17cabf8c3fb07249097427c661183a14c9cf4dfd28a5508f3489fd"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2027.npz",
+      "bytes": 1948452,
+      "sha256": "f2ae1ff85a3d46726788b0df7d6191b10ffe4e22cf851d592fef476e3c18f65a"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+      "bytes": 263111,
+      "sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_metrica_combined_2026.json",
+      "bytes": 748,
+      "sha256": "45f3e4d6a62b9b2e122c1dca5a82d638b6ed7570e3a67645cf1199f420828ce3"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_metrica_combined_2026.runtime.json",
+      "bytes": 1876,
+      "sha256": "297e9ff57f0fc0dc274043d889067508af4afcf486a46c80d8af9539079f001e"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+      "bytes": 263111,
+      "sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_metrica_combined_2027.json",
+      "bytes": 745,
+      "sha256": "76c20b89a7fee43bc1e518d64d86bd0cd2b1e5f87e976903862c80852b65e770"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_metrica_combined_2027.runtime.json",
+      "bytes": 1873,
+      "sha256": "1af0afe2635e1ad739bfda7c8db74335d9d04f1982c9b89a73f2282bfdc1bb30"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+      "bytes": 263111,
+      "sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.json",
+      "bytes": 535,
+      "sha256": "4c994e05feee5a28943c2d6357a58b5cdf4cb565d2a5c9ea6f3bfda012b4a26c"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.runtime.json",
+      "bytes": 1665,
+      "sha256": "2574c12e231e515831227a1a3a1b207ea6e8e5d13d3aa7fce65de23cdaec5aad"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+      "bytes": 263111,
+      "sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.json",
+      "bytes": 534,
+      "sha256": "189a2ffdb24653d5d4d971575664d3813f0241627765997d4a8cb4dabac097f1"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+      "bytes": 263111,
+      "sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_sportec_combined_2026.json",
+      "bytes": 740,
+      "sha256": "acfa6fbf53f2f15ad7fc1768c1d8e4b74cea64498611fb1896a4aedb2d818836"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_sportec_combined_2026.runtime.json",
+      "bytes": 1840,
+      "sha256": "457d873a18f1328dd4894061e11326094c1b8481e7a36d2c414415f18c4fb237"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+      "bytes": 263111,
+      "sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_sportec_combined_2027.json",
+      "bytes": 740,
+      "sha256": "defb4eec4cb707eb3641c058842d066bcac613fae78c0197b5e1574cb3c8ab4d"
+    },
+    {
+      "path": "experiments/objective_alignment_v1/without_sportec_combined_2027.runtime.json",
+      "bytes": 1840,
+      "sha256": "da640f17e2659894ea0075eb75b6b1c13ed11c4e7d60efd72d97888006fb43a4"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_J03WOY_clean_clean.npz",
+      "bytes": 2077507,
+      "sha256": "a726076045a822ef9aca68c7507a0ad22932ae59dd1caa3ce119a0f87cdc873d"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_1.npz",
+      "bytes": 2077857,
+      "sha256": "7748451902d3f60545b05a8d755bf3b042ce0256fbad4da44f158a106524d698"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_2.npz",
+      "bytes": 2074290,
+      "sha256": "b4793ecc13a3b61b593b4d04b26735aaff99e9b6b08f77ce0132ff02dcb9830c"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_metrica_3_clean_clean.npz",
+      "bytes": 2101672,
+      "sha256": "44f52ad86adb70235331dde58ba952f656a7f3253c55b2794d9db282e8d66c59"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_1.npz",
+      "bytes": 2095887,
+      "sha256": "c1226e367d31aeeb0951f14970e39f3a6174cb0970ef2b6b4a3ad3ad2d7dcf99"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_2.npz",
+      "bytes": 2094600,
+      "sha256": "781831c309b14b4bb75568eeeb2bfa281efb9f5227fc90e4f82a126669794abd"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_clean_clean.npz",
+      "bytes": 774432,
+      "sha256": "885e9fb57687ed7832b683dc39ec67e3ebf8d6db848fc745aae19bf888805234"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_1.npz",
+      "bytes": 770393,
+      "sha256": "2a0638ba69eb45ee401608f5f2fedcbb488a11760c0b21564615f8014cfdc8b9"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_2.npz",
+      "bytes": 770012,
+      "sha256": "acfc20adbcd4afb5dac45e2f289fe3032a9a12737f0168daddc4ff6128829112"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_clean_clean.npz",
+      "bytes": 794842,
+      "sha256": "06416813dc8498a384bc92fe6de95aa38b680cf435ad8b09e5aaba40ef14bb2d"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_1.npz",
+      "bytes": 792107,
+      "sha256": "fb510c24aa8c0a017ba18c0cc2e4a0dc66875d60d0676d406ed123d3fbb1362e"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_2.npz",
+      "bytes": 783116,
+      "sha256": "836b72c2b981201655d7edcbb84b9784864439419ccfe89a89b6a5d3adc2c6d7"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_clean_clean.npz",
+      "bytes": 776074,
+      "sha256": "a595b03e32690afd4c58d7139c14f17d17fd3dde76c3016a0b354a420e6ae7a9"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_1.npz",
+      "bytes": 770164,
+      "sha256": "e0fddb4110601d210cddff190d9c3f3e1ed8e1b2d014127208972542fdb5782f"
+    },
+    {
+      "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_2.npz",
+      "bytes": 771085,
+      "sha256": "747889bced4376b66a7494ce862efc1dc3ddd749ef0d6245013eba5573a21776"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+      "bytes": 37595123,
+      "sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib",
+      "bytes": 63772461,
+      "sha256": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib",
+      "bytes": 63092004,
+      "sha256": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib",
+      "bytes": 41630166,
+      "sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib",
+      "bytes": 60921765,
+      "sha256": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib",
+      "bytes": 61148402,
+      "sha256": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib",
+      "bytes": 17156906,
+      "sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib",
+      "bytes": 19881567,
+      "sha256": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib",
+      "bytes": 20299503,
+      "sha256": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib",
+      "bytes": 15868178,
+      "sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib",
+      "bytes": 18068220,
+      "sha256": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib",
+      "bytes": 17974485,
+      "sha256": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+      "bytes": 17231158,
+      "sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib",
+      "bytes": 19826101,
+      "sha256": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d"
+    },
+    {
+      "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib",
+      "bytes": 19988307,
+      "sha256": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d"
+    }
+  ],
+  "organizer_labels_read": false,
+  "organizer_scored": false,
+  "scoring_gate": "None; no organizer score or public gate is part of this study."
+}

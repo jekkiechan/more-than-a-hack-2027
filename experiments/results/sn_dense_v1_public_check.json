@@ -1,0 +1,145 @@
+{
+  "study_id": "sn_dense_v1_public_check",
+  "candidate": {
+    "primary_metric": "spell_f1_mean",
+    "spell_f1_mean": 0.6303030303030303,
+    "macro_f1": 0.8513871111822523,
+    "auxiliary_70_30": 0.6966282545667968,
+    "d_precision": 0.8626334519572953,
+    "d_recall": 0.8250510551395507,
+    "d_f1": 0.8434237995824634,
+    "spell_by_iou": {
+      "0.3": {
+        "precision": 0.75,
+        "recall": 0.7058823529411765,
+        "f1": 0.7272727272727272,
+        "n_matched": 12,
+        "n_spurious": 4,
+        "n_missed": 5
+      },
+      "0.4": {
+        "precision": 0.75,
+        "recall": 0.7058823529411765,
+        "f1": 0.7272727272727272,
+        "n_matched": 12,
+        "n_spurious": 4,
+        "n_missed": 5
+      },
+      "0.5": {
+        "precision": 0.75,
+        "recall": 0.7058823529411765,
+        "f1": 0.7272727272727272,
+        "n_matched": 12,
+        "n_spurious": 4,
+        "n_missed": 5
+      },
+      "0.6": {
+        "precision": 0.5625,
+        "recall": 0.5294117647058824,
+        "f1": 0.5454545454545455,
+        "n_matched": 9,
+        "n_spurious": 7,
+        "n_missed": 8
+      },
+      "0.7": {
+        "precision": 0.4375,
+        "recall": 0.4117647058823529,
+        "f1": 0.42424242424242425,
+        "n_matched": 7,
+        "n_spurious": 9,
+        "n_missed": 10
+      }
+    },
+    "headline_iou": 0.5,
+    "spell_f1_at_headline": 0.7272727272727272,
+    "spell_f1_bootstrap_5_95": [
+      0.46060606060606063,
+      0.7878787878787878
+    ],
+    "macro_f1_bootstrap_5_95": [
+      0.6030290355500453,
+      0.8935583295937901
+    ],
+    "bootstrap_draws": 1000,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "predicted_spells": 16
+  },
+  "adopted_baseline": {
+    "primary_metric": "spell_f1_mean",
+    "spell_f1_mean": 0.5696969696969697,
+    "macro_f1": 0.8612884896685773,
+    "auxiliary_70_30": 0.657174425688452,
+    "d_precision": 0.8945022288261516,
+    "d_recall": 0.8196051735874744,
+    "d_f1": 0.855417406749556,
+    "spell_by_iou": {
+      "0.3": {
+        "precision": 0.6875,
+        "recall": 0.6470588235294118,
+        "f1": 0.6666666666666667,
+        "n_matched": 11,
+        "n_spurious": 5,
+        "n_missed": 6
+      },
+      "0.4": {
+        "precision": 0.6875,
+        "recall": 0.6470588235294118,
+        "f1": 0.6666666666666667,
+        "n_matched": 11,
+        "n_spurious": 5,
+        "n_missed": 6
+      },
+      "0.5": {
+        "precision": 0.6875,
+        "recall": 0.6470588235294118,
+        "f1": 0.6666666666666667,
+        "n_matched": 11,
+        "n_spurious": 5,
+        "n_missed": 6
+      },
+      "0.6": {
+        "precision": 0.5,
+        "recall": 0.47058823529411764,
+        "f1": 0.48484848484848486,
+        "n_matched": 8,
+        "n_spurious": 8,
+        "n_missed": 9
+      },
+      "0.7": {
+        "precision": 0.375,
+        "recall": 0.35294117647058826,
+        "f1": 0.3636363636363636,
+        "n_matched": 6,
+        "n_spurious": 10,
+        "n_missed": 11
+      }
+    },
+    "headline_iou": 0.5,
+    "spell_f1_at_headline": 0.6666666666666667,
+    "spell_f1_bootstrap_5_95": [
+      0.4,
+      0.7393939393939394
+    ],
+    "macro_f1_bootstrap_5_95": [
+      0.6118160468554981,
+      0.9089339674087586
+    ],
+    "bootstrap_draws": 1000,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "predicted_spells": 16
+  },
+  "deltas": {
+    "spell_f1_mean": 0.06060606060606055,
+    "macro_f1": -0.009901378486324997,
+    "d_f1": -0.011993607167092635
+  },
+  "prediction_seal_sha256": "2afbde9f87492086825b6a79973956cc3247fea9d85965357526f4729d86612a",
+  "organizer_reference_labels_read": true,
+  "public_used_for_selection": false,
+  "explicit_user_request": "User asked on 2026-10-31 for the public-window score of the two-seed D2 ensemble after reviewing the completed external study.",
+  "interpretation": "Exposed five-minute pipeline diagnostic with 17 reference possessions; no tuning, selection or adoption follows it."
+}

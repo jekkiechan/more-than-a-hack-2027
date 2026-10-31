@@ -10,6 +10,21 @@ question to answer with it.
 
 ---
 
+## Fork research
+
+The adopted package, open experiments and next actions are tracked in
+[current research status](docs/research/STATUS.md). Use the
+[experiment index](docs/research/EXPERIMENTS.md) to find results and
+[BASELINE.md](experiments/BASELINE.md) for model versions, exact evidence and
+private-cache restore/inference commands. Start agent work at [AGENTS.md](AGENTS.md).
+
+Research reports distinguish external development from the organizer's small
+public pipeline check. No full-match performance or organizer submission is
+established. The original challenge guide below is retained as upstream context;
+its quick-start scorer is not the fork's research iteration loop.
+
+---
+
 ## The task
 
 **For every frame of the match, say who has the ball.**

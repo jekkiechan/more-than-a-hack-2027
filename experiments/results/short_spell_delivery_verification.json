@@ -1,0 +1,40 @@
+{
+  "verified_utc_date": "2026-10-29",
+  "checks": {
+    "synthetic_and_contract_tests": {
+      "command": "python -m unittest discover -s experiments/tests -v",
+      "passed": 248,
+      "status": "passed"
+    },
+    "file_backed_fit_contract": {
+      "command": "python scripts/fit_context_filebacked.py --contract",
+      "status": "passed",
+      "raw_array_checks": 14
+    },
+    "bundled_submission_format": {
+      "command": "python evaluation/validate_submission.py evaluation/results/baseline_smooth50.csv",
+      "status": "passed",
+      "rows": 199319
+    },
+    "baseline_manifest_unchanged": true,
+    "model_decision_policy_unchanged": true,
+    "organizer_scoring_performed": false
+  },
+  "independent_replay_receipts": {
+    "experiments/results/native_short_spell_independent_replay_verification.json": {
+      "sha256": "1220f11a5baa42ddb277620f0e3e1eece324c1a377cff4aee20a3ff14ef4a569",
+      "status": "passed",
+      "mismatches": 0
+    },
+    "experiments/results/turnover_decoder_independent_replay_verification.json": {
+      "sha256": "f9386a762c6a9644041dd6e9ce6f8f627e8a5a0610a29f24d2b573daba3c4beb",
+      "status": "passed",
+      "mismatches": 0
+    },
+    "experiments/results/turnover_decoder_v2_independent_replay_verification.json": {
+      "sha256": "13d02c64831437695c70a33ba2664c9fbc4b356812b411e5f4c2b4ad759f9191",
+      "status": "passed",
+      "mismatches": 0
+    }
+  }
+}

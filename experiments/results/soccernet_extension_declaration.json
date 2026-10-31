@@ -1,0 +1,1337 @@
+{
+  "study_id": "soccernet_extension_v1",
+  "created_utc": "2026-10-30T01:46:11.071517+00:00",
+  "question": "Does sparse native-broadcast event-team supervision improve possession spell F1 beyond equal-update original-data fine-tuning?",
+  "source_sha256": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "evaluation/run_evaluation.py": "1c61564fe52499ba4af3006fb5eb4147b825e92bf516651add80de49d267b19f",
+    "evaluation/validate_submission.py": "07ac29499acbd337e1dc1de1832d63f6e1fa1d981e22f6ad08212529e2bbee14",
+    "experiments/audit_dataset.py": "4e445f5a2ffff5fd6b9f3f6892466641f6f3c381fad7d150968e085d9d33fb32",
+    "experiments/baseline_manifest.json": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "experiments/benchmark.py": "938d46301a147eff99fc3b39d09bf42186403e1264494a7dad5da152bfbae964",
+    "experiments/broadcast_fusion.py": "2e69e37234e6bb6418a29c96879a335388ba06803ec339316a51124b130ffc97",
+    "experiments/broadcast_quality.py": "09b4be9f95d5c05374f4d75d002919fcffcc07773b7238b3caeabaa6e7525e22",
+    "experiments/capacity_lgbm_experiment.py": "f2945a0ea1c5f20b49d7b31d02d9a545d1549e5c65cb8b906e62f9b193fb8cd9",
+    "experiments/challenge.py": "204ac7ff7a8e530facd9e19fc7d264f2eb35698df1cda60bf32c7f6a720abba1",
+    "experiments/challenge_pathcrf.py": "4813a0bfa3d5e4b4c20de8885de526c53ccf72a57d50a7eb5ecb746faf917778",
+    "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+    "experiments/combined_objective_public_check.py": "c51d6ad24ccbd05314d96d874d917c143ce7134005e06c2d3a869c6bc7869dfb",
+    "experiments/compare_pathcrf.py": "8a796b9808054ebc6725124624a5e60e5c27a89ca799800db25c961da8236edc",
+    "experiments/confidence_abstention.py": "9d4afa08ec49f4f96f810469233467a3a63b552861cbb97aeaa2b8af1bc1af8c",
+    "experiments/contact_memory.py": "1a20a53a63716798d35b192f4c579622cdd93bc95979cdffc8f518e07c97c6a9",
+    "experiments/contact_memory_experiment.py": "d8eacc5b48a528b3069d67825a86685cef0eadd2d9203551da98837cee860e52",
+    "experiments/contact_memory_runtime_resume.py": "e62bfc3ff37b20f698a8e45246cece2a8b394e4f0248c207eacb216c4c24e043",
+    "experiments/corruption_experiment.py": "07b357b7f9f99af444f110d576eaba8e791134c07b1dfc28d229fc242a6c22e7",
+    "experiments/current_baseline.py": "a15270893060ee4ee1055bdc0bbf90f64763b6558a5d0826a9599d30d9d8ab36",
+    "experiments/datasets.py": "f0d3a4eeda1d0b970fe7677a24ad752952d44a403be0ccd7bcd7469a05e4e958",
+    "experiments/dead_transfer.py": "f38aa33ddf8b7619973cadbe99b9c16c99e37cfa466aa8a5e2a05bb456ad3186",
+    "experiments/deadball_transfer_experiment.py": "5e18e17b29e2de989d94d37414f29546dcd839d6aa32f15e175474a9dd0c2538",
+    "experiments/error_analysis.py": "5d06f61f87a5ca6b831183c56ea97a2a6cffaff12d6db47cc5d9a318ab392a1f",
+    "experiments/eval_set/__init__.py": "a9867abf55e8f4f90e695e64e8cc2479f7277d0be3d1a6537ae7ae7ecde5eb34",
+    "experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "experiments/eval_set/metrics.py": "753150955daafc9fc8aee84f76b9ba645d9205af5c221bd7e6764e92f98b89ee",
+    "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+    "experiments/eval_set/test_protocol.py": "ebc6544d296581f59017115a389432498e3e6247b41d169ec7bd139fa6a39907",
+    "experiments/expansion_budget.py": "e156a63a5b3df71dc1020d54a67c2b24b69a157807df47386569da0e1a76c348",
+    "experiments/expansion_preparation.py": "945338c6d724337b574d7db8e40647790dcfd7bc67fcaabc226a88197e05d828",
+    "experiments/export_reports.py": "b296b4601717602327e1bd1f934063904d8597cec143892cf9dcf93ff68722f1",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/feed_defect_profile.py": "2432bec8def87d33b82de5dc4a2b43e242cdfb6dc012379e522fd071192842f3",
+    "experiments/freeze_pathcrf.py": "feb77b5421b1ac6805881f1e6111a519b8458c7036d222bb2d8d73947488c0a4",
+    "experiments/gap_diagnostics.py": "c34e914d6ef122e21c1094450f86fe3a53eba1da13d25cbbe620dbead27a932a",
+    "experiments/gru_robustness_experiment.py": "2b85f8e0a89e0b3012da853c3ad3bebfb5933fb2ce6c94d14174705e02c45c05",
+    "experiments/had_gru.py": "d7597831f2af606a2a68e89747fa4756b5288c620ca710d06e0280bea6d90fa6",
+    "experiments/headroom.py": "eaf264d5aef604765df168b22d5a1573d124b6045ca6a5282609155126eed32d",
+    "experiments/joint_lgbm.py": "781cc406148b54d2e912599099ad452b00081152dc400aaea4ea8d036d28be92",
+    "experiments/joint_lgbm_capacity_audit.py": "c2e58964b5585b22f2ec40dedc64b220234ab9d0283df715521acca9977e7876",
+    "experiments/joint_lgbm_experiment.py": "21a0c7ad8f9a8f5650cec9f6e16c6dcfdd9941dbf7f31a69a87712db5c5f9222",
+    "experiments/joint_lgbm_feature_audit.py": "4549e662a2ad618b4a3db534cf08f5257fc25860d4fc0558449eb01218c06963",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/lgbm_capacity_audit.py": "64a630065946e6975861440c16b719550b76c7aaa48688d8051a7a6d94dbeb83",
+    "experiments/lgbm_capacity_full_support.py": "e62454d7d2808a7a0ebdbe39cbe17e93469fce2c8167a4f79064268a052a002c",
+    "experiments/light_candidate.py": "0cb31f4041c156413bc43bb38b5a5156500eb7a2da76c8836c14608842b3bedb",
+    "experiments/light_corruption.py": "29f1a5759112172af99d30c59e2e39fef3798b03ec9ee32640e7d7e81fbc0ac4",
+    "experiments/light_public_check.py": "0f0e745523d1bf4a1563ae8b21ae199b3c994c975ff96e71d770039a1b9ca3d1",
+    "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+    "experiments/metrica_open.py": "a0df5791a3ac3d5a1c22cd73fe51f1e522c8f1cabeefd759c9161b8bdde1861e",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/model_decision_policy.json": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+    "experiments/model_scorecard.py": "9804834a76aaf3aa900efbbabf7badad276c2d5f2da80d538ae6d3c5827fd7b0",
+    "experiments/multisource_eval.py": "1e166cf7169c81ca1393a8cd503f8fd99891ce7693156c73133f8002c847f592",
+    "experiments/native_short_spell.py": "64e11b8258aec19878e02c15d565501afc8561f8f376a4742d415cf399d61255",
+    "experiments/native_short_spell_experiment.py": "9e2931bc2b3e876f0014e97925766ec5c860c6cef2c537a5e04d76dc99f214d4",
+    "experiments/native_short_spell_runtime.py": "83b6cbb00d76ab714bc5bf920b0b98d0788657dc8509aa093841b600979b693a",
+    "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+    "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+    "experiments/pathcrf_ensemble.py": "9f3607aec8a067a088b8f593e122ed4b4e7ab299afc2a7828aea123ca62abca2",
+    "experiments/pathcrf_eval.py": "26a6a192d555fdf6ebea0b2d174fac5c670775ea9782f92b5f20d338a2df09d5",
+    "experiments/pathcrf_visibility.py": "c9db0070a36144320b2efe004c09e000dcf203625978691bea82b36dd8aee7ed",
+    "experiments/plot_results.py": "7632463dc7748412a9883da3e55a07c2acbca7081e9659e7af0b743cfa17e1bf",
+    "experiments/possession_geometry.py": "0d9b24fa2ac1639e1d062205c518ec631f8c2e8ba3b80a4ecb2412d6e4b044c4",
+    "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+    "experiments/prepare_corruption_cache.py": "a709ac480dbc44bfe89c9cf1944893aab9c7b9e00d4c301cee689130fd822ec0",
+    "experiments/promote_ballgap_baseline.py": "77412bb52e9bfef62aa83da02d8a71ef4543c0f1839702f484fcf098f72a862e",
+    "experiments/promote_combined_objective_baseline.py": "60043b6dd7a38e60143e8d1386c856db49efd110eaaba1c667c63d78f36d1a2d",
+    "experiments/promote_joint_gru_baseline.py": "74efa12f6f59a132ce38013473505d8947775b73bc1775e8917dc5cb16fa304e",
+    "experiments/promote_seed_ensemble_baseline.py": "235b6440b21d93fe4ee0eb731058c59b08f9645a7ef5f5c24198f6f0d2b4c217",
+    "experiments/refine_combined.py": "0e7611042d5aef37324aca3bdda691a8928f3ad78e2027dd647b35b8c9bd5b47",
+    "experiments/refine_decode.py": "710efe78a070b847b278507505b9714209b2541c329e867973d45f560180c87d",
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/refine_ensemble.py": "6737cf7b49814c87a72e8e335ed3703737aeab2354706c77106c371deac43cb1",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/refine_lgbm.py": "cb0172891ec62c3c08a023eeff7517cd67080e99bcc38f5898085d7ce8eb695c",
+    "experiments/refine_scale.py": "0c3af8da7c0875656daf583677f127c4356e4e688e0857821e1e9aebab21a5ff",
+    "experiments/refine_weighted.py": "97ea2bdb26a23989a69fe54b419ed0bb77ae604d53ea8b0eb73b10648c29b180",
+    "experiments/refinement.py": "1556e80b5a3c516d699e5249d8e4135f25a6076010d51c382459cc7895079f70",
+    "experiments/refinement_errors.py": "55b056beec2df1c53a3b60be981fb8865645cc4fa9d7a1ced46d8452f44bc61b",
+    "experiments/removal_budget.py": "b44da00074a81700effdf87dcd8cd480bc29504621db23c4e2358b5f2d8b022f",
+    "experiments/research_directions.py": "a6206b241d64cdf0383916cb9cfad341e0dc45c191a6263a7d2215cb55255368",
+    "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+    "experiments/seed_ensemble_deployment.py": "2d1d8337d73e77d340d88305100d36efa7e5f323328993df16e81f5a4c3a895a",
+    "experiments/seed_gap_context.py": "f6d0595e86bf8b4f4c930fdf5f2b298d3bdba87a92174ce66105508c0b49b71d",
+    "experiments/short_spell_recoverability.py": "6b384dbbc1af956320bddaa714ad7adab639f6638d3425a668c9a8e6419c36a6",
+    "experiments/skillcorner_expansion.py": "115909ba25a6152c9606b25bc4e4a155fff1c637a8bacbe8628aab617062f13f",
+    "experiments/skillcorner_expansion_public_check.py": "f77e0d4db39283bc41a4c4a5fe3761835930900446b1f53a1d71d49925ad02a8",
+    "experiments/skillcorner_had.py": "4533bc8b974383c99db9de16548a93e40ea224f17dc752ce2aa8257b65f12a87",
+    "experiments/skillcorner_removal.py": "5f2e05bb59b0aa4b02589a71b0a0a25a4ed74e9e189bf02a6a5ca8a3ffd7087f",
+    "experiments/smart_tagging_audit.py": "7bbc1c715baa8f9435c91ddfb36a597f605c92d8c0250877b53f2b08f88e3b59",
+    "experiments/smart_tagging_check.py": "db531de5d3c5d1a55c527b38087a8d3acb751598297d5e6c74e36967d2438999",
+    "experiments/smart_tagging_prior.py": "3bbc1cbf74bd691f6a36b1cb4fb21ea88131408aabd7f6f2261939728efb615a",
+    "experiments/soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+    "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+    "experiments/soccernet_finetune.py": "df934186ee659550348640c646695c687c3b54a8f6e9895bddabe2d5aef5979d",
+    "experiments/soccernet_public_check.py": "419a47b96a1fab65fa87edf778fd66549836a2c4acc74f9905d3f84b3f8a95f3",
+    "experiments/spell_audit_saved.py": "587dfeb2305153dce4f231381a7884c0f0450d7d878bd612803293bef6588043",
+    "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+    "experiments/spell_opportunity_audit.py": "70ce922c6acce56e2d13db60ac4500e45d995fb986b42fbac6dcacf3955a8eb5",
+    "experiments/state_machine.py": "e8d221abe8d2e5a69c1d2e78fe4a64a86223f4d9c8e4fcd714ebce04084a74e4",
+    "experiments/stress.py": "c4d9f47ea8e77e29bac74ea26831f4cd4597ca79ea3cadcb316183f84dcae32e",
+    "experiments/stress_component_ablation.py": "3c8325fb9a9394d7cd4034d468e7b4ecedcfa6e9d6d7265ae0f2fa61f572d91d",
+    "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/temporal.py": "168e4960004488224bc230bcddedecfc81326c7a470a80f6a9580a5afb6326f8",
+    "experiments/temporal_attribution.py": "dc4a721a389ba741df9254256ffc721e6f8069286bce7658a08f5349ef9ad6a2",
+    "experiments/temporal_challenge.py": "ff976051717aa375e349a773b8d7ecb0d65804aa8aed46b726bd9d14fd582664",
+    "experiments/temporal_competition_check.py": "e79f827a0890330411a14cbda2d47360294aed72b919030e0b668ea1dcb5a5d7",
+    "experiments/temporal_competition_fit.py": "ba931eddb2106915c51e700b0f1980657117a74b4e6783513451817b76658953",
+    "experiments/temporal_competition_resume.py": "a99249d50b15c692d9ce29609728454cb6ff16c9063e954826a851fe2ce25036",
+    "experiments/temporal_ensemble.py": "d9722870bd1910482c39467520095ec3b55c89b803fc452722e8be6bb8e5077d",
+    "experiments/temporal_lgbm.py": "70db7f60db04524da4d38b4fa458550dfbf2d3a27c6907cdcff9f3861a47bc7d",
+    "experiments/temporal_lgbm_experiment.py": "c3e4c1de3fdc4fe72fe1b6b2b7fcbf14a502503a4115093de7b7aa00c8c40251",
+    "experiments/temporal_report.py": "b159edb32e9c34e8bedcbf72cf3d5ae5f9cfae34f199c79b77eeeb8393e9ecf8",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+    "experiments/tracking_research.py": "e4ea404b2b51ea78fd3a81f302d00c525fb75c56bb0c9b0f3249d84d55355b86",
+    "experiments/turnover_decoder.py": "841a5ec57810e6df71fcaffd2ac40cade3a4bbfe71339561e4029e18daa7dac6",
+    "experiments/turnover_decoder_provenance.py": "f0833cd4dce9c3fcb56dfaf62f5421f460b5df91130646524fde65ee1e01bd31",
+    "experiments/turnover_decoder_v2.py": "929230153241874008ed04eacaed4b545249e6ff2cb13d0187a5f1301036496b",
+    "experiments/verify_temporal_followup.py": "6916fbf03d249856cfdf90b9620ce06a1966446562227a64488ef13a1a44c0c7",
+    "experiments/window_overlap_experiment.py": "e7e2a91b416d62eb464f075f36e56e78ef0b617e74687ce9699f6162109df7c5"
+  },
+  "dependency_sha256": {
+    "experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2026.npz": "2c41bd8205df7ad082a44ab8caee72079f0ebf3ac3ce5e7e9a93a265b8dc807b",
+    "experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2027.npz": "61de5f13db9b0bee2bbdecf37eb8803e5cf52e4e8a686f8d5ebaf775d386b865",
+    "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2026.npz": "e3bb185860c2840b9248c99384baf0902d18ed12037b2665d88dcc50423b8304",
+    "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2027.npz": "6d015cf2bc7ba1e913ced2cb79429377806c8f5a4f4ac139f9b3228053f514c4",
+    "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2026.npz": "dd66a6990478bb3495f43916606b88c7710184357dd41c0e220672f67c008f68",
+    "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2027.npz": "751a1f56d3b52ce57a94a15c99a71bc9a47289e7cc08b3621b8737e7fc146ac9",
+    "experiments/objective_alignment_v1/predeclared.json": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2026.npz": "34ccb6db2ca675b6572afeb7bf9bb5c1c89dba626d834f2d8ff308f768d32b63",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2027.npz": "cb853d3ab2a8e9b304c90db4b282f76d23b5b0bafac752bac7db7d70e74caa11",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2026.npz": "61a2615709343478cc3c21edb0384430aadef4226a0de116afe17e883af81326",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2027.npz": "f1af48b9376d241881279e0011d33aba9243e8f35708dd8c9005836d4a0dcb70",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2026.npz": "251e1563f4d93f9f40f682bc173ed7999c43022b0d9135b7230b0b3f88b92ec3",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2027.npz": "f8390143ed51c16e2189ea49e370b4796d6f5782872510a53b0c1b550ceaa8e2",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2026.npz": "053a6722b290bffc97faec796ba3f0c251b1270fc458792c7a14ad0554e28ab3",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2027.npz": "f0acddab4ab9c7ec2f1e8a7b13cabedcd54ce463a52b8296d09ce7a598cc032c",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2026.npz": "a6d58d92c8e735782ffd1cb342ed7394e6a960494a8db0d221bd1be0d6caf236",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2027.npz": "53500f4ff20e3f2da405feac30d43929cb13b9917307620e5c33fdcd5bb1f2f6",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2026.npz": "0e54444f0e28a3018a6818ddc74a45731f27027e956ddc033667ac110e3c3dbf",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2027.npz": "576c9e9d3e1be6ce2a55f2c5b68061f9e550c854815a14dfc9eec3782665f619",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2026.npz": "d262c27c0b20d5c49e7e0efcc0868f9d447f2fe03245d9a7b82bf4bbb0ead02b",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2027.npz": "259e6f12b53f9f03abd9ec3f8da534fe32fb0e5678cfc9e457933fc8a60cd5c4",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2026.npz": "392f68ddb47b09159b3c61f5dbdc7485420fee56c1b0575351a75d9bde41dc62",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2027.npz": "7b61a85535fc67bbc9272d6bab6994fe628f94c496d601edd9a018a10eb2f0b9",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2026.npz": "c2ef3a1cc1b9c71f985748c2f7a24684350e518be5ea37b2cd0c96075afa7116",
+    "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2027.npz": "97799791bf1aec78cf6d71d853b53b9750b02b6827072dba8f2a3aabd636cc2b",
+    "experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2026.npz": "a0a2394498a0616ea5ce6cca85f5b2770dd362e99cdaf4be3648db8738445adc",
+    "experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2027.npz": "5dfdb90c76099ff622338ee8295270a86ec7dc9ff7ac6eb150bb23344097ac91",
+    "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2026.npz": "dbc65a66c72e332e1a8256c82c13e762802b583628f9ce074d73fa4ced5ff4d9",
+    "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2027.npz": "9f77f2677666b37f30015e0cbf7bf94dff80a3aa590c96792d97dc1028d57d8d",
+    "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2026.npz": "120f4e085a17cabf8c3fb07249097427c661183a14c9cf4dfd28a5508f3489fd",
+    "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2027.npz": "f2ae1ff85a3d46726788b0df7d6191b10ffe4e22cf851d592fef476e3c18f65a",
+    "experiments/objective_alignment_v1/without_metrica_combined_2026.joblib": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+    "experiments/objective_alignment_v1/without_metrica_combined_2026.json": "45f3e4d6a62b9b2e122c1dca5a82d638b6ed7570e3a67645cf1199f420828ce3",
+    "experiments/objective_alignment_v1/without_metrica_combined_2026.runtime.json": "297e9ff57f0fc0dc274043d889067508af4afcf486a46c80d8af9539079f001e",
+    "experiments/objective_alignment_v1/without_metrica_combined_2027.joblib": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+    "experiments/objective_alignment_v1/without_metrica_combined_2027.json": "76c20b89a7fee43bc1e518d64d86bd0cd2b1e5f87e976903862c80852b65e770",
+    "experiments/objective_alignment_v1/without_metrica_combined_2027.runtime.json": "1af0afe2635e1ad739bfda7c8db74335d9d04f1982c9b89a73f2282bfdc1bb30",
+    "experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+    "experiments/objective_alignment_v1/without_skillcorner_combined_2026.json": "4c994e05feee5a28943c2d6357a58b5cdf4cb565d2a5c9ea6f3bfda012b4a26c",
+    "experiments/objective_alignment_v1/without_skillcorner_combined_2026.runtime.json": "2574c12e231e515831227a1a3a1b207ea6e8e5d13d3aa7fce65de23cdaec5aad",
+    "experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+    "experiments/objective_alignment_v1/without_skillcorner_combined_2027.json": "189a2ffdb24653d5d4d971575664d3813f0241627765997d4a8cb4dabac097f1",
+    "experiments/objective_alignment_v1/without_sportec_combined_2026.joblib": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+    "experiments/objective_alignment_v1/without_sportec_combined_2026.json": "acfa6fbf53f2f15ad7fc1768c1d8e4b74cea64498611fb1896a4aedb2d818836",
+    "experiments/objective_alignment_v1/without_sportec_combined_2026.runtime.json": "457d873a18f1328dd4894061e11326094c1b8481e7a36d2c414415f18c4fb237",
+    "experiments/objective_alignment_v1/without_sportec_combined_2027.joblib": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+    "experiments/objective_alignment_v1/without_sportec_combined_2027.json": "defb4eec4cb707eb3641c058842d066bcac613fae78c0197b5e1574cb3c8ab4d",
+    "experiments/objective_alignment_v1/without_sportec_combined_2027.runtime.json": "da640f17e2659894ea0075eb75b6b1c13ed11c4e7d60efd72d97888006fb43a4",
+    "experiments/objective_ensemble_v1/declaration.json": "686a10993b74234e0bb02134cd4ec79f781c87a140dcf88cfa31cdbc8f4a0c6e",
+    "experiments/objective_ensemble_v1/report.json": "cf267890905ece05aebe366c86c9ea635c07fa5267831f0658ac8932863f51d4",
+    "experiments/objective_ensemble_v1/runs.json": "3269e3a08a01d3682fe5ab7c3fd6e60e6b1c722df9c018418e19a8344f2eb329",
+    "experiments/objective_ensemble_v1/source_snapshot/evaluation/gt/BAR-ATH_possession_gt_public_meta.json": "cd8784f7c33127d9a87808a8baab16c5fa64c7eeeb4824c4036726ce73258c5a",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/baseline_manifest.json": "8a518b549ddd4e3b7ee3a2bc1033375a8190a39d44c52f336e801e155852f852",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/baselines/gru_hgb_ballgap25_v1.json": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/baselines/gru_hgb_v1.json": "bd3318056c4f3c19b2df7b744b48f967b36a69a850545fa96913d0f0f72706de",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/baselines/joint_gru_slotdrop_v1.json": "caad9b496103a6d4bd8012aef507cd136fb7059d8226a7510fab8a94430602e6",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/baselines/model_decision_policy_gru_hgb_ballgap25_v1.json": "11d1cf3c656042f729f62709b6a596affa53fee3e41d69e3c2407dfb959f09ef",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/baselines/model_decision_policy_gru_hgb_v1.json": "383b124a467242324331ebc1c6f85571d919bb715e52fc4ebf70ab70f219957b",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/baselines/model_decision_policy_joint_gru_slotdrop_v1.json": "71337c4d24caf6989d67f6b0cfa94e89b129ac7695dde612825dd3b9577a9e99",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/eval_set/manifest.json": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/eval_set/shortcut_audit.json": "6630c57b0a00b15dbfac5f4027c2ba234c970573b0e99fef13e1e71d673ed585",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/model_decision_policy.json": "3d48ea748339c602f9b70cef2bcc3bbd53936e33cfe088493cbcb1c4b5b896b6",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/baseline_ballgap25_promotion.json": "6cd61790c865c255d4bd1430bfcf36eb1b66052ec893cd083c6aff0419a842ba",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/baseline_joint_gru_promotion.json": "7b1aa64d832980cdb25de3109499eea9de2ef1cc7e8d9bf4a268ecef12287490",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/baseline_seed_ensemble_artifacts.json": "07df67870da8a738964b81e5f98bb548899a012efd9bd6f0dcc24e5a30b11cef",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/baseline_seed_ensemble_promotion.json": "239e3881164bcbf60922d03be1a708698ed8c251fbba673896dd0f6ab5cd4311",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/baseline_seed_ensemble_validation.json": "70301ab39d52d614eda3dcddda61b0decb7d3405ac75a6f50dda461f803cba03",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/broadcast_fusion_quality.json": "3eb49a9a34f7cf0a2cf5974d30cfa0e7fb9d1a890fbdf6f84ac2b35e880c46af",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/broadcast_fusion_tracking_audit.json": "538e64ee2a4186a218ea913d3496a6a964a434c6e79e6af801a372aa505d5e64",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/confidence_abstention.json": "1731ed58961a43ae295c0604d8c87841d70a284f204d04ec1a035380a491088f",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/confidence_abstention_artifacts.json": "4779eefbecc515db47573a37e9b12f77bfbc9a13a88ce3e97599b141043214f2",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/confidence_abstention_declaration.json": "64fe0a8ac4b065cc2268545b84d0272c77ceeb9a593e81e960ed0296ad0fad6a",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/current_baseline_public_check.json": "32df69c1dfcf13a77ce9bf62229f42ff0ada2c13f5764de6b43ef56c9844603b",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/dead_shortcut_training_audit.json": "0f806a2065cf552096e0ad6bf207c8dbd9a22d3057350f218f5527eb46528279",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/dead_transfer.json": "9668d1972c2efbea56368354e70077f487b911146ddeea43a676bf1147a0bfc6",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/deadball_transfer_audit.json": "874e9c0d8e08e1fc9623196e4d88067617759f102eacf51d8761c89971e8df42",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/deadball_transfer_development.json": "44b08400b29f3c2661bbf83a224e21c4aa534437e84c7ec377767333afccd5f8",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/domain_validation.json": "c72f8ff4dadf6f1496dd34e55879a5887beb7659f05fd2dbd464948922d842e8",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/error_analysis.json": "cb52449cc632f2e14ab958e4ceda42f566b7efea9231c4b3dc0621bb41cd8192",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/feed_defect_profile.json": "36f025abb7d5bb30f94388d91e65ab03debc14ce98ee9a256d6e544e59b2e7b6",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/gru_control_reproduction.json": "d59aacff18ab09269e24720d7365d6c53fec6f2dfef68041f1ebba4746909deb",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/gru_motion_support_audit.json": "7c80e328ef5b2866e97b91e631313da1b8f4c627f894aa41cdffb68ade544dae",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/gru_slot_robustness_artifacts.json": "719476a78a251c49ee76c90b8953b7a2827d05df59b2be8494bf6f76c3c38c1f",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/gru_slot_robustness_development.json": "9d052fe16418ad96dc8f9b691f732ddc47f765bc65b18d8d0bcf4664c70cc2af",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/headroom_validation.json": "f1ee6d9ad35bf04b151054af8b87c1825dda3a987d2d64bca077798759f456bc",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/joint_gru_public_check.json": "ff0df28a8311a88cd6293cd8ac08a63daa2737aa746b3485d3c841ef06c7fc59",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/joint_lgbm_capacity_audit.json": "81bab25863c1e3f57131c4841ab310e6e3c788fb7fd0da63db44b01baaa58e90",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/joint_lgbm_development.json": "7f2b2aa7788711538b0c741958042d49cf5ea1150ee42dbfeb3ece62ca540376",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/joint_lgbm_feature_coverage.json": "3257b850aeff2b837ed6e7cd8de2efa5c20f9eed834edf17073859efeae15827",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/learned_temporal_development.json": "8096c35bcf54ed41b1ac06355f12f7506436024f790d870b4fc5e6025d146b57",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/learned_temporal_public_check.json": "d8860bf3675c94335116977347bda40f2843d8d1302a393544e5de1799883adc",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/lgbm_capacity_audit.json": "e7705d2b4a9fb733821093d52ee576d3b57d9ceaa122eaca07dad01ef4251939",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/lgbm_capacity_full_support.json": "aa27d80b0f791ceed4cbd01bdb83e29a671f18dcccf5c93f1d1107994e40dd25",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/light_corruption_artifacts.json": "b328f2a85e9376f10b291f726735694cab010a0db76e055e42941ab2f3c3efe2",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/light_corruption_development.json": "6be2b870365b507bb475307955746ca75b4247bbaf2694ec83c20fb3d55af783",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/light_corruption_public_check.json": "83f53d97d2ab5cd15a5bc6c124ac1cbff93382f67446183dc0f72d82d4ffec6a",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/live_gap_had_audit.json": "d7562a1848c43f8953151c232ef160f62b447f53ccfae43f5d2d693a7b3b9982",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/live_gap_had_development.json": "671f6745393a791957e5cfe763ff15d288ab55857f318127edaf99c373548a18",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/model_scorecard_development.json": "a2adec33a140c591127c65a696983095839958c74ea7be8785ed4fcb67213554",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/multisource_eval.json": "705a32a76e0ab00a6efee0bfae37327a9779fef8dffdc56e20d865c1768e08dc",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/pathcrf_comparison.json": "c5997e485348908c43a63677f75c42e581ad8261cb9e9f8d1c49122065bdeffa",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/pathcrf_comparison_manifest.json": "a183cf8fbbdfc1e5f9afa7aaffbc9a362fb167bde3a9143180fdd046a9d7ca40",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/pathcrf_ensemble_development.json": "ac5c5864bb42cd4c89cbf83a38ec1222ca86afaf7ae13d3cf6447221cb0c6ca4",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/pathcrf_model_scorecard.json": "f2c7e2288efb71ff11b4414d16b53996f1b0f4e7bab4d0cbac900c5b2535e19a",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/pathcrf_visibility.json": "a15d3d0fb38643692641e640becacc1c50df5f00e6e61245e30a9c82fcb10df1",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/primary_manifest.json": "e9f0347e31d74681a1e1823b2283c73530069d813d3452ae8f2c5945fae4be7d",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/primary_test.json": "ddf7d746a3456607bb9f04ae5c0cf0f72411f87dd810057bf557e0e29f57c38a",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/progress_page.json": "89ad3652b4fb30683624d06e9cb3b92820851319e2be2f5df33b863d0fcf01de",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/realistic_corruption_artifacts.json": "645914448083bbdb5a6f55cc474b64a37d34205351567f8bb3792628d367653b",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/realistic_corruption_development.json": "da12eee97909858ee571924ac3e787d7a63c0523721204954fb0ae77f160c2d7",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/refine_lgbm_validation.json": "400cafe8224397e084c9eda1bb0c5aa8e2ac669f58ea40e9ade2fce7052ee4db",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/refinement_competition.json": "e7dba49266337c4952b2e8d04bb6a8d6408c800326e2f7a9d19349d7570c6cc0",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/refinement_errors.json": "ead8a88760aeb7ac74d772865982a6cefab21bb42baa455a6bde366dc4287a80",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/refinement_manifest.json": "ff860cc7bcd997c1bd40b9a574056e187b2d51bca37bd4f0caeaa25288d85431",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/refinement_protocol.json": "eab9db9f239d7c748f2cef7970594994fa7897f742448a6452ee08b600ed17d3",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/refinement_test.json": "f01394376220c1aa3ac396621f587fcacd0fc3ba6c13b51bf04bacb3e992fb9b",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_ensemble_deployment_declaration.json": "1c1ea30d698e7dadbd68ab26ec3874743ef67d39a8420c8f1603a804fa6cd99f",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_gap_context.json": "bf92d15f0027412781554496f3db64ae9705c4fb502ca4c140c9d538c4c4ba86",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_gap_context_artifacts.json": "5f730022808096ff467a617714235078b417290fd7d455b17545f7ba97288fc7",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_gap_context_declaration.json": "092220e7961c7bc38f7cf2ef562a463c5588b90640e18b469e0e509477f00015",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_gap_context_ensemble_artifacts.json": "d94235019a1d7436dfb0ae7cb91bb74f3e8e29e9bf3d43084b2626dccd16eb8c",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_gap_context_long.json": "8517bcfde54d356679a1c85b3feb3cadc431a5f2c49f509a3eb7c96b10542e1e",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_gap_context_readout.json": "1de79c8d803257af506a9e80509a325656c89f8f20ce458d0893c8232169b78b",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_gap_context_runtime.json": "b807851d7b34513bf80bfe975efc1e9b3ddffa0c4b94c4ec42ffb2e96cffd1b8",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/seed_gap_context_verification.json": "6860023fe0015b8284113e9bb87b6dc150c0b88a4f209674dcc7607081b45ed0",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/spell_metric_audit.json": "43701d4195f1d9bcf00dd82e4e375ed26f148fd1bafe886b7a83c68cca406dc5",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/stress_component_ablation.json": "b4161056280220d94153c582c84f39910d70f3af789ab1e62a654498e8158e8a",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/stress_component_ablation_declaration.json": "da1313d83a156470807abd3ef69abee0336a23b8b7841f6621b649b68b628e8a",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_artifact_manifest.json": "1db4919c4d0318fafe4099e49cd023635829339c54914c46a113ea67e7abc833",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_declaration.json": "80c6f738f49f8cd5e94da4e30e49f07b673d2eeda8dd8646008b941a32c1fc59",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_development.json": "bbde46ce9cdb794e2c9e2174bf032239034ea5b6ef6bee349dc984d0a2d78685",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_independent_verification.json": "48b78db0a9a1bba37e5bffac066b48d40cd82905ded996a894c31e4faf73e0b6",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_operational_events.json": "2eff8f76bbc5430ea576712b08f741450a4d6a78e64becd849ed6f9797daa951",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_probability_tolerance_deviation.json": "f66cd08c92441861df90a07547b64f80d0bdf2c625a59f10d28a570ab13fff30",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_probability_tolerance_metrica.json": "a0f86081faadb8ca3eaad4312f9b126c8e7449c52f62064f1c2fa85cb4f75596",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_probability_tolerance_sportec.json": "67b336199f3403e117cd42ae619b6908be5f6b27ad8b5a8fd36f5d428302ec91",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_architecture_restore.json": "89762e9f35f20527819abe734a4e8b1162cb1611d22a5d856c8474d33fbe244f",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_competition_check.json": "ec659783bb36f3ea2f7bccfee0a92b1d4139716c00ff53cb2ab360b54e654858",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_competition_declaration.json": "62626f3fd33a57b9309c412056d0e168d220b2bc9540621fd5847a9fe4f25200",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_competition_resume_deviation.json": "c2244038daca68867318b7eee1932d7cb417469b4cb7b7c71a7db710b919a407",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_ensemble_development.json": "95450f328a47398693c3fabf503a75386086d44bc3c764e8bff678ef7bd15be2",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_followup_artifacts.json": "b6760333e0529496200174985f5f1ca2740992089daea7c269f0f8f4f0f6aca0",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/temporal_followup_verification.json": "59c99b43515d366208520810f94a15ce2bf48dcd34672d290ae83dc6afdfad61",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/top_three_calibration.json": "efb65f4c79e2fb2934d247d3a4e30a6ecc08385d648650f982c3602c2c0d6af7",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/top_three_development.json": "8484f7b76339acdd4de0aad52e8309cd05a225b530fc559b758bb10a4062b72b",
+    "experiments/objective_ensemble_v1/source_snapshot/experiments/results/top_three_protocol.json": "364d565509b992a6c58886080e7cb071bf7666b7292be3306afb41b9dc32d83d",
+    "experiments/objective_ensemble_v1/verification.json": "837bda7c7dbacc1a2215179a73b2c7dfbc7be9ece63c3576bbe17bc1f20e3df2",
+    "experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+    "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc",
+    "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274",
+    "experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+    "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334",
+    "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259",
+    "experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+    "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f",
+    "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0",
+    "experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+    "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66",
+    "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0",
+    "experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+    "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d",
+    "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d",
+    "experiments/objective_alignment_v1/train_J03WMX.joblib": "ab75cb7199d52eab7fd60fdd34ce29ded919bb77b6bf1c301fd90d4b6368dd23",
+    "experiments/objective_alignment_v1/train_J03WMX.json": "c94d4b1a2a4e2a506ed5974d5562b4a49ed7c55b3029e3682016eeddfcd2950f",
+    "experiments/objective_alignment_v1/train_J03WN1.joblib": "a6494dd9753f19e3e4a2cea45bde0081b2586ed8d1657bd7e3732de3e5722a5b",
+    "experiments/objective_alignment_v1/train_J03WN1.json": "57217f499a045a4f1697249dc80bbcb58be413bfc2ba0528cf7e7a565e85a690",
+    "experiments/objective_alignment_v1/train_J03WOH.joblib": "3d2fb5068e459905c82e2319415de7181e614f84b7f11e5fea50bea0c7275946",
+    "experiments/objective_alignment_v1/train_J03WOH.json": "6de39c1d9205372b8bb003b0833dfb1863a3afb987081125f8873d488c42e50e",
+    "experiments/objective_alignment_v1/train_metrica_1.joblib": "2445e56b7704d2669080552aac0415803c8393e3b901fe7c0696446ecbfb01ba",
+    "experiments/objective_alignment_v1/train_metrica_1.json": "718f02427c335c656dff9b48883f342998050799957ec64cd9b59a23cf2447e2",
+    "experiments/objective_alignment_v1/train_metrica_2.joblib": "e5189a5ffdcc6142aced86d47612f9f4aad29399052cf8eddeb172b75c98e0bb",
+    "experiments/objective_alignment_v1/train_metrica_2.json": "47f4720cb394a03d3bc39d2b53d3ba9274a5d0039174d7051765e8952932ebda",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1874553.joblib": "929fda060548385596ee47db27346e315759870ca21ed8648460fc92e09280fa",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1874553.json": "c53f325bfc513f14bde7b493bf65d5694cc956aee65a299988f24a9e86b11d77",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1886347.joblib": "baff2f2feabd1c43b7c82a6d93ef25d7fe1d4d1049ac7603c3e05efc3f542249",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1886347.json": "537088160a974202d92b526611ff54da3b9ea3bc9dbbb19e768b6b40b003fc49",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1899585.joblib": "ace42e94689a4d9ebcae21a0ecb40358d33cc831151766aaf4f9fe24b09d5c6b",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1899585.json": "372516753d855b674505861a3560e801b5bd7ee3614207651e2199b66b54789d",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1925299.joblib": "d10c99821d9944170e0587a50a26770326994c7e9465465eaa0bf30e3c979f7a",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1925299.json": "ab49645ddbca9f87c0ec64e08fa9d05dee32bff7dc1055ba67f7ba3b1e982ba0",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1927964.joblib": "6a884b98a613351e0eefd1935a5704401a26f18892be7598943159c2ace44bbf",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1927964.json": "048f39ab5566afbd9c791ca1f9cd3404fc8e50b1bdc6b351059ba8d2b9ed3b6a",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1953632.joblib": "7c104dee9fdbb57bc4dc4a23c1783f7bd0455a1101b70681bd0ad9cb39817cc7",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1953632.json": "4b380951d4d16be8d1f3bd89819af42e45966700c2d6a1304c510f77ede58210",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1959846.joblib": "0bece376878c1b0aadc98cfd24a2e08c140aea2b287ea912b2181a4db48965a4",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1959846.json": "2fd2af0801d8528bfff9bedb93b3e4c8217857083cc9ad9f4a92e2bc3b42bf7f",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1986691.joblib": "6be26d49dd20bc5e69f7c033954c7e22de98e2cc2c2e5b398f176ba786ba4ae8",
+    "experiments/objective_alignment_v1/train_skillcorner_had_1986691.json": "f6cff1fbae6d9e5127b8fff13b0defb82a324d06aa7068189bdb4978e666a0e4"
+  },
+  "initial_checkpoint_sha256": {
+    "experiments/objective_alignment_v1/without_sportec_combined_2026.joblib": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+    "experiments/objective_alignment_v1/without_sportec_combined_2027.joblib": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+    "experiments/objective_alignment_v1/without_metrica_combined_2026.joblib": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+    "experiments/objective_alignment_v1/without_metrica_combined_2027.joblib": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+    "experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+    "experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+    "models/joint_gru_combined_ensemble_v1/joint_gru_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "models/joint_gru_combined_ensemble_v1/joint_gru_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+  },
+  "gar_cache_sha256": "8b3fdb9eddaba1564b707679d098723989a9183f67007c5380fdd59f870a6474",
+  "gar_manifest_sha256": "e2fe00f6736aa4144d8aa6f0d5975c277ec1d6d83c1239cc9533a7404012ff84",
+  "plans": {
+    "leave_out_sportec": {
+      "schema": 1,
+      "manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+      "fold": "leave_out_sportec",
+      "train": [
+        {
+          "match": "metrica_1",
+          "group_id": "metrica_1",
+          "path": "data/external/processed/metrica_1.npz",
+          "sha256": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+          "prior_exposure": "previously_used_for_training",
+          "source": "metrica",
+          "role": "train"
+        },
+        {
+          "match": "metrica_2",
+          "group_id": "metrica_2",
+          "path": "data/external/processed/metrica_2.npz",
+          "sha256": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+          "prior_exposure": "previously_used_for_training",
+          "source": "metrica",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1874553",
+          "group_id": "skillcorner_had_1874553",
+          "path": "data/external/processed/skillcorner_had_1874553.npz",
+          "sha256": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1886347",
+          "group_id": "skillcorner_had_1886347",
+          "path": "data/external/processed/skillcorner_had_1886347.npz",
+          "sha256": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1899585",
+          "group_id": "skillcorner_had_1899585",
+          "path": "data/external/processed/skillcorner_had_1899585.npz",
+          "sha256": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1925299",
+          "group_id": "skillcorner_had_1925299",
+          "path": "data/external/processed/skillcorner_had_1925299.npz",
+          "sha256": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1927964",
+          "group_id": "skillcorner_had_1927964",
+          "path": "data/external/processed/skillcorner_had_1927964.npz",
+          "sha256": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1953632",
+          "group_id": "skillcorner_had_1953632",
+          "path": "data/external/processed/skillcorner_had_1953632.npz",
+          "sha256": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1959846",
+          "group_id": "skillcorner_had_1959846",
+          "path": "data/external/processed/skillcorner_had_1959846.npz",
+          "sha256": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1986691",
+          "group_id": "skillcorner_had_1986691",
+          "path": "data/external/processed/skillcorner_had_1986691.npz",
+          "sha256": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        }
+      ],
+      "selection": [
+        {
+          "match": "J03WOY",
+          "group_id": "J03WOY",
+          "path": "data/external_audit/sportec/processed/J03WOY.npz",
+          "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "sportec",
+          "role": "selection"
+        }
+      ],
+      "interpretation": "Unseen-source transfer on historically evaluated development matches",
+      "normalization": "Fit on these training records only, separately for every learned component",
+      "evidence": "Historical development; splitting does not create fresh confirmation"
+    },
+    "leave_out_metrica": {
+      "schema": 1,
+      "manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+      "fold": "leave_out_metrica",
+      "train": [
+        {
+          "match": "J03WMX",
+          "group_id": "J03WMX",
+          "path": "data/external_audit/sportec/processed/J03WMX.npz",
+          "sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "J03WN1",
+          "group_id": "J03WN1",
+          "path": "data/external_audit/sportec/processed/J03WN1.npz",
+          "sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "J03WOH",
+          "group_id": "J03WOH",
+          "path": "data/external_audit/sportec/processed/J03WOH.npz",
+          "sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1874553",
+          "group_id": "skillcorner_had_1874553",
+          "path": "data/external/processed/skillcorner_had_1874553.npz",
+          "sha256": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1886347",
+          "group_id": "skillcorner_had_1886347",
+          "path": "data/external/processed/skillcorner_had_1886347.npz",
+          "sha256": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1899585",
+          "group_id": "skillcorner_had_1899585",
+          "path": "data/external/processed/skillcorner_had_1899585.npz",
+          "sha256": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1925299",
+          "group_id": "skillcorner_had_1925299",
+          "path": "data/external/processed/skillcorner_had_1925299.npz",
+          "sha256": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1927964",
+          "group_id": "skillcorner_had_1927964",
+          "path": "data/external/processed/skillcorner_had_1927964.npz",
+          "sha256": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1953632",
+          "group_id": "skillcorner_had_1953632",
+          "path": "data/external/processed/skillcorner_had_1953632.npz",
+          "sha256": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1959846",
+          "group_id": "skillcorner_had_1959846",
+          "path": "data/external/processed/skillcorner_had_1959846.npz",
+          "sha256": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1986691",
+          "group_id": "skillcorner_had_1986691",
+          "path": "data/external/processed/skillcorner_had_1986691.npz",
+          "sha256": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        }
+      ],
+      "selection": [
+        {
+          "match": "metrica_3",
+          "group_id": "metrica_3",
+          "path": "data/external/processed/metrica_3.npz",
+          "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "metrica",
+          "role": "selection"
+        }
+      ],
+      "interpretation": "Unseen-source transfer on historically evaluated development matches",
+      "normalization": "Fit on these training records only, separately for every learned component",
+      "evidence": "Historical development; splitting does not create fresh confirmation"
+    },
+    "leave_out_skillcorner": {
+      "schema": 1,
+      "manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+      "fold": "leave_out_skillcorner",
+      "train": [
+        {
+          "match": "J03WMX",
+          "group_id": "J03WMX",
+          "path": "data/external_audit/sportec/processed/J03WMX.npz",
+          "sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "J03WN1",
+          "group_id": "J03WN1",
+          "path": "data/external_audit/sportec/processed/J03WN1.npz",
+          "sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "J03WOH",
+          "group_id": "J03WOH",
+          "path": "data/external_audit/sportec/processed/J03WOH.npz",
+          "sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "metrica_1",
+          "group_id": "metrica_1",
+          "path": "data/external/processed/metrica_1.npz",
+          "sha256": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+          "prior_exposure": "previously_used_for_training",
+          "source": "metrica",
+          "role": "train"
+        },
+        {
+          "match": "metrica_2",
+          "group_id": "metrica_2",
+          "path": "data/external/processed/metrica_2.npz",
+          "sha256": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+          "prior_exposure": "previously_used_for_training",
+          "source": "metrica",
+          "role": "train"
+        }
+      ],
+      "selection": [
+        {
+          "match": "skillcorner_had_1996435",
+          "group_id": "skillcorner_had_1996435",
+          "path": "data/external/processed/skillcorner_had_1996435.npz",
+          "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "skillcorner",
+          "role": "selection"
+        },
+        {
+          "match": "skillcorner_had_1996436",
+          "group_id": "skillcorner_had_1996436",
+          "path": "data/external/processed/skillcorner_had_1996436.npz",
+          "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "skillcorner",
+          "role": "selection"
+        },
+        {
+          "match": "skillcorner_had_2006229",
+          "group_id": "skillcorner_had_2006229",
+          "path": "data/external/processed/skillcorner_had_2006229.npz",
+          "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "skillcorner",
+          "role": "selection"
+        }
+      ],
+      "interpretation": "Unseen-source transfer on historically evaluated development matches",
+      "normalization": "Fit on these training records only, separately for every learned component",
+      "evidence": "Historical development; splitting does not create fresh confirmation"
+    },
+    "pooled": {
+      "schema": 1,
+      "manifest_sha256": "90197a411991373c985600f617f9ba0d84069585fa5b1d110f48aa8a75b6554d",
+      "fold": "pooled",
+      "train": [
+        {
+          "match": "J03WMX",
+          "group_id": "J03WMX",
+          "path": "data/external_audit/sportec/processed/J03WMX.npz",
+          "sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "J03WN1",
+          "group_id": "J03WN1",
+          "path": "data/external_audit/sportec/processed/J03WN1.npz",
+          "sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "J03WOH",
+          "group_id": "J03WOH",
+          "path": "data/external_audit/sportec/processed/J03WOH.npz",
+          "sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+          "prior_exposure": "previously_used_for_training",
+          "source": "sportec",
+          "role": "train"
+        },
+        {
+          "match": "metrica_1",
+          "group_id": "metrica_1",
+          "path": "data/external/processed/metrica_1.npz",
+          "sha256": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+          "prior_exposure": "previously_used_for_training",
+          "source": "metrica",
+          "role": "train"
+        },
+        {
+          "match": "metrica_2",
+          "group_id": "metrica_2",
+          "path": "data/external/processed/metrica_2.npz",
+          "sha256": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+          "prior_exposure": "previously_used_for_training",
+          "source": "metrica",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1874553",
+          "group_id": "skillcorner_had_1874553",
+          "path": "data/external/processed/skillcorner_had_1874553.npz",
+          "sha256": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1886347",
+          "group_id": "skillcorner_had_1886347",
+          "path": "data/external/processed/skillcorner_had_1886347.npz",
+          "sha256": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1899585",
+          "group_id": "skillcorner_had_1899585",
+          "path": "data/external/processed/skillcorner_had_1899585.npz",
+          "sha256": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1925299",
+          "group_id": "skillcorner_had_1925299",
+          "path": "data/external/processed/skillcorner_had_1925299.npz",
+          "sha256": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1927964",
+          "group_id": "skillcorner_had_1927964",
+          "path": "data/external/processed/skillcorner_had_1927964.npz",
+          "sha256": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1953632",
+          "group_id": "skillcorner_had_1953632",
+          "path": "data/external/processed/skillcorner_had_1953632.npz",
+          "sha256": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1959846",
+          "group_id": "skillcorner_had_1959846",
+          "path": "data/external/processed/skillcorner_had_1959846.npz",
+          "sha256": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        },
+        {
+          "match": "skillcorner_had_1986691",
+          "group_id": "skillcorner_had_1986691",
+          "path": "data/external/processed/skillcorner_had_1986691.npz",
+          "sha256": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+          "prior_exposure": "previously_used_for_training",
+          "source": "skillcorner",
+          "role": "train"
+        }
+      ],
+      "selection": [
+        {
+          "match": "J03WOY",
+          "group_id": "J03WOY",
+          "path": "data/external_audit/sportec/processed/J03WOY.npz",
+          "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "sportec",
+          "role": "selection"
+        },
+        {
+          "match": "metrica_3",
+          "group_id": "metrica_3",
+          "path": "data/external/processed/metrica_3.npz",
+          "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "metrica",
+          "role": "selection"
+        },
+        {
+          "match": "skillcorner_had_1996435",
+          "group_id": "skillcorner_had_1996435",
+          "path": "data/external/processed/skillcorner_had_1996435.npz",
+          "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "skillcorner",
+          "role": "selection"
+        },
+        {
+          "match": "skillcorner_had_1996436",
+          "group_id": "skillcorner_had_1996436",
+          "path": "data/external/processed/skillcorner_had_1996436.npz",
+          "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "skillcorner",
+          "role": "selection"
+        },
+        {
+          "match": "skillcorner_had_2006229",
+          "group_id": "skillcorner_had_2006229",
+          "path": "data/external/processed/skillcorner_had_2006229.npz",
+          "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+          "prior_exposure": "previously_evaluated_development_match",
+          "source": "skillcorner",
+          "role": "selection"
+        }
+      ],
+      "interpretation": "Within-provider, whole-match development comparison",
+      "normalization": "Fit on these training records only, separately for every learned component",
+      "evidence": "Historical development; splitting does not create fresh confirmation"
+    }
+  },
+  "initial_checkpoint_provenance": {
+    "leave_out_sportec:2026": {
+      "sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+      "predeclared_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+      "heldout": "sportec",
+      "sources": [
+        "metrica",
+        "skillcorner"
+      ],
+      "training_matches": [
+        "metrica_1",
+        "metrica_2",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "arm": "combined",
+      "objective": "combined",
+      "seed": 2026,
+      "seconds": 734.7162527530008,
+      "parameters": 62643,
+      "optimizer_updates": 2976,
+      "windows_per_epoch": 23748
+    },
+    "leave_out_sportec:2027": {
+      "sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+      "predeclared_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+      "heldout": "sportec",
+      "sources": [
+        "metrica",
+        "skillcorner"
+      ],
+      "training_matches": [
+        "metrica_1",
+        "metrica_2",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "arm": "combined",
+      "objective": "combined",
+      "seed": 2027,
+      "seconds": 980.4907787080001,
+      "parameters": 62643,
+      "optimizer_updates": 2976,
+      "windows_per_epoch": 23748
+    },
+    "leave_out_metrica:2026": {
+      "sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+      "predeclared_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+      "heldout": "metrica",
+      "sources": [
+        "sportec",
+        "skillcorner"
+      ],
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "arm": "combined",
+      "objective": "combined",
+      "seed": 2026,
+      "seconds": 822.7898747979998,
+      "parameters": 62643,
+      "optimizer_updates": 3248,
+      "windows_per_epoch": 25976
+    },
+    "leave_out_metrica:2027": {
+      "sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+      "predeclared_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+      "heldout": "metrica",
+      "sources": [
+        "sportec",
+        "skillcorner"
+      ],
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "arm": "combined",
+      "objective": "combined",
+      "seed": 2027,
+      "seconds": 1309.080106466,
+      "parameters": 62643,
+      "optimizer_updates": 3248,
+      "windows_per_epoch": 25976
+    },
+    "leave_out_skillcorner:2026": {
+      "sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+      "predeclared_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+      "heldout": "skillcorner",
+      "sources": [
+        "sportec",
+        "metrica"
+      ],
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "metrica_1",
+        "metrica_2"
+      ],
+      "arm": "combined",
+      "objective": "combined",
+      "seed": 2026,
+      "seconds": 492.78385508999963,
+      "parameters": 62643,
+      "optimizer_updates": 1432,
+      "windows_per_epoch": 11396
+    },
+    "leave_out_skillcorner:2027": {
+      "sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+      "predeclared_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+      "heldout": "skillcorner",
+      "sources": [
+        "sportec",
+        "metrica"
+      ],
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "metrica_1",
+        "metrica_2"
+      ],
+      "arm": "combined",
+      "objective": "combined",
+      "seed": 2027,
+      "seconds": 333.5731306460002,
+      "parameters": 62643,
+      "optimizer_updates": 1432,
+      "windows_per_epoch": 11396
+    }
+  },
+  "gar_raw_sha256": {
+    "tracking-full/train/metadata.parquet": "bc534defde936b2ebba3a7fd84f625560f15a55b30d816c6f27401aaa6f5320d",
+    "tracking-full/train/shard_manifest.parquet": "8dee54051cb2b75e8deaf45c28f911b862442607741499301ea1b4cfc81c95df",
+    "tracking-full/train/shards/shard-000000.tar": "59d534425770e8ce00a1557a1c9807dc28bfbb0a472312a98560288faebbe24c",
+    "tracking-full/train/shards/shard-000001.tar": "02e4c19dfe6e2bf08a0607fb03db9a078469b7a97dc96c7baca967bb60ec55de",
+    "tracking-full/train/shards/shard-000002.tar": "d093f81867849a9642c1fb578b48576e3466e9de2f31bcc24610dd1d9d2722dd",
+    "tracking-full/train/shards/shard-000003.tar": "2fe33747e3b02a7ae338b6f5cb396907db7000cf4ea6b4e3d905465ba7f1b117",
+    "tracking-full/train/shards/shard-000004.tar": "f953162d2edf1d4455d3a47e43af3d3405f4521a74a960cee0bd9edc276317d9"
+  },
+  "arms": {
+    "old_only": 0.0,
+    "gar25": 0.25,
+    "gar50": 0.5
+  },
+  "seeds": [
+    2026,
+    2027
+  ],
+  "folds": [
+    "leave_out_sportec",
+    "leave_out_metrica",
+    "leave_out_skillcorner"
+  ],
+  "updates": 256,
+  "batch_size": 64,
+  "training": "Warm-start conditional H/A only; AdamW lr1e-4 wd1e-4 clip1; frozen fold normalization; source/match-balanced original windows, game-balanced GAR clips; 25%/50% GAR windows; separate group-mean losses; matched old-only control.",
+  "d_path": "Frozen original checkpoint P(D); tuned clone only contributes conditional H/A. Decoded D metrics can still move.",
+  "gar_targets": "Only selected PASS/CROSS/SHOT centers; all other rows unknown. Event-team silver, not continuous possession gold. Visible-only raw coordinates; no provider events/identity metadata as features.",
+  "evaluation": [
+    {
+      "item": {
+        "match": "J03WOY",
+        "group_id": "J03WOY",
+        "path": "data/external_audit/sportec/processed/J03WOY.npz",
+        "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "sportec"
+      },
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "item": {
+        "match": "J03WOY",
+        "group_id": "J03WOY",
+        "path": "data/external_audit/sportec/processed/J03WOY.npz",
+        "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "sportec"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "item": {
+        "match": "J03WOY",
+        "group_id": "J03WOY",
+        "path": "data/external_audit/sportec/processed/J03WOY.npz",
+        "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "sportec"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    },
+    {
+      "item": {
+        "match": "metrica_3",
+        "group_id": "metrica_3",
+        "path": "data/external/processed/metrica_3.npz",
+        "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "metrica"
+      },
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "item": {
+        "match": "metrica_3",
+        "group_id": "metrica_3",
+        "path": "data/external/processed/metrica_3.npz",
+        "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "metrica"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "item": {
+        "match": "metrica_3",
+        "group_id": "metrica_3",
+        "path": "data/external/processed/metrica_3.npz",
+        "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "metrica"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_1996435",
+        "group_id": "skillcorner_had_1996435",
+        "path": "data/external/processed/skillcorner_had_1996435.npz",
+        "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_1996435",
+        "group_id": "skillcorner_had_1996435",
+        "path": "data/external/processed/skillcorner_had_1996435.npz",
+        "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_1996435",
+        "group_id": "skillcorner_had_1996435",
+        "path": "data/external/processed/skillcorner_had_1996435.npz",
+        "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_1996436",
+        "group_id": "skillcorner_had_1996436",
+        "path": "data/external/processed/skillcorner_had_1996436.npz",
+        "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_1996436",
+        "group_id": "skillcorner_had_1996436",
+        "path": "data/external/processed/skillcorner_had_1996436.npz",
+        "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_1996436",
+        "group_id": "skillcorner_had_1996436",
+        "path": "data/external/processed/skillcorner_had_1996436.npz",
+        "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_2006229",
+        "group_id": "skillcorner_had_2006229",
+        "path": "data/external/processed/skillcorner_had_2006229.npz",
+        "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "clean",
+      "replicate": "clean"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_2006229",
+        "group_id": "skillcorner_had_2006229",
+        "path": "data/external/processed/skillcorner_had_2006229.npz",
+        "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_1"
+    },
+    {
+      "item": {
+        "match": "skillcorner_had_2006229",
+        "group_id": "skillcorner_had_2006229",
+        "path": "data/external/processed/skillcorner_had_2006229.npz",
+        "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+        "prior_exposure": "previously_evaluated_development_match",
+        "source": "skillcorner"
+      },
+      "view": "feed_like",
+      "replicate": "corrupt_2"
+    }
+  ],
+  "aggregation": "Mean within provider across matches/replicates, then equal mean over three providers; seeds separately and actual equal-probability ensemble.",
+  "selection": "Among GAR arms passing provider clean D/macro >= baseline-.02 and feed_like spell >= baseline-.01, choose highest unrounded clean ensemble spell; tie macro then lower GAR fraction. If none passes, choose highest clean GAR solely for requested diagnostic and mark ineligible. Never use public results for selection.",
+  "improvement_screen": "Selected GAR clean spell >= baseline+.01 AND strictly above old-only matched fine-tune control; all safety guards pass. No automatic adoption.",
+  "public_diagnostic": "One user-requested selected GAR ensemble after external decision seal and separate pooled fits; distinct exclusive gate before reference access. Reuse saved baseline scores. No tuning follows.",
+  "prior_exposure": "All five original development matches and public five-minute diagnostic previously exposed. No fresh independent confirmation; GAR valid/test not used for model selection/training.",
+  "fixture_overlap": "No identifier overlap across providers; no complete fixture-level crosswalk. Do not claim new independent test evidence.",
+  "organizer_labels_read": false,
+  "automatic_promotion": false,
+  "gar_preparation_summary": {
+    "dataset": "OpenSportsLab/SoccerNet-GAR",
+    "revision": "32c840210b7d08d06976e7f9457dfff79fb2da99",
+    "split_used": "train",
+    "eligibility": {
+      "actions": [
+        "CROSS",
+        "PASS",
+        "SHOT"
+      ],
+      "max_per_game": 64,
+      "ranking": "ascending SHA-256(sample_id), then sample_id; selected before opening TAR members",
+      "sidecar_team": [
+        "home",
+        "away"
+      ]
+    },
+    "label_recipe": "full_y=-1 except row 72; center label 0=H or 1=A from sidecar event team; no dense possession claims",
+    "feature_recipe": {
+      "coordinate_transform": "pitch-centered metres to 105x68 corner coordinates: x+52.5, y+34; no clipping",
+      "dependency_versions": {
+        "joblib": "1.5.3",
+        "numpy": "2.3.5",
+        "scikit-learn": "1.8.0",
+        "scipy": "1.17.0"
+      },
+      "discontinuities": "new feature period for invalid rows, source period changes, or timestamp jumps; each clip processed independently",
+      "entity_fields_read": [
+        "homePlayers",
+        "awayPlayers",
+        "balls"
+      ],
+      "feature_apis": [
+        "experiments.refine_features.features",
+        "experiments.learned_temporal.player_features"
+      ],
+      "feature_rate": "native 144 rows; sample arange(0,144,6) after feature calculation; center index 72 included",
+      "feature_source_sha256": {
+        "learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+        "refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+        "refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+        "robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+        "soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+        "supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+      },
+      "fps": "metadata.conversion.measured_source_fps",
+      "ignored_fields": [
+        "homePlayersSmoothed",
+        "awayPlayersSmoothed",
+        "ballsSmoothed",
+        "game_event_id",
+        "possession_event_id",
+        "game_event_type",
+        "possession_event_type",
+        "player_name",
+        "player_id",
+        "team_id",
+        "home_team",
+        "sidecar action/team/game identity as features"
+      ],
+      "raw_input_allowlist": [
+        "ball",
+        "players",
+        "teams",
+        "period",
+        "fps",
+        "timestamps",
+        "pitch",
+        "ball_observed"
+      ],
+      "timestamps": "videoTimeMs/1000 when present; otherwise frameNum/fps (frameNum fallback start_frame+row)",
+      "visibility_mask": "only visibility==VISIBLE and tracking_valid==true; all other coordinates NaN"
+    },
+    "counts": {
+      "prepared_records": 2877,
+      "rejections": {
+        "reject_center_team_conflict": 3
+      },
+      "selected_after_metadata_cap": 2880,
+      "selected_by_game": {
+        "10502": 64,
+        "10503": 64,
+        "10504": 64,
+        "10505": 64,
+        "10506": 64,
+        "10507": 64,
+        "10508": 64,
+        "10509": 64,
+        "10510": 64,
+        "10511": 64,
+        "10512": 64,
+        "10513": 64,
+        "10514": 64,
+        "10515": 64,
+        "10516": 64,
+        "10517": 64,
+        "3812": 64,
+        "3813": 64,
+        "3814": 64,
+        "3815": 64,
+        "3816": 64,
+        "3817": 64,
+        "3818": 64,
+        "3819": 64,
+        "3820": 64,
+        "3821": 64,
+        "3822": 64,
+        "3823": 64,
+        "3824": 64,
+        "3825": 64,
+        "3826": 64,
+        "3827": 64,
+        "3828": 64,
+        "3829": 64,
+        "3830": 64,
+        "3831": 64,
+        "3832": 64,
+        "3833": 64,
+        "3834": 64,
+        "3835": 64,
+        "3836": 64,
+        "3837": 64,
+        "3838": 64,
+        "3839": 64,
+        "3840": 64
+      }
+    },
+    "record_file": {
+      "bytes": 47134377,
+      "path": "records.joblib",
+      "sha256": "8b3fdb9eddaba1564b707679d098723989a9183f67007c5380fdd59f870a6474"
+    },
+    "semantics_limit": "Each record is an independent action-centered window. Off-center labels remain unknown; this is not dense H/A/D/X possession training data."
+  }
+}

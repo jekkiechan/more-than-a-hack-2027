@@ -1,11 +1,11 @@
-# Possession experiments
+# Original tracking baseline experiment
 
-**Latest:** [refinement and competition results](REFINEMENT.md). The final
-external test improved to **0.9408 frame macro F1 / 0.7059 spell F1**. On the
-competition's public five-minute pipeline check, the externally selected model
-scored **0.6487 / 0.4300**; the predeclared PathCRF hybrid scored **0.6795 / 0.5067**.
-The 0.90 target is not met on the competition data, and full-match accuracy is
-unknown. The original experiment below is retained for provenance.
+Historical report: the original Sportec experiment and frozen selection are
+preserved below. For the adopted package and latest draft results, use
+[current status](../docs/research/STATUS.md); for all experiment families, use
+[the index](../docs/research/EXPERIMENTS.md). Restore current models with
+[BASELINE.md](BASELINE.md). The reproduction commands below belong to this
+completed study, not a new selection or repeated public-scoring loop.
 
 We reached **0.9298 frame macro F1** and **0.6232 possession-spell F1** on a
 held-out Sportec match with the model selected before test access. With synthetic

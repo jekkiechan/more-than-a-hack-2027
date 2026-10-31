@@ -1,0 +1,680 @@
+{
+  "auxiliary_70_30": {
+    "baseline": 0.6465293674551444,
+    "candidate": 0.6359038425088206
+  },
+  "baseline_replaced": false,
+  "baseline_rescored": false,
+  "candidate": {
+    "accuracy": 0.8690666666666667,
+    "alive_dead_f1": 0.966428630058278,
+    "bootstrap_high": 0.9159840564096317,
+    "bootstrap_low": 0.6156498378867377,
+    "bootstrap_n": 1000,
+    "confusion": [
+      [
+        2984,
+        338,
+        132,
+        0
+      ],
+      [
+        235,
+        2330,
+        12,
+        0
+      ],
+      [
+        154,
+        111,
+        1204,
+        0
+      ],
+      [
+        48429,
+        29695,
+        73233,
+        40462
+      ]
+    ],
+    "fragmentation": 1.0,
+    "gt_home_share": 0.5727076770021555,
+    "gt_home_share_spells": 0.5727076770021555,
+    "gt_mean_spell_duration_s": 14.190588235294117,
+    "kappa": 0.7922892524875159,
+    "macro_f1": 0.8663461416960687,
+    "mean_spell_duration_s": 13.671111111111111,
+    "n_abstain_on_graded": 0,
+    "n_frames": 199319,
+    "n_graded": 7500,
+    "n_gt_segments": 21,
+    "n_gt_spells": 17,
+    "n_pred_segments": 21,
+    "n_pred_spells": 18,
+    "per_class": {
+      "A": {
+        "f1": 0.8700522778192682,
+        "precision": 0.8384310903202591,
+        "recall": 0.9041521148622429,
+        "support": 2577
+      },
+      "D": {
+        "f1": 0.8548100816471422,
+        "precision": 0.8931750741839762,
+        "recall": 0.8196051735874744,
+        "support": 1469
+      },
+      "H": {
+        "f1": 0.8741760656217957,
+        "precision": 0.8846723984583457,
+        "recall": 0.8639258830341633,
+        "support": 3454
+      }
+    },
+    "pred_home_share": 0.5482769830949284,
+    "share_defined": true,
+    "share_err": 0.024430693907227075,
+    "spell_bootstrap_high": 0.6857142857142857,
+    "spell_bootstrap_low": 0.38857142857142857,
+    "spell_count_error": 1,
+    "spell_f1": {
+      "0.3": {
+        "f1": 0.6857142857142857,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 6,
+        "precision": 0.6666666666666666,
+        "recall": 0.7058823529411765
+      },
+      "0.4": {
+        "f1": 0.6285714285714287,
+        "n_matched": 11,
+        "n_missed": 6,
+        "n_spurious": 7,
+        "precision": 0.6111111111111112,
+        "recall": 0.6470588235294118
+      },
+      "0.5": {
+        "f1": 0.5714285714285715,
+        "n_matched": 10,
+        "n_missed": 7,
+        "n_spurious": 8,
+        "precision": 0.5555555555555556,
+        "recall": 0.5882352941176471
+      },
+      "0.6": {
+        "f1": 0.5142857142857143,
+        "n_matched": 9,
+        "n_missed": 8,
+        "n_spurious": 9,
+        "precision": 0.5,
+        "recall": 0.5294117647058824
+      },
+      "0.7": {
+        "f1": 0.28571428571428575,
+        "n_matched": 5,
+        "n_missed": 12,
+        "n_spurious": 13,
+        "precision": 0.2777777777777778,
+        "recall": 0.29411764705882354
+      }
+    },
+    "spell_f1_at_headline": 0.5714285714285715,
+    "spell_f1_mean": 0.5371428571428571,
+    "spell_iou_headline": 0.5,
+    "team_acc_both_alive": 0.9026668931544081,
+    "team_acc_gt_alive": 0.8811142430774332,
+    "transitions": {
+      "12": {
+        "f1": 0.20000000000000004,
+        "mean_abs_latency": 5.0,
+        "mean_latency": 3.0,
+        "median_latency": 2.0,
+        "missed": [
+          [
+            11351,
+            1,
+            0
+          ],
+          [
+            11624,
+            1,
+            0
+          ],
+          [
+            12989,
+            2,
+            0
+          ],
+          [
+            13785,
+            1,
+            0
+          ],
+          [
+            15346,
+            1,
+            0
+          ],
+          [
+            15766,
+            1,
+            0
+          ],
+          [
+            17293,
+            1,
+            0
+          ],
+          [
+            18389,
+            2,
+            0
+          ],
+          [
+            11553,
+            0,
+            1
+          ],
+          [
+            12665,
+            0,
+            1
+          ],
+          [
+            13704,
+            0,
+            1
+          ],
+          [
+            15365,
+            0,
+            1
+          ],
+          [
+            15799,
+            0,
+            1
+          ],
+          [
+            12851,
+            1,
+            2
+          ],
+          [
+            17380,
+            0,
+            2
+          ],
+          [
+            18027,
+            1,
+            2
+          ]
+        ],
+        "n_ambiguous": 0,
+        "n_gt": 20,
+        "n_matched": 4,
+        "n_missed": 16,
+        "n_pred": 20,
+        "n_spurious": 16,
+        "p90_abs_latency": 9.600000000000001,
+        "pairs": [
+          [
+            [
+              14846,
+              0,
+              1
+            ],
+            [
+              14848,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              16400,
+              2,
+              1
+            ],
+            [
+              16396,
+              2,
+              1
+            ]
+          ],
+          [
+            [
+              17838,
+              2,
+              1
+            ],
+            [
+              17850,
+              2,
+              1
+            ]
+          ],
+          [
+            [
+              15889,
+              1,
+              2
+            ],
+            [
+              15891,
+              1,
+              2
+            ]
+          ]
+        ],
+        "precision": 0.2,
+        "recall": 0.2,
+        "spurious": [
+          [
+            11479,
+            1,
+            0
+          ],
+          [
+            11788,
+            1,
+            0
+          ],
+          [
+            12797,
+            1,
+            0
+          ],
+          [
+            12880,
+            1,
+            0
+          ],
+          [
+            13847,
+            1,
+            0
+          ],
+          [
+            15659,
+            1,
+            0
+          ],
+          [
+            17277,
+            1,
+            0
+          ],
+          [
+            18103,
+            1,
+            0
+          ],
+          [
+            18469,
+            2,
+            0
+          ],
+          [
+            11714,
+            0,
+            1
+          ],
+          [
+            12684,
+            0,
+            1
+          ],
+          [
+            12833,
+            0,
+            1
+          ],
+          [
+            13682,
+            0,
+            1
+          ],
+          [
+            15750,
+            0,
+            1
+          ],
+          [
+            17328,
+            0,
+            2
+          ],
+          [
+            18148,
+            0,
+            2
+          ]
+        ]
+      },
+      "25": {
+        "f1": 0.35,
+        "mean_abs_latency": 11.0,
+        "mean_latency": -1.0,
+        "median_latency": 2.0,
+        "missed": [
+          [
+            11351,
+            1,
+            0
+          ],
+          [
+            11624,
+            1,
+            0
+          ],
+          [
+            12989,
+            2,
+            0
+          ],
+          [
+            13785,
+            1,
+            0
+          ],
+          [
+            15346,
+            1,
+            0
+          ],
+          [
+            15766,
+            1,
+            0
+          ],
+          [
+            18389,
+            2,
+            0
+          ],
+          [
+            11553,
+            0,
+            1
+          ],
+          [
+            15365,
+            0,
+            1
+          ],
+          [
+            15799,
+            0,
+            1
+          ],
+          [
+            12851,
+            1,
+            2
+          ],
+          [
+            17380,
+            0,
+            2
+          ],
+          [
+            18027,
+            1,
+            2
+          ]
+        ],
+        "n_ambiguous": 0,
+        "n_gt": 20,
+        "n_matched": 7,
+        "n_missed": 13,
+        "n_pred": 20,
+        "n_spurious": 13,
+        "p90_abs_latency": 20.200000000000003,
+        "pairs": [
+          [
+            [
+              17293,
+              1,
+              0
+            ],
+            [
+              17277,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              12665,
+              0,
+              1
+            ],
+            [
+              12684,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              13704,
+              0,
+              1
+            ],
+            [
+              13682,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              14846,
+              0,
+              1
+            ],
+            [
+              14848,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              16400,
+              2,
+              1
+            ],
+            [
+              16396,
+              2,
+              1
+            ]
+          ],
+          [
+            [
+              17838,
+              2,
+              1
+            ],
+            [
+              17850,
+              2,
+              1
+            ]
+          ],
+          [
+            [
+              15889,
+              1,
+              2
+            ],
+            [
+              15891,
+              1,
+              2
+            ]
+          ]
+        ],
+        "precision": 0.35,
+        "recall": 0.35,
+        "spurious": [
+          [
+            11479,
+            1,
+            0
+          ],
+          [
+            11788,
+            1,
+            0
+          ],
+          [
+            12797,
+            1,
+            0
+          ],
+          [
+            12880,
+            1,
+            0
+          ],
+          [
+            13847,
+            1,
+            0
+          ],
+          [
+            15659,
+            1,
+            0
+          ],
+          [
+            18103,
+            1,
+            0
+          ],
+          [
+            18469,
+            2,
+            0
+          ],
+          [
+            11714,
+            0,
+            1
+          ],
+          [
+            12833,
+            0,
+            1
+          ],
+          [
+            15750,
+            0,
+            1
+          ],
+          [
+            17328,
+            0,
+            2
+          ],
+          [
+            18148,
+            0,
+            2
+          ]
+        ]
+      }
+    }
+  },
+  "candidate_minus_baseline": {
+    "macro_f1": 0.012258351189021854,
+    "predicted_spells": 2,
+    "spell_f1_mean": -0.02043290043290047
+  },
+  "completed_utc": "2026-10-29T11:03:05.654088+00:00",
+  "declaration_sha256": "c904504e3c64f728931fd79be68df853ade90499b41e30c10bf3e15df6f8265a",
+  "files_sha256": {
+    "data/experiments/smart_tagging_validation_v1_final/baseline.csv": "a9beb9ddee36182f926e4d693f648c19f4a19c55afd1653ea93e19f3dd32634b",
+    "data/experiments/smart_tagging_validation_v1_final/baseline.npz": "466914f154ed6aafa1b01961a5d851fddb637ba55c3a7056ebdd03d84cd527d6",
+    "data/experiments/smart_tagging_validation_v1_final/smart_tagging_missing_ball.csv": "b011bfcf91a703747aca6c4927ccdb8cad79bca3536ee6740d2cf6a2bd31a886",
+    "data/experiments/smart_tagging_validation_v1_final/smart_tagging_missing_ball.npz": "991a71f252f17f141cbb05a0456ca6a23d68f830fddb6bbc8ea4772344f49c3f"
+  },
+  "gate_sha256": "651a6df0c1d29ce2e4d731dcb8027648ccb609bbae8565b313e52713999b22da",
+  "prediction_seal_sha256": "5a9b94435c4b1483b5f91f2afc113af6e313e12da006860cbcfa8a3495e9ff1f",
+  "public_gt_sha256": "e596a9af9626c623bb94be6fd350e12ee9a75c76a696cfadca3bc01735e92487",
+  "saved_baseline": {
+    "auxiliary_70_30": 0.6465293674551444,
+    "bootstrap_draws": 1000,
+    "d_f1": 0.8548100816471422,
+    "d_precision": 0.8931750741839762,
+    "d_recall": 0.8196051735874744,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "headline_iou": 0.5,
+    "macro_f1": 0.8540877905070469,
+    "macro_f1_bootstrap_5_95": [
+      0.6017892059573665,
+      0.9009451934803874
+    ],
+    "predicted_spells": 16,
+    "primary_metric": "spell_f1_mean",
+    "spell_by_iou": {
+      "0.3": {
+        "f1": 0.6666666666666667,
+        "n_matched": 11,
+        "n_missed": 6,
+        "n_spurious": 5,
+        "precision": 0.6875,
+        "recall": 0.6470588235294118
+      },
+      "0.4": {
+        "f1": 0.6666666666666667,
+        "n_matched": 11,
+        "n_missed": 6,
+        "n_spurious": 5,
+        "precision": 0.6875,
+        "recall": 0.6470588235294118
+      },
+      "0.5": {
+        "f1": 0.6060606060606061,
+        "n_matched": 10,
+        "n_missed": 7,
+        "n_spurious": 6,
+        "precision": 0.625,
+        "recall": 0.5882352941176471
+      },
+      "0.6": {
+        "f1": 0.5454545454545455,
+        "n_matched": 9,
+        "n_missed": 8,
+        "n_spurious": 7,
+        "precision": 0.5625,
+        "recall": 0.5294117647058824
+      },
+      "0.7": {
+        "f1": 0.30303030303030304,
+        "n_matched": 5,
+        "n_missed": 12,
+        "n_spurious": 11,
+        "precision": 0.3125,
+        "recall": 0.29411764705882354
+      }
+    },
+    "spell_f1_at_headline": 0.6060606060606061,
+    "spell_f1_bootstrap_5_95": [
+      0.38787878787878793,
+      0.7272727272727273
+    ],
+    "spell_f1_mean": 0.5575757575757576
+  },
+  "saved_baseline_source": "experiments/results/combined_objective_public_check.json",
+  "scope": "Descriptive previously exposed 7500-frame / 17-possession check; not independent confirmation or full-match performance.",
+  "study_id": "smart_tagging_validation_v1",
+  "tuning_after_check": false
+}

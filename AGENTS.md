@@ -1,149 +1,98 @@
-# Agent handoff: football possession challenge
+# Agent guide: possession research
 
-Read this before changing possession models or evaluating them. The full methods,
-provenance, results, and reproduction commands are in
-[experiments/REFINEMENT.md](experiments/REFINEMENT.md). Competition definitions and
-restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
-[EVALUATION.md](EVALUATION.md), [SUBMISSION.md](SUBMISSION.md), and
-[RULES.md](RULES.md).
+## Load only what the task needs
 
-## Repository and task
+- Start with [current status and next work](docs/research/STATUS.md).
+- Working in `experiments/`? Read [experiments/AGENTS.md](experiments/AGENTS.md)
+  first: vocabulary, study lineage, settled directions and code map.
+- Find prior evidence in the [experiment index](docs/research/EXPERIMENTS.md).
+  Read the relevant report, not every historical handoff.
+- SoccerNet-GAR data come from [Hugging Face OpenSportsLab/SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR/tree/tracking-full),
+  branch `tracking-full`. Use the pinned revision and TRAIN file hashes in
+  `experiments/results/soccernet_capacity_declaration.json` with configured
+  `HF_TOKEN` access. Remote paths are `train/...`; local paths include the
+  `tracking-full/` prefix. Check this source before asking for a local dataset
+  archive. The dataset source is separate from our locally trained checkpoints
+  and experiment inventory; Hugging Face availability does not restore those.
+  See [data access](experiments/SOCCERNET_DATA_ACCESS.md) for paths and checks.
+- For restore/inference, use [BASELINE.md](experiments/BASELINE.md).
+  The active package is bound by `experiments/baseline_manifest.json`;
+  ranking/reporting is defined by `experiments/model_decision_policy.json`.
+- For a new experiment, read [possession-experiment](.agents/skills/possession-experiment/SKILL.md).
+- For feature preparation or split planning in new runners, start with
+  [`experiments/preparation.py`](experiments/preparation.py) and read
+  [possession-preparation](.agents/skills/possession-preparation/SKILL.md).
+  Reuse its validated whole-match/provider folds and verified unnormalized
+  caches when the feature recipe matches. Fit normalization and every learned
+  component on the training fold only; declare and test a new recipe for
+  unsupported features. Preserve frozen study runners.
+- For score comparisons or adoption advice, read
+  [possession-readout](.agents/skills/possession-readout/SKILL.md).
+  [Documentation ownership](docs/research/README.md) explains what to update.
 
-- Upstream: `metrica-sports/more-than-a-hack-2027`; working fork:
-  `jekkiechan/more-than-a-hack-2027`. The completed experiment series is on
-  `possession/refinement` and merged into the fork's `main`. Preserve the
-  `upstream` remote. Earlier stages are on `possession/research` and
-  `possession/experiments`.
-- Label each of 199,319 tactical-video frames at 25 Hz: `H` home/Barcelona in
-  live possession, `A` away/Athletic Club in live possession, `D` dead ball, or
-  `X` abstention/outside a half. Loose or contested ball remains with the last
-  controlling team until control changes. The submission is a reproducible
-  `frame,label` CSV for frames 0–199318.
-- Ranking is **possession-spell F1**, with frame macro F1 as first tie-break.
-  A spell is one continuous live H or A interval. The evaluator greedily
-  matches predicted and reference spells of the same team one-to-one by
-  temporal intersection-over-union, computes F1 at IoU 0.3, 0.4, 0.5, 0.6,
-  and 0.7, then averages those five F1s. Frame macro F1 averages H/A/D F1.
-  High frame F1 can coexist with low spell F1 when short possessions or
-  turnover boundaries are missed. Use the official evaluator, rather than
-  inventing a substitute metric.
+## Before answering model-choice or current-results questions
 
-## Data and non-negotiable evaluation boundaries
+This applies to chat advice as well as code work. Historical reports and saved
+Pages can contain valid scores but superseded recommendations.
 
-- Organizer match assets are local under gitignored `data/`. Do not commit or
-  redistribute these assets, frame-level tracking exports, video, or other
-  derivatives that reconstruct the data. Check `MTAH_DATA_DIR` if assets are
-  outside the repository. The full-match reference labels are private.
-- The public five-minute ground truth contains only **7,500 graded frames and
-  17 possession spells**. Under `RULES.md`, it is for pipeline checks only:
-  **do not train, tune, select a candidate, set a threshold, or claim
-  full-match performance from it**. Do not hand-label or manually correct any
-  part of this match, or use other human-produced event/possession data about
-  it. Algorithmic, label-free improvements to its tracking are allowed.
-- External data from other matches can be used if the organizers can access
-  the method/data and the technical document explains them. The existing
-  external benchmark is Sportec Open DFL (CC BY 4.0), with whole-match splits:
-  train `J03WMX/J03WN1/J03WOH`, validation `J03WOY`, fresh local-model
-  confirmation `J03WQQ`. Earlier tests `J03WPY/J03WR9` must not be recycled
-  for selection. `J03WQQ` was supplied as validation for the pretrained
-  PathCRF checkpoint, so it is **not** an independent PathCRF test.
-- Sportec freezes ball coordinates during dead play. This makes D unusually
-  easy and means its clean tracking scores do not transfer directly to the
-  organizer's noisy, occluded broadcast-derived tracking. The organizer ball
-  is missing in roughly 41% of graded frames. Synthetic missing-ball tests
-  probe sensitivity but do not reproduce real broadcast occlusions.
+1. Check current `main`: read STATUS, BASELINE, the active baseline manifest
+   and model decision policy before describing the working model or guardrails.
+   The manifest identifies the adopted package; the policy defines the active
+   evaluation rule. Historical report verdicts do not override later promotion.
+   If current sources conflict, inspect the promotion record and recent commits
+   and disclose any unresolved discrepancy.
+2. Inspect recent merged and open PRs relevant to the question, including their
+   current heads and saved reports. STATUS and this guide are snapshots and may
+   lag ongoing work. Distinguish adopted, completed experimental, running and
+   proposed work; never call a method untested solely because an older summary
+   says so. Saved Pages are discovery aids, not authoritative current state.
+3. Name the exact stress view with every robustness claim. In particular,
+   `feed_like` and `composite` are different evaluations; compare models on the
+   same view and component holdouts. Check the current policy and component
+   ablation. Preserve composite failures as diagnostics and disclose a
+   post-result guardrail change rather than claiming the old failure vanished.
+4. Distinguish model family, training recipe and pipeline. A failed earlier GRU
+   recipe is not evidence that the current dropout GRU fails. A D-only GRU/TCN
+   comparison does not establish the best joint H/A/D architecture. Describe
+   “best supported current choice” separately from superiority demonstrated by
+   a matched architecture comparison.
+5. Check ensemble status in the latest evidence. Averaging separate seed scores
+   is not ensembling predictions; a measured probability ensemble may exist on
+   a newer branch while the adopted package remains single-seed. Cite the
+   relevant report/PR and its evaluation scope when making recommendations.
 
-## What has been tried and what the numbers mean
+## Constraints that always apply
 
-- The original gap-augmented boosting + Viterbi model scored **0.9298 frame
-  macro F1 / 0.6232 spell F1** on held-out Sportec `J03WPY`. The later
-  validation-selected refinement—physical ball/player-relative features,
-  short-spell training weights, a larger model, a fixed 50/50 ensemble, and
-  fixed team/dead transition costs—scored **0.9408 / 0.7059** on `J03WQQ`,
-  versus **0.9303 / 0.6654** for the starting model on that same match.
-- On the organizer's **public five-minute pipeline check**, the externally
-  selected refinement scored **0.6487 macro / 0.4300 spell**. The predeclared
-  PathCRF H/A + original robust D hybrid scored **0.6795 / 0.5067**: the
-  highest *observed* spell score among our candidates on this small window.
-  It is not a validated winner or a basis to switch the final candidate under
-  the rules. No full-match accuracy has been measured. The user's target of
-  0.90 on both metrics has **not** been demonstrated on competition data.
-- A predeclared player-only stoppage diagnostic scored **0.7874 macro /
-  0.3429 spell** on the public window; its D-class F1 was **0.7537**, versus
-  **0.3392** for the selected refinement. That suggests the selected model's
-  Sportec-derived dead-ball cue transfers poorly. The diagnostic detects D
-  better on this window but does not solve spell attribution, and its result
-  cannot be used to select a replacement on these public labels.
-- PathCRF is an open-source, pretrained player-path model with H/A output, not
-  a native D detector. Its original implementation required a generic,
-  tracking-only roster adapter for fragmented organizer tracks. The adapter
-  was debugged using unlabeled geometry and synthetic cases before public
-  scoring; it interpolates 7.75% of player-slot frames, with missing stretches
-  as long as 145 seconds. See [experiments/CHALLENGE_TRANSFER.md](experiments/CHALLENGE_TRANSFER.md)
-  and [experiments/PATHCRF.md](experiments/PATHCRF.md).
-- The external headroom analysis found that short spells remain hard (final
-  recall at IoU 0.5: 52.5% for 1–3 s, 21.6% for subsecond spells). No intrinsic
-  ceiling near 0.71 was established. Further Sportec-only tuning shows
-  diminishing returns and cannot establish broadcast transfer. The most useful
-  next evidence is an **independent labeled broadcast match** with real
-  missing-ball and stoppage behavior, evaluated at both frame and spell level.
-  Better ball/player tracking and stoppage evidence are likely valuable.
+- [CHALLENGE](CHALLENGE.md), [EVALUATION](EVALUATION.md),
+  [SUBMISSION](SUBMISSION.md), and [RULES](RULES.md) define the task:
+  199,319 consecutive `frame,label` rows at 25 Hz, H/A/D/X. Loose or contested
+  ball stays with the last controlling team. Use the official evaluator.
+- Organizer public labels are pipeline checks only (7,500 frames, 17 possessions).
+  Never train, tune, select candidates, thresholds, repairs or seeds on them.
+  Do not manually label/correct this match or use human-produced event/possession
+  data about it. Label-free tracking improvements are allowed.
+- Read saved diagnostics; never reset a closed scoring gate or rewrite a frozen
+  declaration. A fresh directory does not make inspected data fresh evidence.
+- Split by whole match/provider. Identify which learned components are held out;
+  D-only holdout with pooled H/A is not full-pipeline holdout. Audit pretrained
+  checkpoint exposure and source-specific label/missingness shortcuts.
+- Keep organizer assets, reconstructive derivatives, weights and frame outputs
+  out of this public repo. Use ignored `data/`, `MTAH_DATA_DIR`, or the authorized
+  private cache. Publish aggregate evidence. Restore verified artifacts before
+  retraining; preserve native masks, unknown targets and match/half/time breaks.
 
-## Current research directions
+## Delivery
 
-- The takeover implementation is [experiments/PIPELINE.md](experiments/PIPELINE.md):
-  conservative observation repair, control-context features, separate H/A and D
-  probability blends, and a bounded leave-one-provider-out validation runner.
-  `pipeline_eval.py` selects across all three providers and clean/degraded views;
-  it does not use the organizer labels or historical Sportec tests. Its validation
-  matches are reused development data, not fresh independent confirmation.
-  `pipeline_predict.py` generates a checked full-length CSV when organizer
-  tracking and the final fitted model are available.
-  The completed 80-row comparison selects the contextual model: mean spell F1
-  0.5512 versus 0.5259 for the baseline with identical training, across providers and clean/degraded
-  views. A D-blended ensemble reaches 0.5455 spell / 0.8398 macro, versus the
-  selected model's 0.8147 macro. The small ranking gap is unconfirmed; clean
-  SkillCorner D F1 remains poor (0.3637 selected, 0.6341 for that blend). See
-  `experiments/results/pipeline_validation.json`.
-  The frozen contextual model subsequently received one public pipeline check:
-  **0.4190 spell / 0.6455 macro F1, 72.08% accuracy** on 7,500 graded frames and
-  17 true possessions. D F1 is 0.3945; 25 possessions were predicted. This does
-  not improve on the previous selected model's public point estimate; the 90%
-  spell interval is [0.2952, 0.5333]. No settings or selection changed afterward.
-  See `experiments/results/pipeline_competition.json`. The generated, validated
-  CSV is ignored at `data/experiments/pipeline_v1/competition.csv`; it has not
-  been submitted. Tactical ATD text/metadata are now restored in `data/tactical/`.
-- The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md):
-  data first, then validation, then preprocessing. LightGBM hyperparameter tuning
-  comes after those.
-- New labelled sources and the per-source dead-ball shortcuts are in
-  [experiments/OPEN_DATA.md](experiments/OPEN_DATA.md): Metrica's sample games
-  and SkillCorner with D labels.
-- Do not select models on Sportec J03WOY alone; use the multi-source suite
-  (`multisource_eval.py`).
+After a promising experiment completes, update the [experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9) with dated scores, visualizations, evaluation protocol and adoption status.
 
-## Artifacts and reproducibility
+Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
+`main`. Preserve `upstream` as `metrica-sports/more-than-a-hack-2027`.
+Publish an authorized PR without a separate confirmation step. Documentation
+maintenance does not promote draft models. Existing [CI/auto-merge](docs/CI.md) apply.
 
-- Start at [experiments/REFINEMENT.md](experiments/REFINEMENT.md), then read
-  [experiments/README.md](experiments/README.md) and
-  [docs/WORKPLAN.md](docs/WORKPLAN.md) for the earlier baseline and task setup.
-  Tracked aggregate results and frozen configuration are in
-  `experiments/results/refinement_*.json`; detailed subexperiments are linked
-  from `REFINEMENT.md`. Do not present validation or test results as fresh
-  independent trials after reading them.
-- `experiments/refinement.py` enforces the frozen local-model protocol and
-  generates/checks full-length organizer candidates. The selected, validated
-  **but not organizer-submitted** CSV is local and ignored at
-  `data/experiments/refinement/competition/selected_refinement.csv`.
-  The PathCRF transfer code is in `experiments/challenge_pathcrf.py`.
-- Run meaningful tests after changes:
-  `python -m unittest discover -s experiments/tests -v` and the official
-  `python evaluation/validate_submission.py <candidate.csv>`. Follow the
-  reproduction sequence in `experiments/REFINEMENT.md` in a fresh checkout;
-  frozen manifests deliberately refuse repeated held-out scoring. Never use
-  repeated public-window checks as an iteration loop.
-- Work on a branch and open a PR to `main`. The CI workflow runs synthetic
-  tests and the submission validator; a separate workflow merges passing PRs
-  from branches in this fork when their tested commit is still current. See
-  [docs/CI.md](docs/CI.md) for the protection setup and scope. Do not use
-  organizer labels or assets in CI.
+For code changes, run `python -m unittest discover -s experiments/tests -v`
+with pinned dependencies (including CPU PyTorch for neural contracts).
+Validate generated CSVs with `python evaluation/validate_submission.py <candidate.csv>`.
+For docs-only changes, check links, evidence and frozen-file preservation;
+CI runs the synthetic suite and bundled format check. Do not fit or score
+organizer labels to verify documentation.

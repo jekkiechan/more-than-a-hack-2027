@@ -1,0 +1,1714 @@
+{
+  "source": {
+    "url": "https://github.com/SkillCorner/opendata",
+    "commit": "4340d274572876239c154c90bc507a9b3250a656",
+    "description": "SkillCorner and PySport open-data repository; 2024/25 Australian A-League broadcast tracking and dynamic events. Data are provider generated.",
+    "license_note": "The repository includes a MIT LICENSE and README requests SkillCorner credit; no separate dataset-specific license file/terms was found in the inspected root files, so this records repository provenance rather than asserting an independent data license."
+  },
+  "converter": {
+    "repository": "https://github.com/jekkiechan/more-than-a-hack-2027",
+    "commit": "0659bffe8709b513831715923d86ef848c921906",
+    "files": [
+      {
+        "path": "/workspace/research/skillcorner/experiments/datasets.py",
+        "bytes": 8428,
+        "sha256": "f0d3a4eeda1d0b970fe7677a24ad752952d44a403be0ccd7bcd7469a05e4e958"
+      },
+      {
+        "path": "/workspace/research/skillcorner/experiments/skillcorner_had.py",
+        "bytes": 6300,
+        "sha256": "4533bc8b974383c99db9de16548a93e40ea224f17dc752ce2aa8257b65f12a87"
+      },
+      {
+        "path": "/workspace/research/skillcorner/experiments/metrica_open.py",
+        "bytes": 13667,
+        "sha256": "a0df5791a3ac3d5a1c22cd73fe51f1e522c8f1cabeefd759c9161b8bdde1861e"
+      }
+    ],
+    "docs": [
+      {
+        "path": "/workspace/research/skillcorner/source_docs/DATASETS.md",
+        "url": "https://raw.githubusercontent.com/jekkiechan/more-than-a-hack-2027/0659bffe8709b513831715923d86ef848c921906/experiments/DATASETS.md",
+        "bytes": 5565,
+        "sha256": "c1a1108382a1aca2f5b425d3338e0a1ec71966b1f32d240d3011364927235860"
+      },
+      {
+        "path": "/workspace/research/skillcorner/source_docs/SkillCorner_README.md",
+        "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/README.md",
+        "bytes": 12212,
+        "sha256": "c09886c6359e5f7ff3bfd71a653510caf2f674d238ca79219aa1ec9ebe6f4428"
+      },
+      {
+        "path": "/workspace/research/skillcorner/source_docs/SkillCorner_LICENSE",
+        "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/LICENSE",
+        "bytes": 1097,
+        "sha256": "3384cc66ffd008209759af5e6328677eabded72756fb1f56f4f82e68e9b3c6eb"
+      }
+    ],
+    "target_quality": "Provider-generated silver H/A labels with interruption-event-derived D and X uncertainty; no human labels used."
+  },
+  "split_manifest": "/workspace/research/expansion_split_v1.json",
+  "split_roles": {
+    "train": [
+      "skillcorner_had_2006363",
+      "skillcorner_had_2007448",
+      "skillcorner_had_2007721",
+      "skillcorner_had_2010085",
+      "skillcorner_had_2011166",
+      "skillcorner_had_2013725"
+    ],
+    "selection": [
+      "skillcorner_had_2015213",
+      "skillcorner_had_2016236"
+    ],
+    "reserved_test": [
+      "skillcorner_had_2017461"
+    ]
+  },
+  "method": {
+    "native_rate_hz": 10,
+    "label_adapter": "Pinned experiments/skillcorner_had.py; player-possession possession.group is H/A/null, null live gaps forward-filled, interruption-after event to next player possession yields D core with 1.0s X margins at each end. No D inferred from coordinate missingness.",
+    "visible_mask": "sum(player_observed, axis=1) >= 12; player_observed comes from SkillCorner player is_detected == true.",
+    "preservation": "X labels, ball_observed and player_observed masks, native 10Hz arrays and period/time gaps retained."
+  },
+  "aggregate": {
+    "match_count": 9,
+    "downloaded_required_inputs_bytes": 875449826,
+    "total_frames": 590499,
+    "graded_nonX_frames": 510413,
+    "graded_nonX_minutes": 850.688,
+    "frames_after_min12_visible": 245099,
+    "minutes_after_min12_visible": 408.498,
+    "live_frames_before_min12": 255154,
+    "live_minutes_before_min12": 425.257,
+    "live_frames_after_min12": 181810,
+    "live_minutes_after_min12": 303.017
+  },
+  "matches": [
+    {
+      "id": 2006363,
+      "match_id": "skillcorner_had_2006363",
+      "date": "2025-03-08T08:35:00Z",
+      "home": "Melbourne V FC",
+      "away": "CC Mariners",
+      "split": "train",
+      "source_data": {
+        "frames": 59101,
+        "raw_possession_group_counts": {
+          "A": 15402,
+          "H": 17452,
+          "X": 26247
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 32,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 29,
+          "1": 28941,
+          "2": 30131
+        },
+        "labels_all_frames": {
+          "A": 14490,
+          "D": 26590,
+          "H": 16286,
+          "X": 1735
+        },
+        "active_period_nonX_frames": 57366,
+        "active_period_nonX_minutes": 95.61,
+        "active_period_nonX_class_counts": {
+          "A": 14490,
+          "D": 26590,
+          "H": 16286
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 27364,
+        "graded_frames_before_minimum": 57366,
+        "graded_frames_after_minimum": 26251,
+        "graded_frames_dropped_by_minimum": 31115,
+        "frames_after_minimum_class_counts": {
+          "A": 8662,
+          "D": 6188,
+          "H": 11401
+        },
+        "live_frames_before_minimum": 30776,
+        "live_frames_after_minimum": 20063,
+        "live_minutes_before_minimum": 51.293,
+        "live_minutes_after_minimum": 33.438,
+        "player_detected_count_mean_all": 8.7476,
+        "player_detected_count_mean_graded": 8.6498,
+        "player_detected_count_mean_post_minimum": 15.278,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 36160,
+        "ball_missing_all_fraction": 0.388166,
+        "ball_missing_graded_fraction": 0.394415,
+        "ball_missing_live_fraction": 0.060404,
+        "ball_missing_after_minimum_fraction": 0.045903,
+        "ball_missing_live_after_minimum_fraction": 0.004486,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.047096,
+          "A": 0.075362,
+          "D": 0.781008
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.002105,
+          "A": 0.007619,
+          "D": 0.180187
+        },
+        "ball_xy_finite_frames": 44347,
+        "ball_detected_frames": 36160,
+        "player_xy_finite_observations": 975634,
+        "player_is_detected_observations": 516990,
+        "event_frame_integrity": {
+          "event_rows": 4979,
+          "event_type_counts": {
+            "player_possession": 976,
+            "off_ball_run": 536,
+            "passing_option": 2535,
+            "on_ball_engagement": 932
+          },
+          "player_possession_rows": 976,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 85,
+          "interruption_tags": {
+            "free_kick_against": 7,
+            "throw_in_for": 19,
+            "free_kick_for": 11,
+            "goal_for": 3,
+            "corner_for": 13,
+            "throw_in_against": 22,
+            "goal_kick_against": 9,
+            "goal_kick_for": 1
+          },
+          "next_interruption_before_relation": {
+            "same_category": 38,
+            "exact": 38,
+            "different_or_missing": 9
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 85,
+            "min_s": 4.0,
+            "median_s": 22.8,
+            "mean_s": 33.282,
+            "max_s": 151.0,
+            "sum_s": 2829.0
+          },
+          "D_core_seconds": {
+            "n": 85,
+            "min_s": 2.0,
+            "median_s": 20.8,
+            "mean_s": 31.282,
+            "max_s": 149.0,
+            "sum_s": 2659.0
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 2659.0,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2006363,
+        "date": "2025-03-08T08:35:00Z",
+        "home": "Melbourne V FC",
+        "away": "CC Mariners",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2006363/2006363_dynamic_events.csv",
+            "source_path": "data/matches/2006363/2006363_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2006363/2006363_dynamic_events.csv",
+            "bytes": 4794999,
+            "sha256": "430d5f840723c4c667b907e161716265b5ae4b87b4466a4883d3b95b5b5e5a58",
+            "git_blob_sha": "fcac96a21f909e4b2bad3a606dc89fabea263a6f",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2006363/2006363_match.json",
+            "source_path": "data/matches/2006363/2006363_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2006363/2006363_match.json",
+            "bytes": 33294,
+            "sha256": "26d4068baf7454d1e066b6e70715da6c7ac016b14963a3bfa3ed99ed7c3aba79",
+            "git_blob_sha": "edaf492c5fc4c98cb871a8ade25065e9a38d6ef7",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2006363/2006363_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2006363/2006363_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2006363/2006363_tracking_extrapolated.jsonl",
+            "bytes": 90591887,
+            "sha256": "61dfdbd83f8e654127b249b8503f062338c14ec0c9e65404bcf70fb7c1346bd4",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2006363.npz",
+          "bytes": 5922477,
+          "sha256": "7987039149bb74cdc8b35132cc9e70124464140cb851a00b7d3efa1b66c7d26b"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2006363.npz",
+          "bytes": 5922364,
+          "sha256": "8a5bf8af6887d1ec7f04d325401ab267ee585556a7b8831db9c01d60b33500f5"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2006363.json",
+          "bytes": 1202,
+          "sha256": "395da4473a8c340917eba59ed6e38547be7ff3dd8ddc3a2c5b9208888f07969f"
+        }
+      ]
+    },
+    {
+      "id": 2007448,
+      "match_id": "skillcorner_had_2007448",
+      "date": "2025-03-15T10:45:00Z",
+      "home": "Perth Glory",
+      "away": "Brisbane FC",
+      "split": "train",
+      "source_data": {
+        "frames": 58081,
+        "raw_possession_group_counts": {
+          "A": 14891,
+          "H": 14784,
+          "X": 28406
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 29,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 19,
+          "1": 28521,
+          "2": 29541
+        },
+        "labels_all_frames": {
+          "A": 13320,
+          "D": 30067,
+          "H": 12772,
+          "X": 1922
+        },
+        "active_period_nonX_frames": 56159,
+        "active_period_nonX_minutes": 93.598,
+        "active_period_nonX_class_counts": {
+          "A": 13320,
+          "D": 30067,
+          "H": 12772
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 28556,
+        "graded_frames_before_minimum": 56159,
+        "graded_frames_after_minimum": 27240,
+        "graded_frames_dropped_by_minimum": 28919,
+        "frames_after_minimum_class_counts": {
+          "A": 10086,
+          "D": 8388,
+          "H": 8766
+        },
+        "live_frames_before_minimum": 26092,
+        "live_frames_after_minimum": 18852,
+        "live_minutes_before_minimum": 43.487,
+        "live_minutes_after_minimum": 31.42,
+        "player_detected_count_mean_all": 9.0551,
+        "player_detected_count_mean_graded": 8.9414,
+        "player_detected_count_mean_post_minimum": 15.603,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 34600,
+        "ball_missing_all_fraction": 0.40428,
+        "ball_missing_graded_fraction": 0.409961,
+        "ball_missing_live_fraction": 0.048061,
+        "ball_missing_after_minimum_fraction": 0.065529,
+        "ball_missing_live_after_minimum_fraction": 0.003236,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.057469,
+          "A": 0.039039,
+          "D": 0.724016
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.004677,
+          "A": 0.001983,
+          "D": 0.205532
+        },
+        "ball_xy_finite_frames": 44283,
+        "ball_detected_frames": 34600,
+        "player_xy_finite_observations": 974226,
+        "player_is_detected_observations": 525931,
+        "event_frame_integrity": {
+          "event_rows": 4310,
+          "event_type_counts": {
+            "player_possession": 863,
+            "off_ball_run": 498,
+            "passing_option": 2165,
+            "on_ball_engagement": 784
+          },
+          "player_possession_rows": 863,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 84,
+          "interruption_tags": {
+            "throw_in_for": 12,
+            "goal_kick_against": 15,
+            "throw_in_against": 23,
+            "free_kick_for": 17,
+            "goal_for": 4,
+            "free_kick_against": 4,
+            "corner_for": 8,
+            "corner_against": 1
+          },
+          "next_interruption_before_relation": {
+            "exact": 37,
+            "same_category": 34,
+            "different_or_missing": 13
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 84,
+            "min_s": 9.8,
+            "median_s": 26.15,
+            "mean_s": 37.794,
+            "max_s": 128.5,
+            "sum_s": 3174.7
+          },
+          "D_core_seconds": {
+            "n": 84,
+            "min_s": 7.8,
+            "median_s": 24.15,
+            "mean_s": 35.794,
+            "max_s": 126.5,
+            "sum_s": 3006.7
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 3006.7,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2007448,
+        "date": "2025-03-15T10:45:00Z",
+        "home": "Perth Glory",
+        "away": "Brisbane FC",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2007448/2007448_dynamic_events.csv",
+            "source_path": "data/matches/2007448/2007448_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2007448/2007448_dynamic_events.csv",
+            "bytes": 4146729,
+            "sha256": "076e7a85949a1aca485bf202823a2b04b6d5eb20212faac1e51d346c6f4ac2a7",
+            "git_blob_sha": "5aea97c02efd4bd0b6743ffddf61228ceda988d7",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2007448/2007448_match.json",
+            "source_path": "data/matches/2007448/2007448_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2007448/2007448_match.json",
+            "bytes": 32670,
+            "sha256": "434b31c032656be4a89e7042eadd442d4dfb468e4bfa87ce188102f314262873",
+            "git_blob_sha": "7798b2874d7593e33c9700ba19b12b380a64c65b",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2007448/2007448_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2007448/2007448_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2007448/2007448_tracking_extrapolated.jsonl",
+            "bytes": 90025383,
+            "sha256": "12d00d6e4257218812df6e4c4263c49387ba0313a83ff8d826c4416828f9c798",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2007448.npz",
+          "bytes": 5904239,
+          "sha256": "ecb97ba64dd2fea5604ec6936969f2c6f07ddd23e4a42e92240d2fd260dd388f"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2007448.npz",
+          "bytes": 5904132,
+          "sha256": "73c4801c0e513590ddfbf8b0f04d7219093dc3ce98009269ce623f23aa245794"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2007448.json",
+          "bytes": 1174,
+          "sha256": "b97b93c4c4816754aaffd7bcd0b76d7fc1f0976ba225cf910411691f5043d409"
+        }
+      ]
+    },
+    {
+      "id": 2007721,
+      "match_id": "skillcorner_had_2007721",
+      "date": "2025-03-16T04:00:00Z",
+      "home": "Auckland FC",
+      "away": "CC Mariners",
+      "split": "train",
+      "source_data": {
+        "frames": 57571,
+        "raw_possession_group_counts": {
+          "A": 17231,
+          "H": 16838,
+          "X": 23502
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 32,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 29,
+          "1": 27701,
+          "2": 29841
+        },
+        "labels_all_frames": {
+          "A": 15650,
+          "D": 24553,
+          "H": 15112,
+          "X": 2256
+        },
+        "active_period_nonX_frames": 55315,
+        "active_period_nonX_minutes": 92.192,
+        "active_period_nonX_class_counts": {
+          "A": 15650,
+          "D": 24553,
+          "H": 15112
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 34081,
+        "graded_frames_before_minimum": 55315,
+        "graded_frames_after_minimum": 32591,
+        "graded_frames_dropped_by_minimum": 22724,
+        "frames_after_minimum_class_counts": {
+          "A": 13705,
+          "D": 6366,
+          "H": 12520
+        },
+        "live_frames_before_minimum": 30762,
+        "live_frames_after_minimum": 26225,
+        "live_minutes_before_minimum": 51.27,
+        "live_minutes_after_minimum": 43.708,
+        "player_detected_count_mean_all": 10.5408,
+        "player_detected_count_mean_graded": 10.4962,
+        "player_detected_count_mean_post_minimum": 16.4645,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 37146,
+        "ball_missing_all_fraction": 0.354779,
+        "ball_missing_graded_fraction": 0.356648,
+        "ball_missing_live_fraction": 0.051102,
+        "ball_missing_after_minimum_fraction": 0.051855,
+        "ball_missing_live_after_minimum_fraction": 0.011325,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.067231,
+          "A": 0.035527,
+          "D": 0.739462
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.015096,
+          "A": 0.00788,
+          "D": 0.218819
+        },
+        "ball_xy_finite_frames": 46297,
+        "ball_detected_frames": 37146,
+        "player_xy_finite_observations": 1018534,
+        "player_is_detected_observations": 606845,
+        "event_frame_integrity": {
+          "event_rows": 4831,
+          "event_type_counts": {
+            "player_possession": 959,
+            "passing_option": 2542,
+            "off_ball_run": 520,
+            "on_ball_engagement": 810
+          },
+          "player_possession_rows": 959,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 90,
+          "interruption_tags": {
+            "throw_in_against": 26,
+            "free_kick_for": 13,
+            "goal_kick_against": 15,
+            "throw_in_for": 22,
+            "goal_for": 4,
+            "free_kick_against": 4,
+            "corner_for": 4,
+            "goal_kick_for": 1,
+            "corner_against": 1
+          },
+          "next_interruption_before_relation": {
+            "same_category": 38,
+            "different_or_missing": 10,
+            "exact": 42
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 90,
+            "min_s": 4.9,
+            "median_s": 26.3,
+            "mean_s": 29.281,
+            "max_s": 98.4,
+            "sum_s": 2635.3
+          },
+          "D_core_seconds": {
+            "n": 90,
+            "min_s": 2.9,
+            "median_s": 24.3,
+            "mean_s": 27.281,
+            "max_s": 96.4,
+            "sum_s": 2455.3
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 2455.3,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2007721,
+        "date": "2025-03-16T04:00:00Z",
+        "home": "Auckland FC",
+        "away": "CC Mariners",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2007721/2007721_dynamic_events.csv",
+            "source_path": "data/matches/2007721/2007721_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2007721/2007721_dynamic_events.csv",
+            "bytes": 4653039,
+            "sha256": "c102f35837a9e50f642bd3378f9303ccd4d9a40d07717a12423966c3fb66fe36",
+            "git_blob_sha": "a55b5132980dc1b90ae909e64a2c0a55069d631b",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2007721/2007721_match.json",
+            "source_path": "data/matches/2007721/2007721_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2007721/2007721_match.json",
+            "bytes": 33745,
+            "sha256": "0ed112bc955eb341bc25005f9a7bb3fdf040223c8e1765646225c47e974b6139",
+            "git_blob_sha": "0bbbabf46dd7330bf8d16faf979fbf576f37218d",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2007721/2007721_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2007721/2007721_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2007721/2007721_tracking_extrapolated.jsonl",
+            "bytes": 92872706,
+            "sha256": "fea913b8d4cbde8d85c6bdf5f1a4b3fd203b78227e976a171c8ab0946705d378",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2007721.npz",
+          "bytes": 6131548,
+          "sha256": "f36adbc981f8fe4d5742514d242ccd238ef39b3ea36dbcbb666e8fcb274ac228"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2007721.npz",
+          "bytes": 6131454,
+          "sha256": "7e5b6d08c877967073c47c9be03aa93c2a0f3f0fb04ed3b6693bd7cf09f6cd41"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2007721.json",
+          "bytes": 1209,
+          "sha256": "8fc5170c9392b26cd6bcddb9be80296a4729796ac9bd4c1aa96daada43994008"
+        }
+      ]
+    },
+    {
+      "id": 2010085,
+      "match_id": "skillcorner_had_2010085",
+      "date": "2025-04-05T06:00:00Z",
+      "home": "Melbourne City",
+      "away": "CC Mariners",
+      "split": "train",
+      "source_data": {
+        "frames": 58991,
+        "raw_possession_group_counts": {
+          "A": 13258,
+          "H": 19714,
+          "X": 26019
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 32,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 19,
+          "1": 29431,
+          "2": 29541
+        },
+        "labels_all_frames": {
+          "A": 11881,
+          "D": 27269,
+          "H": 18197,
+          "X": 1644
+        },
+        "active_period_nonX_frames": 57347,
+        "active_period_nonX_minutes": 95.578,
+        "active_period_nonX_class_counts": {
+          "A": 11881,
+          "D": 27269,
+          "H": 18197
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 30573,
+        "graded_frames_before_minimum": 57347,
+        "graded_frames_after_minimum": 29340,
+        "graded_frames_dropped_by_minimum": 28007,
+        "frames_after_minimum_class_counts": {
+          "A": 7924,
+          "D": 7978,
+          "H": 13438
+        },
+        "live_frames_before_minimum": 30078,
+        "live_frames_after_minimum": 21362,
+        "live_minutes_before_minimum": 50.13,
+        "live_minutes_after_minimum": 35.603,
+        "player_detected_count_mean_all": 9.3994,
+        "player_detected_count_mean_graded": 9.2798,
+        "player_detected_count_mean_post_minimum": 15.1814,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 38008,
+        "ball_missing_all_fraction": 0.355698,
+        "ball_missing_graded_fraction": 0.362233,
+        "ball_missing_live_fraction": 0.052065,
+        "ball_missing_after_minimum_fraction": 0.05317,
+        "ball_missing_live_after_minimum_fraction": 0.015635,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.029016,
+          "A": 0.087366,
+          "D": 0.704353
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.006697,
+          "A": 0.030793,
+          "D": 0.153673
+        },
+        "ball_xy_finite_frames": 45521,
+        "ball_detected_frames": 38008,
+        "player_xy_finite_observations": 1001462,
+        "player_is_detected_observations": 554481,
+        "event_frame_integrity": {
+          "event_rows": 4633,
+          "event_type_counts": {
+            "player_possession": 935,
+            "off_ball_run": 419,
+            "passing_option": 2470,
+            "on_ball_engagement": 809
+          },
+          "player_possession_rows": 935,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 80,
+          "interruption_tags": {
+            "throw_in_against": 27,
+            "goal_kick_against": 13,
+            "free_kick_against": 9,
+            "free_kick_for": 12,
+            "throw_in_for": 14,
+            "corner_for": 3,
+            "goal_for": 1,
+            "goal_kick_for": 1
+          },
+          "next_interruption_before_relation": {
+            "same_category": 35,
+            "different_or_missing": 15,
+            "exact": 30
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 80,
+            "min_s": 2.7,
+            "median_s": 26.25,
+            "mean_s": 36.086,
+            "max_s": 182.0,
+            "sum_s": 2886.9
+          },
+          "D_core_seconds": {
+            "n": 80,
+            "min_s": 0.7,
+            "median_s": 24.25,
+            "mean_s": 34.086,
+            "max_s": 180.0,
+            "sum_s": 2726.9
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 2726.9,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2010085,
+        "date": "2025-04-05T06:00:00Z",
+        "home": "Melbourne City",
+        "away": "CC Mariners",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2010085/2010085_dynamic_events.csv",
+            "source_path": "data/matches/2010085/2010085_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2010085/2010085_dynamic_events.csv",
+            "bytes": 4484006,
+            "sha256": "792b2ac103e314835b4e7d5a213b67093497c4a8a3756dfae3ec66b059de6ee3",
+            "git_blob_sha": "ef8e9435749fae31c2b3f6bab01731c3d7ddc6b5",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2010085/2010085_match.json",
+            "source_path": "data/matches/2010085/2010085_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2010085/2010085_match.json",
+            "bytes": 33744,
+            "sha256": "3222413d358251e1ac1cdde1f5ee2fd126b0d9cc3470c2aa1bb07177a09ef24d",
+            "git_blob_sha": "82b15d3e8cac13d0403259785302023ad89ab9ca",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2010085/2010085_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2010085/2010085_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2010085/2010085_tracking_extrapolated.jsonl",
+            "bytes": 92516156,
+            "sha256": "04562d9754b2977c80430535e9b5733426bc4ce910db56fe7a3760876211ac5a",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2010085.npz",
+          "bytes": 6023513,
+          "sha256": "0a88a91937ea0e9e21ff2248183dab9f166650ee8b78dd36073bac40fd271fa9"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2010085.npz",
+          "bytes": 6023403,
+          "sha256": "efe6e236d5cbc1f629a62b8bd39d8feed326fe8428a91cf897fa043a8e059f0f"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2010085.json",
+          "bytes": 1189,
+          "sha256": "4343b18a58180ccab72309ea094823d3ec33920bd6bf209760622c8ac717d23d"
+        }
+      ]
+    },
+    {
+      "id": 2011166,
+      "match_id": "skillcorner_had_2011166",
+      "date": "2025-04-12T05:00:00Z",
+      "home": "Wellington P FC",
+      "away": "Melbourne V FC",
+      "split": "train",
+      "source_data": {
+        "frames": 71851,
+        "raw_possession_group_counts": {
+          "A": 15765,
+          "H": 11893,
+          "X": 44193
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 32,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 12559,
+          "1": 28991,
+          "2": 30301
+        },
+        "labels_all_frames": {
+          "A": 14271,
+          "D": 32439,
+          "H": 10568,
+          "X": 14573
+        },
+        "active_period_nonX_frames": 57278,
+        "active_period_nonX_minutes": 95.463,
+        "active_period_nonX_class_counts": {
+          "A": 14271,
+          "D": 32439,
+          "H": 10568
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 25041,
+        "graded_frames_before_minimum": 57278,
+        "graded_frames_after_minimum": 23565,
+        "graded_frames_dropped_by_minimum": 33713,
+        "frames_after_minimum_class_counts": {
+          "A": 9578,
+          "D": 6363,
+          "H": 7624
+        },
+        "live_frames_before_minimum": 24839,
+        "live_frames_after_minimum": 17202,
+        "live_minutes_before_minimum": 41.398,
+        "live_minutes_after_minimum": 28.67,
+        "player_detected_count_mean_all": 6.2618,
+        "player_detected_count_mean_graded": 7.4116,
+        "player_detected_count_mean_post_minimum": 14.9437,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 31278,
+        "ball_missing_all_fraction": 0.564682,
+        "ball_missing_graded_fraction": 0.484165,
+        "ball_missing_live_fraction": 0.061597,
+        "ball_missing_after_minimum_fraction": 0.062423,
+        "ball_missing_live_after_minimum_fraction": 0.005406,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.0493,
+          "A": 0.070703,
+          "D": 0.807731
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.007083,
+          "A": 0.004072,
+          "D": 0.216565
+        },
+        "ball_xy_finite_frames": 39015,
+        "ball_detected_frames": 31278,
+        "player_xy_finite_observations": 858330,
+        "player_is_detected_observations": 449919,
+        "event_frame_integrity": {
+          "event_rows": 4034,
+          "event_type_counts": {
+            "player_possession": 757,
+            "passing_option": 2012,
+            "off_ball_run": 457,
+            "on_ball_engagement": 808
+          },
+          "player_possession_rows": 757,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 96,
+          "interruption_tags": {
+            "corner_for": 9,
+            "throw_in_against": 22,
+            "goal_for": 5,
+            "goal_kick_against": 15,
+            "free_kick_against": 9,
+            "free_kick_for": 10,
+            "throw_in_for": 22,
+            "corner_against": 3,
+            "goal_kick_for": 1
+          },
+          "next_interruption_before_relation": {
+            "exact": 40,
+            "same_category": 40,
+            "different_or_missing": 16
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 96,
+            "min_s": 4.2,
+            "median_s": 29.9,
+            "mean_s": 35.791,
+            "max_s": 169.2,
+            "sum_s": 3435.9
+          },
+          "D_core_seconds": {
+            "n": 96,
+            "min_s": 2.2,
+            "median_s": 27.9,
+            "mean_s": 33.791,
+            "max_s": 167.2,
+            "sum_s": 3243.9
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 3243.9,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2011166,
+        "date": "2025-04-12T05:00:00Z",
+        "home": "Wellington P FC",
+        "away": "Melbourne V FC",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2011166/2011166_dynamic_events.csv",
+            "source_path": "data/matches/2011166/2011166_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2011166/2011166_dynamic_events.csv",
+            "bytes": 3846412,
+            "sha256": "7c2827cea8135395b77f70592c59721189da3b6c9abc94688884c073c3233a18",
+            "git_blob_sha": "40750a5f2da06c032a10c7ca50953f8d89e78078",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2011166/2011166_match.json",
+            "source_path": "data/matches/2011166/2011166_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2011166/2011166_match.json",
+            "bytes": 28420,
+            "sha256": "6b381b8bd338859c394c1992da137436e2e09cd609a81ac94d5f5f941d35d1bc",
+            "git_blob_sha": "6468e14c07f0108c56cd3457544c106643161099",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2011166/2011166_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2011166/2011166_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2011166/2011166_tracking_extrapolated.jsonl",
+            "bytes": 87441570,
+            "sha256": "8ec2937050930d87e4f52b2d65515f70ef8edd0ae2814bf40155c4448133390e",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2011166.npz",
+          "bytes": 5243608,
+          "sha256": "40617c48a328d6c08154e0132b5f0d50e5953dc8c63533aa5e0fabfa9f9265eb"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2011166.npz",
+          "bytes": 5243429,
+          "sha256": "6d50a9752956dda0f2df161ce7db033551f13f27a798910d4f7985d4803799f8"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2011166.json",
+          "bytes": 1213,
+          "sha256": "cb99bd00b5c92f16b299dcb169a4543090333a138d259fe59c52cf0e7d79af6b"
+        }
+      ]
+    },
+    {
+      "id": 2013725,
+      "match_id": "skillcorner_had_2013725",
+      "date": "2025-04-27T07:00:00Z",
+      "home": "Western United",
+      "away": "Sydney FC",
+      "split": "train",
+      "source_data": {
+        "frames": 70251,
+        "raw_possession_group_counts": {
+          "A": 15919,
+          "H": 15856,
+          "X": 38476
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 30,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 13459,
+          "1": 27891,
+          "2": 28901
+        },
+        "labels_all_frames": {
+          "A": 14754,
+          "D": 24859,
+          "H": 15160,
+          "X": 15478
+        },
+        "active_period_nonX_frames": 54773,
+        "active_period_nonX_minutes": 91.288,
+        "active_period_nonX_class_counts": {
+          "A": 14754,
+          "D": 24859,
+          "H": 15160
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 30065,
+        "graded_frames_before_minimum": 54773,
+        "graded_frames_after_minimum": 28725,
+        "graded_frames_dropped_by_minimum": 26048,
+        "frames_after_minimum_class_counts": {
+          "A": 11209,
+          "D": 6704,
+          "H": 10812
+        },
+        "live_frames_before_minimum": 29914,
+        "live_frames_after_minimum": 22021,
+        "live_minutes_before_minimum": 49.857,
+        "live_minutes_after_minimum": 36.702,
+        "player_detected_count_mean_all": 7.6015,
+        "player_detected_count_mean_graded": 9.3084,
+        "player_detected_count_mean_post_minimum": 15.3539,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 35561,
+        "ball_missing_all_fraction": 0.493801,
+        "ball_missing_graded_fraction": 0.379621,
+        "ball_missing_live_fraction": 0.083539,
+        "ball_missing_after_minimum_fraction": 0.04846,
+        "ball_missing_live_after_minimum_fraction": 0.011898,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.119723,
+          "A": 0.04636,
+          "D": 0.735911
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.013966,
+          "A": 0.009903,
+          "D": 0.168556
+        },
+        "ball_xy_finite_frames": 44992,
+        "ball_detected_frames": 35561,
+        "player_xy_finite_observations": 989824,
+        "player_is_detected_observations": 534013,
+        "event_frame_integrity": {
+          "event_rows": 4706,
+          "event_type_counts": {
+            "player_possession": 922,
+            "passing_option": 2353,
+            "on_ball_engagement": 916,
+            "off_ball_run": 515
+          },
+          "player_possession_rows": 922,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 99,
+          "interruption_tags": {
+            "free_kick_for": 16,
+            "goal_kick_against": 16,
+            "goal_for": 1,
+            "throw_in_for": 27,
+            "corner_for": 9,
+            "goal_kick_for": 2,
+            "throw_in_against": 22,
+            "free_kick_against": 4,
+            "corner_against": 2
+          },
+          "next_interruption_before_relation": {
+            "exact": 51,
+            "same_category": 34,
+            "different_or_missing": 14
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 99,
+            "min_s": 3.1,
+            "median_s": 22.1,
+            "mean_s": 27.11,
+            "max_s": 119.6,
+            "sum_s": 2683.9
+          },
+          "D_core_seconds": {
+            "n": 99,
+            "min_s": 1.1,
+            "median_s": 20.1,
+            "mean_s": 25.11,
+            "max_s": 117.6,
+            "sum_s": 2485.9
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 2485.9,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2013725,
+        "date": "2025-04-27T07:00:00Z",
+        "home": "Western United",
+        "away": "Sydney FC",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2013725/2013725_dynamic_events.csv",
+            "source_path": "data/matches/2013725/2013725_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2013725/2013725_dynamic_events.csv",
+            "bytes": 4508257,
+            "sha256": "20bd127c17768d70dade9a76b43c1201c2c5e10f6c89d420847250136270ad83",
+            "git_blob_sha": "bcca1fe2890119d20b9b7bd13c0a2f9245a7c5f0",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2013725/2013725_match.json",
+            "source_path": "data/matches/2013725/2013725_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2013725/2013725_match.json",
+            "bytes": 27899,
+            "sha256": "c8b9372fbd2e79ddcbb859b51b5086111ed7f3cd84ca0b457091c7d0e5209df3",
+            "git_blob_sha": "4309772e339cd1f9ebc2aeb4a429076287af3a00",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2013725/2013725_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2013725/2013725_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2013725/2013725_tracking_extrapolated.jsonl",
+            "bytes": 96059074,
+            "sha256": "13eb83329814ed5f5d73da8f8ab5c5979d6c8a7858e89e28a7fa8072f91fb250",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2013725.npz",
+          "bytes": 5952748,
+          "sha256": "2aadda81eefaf1a355a5e0aa033614a5fc9f6e834cf242c93075fe688a2f7308"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2013725.npz",
+          "bytes": 5952579,
+          "sha256": "d5c12cc54497e4be1a17523f8842c8975b2c57a24772f568703dd783514b641d"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2013725.json",
+          "bytes": 1196,
+          "sha256": "36fa27866be9679541d69554eab00784dc15599487dbcec2b339e559dfe5e6f7"
+        }
+      ]
+    },
+    {
+      "id": 2015213,
+      "match_id": "skillcorner_had_2015213",
+      "date": "2025-05-03T08:00:00Z",
+      "home": "Western United",
+      "away": "Auckland FC",
+      "split": "selection",
+      "source_data": {
+        "frames": 72101,
+        "raw_possession_group_counts": {
+          "A": 17052,
+          "H": 14297,
+          "X": 40752
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 32,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 12199,
+          "1": 28831,
+          "2": 31071
+        },
+        "labels_all_frames": {
+          "A": 14836,
+          "D": 30216,
+          "H": 12716,
+          "X": 14333
+        },
+        "active_period_nonX_frames": 57768,
+        "active_period_nonX_minutes": 96.28,
+        "active_period_nonX_class_counts": {
+          "A": 14836,
+          "D": 30216,
+          "H": 12716
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 32342,
+        "graded_frames_before_minimum": 57768,
+        "graded_frames_after_minimum": 30791,
+        "graded_frames_dropped_by_minimum": 26977,
+        "frames_after_minimum_class_counts": {
+          "A": 11638,
+          "D": 9283,
+          "H": 9870
+        },
+        "live_frames_before_minimum": 27552,
+        "live_frames_after_minimum": 21508,
+        "live_minutes_before_minimum": 45.92,
+        "live_minutes_after_minimum": 35.847,
+        "player_detected_count_mean_all": 7.7813,
+        "player_detected_count_mean_graded": 9.2333,
+        "player_detected_count_mean_post_minimum": 15.1944,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 36626,
+        "ball_missing_all_fraction": 0.492018,
+        "ball_missing_graded_fraction": 0.397538,
+        "ball_missing_live_fraction": 0.07778,
+        "ball_missing_after_minimum_fraction": 0.067552,
+        "ball_missing_live_after_minimum_fraction": 0.013902,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.093032,
+          "A": 0.064707,
+          "D": 0.689105
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.022391,
+          "A": 0.006702,
+          "D": 0.191856
+        },
+        "ball_xy_finite_frames": 48542,
+        "ball_detected_frames": 36626,
+        "player_xy_finite_observations": 1067924,
+        "player_is_detected_observations": 561041,
+        "event_frame_integrity": {
+          "event_rows": 4613,
+          "event_type_counts": {
+            "player_possession": 883,
+            "on_ball_engagement": 866,
+            "passing_option": 2309,
+            "off_ball_run": 555
+          },
+          "player_possession_rows": 883,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 105,
+          "interruption_tags": {
+            "free_kick_against": 16,
+            "throw_in_against": 27,
+            "free_kick_for": 15,
+            "goal_kick_against": 14,
+            "throw_in_for": 23,
+            "goal_for": 6,
+            "corner_for": 3,
+            "corner_against": 1
+          },
+          "next_interruption_before_relation": {
+            "same_category": 49,
+            "exact": 41,
+            "different_or_missing": 15
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 105,
+            "min_s": 5.7,
+            "median_s": 23.8,
+            "mean_s": 30.777,
+            "max_s": 107.3,
+            "sum_s": 3231.6
+          },
+          "D_core_seconds": {
+            "n": 105,
+            "min_s": 3.7,
+            "median_s": 21.8,
+            "mean_s": 28.777,
+            "max_s": 105.3,
+            "sum_s": 3021.6
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 3021.6,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2015213,
+        "date": "2025-05-03T08:00:00Z",
+        "home": "Western United",
+        "away": "Auckland FC",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2015213/2015213_dynamic_events.csv",
+            "source_path": "data/matches/2015213/2015213_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2015213/2015213_dynamic_events.csv",
+            "bytes": 4417152,
+            "sha256": "1452564da8278500f4672152a27e361d3f5f1b9d741493e598e5bf7729a88811",
+            "git_blob_sha": "a4ce1f7555f6f9f53700823451b94f621785314e",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2015213/2015213_match.json",
+            "source_path": "data/matches/2015213/2015213_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2015213/2015213_match.json",
+            "bytes": 27937,
+            "sha256": "300342194bf3dcd9fe356ed30df26fd0ee6e8caeb8ce5d8cfd27cf90cd995dff",
+            "git_blob_sha": "1d58d487d5ca7f8c9cfe28de8a9757e3fae2aff4",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2015213/2015213_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2015213/2015213_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2015213/2015213_tracking_extrapolated.jsonl",
+            "bytes": 102030769,
+            "sha256": "413990d0024d84856ce1f2a16866b8887472c0cea22c61caef0d1f46505a609e",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2015213.npz",
+          "bytes": 6455242,
+          "sha256": "9b7652af65f04d5efd67c75e4c80195b770770a3bc0c35a055c124cb57f97685"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2015213.npz",
+          "bytes": 6455069,
+          "sha256": "6416312fce1700b2d76ebb00d16e9101dc3202f6eb7dd951da4ab560758c18f5"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2015213.json",
+          "bytes": 1164,
+          "sha256": "59e58beb82c168cbf7cb83f7141f35f5989e90865489d167cf8133a53c146cac"
+        }
+      ]
+    },
+    {
+      "id": 2016236,
+      "match_id": "skillcorner_had_2016236",
+      "date": "2025-05-09T09:35:00Z",
+      "home": "Western United",
+      "away": "Adelaide United",
+      "split": "selection",
+      "source_data": {
+        "frames": 71101,
+        "raw_possession_group_counts": {
+          "A": 17811,
+          "H": 15323,
+          "X": 37967
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 32,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 11059,
+          "1": 30551,
+          "2": 29491
+        },
+        "labels_all_frames": {
+          "A": 16014,
+          "D": 28350,
+          "H": 13644,
+          "X": 13093
+        },
+        "active_period_nonX_frames": 58008,
+        "active_period_nonX_minutes": 96.68,
+        "active_period_nonX_class_counts": {
+          "A": 16014,
+          "D": 28350,
+          "H": 13644
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 24611,
+        "graded_frames_before_minimum": 58008,
+        "graded_frames_after_minimum": 23382,
+        "graded_frames_dropped_by_minimum": 34626,
+        "frames_after_minimum_class_counts": {
+          "A": 9233,
+          "D": 5599,
+          "H": 8550
+        },
+        "live_frames_before_minimum": 29658,
+        "live_frames_after_minimum": 17783,
+        "live_minutes_before_minimum": 49.43,
+        "live_minutes_after_minimum": 29.638,
+        "player_detected_count_mean_all": 6.6667,
+        "player_detected_count_mean_graded": 7.7719,
+        "player_detected_count_mean_post_minimum": 14.6873,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 35533,
+        "ball_missing_all_fraction": 0.500246,
+        "ball_missing_graded_fraction": 0.416787,
+        "ball_missing_live_fraction": 0.073876,
+        "ball_missing_after_minimum_fraction": 0.037465,
+        "ball_missing_live_after_minimum_fraction": 0.004442,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.068675,
+          "A": 0.078306,
+          "D": 0.77552
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.00269,
+          "A": 0.006065,
+          "D": 0.142347
+        },
+        "ball_xy_finite_frames": 43883,
+        "ball_detected_frames": 35533,
+        "player_xy_finite_observations": 965426,
+        "player_is_detected_observations": 474009,
+        "event_frame_integrity": {
+          "event_rows": 4718,
+          "event_type_counts": {
+            "off_ball_run": 453,
+            "player_possession": 959,
+            "passing_option": 2400,
+            "on_ball_engagement": 906
+          },
+          "player_possession_rows": 959,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 97,
+          "interruption_tags": {
+            "throw_in_for": 22,
+            "throw_in_against": 24,
+            "goal_for": 4,
+            "goal_kick_against": 12,
+            "corner_for": 4,
+            "free_kick_against": 11,
+            "goal_kick_for": 3,
+            "free_kick_for": 16,
+            "goal_against": 1
+          },
+          "next_interruption_before_relation": {
+            "exact": 46,
+            "same_category": 42,
+            "different_or_missing": 9
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 97,
+            "min_s": 4.4,
+            "median_s": 25.3,
+            "mean_s": 31.227,
+            "max_s": 154.6,
+            "sum_s": 3029.0
+          },
+          "D_core_seconds": {
+            "n": 97,
+            "min_s": 2.4,
+            "median_s": 23.3,
+            "mean_s": 29.227,
+            "max_s": 152.6,
+            "sum_s": 2835.0
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 2835.0,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2016236,
+        "date": "2025-05-09T09:35:00Z",
+        "home": "Western United",
+        "away": "Adelaide United",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2016236/2016236_dynamic_events.csv",
+            "source_path": "data/matches/2016236/2016236_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2016236/2016236_dynamic_events.csv",
+            "bytes": 4542962,
+            "sha256": "425274b44a124ec5e81ff8f2819cebd22702065d0f4e4f8070306db9ae97590a",
+            "git_blob_sha": "6dd13e08dc962c87ebd0392eadb60c06eec2d632",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2016236/2016236_match.json",
+            "source_path": "data/matches/2016236/2016236_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2016236/2016236_match.json",
+            "bytes": 33791,
+            "sha256": "93ccf67cead82def1acda87d3cf550fd42f96cb0e1adbff9eeb8824077980495",
+            "git_blob_sha": "8bb23c902bb3d5ea82092f6b9c8c20e2379fa67b",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2016236/2016236_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2016236/2016236_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2016236/2016236_tracking_extrapolated.jsonl",
+            "bytes": 94737872,
+            "sha256": "d78555f9dfd7d1ce9de38066d3c98e6d54417c6d45d73b1f1ce7e26f07263d8f",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2016236.npz",
+          "bytes": 5938842,
+          "sha256": "7f37f1772ca2a73af3d65ada4a7b1a610265760800dbf4ce42791cd10cc425e8"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2016236.npz",
+          "bytes": 5938754,
+          "sha256": "838794d69d942390b51580d915c3adc9103f2039576142577b596a4e2c307d16"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2016236.json",
+          "bytes": 1204,
+          "sha256": "5b7160a495ee2837aed436cd7898229d934d2d65a4a7c26bfe40bdc2b858b83e"
+        }
+      ]
+    },
+    {
+      "id": 2017461,
+      "match_id": "skillcorner_had_2017461",
+      "date": "2025-05-17T09:35:00Z",
+      "home": "Melbourne V FC",
+      "away": "Auckland FC",
+      "split": "reserved_test",
+      "source_data": {
+        "frames": 71451,
+        "raw_possession_group_counts": {
+          "A": 11092,
+          "H": 17796,
+          "X": 42563
+        },
+        "player_slots": 36,
+        "player_slots_ever_detected": 32,
+        "fps": 10.0,
+        "period_frames": {
+          "0": 12999,
+          "1": 27701,
+          "2": 30751
+        },
+        "labels_all_frames": {
+          "A": 9990,
+          "D": 30916,
+          "H": 15493,
+          "X": 15052
+        },
+        "active_period_nonX_frames": 56399,
+        "active_period_nonX_minutes": 93.998,
+        "active_period_nonX_class_counts": {
+          "A": 9990,
+          "D": 30916,
+          "H": 15493
+        },
+        "minimum_visible_players": 12,
+        "frames_meeting_minimum_all": 24634,
+        "graded_frames_before_minimum": 56399,
+        "graded_frames_after_minimum": 23214,
+        "graded_frames_dropped_by_minimum": 33185,
+        "frames_after_minimum_class_counts": {
+          "A": 6317,
+          "D": 6420,
+          "H": 10477
+        },
+        "live_frames_before_minimum": 25483,
+        "live_frames_after_minimum": 16794,
+        "live_minutes_before_minimum": 42.472,
+        "live_minutes_after_minimum": 27.99,
+        "player_detected_count_mean_all": 6.364,
+        "player_detected_count_mean_graded": 7.6173,
+        "player_detected_count_mean_post_minimum": 15.2486,
+        "player_detected_count_max": 21,
+        "ball_detected_all": 31875,
+        "ball_missing_all_fraction": 0.55389,
+        "ball_missing_graded_fraction": 0.465239,
+        "ball_missing_live_fraction": 0.074716,
+        "ball_missing_after_minimum_fraction": 0.052081,
+        "ball_missing_live_after_minimum_fraction": 0.006312,
+        "ball_missing_by_class_before_minimum": {
+          "H": 0.068999,
+          "A": 0.083584,
+          "D": 0.787133
+        },
+        "ball_missing_by_class_after_minimum": {
+          "H": 0.003722,
+          "A": 0.010606,
+          "D": 0.171807
+        },
+        "ball_xy_finite_frames": 40404,
+        "ball_detected_frames": 31875,
+        "player_xy_finite_observations": 888888,
+        "player_is_detected_observations": 454715,
+        "event_frame_integrity": {
+          "event_rows": 4142,
+          "event_type_counts": {
+            "player_possession": 805,
+            "off_ball_run": 466,
+            "passing_option": 2036,
+            "on_ball_engagement": 835
+          },
+          "player_possession_rows": 805,
+          "start_out_of_bounds": 0,
+          "end_out_of_bounds": 0,
+          "start_period_mismatches": 0,
+          "end_period_mismatches": 0,
+          "tracking_frame_index_checked_by_converter": "Every tracking row asserts frame == row index; converter also verifies 0.1s source timestamp steps within each half.",
+          "interruption_after_pairs": 97,
+          "interruption_tags": {
+            "corner_for": 13,
+            "throw_in_for": 18,
+            "throw_in_against": 28,
+            "free_kick_for": 13,
+            "free_kick_against": 10,
+            "goal_kick_against": 11,
+            "goal_for": 1,
+            "goal_kick_for": 2,
+            "corner_against": 1
+          },
+          "next_interruption_before_relation": {
+            "exact": 39,
+            "same_category": 36,
+            "different_or_missing": 22
+          },
+          "nonmonotonic_pairs": 0,
+          "interruption_gap_seconds": {
+            "n": 97,
+            "min_s": 3.5,
+            "median_s": 28.1,
+            "mean_s": 33.872,
+            "max_s": 165.5,
+            "sum_s": 3285.6
+          },
+          "D_core_seconds": {
+            "n": 97,
+            "min_s": 1.5,
+            "median_s": 26.1,
+            "mean_s": 31.872,
+            "max_s": 163.5,
+            "sum_s": 3091.6
+          },
+          "D_core_overlap_frames": 0,
+          "D_mask_seconds": 3091.6,
+          "D_mask_matches_disjoint_core_sum": true
+        }
+      },
+      "input_receipt": {
+        "source": "https://github.com/SkillCorner/opendata",
+        "source_commit": "4340d274572876239c154c90bc507a9b3250a656",
+        "match_id": 2017461,
+        "date": "2025-05-17T09:35:00Z",
+        "home": "Melbourne V FC",
+        "away": "Auckland FC",
+        "files": [
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2017461/2017461_dynamic_events.csv",
+            "source_path": "data/matches/2017461/2017461_dynamic_events.csv",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2017461/2017461_dynamic_events.csv",
+            "bytes": 3957366,
+            "sha256": "d4ce943cd9b912cfcf1f6d2744c9f4ecd6db4d5f7bcd6152b946e2f5ba308878",
+            "git_blob_sha": "68380a92e6fa7c3df056a2e5addc00af1d1a393a",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2017461/2017461_match.json",
+            "source_path": "data/matches/2017461/2017461_match.json",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2017461/2017461_match.json",
+            "bytes": 28545,
+            "sha256": "db27759bf734dc8e3d9e56f047965cc7c74833bc3d0345ee3821ab97681ce4b9",
+            "git_blob_sha": "281fd462ac1ca85a6d9ed2d5b5d5a7654627abe4",
+            "verified": true
+          },
+          {
+            "path": "/workspace/research/skillcorner/data/external/raw/2017461/2017461_tracking_extrapolated.jsonl",
+            "source_path": "data/matches/2017461/2017461_tracking_extrapolated.jsonl",
+            "url": "https://media.githubusercontent.com/media/SkillCorner/opendata/4340d274572876239c154c90bc507a9b3250a656/data/matches/2017461/2017461_tracking_extrapolated.jsonl",
+            "bytes": 89543442,
+            "sha256": "59cfa5588efee041da439f44df5b5b92f2b7305571dc831164e3d05f7415787a",
+            "git_blob_sha": null,
+            "verified": true
+          }
+        ]
+      },
+      "processed_artifacts": [
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_2017461.npz",
+          "bytes": 5427257,
+          "sha256": "a048d5508c86001811068484e50d96333ef4f95278b1ac6a87c516b8004f2ebd"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2017461.npz",
+          "bytes": 5427142,
+          "sha256": "cfcbd4e86ca11a2e02e29c902f6d39b8de5b9492bc77beba80b15e29c8e64815"
+        },
+        {
+          "path": "/workspace/research/skillcorner/data/external/processed/skillcorner_had_2017461.json",
+          "bytes": 1204,
+          "sha256": "216612c645f17345acacc14808a019129aea0dbd10933b51a2e20e208de6e59c"
+        }
+      ]
+    }
+  ]
+}
