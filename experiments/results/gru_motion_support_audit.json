@@ -1,0 +1,256 @@
+{
+  "date": "2026-10-27",
+  "kind": "post_hoc_label_free_saved_input_audit",
+  "scope": "All five historical development matches, their clean and two existing composite views; five-Hz input samples whose native input period is positive. Includes ungraded and unknown-label margins. No ground-truth or prediction fields used; no inference, fitting, metric scoring or changes to frozen sources.",
+  "definitions": {
+    "motion_support": "Existing D_valid_motion_fraction feature: finite player speed count divided by visible-position count, after central native-frame derivatives and rejection of speeds above12m/s.",
+    "low_or_missing": "D_valid_motion_fraction is nonfinite or strictly less than0.25.",
+    "mean_speed_missing": "D_speed_mean is nonfinite.",
+    "aggregation": "Within each provider/view, average each match-view fraction equally. Stress has two views per match. No pooling across providers.",
+    "normalization": "Finite values are training-median/std standardized and clipped to[-10,10]. Missing values get standardized value0 plus finite-mask0. A measured zero speed retains mask1. Rolling summaries ignore NaNs and are NaN only if the entire window is missing."
+  },
+  "theory": {
+    "global_frame_loss_rate": "Uniform(0.02,0.08) per10s block, independent Bernoulli frame mask given that rate.",
+    "probability_any_gradient_neighbor_missing": 0.0972,
+    "probability_any_center_or_gradient_neighbor_missing": 0.14177,
+    "conditions": "Ideal originally complete interior frames; independent frames conditional on block rate; ignores other corruption, native gaps and block edges. Agreement is not causal attribution of model errors."
+  },
+  "source_sha256": {
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+  },
+  "rows": [
+    {
+      "source": "sportec",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_J03WOY_clean.joblib",
+      "cache_sha256": "7e8b16a3bad73d73360ba89161b22dd9b0aded18e18f5614cad80b6da28f1185",
+      "view": "clean",
+      "active_samples": 28508,
+      "low_or_missing_motion_support_samples": 0,
+      "missing_mean_speed_samples": 0,
+      "fraction_motion_coverage_low_or_missing": 0.0,
+      "fraction_speed_mean_missing": 0.0,
+      "mean_finite_motion_coverage": 0.9999409914016724
+    },
+    {
+      "source": "sportec",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_J03WOY_corrupt_1.joblib",
+      "cache_sha256": "fa9ece55e8674694b92d277e76f81bfeb83c49b3470242188a1487e83a1436ed",
+      "view": "stress",
+      "active_samples": 28508,
+      "low_or_missing_motion_support_samples": 4031,
+      "missing_mean_speed_samples": 2782,
+      "fraction_motion_coverage_low_or_missing": 0.14139890557036622,
+      "fraction_speed_mean_missing": 0.09758664234600814,
+      "mean_finite_motion_coverage": 0.9014370441436768
+    },
+    {
+      "source": "sportec",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_J03WOY_corrupt_2.joblib",
+      "cache_sha256": "3ebce4fe7f0760b8be94ca888dfa474a3d6aca761ad009037630b1819e627b95",
+      "view": "stress",
+      "active_samples": 28508,
+      "low_or_missing_motion_support_samples": 4132,
+      "missing_mean_speed_samples": 2829,
+      "fraction_motion_coverage_low_or_missing": 0.14494177073102288,
+      "fraction_speed_mean_missing": 0.09923530237126421,
+      "mean_finite_motion_coverage": 0.8993775844573975
+    },
+    {
+      "source": "metrica",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_metrica_3_clean.joblib",
+      "cache_sha256": "144efcc39270ec537ba23d6a6971f70ab7a1b39ff4b87e15fc8941c83899c599",
+      "view": "clean",
+      "active_samples": 28753,
+      "low_or_missing_motion_support_samples": 0,
+      "missing_mean_speed_samples": 0,
+      "fraction_motion_coverage_low_or_missing": 0.0,
+      "fraction_speed_mean_missing": 0.0,
+      "mean_finite_motion_coverage": 0.9997644424438477
+    },
+    {
+      "source": "metrica",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_metrica_3_corrupt_1.joblib",
+      "cache_sha256": "ec850c448e8d1d9347a167051a6b1ab8c4c0a25067d7ec8e4adf6e84c8f6aa7a",
+      "view": "stress",
+      "active_samples": 28753,
+      "low_or_missing_motion_support_samples": 3994,
+      "missing_mean_speed_samples": 2742,
+      "fraction_motion_coverage_low_or_missing": 0.1389072444614475,
+      "fraction_speed_mean_missing": 0.09536396202135429,
+      "mean_finite_motion_coverage": 0.9029198288917542
+    },
+    {
+      "source": "metrica",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_metrica_3_corrupt_2.joblib",
+      "cache_sha256": "8d018945ed3ad188699c0be493f8f6d037c47f2a9120831cfebba31d13217f13",
+      "view": "stress",
+      "active_samples": 28753,
+      "low_or_missing_motion_support_samples": 4140,
+      "missing_mean_speed_samples": 2864,
+      "fraction_motion_coverage_low_or_missing": 0.1439849754808194,
+      "fraction_speed_mean_missing": 0.09960699753069245,
+      "mean_finite_motion_coverage": 0.8990310430526733
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_1996435_clean.joblib",
+      "cache_sha256": "7097fd0e0fed8c8e5a015c8377a118f07eac5345abc0a1a6daf31603687292eb",
+      "view": "clean",
+      "active_samples": 28802,
+      "low_or_missing_motion_support_samples": 9805,
+      "missing_mean_speed_samples": 9803,
+      "fraction_motion_coverage_low_or_missing": 0.3404277480730505,
+      "fraction_speed_mean_missing": 0.340358308450802,
+      "mean_finite_motion_coverage": 0.9873694777488708
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_1996435_corrupt_1.joblib",
+      "cache_sha256": "daa9950b8d8202300e4890ac4a2bfe54cf2a8185a3798f2dab0ce3b2b519610a",
+      "view": "stress",
+      "active_samples": 28802,
+      "low_or_missing_motion_support_samples": 12431,
+      "missing_mean_speed_samples": 11601,
+      "fraction_motion_coverage_low_or_missing": 0.43160197208527185,
+      "fraction_speed_mean_missing": 0.40278452885216304,
+      "mean_finite_motion_coverage": 0.8901665210723877
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_1996435_corrupt_2.joblib",
+      "cache_sha256": "8c9c64217e2f5553e7c64ddb9fd37c25561791d4f604ba05269c504722edeb04",
+      "view": "stress",
+      "active_samples": 28802,
+      "low_or_missing_motion_support_samples": 12406,
+      "missing_mean_speed_samples": 11526,
+      "fraction_motion_coverage_low_or_missing": 0.4307339768071662,
+      "fraction_speed_mean_missing": 0.400180543017846,
+      "mean_finite_motion_coverage": 0.8937473893165588
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_1996436_clean.joblib",
+      "cache_sha256": "6addb1f5ebbe7f31d540cff5bdc3c49bccde233147c65765aca2429ed48bc037",
+      "view": "clean",
+      "active_samples": 30131,
+      "low_or_missing_motion_support_samples": 12890,
+      "missing_mean_speed_samples": 12890,
+      "fraction_motion_coverage_low_or_missing": 0.42779861272443664,
+      "fraction_speed_mean_missing": 0.42779861272443664,
+      "mean_finite_motion_coverage": 0.9796337485313416
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_1996436_corrupt_1.joblib",
+      "cache_sha256": "05e4eda856c838eb3b3240749ec5ee036746f496621172fa9ad054ecbeb241db",
+      "view": "stress",
+      "active_samples": 30131,
+      "low_or_missing_motion_support_samples": 15296,
+      "missing_mean_speed_samples": 14495,
+      "fraction_motion_coverage_low_or_missing": 0.5076499286449172,
+      "fraction_speed_mean_missing": 0.48106601174869734,
+      "mean_finite_motion_coverage": 0.883630633354187
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_1996436_corrupt_2.joblib",
+      "cache_sha256": "7512bc5b56a85a2d16c303281bed6ac8efba7512403e83e5028bb9d7d163a324",
+      "view": "stress",
+      "active_samples": 30131,
+      "low_or_missing_motion_support_samples": 15303,
+      "missing_mean_speed_samples": 14563,
+      "fraction_motion_coverage_low_or_missing": 0.5078822475191663,
+      "fraction_speed_mean_missing": 0.4833228236699744,
+      "mean_finite_motion_coverage": 0.8810174465179443
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_2006229_clean.joblib",
+      "cache_sha256": "6afdced00e88d341787059f5e4d1b2579a1d96ef1a6a2ccfaf3037cf61bceb08",
+      "view": "clean",
+      "active_samples": 29626,
+      "low_or_missing_motion_support_samples": 11058,
+      "missing_mean_speed_samples": 11053,
+      "fraction_motion_coverage_low_or_missing": 0.37325322351988116,
+      "fraction_speed_mean_missing": 0.3730844528454736,
+      "mean_finite_motion_coverage": 0.9847189784049988
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_2006229_corrupt_1.joblib",
+      "cache_sha256": "a2976683b58739310e6e7be895d4c5eb20ae1ecfbb39bc9d9470c120c24d5ed9",
+      "view": "stress",
+      "active_samples": 29626,
+      "low_or_missing_motion_support_samples": 13728,
+      "missing_mean_speed_samples": 12885,
+      "fraction_motion_coverage_low_or_missing": 0.4633767636535476,
+      "fraction_speed_mean_missing": 0.43492202794842366,
+      "mean_finite_motion_coverage": 0.8833622336387634
+    },
+    {
+      "source": "skillcorner",
+      "cache_file": "data/experiments/gru_slot_robustness_v2/eval_skillcorner_had_2006229_corrupt_2.joblib",
+      "cache_sha256": "76dd5115e387bf8a5ea5aa81b6eb7ae7eff5af0022380edb47330b964f0b6c24",
+      "view": "stress",
+      "active_samples": 29626,
+      "low_or_missing_motion_support_samples": 13623,
+      "missing_mean_speed_samples": 12755,
+      "fraction_motion_coverage_low_or_missing": 0.45983257949098766,
+      "fraction_speed_mean_missing": 0.4305339904138257,
+      "mean_finite_motion_coverage": 0.8905038237571716
+    }
+  ],
+  "summary": [
+    {
+      "source": "sportec",
+      "view": "clean",
+      "matched_view_count": 1,
+      "fraction_motion_coverage_low_or_missing": 0.0,
+      "fraction_speed_mean_missing": 0.0,
+      "mean_finite_motion_coverage": 0.9999409914016724
+    },
+    {
+      "source": "sportec",
+      "view": "stress",
+      "matched_view_count": 2,
+      "fraction_motion_coverage_low_or_missing": 0.14317033815069455,
+      "fraction_speed_mean_missing": 0.09841097235863618,
+      "mean_finite_motion_coverage": 0.9004073143005371
+    },
+    {
+      "source": "metrica",
+      "view": "clean",
+      "matched_view_count": 1,
+      "fraction_motion_coverage_low_or_missing": 0.0,
+      "fraction_speed_mean_missing": 0.0,
+      "mean_finite_motion_coverage": 0.9997644424438477
+    },
+    {
+      "source": "metrica",
+      "view": "stress",
+      "matched_view_count": 2,
+      "fraction_motion_coverage_low_or_missing": 0.14144610997113344,
+      "fraction_speed_mean_missing": 0.09748547977602337,
+      "mean_finite_motion_coverage": 0.9009754359722137
+    },
+    {
+      "source": "skillcorner",
+      "view": "clean",
+      "matched_view_count": 3,
+      "fraction_motion_coverage_low_or_missing": 0.3804931947724561,
+      "fraction_speed_mean_missing": 0.3804137913402374,
+      "mean_finite_motion_coverage": 0.9839074015617371
+    },
+    {
+      "source": "skillcorner",
+      "view": "stress",
+      "matched_view_count": 6,
+      "fraction_motion_coverage_low_or_missing": 0.46684624470017616,
+      "fraction_speed_mean_missing": 0.438801654275155,
+      "mean_finite_motion_coverage": 0.8870713412761688
+    }
+  ]
+}

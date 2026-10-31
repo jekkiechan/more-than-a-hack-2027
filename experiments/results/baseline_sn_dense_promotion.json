@@ -1,0 +1,54 @@
+{
+  "package_version": "joint_gru_sn_dense_ensemble_v1",
+  "promoted_utc": "2026-10-31T00:20:41.749359+00:00",
+  "baseline_manifest_sha256": "76f18b3fa218e4dde357454dc3206b7eeb28ab97eda2862007fff8c987c04ec5",
+  "policy_sha256": "f63c4bd69881acaa8abadccf515308ebd66890106a24e5f550373a4d20859165",
+  "previous_manifest_sha256": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
+  "previous_policy_sha256": "f6330589fc26396d3861e136e0b6c5a22b196c683adf129dbeaefc760dcce40e",
+  "models_sha256": {
+    "dense_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+    "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "dense_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+    "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+  },
+  "evidence": {
+    "declaration": "experiments/results/sn_dense_v1_declaration.json",
+    "declaration_sha256": "9384c959bbd9e5c3cfb45eaaa339200354e96cc0decef64cdf57515677991f09",
+    "progress": "experiments/results/sn_dense_v1_progress.md",
+    "progress_sha256": "1fa767671fe0dd4d509f9144252206d78322ccb50dc469276f54b86bc08f86ce",
+    "development_full_provider_holdout": {
+      "two_seed_ensemble_clean_spell": 0.6472,
+      "two_seed_ensemble_feed_like_spell": 0.5058,
+      "previous_adopted_clean_spell": 0.64179,
+      "previous_adopted_feed_like_spell": 0.502586,
+      "seed_2026_clean_spell_vs_rebuilt_reference": [
+        0.6355,
+        0.6288
+      ],
+      "seed_2027_clean_spell": 0.6372,
+      "provider_and_feed_like_guards_pass": true,
+      "clean_improvement_screen_plus_01_passes": false,
+      "previously_exposed_development_matches": true
+    },
+    "gar_valid_silver_note": "GAR-valid dense silver partly rewards agreement with the labelling rule; not neutral evidence",
+    "prediction_seal_sha256": "2afbde9f87492086825b6a79973956cc3247fea9d85965357526f4729d86612a",
+    "prediction_csv_sha256": "57ca788056ccf2f41839730fba492f15885c69f5788f35146ba1610b80b5b22b"
+  },
+  "authorization": {
+    "type": "explicit_user_authorized_post_hoc_screen_exception",
+    "user_request": "let's promote this",
+    "original_screen_passes": false,
+    "automatic_promotion": false,
+    "fitting_during_promotion": false,
+    "organizer_rescoring_performed": false,
+    "public_diagnostic_known_before_authorization": true
+  },
+  "validation_receipt_sha256": "a3e7245fb82df3d0ece118bd6b8aa70d21574fcdc879a725cf87ce1a65e28897",
+  "candidate_csv_sha256": "57ca788056ccf2f41839730fba492f15885c69f5788f35146ba1610b80b5b22b",
+  "csv_equals_sealed_public_prediction": true,
+  "rows": 199319,
+  "fitting_performed": false,
+  "organizer_reference_accessed": false,
+  "organizer_rescored": false,
+  "historical_score_gates_and_declarations_preserved": true
+}

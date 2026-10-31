@@ -1,0 +1,68 @@
+{
+  "adopted_baseline": "joint_gru_soccernet_capacity_ensemble_v1",
+  "aggregate_sha256": "b2a0cb3bdab081c4e6ad84a196cc6f157590b23991ab19aa45b35b7890e228d8",
+  "all_provider_and_feed_guards_pass": true,
+  "automatic_promotion": false,
+  "continuation_fits": 24,
+  "decision": "retain_adopted_baseline",
+  "deltas_spell": {
+    "balanced_anchors": {
+      "clean": {
+        "control": -0.00015834734897290925,
+        "reference": 0.0009475134012743025
+      },
+      "feed_like": {
+        "control": -0.002900688146982189,
+        "reference": -0.0004984492621673553
+      }
+    },
+    "context_reconstruction": {
+      "clean": {
+        "control": 9.247762916009261e-05,
+        "reference": 0.0011983383794073044
+      },
+      "feed_like": {
+        "control": -0.0013072388606227836,
+        "reference": 0.00109500002419205
+      }
+    },
+    "control": {
+      "clean": {
+        "control": 0.0,
+        "reference": 0.0011058607502472118
+      },
+      "feed_like": {
+        "control": 0.0,
+        "reference": 0.0024022388848148335
+      }
+    },
+    "gap_consistency": {
+      "clean": {
+        "control": -0.0006052529227696946,
+        "reference": 0.0005006078274775172
+      },
+      "feed_like": {
+        "control": -0.001686269840858845,
+        "reference": 0.0007159690439559885
+      }
+    }
+  },
+  "limitations": [
+    "Five previously exposed development matches; no independent confirmation.",
+    "Synthetic feed_like stress.",
+    "Seed-level clean changes reverse direction.",
+    "Anchor clipping retains 59.2% of normalized row-weight mass, confounding event balance with GAR loss scale."
+  ],
+  "matched_sampler_groups": 6,
+  "numerical_clean_leader": "context_reconstruction",
+  "organizer_labels_read": false,
+  "qualifying_clean_improvement": false,
+  "reason": "The largest clean gain is +0.001198, below +0.01. Reconstruction exceeds matched continuation by only +0.000092 clean and loses -0.001307 feed-like.",
+  "reference_fits": 6,
+  "reference_maximum_published_metric_delta": 0.0,
+  "reference_reproduces_published_metrics": true,
+  "remote_checkpoint_upload": false,
+  "scored_rows": 225,
+  "study_id": "soccernet_followup_execution_v1",
+  "weight_replayed_arrays": 225
+}

@@ -1,50 +1,11 @@
-# Possession experiments
+# Original tracking baseline experiment
 
-**Model decisions:** [confirmed reporting policy](MODEL_SELECTION.md) keeps
-spell-first competition ordering and adds a 70/30 spell/macro summary column.
-GRU + ordered HGB is the adopted development baseline, with
-the three-way blend retained as its numerically higher close comparator.
-Its [promotion manifest](baseline_manifest.json) records same-cohort evidence,
-model hashes, and the default `python -m experiments.current_baseline predict`
-entrypoint. Earlier frozen competition selections remain historical artifacts.
-The [baseline guide](BASELINE.md) includes verified private-cache restore and
-inference commands.
-
-**Current organizer pipeline check:** frozen GRU + HGB scores **.4889 spell /
-.8568 macro** on 7,500 frames and 17 reference possessions. It ties GRU alone
-on spell F1; the historical PathCRF hybrid remains higher at .5067, with lower
-macro F1 (.6795). See [BASELINE.md](BASELINE.md). This check did not select or
-tune the current baseline, and full-match competition performance is unknown.
-
-**PathCRF retention:** the [controlled external ablation](PATHCRF_ENSEMBLE.md)
-finds no gain from PathCRF with the adopted D head. On the same Metrica/SkillCorner
-cohort, baseline spell F1 .5744 falls to .5414 with team blending or .4993 with
-PathCRF teams alone. PathCRF remains an archived optional comparator.
-
-**Ensembling:** [GRU plus boosting](TEMPORAL_ENSEMBLE.md) raises external
-provider-holdout D spell F1 from .5649 (GRU) / .5652 (ordered HGB) to .5746
-(50/50 GRU + HGB). Three-way GRU/HGB/LightGBM reaches .5750, a negligible
-additional margin. The ensemble experiment used external data only; the later
-current-baseline pipeline check is recorded separately above.
-
-**New temporal comparison:** [ordered features, TCN, and bidirectional GRU](LEARNED_TEMPORAL.md)
-with fixed H/A attribution. On historical provider-holdout D development folds,
-ordered HGB scores 0.5652 spell F1 versus 0.5588 for the matched HGB baseline;
-BiGRU scores 0.5649 and TCN 0.5605. The TCN improves D F1 more than spell F1.
-This is a modest external development gain. The subsequent
-[organizer five-minute check](TEMPORAL_PUBLIC_CHECK.md) gives BiGRU .4889 spell
-F1 and TCN .4541, versus the prior selected refinement's .4300 and prior
-PathCRF hybrid's .5067. Externally selected ordered HGB scores .4205. Public
-scores did not change the frozen external selection.
-The [evaluation manifest and shortcut audit](eval_set/README.md) document
-provenance, whole-match splits, silver labels, and the missing fresh test set.
-
-**Earlier refinement:** [refinement and competition results](REFINEMENT.md). The final
-external test improved to **0.9408 frame macro F1 / 0.7059 spell F1**. On the
-competition's public five-minute pipeline check, the externally selected model
-scored **0.6487 / 0.4300**; the predeclared PathCRF hybrid scored **0.6795 / 0.5067**.
-The 0.90 target is not met on the competition data, and full-match accuracy is
-unknown. The original experiment below is retained for provenance.
+Historical report: the original Sportec experiment and frozen selection are
+preserved below. For the adopted package and latest draft results, use
+[current status](../docs/research/STATUS.md); for all experiment families, use
+[the index](../docs/research/EXPERIMENTS.md). Restore current models with
+[BASELINE.md](BASELINE.md). The reproduction commands below belong to this
+completed study, not a new selection or repeated public-scoring loop.
 
 We reached **0.9298 frame macro F1** and **0.6232 possession-spell F1** on a
 held-out Sportec match with the model selected before test access. With synthetic

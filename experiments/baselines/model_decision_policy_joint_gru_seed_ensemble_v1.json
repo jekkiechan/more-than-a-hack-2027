@@ -1,0 +1,67 @@
+{
+  "version": 4,
+  "confirmed_utc_date": "2026-10-28",
+  "primary_order": [
+    "spell_f1",
+    "macro_f1"
+  ],
+  "primary_direction": "descending",
+  "primary_rule": "Maximize spell F1; use macro F1 for exact spell ties, matching the competition headline ranking",
+  "weighted_summary": {
+    "spell_weight": 0.7,
+    "macro_weight": 0.3,
+    "used_for_primary_ranking": false,
+    "purpose": "Additional internal comparison column; weights must be recorded before future experiments"
+  },
+  "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
+  "preferred_development_view": "full_provider_holdout",
+  "working_candidate": {
+    "family": "Two-seed joint GRU probability ensemble",
+    "model": "joint_gru_seed_ensemble",
+    "status": "User-authorized working development baseline; independent confirmation pending",
+    "baseline_manifest": "experiments/baseline_manifest.json",
+    "baseline_manifest_sha256": "8a518b549ddd4e3b7ee3a2bc1033375a8190a39d44c52f336e801e155852f852",
+    "prediction_entrypoint": "python -m experiments.current_baseline predict",
+    "reason": "User adopted actual equal-probability ensemble: clean/feed-like spell .6265/.4874; passes matched former-baseline guards",
+    "promotion_record": "experiments/results/baseline_seed_ensemble_promotion.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_slotdrop_v1.json",
+    "public_diagnostic_known_before_user_request": false
+  },
+  "pathcrf_component": {
+    "default_enabled": false,
+    "status": "Retain as archived optional comparator",
+    "reason": "Both fixed PathCRF H/A variants reduced spell and macro F1 on the matched Metrica and SkillCorner cohort",
+    "evidence": "experiments/results/pathcrf_ensemble_development.json"
+  },
+  "controls": [
+    "Always show spell F1 and macro F1 alongside the weighted summary",
+    "Primary ordering uses unrounded values; weighted-score rank does not replace it",
+    "Record this policy and its weights before future fitting or selection",
+    "Do not reclassify historical scorecards as predeclared experiments",
+    "Organizer public labels are pipeline checks only, never selection or tuning data"
+  ],
+  "stress_guardrail": {
+    "view": "feed_like",
+    "rule": "Full-pipeline candidate feed-like spell >= adopted ensemble -.01; report component seeds separately and protect provider clean D-F1/macro within .02",
+    "components": "Calibrated ball gaps, coordinate drift/noise/jumps, per-slot gaps, same-team ID swaps",
+    "diagnostic_only": [
+      "composite",
+      "no_sampling",
+      "no_regional",
+      "ball_gaps"
+    ],
+    "changed_from": "composite",
+    "decided_after_composite_results": true,
+    "evidence": [
+      "experiments/results/feed_defect_profile.json",
+      "experiments/results/stress_component_ablation.json"
+    ],
+    "reference_recipe": "joint_gru_seed_ensemble"
+  },
+  "lgbm_component": {
+    "default_enabled": false,
+    "status": "Not adopted",
+    "reason": "Full127 blend adds +0.0016/-0.0020 spell over its GRU under feed-like stress, lowers SkillCorner and public D recall",
+    "evidence": "experiments/STRESS_COMPONENT_ABLATION.md"
+  }
+}

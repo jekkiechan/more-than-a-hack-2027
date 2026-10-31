@@ -1,0 +1,95 @@
+{
+  "spec": {
+    "version": 1,
+    "training_hz": 2,
+    "hgb_iterations": 160,
+    "hgb_leaves": 31,
+    "learning_rate": 0.08,
+    "train_seed": 192026,
+    "evaluation_seeds": [
+      2026,
+      2027,
+      2028
+    ],
+    "arms": [
+      "matched",
+      "gap",
+      "gap_dedup"
+    ],
+    "training": "50% clean, 50% state-conditioned gaps and slot defects; team symmetry",
+    "weighting": "Equal provider, match, view and team-swap mass",
+    "D": "Unchanged pooled GRU/HGB probabilities shared by every team arm",
+    "decoder_switch_cost": 3,
+    "ranking": "Provider/seed mean official spell F1, exact ties macro F1",
+    "auxiliary": "0.7 spell + 0.3 macro, never used for competition ranking",
+    "scope": "Reused pooled external development; NOT unseen-provider transfer or fresh confirmation",
+    "organizer": "Tracking-only first-half calibration; no possession labels or public scoring",
+    "uncertainty": "Three evaluation-view seeds; one frozen training draw, not training-seed uncertainty"
+  },
+  "organizer_profile": {
+    "active_frames": 158857,
+    "slots": 46,
+    "ball_missing_fraction": 0.40692572565263097,
+    "ball_gap_count": 150,
+    "ball_gap_seconds": [
+      0.47200000000000003,
+      10.72,
+      33.811999999999976,
+      104.75159999999937
+    ],
+    "tracklet_seconds": [
+      2.6,
+      35.52,
+      284.63200000000006,
+      774.4152
+    ],
+    "visible_players": [
+      18.0,
+      22.0,
+      22.0,
+      23.0
+    ],
+    "close_pair_frame_fraction": 0.12263859949514343,
+    "suppressed_observation_fraction": 0.007598853304737646,
+    "mean_suppressed_per_frame": 0.15568089539648866,
+    "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+  },
+  "calibration_profile": {
+    "active_frames": 79467,
+    "slots": 46,
+    "ball_missing_fraction": 0.406508361961569,
+    "ball_gap_count": 69,
+    "ball_gap_seconds": [
+      0.18400000000000005,
+      11.56,
+      43.32800000000001,
+      91.61119999999953
+    ],
+    "tracklet_seconds": [
+      2.584,
+      41.2,
+      288.512,
+      782.2400000000017
+    ],
+    "visible_players": [
+      16.0,
+      21.0,
+      22.0,
+      22.0
+    ],
+    "close_pair_frame_fraction": 0.11968490065058451,
+    "suppressed_observation_fraction": 0.007492986074715972,
+    "mean_suppressed_per_frame": 0.15076698503781444,
+    "close_pair_definition": "Greedy same-team suppression within 1 m; not verified duplicate truth"
+  },
+  "missingness_half_two": {
+    "n_eligible": 9413,
+    "n_onsets": 78,
+    "onset_auroc": 0.6333553074313653,
+    "log_loss": 0.04730183528221495,
+    "constant_log_loss": 0.048150482702336,
+    "scope": "Organizer half two, observable missingness only; no possession targets"
+  },
+  "baseline_changed": false,
+  "organizer_scored": false
+}

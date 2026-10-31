@@ -1,4 +1,4 @@
-"""Promote and run the GRU/HGB baseline without organizer reference labels."""
+"""Promote and run the adopted baseline package without organizer reference labels."""
 from __future__ import annotations
 import argparse
 from datetime import datetime, timezone
@@ -99,7 +99,58 @@ def dead_probability(inputs, models):
     return (pieces[0]+pieces[1])*.5
 
 
-def predict_probabilities(inputs, models):
+def joint_gru_probabilities(inputs, models):
+    """Player-only-D joint GRU package: one network outputs full H/A/D."""
+    from experiments import factorized_had, live_gap_experiment
+    placeholder = np.full(len(inputs['ball']), 'X', dtype='U1')
+    record = live_gap_experiment.feature_view(inputs, placeholder, 'competition', 'BAR-ATH')['joint']
+    periods = supervised.model_periods(inputs)
+    sampled = factorized_had.predict(record, models['joint_gru'])
+    return np.column_stack([lt.upsample(sampled[:, k], record, periods) for k in range(3)])
+
+
+def joint_gru_member_probabilities(inputs, models, manifest):
+    """Shared features, independent original-context GRUs, native H/A/D arrays."""
+    from experiments import factorized_had, live_gap_experiment
+    members = manifest['architecture']['members']
+    if len(members) != 2 or set(members) != set(models) or any(v != .5 for v in members.values()):
+        raise ValueError('The baseline requires exactly two equally weighted GRUs')
+    if {int(m['seed']) for m in models.values()} != {2026, 2027}:
+        raise ValueError('Expected the fixed 2026 and 2027 deployment seeds')
+    if any(m.get('context_seconds', 5) != 5 for m in models.values()):
+        raise ValueError('Longer-context checkpoints are not part of this baseline')
+    if lt.CONTEXT != 25 or lt.CORE != 50:
+        raise ValueError('The adopted ensemble retains 10s cores and 5s context')
+    placeholder = np.full(len(inputs['ball']), 'X', dtype='U1')
+    record = live_gap_experiment.feature_view(inputs, placeholder, 'competition', 'BAR-ATH')['joint']
+    periods = supervised.model_periods(inputs)
+    result = {}
+    for name in members:
+        sampled = factorized_had.predict(record, models[name])
+        probability = np.column_stack([lt.upsample(sampled[:, k], record, periods) for k in range(3)])
+        if (not np.isfinite(probability).all() or (probability < 0).any()
+                or not np.allclose(probability.sum(axis=1), 1, atol=1e-5)):
+            raise ValueError('Invalid member H/A/D probabilities')
+        result[name] = probability
+    return result
+
+
+def joint_gru_ensemble_probabilities(inputs, models, manifest):
+    pieces = list(joint_gru_member_probabilities(inputs, models, manifest).values())
+    return .5 * (pieces[0] + pieces[1])
+
+
+def predict_probabilities(inputs, models, manifest=None):
+    if manifest and manifest.get('architecture', {}).get('kind') == 'sn_dense_ensemble':
+        from experiments import sn_dense_baseline
+        return sn_dense_baseline.predict_probabilities(inputs, models, manifest)
+    if manifest and manifest.get('architecture', {}).get('kind') == 'soccernet_capacity_ensemble':
+        from experiments import soccernet_baseline
+        return soccernet_baseline.predict_probabilities(inputs, models, manifest)
+    if manifest and manifest.get('architecture', {}).get('kind') == 'joint_gru_ensemble':
+        return joint_gru_ensemble_probabilities(inputs, models, manifest)
+    if manifest and manifest.get('architecture', {}).get('kind') == 'joint_gru':
+        return joint_gru_probabilities(inputs, models)
     dead = dead_probability(inputs, models)
     team = refine_features.predict_probabilities(inputs, models['attribution'])
     return lt.refine_domain.combine(team, dead, 0.)
@@ -122,7 +173,7 @@ def main():
     if output.exists():
         raise ValueError('Refusing to overwrite a generated baseline candidate')
     inputs = load_inputs(args.inputs)
-    probabilities = predict_probabilities(inputs, load_models(args.models_dir, args.manifest))
+    probabilities = predict_probabilities(inputs, load_models(args.models_dir, args.manifest), manifest)
     labels = supervised.decode(probabilities, supervised.model_periods(inputs), float(inputs['fps']), lt.COST)
     labels[np.asarray(inputs['period']) <= 0] = 'X'
     challenge.write_submission(labels, output)

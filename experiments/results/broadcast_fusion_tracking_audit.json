@@ -1,0 +1,53 @@
+{
+  "alignment": {
+    "spec": {
+      "anchor_seconds": 30,
+      "coarse_seconds": 1,
+      "candidates": 200,
+      "max_median_player_error_m": 2.0,
+      "match_radius_m": 3.0,
+      "min_matches_each_team": 3,
+      "cluster_radius_seconds": 1.0,
+      "min_cluster_anchors": 3,
+      "max_anchor_extrapolation_seconds": 30.0,
+      "minimum_alignment_run_seconds": 1.0,
+      "scope": "Unlabeled player geometry only; same pitch/team convention required"
+    },
+    "candidate_anchors": 113,
+    "clusters": [
+      {
+        "offset_frames": 4014,
+        "anchors": 58
+      },
+      {
+        "offset_frames": 26920,
+        "anchors": 54
+      }
+    ],
+    "accepted_broadcast_frames": 82541,
+    "accepted_fraction": 0.5018056028403288
+  },
+  "fusion": {
+    "tactical_missing_active_frames": 64643,
+    "recovered_frames": 4419,
+    "fraction_missing_recovered": 0.06836006992249741,
+    "original_missing_fraction": 0.40692572565263097,
+    "fused_missing_fraction": 0.37910825459375413,
+    "overlapping_ball_frames": 61927,
+    "overlap_ball_error_quantiles_m": [
+      0.758613978952055,
+      5.252885357126774,
+      20.481153101367067
+    ],
+    "overlap_error_over5m_fraction": 0.10534984740097211,
+    "ambiguous_tactical_frames": 0,
+    "target_labels_read": false,
+    "organizer_scored": false,
+    "limitation": "Coverage and inter-feed agreement are not coordinate ground truth or possession accuracy"
+  },
+  "inputs_sha256": {
+    "inputs.npz": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3",
+    "BAR-ATH_broadcast_atd.xml": "53d387bcdef718c2034ee2e05c3036c7edfa3cfcd5bbe8270a43695bd252dbe9",
+    "BAR-ATH_broadcast_atd.txt": "a71c1c9391e564032446be91ffbd7564205b47966060181532d80a338685e458"
+  }
+}

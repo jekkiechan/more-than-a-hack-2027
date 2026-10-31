@@ -1,0 +1,80 @@
+{
+ "arms": {
+  "D1": "ha_target=dense, train_d=False, fraction .5, 2048 steps",
+  "D2": "ha_target=dense, train_d=True, fraction .5, 2048 steps",
+  "D3": "as D2, up to 8192 steps; validate every 512 steps on GAR-valid dense silver spell F1; patience 3 evaluations; keep best-on-GAR-valid checkpoint",
+  "R": "ha_target=anchors, train_d=False, fraction .5, 2048 steps; SoccerNet records = dense-record anchor_y/anchor_full_y (records with >=1 H/A anchor, order of load_dense_records); rebuild of the adopted recipe"
+ },
+ "common": {
+  "batch_size": 32,
+  "d_lr": 0.0001,
+  "folds": [
+   "leave_out_sportec",
+   "leave_out_metrica",
+   "leave_out_skillcorner"
+  ],
+  "fraction_default": 0.5,
+  "initial_model": "matching fold teacher (same seed)",
+  "input_dropout": 0.1,
+  "lr": 0.0003,
+  "old_data": "13 historical TRAIN caches of the two non-held-out providers (old.load_old(fold))",
+  "require_full_native": true,
+  "seed": 2026,
+  "soccernet_train": "45 TRAIN games (dense silver records, recipe v1)",
+  "width": 96
+ },
+ "data_sha256": {
+  "dense_records_train_manifest": "d2639fa1a47b38bff1b293e8b2592fb1d7392c09700a2c9873c1a90a72397b51",
+  "dense_records_valid_manifest": "28d8d8f19fbcfef9484194b1cd6017b1cab33e765237ad43b4a4905bf92f9c0d",
+  "experiments/objective_alignment_v1/without_metrica_combined_2026.joblib": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+  "experiments/objective_alignment_v1/without_metrica_combined_2027.joblib": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+  "experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+  "experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+  "experiments/objective_alignment_v1/without_sportec_combined_2026.joblib": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+  "experiments/objective_alignment_v1/without_sportec_combined_2027.joblib": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+  "pooled/capacity_2026": "8abd9ebc72dec40035da1081241a6e55fec19101787a9cc0917fe27190f5befd",
+  "pooled/capacity_2027": "e693d7acbe75e97b52e4ddb3803793d121702c53f68006084b294b8ed2d59f6a",
+  "pooled/teacher_2026": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+  "pooled/teacher_2027": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+ },
+ "hard_rules": "no SoccerNet data/weights committed; no organizer public GT; no GAR test evaluation; no promotion; no push",
+ "metrics": {
+  "dev_cells": "15 development cells (5 matches x clean, feed_like corrupt_1/2); provider-held-out fold model on its provider's matches; official metrics; cost-3 Viterbi (frozen supervised.decode); equal-provider mean; spell F1, macro F1, D-F1 (P/R), short-spell recall, five IoUs, predicted-spell counts, per-provider rows",
+  "gar_valid": "dense silver GAR-valid (9 games, 2191 records, all of valid); native-rate probabilities by interpolation, cost-3 Viterbi, official metric code; spell F1, macro, D-F1, short-spell recall; mean over the 3 fold models. Viterbi implemented in C bit-identical to supervised.decode (tested). Validator keeps per-record native fps (jitter 1e-7 across games; scoring uses the mean). Not subsampled.",
+  "references": "adopted pooled width-96 ensemble and pooled teachers scored on GAR-valid only (they saw the dev providers)"
+ },
+ "phase": "C",
+ "phases": {
+  "C1": "arms R, D1, D2, D3 x 3 folds (12 fits), seed 2026",
+  "C2": "best C1 recipe at fraction 0, .25, .75, 1.0 (reuse C1 for .5); 12 fits. If the best C1 recipe is D3, C2/C3 use fixed steps = median of the three C1 best_steps rounded to the nearest 512 (minimum 512), no early stopping, to bound compute (the C1 D3 row stays the early-stopped reference); the .5 row is then the D3 C1 fits only for reference and the fixed-step .5 fits are added to keep the sweep like-for-like",
+  "C3": "best recipe+fraction on nested SoccerNet subsets of 11 and 22 TRAIN games (sn.nested_games); 45 = existing; 6 fits",
+  "C4": "re-fit only the final winner with seed 2027 (teacher seed 2027), 3 fits; score each seed and the probability-average ensemble (average native probabilities, then decode)"
+ },
+ "references_to_report": {
+  "published_adopted_ensemble": {
+   "clean": 0.64179,
+   "feed_like": 0.502586
+  },
+  "saved_baseline_clean_spell": 0.626425
+ },
+ "scaling": "slope 22->45 reported as delta per doubling (log2) on GAR-valid spell F1 and dev clean spell F1",
+ "schema": 1,
+ "selection_rule": {
+  "choose": "among arms passing the guards (R passes trivially), highest GAR-valid spell F1 (mean of 3 fold models); tie-break dev clean equal-provider spell F1",
+  "guards": "relative to arm R of the same phase: for every provider, dev clean D-F1 and clean macro F1 >= R - .02; dev feed_like equal-provider spell F1 >= R - .01 (soccernet_capacity.guard_checks)",
+  "not_used": "dev clean spell deltas vs R and vs saved baseline .626425 are reported but never used to select"
+ },
+ "source_sha256": {
+  "experiments/SN_DENSE_HARNESS.md": "9a63af35bf8e985154b2e9a964e4cb75cffd71ade00889494f545fe4fe1d3f29",
+  "experiments/SOCCERNET_DENSE.md": "1a6dac9c6c9abb0802d1d9e15b7aeab4e36bd2287cae8f4222ce3687b212e428",
+  "experiments/sn_dense_run.py": "b58fde8596b8e8bdf45624b442c3f77d9ee75c658601f7c6bf9f65af1f5d9f11",
+  "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+  "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+  "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+  "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+  "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+ },
+ "statement": "Frozen before any Phase-C fit. Changes go in a separate amendment file.",
+ "stop_rule": "NaN/impossible scores or label leakage -> stop, fix, amend, rerun affected fits; if total runtime far exceeds ~6 h, finish current phase and report",
+ "study": "sn_dense_v1"
+}

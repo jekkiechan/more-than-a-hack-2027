@@ -1,0 +1,170 @@
+{
+  "active_package": {
+    "decision_policy_sha256": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
+    "manifest_sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
+    "model": "joint_gru_combined_ensemble",
+    "models": {
+      "joint_gru_2026.joblib": {
+        "path": "data/models/joint_gru_combined_ensemble_v1/joint_gru_2026.joblib",
+        "sha256": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6"
+      },
+      "joint_gru_2027.joblib": {
+        "path": "data/models/joint_gru_combined_ensemble_v1/joint_gru_2027.joblib",
+        "sha256": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+      }
+    },
+    "package_version": "joint_gru_combined_ensemble_v1",
+    "promotion_receipt_sha256": "23417315d4fa62c230bc46a1e674a17385b738079c85fb3ec760b103457825cb"
+  },
+  "artifacts": {
+    "active_baseline_manifest": {
+      "bytes": 27054,
+      "path": "experiments/baseline_manifest.json",
+      "sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0"
+    },
+    "active_decision_policy": {
+      "bytes": 3268,
+      "path": "experiments/model_decision_policy.json",
+      "sha256": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3"
+    },
+    "challenge_inputs": {
+      "bytes": 28449991,
+      "path": "data/challenge/inputs.npz",
+      "sha256": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3"
+    },
+    "combined_csv": {
+      "bytes": 1682773,
+      "path": "data/experiments/current_baseline/joint_gru_combined_ensemble.csv",
+      "sha256": "a9beb9ddee36182f926e4d693f648c19f4a19c55afd1653ea93e19f3dd32634b"
+    },
+    "historical_public_check_report": {
+      "bytes": 12152,
+      "path": "experiments/results/current_baseline_public_check.json",
+      "sha256": "32df69c1dfcf13a77ce9bf62229f42ff0ada2c13f5764de6b43ef56c9844603b"
+    },
+    "model:joint_gru_2026.joblib": {
+      "bytes": 263111,
+      "path": "data/models/joint_gru_combined_ensemble_v1/joint_gru_2026.joblib",
+      "sha256": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6"
+    },
+    "model:joint_gru_2027.joblib": {
+      "bytes": 263111,
+      "path": "data/models/joint_gru_combined_ensemble_v1/joint_gru_2027.joblib",
+      "sha256": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+    },
+    "model_package_manifest": {
+      "bytes": 27054,
+      "path": "data/models/joint_gru_combined_ensemble_v1/baseline_manifest.json",
+      "sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0"
+    },
+    "objective_comparison_report": {
+      "bytes": 30006,
+      "path": "experiments/results/objective_ensemble.json",
+      "sha256": "cf267890905ece05aebe366c86c9ea635c07fa5267831f0658ac8932863f51d4"
+    },
+    "objective_comparison_runs": {
+      "bytes": 66209,
+      "path": "data/experiments/objective_ensemble_v1/runs.json",
+      "sha256": "3269e3a08a01d3682fe5ab7c3fd6e60e6b1c722df9c018418e19a8344f2eb329"
+    },
+    "objective_comparison_verification": {
+      "bytes": 2829,
+      "path": "experiments/results/objective_ensemble_verification.json",
+      "sha256": "837bda7c7dbacc1a2215179a73b2c7dfbc7be9ece63c3576bbe17bc1f20e3df2"
+    },
+    "preceding_ensemble_replay_csv": {
+      "bytes": 1682773,
+      "path": "data/experiments/current_baseline/preceding_seed_ensemble_replay.csv",
+      "sha256": "3635b160d7397ca845d86fc2da6331b49df7b3eabf05c6a8eeca9d9d472a57b9"
+    },
+    "prediction_declaration": {
+      "bytes": 2201,
+      "path": "data/experiments/current_baseline/joint_gru_combined_ensemble.declaration.json",
+      "sha256": "a736d6162f5346593dec43192b6b4cb82f2d657b12a948943254d90f5198cb18"
+    },
+    "prediction_receipt": {
+      "bytes": 1199,
+      "path": "data/experiments/current_baseline/joint_gru_combined_ensemble.json",
+      "sha256": "a792d8d796758e0785240cdf885c2e607a2603a5d2d32e826de1443d1592ed5d"
+    },
+    "promotion_receipt": {
+      "bytes": 27970,
+      "path": "experiments/results/baseline_combined_objective_promotion.json",
+      "sha256": "23417315d4fa62c230bc46a1e674a17385b738079c85fb3ec760b103457825cb"
+    }
+  },
+  "bootstrap": {
+    "draws": 1000,
+    "interpretation": "Intervals are conditional on this single public match; separate intervals do not establish paired significance.",
+    "paired_difference_interval": null,
+    "reported_interval": "Official separate 5th–95th percentile block-bootstrap intervals for spell F1 over spells and macro F1 over GT segments.",
+    "scorer": "Unchanged evaluation.possession_metrics.evaluate"
+  },
+  "candidate_set": [
+    {
+      "name": "combined_objective_ensemble",
+      "path": "data/experiments/current_baseline/joint_gru_combined_ensemble.csv",
+      "role": "promoted fixed model"
+    },
+    {
+      "name": "preceding_seed_ensemble_replay",
+      "path": "data/experiments/current_baseline/preceding_seed_ensemble_replay.csv",
+      "role": "matched prior fixed model"
+    }
+  ],
+  "created_utc": "2026-10-28T14:06:49.483288+00:00",
+  "guardrails": {
+    "baseline_or_policy_change_after_public_score": false,
+    "full_match_claim": false,
+    "model_selection_after_public_score": false,
+    "organizer_public_diagnostic_used_for_adoption": false
+  },
+  "organizer_reference_labels_read_before_gate": false,
+  "organizer_scored_before_gate": false,
+  "prediction_validation": {
+    "combined_csv_sha256": "a9beb9ddee36182f926e4d693f648c19f4a19c55afd1653ea93e19f3dd32634b",
+    "declaration_sha256": "a736d6162f5346593dec43192b6b4cb82f2d657b12a948943254d90f5198cb18",
+    "input_mask": {
+      "out_of_play_frames": 40462,
+      "out_of_play_mask_sha256": "4bf62b7c2d9e57922e3c984512868a6c1557dabff2d3054869ea5c4b5ec80ac2",
+      "period_sha256": "c433f6a2507680b45b8951bdade89aff5d514c3159b021a87b694a9d4b91e312",
+      "rule": "For both fixed CSVs, exactly the input frames with period <= 0 are X."
+    },
+    "input_sha256": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3",
+    "preceding_replay_csv_sha256": "3635b160d7397ca845d86fc2da6331b49df7b3eabf05c6a8eeca9d9d472a57b9",
+    "receipt_sha256": "a792d8d796758e0785240cdf885c2e607a2603a5d2d32e826de1443d1592ed5d"
+  },
+  "primary_metric": "Official spell_f1_mean; macro_f1 is the exact-tie secondary; 70/30 is auxiliary only.",
+  "prior_gates": "All earlier public-check gates and historical reports remain unchanged; this request uses a new one-time exclusive gate.",
+  "purpose": "One fixed descriptive public-window score of the promoted combined ensemble and exact preceding-ensemble replay.",
+  "reference": {
+    "historical_report_sha256": "32df69c1dfcf13a77ce9bf62229f42ff0ada2c13f5764de6b43ef56c9844603b",
+    "opened_before_exclusive_gate": false,
+    "organizer_gt_sha256": "e596a9af9626c623bb94be6fd350e12ee9a75c76a696cfadca3bc01735e92487",
+    "path": "evaluation/gt/BAR-ATH_possession_gt_public.csv",
+    "sha_source": "experiments/results/current_baseline_public_check.json"
+  },
+  "schema_version": 1,
+  "scope": "One public five-minute diagnostic; 199,319 rows, 7,500 graded frames and 17 possession spells. It is not a full-match or independent-match estimate.",
+  "source_sha256": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/challenge.py": "204ac7ff7a8e530facd9e19fc7d264f2eb35698df1cda60bf32c7f6a720abba1",
+    "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+    "experiments/combined_objective_public_check.py": "c51d6ad24ccbd05314d96d874d917c143ce7134005e06c2d3a869c6bc7869dfb",
+    "experiments/current_baseline.py": "a15270893060ee4ee1055bdc0bbf90f64763b6558a5d0826a9599d30d9d8ab36",
+    "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+    "experiments/promote_combined_objective_baseline.py": "60043b6dd7a38e60143e8d1386c856db49efd110eaaba1c667c63d78f36d1a2d",
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+    "experiments/stress.py": "c4d9f47ea8e77e29bac74ea26831f4cd4597ca79ea3cadcb316183f84dcae32e",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "games.py": "3b2122794e9e0476e2b3a871d14880e5fa47c4feaeacf99caef054c2309076ce",
+    "scripts/predict_combined_objective.py": "bf97f9a1f64325db64c3908d84e5d10f7679fce2a7aa522751bc87406fcc81a8"
+  },
+  "study_id": "combined_objective_public_check_v1",
+  "user_request": "looks good. don’t forget to update pages + also compute public score"
+}
