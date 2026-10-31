@@ -1,6 +1,7 @@
 # Dense ensemble targeted follow-ups
 
-Status: running. Started 31 October 2026 against fork main at `1b06133`.
+Status: completed 31 October 2026. Started against fork main at `1b06133`.
+All three fixed comparisons miss the clean improvement screen; retain the adopted baseline.
 
 The user requested Luna subagents to execute an error audit, missing-ball team
 memory, boundary decoding, silver-label weighting, and submission verification.
@@ -79,7 +80,7 @@ provider exclusions, probability averaging and decoder replay.
 | Reconstructed control | 0.647215 | 0.505811 | — | — | Matched reference |
 | Fixed gap memory | 0.647582 | 0.504678 | +0.000367 | −0.001133 | No upgrade; misses +0.01 clean screen |
 | Confidence boundary decoder | 0.644276 | 0.502017 | −0.002939 | −0.003794 | No upgrade; both declared spell guards fail |
-| Silver-label weighting | Pending | Pending | Pending | Pending | Six candidate fits running |
+| Silver-label weighting | 0.647915 | 0.505227 | +0.000701 | −0.000583 | No upgrade; misses +0.01 clean screen |
 
 The [gap-memory report](DENSE_GAP_MEMORY.md) includes both seed members and the
 probability ensemble. The small clean gain is not consistent across seeds and
@@ -88,6 +89,12 @@ shows improved recall of spells shorter than three seconds (+0.01815 clean),
 but lower overall spell F1. Its frozen no-feed-decline guard fails even though
 the separate active-policy −0.01 tolerance passes. The original score receipt
 is preserved alongside an explicit guard-wording correction.
+
+The [silver-label weighting report](results/dense_label_weight_v1_report.md)
+records all 12 completed fits (six controls and six candidates, each 2,048
+updates). Downweighting eligible transition neighborhoods to 0.25 yields a small
+clean gain and a small stress decline, with no material improvement in short-spell
+recall. No additional weighting values were tried.
 
 ## What the error audit adds
 
@@ -104,3 +111,25 @@ frame-error bin differs from the boundary study's <3-second spell-recall metric.
 Provider rates, raw counts, unmatched boundaries and denominators remain in the
 linked report. All evaluation uses previously exposed development matches and
 synthetic stress; no new independent broadcast labels were acquired.
+
+## Verification and delivery
+
+The independent review checks fit budgets, provider exclusions, source/model
+hashes, identical paired evaluation rows, probability ensembling and aggregate
+readouts: [review receipt](results/dense_targeted_followups_independent_review_v1.json).
+CI passes 458 experiment tests, 26 integrity/gate tests, documentation links and
+the bundled submission-format check. Baseline manifests, decision policy and
+closed historical scoring gates remain unchanged.
+
+Code and aggregate evidence: [PR #49](https://github.com/jekkiechan/more-than-a-hack-2027/pull/49).
+Exact derived inputs, model weights, native predictions and full evaluator
+outputs are being finalized in private [mtah-data PR #8](https://github.com/jekkiechan/mtah-data/pull/8).
+The private full boundary output includes transition locations; its public
+aggregate preserves metrics and binds the original digest. Its separate
+execution-incident receipt discloses an accidental duplicate deterministic
+invocation that refused to overwrite the first result; no tuning or selection
+followed.
+
+The [research site](https://more-than-a-hack-progress.buffhen.chatgpt.site/experiments.html#targeted-dense)
+is published as version 10 with the existing restricted audience preserved.
+Desktop and mobile layouts passed overflow, anchor and browser-error checks.

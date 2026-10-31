@@ -20,12 +20,12 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 ## Next work
 
-1. Execute the [targeted dense follow-ups](../../experiments/DENSE_TARGETED_FOLLOWUPS.md):
-   current error audit, fixed missing-ball team memory, confidence-dependent
-   decoding, and silver-label transition weighting. These comparisons are
-   running; no improvement or promotion is established. Exact submission replay
-   has passed. Missing dense research checkpoints require explicitly declared
-   matched control reconstruction, not pooled deployment substitutes.
+1. The [targeted dense follow-ups](../../experiments/DENSE_TARGETED_FOLLOWUPS.md)
+   are complete: fixed gap memory, confidence-dependent decoding and silver-label
+   weighting provide no upgrade. The current error audit points to team attribution
+   in ≤1-second possessions and under synthetic ball-missing corruption. Preserve
+   these fixed results; any next hypothesis needs a new bounded declaration.
+   Exact 199,319-row submission reproduction passed without organizer scoring.
 2. The source-specific head comparison on open PR #47 is completed and negative:
    retain the shared dense heads. Its provider-definition audit supports holding
    possession through contested touches; it does not justify rebuilding GAR
@@ -43,6 +43,12 @@ Before another local sweep, consult the index's
 [settled directions](EXPERIMENTS.md#settled-directions).
 
 ## Artifacts and open work
+
+- **Targeted dense follow-ups:** all 12 fits and three comparisons are complete;
+  reconstructed controls reproduce saved clean/feed-like scores within 3 × 10⁻¹¹.
+  Input byte-hash differences remain documented. Final private archive delivery
+  is tracked in [mtah-data PR #8](https://github.com/jekkiechan/mtah-data/pull/8);
+  [coordinated report](../../experiments/DENSE_TARGETED_FOLLOWUPS.md).
 
 - **Dense deployment:** private [mtah-data PR #7](https://github.com/jekkiechan/mtah-data/pull/7)
   is merged at `19ee280`. This session restored and verified all four versioned
