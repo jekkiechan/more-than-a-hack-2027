@@ -1,0 +1,4960 @@
+{
+  "scope": "Full H/A/D multiclass tree structure and training loss only; no evaluation scores, predictions, labels or fits",
+  "predeclared_sha256": "025c2ccbe736b40d000b12b5e1bddb092ccd1b4b0bff097ad365e0b4ef8fdb36",
+  "audit_source_sha256": "c2e58964b5585b22f2ec40dedc64b220234ab9d0283df715521acca9977e7876",
+  "classes_in_tree_order": [
+    "H",
+    "A",
+    "D"
+  ],
+  "dump_chunk_boosting_rounds": 64,
+  "model_rows": [
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_sportec_legacy_63.joblib",
+      "model_sha256": "bd12b47da817b1fb4fdf278ed243593920cf7c213283626ada18817258b55d35",
+      "receipt_sha256": "eddd76dc0f24304609d0546cff938d928df3089066d7ea1678ca5b3eaf5fb840",
+      "heldout": "sportec",
+      "config": "legacy_63",
+      "family": "legacy",
+      "feature_count": 204,
+      "training_rows": 265056,
+      "training_matches": [
+        "metrica_1",
+        "metrica_2",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 120861,
+        "leaves_per_tree": {
+          "p0": 43.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9947916666666666,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 7.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 19.0,
+          "p10": 210.0,
+          "p25": 448.0,
+          "p50": 1233.0,
+          "p75": 3288.0,
+          "p90": 7688.0,
+          "p100": 172455.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 1.6013526252936596,
+          "p10": 29.036947241052985,
+          "p25": 64.28384347003885,
+          "p50": 175.72498422814533,
+          "p75": 474.2205115624238,
+          "p90": 1075.0991970878094,
+          "p100": 34959.939052924514
+        },
+        "row_count_weighted_leaf_depth": 6.992897635503789,
+        "hessian_weighted_leaf_depth": 6.901473849117407,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 5.635567757977621,
+          "p10": 6.279518372942845,
+          "p25": 6.544504632789525,
+          "p50": 7.00307378434327,
+          "p75": 7.4624913708086815,
+          "p90": 7.679875256908694,
+          "p100": 7.913469926673425
+        },
+        "fraction_leaves_below_min_child_samples": 0.026981408394767543,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.050884900836498125,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.12477143164461654,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 23.0,
+            "p10": 220.0,
+            "p25": 484.0,
+            "p50": 1318.0,
+            "p75": 3424.25,
+            "p90": 7907.199999999997,
+            "p100": 138568.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.7092617570888249,
+            "p10": 30.84055087957531,
+            "p25": 69.9494535094127,
+            "p50": 196.62414714787155,
+            "p75": 536.3612195828464,
+            "p90": 1224.9391923691608,
+            "p100": 18030.211790386704
+          },
+          "row_count_weighted_leaf_depth": 6.96501763472098,
+          "hessian_weighted_leaf_depth": 6.922714110850375,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.91865502595564,
+            "p10": 6.265109519269238,
+            "p25": 6.460833810276833,
+            "p50": 6.939007084166906,
+            "p75": 7.459471938498249,
+            "p90": 7.697521943422331,
+            "p100": 7.913469926673425
+          },
+          "fraction_leaves_below_min_child_samples": 0.024603174603174603,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.047445436507936506,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.11599702380952381,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 21.0,
+            "p10": 221.0,
+            "p25": 492.0,
+            "p50": 1347.0,
+            "p75": 3464.25,
+            "p90": 7930.299999999996,
+            "p100": 172455.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.6013526252936596,
+            "p10": 31.291393746761607,
+            "p25": 71.69479589333059,
+            "p50": 200.04453086014837,
+            "p75": 535.3540974635398,
+            "p90": 1230.1629167043136,
+            "p100": 19837.443832582678
+          },
+          "row_count_weighted_leaf_depth": 6.970743370703038,
+          "hessian_weighted_leaf_depth": 6.938791860837849,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.9554515693840395,
+            "p10": 6.280360707933526,
+            "p25": 6.472201974912607,
+            "p50": 6.951042925097511,
+            "p75": 7.475848707492629,
+            "p90": 7.7103567746741195,
+            "p100": 7.912369406243951
+          },
+          "fraction_leaves_below_min_child_samples": 0.025347222222222222,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.04717261904761905,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.11364087301587301,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 40221,
+          "leaves_per_tree": {
+            "p0": 43.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.984375,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 19.0,
+            "p10": 193.0,
+            "p25": 386.0,
+            "p50": 1049.0,
+            "p75": 2947.0,
+            "p90": 7182.0,
+            "p100": 116646.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.7383755082264531,
+            "p10": 25.5811947574839,
+            "p25": 54.98486512899399,
+            "p50": 139.16844288632274,
+            "p75": 366.5753677338362,
+            "p90": 819.9389906805009,
+            "p100": 34959.939052924514
+          },
+          "row_count_weighted_leaf_depth": 7.04293190108735,
+          "hessian_weighted_leaf_depth": 6.823758880639289,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.635567757977621,
+            "p10": 6.334888544258878,
+            "p25": 6.738326851194698,
+            "p50": 7.067612275467239,
+            "p75": 7.457394855244166,
+            "p90": 7.642550677611956,
+            "p100": 7.818936100924575
+          },
+          "fraction_leaves_below_min_child_samples": 0.031003704532458168,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.058054250267273316,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.14472539220805053,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.083888785753353,
+          "64": 0.6268920829286154,
+          "128": 0.45681133876037233,
+          "256": 0.33943254935081535,
+          "512": 0.27360467881976414,
+          "640": 0.25661580110123083
+        },
+        "first": 1.083888785753353,
+        "last": 0.25661580110123083,
+        "minimum": 0.25661580110123083,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.00793713690800213,
+          "relative_decrease_percent": 3.0002074321038616
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_sportec_geometry_63.joblib",
+      "model_sha256": "33b56221b125dd80c92df1616cb7cdc3aafb9f92a345b2c835314e72c634b2d1",
+      "receipt_sha256": "34590edffc1d51a48a86c2fe9621ad0dc7cf0e8443499728e6bb522dbd1d604f",
+      "heldout": "sportec",
+      "config": "geometry_63",
+      "family": "geometry",
+      "feature_count": 227,
+      "training_rows": 265056,
+      "training_matches": [
+        "metrica_1",
+        "metrica_2",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 120951,
+        "leaves_per_tree": {
+          "p0": 59.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9979166666666667,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 7.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 14.0,
+          "p10": 213.0,
+          "p25": 464.0,
+          "p50": 1247.0,
+          "p75": 3296.0,
+          "p90": 7692.0,
+          "p100": 143477.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 1.4958476548781643,
+          "p10": 29.912532694172114,
+          "p25": 65.21788112353534,
+          "p50": 176.69587559998035,
+          "p75": 469.8099828888662,
+          "p90": 1074.5634031742811,
+          "p100": 33932.43526161462
+        },
+        "row_count_weighted_leaf_depth": 7.002534978246394,
+        "hessian_weighted_leaf_depth": 6.910579237706487,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 5.609558011571169,
+          "p10": 6.286937213471832,
+          "p25": 6.5522624382727415,
+          "p50": 7.01323600494478,
+          "p75": 7.477907463425303,
+          "p90": 7.669887730182891,
+          "p100": 7.923216946786638
+        },
+        "fraction_leaves_below_min_child_samples": 0.02634124562839497,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.049830096485353574,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.12189233656604741,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40315,
+          "leaves_per_tree": {
+            "p0": 59.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.996875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 14.0,
+            "p10": 217.0,
+            "p25": 488.0,
+            "p50": 1327.0,
+            "p75": 3414.0,
+            "p90": 7958.5999999999985,
+            "p100": 130146.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 2.6494596293196073,
+            "p10": 30.543949549272657,
+            "p25": 70.18824858975131,
+            "p50": 196.63269835151732,
+            "p75": 530.8353141788393,
+            "p90": 1223.265566986799,
+            "p100": 18424.15446924814
+          },
+          "row_count_weighted_leaf_depth": 6.999381437838824,
+          "hessian_weighted_leaf_depth": 6.9521105957261,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 6.036395564556101,
+            "p10": 6.260892495151237,
+            "p25": 6.518134639256252,
+            "p50": 6.981555653901312,
+            "p75": 7.508334052070534,
+            "p90": 7.702032898333211,
+            "p100": 7.923216946786638
+          },
+          "fraction_leaves_below_min_child_samples": 0.02624333374674439,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.04846831204266402,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.11767332258464591,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40318,
+          "leaves_per_tree": {
+            "p0": 61.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9984375,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 19.0,
+            "p10": 216.0,
+            "p25": 484.0,
+            "p50": 1325.0,
+            "p75": 3446.75,
+            "p90": 7932.8000000000175,
+            "p100": 143477.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.4958476548781643,
+            "p10": 30.64654963926878,
+            "p25": 69.26793441688642,
+            "p50": 198.0657828594558,
+            "p75": 531.562261957326,
+            "p90": 1230.609685539455,
+            "p100": 18402.631434452487
+          },
+          "row_count_weighted_leaf_depth": 6.995295423207367,
+          "hessian_weighted_leaf_depth": 6.956170926385678,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.886827992522235,
+            "p10": 6.2982989027291945,
+            "p25": 6.508823703019336,
+            "p50": 6.963595472339138,
+            "p75": 7.523378508026058,
+            "p90": 7.711707800905857,
+            "p100": 7.895861349791676
+          },
+          "fraction_leaves_below_min_child_samples": 0.02661342328488516,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.049779254923359294,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.11979760900838335,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 40318,
+          "leaves_per_tree": {
+            "p0": 61.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9984375,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 14.0,
+            "p10": 208.0,
+            "p25": 428.0,
+            "p50": 1114.0,
+            "p75": 2975.0,
+            "p90": 7118.600000000006,
+            "p100": 112977.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.6090591066749755,
+            "p10": 28.751381607726216,
+            "p25": 58.60314909956651,
+            "p50": 143.9245239640586,
+            "p75": 363.443351641763,
+            "p90": 802.0765895901252,
+            "p100": 33932.43526161462
+          },
+          "row_count_weighted_leaf_depth": 7.012928073692992,
+          "hessian_weighted_leaf_depth": 6.794924199655627,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.609558011571169,
+            "p10": 6.310261553089229,
+            "p25": 6.717340797379554,
+            "p50": 7.05747664576263,
+            "p75": 7.400715706661791,
+            "p90": 7.579641665276276,
+            "p100": 7.7968856108051
+          },
+          "fraction_leaves_below_min_child_samples": 0.026166972568083733,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.05124262116176398,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.12820576417481025,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.0837854159909988,
+          "64": 0.6264258988051393,
+          "128": 0.4563175298436568,
+          "256": 0.33864525697661896,
+          "512": 0.27271374104023094,
+          "640": 0.25556448497696455
+        },
+        "first": 1.0837854159909988,
+        "last": 0.25556448497696455,
+        "minimum": 0.25556448497696455,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.008010468372977253,
+          "relative_decrease_percent": 3.0391614495865835
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_sportec_full_63.joblib",
+      "model_sha256": "575b8106f758687ba7e06479ac5b6322e8ed855bb9c9354882edb36c19da29e7",
+      "receipt_sha256": "3b125104e36fc7a165cd2fb47701b620c70e0993dad4544e5d59954c957189ae",
+      "heldout": "sportec",
+      "config": "full_63",
+      "family": "full",
+      "feature_count": 1003,
+      "training_rows": 265056,
+      "training_matches": [
+        "metrica_1",
+        "metrica_2",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 120916,
+        "leaves_per_tree": {
+          "p0": 46.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9942708333333333,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 7.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 13.0,
+          "p10": 191.0,
+          "p25": 394.0,
+          "p50": 1086.0,
+          "p75": 3079.0,
+          "p90": 7463.5,
+          "p100": 168415.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 2.548078296473248,
+          "p10": 25.137329340563156,
+          "p25": 52.291940104682,
+          "p50": 142.2238964153221,
+          "p75": 396.82822743327415,
+          "p90": 981.0114522553049,
+          "p100": 35253.21206922084
+        },
+        "row_count_weighted_leaf_depth": 7.073276751008849,
+        "hessian_weighted_leaf_depth": 6.913805948411261,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 5.674310369217711,
+          "p10": 6.283186161518846,
+          "p25": 6.590492867481062,
+          "p50": 7.149315722244578,
+          "p75": 7.526743993760066,
+          "p90": 7.7535416616836725,
+          "p100": 7.949705939134816
+        },
+        "fraction_leaves_below_min_child_samples": 0.031716232756624434,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.06118296999569949,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.14524132455589003,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40296,
+          "leaves_per_tree": {
+            "p0": 46.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9921875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 2.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 20.0,
+            "p10": 173.0,
+            "p25": 354.0,
+            "p50": 1050.5,
+            "p75": 3105.25,
+            "p90": 7729.5,
+            "p100": 159766.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 2.9123992724344134,
+            "p10": 22.601352718891576,
+            "p25": 48.37799088621978,
+            "p50": 148.15757696935907,
+            "p75": 460.2736038635485,
+            "p90": 1136.7747547348263,
+            "p100": 18602.307158043375
+          },
+          "row_count_weighted_leaf_depth": 7.103197675104028,
+          "hessian_weighted_leaf_depth": 6.964752213832015,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.8704463367942585,
+            "p10": 6.225058511296961,
+            "p25": 6.493695506396792,
+            "p50": 7.224728484781689,
+            "p75": 7.648423182983267,
+            "p90": 7.8075770483927585,
+            "p100": 7.944822942807773
+          },
+          "fraction_leaves_below_min_child_samples": 0.0393587452848918,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.0749205876513798,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.1676841373833631,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40300,
+          "leaves_per_tree": {
+            "p0": 58.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.990625,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 13.0,
+            "p10": 176.0,
+            "p25": 362.0,
+            "p50": 1078.0,
+            "p75": 3170.0,
+            "p90": 7919.0999999999985,
+            "p100": 168415.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 2.548078296473248,
+            "p10": 23.62473999194335,
+            "p25": 49.72168779975618,
+            "p50": 153.1725176568143,
+            "p75": 460.64556103094947,
+            "p90": 1139.7798784242707,
+            "p100": 18672.524172508158
+          },
+          "row_count_weighted_leaf_depth": 7.103013305279529,
+          "hessian_weighted_leaf_depth": 6.97918788758947,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.838718943660646,
+            "p10": 6.254120638922217,
+            "p25": 6.541209440461868,
+            "p50": 7.203237743431703,
+            "p75": 7.636334751084136,
+            "p90": 7.799850199253576,
+            "p100": 7.949705939134816
+          },
+          "fraction_leaves_below_min_child_samples": 0.03796526054590571,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.0713151364764268,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.1643424317617866,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 14.0,
+            "p10": 236.0,
+            "p25": 466.0,
+            "p50": 1127.5,
+            "p75": 2951.25,
+            "p90": 6841.0999999999985,
+            "p100": 115417.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 3.01817665412091,
+            "p10": 30.456709687493277,
+            "p25": 57.887529895291664,
+            "p50": 130.42318171728402,
+            "p75": 305.4846413866617,
+            "p90": 679.5608170482677,
+            "p100": 35253.21206922084
+          },
+          "row_count_weighted_leaf_depth": 7.01361927264299,
+          "hessian_weighted_leaf_depth": 6.758958598556775,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.674310369217711,
+            "p10": 6.403999039873549,
+            "p25": 6.671589970590865,
+            "p50": 7.0776017507006195,
+            "p75": 7.390225085084395,
+            "p90": 7.518656222605941,
+            "p100": 7.74439432322224
+          },
+          "fraction_leaves_below_min_child_samples": 0.01783234126984127,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.03732638888888889,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.1037202380952381,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.0832090131901724,
+          "64": 0.6048196295285744,
+          "128": 0.42629930653680037,
+          "256": 0.3034935439011497,
+          "512": 0.23558489340593217,
+          "640": 0.21838399516681783
+        },
+        "first": 1.0832090131901724,
+        "last": 0.21838399516681783,
+        "minimum": 0.21838399516681783,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.008171650718608953,
+          "relative_decrease_percent": 3.6069066770207536
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_sportec_full_127.joblib",
+      "model_sha256": "e90afaea5d18f3d653bb974621fec448717fe8574c0c0758d7b1e4ca7eeaa2fb",
+      "receipt_sha256": "19a6548b3260520ed83feb580c4906bbcb500b69a336a700151ed4946f8e5783",
+      "heldout": "sportec",
+      "config": "full_127",
+      "family": "full",
+      "feature_count": 1003,
+      "training_rows": 265056,
+      "training_matches": [
+        "metrica_1",
+        "metrica_2",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 127,
+        "max_depth": 10
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 243164,
+        "leaves_per_tree": {
+          "p0": 70.0,
+          "p10": 127.0,
+          "p25": 127.0,
+          "p50": 127.0,
+          "p75": 127.0,
+          "p90": 127.0,
+          "p100": 127.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "tree_maximum_depth_counts": {
+          "10": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.978125,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 6.0,
+          "p25": 7.0,
+          "p50": 9.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "leaf_training_row_count": {
+          "p0": 8.0,
+          "p10": 144.0,
+          "p25": 227.0,
+          "p50": 498.0,
+          "p75": 1317.0,
+          "p90": 3418.7000000000116,
+          "p100": 147197.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 1.1148715671151874,
+          "p10": 15.738068712898528,
+          "p25": 28.95762322039809,
+          "p50": 62.73448737501167,
+          "p75": 163.7495668977499,
+          "p90": 427.50472274292264,
+          "p100": 32724.431495077908
+        },
+        "row_count_weighted_leaf_depth": 8.615433879330915,
+        "hessian_weighted_leaf_depth": 8.429505549013822,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 6.9130721851743555,
+          "p10": 7.561413802016392,
+          "p25": 7.992454642901774,
+          "p50": 8.686568104483861,
+          "p75": 9.218883753699437,
+          "p90": 9.615455743808784,
+          "p100": 9.883224219882091
+        },
+        "fraction_leaves_below_min_child_samples": 0.05426790149857709,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.1136023424520077,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.26995361155434194,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 80951,
+          "leaves_per_tree": {
+            "p0": 70.0,
+            "p10": 127.0,
+            "p25": 127.0,
+            "p50": 127.0,
+            "p75": 127.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.971875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 6.0,
+            "p25": 7.0,
+            "p50": 9.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 8.0,
+            "p10": 138.0,
+            "p25": 217.0,
+            "p50": 493.0,
+            "p75": 1362.0,
+            "p90": 3492.0,
+            "p100": 147197.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.1148715671151874,
+            "p10": 15.25863327924162,
+            "p25": 28.66796448454261,
+            "p50": 68.26842852158006,
+            "p75": 194.99396712938324,
+            "p90": 501.5657964833081,
+            "p100": 17990.789709901204
+          },
+          "row_count_weighted_leaf_depth": 8.672778494665108,
+          "hessian_weighted_leaf_depth": 8.491781471621612,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 7.106376359342519,
+            "p10": 7.504882528188315,
+            "p25": 7.857978898105653,
+            "p50": 8.799852365694282,
+            "p75": 9.443721059179238,
+            "p90": 9.686886960490005,
+            "p100": 9.883224219882091
+          },
+          "fraction_leaves_below_min_child_samples": 0.06097515781151561,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.12571802695457746,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.2866919494509024,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 80933,
+          "leaves_per_tree": {
+            "p0": 86.0,
+            "p10": 127.0,
+            "p25": 127.0,
+            "p50": 127.0,
+            "p75": 127.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9625,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 6.0,
+            "p25": 7.0,
+            "p50": 9.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 12.0,
+            "p10": 139.0,
+            "p25": 219.0,
+            "p50": 495.0,
+            "p75": 1363.0,
+            "p90": 3496.0,
+            "p100": 138673.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.6696941978298117,
+            "p10": 15.455189432017503,
+            "p25": 28.89580349624157,
+            "p50": 68.8459273763001,
+            "p75": 193.85601510107517,
+            "p90": 503.93419659137766,
+            "p100": 15665.718874147162
+          },
+          "row_count_weighted_leaf_depth": 8.668212022085592,
+          "hessian_weighted_leaf_depth": 8.48522494001554,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 6.9130721851743555,
+            "p10": 7.4913315206484175,
+            "p25": 7.830849132524058,
+            "p50": 8.748172045969799,
+            "p75": 9.44199345419033,
+            "p90": 9.686622211303916,
+            "p100": 9.864642535939465
+          },
+          "fraction_leaves_below_min_child_samples": 0.06013616201055194,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.12473280367711564,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.2819739784760234,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 81280,
+          "leaves_per_tree": {
+            "p0": 127.0,
+            "p10": 127.0,
+            "p25": 127.0,
+            "p50": 127.0,
+            "p75": 127.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 6.0,
+            "p25": 7.0,
+            "p50": 8.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 18.0,
+            "p10": 156.0,
+            "p25": 246.0,
+            "p50": 505.0,
+            "p75": 1233.25,
+            "p90": 3274.0,
+            "p100": 103280.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 2.0739587163552633,
+            "p10": 16.603338146663738,
+            "p25": 29.27691795118153,
+            "p50": 55.415899803629145,
+            "p75": 119.59416758264706,
+            "p90": 277.4666333811359,
+            "p100": 32724.431495077908
+          },
+          "row_count_weighted_leaf_depth": 8.505311121242045,
+          "hessian_weighted_leaf_depth": 8.268539851737199,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 7.029520730584987,
+            "p10": 7.705940877420965,
+            "p25": 8.130490986166082,
+            "p50": 8.59954610183749,
+            "p75": 8.92504204380036,
+            "p90": 9.101163132253763,
+            "p100": 9.552749825362962
+          },
+          "fraction_leaves_below_min_child_samples": 0.041744586614173226,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.09045275590551181,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.24131397637795277,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.0827678091124882,
+          "64": 0.5875316322294787,
+          "128": 0.40125696775694586,
+          "256": 0.2701444489702756,
+          "512": 0.19628725783920786,
+          "640": 0.1761712150636494
+        },
+        "first": 1.0827678091124882,
+        "last": 0.1761712150636494,
+        "minimum": 0.1761712150636494,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.00953898065972869,
+          "relative_decrease_percent": 5.13648732239631
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_metrica_legacy_63.joblib",
+      "model_sha256": "6005d2a4e4c59bd0cf7e8bd4ecf8b139fa6a40812adf4ac1d6f7805d163a7720",
+      "receipt_sha256": "572d6875d0c8aee17a1d5bb39b2d45b01e13647c940adf5de822558d35f2cf2c",
+      "heldout": "metrica",
+      "config": "legacy_63",
+      "family": "legacy",
+      "feature_count": 204,
+      "training_rows": 307396,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 120954,
+        "leaves_per_tree": {
+          "p0": 60.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9984375,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 1.0,
+          "p10": 245.0,
+          "p25": 525.0,
+          "p50": 1402.0,
+          "p75": 3772.0,
+          "p90": 8861.0,
+          "p100": 161240.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 0.3261782237677825,
+          "p10": 32.04407576953527,
+          "p25": 70.81861509755254,
+          "p50": 194.53270702215377,
+          "p75": 526.6893001792487,
+          "p90": 1257.5934947239234,
+          "p100": 45088.34545172751
+        },
+        "row_count_weighted_leaf_depth": 6.7857329417447545,
+        "hessian_weighted_leaf_depth": 6.960763420039752,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 5.712008294200158,
+          "p10": 6.311882361412155,
+          "p25": 6.537386742132967,
+          "p50": 6.783650504681011,
+          "p75": 7.00297959924249,
+          "p90": 7.281100413662282,
+          "p100": 7.9179937502793685
+        },
+        "fraction_leaves_below_min_child_samples": 0.014782479289647304,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.03327711361343982,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.09659870694644244,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40314,
+          "leaves_per_tree": {
+            "p0": 60.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9953125,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 1.0,
+            "p10": 261.0,
+            "p25": 581.0,
+            "p50": 1596.0,
+            "p75": 4040.0,
+            "p90": 9203.700000000004,
+            "p100": 161240.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.3261782237677825,
+            "p10": 34.67632254362106,
+            "p25": 85.02287316854927,
+            "p50": 244.21615383794415,
+            "p75": 652.4736819819373,
+            "p90": 1490.9176493197228,
+            "p100": 23127.55443864735
+          },
+          "row_count_weighted_leaf_depth": 6.801597051448753,
+          "hessian_weighted_leaf_depth": 7.068514674870527,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.728464793148805,
+            "p10": 6.2858603838114355,
+            "p25": 6.498445889685897,
+            "p50": 6.75772726497892,
+            "p75": 7.097167728843511,
+            "p90": 7.366133483400039,
+            "p100": 7.9179937502793685
+          },
+          "fraction_leaves_below_min_child_samples": 0.012402639281639132,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.02931983926179491,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.08733938582130277,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 14.0,
+            "p10": 262.0,
+            "p25": 575.0,
+            "p50": 1561.0,
+            "p75": 4058.0,
+            "p90": 9238.399999999994,
+            "p100": 133583.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.6454653430264433,
+            "p10": 35.634434829850214,
+            "p25": 84.25529042036942,
+            "p50": 237.35226037772372,
+            "p75": 643.327620636468,
+            "p90": 1488.8053492985653,
+            "p100": 20563.96165085584
+          },
+          "row_count_weighted_leaf_depth": 6.78704638419654,
+          "hessian_weighted_leaf_depth": 7.061850465947889,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.712008294200158,
+            "p10": 6.2746186281201775,
+            "p25": 6.5143097862590515,
+            "p50": 6.784598836886154,
+            "p75": 7.037934101889594,
+            "p90": 7.341672676449402,
+            "p100": 7.881544313581904
+          },
+          "fraction_leaves_below_min_child_samples": 0.01185515873015873,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.028149801587301588,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.08655753968253968,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 10.0,
+            "p10": 221.0,
+            "p25": 445.0,
+            "p50": 1115.0,
+            "p75": 3150.0,
+            "p90": 8008.199999999997,
+            "p100": 142063.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.407587512047029,
+            "p10": 27.75969857007731,
+            "p25": 54.39317219925579,
+            "p50": 132.79145033998066,
+            "p75": 331.65771083626896,
+            "p90": 744.940576514788,
+            "p100": 45088.34545172751
+          },
+          "row_count_weighted_leaf_depth": 6.76855538958897,
+          "hessian_weighted_leaf_depth": 6.6593358451692675,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.8848466112932485,
+            "p10": 6.394309768565341,
+            "p25": 6.581416225691727,
+            "p50": 6.8101693499120906,
+            "p75": 6.962322893142778,
+            "p90": 7.0535437716004195,
+            "p100": 7.642237454060559
+          },
+          "fraction_leaves_below_min_child_samples": 0.020089285714285716,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.04236111111111111,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.11589781746031746,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.085832587393127,
+          "64": 0.6226706167514974,
+          "128": 0.4507822629439102,
+          "256": 0.3359289327527317,
+          "512": 0.2759838977445411,
+          "640": 0.26092467197402874
+        },
+        "first": 1.085832587393127,
+        "last": 0.26092467197402874,
+        "minimum": 0.26092467197402874,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.007083357349236208,
+          "relative_decrease_percent": 2.642964603382248
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_metrica_geometry_63.joblib",
+      "model_sha256": "15b161597e56c57b0de16e09eff3b43d0dfaf3c4d34088ba0343d0a4319cb01e",
+      "receipt_sha256": "1c39f8de446433bf7348b89875b96e32f20d0d7d4b9e65738dd36477bcf40749",
+      "heldout": "metrica",
+      "config": "geometry_63",
+      "family": "geometry",
+      "feature_count": 227,
+      "training_rows": 307396,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 120960,
+        "leaves_per_tree": {
+          "p0": 63.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 1.0,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 16.0,
+          "p10": 249.0,
+          "p25": 537.0,
+          "p50": 1408.5,
+          "p75": 3764.0,
+          "p90": 8894.100000000006,
+          "p100": 138047.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 0.7993408023612564,
+          "p10": 32.7935520304367,
+          "p25": 71.68385060733999,
+          "p50": 195.01212171837687,
+          "p75": 525.2819594722241,
+          "p90": 1256.536213098095,
+          "p100": 43767.231373630464
+        },
+        "row_count_weighted_leaf_depth": 6.78669492841082,
+        "hessian_weighted_leaf_depth": 6.958145779737103,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 5.7322030452725095,
+          "p10": 6.326905522150372,
+          "p25": 6.550785446298748,
+          "p50": 6.7928401230417155,
+          "p75": 7.013135483350382,
+          "p90": 7.2549044974729515,
+          "p100": 7.853896354414136
+        },
+        "fraction_leaves_below_min_child_samples": 0.013888888888888888,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.032027116402116404,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.0939484126984127,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 29.0,
+            "p10": 267.0,
+            "p25": 593.0,
+            "p50": 1583.0,
+            "p75": 4073.0,
+            "p90": 9264.099999999999,
+            "p100": 133199.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.4699702819343645,
+            "p10": 35.7436591337435,
+            "p25": 85.26830400642939,
+            "p50": 240.5723672475433,
+            "p75": 643.878692090977,
+            "p90": 1492.1561964328514,
+            "p100": 20071.75142839551
+          },
+          "row_count_weighted_leaf_depth": 6.784961201571026,
+          "hessian_weighted_leaf_depth": 7.060038014051414,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.7927750156640325,
+            "p10": 6.2764143315910745,
+            "p25": 6.508254166897837,
+            "p50": 6.761214710309455,
+            "p75": 7.078004701136472,
+            "p90": 7.297379627480253,
+            "p100": 7.853896354414136
+          },
+          "fraction_leaves_below_min_child_samples": 0.011731150793650794,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.02795138888888889,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.08539186507936508,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 16.0,
+            "p10": 264.0,
+            "p25": 582.0,
+            "p50": 1590.0,
+            "p75": 4096.25,
+            "p90": 9279.399999999994,
+            "p100": 121476.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.7993408023612564,
+            "p10": 36.019679153384644,
+            "p25": 84.56247921939939,
+            "p50": 240.93635126919253,
+            "p75": 649.3697090160567,
+            "p90": 1504.4388564312885,
+            "p100": 20563.759680069983
+          },
+          "row_count_weighted_leaf_depth": 6.7945621689563955,
+          "hessian_weighted_leaf_depth": 7.065513567272594,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.7322030452725095,
+            "p10": 6.293049777733992,
+            "p25": 6.499659222922281,
+            "p50": 6.77880014548535,
+            "p75": 7.071517210658628,
+            "p90": 7.347109076816629,
+            "p100": 7.842023555038974
+          },
+          "fraction_leaves_below_min_child_samples": 0.01121031746031746,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.028373015873015873,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.0853670634920635,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 17.0,
+            "p10": 227.0,
+            "p25": 458.0,
+            "p50": 1128.0,
+            "p75": 3081.0,
+            "p90": 8012.0999999999985,
+            "p100": 138047.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 2.7900380534119895,
+            "p10": 28.532650845404714,
+            "p25": 55.937339540876565,
+            "p50": 134.103949241573,
+            "p75": 328.210899945203,
+            "p90": 748.078244251385,
+            "p100": 43767.231373630464
+          },
+          "row_count_weighted_leaf_depth": 6.78056141470504,
+          "hessian_weighted_leaf_depth": 6.656303384896588,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.793243743566584,
+            "p10": 6.451055141244333,
+            "p25": 6.626412200180812,
+            "p50": 6.824844314838343,
+            "p75": 6.954488008838236,
+            "p90": 7.054497335680649,
+            "p100": 7.732372074525289
+          },
+          "fraction_leaves_below_min_child_samples": 0.018725198412698412,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.03975694444444444,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.11108630952380952,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.0856275057488904,
+          "64": 0.6221570985059297,
+          "128": 0.45058960819251176,
+          "256": 0.33579067636511184,
+          "512": 0.2761056145801808,
+          "640": 0.26116161988748055
+        },
+        "first": 1.0856275057488904,
+        "last": 0.26116161988748055,
+        "minimum": 0.26116161988748055,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.007091514279849165,
+          "relative_decrease_percent": 2.6435904660952265
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_metrica_full_63.joblib",
+      "model_sha256": "b23ec7238a04c29931be3924680bc582f8e2d91b35426e5c221a783a110783b4",
+      "receipt_sha256": "c5f9cd4ecdbdf33c1cc98d6d80274daf588a7ac618a77894f2e140c2b7dc0c19",
+      "heldout": "metrica",
+      "config": "full_63",
+      "family": "full",
+      "feature_count": 1003,
+      "training_rows": 307396,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 120950,
+        "leaves_per_tree": {
+          "p0": 53.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9994791666666667,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 7.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 3.0,
+          "p10": 253.0,
+          "p25": 532.0,
+          "p50": 1376.0,
+          "p75": 3711.0,
+          "p90": 8824.0,
+          "p100": 136170.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 0.30141471326351066,
+          "p10": 31.780998780950906,
+          "p25": 67.84330925205722,
+          "p50": 175.6747691705823,
+          "p75": 474.0491890273988,
+          "p90": 1182.8912397041922,
+          "p100": 44091.1561146304
+        },
+        "row_count_weighted_leaf_depth": 6.797216557769441,
+        "hessian_weighted_leaf_depth": 6.981612366306212,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 5.917443197750261,
+          "p10": 6.359871684894671,
+          "p25": 6.5503371264115335,
+          "p50": 6.820692188423005,
+          "p75": 6.987024910746603,
+          "p90": 7.18638059592224,
+          "p100": 7.9359454758266414
+        },
+        "fraction_leaves_below_min_child_samples": 0.01291442744935924,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.029747829681686648,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.09200496072757337,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 3.0,
+            "p10": 254.0,
+            "p25": 552.0,
+            "p50": 1497.0,
+            "p75": 3987.0,
+            "p90": 9253.0,
+            "p100": 108035.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.30141471326351066,
+            "p10": 32.203770419489594,
+            "p25": 75.89348604111001,
+            "p50": 213.12530792388134,
+            "p75": 583.5172411010426,
+            "p90": 1423.6294877461157,
+            "p100": 23193.588245473802
+          },
+          "row_count_weighted_leaf_depth": 6.8182212237599265,
+          "hessian_weighted_leaf_depth": 7.1210678554893025,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.956608673388523,
+            "p10": 6.375407171182436,
+            "p25": 6.5503900880129,
+            "p50": 6.8234724086361185,
+            "p75": 7.024768147306367,
+            "p90": 7.276631531521218,
+            "p100": 7.928225300724018
+          },
+          "fraction_leaves_below_min_child_samples": 0.012896825396825396,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.029613095238095237,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.09117063492063492,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40310,
+          "leaves_per_tree": {
+            "p0": 53.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9984375,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 5.0,
+            "p10": 260.0,
+            "p25": 572.0,
+            "p50": 1507.0,
+            "p75": 4023.75,
+            "p90": 9161.199999999997,
+            "p100": 115423.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.4642306651221587,
+            "p10": 33.34551550429315,
+            "p25": 78.16674029052956,
+            "p50": 216.66328430056456,
+            "p75": 592.5988848199195,
+            "p90": 1414.8734834065183,
+            "p100": 23571.22305279225
+          },
+          "row_count_weighted_leaf_depth": 6.814113522186227,
+          "hessian_weighted_leaf_depth": 7.111621300703177,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.917443197750261,
+            "p10": 6.366549659723475,
+            "p25": 6.537144091789869,
+            "p50": 6.814124508608259,
+            "p75": 7.011606095060826,
+            "p90": 7.289485832292952,
+            "p100": 7.9359454758266414
+          },
+          "fraction_leaves_below_min_child_samples": 0.013520218308112132,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.02877697841726619,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.08794343835276607,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 40320,
+          "leaves_per_tree": {
+            "p0": 63.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 12.0,
+            "p10": 245.0,
+            "p25": 485.0,
+            "p50": 1165.0,
+            "p75": 3126.0,
+            "p90": 7968.199999999997,
+            "p100": 136170.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 1.6660439508268612,
+            "p10": 30.465802920365242,
+            "p25": 56.88554209563881,
+            "p50": 126.34158025705256,
+            "p75": 292.50975117126654,
+            "p90": 680.8498946387786,
+            "p100": 44091.1561146304
+          },
+          "row_count_weighted_leaf_depth": 6.759314927362169,
+          "hessian_weighted_leaf_depth": 6.597843521136937,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.962047363655925,
+            "p10": 6.342770055651336,
+            "p25": 6.573239795043154,
+            "p50": 6.824404330955419,
+            "p75": 6.961395339818527,
+            "p90": 7.041838708397256,
+            "p100": 7.488957027771113
+          },
+          "fraction_leaves_below_min_child_samples": 0.012326388888888888,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.030853174603174605,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.09689980158730159,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.0851387067952731,
+          "64": 0.6035877772434826,
+          "128": 0.425182318413093,
+          "256": 0.30560482059289545,
+          "512": 0.24206377368417165,
+          "640": 0.22570300978867983
+        },
+        "first": 1.0851387067952731,
+        "last": 0.22570300978867983,
+        "minimum": 0.22570300978867983,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.007721321279288762,
+          "relative_decrease_percent": 3.307847662650242
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_metrica_full_127.joblib",
+      "model_sha256": "06d2b74fa2811cb34f8470f970083b7b8f77e6f8cf3ee8babff70b83e80f6de8",
+      "receipt_sha256": "b1a75b296f0dd0df86c3279733cdf6f2d45735a9a7d143cbe20ec587881be441",
+      "heldout": "metrica",
+      "config": "full_127",
+      "family": "full",
+      "feature_count": 1003,
+      "training_rows": 307396,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 127,
+        "max_depth": 10
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 243821,
+        "leaves_per_tree": {
+          "p0": 111.0,
+          "p10": 127.0,
+          "p25": 127.0,
+          "p50": 127.0,
+          "p75": 127.0,
+          "p90": 127.0,
+          "p100": 127.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "tree_maximum_depth_counts": {
+          "10": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9989583333333333,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 6.0,
+          "p25": 7.0,
+          "p50": 9.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "leaf_training_row_count": {
+          "p0": 3.0,
+          "p10": 168.0,
+          "p25": 278.0,
+          "p50": 608.0,
+          "p75": 1540.0,
+          "p90": 3906.0,
+          "p100": 133864.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 0.3664694719482203,
+          "p10": 20.808477375656366,
+          "p25": 36.17115406692028,
+          "p50": 77.08319090865552,
+          "p75": 198.73521345481277,
+          "p90": 503.7944883783348,
+          "p100": 43324.89084395021
+        },
+        "row_count_weighted_leaf_depth": 8.169881959878905,
+        "hessian_weighted_leaf_depth": 8.433082805354287,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 6.778684195558734,
+          "p10": 7.559250356097064,
+          "p25": 7.7972375606489575,
+          "p50": 8.179584298365096,
+          "p75": 8.486080136850985,
+          "p90": 8.779611028757628,
+          "p100": 9.816042920062198
+        },
+        "fraction_leaves_below_min_child_samples": 0.026736827426677767,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.07160580917968509,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.2048018833488502,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 81280,
+          "leaves_per_tree": {
+            "p0": 127.0,
+            "p10": 127.0,
+            "p25": 127.0,
+            "p50": 127.0,
+            "p75": 127.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 6.0,
+            "p25": 8.0,
+            "p50": 9.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 13.0,
+            "p10": 178.0,
+            "p25": 300.0,
+            "p50": 669.0,
+            "p75": 1701.0,
+            "p90": 4149.100000000006,
+            "p100": 126555.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.5823767198598944,
+            "p10": 23.982527431979545,
+            "p25": 42.79239460712415,
+            "p50": 96.97762626083568,
+            "p75": 250.4735154764494,
+            "p90": 610.0863025622446,
+            "p100": 19463.09899765253
+          },
+          "row_count_weighted_leaf_depth": 8.188759063885096,
+          "hessian_weighted_leaf_depth": 8.605993902908507,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 6.992648643373817,
+            "p10": 7.55474588869322,
+            "p25": 7.786062976741761,
+            "p50": 8.189078673967789,
+            "p75": 8.544170193954914,
+            "p90": 8.83833316897194,
+            "p100": 9.787496285682884
+          },
+          "fraction_leaves_below_min_child_samples": 0.020829232283464567,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.06048228346456693,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.18363681102362206,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 81261,
+          "leaves_per_tree": {
+            "p0": 111.0,
+            "p10": 127.0,
+            "p25": 127.0,
+            "p50": 127.0,
+            "p75": 127.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.996875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 6.0,
+            "p25": 8.0,
+            "p50": 9.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 6.0,
+            "p10": 177.0,
+            "p25": 300.0,
+            "p50": 666.0,
+            "p75": 1698.0,
+            "p90": 4121.0,
+            "p100": 133864.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.3664694719482203,
+            "p10": 23.733551699202508,
+            "p25": 42.96341493586078,
+            "p50": 97.59882286947686,
+            "p75": 252.73861879110336,
+            "p90": 606.629931807518,
+            "p100": 21232.07971267402
+          },
+          "row_count_weighted_leaf_depth": 8.194939247618834,
+          "hessian_weighted_leaf_depth": 8.60085589481067,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 7.071836406269684,
+            "p10": 7.53970885512268,
+            "p25": 7.770497108474144,
+            "p50": 8.153153582398463,
+            "p75": 8.523398389012389,
+            "p90": 8.918062439618266,
+            "p100": 9.816042920062198
+          },
+          "fraction_leaves_below_min_child_samples": 0.021757054429554154,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.06159166143660551,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.18374127810388746,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 81280,
+          "leaves_per_tree": {
+            "p0": 127.0,
+            "p10": 127.0,
+            "p25": 127.0,
+            "p50": 127.0,
+            "p75": 127.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 1.0,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 6.0,
+            "p25": 7.0,
+            "p50": 9.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 3.0,
+            "p10": 154.0,
+            "p25": 242.0,
+            "p50": 508.0,
+            "p75": 1240.0,
+            "p90": 3367.0,
+            "p100": 133636.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.6178182972362255,
+            "p10": 16.753776043537073,
+            "p25": 28.417386368848383,
+            "p50": 52.02846111560939,
+            "p75": 113.77430594759062,
+            "p90": 270.1787228310483,
+            "p100": 43324.89084395021
+          },
+          "row_count_weighted_leaf_depth": 8.125947568132787,
+          "hessian_weighted_leaf_depth": 7.939179324027468,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 6.778684195558734,
+            "p10": 7.570415412799731,
+            "p25": 7.846403518567071,
+            "p50": 8.19904994149891,
+            "p75": 8.452047309506302,
+            "p90": 8.575012810381516,
+            "p100": 9.421891194342269
+          },
+          "fraction_leaves_below_min_child_samples": 0.03762303149606299,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.09274114173228347,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.24702263779527558,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.0847867102527469,
+          "64": 0.5891035588557682,
+          "128": 0.4038856319700345,
+          "256": 0.27709359260383587,
+          "512": 0.20504573831346623,
+          "640": 0.18555533067292884
+        },
+        "first": 1.0847867102527469,
+        "last": 0.18555533067292884,
+        "minimum": 0.18555533067292884,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.009135853854690318,
+          "relative_decrease_percent": 4.69248460163038
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_skillcorner_legacy_63.joblib",
+      "model_sha256": "076e8bff3f521feeff5f868693dd0519bd909c9f42e7709226e0a31d6b91792d",
+      "receipt_sha256": "a491d3e56204ce0392c07a77fbe4338a4d200f28b8dcb439c2913960f4183ebd",
+      "heldout": "skillcorner",
+      "config": "legacy_63",
+      "family": "legacy",
+      "feature_count": 204,
+      "training_rows": 186484,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "metrica_1",
+        "metrica_2"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 120367,
+        "leaves_per_tree": {
+          "p0": 42.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9296875,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 7.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 1.0,
+          "p10": 133.0,
+          "p25": 222.0,
+          "p50": 583.0,
+          "p75": 1761.0,
+          "p90": 4832.0,
+          "p100": 88000.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 0.21656161552527864,
+          "p10": 11.707044819742439,
+          "p25": 25.96688030124642,
+          "p50": 67.46789511293173,
+          "p75": 203.64181358739734,
+          "p90": 532.8129493355751,
+          "p100": 25622.51044859737
+        },
+        "row_count_weighted_leaf_depth": 6.517670418410015,
+        "hessian_weighted_leaf_depth": 6.882204796384003,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 4.738232749079347,
+          "p10": 5.835299224046878,
+          "p25": 6.142830438998927,
+          "p50": 6.4928782571136665,
+          "p75": 6.892690701158391,
+          "p90": 7.338999675954267,
+          "p100": 7.934115075693579
+        },
+        "fraction_leaves_below_min_child_samples": 0.07499563833941196,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.1340317528890809,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.27446060797394634,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40222,
+          "leaves_per_tree": {
+            "p0": 48.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9796875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 3.0,
+            "p10": 161.0,
+            "p25": 303.0,
+            "p50": 759.5,
+            "p75": 2086.0,
+            "p90": 5348.800000000003,
+            "p100": 74986.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.21656161552527864,
+            "p10": 18.11437903707847,
+            "p25": 35.22136466065422,
+            "p50": 89.11279008677229,
+            "p75": 244.48876209612354,
+            "p90": 605.0180555280182,
+            "p100": 16003.010051973164
+          },
+          "row_count_weighted_leaf_depth": 6.621174789523053,
+          "hessian_weighted_leaf_depth": 6.926067115321712,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.5253047084916345,
+            "p10": 6.077316209610985,
+            "p25": 6.236868943902222,
+            "p50": 6.55477860026135,
+            "p75": 6.920712545905607,
+            "p90": 7.303404063465779,
+            "p100": 7.934115075693579
+          },
+          "fraction_leaves_below_min_child_samples": 0.0456963850629009,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.08599771269454527,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.19340162100343095,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40223,
+          "leaves_per_tree": {
+            "p0": 42.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9796875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 1.0,
+            "p10": 161.0,
+            "p25": 300.0,
+            "p50": 748.0,
+            "p75": 2009.5,
+            "p90": 5343.0,
+            "p100": 88000.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.3044307175150601,
+            "p10": 17.652386388555172,
+            "p25": 34.646460903575644,
+            "p50": 86.56476689456031,
+            "p75": 235.86219064565375,
+            "p90": 592.5935754649341,
+            "p100": 16248.264751136303
+          },
+          "row_count_weighted_leaf_depth": 6.633779590215393,
+          "hessian_weighted_leaf_depth": 6.928194952338815,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.584043366833496,
+            "p10": 6.051811869453004,
+            "p25": 6.2319044487999165,
+            "p50": 6.5687828514547375,
+            "p75": 7.017490752554866,
+            "p90": 7.378387140364177,
+            "p100": 7.904759667024704
+          },
+          "fraction_leaves_below_min_child_samples": 0.046739427690624766,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.08641821843224026,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.19399348631380056,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 39922,
+          "leaves_per_tree": {
+            "p0": 50.0,
+            "p10": 61.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.8296875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 2.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 3.0,
+            "p10": 108.0,
+            "p25": 157.0,
+            "p50": 302.0,
+            "p75": 1122.0,
+            "p90": 3768.9000000000015,
+            "p100": 77333.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.2928165728226365,
+            "p10": 5.853658476553391,
+            "p25": 13.914187363639938,
+            "p50": 38.22672815620899,
+            "p75": 119.73405521886889,
+            "p90": 399.8996404197539,
+            "p100": 25622.51044859737
+          },
+          "row_count_weighted_leaf_depth": 6.298056875491601,
+          "hessian_weighted_leaf_depth": 6.774038309847747,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 4.738232749079347,
+            "p10": 5.465294308202332,
+            "p25": 5.812477555514027,
+            "p50": 6.262046133580597,
+            "p75": 6.753403579001468,
+            "p90": 7.251748643279485,
+            "p100": 7.868698395650131
+          },
+          "fraction_leaves_below_min_child_samples": 0.13298431942287461,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.23039927859325685,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.43720254496267724,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.0604860351045378,
+          "64": 0.5330976055220921,
+          "128": 0.34148216562415995,
+          "256": 0.21601873544711708,
+          "512": 0.15676263845012717,
+          "640": 0.14233652611958392
+        },
+        "first": 1.0604860351045378,
+        "last": 0.14233652611958392,
+        "minimum": 0.14233652611958392,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.00661109175940891,
+          "relative_decrease_percent": 4.438534736943464
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_skillcorner_geometry_63.joblib",
+      "model_sha256": "80b6834490726adc8c8e8cc7a9b02f7907ce411b7180acdf149979fad7c0047d",
+      "receipt_sha256": "bb1c57a13bef1d91649576b6fd43fa092d11b210a10b7cbbaa8fa358fdd5f5af",
+      "heldout": "skillcorner",
+      "config": "geometry_63",
+      "family": "geometry",
+      "feature_count": 227,
+      "training_rows": 186484,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "metrica_1",
+        "metrica_2"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 120499,
+        "leaves_per_tree": {
+          "p0": 46.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9520833333333333,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 1.0,
+          "p10": 134.0,
+          "p25": 223.0,
+          "p50": 576.0,
+          "p75": 1767.0,
+          "p90": 4880.0,
+          "p100": 106987.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 0.13173961418215174,
+          "p10": 12.379172494588419,
+          "p25": 26.2637184523046,
+          "p50": 66.4142950666137,
+          "p75": 200.23558257392142,
+          "p90": 531.3044759385288,
+          "p100": 25772.818604893982
+        },
+        "row_count_weighted_leaf_depth": 6.481726574585841,
+        "hessian_weighted_leaf_depth": 6.874805797726565,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 4.636116195034962,
+          "p10": 5.745810255094496,
+          "p25": 6.1079464637827146,
+          "p50": 6.46254800907484,
+          "p75": 6.851726651504111,
+          "p90": 7.317673092416718,
+          "p100": 7.951233582419941
+        },
+        "fraction_leaves_below_min_child_samples": 0.07116241628561233,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.13228325546270092,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.27391928563722523,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40132,
+          "leaves_per_tree": {
+            "p0": 46.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9703125,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 5.0,
+            "p10": 157.0,
+            "p25": 292.0,
+            "p50": 751.0,
+            "p75": 2081.0,
+            "p90": 5411.0,
+            "p100": 97412.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.13173961418215174,
+            "p10": 17.389573431573808,
+            "p25": 34.08701950550312,
+            "p50": 87.34749008374638,
+            "p75": 238.1837822450325,
+            "p90": 604.9888336772102,
+            "p100": 15933.791919909418
+          },
+          "row_count_weighted_leaf_depth": 6.656118299718821,
+          "hessian_weighted_leaf_depth": 6.940849402724906,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.60623575984461,
+            "p10": 6.083357842308109,
+            "p25": 6.25720399135257,
+            "p50": 6.577815278188355,
+            "p75": 7.019980979212084,
+            "p90": 7.390527207050926,
+            "p100": 7.924311465523018
+          },
+          "fraction_leaves_below_min_child_samples": 0.04876407854081531,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.09109937207216187,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.20121100368783015,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40239,
+          "leaves_per_tree": {
+            "p0": 51.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.98125,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 1.0,
+            "p10": 157.0,
+            "p25": 290.0,
+            "p50": 735.0,
+            "p75": 2050.0,
+            "p90": 5410.200000000004,
+            "p100": 106987.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.38017742440570046,
+            "p10": 17.28581887879409,
+            "p25": 33.77018328383565,
+            "p50": 85.50787369906902,
+            "p75": 235.85114080063067,
+            "p90": 607.4919625802902,
+            "p100": 16284.689247235656
+          },
+          "row_count_weighted_leaf_depth": 6.652303434180188,
+          "hessian_weighted_leaf_depth": 6.944003750416646,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.589498038426718,
+            "p10": 6.070104625122772,
+            "p25": 6.261965519301693,
+            "p50": 6.588985939265411,
+            "p75": 6.992948425696221,
+            "p90": 7.3999018516885045,
+            "p100": 7.951233582419941
+          },
+          "fraction_leaves_below_min_child_samples": 0.04808767613509282,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.089863068167698,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.20249012152389473,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 40128,
+          "leaves_per_tree": {
+            "p0": 50.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9046875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 2.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 3.0,
+            "p10": 114.0,
+            "p25": 162.0,
+            "p50": 318.0,
+            "p75": 1093.0,
+            "p90": 3720.600000000006,
+            "p100": 77311.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.3090569641208275,
+            "p10": 7.189482086594216,
+            "p25": 15.844749815703834,
+            "p50": 40.41758272703737,
+            "p75": 117.63119409314822,
+            "p90": 380.85507110860226,
+            "p100": 25772.818604893982
+          },
+          "row_count_weighted_leaf_depth": 6.1367579898585145,
+          "hessian_weighted_leaf_depth": 6.711366640338781,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 4.636116195034962,
+            "p10": 5.35526644256673,
+            "p25": 5.675507001422858,
+            "p50": 6.084744644131396,
+            "p75": 6.543535615396804,
+            "p90": 6.943359836205508,
+            "p100": 7.907996036793552
+          },
+          "fraction_leaves_below_min_child_samples": 0.11670155502392345,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.21600877192982457,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.4182615629984051,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.060345087455921,
+          "64": 0.5327219470316165,
+          "128": 0.34081271940582836,
+          "256": 0.215276877300919,
+          "512": 0.15573835837187247,
+          "640": 0.14128358274008876
+        },
+        "first": 1.060345087455921,
+        "last": 0.14128358274008876,
+        "minimum": 0.14128358274008876,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.0066422245929260715,
+          "relative_decrease_percent": 4.490240555505575
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_skillcorner_full_63.joblib",
+      "model_sha256": "cb357c9f5dd970acb48c06d7ba0e1b1811f8510fc07dd0b751d65a2b679caa83",
+      "receipt_sha256": "f4f2ccae71138c92010ee2762726218b6d3ca5d3dc7eb54ee96ef52537c093da",
+      "heldout": "skillcorner",
+      "config": "full_63",
+      "family": "full",
+      "feature_count": 1003,
+      "training_rows": 186484,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "metrica_1",
+        "metrica_2"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 63,
+        "max_depth": 8
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 119882,
+        "leaves_per_tree": {
+          "p0": 42.0,
+          "p10": 63.0,
+          "p25": 63.0,
+          "p50": 63.0,
+          "p75": 63.0,
+          "p90": 63.0,
+          "p100": 63.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "tree_maximum_depth_counts": {
+          "8": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.9182291666666667,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p50": 7.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "leaf_training_row_count": {
+          "p0": 2.0,
+          "p10": 128.0,
+          "p25": 205.0,
+          "p50": 514.0,
+          "p75": 1565.0,
+          "p90": 4715.900000000009,
+          "p100": 99675.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 0.26084031630307425,
+          "p10": 11.383493456809086,
+          "p25": 21.926459255628288,
+          "p50": 54.875128767453134,
+          "p75": 167.93983038913575,
+          "p90": 466.46138240225287,
+          "p100": 25958.40073709935
+        },
+        "row_count_weighted_leaf_depth": 6.711234036406516,
+        "hessian_weighted_leaf_depth": 6.958337183899838,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 4.880473682094173,
+          "p10": 5.8832744942749375,
+          "p25": 6.274436604532394,
+          "p50": 6.706486306689861,
+          "p75": 7.176116133467044,
+          "p90": 7.610100067208874,
+          "p100": 7.946943398249541
+        },
+        "fraction_leaves_below_min_child_samples": 0.0825228141005322,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.1498807160374368,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.2998448474333094,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 8.0,
+          "p10": 8.0,
+          "p25": 8.0,
+          "p50": 8.0,
+          "p75": 8.0,
+          "p90": 8.0,
+          "p100": 8.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 40183,
+          "leaves_per_tree": {
+            "p0": 49.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9703125,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 4.0,
+            "p10": 145.0,
+            "p25": 255.0,
+            "p50": 644.0,
+            "p75": 1823.0,
+            "p90": 5160.400000000009,
+            "p100": 99675.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.26084031630307425,
+            "p10": 14.602207894297315,
+            "p25": 28.174991504405625,
+            "p50": 72.92660064436495,
+            "p75": 207.37036892399192,
+            "p90": 533.2172759855175,
+            "p100": 13402.857598766685
+          },
+          "row_count_weighted_leaf_depth": 6.777103890243509,
+          "hessian_weighted_leaf_depth": 6.882213876011027,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.541836167089999,
+            "p10": 6.034906874377176,
+            "p25": 6.424078095969154,
+            "p50": 6.72592882408687,
+            "p75": 7.161904530725645,
+            "p90": 7.570682641496004,
+            "p100": 7.923587906384974
+          },
+          "fraction_leaves_below_min_child_samples": 0.058333125948784315,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.10947415573750094,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.23544782619515717,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 40255,
+          "leaves_per_tree": {
+            "p0": 52.0,
+            "p10": 63.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.9828125,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 3.0,
+            "p10": 148.0,
+            "p25": 261.0,
+            "p50": 651.0,
+            "p75": 1807.0,
+            "p90": 5179.0,
+            "p100": 93574.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.4266024110838771,
+            "p10": 15.219722035864834,
+            "p25": 29.201038750819862,
+            "p50": 73.12143286503851,
+            "p75": 208.90721962589305,
+            "p90": 526.4889515280024,
+            "p100": 13623.75056308508
+          },
+          "row_count_weighted_leaf_depth": 6.769232070328865,
+          "hessian_weighted_leaf_depth": 6.881415096106217,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 5.390643659344936,
+            "p10": 6.089079213730878,
+            "p25": 6.36157052038676,
+            "p50": 6.7206423766742684,
+            "p75": 7.170349379995336,
+            "p90": 7.536081102059948,
+            "p100": 7.946943398249541
+          },
+          "fraction_leaves_below_min_child_samples": 0.054229288287169296,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.10341572475468885,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.2293131288038753,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 39444,
+          "leaves_per_tree": {
+            "p0": 42.0,
+            "p10": 57.0,
+            "p25": 63.0,
+            "p50": 63.0,
+            "p75": 63.0,
+            "p90": 63.0,
+            "p100": 63.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "tree_maximum_depth_counts": {
+            "8": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.8015625,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 2.0,
+            "p10": 5.0,
+            "p25": 6.0,
+            "p50": 7.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "leaf_training_row_count": {
+            "p0": 2.0,
+            "p10": 107.0,
+            "p25": 154.0,
+            "p50": 301.0,
+            "p75": 978.0,
+            "p90": 3680.0,
+            "p100": 77097.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.332202649442479,
+            "p10": 7.3791589892935,
+            "p25": 14.14948780564009,
+            "p50": 32.2212298437953,
+            "p75": 85.46767009887844,
+            "p90": 306.2118091170212,
+            "p100": 25958.40073709935
+          },
+          "row_count_weighted_leaf_depth": 6.587366148647176,
+          "hessian_weighted_leaf_depth": 7.142268697194489,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 4.880473682094173,
+            "p10": 5.510604544823716,
+            "p25": 5.974917122325964,
+            "p50": 6.6282266680648565,
+            "p75": 7.1865235667090275,
+            "p90": 7.670511516485603,
+            "p100": 7.924458814927116
+          },
+          "fraction_leaves_below_min_child_samples": 0.1360409694757124,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.23846465875671838,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.4374302809045736,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 8.0,
+            "p10": 8.0,
+            "p25": 8.0,
+            "p50": 8.0,
+            "p75": 8.0,
+            "p90": 8.0,
+            "p100": 8.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.0601673753612353,
+          "64": 0.5186576622495283,
+          "128": 0.320221923508849,
+          "256": 0.18991543617332937,
+          "512": 0.12885862674126555,
+          "640": 0.114379961679556
+        },
+        "first": 1.0601673753612353,
+        "last": 0.114379961679556,
+        "minimum": 0.114379961679556,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.006654463756256945,
+          "relative_decrease_percent": 5.49799260193617
+        }
+      }
+    },
+    {
+      "file": "data/experiments/joint_lgbm_v1/without_skillcorner_full_127.joblib",
+      "model_sha256": "bf8bd95ce98a25730a51b94b1eb35f8ce3bad7e26a337b7f28ea55bd203fdad6",
+      "receipt_sha256": "8a8f3ae9a9088ba43deaf3e9a23fc6fc89c949b7fab850b5f37053f7bb9550d3",
+      "heldout": "skillcorner",
+      "config": "full_127",
+      "family": "full",
+      "feature_count": 1003,
+      "training_rows": 186484,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "metrica_1",
+        "metrica_2"
+      ],
+      "parameters": {
+        "objective": "multiclass",
+        "num_class": 3,
+        "learning_rate": 0.01,
+        "n_estimators": 640,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127,
+        "n_jobs": 1,
+        "random_state": 2026,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1,
+        "num_leaves": 127,
+        "max_depth": 10
+      },
+      "boosting_rounds": 640,
+      "class_trees": 1920,
+      "overall": {
+        "class_trees": 1920,
+        "total_leaves": 228023,
+        "leaves_per_tree": {
+          "p0": 66.0,
+          "p10": 96.0,
+          "p25": 112.0,
+          "p50": 127.0,
+          "p75": 127.0,
+          "p90": 127.0,
+          "p100": 127.0
+        },
+        "maximum_depth_per_tree": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "tree_maximum_depth_counts": {
+          "10": 1920
+        },
+        "fraction_trees_at_leaf_cap": 0.6541666666666667,
+        "fraction_trees_at_depth_cap": 1.0,
+        "all_leaf_depth": {
+          "p0": 1.0,
+          "p10": 6.0,
+          "p25": 7.0,
+          "p50": 9.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "leaf_training_row_count": {
+          "p0": 1.0,
+          "p10": 112.0,
+          "p25": 152.0,
+          "p50": 253.0,
+          "p75": 657.0,
+          "p90": 2001.0,
+          "p100": 76519.0
+        },
+        "leaf_training_hessian_sum": {
+          "p0": 0.16757361861527797,
+          "p10": 7.482859875820577,
+          "p25": 14.166957145091144,
+          "p50": 29.95521595911123,
+          "p75": 71.83625300083077,
+          "p90": 200.38278173488243,
+          "p100": 25881.798930451274
+        },
+        "row_count_weighted_leaf_depth": 8.246103211068155,
+        "hessian_weighted_leaf_depth": 8.368545959192979,
+        "per_tree_row_count_weighted_leaf_depth": {
+          "p0": 6.1755535896198595,
+          "p10": 7.237985949282258,
+          "p25": 7.679230662312998,
+          "p50": 8.224397025543384,
+          "p75": 8.816682189440172,
+          "p90": 9.316559177731706,
+          "p100": 9.842176506064463
+        },
+        "fraction_leaves_below_min_child_samples": 0.1250312468479057,
+        "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.2432342351429461,
+        "fraction_leaves_at_or_below_2_times_min_child_samples": 0.48262675256443427,
+        "first_48_class_trees_maximum_depth": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        },
+        "last_48_class_trees_maximum_depth": {
+          "p0": 10.0,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 10.0,
+          "p75": 10.0,
+          "p90": 10.0,
+          "p100": 10.0
+        }
+      },
+      "by_class": {
+        "H": {
+          "class_trees": 640,
+          "total_leaves": 79666,
+          "leaves_per_tree": {
+            "p0": 66.0,
+            "p10": 120.0,
+            "p25": 127.0,
+            "p50": 127.0,
+            "p75": 127.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.86875,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 6.0,
+            "p25": 7.0,
+            "p50": 9.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 3.0,
+            "p10": 122.0,
+            "p25": 168.0,
+            "p50": 298.0,
+            "p75": 762.0,
+            "p90": 2199.0,
+            "p100": 72045.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.20046064154303067,
+            "p10": 10.309340292355044,
+            "p25": 17.31545634381473,
+            "p50": 35.28762434248347,
+            "p75": 85.81785926187877,
+            "p90": 226.98458613979165,
+            "p100": 13402.358212985098
+          },
+          "row_count_weighted_leaf_depth": 8.308470926685906,
+          "hessian_weighted_leaf_depth": 8.357582165353849,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 6.549055364110541,
+            "p10": 7.206342985581795,
+            "p25": 7.688658107708464,
+            "p50": 8.28172993347265,
+            "p75": 8.929371338356763,
+            "p90": 9.425411974020118,
+            "p100": 9.823678326092358
+          },
+          "fraction_leaves_below_min_child_samples": 0.09310119749956067,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.19660833981874326,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.42194913764968744,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        },
+        "A": {
+          "class_trees": 640,
+          "total_leaves": 79665,
+          "leaves_per_tree": {
+            "p0": 79.0,
+            "p10": 119.9,
+            "p25": 127.0,
+            "p50": 127.0,
+            "p75": 127.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.878125,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 1.0,
+            "p10": 6.0,
+            "p25": 7.0,
+            "p50": 9.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 1.0,
+            "p10": 123.0,
+            "p25": 169.0,
+            "p50": 302.0,
+            "p75": 760.0,
+            "p90": 2135.0,
+            "p100": 68283.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.16757361861527797,
+            "p10": 10.470591788552703,
+            "p25": 17.561527110636234,
+            "p50": 35.797212539822794,
+            "p75": 85.81975547026377,
+            "p90": 226.0479477383197,
+            "p100": 13308.698137246072
+          },
+          "row_count_weighted_leaf_depth": 8.28269601147146,
+          "hessian_weighted_leaf_depth": 8.358956541780998,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 6.519751231097454,
+            "p10": 7.263103595904333,
+            "p25": 7.6322529514109885,
+            "p50": 8.243250399697136,
+            "p75": 8.926578129302813,
+            "p90": 9.398600982471049,
+            "p100": 9.842176506064463
+          },
+          "fraction_leaves_below_min_child_samples": 0.09072993158852696,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.19245590911943763,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.41822632272641685,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        },
+        "D": {
+          "class_trees": 640,
+          "total_leaves": 68692,
+          "leaves_per_tree": {
+            "p0": 69.0,
+            "p10": 85.0,
+            "p25": 96.0,
+            "p50": 108.0,
+            "p75": 123.0,
+            "p90": 127.0,
+            "p100": 127.0
+          },
+          "maximum_depth_per_tree": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "tree_maximum_depth_counts": {
+            "10": 640
+          },
+          "fraction_trees_at_leaf_cap": 0.215625,
+          "fraction_trees_at_depth_cap": 1.0,
+          "all_leaf_depth": {
+            "p0": 2.0,
+            "p10": 5.0,
+            "p25": 7.0,
+            "p50": 9.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "leaf_training_row_count": {
+            "p0": 2.0,
+            "p10": 92.0,
+            "p25": 129.0,
+            "p50": 189.0,
+            "p75": 417.0,
+            "p90": 1466.9000000000015,
+            "p100": 76519.0
+          },
+          "leaf_training_hessian_sum": {
+            "p0": 0.25638983398675863,
+            "p10": 4.111398651287891,
+            "p25": 8.536994321504608,
+            "p50": 18.687059998977936,
+            "p75": 44.77250436274335,
+            "p90": 123.18447860367597,
+            "p100": 25881.798930451274
+          },
+          "row_count_weighted_leaf_depth": 8.147142695047096,
+          "hessian_weighted_leaf_depth": 8.393146586066766,
+          "per_tree_row_count_weighted_leaf_depth": {
+            "p0": 6.1755535896198595,
+            "p10": 7.264415591711304,
+            "p25": 7.7069815338906045,
+            "p50": 8.16252867729213,
+            "p75": 8.537441372630806,
+            "p90": 8.964359413612222,
+            "p100": 9.776106598032118
+          },
+          "fraction_leaves_below_min_child_samples": 0.20184300937518196,
+          "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.35619868398066734,
+          "fraction_leaves_at_or_below_2_times_min_child_samples": 0.6276859022884761,
+          "first_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          },
+          "last_48_class_trees_maximum_depth": {
+            "p0": 10.0,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 10.0,
+            "p75": 10.0,
+            "p90": 10.0,
+            "p100": 10.0
+          }
+        }
+      },
+      "training_loss": {
+        "rounds": 640,
+        "training_multi_logloss_by_round": {
+          "1": 1.059886313245807,
+          "64": 0.5082997286592063,
+          "128": 0.3040388111698254,
+          "256": 0.16793974785329427,
+          "512": 0.10457794337847164,
+          "640": 0.08932121431024742
+        },
+        "first": 1.059886313245807,
+        "last": 0.08932121431024742,
+        "minimum": 0.08932121431024742,
+        "minimum_round": 640,
+        "increases_between_successive_rounds": 0,
+        "last_64_rounds": {
+          "start_round": 576,
+          "end_round": 640,
+          "absolute_decrease": 0.007030260862949361,
+          "relative_decrease_percent": 7.296474548326429
+        }
+      }
+    }
+  ],
+  "interpretation": [
+    "Leaf_count measures correlated training rows, not independent matches or unique seconds.",
+    "Leaf_weight is a Hessian sum. Hessian-weighted depth is not exact raw sample-weighted depth.",
+    "Class-time sample weights, duplicated training views and bagging affect support interpretation.",
+    "Reaching a tree cap or continuing training-loss improvement does not establish underfitting or heldout benefit.",
+    "Training-loss minima are descriptive; all checkpoints retain their predeclared fixed budget."
+  ]
+}

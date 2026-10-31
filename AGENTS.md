@@ -1,289 +1,98 @@
-# Agent handoff: football possession challenge
+# Agent guide: possession research
 
-Read this before changing possession models or evaluating them. The full methods,
-provenance, results, and reproduction commands are in
-[experiments/REFINEMENT.md](experiments/REFINEMENT.md). Competition definitions and
-restrictions are authoritative in [CHALLENGE.md](CHALLENGE.md),
-[EVALUATION.md](EVALUATION.md), [SUBMISSION.md](SUBMISSION.md), and
-[RULES.md](RULES.md).
+## Load only what the task needs
 
-## Repository and task
+- Start with [current status and next work](docs/research/STATUS.md).
+- Working in `experiments/`? Read [experiments/AGENTS.md](experiments/AGENTS.md)
+  first: vocabulary, study lineage, settled directions and code map.
+- Find prior evidence in the [experiment index](docs/research/EXPERIMENTS.md).
+  Read the relevant report, not every historical handoff.
+- SoccerNet-GAR data come from [Hugging Face OpenSportsLab/SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR/tree/tracking-full),
+  branch `tracking-full`. Use the pinned revision and TRAIN file hashes in
+  `experiments/results/soccernet_capacity_declaration.json` with configured
+  `HF_TOKEN` access. Remote paths are `train/...`; local paths include the
+  `tracking-full/` prefix. Check this source before asking for a local dataset
+  archive. The dataset source is separate from our locally trained checkpoints
+  and experiment inventory; Hugging Face availability does not restore those.
+  See [data access](experiments/SOCCERNET_DATA_ACCESS.md) for paths and checks.
+- For restore/inference, use [BASELINE.md](experiments/BASELINE.md).
+  The active package is bound by `experiments/baseline_manifest.json`;
+  ranking/reporting is defined by `experiments/model_decision_policy.json`.
+- For a new experiment, read [possession-experiment](.agents/skills/possession-experiment/SKILL.md).
+- For feature preparation or split planning in new runners, start with
+  [`experiments/preparation.py`](experiments/preparation.py) and read
+  [possession-preparation](.agents/skills/possession-preparation/SKILL.md).
+  Reuse its validated whole-match/provider folds and verified unnormalized
+  caches when the feature recipe matches. Fit normalization and every learned
+  component on the training fold only; declare and test a new recipe for
+  unsupported features. Preserve frozen study runners.
+- For score comparisons or adoption advice, read
+  [possession-readout](.agents/skills/possession-readout/SKILL.md).
+  [Documentation ownership](docs/research/README.md) explains what to update.
 
-- Upstream: `metrica-sports/more-than-a-hack-2027`; working fork:
-  `jekkiechan/more-than-a-hack-2027`. The completed experiment series is on
-  `possession/refinement` and merged into the fork's `main`. Preserve the
-  `upstream` remote. Earlier stages are on `possession/research` and
-  `possession/experiments`.
-- Label each of 199,319 tactical-video frames at 25 Hz: `H` home/Barcelona in
-  live possession, `A` away/Athletic Club in live possession, `D` dead ball, or
-  `X` abstention/outside a half. Loose or contested ball remains with the last
-  controlling team until control changes. The submission is a reproducible
-  `frame,label` CSV for frames 0–199318.
-- Ranking is **possession-spell F1**, with frame macro F1 as first tie-break.
-  A spell is one continuous live H or A interval. The evaluator greedily
-  matches predicted and reference spells of the same team one-to-one by
-  temporal intersection-over-union, computes F1 at IoU 0.3, 0.4, 0.5, 0.6,
-  and 0.7, then averages those five F1s. Frame macro F1 averages H/A/D F1.
-  High frame F1 can coexist with low spell F1 when short possessions or
-  turnover boundaries are missed. Use the official evaluator, rather than
-  inventing a substitute metric.
+## Before answering model-choice or current-results questions
 
-## Data and non-negotiable evaluation boundaries
+This applies to chat advice as well as code work. Historical reports and saved
+Pages can contain valid scores but superseded recommendations.
 
-- Organizer match assets are local under gitignored `data/`. Do not commit or
-  redistribute these assets, frame-level tracking exports, video, or other
-  derivatives that reconstruct the data. Check `MTAH_DATA_DIR` if assets are
-  outside the repository. The full-match reference labels are private.
-- The public five-minute ground truth contains only **7,500 graded frames and
-  17 possession spells**. Under `RULES.md`, it is for pipeline checks only:
-  **do not train, tune, select a candidate, set a threshold, or claim
-  full-match performance from it**. Do not hand-label or manually correct any
-  part of this match, or use other human-produced event/possession data about
-  it. Algorithmic, label-free improvements to its tracking are allowed.
-- External data from other matches can be used if the organizers can access
-  the method/data and the technical document explains them. The existing
-  external benchmark is Sportec Open DFL (CC BY 4.0), with whole-match splits:
-  train `J03WMX/J03WN1/J03WOH`, validation `J03WOY`, fresh local-model
-  confirmation `J03WQQ`. Earlier tests `J03WPY/J03WR9` must not be recycled
-  for selection. `J03WQQ` was supplied as validation for the pretrained
-  PathCRF checkpoint, so it is **not** an independent PathCRF test.
-- Sportec freezes ball coordinates during dead play. This makes D unusually
-  easy and means its clean tracking scores do not transfer directly to the
-  organizer's noisy, occluded broadcast-derived tracking. The organizer ball
-  is missing in roughly 41% of graded frames. Synthetic missing-ball tests
-  probe sensitivity but do not reproduce real broadcast occlusions.
+1. Check current `main`: read STATUS, BASELINE, the active baseline manifest
+   and model decision policy before describing the working model or guardrails.
+   The manifest identifies the adopted package; the policy defines the active
+   evaluation rule. Historical report verdicts do not override later promotion.
+   If current sources conflict, inspect the promotion record and recent commits
+   and disclose any unresolved discrepancy.
+2. Inspect recent merged and open PRs relevant to the question, including their
+   current heads and saved reports. STATUS and this guide are snapshots and may
+   lag ongoing work. Distinguish adopted, completed experimental, running and
+   proposed work; never call a method untested solely because an older summary
+   says so. Saved Pages are discovery aids, not authoritative current state.
+3. Name the exact stress view with every robustness claim. In particular,
+   `feed_like` and `composite` are different evaluations; compare models on the
+   same view and component holdouts. Check the current policy and component
+   ablation. Preserve composite failures as diagnostics and disclose a
+   post-result guardrail change rather than claiming the old failure vanished.
+4. Distinguish model family, training recipe and pipeline. A failed earlier GRU
+   recipe is not evidence that the current dropout GRU fails. A D-only GRU/TCN
+   comparison does not establish the best joint H/A/D architecture. Describe
+   “best supported current choice” separately from superiority demonstrated by
+   a matched architecture comparison.
+5. Check ensemble status in the latest evidence. Averaging separate seed scores
+   is not ensembling predictions; a measured probability ensemble may exist on
+   a newer branch while the adopted package remains single-seed. Cite the
+   relevant report/PR and its evaluation scope when making recommendations.
 
-## What has been tried and what the numbers mean
+## Constraints that always apply
 
-- The original gap-augmented boosting + Viterbi model scored **0.9298 frame
-  macro F1 / 0.6232 spell F1** on held-out Sportec `J03WPY`. The later
-  validation-selected refinement—physical ball/player-relative features,
-  short-spell training weights, a larger model, a fixed 50/50 ensemble, and
-  fixed team/dead transition costs—scored **0.9408 / 0.7059** on `J03WQQ`,
-  versus **0.9303 / 0.6654** for the starting model on that same match.
-- On the organizer's **public five-minute pipeline check**, the externally
-  selected refinement scored **0.6487 macro / 0.4300 spell**. The predeclared
-  PathCRF H/A + original robust D hybrid scored **0.6795 / 0.5067**: the
-  highest *observed* spell score at that stage on this small window.
-  It is not a validated winner or a basis to switch the final candidate under
-  the rules. No full-match accuracy has been measured. The user's target of
-  0.90 on both metrics has **not** been demonstrated on competition data.
-- A predeclared player-only stoppage diagnostic scored **0.7874 macro /
-  0.3429 spell** on the public window; its D-class F1 was **0.7537**, versus
-  **0.3392** for the selected refinement. That suggests the selected model's
-  Sportec-derived dead-ball cue transfers poorly. The diagnostic detects D
-  better on this window but does not solve spell attribution, and its result
-  cannot be used to select a replacement on these public labels.
-- PathCRF is an open-source, pretrained player-path model with H/A output, not
-  a native D detector. Its original implementation required a generic,
-  tracking-only roster adapter for fragmented organizer tracks. The adapter
-  was debugged using unlabeled geometry and synthetic cases before public
-  scoring; it interpolates 7.75% of player-slot frames, with missing stretches
-  as long as 145 seconds. See [experiments/CHALLENGE_TRANSFER.md](experiments/CHALLENGE_TRANSFER.md)
-  and [experiments/PATHCRF.md](experiments/PATHCRF.md).
-- The external headroom analysis found that short spells remain hard (final
-  recall at IoU 0.5: 52.5% for 1–3 s, 21.6% for subsecond spells). No intrinsic
-  ceiling near 0.71 was established. Further Sportec-only tuning shows
-  diminishing returns and cannot establish broadcast transfer. The most useful
-  next evidence is an **independent labeled broadcast match** with real
-  missing-ball and stoppage behavior, evaluated at both frame and spell level.
-  Better ball/player tracking and stoppage evidence are likely valuable.
+- [CHALLENGE](CHALLENGE.md), [EVALUATION](EVALUATION.md),
+  [SUBMISSION](SUBMISSION.md), and [RULES](RULES.md) define the task:
+  199,319 consecutive `frame,label` rows at 25 Hz, H/A/D/X. Loose or contested
+  ball stays with the last controlling team. Use the official evaluator.
+- Organizer public labels are pipeline checks only (7,500 frames, 17 possessions).
+  Never train, tune, select candidates, thresholds, repairs or seeds on them.
+  Do not manually label/correct this match or use human-produced event/possession
+  data about it. Label-free tracking improvements are allowed.
+- Read saved diagnostics; never reset a closed scoring gate or rewrite a frozen
+  declaration. A fresh directory does not make inspected data fresh evidence.
+- Split by whole match/provider. Identify which learned components are held out;
+  D-only holdout with pooled H/A is not full-pipeline holdout. Audit pretrained
+  checkpoint exposure and source-specific label/missingness shortcuts.
+- Keep organizer assets, reconstructive derivatives, weights and frame outputs
+  out of this public repo. Use ignored `data/`, `MTAH_DATA_DIR`, or the authorized
+  private cache. Publish aggregate evidence. Restore verified artifacts before
+  retraining; preserve native masks, unknown targets and match/half/time breaks.
 
-## Current research directions
+## Delivery
 
-- Future reports follow `experiments/model_decision_policy.json`: official
-  spell-first ranking with macro F1 as exact-tie break; show an additional
-  70% spell / 30% macro summary, never use it as the competition ranking.
-  Keep both components visible and freeze weights before future experiments.
-  The current user-authorized working package is `gru_hgb_ballgap25_v1`: the
-  existing 50/50 GRU/ordered-HGB D heads plus the HGB team model trained with
-  25% ball-gap-only replacement. The user requested this robustness tradeoff:
-  clean external spell/macro .5740/.8439 versus previous .5746/.8449;
-  corrupted .4315/.7866 versus .4205/.7699. It is not a new clean-score winner.
-  `experiments/baseline_manifest.json` binds the new package and explicit user
-  authorization; the old manifest/policy are under `experiments/baselines/`.
-  The historical frozen clean selection is unchanged. Run
-  `python -m experiments.current_baseline predict`; it now writes
-  `data/experiments/current_baseline/gru_hgb_ballgap25.csv` without GT and
-  reproduces the tested diagnostic byte for byte. Fresh confirmation is pending.
-  Three-way GRU/HGB/LightGBM remains numerically highest on the current
-  development metrics, by a tiny margin; do not claim the simpler pair wins
-  numerically or overwrite prior frozen competition selection history. Details and
-  the saved scorecard are in `experiments/MODEL_SELECTION.md`.
+After a promising experiment completes, update the [experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9) with dated scores, visualizations, evaluation protocol and adoption status.
 
-- [experiments/RESEARCH_LOG.md](experiments/RESEARCH_LOG.md) records the completed
-  contextual-model/D-blend comparison and the later measured temporal work.
-  The older contextual implementation stays on `possession/robust-pipeline`
-  in draft PR #8 and is not part of the current baseline promotion. TCN and
-  BiGRU have now been evaluated; LSTM remains untested.
-- The current package's existing public diagnostic is .5257 spell/.8588 macro/
-  .8568 D F1 on 7,500 graded frames and 17 reference possessions. It was known
-  before the later explicit user-requested working-baseline promotion; it is
-  descriptive evidence, not independent confirmation. The previous GRU/HGB
-  check remains .4889/.8568 and the historical PathCRF hybrid .5067/.6795.
-  No full-match competition score is available. See `experiments/BASELINE.md`,
-  `results/light_corruption_public_check.json` and the preserved older reports.
-  Promotion did not rerun scoring or reopen any exclusive gate.
-- The prioritized plan is [experiments/DIRECTIONS.md](experiments/DIRECTIONS.md).
-  Its 2026-10-26 review explains why preprocessing has not moved scores: the
-  development data lacks the challenge's defects, repairs bridge only subsecond
-  gaps against a 10.7 s median ball gap, and synthetic gaps ignore game state.
-  Priorities are a challenge-like development view, ball recovery during gaps
-  (broadcast fusion first), gap-level/de-duplicated features, then H/A boundary
-  timing. PFF access was requested by email with no response yet. Broad
-  LightGBM hyperparameter tuning comes after those.
-- New labelled sources and the per-source dead-ball shortcuts are in
-  [experiments/OPEN_DATA.md](experiments/OPEN_DATA.md): Metrica's sample games
-  and SkillCorner with D labels.
-- Do not select models on Sportec J03WOY alone; use the multi-source suite
-  (`multisource_eval.py`).
-- The bounded temporal-D experiment is [experiments/LEARNED_TEMPORAL.md](experiments/LEARNED_TEMPORAL.md).
-  It holds conditional H/A and decoder fixed. Historical provider-holdout D
-  development spell F1: HGB baseline .5588, ordered HGB .5652, BiGRU .5649,
-  TCN .5605. TCN improves D F1 but has no clear overall spell advantage over
-  boosting. LightGBM D heads .08/160 vs .02/640 trees score .5577/.5613.
-  This does not repeat the earlier full-model LightGBM .02/1500-tree result.
-  These folds hold out providers from D training only; H/A remains pooled.
-  `experiments/eval_set/manifest.json` records hashes and prior data exposure;
-  none of these matches is fresh confirmation. SkillCorner X margins make D
-  boundary timing ungradable. Organizer tracking was recovered via the exact
-  Drive folder link in the registration email (keyword search missed it).
-  The one-time public check is complete: BiGRU .4889 spell/.8617 macro, TCN
-  .4541/.8506, ordered HGB .4205/.8653. Previous refinement was .4300/.6487;
-  previous PathCRF hybrid remains higher in spell F1 at .5067. No model was
-  selected or tuned on these public results. Details and the animated ChatGPT
-  Page are linked in `experiments/TEMPORAL_PUBLIC_CHECK.md`; the public gate
-  must not be reset or used for iteration.
+Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
+`main`. Preserve `upstream` as `metrica-sports/more-than-a-hack-2027`.
+Publish an authorized PR without a separate confirmation step. Documentation
+maintenance does not promote draft models. Existing [CI/auto-merge](docs/CI.md) apply.
 
-## Artifacts and reproducibility
-
-- [experiments/JOINT_COMPETITION_CHECK.md](experiments/JOINT_COMPETITION_CHECK.md)
-  records the later explicitly requested, single public check of the latest
-  player-only-D joint GRU. One unchanged seed-2026 pooled fit on the original
-  13 training matches excluded all five development matches; weights and all
-  199,319 predictions were sealed before labels. Public spell/macro/D F1 is
-  .6194/.8574/.8506 versus saved baseline .5257/.8588/.8568; 14 predicted and
-  17 reference possessions. The official 90% spell interval is [.4387,.8000].
-  This is only the five-minute pipeline check, not full-match accuracy or
-  independent selection evidence. Baseline unchanged; external stress failure
-  still stands. The new exclusive gate is CLOSED: do not rerun scoring,
-  reset it or tune preprocessing from this result. Read the saved
-  `experiments/results/joint_gru_public_check.json`. Local checkpoint/receipts/
-  predictions live in `data/experiments/joint_gru_public_v1`; no new private
-  archive upload was performed. 85 tests and format validation passed.
-
-- [experiments/DEADBALL_TRANSFER.md](experiments/DEADBALL_TRANSFER.md) records
-  the completed player-only D-path repair: two matched factorized GRUs, two fixed
-  seeds, three full provider holdouts; all 12 models sealed before 60 evaluations.
-  The restriction repairs clean SkillCorner D F1 .1773 to .7123/.6986 (baseline
-  .7022); unrestricted factorization alone only reaches .1997/.3743. Constrained
-  equal-provider means are .6093 spell/.8411 macro/.8303 D F1 clean, but stress
-  spell falls to .2991 versus baseline .4129. Both seeds fail frozen robustness
-  guardrails, so keep the baseline and do not continue tuning this completed run.
-  Player-only D overpredicts dead time under Sportec/Metrica corruption; the joint
-  recipe still lacks the baseline D heads' separate player-slot-dropout view.
-  Normalization, feature caches and update budgets match the original/paired
-  models. 81 tests pass. The local private checkout has the complete run with
-  `deadball_transfer_cache_manifest.json`; its additional remote upload awaits
-  separate approval (the first experiment's upload is complete). These are
-  adaptively motivated,
-  reused development results; independent broadcast confirmation is outstanding.
-
-- The completed live-play-corruption / joint H/A/D GRU study is
-  [experiments/LIVE_GAP_HAD_GRU.md](experiments/LIVE_GAP_HAD_GRU.md). All 60
-  evaluations exclude the evaluation provider from both H/A and D fitting.
-  Baseline clean/stress spell is .5338/.4129; live-gap pipeline .5240/.4277;
-  plain H/A/D GRU .6272/.3976; live-gap GRU .6002/.4278. Both GRUs clear the
-  clean +.01 screen but miss most SkillCorner dead time (plain GRU D F1
-  .1773 vs baseline .7022); overall clean macro falls .8300 to .7883/.7289.
-  Keep `gru_hgb_ballgap25_v1`. The joint GRU is smaller/faster in this run,
-  but needs dead-ball transfer work before replacement. These are reused
-  development and synthetic stress results, not broadcast confirmation.
-  All 15 baseline match/view cases reproduce the archive exactly. Private
-  branch `experiments/live-gap-had-v1` has `live_gap_had_cache_manifest.json`
-  (user-approved upload complete);
-  [data issue #4](https://github.com/jekkiechan/mtah-data/issues/4) records the
-  human access/annotation work. No organizer gate was used or reset.
-
-- The lighter, task-specific corruption follow-up is
-  `experiments/LIGHT_CORRUPTION.md` and `light_corruption.py`. It retains 75%
-  of the original clean/coarse recipe and replaces 25% of rows/windows with
-  ball visibility gaps for H/A or player/coordinate corruption for D. Budgets,
-  grading masks and evaluation views are fixed; 90 new evaluations plus 30
-  reused baseline comparisons and 66 tests completed. Clean/stress spell is
-  .5740/.4315 for ball-only teams and .5718/.4477 for both replacements,
-  versus baseline .5746/.4205. The old baseline won the frozen external clean
-  spell-first ordering; that record is preserved. The user subsequently adopted
-  ball-only teams as the current working robustness baseline. At the user's
-  explicit request, the best new external
-  arm (ball-only teams) received one separately frozen public diagnostic:
-  .5257 spell/.8588 macro/.8568 D F1, 18 predicted versus 17 reference spells.
-  This exceeds the previous baseline's .4889 public spell point estimate but is
-  not independent selection evidence; the 90% spell interval is [.3657,.6743] and full-match
-  performance is unknown. Do not repeat the check, reset its gate or tune from
-  it. `light_candidate.py` exports the selected/diagnostic CSVs without GT;
-  `light_public_check.py` has the closed exclusive gate. Reports/receipts are
-  in `experiments/results/light_corruption_*.json`; nine checkpoints and the
-  closed gate are archived privately on `mtah-data` branch
-  `experiments/light-corruption`, with `light_corruption_cache_manifest.json`.
-
-- The completed composite-corruption ablation is
-  `experiments/REALISTIC_CORRUPTION.md`, implemented by `tracking_corruption.py`
-  and `corruption_experiment.py`. It froze aggregate unlabeled organizer gap
-  statistics, kept native grading masks fixed, and evaluated four training arms
-  on clean plus two corrupted views of the same five development matches.
-  All 120 evaluations and 59 synthetic/protocol tests completed. D-provider-held-out
-  baseline spell/macro is .5746/.8449 clean and .4205/.7699 corrupted;
-  augmenting both heads gives .5617/.8399 and .4564/.7993. Stress robustness
-  improves on every provider, but clean spell F1 falls. Retain GRU/HGB as the
-  adopted baseline. This is reused development data and shared-family synthetic
-  stress, not new broadcast confirmation. Results/receipts are tracked under
-  `experiments/results/realistic_corruption_*.json`; all 15 checkpoints and
-  frozen reports are archived in private `mtah-data`, restored using
-  `corruption_cache_manifest.json`. No public gate was reopened. Next, isolate
-  corruption groups and lower training weight before evaluating a new recipe.
-
-- The PathCRF retention test is `experiments/PATHCRF_ENSEMBLE.md`. It uses
-  Metrica game 3 and the three SkillCorner evaluation matches, excluding
-  Sportec J03WOY because PathCRF trained on it. With GRU/HGB P(D) fixed,
-  baseline spell/macro is .5744/.8346 on that two-provider cohort; 50/50
-  HGB/PathCRF team blending falls to .5414/.8213 and PathCRF teams alone to
-  .4993/.8090. Keep PathCRF as an archived comparator, not a default component.
-  No organizer recheck was performed. Runtime is 13–15 minutes per match on
-  one CPU thread; SkillCorner needs 50–60% player-slot imputation. Baseline
-  models and provenance are persisted in private mtah-data under
-  `models/gru_hgb_v1/`; restore with `competition_cache.py fetch --manifest
-  baseline_cache_manifest.json --data-dir <code-repo>/data`.
-
-- The external-only probability-ensemble follow-up is
-  `experiments/TEMPORAL_ENSEMBLE.md`. Fixed 50/50 GRU + ordered HGB scores
-  .5746 provider-holdout D spell F1; the equal three-way blend adds little
-  (.5750). GRU alone is .5649 and ordered HGB .5652. GRU remains slightly
-  stronger on SkillCorner alone. New combinations were evaluated only on
-  historical external development matches; no organizer gate was reopened,
-  model retrained, or original competition selection changed. Results are in
-  `experiments/results/temporal_ensemble_development.json`.
-
-- Start at [experiments/REFINEMENT.md](experiments/REFINEMENT.md), then read
-  [experiments/README.md](experiments/README.md) and
-  [docs/WORKPLAN.md](docs/WORKPLAN.md) for the earlier baseline and task setup.
-  Tracked aggregate results and frozen configuration are in
-  `experiments/results/refinement_*.json`; detailed subexperiments are linked
-  from `REFINEMENT.md`. Do not present validation or test results as fresh
-  independent trials after reading them.
-- `experiments/refinement.py` enforces the frozen local-model protocol and
-  generates/checks full-length organizer candidates. The selected, validated
-  **but not organizer-submitted** CSV is local and ignored at
-  `data/experiments/refinement/competition/selected_refinement.csv`.
-  The PathCRF transfer code is in `experiments/challenge_pathcrf.py`.
-- Run meaningful tests after changes:
-  `python -m unittest discover -s experiments/tests -v` and the official
-  `python evaluation/validate_submission.py <candidate.csv>`. Follow the
-  reproduction sequence in `experiments/REFINEMENT.md` in a fresh checkout;
-  frozen manifests deliberately refuse repeated held-out scoring. Never use
-  repeated public-window checks as an iteration loop.
-- Work on a branch and open a PR to `main`. The CI workflow runs synthetic
-  tests and the submission validator; a separate workflow merges passing PRs
-  from branches in this fork when their tested commit is still current. See
-  [docs/CI.md](docs/CI.md) for the protection setup and scope. Do not use
-  organizer labels or assets in CI.
+For code changes, run `python -m unittest discover -s experiments/tests -v`
+with pinned dependencies (including CPU PyTorch for neural contracts).
+Validate generated CSVs with `python evaluation/validate_submission.py <candidate.csv>`.
+For docs-only changes, check links, evidence and frozen-file preservation;
+CI runs the synthetic suite and bundled format check. Do not fit or score
+organizer labels to verify documentation.

@@ -1,0 +1,49 @@
+{
+  "aggregate_checks": {
+    "auxiliary_70_30_verified": true,
+    "baseline_all_iou_f1_recomputed_from_integer_counts": true,
+    "baseline_macro_f1": 0.8540877905070469,
+    "baseline_predicted_spells": 16,
+    "baseline_spell_f1_mean": 0.5575757575757576,
+    "candidate_all_iou_f1_recomputed_from_integer_counts": true,
+    "candidate_macro_f1": 0.8663461416960687,
+    "candidate_predicted_spells": 18,
+    "candidate_spell_f1_mean": 0.5371428571428571,
+    "saved_baseline_and_deltas_verified": true
+  },
+  "gate_checks": {
+    "closed_across_alternate_output_directories": true,
+    "completion_seals_public_report": true,
+    "global_local_started_markers_match": true
+  },
+  "organizer_evaluator_rerun": false,
+  "prediction_checks": {
+    "baseline_csv_matches_saved_scored_baseline_sha256": true,
+    "both_csvs_reproduce_from_native_probabilities_at_cost_3": true,
+    "candidate_reproduces_from_frozen_prior": true,
+    "native_p_d_bitwise_identical": true,
+    "probability_changes_confined_to_missing_ball_frames": true
+  },
+  "private_artifact_availability": "local ignored data/ artifacts present; this verifier performed no upload",
+  "provenance": {
+    "artifact_sha256": {
+      "baseline.csv": "a9beb9ddee36182f926e4d693f648c19f4a19c55afd1653ea93e19f3dd32634b",
+      "baseline.npz": "466914f154ed6aafa1b01961a5d851fddb637ba55c3a7056ebdd03d84cd527d6",
+      "smart_tagging_missing_ball.csv": "b011bfcf91a703747aca6c4927ccdb8cad79bca3536ee6740d2cf6a2bd31a886",
+      "smart_tagging_missing_ball.npz": "991a71f252f17f141cbb05a0456ca6a23d68f830fddb6bbc8ea4772344f49c3f"
+    },
+    "final_declaration_sha256": "c904504e3c64f728931fd79be68df853ade90499b41e30c10bf3e15df6f8265a",
+    "global_gate_sha256": "651a6df0c1d29ce2e4d731dcb8027648ccb609bbae8565b313e52713999b22da",
+    "inputs_model_xml_manifest_policy_hashes_verified": true,
+    "original_and_final_prediction_artifacts_byte_identical": true,
+    "prediction_seal_sha256": "5a9b94435c4b1483b5f91f2afc113af6e313e12da006860cbcfa8a3495e9ff1f",
+    "public_reference_file_sha256_reused_from_saved_report": "e596a9af9626c623bb94be6fd350e12ee9a75c76a696cfadca3bc01735e92487",
+    "public_report_sha256": "d068c457742c69364ff8faa9b161dc01c51b8b56bee8107c7664cdbd1d45f55f",
+    "verifier_script": "scripts/verify_smart_tagging_check.py",
+    "verifier_source_sha256": "77377a8e74a3e0b5b7a0aa1a96d0aaf32e71e98b83d84a1f4a9c58633badf85a"
+  },
+  "reference_labels_opened": false,
+  "scope": "artifact integrity and aggregate arithmetic only; no reference read or rescore",
+  "study_id": "smart_tagging_validation_v1",
+  "verification": "passed"
+}

@@ -1,0 +1,19 @@
+{
+  "study_id": "window_overlap_v3",
+  "declaration": "experiments/results/window_overlap_declaration_v3.json",
+  "declaration_sha256": "07b2691df39be71e2e390036225235fbd8830cf4542f5beac99353bb4af5b7e7",
+  "preflight_receipt": "data/experiments/window_overlap_v3/preflight.json",
+  "preflight_candidate": "data/experiments/window_overlap_v3/preflight_candidate.npz",
+  "recorded_utc": "2026-10-29T01:53:44Z",
+  "status": "stopped before scoring while loading the sealed preflight candidate",
+  "attempted_cells": 0,
+  "persisted_score_cells": 0,
+  "labels_accessed_by_failed_run": false,
+  "error": "The preflight archive loader's required-key set omitted `shifted_filled_2027`; the expected array exists in the archive but was not included in the loader's allowlist.",
+  "correction": "V4 derives the complete required preflight array-key set from both seeds and all three member probability arrays, with a synthetic loader contract.",
+  "candidate_predictions_written": false,
+  "metrics_computed": false,
+  "organizer_labels_read": false,
+  "organizer_scored": false,
+  "public_gate_touched": false
+}

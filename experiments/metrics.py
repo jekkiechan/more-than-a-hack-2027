@@ -9,12 +9,11 @@ import numpy as np
 from evaluation import possession_metrics as pm
 
 
-def evaluate_tracking(labels, predictions, period=None, fps=25.0, timestamps=None,
-                      bootstrap_n=0):
-    """Score a frozen prediction; all time tolerances use the input sampling rate.
+def prepare_tracking_codes(labels, predictions, period=None, fps=25.0, timestamps=None):
+    """Validate and preserve native gaps, inserting ungraded input-break separators.
 
-    Call serially: the upstream metric's FPS module constant is temporarily set
-    for duration summaries, then restored. No upstream scoring code is changed.
+    Shared by the official score wrapper and supplementary spell diagnostics so
+    they operate on exactly the same evaluation population and interval edges.
     """
     truth = np.asarray(labels).astype(str)
     guess = np.asarray(predictions).astype(str)
@@ -42,6 +41,18 @@ def evaluate_tracking(labels, predictions, period=None, fps=25.0, timestamps=Non
     inserts = np.flatnonzero(boundaries) + 1
     gt_codes = pm.label_codes(np.insert(truth, inserts, "X"))
     pred_codes = pm.label_codes(np.insert(guess, inserts, "X"))
+    return truth, gt_codes, pred_codes, inserts
+
+
+def evaluate_tracking(labels, predictions, period=None, fps=25.0, timestamps=None,
+                      bootstrap_n=0):
+    """Score a frozen prediction; all time tolerances use the input sampling rate.
+
+    Call serially: the upstream metric's FPS module constant is temporarily set
+    for duration summaries, then restored. No upstream scoring code is changed.
+    """
+    truth, gt_codes, pred_codes, inserts = prepare_tracking_codes(
+        labels, predictions, period, fps, timestamps)
     previous_fps = pm.FPS
     pm.FPS = float(fps)
     try:

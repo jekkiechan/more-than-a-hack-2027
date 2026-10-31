@@ -1,0 +1,1181 @@
+{
+  "scope": "Exact full-row training-input routing support, first and last16 trees, three regularized models; no scoring/fitting",
+  "source_sha256": {
+    "experiments/lgbm_capacity_full_support.py": "e62454d7d2808a7a0ebdbe39cbe17e93469fce2c8167a4f79064268a052a002c",
+    "experiments/lgbm_capacity_audit.py": "64a630065946e6975861440c16b719550b76c7aaa48688d8051a7a6d94dbeb83"
+  },
+  "model_rows": [
+    {
+      "file": "data/experiments/temporal_lgbm_v1/without_metrica_context_regularized.joblib",
+      "model_sha256": "0c876d2da6cba79a9fc33b10692da4e54684ab2883a6db2afdf0ac03a1b86848",
+      "receipt_sha256": "60f1c951592670b21ecb7b69a207029c56deebf4b996a37a895e619dad23f460",
+      "predeclared_sha256": "87dded692a5a073162f84e21b7fcfcdb13f17b6f5f1232fdada679caf7145cf0",
+      "heldout": "metrica",
+      "config": "context_regularized",
+      "feature_count": 625,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "training_rows": 207964,
+      "params": {
+        "learning_rate": 0.02,
+        "n_estimators": 640,
+        "num_leaves": 31,
+        "max_depth": 7,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127
+      },
+      "n_trees": 640,
+      "tree_leaf_count_percentiles": {
+        "0": 31.0,
+        "10": 31.0,
+        "25": 31.0,
+        "50": 31.0,
+        "75": 31.0,
+        "90": 31.0,
+        "100": 31.0
+      },
+      "tree_max_depth_percentiles": {
+        "0": 6.0,
+        "10": 7.0,
+        "25": 7.0,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "tree_weighted_leaf_depth_percentiles": {
+        "0": 4.729108241156434,
+        "10": 5.256694669907781,
+        "25": 5.575619890702569,
+        "50": 5.950565391824184,
+        "75": 6.384732399992398,
+        "90": 6.613334621866409,
+        "100": 6.946564931394832
+      },
+      "leaf_depth_percentiles": {
+        "0": 1.0,
+        "10": 4.0,
+        "25": 5.0,
+        "50": 6.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "leaf_training_count_percentiles": {
+        "0": 25.0,
+        "10": 440.0,
+        "25": 949.75,
+        "50": 2250.0,
+        "75": 5374.75,
+        "90": 12035.200000000004,
+        "100": 119463.0
+      },
+      "fraction_trees_at_leaf_cap": 1.0,
+      "fraction_trees_at_depth_cap": 0.990625,
+      "fraction_leaves_below_min_child_samples": 0.0064516129032258064,
+      "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.013054435483870967,
+      "fraction_leaves_at_or_below_2_times_min_child_samples": 0.03790322580645161,
+      "training_count_weighted_mean_leaf_depth": 5.954041905187647,
+      "early_tree_max_depth_percentiles": {
+        "0": 7.0,
+        "10": 7.0,
+        "25": 7.0,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "late_tree_max_depth_percentiles": {
+        "0": 7.0,
+        "10": 7.0,
+        "25": 7.0,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "selected_tree_full_row_match_support": {
+        "tree_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          624,
+          625,
+          626,
+          627,
+          628,
+          629,
+          630,
+          631,
+          632,
+          633,
+          634,
+          635,
+          636,
+          637,
+          638,
+          639
+        ],
+        "max_rows_per_match_view": 1000000000,
+        "selection": "ALL exact training-eligible stride2 rows, both views of every training match; first16 and last16 trees only.",
+        "interpretation": "Exact full-training-input match coverage for selected trees, including each tree's out-of-bag rows. This is routing support, not the per-tree in-bag fit population, independent spell count, or heldout generalization.",
+        "samples": [
+          {
+            "match": "J03WMX",
+            "source": "sportec",
+            "variant": "clean",
+            "eligible_training_rows": 14597,
+            "sampled_rows": 14597
+          },
+          {
+            "match": "J03WMX",
+            "source": "sportec",
+            "variant": "dropout",
+            "eligible_training_rows": 14597,
+            "sampled_rows": 14597
+          },
+          {
+            "match": "J03WN1",
+            "source": "sportec",
+            "variant": "clean",
+            "eligible_training_rows": 14157,
+            "sampled_rows": 14157
+          },
+          {
+            "match": "J03WN1",
+            "source": "sportec",
+            "variant": "dropout",
+            "eligible_training_rows": 14157,
+            "sampled_rows": 14157
+          },
+          {
+            "match": "J03WOH",
+            "source": "sportec",
+            "variant": "clean",
+            "eligible_training_rows": 13722,
+            "sampled_rows": 13722
+          },
+          {
+            "match": "J03WOH",
+            "source": "sportec",
+            "variant": "dropout",
+            "eligible_training_rows": 13722,
+            "sampled_rows": 13722
+          },
+          {
+            "match": "skillcorner_had_1874553",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 7713,
+            "sampled_rows": 7713
+          },
+          {
+            "match": "skillcorner_had_1874553",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 7713,
+            "sampled_rows": 7713
+          },
+          {
+            "match": "skillcorner_had_1886347",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 7654,
+            "sampled_rows": 7654
+          },
+          {
+            "match": "skillcorner_had_1886347",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 7654,
+            "sampled_rows": 7654
+          },
+          {
+            "match": "skillcorner_had_1899585",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 6474,
+            "sampled_rows": 6474
+          },
+          {
+            "match": "skillcorner_had_1899585",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 6474,
+            "sampled_rows": 6474
+          },
+          {
+            "match": "skillcorner_had_1925299",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 8187,
+            "sampled_rows": 8187
+          },
+          {
+            "match": "skillcorner_had_1925299",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 8187,
+            "sampled_rows": 8187
+          },
+          {
+            "match": "skillcorner_had_1927964",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 8388,
+            "sampled_rows": 8388
+          },
+          {
+            "match": "skillcorner_had_1927964",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 8388,
+            "sampled_rows": 8388
+          },
+          {
+            "match": "skillcorner_had_1953632",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 8195,
+            "sampled_rows": 8195
+          },
+          {
+            "match": "skillcorner_had_1953632",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 8195,
+            "sampled_rows": 8195
+          },
+          {
+            "match": "skillcorner_had_1959846",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 7145,
+            "sampled_rows": 7145
+          },
+          {
+            "match": "skillcorner_had_1959846",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 7145,
+            "sampled_rows": 7145
+          },
+          {
+            "match": "skillcorner_had_1986691",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 7750,
+            "sampled_rows": 7750
+          },
+          {
+            "match": "skillcorner_had_1986691",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 7750,
+            "sampled_rows": 7750
+          }
+        ],
+        "feature_cache_receipts": [
+          {
+            "match": "J03WMX",
+            "sha256": "b1242caab94417d2875f37c0891427e8506c0e52016fdacec44d1f00b6b533c3"
+          },
+          {
+            "match": "J03WN1",
+            "sha256": "669d4bb85b90056bed1bf17d1654af88ab6dbbbb7b0fabbe6a56c0c2d3ae523e"
+          },
+          {
+            "match": "J03WOH",
+            "sha256": "fd13e98a22faefa3d0c1ff2a56d7885665eb44896ab6dc52b5e3bfa046b3d331"
+          },
+          {
+            "match": "skillcorner_had_1874553",
+            "sha256": "470082a5e3f8b0f7b86210f1821bc2f6b63129745c0dc9b4f250965de05f3c3c"
+          },
+          {
+            "match": "skillcorner_had_1886347",
+            "sha256": "80f0be7a0591f77cd3299aed0f5b705d81032e14458e6c21ccd418ecabbf5082"
+          },
+          {
+            "match": "skillcorner_had_1899585",
+            "sha256": "32670a93427e1547de22cd4b36952c5e1d41b72d5fd4b171869036f43e31c311"
+          },
+          {
+            "match": "skillcorner_had_1925299",
+            "sha256": "ad77f966b13b328da2e382ccaa36f0fc83b1ad2dd277ba9fc7cd0913ca06f13f"
+          },
+          {
+            "match": "skillcorner_had_1927964",
+            "sha256": "7373359ca2bc3404b9f1876abddff553e15dcbab6d5b5b45c226e5c12b40a1b7"
+          },
+          {
+            "match": "skillcorner_had_1953632",
+            "sha256": "6ee339b7bb82468f2b9498a85aba0aa38447e0ebea5c4f7c243ae8f4f87344e8"
+          },
+          {
+            "match": "skillcorner_had_1959846",
+            "sha256": "d05c98571e4864bd2da11ff6cf47537b268da41f905ec9610b884db70c5f6f05"
+          },
+          {
+            "match": "skillcorner_had_1986691",
+            "sha256": "19b08c1d8f711891b8d7430b5a4c8f127e9c6277e60ffa47671a203a847e494d"
+          }
+        ],
+        "groups": {
+          "first_16": {
+            "n_leaves": 496,
+            "observed_leaves": 496,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 7.0,
+              "10": 10.5,
+              "25": 11.0,
+              "50": 11.0,
+              "75": 11.0,
+              "90": 11.0,
+              "100": 11.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.0,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.0,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.8991935483870968,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.11132729314283502,
+              "10": 0.13734844817259487,
+              "25": 0.15712362156189158,
+              "50": 0.2031118844844335,
+              "75": 0.25385611797528895,
+              "90": 0.2999879738154208,
+              "100": 0.5298507462686567
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.0,
+            "sample_assignment_weighted_distinct_matches": 10.966947103825662
+          },
+          "last_16": {
+            "n_leaves": 496,
+            "observed_leaves": 496,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 3.0,
+              "10": 8.0,
+              "25": 10.0,
+              "50": 11.0,
+              "75": 11.0,
+              "90": 11.0,
+              "100": 11.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.0,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.0,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.7419354838709677,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.10627436710505796,
+              "10": 0.13351430423826094,
+              "25": 0.1531513759940834,
+              "50": 0.19262727930913515,
+              "75": 0.2635946971289227,
+              "90": 0.3963914239220426,
+              "100": 0.8864541832669323
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.0020161290322580645,
+            "sample_assignment_weighted_distinct_matches": 10.853583132176723
+          },
+          "all_32": {
+            "n_leaves": 992,
+            "observed_leaves": 992,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 3.0,
+              "10": 9.0,
+              "25": 11.0,
+              "50": 11.0,
+              "75": 11.0,
+              "90": 11.0,
+              "100": 11.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.0,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.0,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.8205645161290323,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.10627436710505796,
+              "10": 0.13509625955708646,
+              "25": 0.1545869497928707,
+              "50": 0.198232363455548,
+              "75": 0.25733615896454287,
+              "90": 0.3386366190850848,
+              "100": 0.8864541832669323
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.0010080645161290322,
+            "sample_assignment_weighted_distinct_matches": 10.910265118001192
+          }
+        },
+        "all_eligible_training_rows_used": true
+      }
+    },
+    {
+      "file": "data/experiments/temporal_lgbm_v1/without_skillcorner_context_regularized.joblib",
+      "model_sha256": "d6db363a22742830139c6c5c2ad5322b1a9f56d55a61f3133f86d35e56ecd279",
+      "receipt_sha256": "4b7ace16393697879ce24c8fa7b65d407d490099520237903a8e8acf6394ac6e",
+      "predeclared_sha256": "87dded692a5a073162f84e21b7fcfcdb13f17b6f5f1232fdada679caf7145cf0",
+      "heldout": "skillcorner",
+      "config": "context_regularized",
+      "feature_count": 625,
+      "training_matches": [
+        "J03WMX",
+        "J03WN1",
+        "J03WOH",
+        "metrica_1",
+        "metrica_2"
+      ],
+      "training_rows": 141392,
+      "params": {
+        "learning_rate": 0.02,
+        "n_estimators": 640,
+        "num_leaves": 31,
+        "max_depth": 7,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127
+      },
+      "n_trees": 640,
+      "tree_leaf_count_percentiles": {
+        "0": 31.0,
+        "10": 31.0,
+        "25": 31.0,
+        "50": 31.0,
+        "75": 31.0,
+        "90": 31.0,
+        "100": 31.0
+      },
+      "tree_max_depth_percentiles": {
+        "0": 6.0,
+        "10": 7.0,
+        "25": 7.0,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "tree_weighted_leaf_depth_percentiles": {
+        "0": 4.10941071601931,
+        "10": 4.931317578597822,
+        "25": 5.4470325739771805,
+        "50": 5.942845841155497,
+        "75": 6.323759557458759,
+        "90": 6.626086793141347,
+        "100": 6.90452602353356
+      },
+      "leaf_depth_percentiles": {
+        "0": 1.0,
+        "10": 4.0,
+        "25": 5.0,
+        "50": 6.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "leaf_training_count_percentiles": {
+        "0": 6.0,
+        "10": 296.0,
+        "25": 610.0,
+        "50": 1481.0,
+        "75": 3713.0,
+        "90": 8681.100000000002,
+        "100": 81344.0
+      },
+      "fraction_trees_at_leaf_cap": 1.0,
+      "fraction_trees_at_depth_cap": 0.9890625,
+      "fraction_leaves_below_min_child_samples": 0.012046370967741936,
+      "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.025,
+      "fraction_leaves_at_or_below_2_times_min_child_samples": 0.07167338709677419,
+      "training_count_weighted_mean_leaf_depth": 5.850420292314996,
+      "early_tree_max_depth_percentiles": {
+        "0": 6.0,
+        "10": 6.0,
+        "25": 6.75,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "late_tree_max_depth_percentiles": {
+        "0": 7.0,
+        "10": 7.0,
+        "25": 7.0,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "selected_tree_full_row_match_support": {
+        "tree_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          624,
+          625,
+          626,
+          627,
+          628,
+          629,
+          630,
+          631,
+          632,
+          633,
+          634,
+          635,
+          636,
+          637,
+          638,
+          639
+        ],
+        "max_rows_per_match_view": 1000000000,
+        "selection": "ALL exact training-eligible stride2 rows, both views of every training match; first16 and last16 trees only.",
+        "interpretation": "Exact full-training-input match coverage for selected trees, including each tree's out-of-bag rows. This is routing support, not the per-tree in-bag fit population, independent spell count, or heldout generalization.",
+        "samples": [
+          {
+            "match": "J03WMX",
+            "source": "sportec",
+            "variant": "clean",
+            "eligible_training_rows": 14597,
+            "sampled_rows": 14597
+          },
+          {
+            "match": "J03WMX",
+            "source": "sportec",
+            "variant": "dropout",
+            "eligible_training_rows": 14597,
+            "sampled_rows": 14597
+          },
+          {
+            "match": "J03WN1",
+            "source": "sportec",
+            "variant": "clean",
+            "eligible_training_rows": 14157,
+            "sampled_rows": 14157
+          },
+          {
+            "match": "J03WN1",
+            "source": "sportec",
+            "variant": "dropout",
+            "eligible_training_rows": 14157,
+            "sampled_rows": 14157
+          },
+          {
+            "match": "J03WOH",
+            "source": "sportec",
+            "variant": "clean",
+            "eligible_training_rows": 13722,
+            "sampled_rows": 13722
+          },
+          {
+            "match": "J03WOH",
+            "source": "sportec",
+            "variant": "dropout",
+            "eligible_training_rows": 13722,
+            "sampled_rows": 13722
+          },
+          {
+            "match": "metrica_1",
+            "source": "metrica",
+            "variant": "clean",
+            "eligible_training_rows": 14208,
+            "sampled_rows": 14208
+          },
+          {
+            "match": "metrica_1",
+            "source": "metrica",
+            "variant": "dropout",
+            "eligible_training_rows": 14208,
+            "sampled_rows": 14208
+          },
+          {
+            "match": "metrica_2",
+            "source": "metrica",
+            "variant": "clean",
+            "eligible_training_rows": 14012,
+            "sampled_rows": 14012
+          },
+          {
+            "match": "metrica_2",
+            "source": "metrica",
+            "variant": "dropout",
+            "eligible_training_rows": 14012,
+            "sampled_rows": 14012
+          }
+        ],
+        "feature_cache_receipts": [
+          {
+            "match": "J03WMX",
+            "sha256": "b1242caab94417d2875f37c0891427e8506c0e52016fdacec44d1f00b6b533c3"
+          },
+          {
+            "match": "J03WN1",
+            "sha256": "669d4bb85b90056bed1bf17d1654af88ab6dbbbb7b0fabbe6a56c0c2d3ae523e"
+          },
+          {
+            "match": "J03WOH",
+            "sha256": "fd13e98a22faefa3d0c1ff2a56d7885665eb44896ab6dc52b5e3bfa046b3d331"
+          },
+          {
+            "match": "metrica_1",
+            "sha256": "b2e29f02c00887f3a30bd9e8df261b7e0f5c169afdeb60f1d4743fe46b55327f"
+          },
+          {
+            "match": "metrica_2",
+            "sha256": "8ae9488fa9931632dfa460d15ac1a10e5f31c3fc7ec813028e9f1ae1c1e41c7b"
+          }
+        ],
+        "groups": {
+          "first_16": {
+            "n_leaves": 496,
+            "observed_leaves": 496,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 1.0,
+              "10": 5.0,
+              "25": 5.0,
+              "50": 5.0,
+              "75": 5.0,
+              "90": 5.0,
+              "100": 5.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.012096774193548387,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.07661290322580645,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.9233870967741935,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.20751633986928106,
+              "10": 0.22904752097470027,
+              "25": 0.24107359392305233,
+              "50": 0.26949701299816087,
+              "75": 0.3144595456552672,
+              "90": 0.4261087154330023,
+              "100": 1.0
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.038306451612903226,
+            "sample_assignment_weighted_distinct_matches": 4.981643675031119
+          },
+          "last_16": {
+            "n_leaves": 496,
+            "observed_leaves": 496,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 1.0,
+              "10": 5.0,
+              "25": 5.0,
+              "50": 5.0,
+              "75": 5.0,
+              "90": 5.0,
+              "100": 5.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.006048387096774193,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.020161290322580645,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.9334677419354839,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.20839281290185577,
+              "10": 0.2315941979708941,
+              "25": 0.25007094211123726,
+              "50": 0.28498065894489194,
+              "75": 0.342253456447936,
+              "90": 0.45735753395265305,
+              "100": 1.0
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.018145161290322582,
+            "sample_assignment_weighted_distinct_matches": 4.980388299903813
+          },
+          "all_32": {
+            "n_leaves": 992,
+            "observed_leaves": 992,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 1.0,
+              "10": 5.0,
+              "25": 5.0,
+              "50": 5.0,
+              "75": 5.0,
+              "90": 5.0,
+              "100": 5.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.009072580645161291,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.04838709677419355,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.9284274193548387,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.20751633986928106,
+              "10": 0.22997615991197506,
+              "25": 0.2454604567218072,
+              "50": 0.2767439293598234,
+              "75": 0.3291110570190136,
+              "90": 0.44363649810179634,
+              "100": 1.0
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.028225806451612902,
+            "sample_assignment_weighted_distinct_matches": 4.981015987467466
+          }
+        },
+        "all_eligible_training_rows_used": true
+      }
+    },
+    {
+      "file": "data/experiments/temporal_lgbm_v1/without_sportec_context_regularized.joblib",
+      "model_sha256": "b2e8e3925ffe53e9fa88bb8b743648f416144b2c1568ebda548d0c018f7b6dc3",
+      "receipt_sha256": "e720b61ad832f4338ac9e4ea30b3e19aaff0b1ec7f0df7b1d0bd0624ce0d88bd",
+      "predeclared_sha256": "87dded692a5a073162f84e21b7fcfcdb13f17b6f5f1232fdada679caf7145cf0",
+      "heldout": "sportec",
+      "config": "context_regularized",
+      "feature_count": 625,
+      "training_matches": [
+        "metrica_1",
+        "metrica_2",
+        "skillcorner_had_1874553",
+        "skillcorner_had_1886347",
+        "skillcorner_had_1899585",
+        "skillcorner_had_1925299",
+        "skillcorner_had_1927964",
+        "skillcorner_had_1953632",
+        "skillcorner_had_1959846",
+        "skillcorner_had_1986691"
+      ],
+      "training_rows": 179452,
+      "params": {
+        "learning_rate": 0.02,
+        "n_estimators": 640,
+        "num_leaves": 31,
+        "max_depth": 7,
+        "min_child_samples": 120,
+        "min_child_weight": 0.01,
+        "reg_alpha": 0.2,
+        "reg_lambda": 10.0,
+        "colsample_bytree": 0.7,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "max_bin": 127
+      },
+      "n_trees": 640,
+      "tree_leaf_count_percentiles": {
+        "0": 31.0,
+        "10": 31.0,
+        "25": 31.0,
+        "50": 31.0,
+        "75": 31.0,
+        "90": 31.0,
+        "100": 31.0
+      },
+      "tree_max_depth_percentiles": {
+        "0": 6.0,
+        "10": 7.0,
+        "25": 7.0,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "tree_weighted_leaf_depth_percentiles": {
+        "0": 4.432233821619332,
+        "10": 5.2613990748173345,
+        "25": 5.594904465566544,
+        "50": 5.95275374636581,
+        "75": 6.329621841599946,
+        "90": 6.596883289269213,
+        "100": 6.913077999958211
+      },
+      "leaf_depth_percentiles": {
+        "0": 1.0,
+        "10": 4.0,
+        "25": 5.0,
+        "50": 6.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "leaf_training_count_percentiles": {
+        "0": 27.0,
+        "10": 375.0,
+        "25": 806.0,
+        "50": 1964.0,
+        "75": 4660.25,
+        "90": 10261.100000000046,
+        "100": 103086.0
+      },
+      "fraction_trees_at_leaf_cap": 1.0,
+      "fraction_trees_at_depth_cap": 0.99375,
+      "fraction_leaves_below_min_child_samples": 0.0064516129032258064,
+      "fraction_leaves_at_or_below_1_25_times_min_child_samples": 0.013608870967741936,
+      "fraction_leaves_at_or_below_2_times_min_child_samples": 0.04566532258064516,
+      "training_count_weighted_mean_leaf_depth": 5.941868664618594,
+      "early_tree_max_depth_percentiles": {
+        "0": 6.0,
+        "10": 7.0,
+        "25": 7.0,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "late_tree_max_depth_percentiles": {
+        "0": 7.0,
+        "10": 7.0,
+        "25": 7.0,
+        "50": 7.0,
+        "75": 7.0,
+        "90": 7.0,
+        "100": 7.0
+      },
+      "selected_tree_full_row_match_support": {
+        "tree_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          624,
+          625,
+          626,
+          627,
+          628,
+          629,
+          630,
+          631,
+          632,
+          633,
+          634,
+          635,
+          636,
+          637,
+          638,
+          639
+        ],
+        "max_rows_per_match_view": 1000000000,
+        "selection": "ALL exact training-eligible stride2 rows, both views of every training match; first16 and last16 trees only.",
+        "interpretation": "Exact full-training-input match coverage for selected trees, including each tree's out-of-bag rows. This is routing support, not the per-tree in-bag fit population, independent spell count, or heldout generalization.",
+        "samples": [
+          {
+            "match": "metrica_1",
+            "source": "metrica",
+            "variant": "clean",
+            "eligible_training_rows": 14208,
+            "sampled_rows": 14208
+          },
+          {
+            "match": "metrica_1",
+            "source": "metrica",
+            "variant": "dropout",
+            "eligible_training_rows": 14208,
+            "sampled_rows": 14208
+          },
+          {
+            "match": "metrica_2",
+            "source": "metrica",
+            "variant": "clean",
+            "eligible_training_rows": 14012,
+            "sampled_rows": 14012
+          },
+          {
+            "match": "metrica_2",
+            "source": "metrica",
+            "variant": "dropout",
+            "eligible_training_rows": 14012,
+            "sampled_rows": 14012
+          },
+          {
+            "match": "skillcorner_had_1874553",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 7713,
+            "sampled_rows": 7713
+          },
+          {
+            "match": "skillcorner_had_1874553",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 7713,
+            "sampled_rows": 7713
+          },
+          {
+            "match": "skillcorner_had_1886347",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 7654,
+            "sampled_rows": 7654
+          },
+          {
+            "match": "skillcorner_had_1886347",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 7654,
+            "sampled_rows": 7654
+          },
+          {
+            "match": "skillcorner_had_1899585",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 6474,
+            "sampled_rows": 6474
+          },
+          {
+            "match": "skillcorner_had_1899585",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 6474,
+            "sampled_rows": 6474
+          },
+          {
+            "match": "skillcorner_had_1925299",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 8187,
+            "sampled_rows": 8187
+          },
+          {
+            "match": "skillcorner_had_1925299",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 8187,
+            "sampled_rows": 8187
+          },
+          {
+            "match": "skillcorner_had_1927964",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 8388,
+            "sampled_rows": 8388
+          },
+          {
+            "match": "skillcorner_had_1927964",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 8388,
+            "sampled_rows": 8388
+          },
+          {
+            "match": "skillcorner_had_1953632",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 8195,
+            "sampled_rows": 8195
+          },
+          {
+            "match": "skillcorner_had_1953632",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 8195,
+            "sampled_rows": 8195
+          },
+          {
+            "match": "skillcorner_had_1959846",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 7145,
+            "sampled_rows": 7145
+          },
+          {
+            "match": "skillcorner_had_1959846",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 7145,
+            "sampled_rows": 7145
+          },
+          {
+            "match": "skillcorner_had_1986691",
+            "source": "skillcorner",
+            "variant": "clean",
+            "eligible_training_rows": 7750,
+            "sampled_rows": 7750
+          },
+          {
+            "match": "skillcorner_had_1986691",
+            "source": "skillcorner",
+            "variant": "dropout",
+            "eligible_training_rows": 7750,
+            "sampled_rows": 7750
+          }
+        ],
+        "feature_cache_receipts": [
+          {
+            "match": "metrica_1",
+            "sha256": "b2e29f02c00887f3a30bd9e8df261b7e0f5c169afdeb60f1d4743fe46b55327f"
+          },
+          {
+            "match": "metrica_2",
+            "sha256": "8ae9488fa9931632dfa460d15ac1a10e5f31c3fc7ec813028e9f1ae1c1e41c7b"
+          },
+          {
+            "match": "skillcorner_had_1874553",
+            "sha256": "470082a5e3f8b0f7b86210f1821bc2f6b63129745c0dc9b4f250965de05f3c3c"
+          },
+          {
+            "match": "skillcorner_had_1886347",
+            "sha256": "80f0be7a0591f77cd3299aed0f5b705d81032e14458e6c21ccd418ecabbf5082"
+          },
+          {
+            "match": "skillcorner_had_1899585",
+            "sha256": "32670a93427e1547de22cd4b36952c5e1d41b72d5fd4b171869036f43e31c311"
+          },
+          {
+            "match": "skillcorner_had_1925299",
+            "sha256": "ad77f966b13b328da2e382ccaa36f0fc83b1ad2dd277ba9fc7cd0913ca06f13f"
+          },
+          {
+            "match": "skillcorner_had_1927964",
+            "sha256": "7373359ca2bc3404b9f1876abddff553e15dcbab6d5b5b45c226e5c12b40a1b7"
+          },
+          {
+            "match": "skillcorner_had_1953632",
+            "sha256": "6ee339b7bb82468f2b9498a85aba0aa38447e0ebea5c4f7c243ae8f4f87344e8"
+          },
+          {
+            "match": "skillcorner_had_1959846",
+            "sha256": "d05c98571e4864bd2da11ff6cf47537b268da41f905ec9610b884db70c5f6f05"
+          },
+          {
+            "match": "skillcorner_had_1986691",
+            "sha256": "19b08c1d8f711891b8d7430b5a4c8f127e9c6277e60ffa47671a203a847e494d"
+          }
+        ],
+        "groups": {
+          "first_16": {
+            "n_leaves": 496,
+            "observed_leaves": 496,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 2.0,
+              "10": 8.0,
+              "25": 10.0,
+              "50": 10.0,
+              "75": 10.0,
+              "90": 10.0,
+              "100": 10.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.0,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.0020161290322580645,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.8306451612903226,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.11571051534935407,
+              "10": 0.14922644328937168,
+              "25": 0.17318932527014166,
+              "50": 0.23180232948067336,
+              "75": 0.3375123122883358,
+              "90": 0.47839272878178196,
+              "100": 0.9116279069767442
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.016129032258064516,
+            "sample_assignment_weighted_distinct_matches": 9.913346256937789
+          },
+          "last_16": {
+            "n_leaves": 496,
+            "observed_leaves": 496,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 2.0,
+              "10": 8.0,
+              "25": 9.0,
+              "50": 10.0,
+              "75": 10.0,
+              "90": 10.0,
+              "100": 10.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.0,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.0020161290322580645,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.7479838709677419,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.11266447368421052,
+              "10": 0.1472673685216792,
+              "25": 0.16783397818900264,
+              "50": 0.22615835881852597,
+              "75": 0.32530106634141853,
+              "90": 0.480536602487822,
+              "100": 0.8992673992673993
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.008064516129032258,
+            "sample_assignment_weighted_distinct_matches": 9.881082406437375
+          },
+          "all_32": {
+            "n_leaves": 992,
+            "observed_leaves": 992,
+            "unseen_leaf_fraction": 0.0,
+            "distinct_sampled_matches_percentiles": {
+              "0": 2.0,
+              "10": 8.0,
+              "25": 10.0,
+              "50": 10.0,
+              "75": 10.0,
+              "90": 10.0,
+              "100": 10.0
+            },
+            "observed_leaf_fraction_seen_in_one_match": 0.0,
+            "observed_leaf_fraction_seen_in_at_most_two_matches": 0.0020161290322580645,
+            "observed_leaf_fraction_seen_in_all_training_matches": 0.7893145161290323,
+            "dominant_match_sample_share_percentiles": {
+              "0": 0.11266447368421052,
+              "10": 0.14857304147644437,
+              "25": 0.17077839493355482,
+              "50": 0.22962382445141066,
+              "75": 0.3344597836788808,
+              "90": 0.47994006930057526,
+              "100": 0.9116279069767442
+            },
+            "observed_leaf_fraction_over_80pct_samples_from_one_match": 0.012096774193548387,
+            "sample_assignment_weighted_distinct_matches": 9.897214331687582
+          }
+        },
+        "all_eligible_training_rows_used": true
+      }
+    }
+  ]
+}

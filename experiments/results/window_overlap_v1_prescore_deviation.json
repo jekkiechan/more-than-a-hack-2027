@@ -1,0 +1,17 @@
+{
+  "study_id": "window_overlap_v1",
+  "declaration": "experiments/results/window_overlap_declaration.json",
+  "declaration_sha256": "3fcaf7b145e306e92d85efe28f6cb47e01da68ce66d4bf2d3f9c15a88cee3f59",
+  "recorded_utc": "2026-10-29T01:42:15Z",
+  "status": "superseded before scoring",
+  "attempted_cells": 1,
+  "completed_score_cells": 0,
+  "error": "The scalar lt.upsample helper received an (n_frames, 3) H/A/D matrix and raised ValueError: object too deep for desired array.",
+  "correction": "The v2 runner upsamples each class probability column through the existing scalar helper, then reassembles native H/A/D rows. The inference arm, data, checkpoints, cohort, tiling, decoder and score criteria are unchanged.",
+  "labels_loaded_before_failure": true,
+  "metrics_computed": false,
+  "candidate_predictions_written": false,
+  "organizer_labels_read": false,
+  "organizer_scored": false,
+  "public_gate_touched": false
+}
