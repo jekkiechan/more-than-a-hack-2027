@@ -21,14 +21,18 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 1. Execute the [supervision alignment plan](../../experiments/SUPERVISION_ALIGNMENT_PLAN.md):
    compare shared versus source-specific output projections under matched dense
-   D2 training and assess full-match stoppage coverage. Data restoration and
-   dense TRAIN rebuilding are underway; no head candidate has been fitted yet.
+   D2 training. Exact fold teachers/caches are restored and the dense TRAIN
+   manifest reproduces D2 byte-for-byte. Head controls precede candidate fits;
+   current execution state is recorded in the study report when complete.
    The [Sportec TRAIN rule diagnostic](../../experiments/PROVIDER_TOUCH_CALIBRATION.md)
    is complete: hold-through-contest beats literal challenger attribution, while
    a zero-second gap trades more unknown predictions for a small spell gain.
    Keep the GAR rule; no full-provider label calibration or model upgrade is
    established. The incorrect-clock v1 is invalid; corrected v2 uses raw timestamps.
-   Freeze the head execution declaration after preparation and replay checks.
+   The [coverage audit](../../experiments/FULL_MATCH_COVERAGE_EXECUTION.md)
+   is complete: only 369/4,352 observed OUT runs have a bounded same-record
+   restart, at most 4.805 seconds later. The full-match/long-stoppage arm is
+   blocked on continuous tracking and complete event timelines, not a model failure.
 2. Pursue fresh external dense possession evidence and authorized true-broadcast
    access. The [independent-data search](../../experiments/INDEPENDENT_DATA_SEARCH.md)
    acquired a SoccerTrack panorama sample; the

@@ -1,9 +1,12 @@
 # Full-match and stoppage coverage study proposal
 
-Status: proposed; no new fitting or scoring has started. A bounded
-silver-supervised development comparison can use the existing SoccerNet event
-stream and already exposed external development matches. Independent continuous
-gold remains a stronger optional confirmation path.
+Status: source audit complete; coverage arms not run. The fresh
+[TRAIN coverage audit](FULL_MATCH_COVERAGE_EXECUTION.md) found that bounded
+OUT-to-restart intervals total only 20.3 minutes (0.72% of observed record-hours),
+with a maximum duration of 4.805 seconds and 91.5% right-censored at record
+edges. This is insufficient to test complete stoppage coverage at the fixed
+five-second context. Independent continuous gold remains optional stronger
+confirmation after a whole-match source is available.
 
 ## Question
 
@@ -25,12 +28,14 @@ needed by this question.
 
 ## Local source availability and limits
 
-- A dated restore receipt records that `OpenSportsLab/SoccerNet-GAR`,
-  `tracking-full`, revision `32c840210b7d08d06976e7f9457dfff79fb2da99`, had
-  seven TRAIN files hash-verified on 30 October 2026. The current checkout does
-  not contain those source bytes, so their present local availability has not
-  been verified. Dense labels are derived from the event stream; they are silver
-  rules, not independently annotated continuous H/A/D truth.
+- `OpenSportsLab/SoccerNet-GAR`, `tracking-full`, revision
+  `32c840210b7d08d06976e7f9457dfff79fb2da99`, was freshly restored and all
+  seven TRAIN file hashes verified on 31 October 2026. The current workspace
+  has the pinned TRAIN files in ignored storage; valid/test files were not
+  fetched. The new receipt is
+  [`full_match_coverage_source_restore.json`](results/full_match_coverage_source_restore.json).
+  Dense labels are derived from the event stream; they are silver rules, not
+  independently annotated continuous H/A/D truth.
   The held-out GAR valid/test clips are likewise short clip records, not a
   continuous full-match asset. Do not infer complete stoppage coverage from the
   87.4% known-frame fraction inside TRAIN records.
@@ -55,15 +60,17 @@ needed by this question.
 
 ## Proposed first comparison
 
-Start with a silver-supervised development comparison: use SoccerNet-GAR
-TRAIN event streams to derive labels under an explicit touch/restart rule, then
-construct matched training views that differ in clip-limited versus broader
-temporal coverage. Use the already exposed external development fixtures to
-check pipeline behavior and score the fixed comparison under the existing
-whole-match/provider protocol. Treat this as development evidence only. Keep
-unknown labels unknown; do not propagate sparse event anchors into unsupported
-continuous H/A/D targets. Require the touch/restart semantics to support the
-intended D and restart labels, and retain provenance and censored boundaries.
+The initial proposal was a silver-supervised development comparison using
+SoccerNet-GAR TRAIN event streams to derive labels under an explicit
+touch/restart rule, then construct matched training views that differ in
+clip-limited versus broader temporal coverage. The actual audit found that
+available bounded D sequences are too short and sparse for that comparison, so
+no coverage arm was fit. If a suitable source is added later, use the already
+exposed external development fixtures only for development readout under the
+existing whole-match/provider protocol. Keep unknown labels unknown; do not
+propagate sparse event anchors into unsupported continuous H/A/D targets.
+Require the touch/restart semantics to support the intended D and restart
+labels, and retain provenance and censored boundaries.
 
 If stronger confirmation becomes feasible, add a new independently labeled
 full-match source. Labelers should see video only; hide action events, tracker
@@ -117,23 +124,20 @@ selection and tuning.
 
 ## Readiness gate and next actions
 
-Before a silver development comparison, verify the relevant source terms and
-existing artifact availability, audit the event-to-touch/restart semantics,
-preserve native masks and period/timestamp metadata, and declare the whole-match
-folds and exposure. A new source is needed only for an independent transfer or
-gold-confirmation claim. Check license terms when acquiring or using any new
-video/tracking asset; no separate written-approval process is presumed where
-the existing terms already authorize the intended use. Validate clock
-alignment before joining action points to tracking. For SoccerTrack 117093, the
-verified BAS clock and current loader disagree about half-2 timing; resolve
-against the videos and raw period metadata before using events as silver
-anchors.
+The TRAIN byte restore, dense-record build and coverage audit are complete; see
+the [execution report](FULL_MATCH_COVERAGE_EXECUTION.md). Before a future silver
+development comparison on another source, verify the applicable source terms
+and artifact availability, audit event-to-touch/restart semantics, preserve
+native masks and period/timestamp metadata, and declare whole-match folds and
+exposure. A new source is needed for an independent transfer or gold-confirmation
+claim. Validate clock alignment before joining action points to tracking. For
+SoccerTrack 117093, the verified BAS clock and current loader disagree about
+half-2 timing; resolve against the videos and raw period metadata before using
+events as silver anchors.
 
-For the existing-source development study, first verify/restore the declared
-SoccerNet bytes from the recorded source and publish a coverage audit with
-actual union-of-time
-coverage, gap distributions, stoppage/restart completeness and edge censoring.
 Do not treat merged GAR clip duration or event-point count as full-match
-coverage. If full broadcast access remains blocked, the SoccerTrack panorama
-pilot can test annotation workflow and interval scoring only, with its
-non-broadcast limitation stated prominently.
+coverage. The measured source audit confirms that current event clips do not
+provide the full-match stoppage/restart coverage needed for the proposed arm.
+If full broadcast access remains blocked, the SoccerTrack panorama pilot can
+test annotation workflow and interval scoring only, with its non-broadcast
+limitation stated prominently.
