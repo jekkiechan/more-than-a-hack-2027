@@ -29,9 +29,11 @@ direction between 2026 and 2027. No new objective establishes a useful upgrade.
 The [completed report](../../experiments/SOCCERNET_FOLLOWUP.md) owns the
 scorecard, provider/seed diagnostics and artifact receipts. All 45 TRAIN
 fixtures, 9,905 segments and paired raw gap views were rebuilt from the verified
-[Hugging Face source](../../experiments/SOCCERNET_DATA_ACCESS.md). The original
-promoted checkpoint bytes were not recovered; this is an explicit reference
-reconstruction, not an exact package restore. New fold checkpoints, matching D
+[Hugging Face source](../../experiments/SOCCERNET_DATA_ACCESS.md). During that study the original
+promoted checkpoint bytes were not recovered; its comparator is an explicit
+reference reconstruction, not an exact package restore. The original promoted
+deployment weights are now separately available through the private baseline
+cache; this does not change the follow-up study's reconstructed reference. New fold checkpoints, matching D
 teachers and a verified bundle remain local, with no remote upload. Independent
 weight replay reproduces all 225 probabilities and decoded outputs exactly.
 The 406 experiment tests, 18 root tests, file-backed fit parity and bundled CSV
@@ -168,8 +170,12 @@ evidence; its score is .569697 versus .557576 on only 7,500 frames and 17
 references. No fresh confirmation or full-match result is established. See the
 [promotion guide](../../experiments/BASELINE.md) and
 [capacity report](../../experiments/SOCCERNET_CAPACITY.md).
-The promotion has local restore only: the generic private-cache default still
-restores the former package, and no remote cache/archive was updated.
+The promoted four-checkpoint package is now uploaded to the private cache; its
+default model/source manifests select this baseline. A fresh clone and LFS
+download verified every model and source hash. The
+[remote delivery receipt](../../experiments/results/baseline_soccernet_capacity_remote_artifacts.json)
+supersedes the original local-only availability note; full research archives
+remain outside this delivery.
 
 The [former combined-objective package](../../experiments/OBJECTIVE_ENSEMBLE.md)
 is archived. Its fitted D teachers, old manifest, policy, and historical
