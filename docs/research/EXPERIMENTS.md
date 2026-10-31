@@ -1,6 +1,6 @@
 # Experiment index
 
-Reviewed 2026-10-31 through PR #43. Find evidence here; adoption and next work live in
+Reviewed 2026-10-31 through merged PR #49 and the completed subsecond-team study. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
@@ -33,6 +33,7 @@ the matching section/report. These are study families, not one leaderboard.
 
 | ID | Scope / state | Evidence |
 | --- | --- | --- |
+| `dense_short_team_v1` / `dense_short_team_blend_v1` — completed, retain baseline | Six fixed subsecond H/A-weighted fits and one post-result fixed 50/50 blend. Ensemble clean/feed-like spell .645165/.503646 and .646614/.504806 versus D2 .647215/.505811. Both miss +.01 clean; other guards pass. ≤1s wrong-team rates improve marginally clean but worsen under stress. Exact sampler replay confirms only 0.09–0.10% of sampled GAR H/A rows receive the boost. Stop local duration-weight/blend sweeps; no adoption or organizer scoring. | [Report](../../experiments/DENSE_SHORT_TEAM_V1.md), [direct readout](../../experiments/results/dense_short_team_v1_readout.json), [blend readout](../../experiments/results/dense_short_team_blend_v1_readout.json), [exposure audit](../../experiments/results/dense_short_team_exposure_v1.json), [independent review](../../experiments/results/dense_short_team_v1_independent_review.json) |
 | `dense-targeted-followups` — completed, no upgrade | Matched control replay passed. Ensemble clean/feed-like spell deltas: gap memory +0.000367/−0.001133; boundary decoder −0.002939/−0.003794; silver weighting +0.000701/−0.000583. Audit identifies ≤1s team errors; exact 199,319-row submission replay passed. No promotion. | [Coordinated study](../../experiments/DENSE_TARGETED_FOLLOWUPS.md), [error audit](../../experiments/DENSE_ERROR_AUDIT_V1.md), [submission audit](../../experiments/dense_submission_audit_v1/README.md) |
 | `soccernet_followup_execution_v1` — completed, retain baseline | Three Luna mechanisms, six reconstructed references and 24 matched continuations; 225 scored outputs and exact weight replay. Reconstruction .642988/.503681 clean/feed-like versus reference .641790/.502586 and control .642896/.504988. Only +.000092 clean over control, with -.001307 feed-like; all continuations miss +.01 clean, all provider/stress guards pass. No promotion. | [Completed report](../../experiments/SOCCERNET_FOLLOWUP.md), [aggregate](../../experiments/results/soccernet_followup_results.json), [readout](../../experiments/results/soccernet_followup_readout.json), [verification](../../experiments/results/soccernet_followup_verification.json), [artifacts](../../experiments/results/soccernet_followup_artifacts.json), [original implementation](../../experiments/SOCCERNET_TRAINING_IDEAS.md) |
 
@@ -169,6 +170,7 @@ outcomes describe their tested recipes/cohorts, not universal impossibility.
 | More shifted-core, frozen contact-adapter, native instantaneous-geometry or turnover-cost sweeps on the same cohort | [Window overlap](../../experiments/WINDOW_OVERLAP.md), [contact memory](../../experiments/CONTACT_MEMORY.md), [native short spells](../../experiments/NATIVE_SHORT_SPELL.md), [turnover v2](../../TURNOVER_DECODER_V2.md). Short recall gains did not establish overall spell gain. |
 | Smart Tagging cap/taper/taxonomy tuning on the public window | [Fixed diagnostic](../../experiments/SMART_TAGGING_VALIDATION.md) completed; no public-driven follow-up sweep. |
 | Further SoccerNet objective/scale sweeps without a new hypothesis | [Matched training follow-up](../../experiments/SOCCERNET_FOLLOWUP.md) found no qualifying objective; [dense progress](../../experiments/results/sn_dense_v1_progress.md) found dense H/A alone, longer training and GAR-only gains did not transfer, and 11/22/45-game scaling was flat. |
+| Subsecond duration-weight and blend-weight sweeps on the same data | [Fixed 2× weighting and 50/50 ensemble blend](../../experiments/DENSE_SHORT_TEAM_V1.md) both reduce clean/feed-like spell F1. Clean short-team gains are marginal and do not transfer to stress; eligible GAR supervision is sparse. More weight choices need stronger evidence or new supervision. |
 
 Native player-frame blanking, calibrated player defects and ball-fusion
 confidence remain historical proposals, not current priorities or completed

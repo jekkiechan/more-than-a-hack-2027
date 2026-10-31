@@ -1,0 +1,210 @@
+{
+  "aggregate_semantics_note": "The frozen complete_short_spell_readout pools matched/reference counts across cells within each provider before taking the equal-provider mean; it is a provider-micro recall. The independent equal-match diagnostics above average feed replicates within match and matches within provider. These are diagnostic only; primary official spell F1 and guards are unaffected.",
+  "blend_formula": "exact 0.5*control + 0.5*short_team probability arrays; unchanged cost-3 decoder",
+  "coverage": {
+    "all_cells_match_readout_to_atol_1e_12": true,
+    "blend_archives": 15,
+    "blend_score_rows": 15,
+    "max_absolute_score_delta": 0.0,
+    "official_scores_replayed": 15
+  },
+  "decision": "Final fixed 50/50 blend fails the +0.01 clean screen (clean delta \u22120.000601) and is below control on clean and feed_like spell F1; stop further arms and retain the working baseline.",
+  "evidence_scope": "Previously exposed provider-holdout development data; synthetic feed-like stress; not independent confirmation.",
+  "hashes": {
+    "all_blend_prediction_hashes_verified": true,
+    "all_prior_model_and_prediction_hashes_verified": true,
+    "blend_declaration_sha256": "89e15aaa192b69a13d47be0f20471ea1cf8a9f698f59d020896f040d84a9512e",
+    "blend_prediction_count": 15,
+    "blend_prediction_map_sha256": "26bd3c48efcb95fb45a6a824b2c91e527b379274d8ba6d74ac61d9c0fbd29ca5",
+    "blend_readout_sha256": "0fa5355e23fcb227489d2f017cfacf2973bc1340c003076141916f91561e20e1",
+    "prior_declaration_sha256": "17fcc4708e2be5135a9dbf3eaf98e8d016a41ecc9f3ef3e998d9da7600ed9e8b",
+    "prior_readout_sha256": "18ca0dbe11a1a40ca30523e973f5c344ce7ac01460fc301d1316fd4c456eea1d",
+    "prior_seal_sha256": "670be2f06ef533f0c23aec80b73892ce1675bbd943f638d542de568e234a4268",
+    "source_ensemble_input_count": 30,
+    "source_ensemble_input_map_sha256": "30389c958f1c8b174d8d1ec72b958971e322ca07f55113ebe0ec027e51e40cb9",
+    "source_model_sha256": {
+      "data/experiments/dense_label_weight_v1/models/control_D2__metrica__s2026.joblib": "4161e51c45c54806771b9e1e995137a5b5270cc6c3befa755c26591372551fca",
+      "data/experiments/dense_label_weight_v1/models/control_D2__metrica__s2027.joblib": "3b61e5fa57255e83e59f8144b62fddd648e093d235eecf8c37c53d4df47e3eb7",
+      "data/experiments/dense_label_weight_v1/models/control_D2__skillcorner__s2026.joblib": "e7eca636e1ac4a74a32efbfac869bea4b01e030ebe92204ca031236d44e32b14",
+      "data/experiments/dense_label_weight_v1/models/control_D2__skillcorner__s2027.joblib": "2c1d983f23430232c39bd2a9b99cdde28b8bb870e5c0a85a1278469762643f44",
+      "data/experiments/dense_label_weight_v1/models/control_D2__sportec__s2026.joblib": "f5ec355f3122bf95a2ba0313d677b1475c629dd1f2affe31165fec735d9c301c",
+      "data/experiments/dense_label_weight_v1/models/control_D2__sportec__s2027.joblib": "0dfbda3f3c1a927c7911e69ab8085febdf42416c2633ad5f69990f6e944e5f2d",
+      "data/experiments/dense_short_team_v1/models/short_team_2x__metrica__s2026.joblib": "723d7968e95115dd6bbb9a7f29de58205abbcb0371d504139418d38f1e44dbea",
+      "data/experiments/dense_short_team_v1/models/short_team_2x__metrica__s2027.joblib": "dadd3721e602b8f7d4c2db9fe69b45d1a8011b42ed262cb38e758d9bdf342b03",
+      "data/experiments/dense_short_team_v1/models/short_team_2x__skillcorner__s2026.joblib": "639012a587e3d69d057fe6efdd0a08e6e9bc7e346a95551372c4cfbd10a04753",
+      "data/experiments/dense_short_team_v1/models/short_team_2x__skillcorner__s2027.joblib": "980d242dc924310c2c127592148dd0db6d87886feb7d0e5ad5c3d816ed8ed587",
+      "data/experiments/dense_short_team_v1/models/short_team_2x__sportec__s2026.joblib": "877bb9c8a2e4dcf7160008452a47618bc2ffbc461093cea39ffb483138fbce52",
+      "data/experiments/dense_short_team_v1/models/short_team_2x__sportec__s2027.joblib": "2c61365d6b7d6babb5982162a5c4372228904472e76c03579af51ee540e4d1b7"
+    },
+    "source_sha256": {
+      "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+      "experiments/dense_error_audit_v1.py": "c43535f6b1a4d6b40edac9d40c239618bd4cb87e34635253452e3e39196da773",
+      "experiments/dense_label_weight_v1.py": "53a76811a0aebacfe357454d28c77f8905fc9ce39d7f9f199a0a31abcdbbe54d",
+      "experiments/dense_short_team_blend_v1.py": "60233d189dbe46a53fe6beebf1296f86380d47493584a6138d53fd25e7ad9994",
+      "experiments/dense_short_team_eval_v1.py": "97c7d507a362efc812a41a8ac3d357f31a5f1d69b6c55e2fd79901a6dfeeecdd",
+      "experiments/dense_short_team_v1.py": "fce2939c83c5c50d72dbad67a27b3a3ca713f18549ebebf49eaad918658fee5d",
+      "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+      "experiments/model_decision_policy.json": "f63c4bd69881acaa8abadccf515308ebd66890106a24e5f550373a4d20859165",
+      "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+      "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+      "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+      "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+      "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+      "experiments/tests/test_dense_short_team_blend_v1.py": "8bc3d5860a9200c1d4dd561de250df7b26e59dc0f4f83bdda9ea2c362940184a"
+    }
+  },
+  "readout": {
+    "all_guards_pass": false,
+    "clean_delta_vs_control": -0.000600865121747729,
+    "clean_delta_vs_short_team": 0.0014486604835451944,
+    "clean_gain_screen_pass": false,
+    "clean_spell_f1": 0.646613693952624,
+    "complete_short_equal_match_diagnostics": {
+      "clean": {
+        "equal_provider_mean": {
+          "complete_le_1s_equal_match_recall": 0.13383838383838384,
+          "under_3s_equal_match_recall": 0.40033334979462376
+        },
+        "per_provider": {
+          "metrica": {
+            "complete_le_1s_equal_match_recall": 0.3333333333333333,
+            "complete_le_1s_matched_cells": 11,
+            "complete_le_1s_reference_cells": 33,
+            "matches": 1,
+            "under_3s_equal_match_recall": 0.5476190476190477
+          },
+          "skillcorner": {
+            "complete_le_1s_equal_match_recall": 0.0,
+            "complete_le_1s_matched_cells": 0,
+            "complete_le_1s_reference_cells": 62,
+            "matches": 3,
+            "under_3s_equal_match_recall": 0.2929749103942652
+          },
+          "sportec": {
+            "complete_le_1s_equal_match_recall": 0.06818181818181818,
+            "complete_le_1s_matched_cells": 3,
+            "complete_le_1s_reference_cells": 44,
+            "matches": 1,
+            "under_3s_equal_match_recall": 0.3604060913705584
+          }
+        }
+      },
+      "feed_like": {
+        "equal_provider_mean": {
+          "complete_le_1s_equal_match_recall": 0.05429292929292929,
+          "under_3s_equal_match_recall": 0.21749123869477563
+        },
+        "per_provider": {
+          "metrica": {
+            "complete_le_1s_equal_match_recall": 0.10606060606060606,
+            "complete_le_1s_matched_cells": 7,
+            "complete_le_1s_reference_cells": 66,
+            "matches": 1,
+            "under_3s_equal_match_recall": 0.24603174603174602
+          },
+          "skillcorner": {
+            "complete_le_1s_equal_match_recall": 0.0,
+            "complete_le_1s_matched_cells": 0,
+            "complete_le_1s_reference_cells": 124,
+            "matches": 3,
+            "under_3s_equal_match_recall": 0.25415770609319
+          },
+          "sportec": {
+            "complete_le_1s_equal_match_recall": 0.056818181818181816,
+            "complete_le_1s_matched_cells": 5,
+            "complete_le_1s_reference_cells": 88,
+            "matches": 1,
+            "under_3s_equal_match_recall": 0.15228426395939088
+          }
+        }
+      }
+    },
+    "complete_short_pooled_counts": {
+      "clean": {
+        "equal_provider_mean": {
+          "complete_le_1s_recall": 0.13383838383838384,
+          "under_3s_recall": 0.4005011332863904
+        },
+        "overall_counts": {
+          "complete_le_1s_matched_spells": 14,
+          "complete_le_1s_reference_spells": 139,
+          "under_3s_matched_spells": 275,
+          "under_3s_reference_spells": 783
+        },
+        "per_provider": {
+          "metrica": {
+            "complete_le_1s_matched_spells": 11,
+            "complete_le_1s_recall": 0.3333333333333333,
+            "complete_le_1s_reference_spells": 33,
+            "under_3s_matched_spells": 69,
+            "under_3s_recall": 0.5476190476190477,
+            "under_3s_reference_spells": 126
+          },
+          "skillcorner": {
+            "complete_le_1s_matched_spells": 0,
+            "complete_le_1s_recall": 0.0,
+            "complete_le_1s_reference_spells": 62,
+            "under_3s_matched_spells": 135,
+            "under_3s_recall": 0.29347826086956524,
+            "under_3s_reference_spells": 460
+          },
+          "sportec": {
+            "complete_le_1s_matched_spells": 3,
+            "complete_le_1s_recall": 0.06818181818181818,
+            "complete_le_1s_reference_spells": 44,
+            "under_3s_matched_spells": 71,
+            "under_3s_recall": 0.3604060913705584,
+            "under_3s_reference_spells": 197
+          }
+        }
+      },
+      "feed_like": {
+        "equal_provider_mean": {
+          "complete_le_1s_recall": 0.05429292929292929,
+          "under_3s_recall": 0.21755461202603113
+        },
+        "overall_counts": {
+          "complete_le_1s_matched_spells": 12,
+          "complete_le_1s_reference_spells": 278,
+          "under_3s_matched_spells": 356,
+          "under_3s_reference_spells": 1566
+        },
+        "per_provider": {
+          "metrica": {
+            "complete_le_1s_matched_spells": 7,
+            "complete_le_1s_recall": 0.10606060606060606,
+            "complete_le_1s_reference_spells": 66,
+            "under_3s_matched_spells": 62,
+            "under_3s_recall": 0.24603174603174602,
+            "under_3s_reference_spells": 252
+          },
+          "skillcorner": {
+            "complete_le_1s_matched_spells": 0,
+            "complete_le_1s_recall": 0.0,
+            "complete_le_1s_reference_spells": 124,
+            "under_3s_matched_spells": 234,
+            "under_3s_recall": 0.2543478260869565,
+            "under_3s_reference_spells": 920
+          },
+          "sportec": {
+            "complete_le_1s_matched_spells": 5,
+            "complete_le_1s_recall": 0.056818181818181816,
+            "complete_le_1s_reference_spells": 88,
+            "under_3s_matched_spells": 60,
+            "under_3s_recall": 0.15228426395939088,
+            "under_3s_reference_spells": 394
+          }
+        }
+      }
+    },
+    "equal_provider_le_1s_wrong_team_rate_clean": 0.36590598850501227,
+    "equal_provider_le_1s_wrong_team_rate_feed_like": 0.4494155898500787,
+    "feed_like_delta_vs_control": -0.0010046422624732099,
+    "feed_like_delta_vs_short_team": 0.0011596669662160553,
+    "feed_like_floor_pass": true,
+    "feed_like_spell_f1": 0.5048061471622787
+  },
+  "review_id": "dense_short_team_blend_v1_independent_review",
+  "schema": 1,
+  "scope": "Independent source-chain, archive, blend-equation, decode, and official-score replay; no fitting or organizer scoring."
+}

@@ -1,0 +1,90 @@
+{
+  "adopted_manifest_and_policy_changed": false,
+  "checks": {
+    "docs": {
+      "errors": 0,
+      "files": 106,
+      "local_links_and_anchors": 674
+    },
+    "experiment_tests": {
+      "count": 479,
+      "passed": true
+    },
+    "exposure_sampler_synthetic_contract": "passed",
+    "file_backed_fitting_parity": "exact_pass",
+    "integrity_tests": {
+      "count": 26,
+      "passed": true
+    },
+    "submission_format": {
+      "file": "evaluation/results/baseline_smooth50.csv",
+      "organizer_scoring": false,
+      "passed": true,
+      "rows": 199319
+    }
+  },
+  "companion_study": "dense_short_team_blend_v1",
+  "dependency_repair": "Installed repository-pinned pyarrow==20.0.0 after three missing-module errors; final broad suite passes.",
+  "execution": {
+    "fits": [
+      {
+        "fold": "leave_out_sportec",
+        "returncode": 0,
+        "seed": 2026,
+        "wall_seconds": 239.61960248999992
+      },
+      {
+        "fold": "leave_out_skillcorner",
+        "returncode": 0,
+        "seed": 2026,
+        "wall_seconds": 240.10625824400006
+      },
+      {
+        "fold": "leave_out_metrica",
+        "returncode": 0,
+        "seed": 2026,
+        "wall_seconds": 241.83712226700004
+      },
+      {
+        "fold": "leave_out_skillcorner",
+        "returncode": 0,
+        "seed": 2027,
+        "wall_seconds": 237.09800098000005
+      },
+      {
+        "fold": "leave_out_metrica",
+        "returncode": 0,
+        "seed": 2027,
+        "wall_seconds": 239.13844608399995
+      },
+      {
+        "fold": "leave_out_sportec",
+        "returncode": 0,
+        "seed": 2027,
+        "wall_seconds": 239.54128596099986
+      }
+    ],
+    "max_parallel_fits": 3
+  },
+  "frozen_evidence_changes": false,
+  "log_sha256": {
+    "data/experiments/dense_short_team_v1/logs/validation_experiments.log": "6193602e3852c5917106261c3d74765faee372fcc9b46d7671b177107ce6b3e2",
+    "data/experiments/dense_short_team_v1/logs/validation_exposure.json": "5b3a643d337ac7cd299fba101122d543ad6a021ba44570fbf20b9016200b8c4c",
+    "data/experiments/dense_short_team_v1/logs/validation_integrity.log": "31ffff94f3ca4a11d65b45f93048d66f87260b3cdffce8940e86b204ec6ab9ca"
+  },
+  "organizer_labels_accessed": false,
+  "python": "3.12.14",
+  "real_data_two_update_parity": {
+    "durable_contract": "experiments/tests/test_dense_short_team_v1.py",
+    "fold": "leave_out_sportec",
+    "seed": 2026,
+    "status": "passed_transient_prefit_check_no_saved_log"
+  },
+  "source_hashes": {
+    "experiments/dense_short_team_blend_v1.py": "60233d189dbe46a53fe6beebf1296f86380d47493584a6138d53fd25e7ad9994",
+    "experiments/dense_short_team_eval_v1.py": "97c7d507a362efc812a41a8ac3d357f31a5f1d69b6c55e2fd79901a6dfeeecdd",
+    "experiments/dense_short_team_exposure_v1.py": "ada0ad1b28d8d3eb4d8d658d1175886616671ec5bd87c69a03cff5d3c0ea1c02",
+    "experiments/dense_short_team_v1.py": "fce2939c83c5c50d72dbad67a27b3a3ca713f18549ebebf49eaad918658fee5d"
+  },
+  "study": "dense_short_team_v1"
+}
