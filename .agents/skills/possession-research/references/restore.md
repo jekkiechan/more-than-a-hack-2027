@@ -1,15 +1,9 @@
----
-name: possession-restore
-description: Locate or restore possession datasets, checkpoints, source snapshots or private experiment artifacts. Use when data or weights appear missing, before requesting archives or rebuilding a model. Does not authorize fitting, scoring or uploads.
----
-
 # Restore the right artifact
 
 1. Identify what is missing: raw provider data, prepared arrays, pooled deployment
-   weights, provider-held-out research weights, or matching source. Read
-   [STATUS](../../../docs/research/STATUS.md),
-   [BASELINE](../../../experiments/BASELINE.md) and the relevant artifact receipt.
-   Record package/study ID and required hashes. Dataset access does not recover
+   weights, provider-held-out research weights, or matching source. Use the
+   package guide and relevant receipt to record package/study ID and hashes.
+   Dataset access does not recover
    locally trained checkpoints; pooled weights do not replace fold models.
 2. Inspect existing ignored data and the private `mtah-data` checkout first. Check
    its branch/commit and versioned manifest; if delivery is on an open PR, private
@@ -17,7 +11,7 @@ description: Locate or restore possession datasets, checkpoints, source snapshot
    exact versioned manifest from the documented delivery branch. Do not change
    unrelated working files or claim the delivery merged without checking.
 3. For SoccerNet raw inputs, use the authorized
-   [Hugging Face source](../../../experiments/SOCCERNET_DATA_ACCESS.md):
+   [Hugging Face source](../../../../experiments/SOCCERNET_DATA_ACCESS.md):
    `OpenSportsLab/SoccerNet-GAR`, `tracking-full` branch, declaration-pinned
    revision and file hashes. Remote filenames are `train/...`; the local path
    includes `tracking-full/`. Use configured `HF_TOKEN` through the normal
@@ -42,8 +36,12 @@ description: Locate or restore possession datasets, checkpoints, source snapshot
 7. Restore/inference does not reopen evaluation gates. For a pipeline replay,
    use a fresh output path and format validation without organizer reference
    access. Read saved scores to answer reporting questions. Follow the
-   [experiment skill](../possession-experiment/SKILL.md) before new fitting or
-   scoring, and the [readout skill](../possession-readout/SKILL.md) for comparisons.
+   [experiment reference](experiment.md) before new fitting or
+   scoring, and the [readout reference](readout.md) for comparisons.
 
-Evidence: [guidance provenance](../../../docs/research/LESSONS.md), especially the
+Evidence: [guidance provenance](../../../../docs/research/LESSONS.md), especially the
 SoccerNet source correction, reference reconstruction and later deployment restore.
+
+Deliver the exact artifact identity, versioned restore/inference commands,
+verification performed and any access blocker. Keep raw-data availability,
+checkpoint availability and reconstruction status separate.
