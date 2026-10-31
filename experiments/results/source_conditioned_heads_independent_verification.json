@@ -1,0 +1,940 @@
+{
+  "aggregation_protocol": "Average corrupt_1/corrupt_2 rows within each match for feed_like; average matches within provider; equal mean across providers. Ranking uses ensemble unrounded spell F1, macro F1 only for exact ties. 70/30 is auxiliary.",
+  "checks": {
+    "fit_models": {
+      "all_fit_receipt_model_seal_hashes_match": true,
+      "all_fit_steps": 2048,
+      "arm_fold_seed_matrix_exact": true,
+      "count": 18,
+      "fold_teacher_normalization_exact_for_all_models": true
+    },
+    "frozen_source_files": {
+      "all_hashes_match_frozen_commit": true,
+      "count": 30
+    },
+    "independent_scoring": {
+      "ensemble_geometry_cells_recomputed_and_match_final_supplement": 45,
+      "ensemble_rows_match_all_common_official_fields_at_abs_tolerance_1e_12": true,
+      "ensemble_rows_recomputed": 45,
+      "independent_equal_provider_aggregate_matches_primary_at_abs_tolerance_1e_12": true,
+      "member_rows_match_saved_official_rows": true,
+      "member_rows_recomputed": 90
+    },
+    "matched_cohort": {
+      "cells_by_provider": {
+        "metrica": 3,
+        "skillcorner": 9,
+        "sportec": 3
+      },
+      "label_and_graded_code_population_identical_across_all_arms_and_seeds": true,
+      "one_clean_and_two_feed_like_replicates_per_match": true,
+      "per_cell_graded_frames_and_reference_spell_counts_equal_across_arms_seeds": true,
+      "unique_match_view_replicate_cells": 15,
+      "unique_matches": 5
+    },
+    "prediction_score_archives": {
+      "all_keys_hashes_shapes_finite_nonnegative_normalized": true,
+      "ensemble_cells": 45,
+      "native_member_cells": 90,
+      "organizer_labels_read": false,
+      "sealed_fit_score_archive_pairs": 18
+    }
+  },
+  "comparisons_vs_C": {
+    "H": {
+      "clean_spell_gain_vs_C": -0.01232945766184912,
+      "feed_like_spell_delta_vs_C": -0.011110461512796876,
+      "guard_checks": {
+        "clean_spell_gain_at_least_plus_0_01": false,
+        "feed_like_spell_at_least_C_minus_0_01": false,
+        "metrica_clean_d_f1_at_least_C_minus_0_02": true,
+        "metrica_clean_macro_at_least_C_minus_0_02": true,
+        "skillcorner_clean_d_f1_at_least_C_minus_0_02": true,
+        "skillcorner_clean_macro_at_least_C_minus_0_02": true,
+        "sportec_clean_d_f1_at_least_C_minus_0_02": true,
+        "sportec_clean_macro_at_least_C_minus_0_02": true
+      },
+      "practical_guard_pass": false,
+      "provider_clean_deltas": {
+        "metrica": {
+          "d_f1": -0.0005182023708926176,
+          "macro_f1": -0.0007732076714495051,
+          "spell_f1": -0.007132590729428734
+        },
+        "skillcorner": {
+          "d_f1": 0.0075797046354235675,
+          "macro_f1": -0.008394620094739347,
+          "spell_f1": -0.031152627254309007
+        },
+        "sportec": {
+          "d_f1": 3.5420895113880135e-05,
+          "macro_f1": 0.0006201072417484355,
+          "spell_f1": 0.001296844998190383
+        }
+      }
+    },
+    "HD": {
+      "clean_spell_gain_vs_C": -0.011612952404804533,
+      "feed_like_spell_delta_vs_C": -0.010556297874412868,
+      "guard_checks": {
+        "clean_spell_gain_at_least_plus_0_01": false,
+        "feed_like_spell_at_least_C_minus_0_01": false,
+        "metrica_clean_d_f1_at_least_C_minus_0_02": true,
+        "metrica_clean_macro_at_least_C_minus_0_02": true,
+        "skillcorner_clean_d_f1_at_least_C_minus_0_02": true,
+        "skillcorner_clean_macro_at_least_C_minus_0_02": true,
+        "sportec_clean_d_f1_at_least_C_minus_0_02": true,
+        "sportec_clean_macro_at_least_C_minus_0_02": true
+      },
+      "practical_guard_pass": false,
+      "provider_clean_deltas": {
+        "metrica": {
+          "d_f1": 0.0003110544344107069,
+          "macro_f1": -0.0002496388886495948,
+          "spell_f1": -0.005502895373025396
+        },
+        "skillcorner": {
+          "d_f1": 0.01928218009538618,
+          "macro_f1": -0.0038887882934093287,
+          "spell_f1": -0.029770132151764717
+        },
+        "sportec": {
+          "d_f1": 0.00040287562990681813,
+          "macro_f1": 0.0006780465624677268,
+          "spell_f1": 0.00043417031037651377
+        }
+      }
+    }
+  },
+  "control_replay_sha256": "319da0a74123c8816c9a3376a98746aceb653a0f45cbb5fe0c8b5e31db358a23",
+  "declaration_sha256": "919946e3753ab9172e5ca8558cfe320f6e0c5c5758ba1ad338e03749dadcf26e",
+  "diagnostic_limitations": {
+    "merge_count": "not independently reportable; frozen runner merge field defaults to zero and is not treated as measured evidence",
+    "organizer_or_broadcast_confirmation": "not performed",
+    "selection_matches": "previously exposed development data; synthetic feed_like views"
+  },
+  "diagnostics_supplement_sha256": "3ce9ab1b33accadeca747f663bedb3c4e17b52c287bdb4965d6f72ddbf5a1e8a",
+  "ensemble_geometry": {
+    "C": {
+      "clean": {
+        "complete_boundary_end_weighted_mean_seconds": 0.23546296296296293,
+        "complete_boundary_matches_end": 648,
+        "complete_boundary_matches_start": 648,
+        "complete_boundary_start_weighted_mean_seconds": -0.4918827160493827,
+        "ensemble_cells": 5,
+        "fragmented_reference_spells_sum": 41,
+        "predictions_overlapping_multiple_same_team_references_sum": 161,
+        "reference_spells_touching_graded_run_edge_sum": 789
+      },
+      "feed_like": {
+        "complete_boundary_end_weighted_mean_seconds": 0.4812045454545455,
+        "complete_boundary_matches_end": 880,
+        "complete_boundary_matches_start": 880,
+        "complete_boundary_start_weighted_mean_seconds": -0.5660454545454546,
+        "ensemble_cells": 10,
+        "fragmented_reference_spells_sum": 76,
+        "predictions_overlapping_multiple_same_team_references_sum": 403,
+        "reference_spells_touching_graded_run_edge_sum": 1578
+      }
+    },
+    "H": {
+      "clean": {
+        "complete_boundary_end_weighted_mean_seconds": 0.1764742589703588,
+        "complete_boundary_matches_end": 641,
+        "complete_boundary_matches_start": 641,
+        "complete_boundary_start_weighted_mean_seconds": -0.3514820592823713,
+        "ensemble_cells": 5,
+        "fragmented_reference_spells_sum": 68,
+        "predictions_overlapping_multiple_same_team_references_sum": 152,
+        "reference_spells_touching_graded_run_edge_sum": 789
+      },
+      "feed_like": {
+        "complete_boundary_end_weighted_mean_seconds": 0.41034403669724756,
+        "complete_boundary_matches_end": 872,
+        "complete_boundary_matches_start": 872,
+        "complete_boundary_start_weighted_mean_seconds": -0.5450688073394495,
+        "ensemble_cells": 10,
+        "fragmented_reference_spells_sum": 106,
+        "predictions_overlapping_multiple_same_team_references_sum": 400,
+        "reference_spells_touching_graded_run_edge_sum": 1578
+      }
+    },
+    "HD": {
+      "clean": {
+        "complete_boundary_end_weighted_mean_seconds": 0.16838006230529595,
+        "complete_boundary_matches_end": 642,
+        "complete_boundary_matches_start": 642,
+        "complete_boundary_start_weighted_mean_seconds": -0.3600311526479751,
+        "ensemble_cells": 5,
+        "fragmented_reference_spells_sum": 69,
+        "predictions_overlapping_multiple_same_team_references_sum": 152,
+        "reference_spells_touching_graded_run_edge_sum": 789
+      },
+      "feed_like": {
+        "complete_boundary_end_weighted_mean_seconds": 0.3898969072164949,
+        "complete_boundary_matches_end": 873,
+        "complete_boundary_matches_start": 873,
+        "complete_boundary_start_weighted_mean_seconds": -0.5572966781214204,
+        "ensemble_cells": 10,
+        "fragmented_reference_spells_sum": 108,
+        "predictions_overlapping_multiple_same_team_references_sum": 398,
+        "reference_spells_touching_graded_run_edge_sum": 1578
+      }
+    }
+  },
+  "ensemble_metrics": {
+    "C": {
+      "clean": {
+        "cell_count": 5,
+        "equal_provider_mean": {
+          "d_f1": 0.8501765773705746,
+          "d_precision": 0.91847234939931,
+          "d_recall": 0.7968677326503433,
+          "macro_f1": 0.8576771953023749,
+          "spell_f1": 0.6472145590743718,
+          "weighted_70_30": 0.7103533499427727
+        },
+        "per_provider": {
+          "metrica": {
+            "d_f1": 0.9019563419690294,
+            "d_precision": 0.9208262016005921,
+            "d_recall": 0.8838443265324246,
+            "macro_f1": 0.9253653236004763,
+            "spell_f1": 0.8049586776859504,
+            "weighted_70_30": 0.8410806714603082
+          },
+          "skillcorner": {
+            "d_f1": 0.7485914993807675,
+            "d_precision": 0.8939255734600865,
+            "d_recall": 0.6440871733053976,
+            "macro_f1": 0.7818821757165585,
+            "spell_f1": 0.4869337557560705,
+            "weighted_70_30": 0.5754182817442168
+          },
+          "sportec": {
+            "d_f1": 0.8999818907619266,
+            "d_precision": 0.9406652731372517,
+            "d_recall": 0.8626716981132075,
+            "macro_f1": 0.8657840865900894,
+            "spell_f1": 0.6497512437810945,
+            "weighted_70_30": 0.714561096623793
+          }
+        }
+      },
+      "feed_like": {
+        "cell_count": 10,
+        "equal_provider_mean": {
+          "d_f1": 0.847721042317196,
+          "d_precision": 0.9107968296490215,
+          "d_recall": 0.7978710715881546,
+          "macro_f1": 0.8155353136442022,
+          "spell_f1": 0.5058107894247519,
+          "weighted_70_30": 0.598728146690587
+        },
+        "per_provider": {
+          "metrica": {
+            "d_f1": 0.8952920774090436,
+            "d_precision": 0.9113504661730004,
+            "d_recall": 0.8797926425859735,
+            "macro_f1": 0.8748678389309077,
+            "spell_f1": 0.6037671108032736,
+            "weighted_70_30": 0.6850973292415639
+          },
+          "skillcorner": {
+            "d_f1": 0.7508328138024286,
+            "d_precision": 0.8867895669816592,
+            "d_recall": 0.6511413268954716,
+            "macro_f1": 0.7618938124843049,
+            "spell_f1": 0.44108848844561505,
+            "weighted_70_30": 0.537330085657222
+          },
+          "sportec": {
+            "d_f1": 0.8970382357401159,
+            "d_precision": 0.934250455792405,
+            "d_recall": 0.8626792452830189,
+            "macro_f1": 0.8098442895173941,
+            "spell_f1": 0.47257676902536716,
+            "weighted_70_30": 0.5737570251729752
+          }
+        }
+      }
+    },
+    "H": {
+      "clean": {
+        "cell_count": 5,
+        "equal_provider_mean": {
+          "d_f1": 0.8525422184237894,
+          "d_precision": 0.9176539131925568,
+          "d_recall": 0.8008590230812213,
+          "macro_f1": 0.8548279551275613,
+          "spell_f1": 0.6348851014125226,
+          "weighted_70_30": 0.7008679575270342
+        },
+        "per_provider": {
+          "metrica": {
+            "d_f1": 0.9014381395981368,
+            "d_precision": 0.9207102509491619,
+            "d_recall": 0.8829562862153941,
+            "macro_f1": 0.9245921159290268,
+            "spell_f1": 0.7978260869565217,
+            "weighted_70_30": 0.8358558956482731
+          },
+          "skillcorner": {
+            "d_f1": 0.7561712040161911,
+            "d_precision": 0.8921541714270358,
+            "d_recall": 0.656405688688647,
+            "macro_f1": 0.7734875556218191,
+            "spell_f1": 0.4557811285017615,
+            "weighted_70_30": 0.5510930566377787
+          },
+          "sportec": {
+            "d_f1": 0.9000173116570405,
+            "d_precision": 0.9400973172014729,
+            "d_recall": 0.8632150943396226,
+            "macro_f1": 0.8664041938318379,
+            "spell_f1": 0.6510480887792849,
+            "weighted_70_30": 0.7156549202950507
+          }
+        }
+      },
+      "feed_like": {
+        "cell_count": 10,
+        "equal_provider_mean": {
+          "d_f1": 0.848753957262288,
+          "d_precision": 0.909841922748455,
+          "d_recall": 0.7998011036140159,
+          "macro_f1": 0.8104988850253486,
+          "spell_f1": 0.494700327911955,
+          "weighted_70_30": 0.589439895045973
+        },
+        "per_provider": {
+          "metrica": {
+            "d_f1": 0.8948517966040374,
+            "d_precision": 0.9123618177952499,
+            "d_recall": 0.8780054614479498,
+            "macro_f1": 0.8718170530884337,
+            "spell_f1": 0.5930957904011795,
+            "weighted_70_30": 0.6767121692073558
+          },
+          "skillcorner": {
+            "d_f1": 0.7541569950945594,
+            "d_precision": 0.882903489017259,
+            "d_recall": 0.6583261512808902,
+            "macro_f1": 0.7485921315246591,
+            "spell_f1": 0.420329276168702,
+            "weighted_70_30": 0.5188081327754891
+          },
+          "sportec": {
+            "d_f1": 0.8972530800882671,
+            "d_precision": 0.934260461432856,
+            "d_recall": 0.8630716981132076,
+            "macro_f1": 0.8110874704629529,
+            "spell_f1": 0.47067591716598334,
+            "weighted_70_30": 0.5727993831550742
+          }
+        }
+      }
+    },
+    "HD": {
+      "clean": {
+        "cell_count": 5,
+        "equal_provider_mean": {
+          "d_f1": 0.856841947423809,
+          "d_precision": 0.9107317071106168,
+          "d_recall": 0.811690091173863,
+          "macro_f1": 0.8565237350958443,
+          "spell_f1": 0.6356016066695672,
+          "weighted_70_30": 0.7018782451974505
+        },
+        "per_provider": {
+          "metrica": {
+            "d_f1": 0.9022673964034401,
+            "d_precision": 0.9214265876689502,
+            "d_recall": 0.883888728548276,
+            "macro_f1": 0.9251156847118267,
+            "spell_f1": 0.799455782312925,
+            "weighted_70_30": 0.8371537530325954
+          },
+          "skillcorner": {
+            "d_f1": 0.7678736794761537,
+            "d_precision": 0.872437928098252,
+            "d_recall": 0.68579286572803,
+            "macro_f1": 0.7779933874231492,
+            "spell_f1": 0.4571636236043058,
+            "weighted_70_30": 0.5534125527499588
+          },
+          "sportec": {
+            "d_f1": 0.9003847663918334,
+            "d_precision": 0.9383306055646481,
+            "d_recall": 0.8653886792452831,
+            "macro_f1": 0.8664621331525572,
+            "spell_f1": 0.650185414091471,
+            "weighted_70_30": 0.7150684298097969
+          }
+        }
+      },
+      "feed_like": {
+        "cell_count": 10,
+        "equal_provider_mean": {
+          "d_f1": 0.8518134717611572,
+          "d_precision": 0.9024181915625604,
+          "d_recall": 0.8092435188140236,
+          "macro_f1": 0.8118783769210473,
+          "spell_f1": 0.495254491550339,
+          "weighted_70_30": 0.5902416571615515
+        },
+        "per_provider": {
+          "metrica": {
+            "d_f1": 0.8948385397897667,
+            "d_precision": 0.9104479309631114,
+            "d_recall": 0.8797593410740847,
+            "macro_f1": 0.8717436264299125,
+            "spell_f1": 0.5918864627836459,
+            "weighted_70_30": 0.675843611877526
+          },
+          "skillcorner": {
+            "d_f1": 0.7629151119871622,
+            "d_precision": 0.8628127869336154,
+            "d_recall": 0.6838731021604388,
+            "macro_f1": 0.7526699570853618,
+            "spell_f1": 0.4225199631190182,
+            "weighted_70_30": 0.5215649613089212
+          },
+          "sportec": {
+            "d_f1": 0.8976867635065424,
+            "d_precision": 0.9339938567909543,
+            "d_recall": 0.8640981132075471,
+            "macro_f1": 0.8112215472478672,
+            "spell_f1": 0.47135704874835305,
+            "weighted_70_30": 0.5733163982982072
+          }
+        }
+      }
+    }
+  },
+  "model_seal_sha256": "20ddedbd7ce2ff336e565f02215f4757990ae1f71887dd40740407955c393091",
+  "primary_aggregate_sha256": "ed5231367d055071aff2c423612ee531159b2cdad95f39ee514400dc979de876",
+  "ranking_by_unrounded_clean_spell_f1_then_macro_f1": [
+    "C",
+    "HD",
+    "H"
+  ],
+  "score_seal_sha256": "afa731d8cd3b0c20b482cd8c0abee2bc05579393f273b1368a57dc572824bcb7",
+  "seed_member_equal_provider_metrics": {
+    "C_2026": {
+      "clean": {
+        "d_f1": 0.8364493770684898,
+        "d_precision": 0.9140826221377214,
+        "d_recall": 0.779380770384032,
+        "macro_f1": 0.8506313749451802,
+        "spell_f1": 0.6355214533810217,
+        "weighted_70_30": 0.7000544298502692
+      },
+      "feed_like": {
+        "d_f1": 0.8359561065356488,
+        "d_precision": 0.9096239478529234,
+        "d_recall": 0.7812928975163395,
+        "macro_f1": 0.8090865330183009,
+        "spell_f1": 0.5018471241174439,
+        "weighted_70_30": 0.5940189467877011
+      }
+    },
+    "C_2027": {
+      "clean": {
+        "d_f1": 0.8511183161731951,
+        "d_precision": 0.9127731928723645,
+        "d_recall": 0.8013222672846266,
+        "macro_f1": 0.8566723789533147,
+        "spell_f1": 0.6372450754837683,
+        "weighted_70_30": 0.7030732665246321
+      },
+      "feed_like": {
+        "d_f1": 0.8464255292257702,
+        "d_precision": 0.9033324141068383,
+        "d_recall": 0.7998891451113829,
+        "macro_f1": 0.8097108222445665,
+        "spell_f1": 0.49575903011619893,
+        "weighted_70_30": 0.5899445677547092
+      }
+    },
+    "HD_2026": {
+      "clean": {
+        "d_f1": 0.8458943211894914,
+        "d_precision": 0.9062533651061538,
+        "d_recall": 0.7978963900751556,
+        "macro_f1": 0.8512026274884094,
+        "spell_f1": 0.6285998434174,
+        "weighted_70_30": 0.6953806786387027
+      },
+      "feed_like": {
+        "d_f1": 0.8424476881116346,
+        "d_precision": 0.9004534721762317,
+        "d_recall": 0.7960892351960301,
+        "macro_f1": 0.8077671701866272,
+        "spell_f1": 0.49580458221189166,
+        "weighted_70_30": 0.5893933586043123
+      }
+    },
+    "HD_2027": {
+      "clean": {
+        "d_f1": 0.8555296971769448,
+        "d_precision": 0.9034392632069727,
+        "d_recall": 0.8142650519971064,
+        "macro_f1": 0.854746615885117,
+        "spell_f1": 0.6306436615116348,
+        "weighted_70_30": 0.6978745478236794
+      },
+      "feed_like": {
+        "d_f1": 0.8483489779103937,
+        "d_precision": 0.8921053370360003,
+        "d_recall": 0.8101663996370059,
+        "macro_f1": 0.8051457020880246,
+        "spell_f1": 0.49019298782499304,
+        "weighted_70_30": 0.5846788021039024
+      }
+    },
+    "H_2026": {
+      "clean": {
+        "d_f1": 0.8390743983177078,
+        "d_precision": 0.9138803995607184,
+        "d_recall": 0.7834736339415449,
+        "macro_f1": 0.8483208632125755,
+        "spell_f1": 0.627105947343786,
+        "weighted_70_30": 0.6934704221044229
+      },
+      "feed_like": {
+        "d_f1": 0.8372727294716938,
+        "d_precision": 0.9079490843849536,
+        "d_recall": 0.7839535545089934,
+        "macro_f1": 0.8056842654747695,
+        "spell_f1": 0.4966417130789909,
+        "weighted_70_30": 0.5893544787977244
+      }
+    },
+    "H_2027": {
+      "clean": {
+        "d_f1": 0.853658717952101,
+        "d_precision": 0.9120804009787463,
+        "d_recall": 0.8057088624271272,
+        "macro_f1": 0.8541405890528103,
+        "spell_f1": 0.6324820613335973,
+        "weighted_70_30": 0.6989796196493612
+      },
+      "feed_like": {
+        "d_f1": 0.847756199921113,
+        "d_precision": 0.9026669792312135,
+        "d_recall": 0.8022588918959132,
+        "macro_f1": 0.8049473298841386,
+        "spell_f1": 0.4900790335567545,
+        "weighted_70_30": 0.5845395224549698
+      }
+    }
+  },
+  "seed_member_provider_metrics": {
+    "C": {
+      "2026": {
+        "clean": {
+          "metrica": {
+            "cell_count": 1,
+            "d_f1": 0.8998301438115729,
+            "d_precision": 0.9182980100307394,
+            "d_recall": 0.8820904469062896,
+            "macro_f1": 0.9226021783568202,
+            "match_count": 1,
+            "spell_f1": 0.7906464924346631,
+            "weighted_70_30": 0.8302331982113103
+          },
+          "skillcorner": {
+            "cell_count": 3,
+            "d_f1": 0.7096187494066174,
+            "d_precision": 0.8835727710611126,
+            "d_recall": 0.593289600094863,
+            "macro_f1": 0.7646911053843608,
+            "match_count": 3,
+            "spell_f1": 0.47957670578009565,
+            "weighted_70_30": 0.5651110256613752
+          },
+          "sportec": {
+            "cell_count": 1,
+            "d_f1": 0.8998992379872788,
+            "d_precision": 0.9403770853213123,
+            "d_recall": 0.8627622641509434,
+            "macro_f1": 0.8646008410943593,
+            "match_count": 1,
+            "spell_f1": 0.6363411619283065,
+            "weighted_70_30": 0.7048190656781224
+          }
+        },
+        "feed_like": {
+          "metrica": {
+            "cell_count": 2,
+            "d_f1": 0.8969910441179827,
+            "d_precision": 0.9119068117288913,
+            "d_recall": 0.8825677685766934,
+            "macro_f1": 0.872667791344886,
+            "match_count": 1,
+            "spell_f1": 0.5996374216452605,
+            "weighted_70_30": 0.6815465325551482
+          },
+          "skillcorner": {
+            "cell_count": 6,
+            "d_f1": 0.7148386111487564,
+            "d_precision": 0.8816724355538176,
+            "d_recall": 0.6013637541610041,
+            "macro_f1": 0.7457459553752495,
+            "match_count": 3,
+            "spell_f1": 0.43611850339868835,
+            "weighted_70_30": 0.5290067389916566
+          },
+          "sportec": {
+            "cell_count": 2,
+            "d_f1": 0.8960386643402074,
+            "d_precision": 0.9352925962760612,
+            "d_recall": 0.8599471698113208,
+            "macro_f1": 0.8088458523347675,
+            "match_count": 1,
+            "spell_f1": 0.4697854473083831,
+            "weighted_70_30": 0.5715035688162984
+          }
+        }
+      },
+      "2027": {
+        "clean": {
+          "metrica": {
+            "cell_count": 1,
+            "d_f1": 0.898946511733056,
+            "d_precision": 0.9156937248128958,
+            "d_recall": 0.8828008791599139,
+            "macro_f1": 0.9230176158951483,
+            "match_count": 1,
+            "spell_f1": 0.7961904761904762,
+            "weighted_70_30": 0.8342386181018778
+          },
+          "skillcorner": {
+            "cell_count": 3,
+            "d_f1": 0.7598754916464405,
+            "d_precision": 0.8855112417131429,
+            "d_recall": 0.6655130925052869,
+            "macro_f1": 0.78574814219475,
+            "match_count": 3,
+            "spell_f1": 0.4808052961665359,
+            "weighted_70_30": 0.5722881499750001
+          },
+          "sportec": {
+            "cell_count": 1,
+            "d_f1": 0.8945329451400887,
+            "d_precision": 0.9371146120910548,
+            "d_recall": 0.8556528301886792,
+            "macro_f1": 0.8612513787700461,
+            "match_count": 1,
+            "spell_f1": 0.6347394540942928,
+            "weighted_70_30": 0.7026930314970188
+          }
+        },
+        "feed_like": {
+          "metrica": {
+            "cell_count": 2,
+            "d_f1": 0.8877161836392959,
+            "d_precision": 0.9015414619572824,
+            "d_recall": 0.8743089936283107,
+            "macro_f1": 0.8653400164315648,
+            "match_count": 1,
+            "spell_f1": 0.5879279279279279,
+            "weighted_70_30": 0.671151554479019
+          },
+          "skillcorner": {
+            "cell_count": 6,
+            "d_f1": 0.7610744037653715,
+            "d_precision": 0.8767356444313017,
+            "d_recall": 0.6726112718945174,
+            "macro_f1": 0.761333687868146,
+            "match_count": 3,
+            "spell_f1": 0.4357096666529024,
+            "weighted_70_30": 0.5333968730174755
+          },
+          "sportec": {
+            "cell_count": 2,
+            "d_f1": 0.8904860002726428,
+            "d_precision": 0.9317201359319308,
+            "d_recall": 0.8527471698113207,
+            "macro_f1": 0.8024587624339886,
+            "match_count": 1,
+            "spell_f1": 0.4636394957677665,
+            "weighted_70_30": 0.5652852757676331
+          }
+        }
+      }
+    },
+    "H": {
+      "2026": {
+        "clean": {
+          "metrica": {
+            "cell_count": 1,
+            "d_f1": 0.8994305252074677,
+            "d_precision": 0.9177063118011274,
+            "d_recall": 0.881868436827032,
+            "macro_f1": 0.9210534989250343,
+            "match_count": 1,
+            "spell_f1": 0.7798639455782314,
+            "weighted_70_30": 0.8222208115822722
+          },
+          "skillcorner": {
+            "cell_count": 3,
+            "d_f1": 0.717187751841657,
+            "d_precision": 0.8848949130933476,
+            "d_recall": 0.6033600121674142,
+            "macro_f1": 0.7569575224375483,
+            "match_count": 3,
+            "spell_f1": 0.45218560377019984,
+            "weighted_70_30": 0.5436171793704044
+          },
+          "sportec": {
+            "cell_count": 1,
+            "d_f1": 0.9006049179039988,
+            "d_precision": 0.9390399737876802,
+            "d_recall": 0.8651924528301886,
+            "macro_f1": 0.8669515682751442,
+            "match_count": 1,
+            "spell_f1": 0.6492682926829267,
+            "weighted_70_30": 0.714573275360592
+          }
+        },
+        "feed_like": {
+          "metrica": {
+            "cell_count": 2,
+            "d_f1": 0.8971294553752134,
+            "d_precision": 0.9121688573069893,
+            "d_recall": 0.8825899695846191,
+            "macro_f1": 0.8747506173665414,
+            "match_count": 1,
+            "spell_f1": 0.6071826976336774,
+            "weighted_70_30": 0.6874530735535365
+          },
+          "skillcorner": {
+            "cell_count": 6,
+            "d_f1": 0.7183422946784997,
+            "d_precision": 0.8761523296884075,
+            "d_recall": 0.6089537128102859,
+            "macro_f1": 0.7334433616606552,
+            "match_count": 3,
+            "spell_f1": 0.41633504887845857,
+            "weighted_70_30": 0.5114675427131176
+          },
+          "sportec": {
+            "cell_count": 2,
+            "d_f1": 0.8963464383613684,
+            "d_precision": 0.9355260661594638,
+            "d_recall": 0.8603169811320754,
+            "macro_f1": 0.8088588173971119,
+            "match_count": 1,
+            "spell_f1": 0.466407392724837,
+            "weighted_70_30": 0.5691428201265194
+          }
+        }
+      },
+      "2027": {
+        "clean": {
+          "metrica": {
+            "cell_count": 1,
+            "d_f1": 0.8985815202034473,
+            "d_precision": 0.9152468226192669,
+            "d_recall": 0.8825122660568789,
+            "macro_f1": 0.9233940215839942,
+            "match_count": 1,
+            "spell_f1": 0.7978494623655914,
+            "weighted_70_30": 0.8355128301311122
+          },
+          "skillcorner": {
+            "cell_count": 3,
+            "d_f1": 0.7676449234953546,
+            "d_precision": 0.8840735141557312,
+            "d_recall": 0.678403000469786,
+            "macro_f1": 0.7771854922721739,
+            "match_count": 3,
+            "spell_f1": 0.4508282487287965,
+            "weighted_70_30": 0.5487354217918097
+          },
+          "sportec": {
+            "cell_count": 1,
+            "d_f1": 0.8947497101575008,
+            "d_precision": 0.9369208661612408,
+            "d_recall": 0.856211320754717,
+            "macro_f1": 0.8618422533022629,
+            "match_count": 1,
+            "spell_f1": 0.648768472906404,
+            "weighted_70_30": 0.7126906070251617
+          }
+        },
+        "feed_like": {
+          "metrica": {
+            "cell_count": 2,
+            "d_f1": 0.8878644692701483,
+            "d_precision": 0.9021568124554018,
+            "d_recall": 0.8740203805252759,
+            "macro_f1": 0.8622091824225275,
+            "match_count": 1,
+            "spell_f1": 0.5865182016625141,
+            "weighted_70_30": 0.669225495890518
+          },
+          "skillcorner": {
+            "cell_count": 6,
+            "d_f1": 0.765184546315515,
+            "d_precision": 0.8734259673542207,
+            "d_recall": 0.6810808234643501,
+            "macro_f1": 0.7515618336274353,
+            "match_count": 3,
+            "spell_f1": 0.41919428083570126,
+            "weighted_70_30": 0.5189045466732214
+          },
+          "sportec": {
+            "cell_count": 2,
+            "d_f1": 0.8902195841776753,
+            "d_precision": 0.932418157884018,
+            "d_recall": 0.8516754716981132,
+            "macro_f1": 0.8010709736024533,
+            "match_count": 1,
+            "spell_f1": 0.46452461817204826,
+            "weighted_70_30": 0.5654885248011697
+          }
+        }
+      }
+    },
+    "HD": {
+      "2026": {
+        "clean": {
+          "metrica": {
+            "cell_count": 1,
+            "d_f1": 0.899252129510382,
+            "d_precision": 0.9154686601495112,
+            "d_recall": 0.8836001154452412,
+            "macro_f1": 0.9208706434673101,
+            "match_count": 1,
+            "spell_f1": 0.7814461118690313,
+            "weighted_70_30": 0.8232734713485149
+          },
+          "skillcorner": {
+            "cell_count": 3,
+            "d_f1": 0.7355214070131112,
+            "d_precision": 0.8647532291888839,
+            "d_recall": 0.6402022623273951,
+            "macro_f1": 0.76417912115422,
+            "match_count": 3,
+            "spell_f1": 0.45185036588011623,
+            "weighted_70_30": 0.5455489924623473
+          },
+          "sportec": {
+            "cell_count": 1,
+            "d_f1": 0.902909427044981,
+            "d_precision": 0.9385382059800664,
+            "d_recall": 0.8698867924528302,
+            "macro_f1": 0.8685581178436977,
+            "match_count": 1,
+            "spell_f1": 0.6525030525030525,
+            "weighted_70_30": 0.7173195721052461
+          }
+        },
+        "feed_like": {
+          "metrica": {
+            "cell_count": 2,
+            "d_f1": 0.8968524525937139,
+            "d_precision": 0.9094404548365536,
+            "d_recall": 0.884632462313789,
+            "macro_f1": 0.8744832327094314,
+            "match_count": 1,
+            "spell_f1": 0.606167169775622,
+            "weighted_70_30": 0.6866619886557648
+          },
+          "skillcorner": {
+            "cell_count": 6,
+            "d_f1": 0.7336124492237527,
+            "d_precision": 0.8580077777019678,
+            "d_recall": 0.6409635451610939,
+            "macro_f1": 0.7394911375544169,
+            "match_count": 3,
+            "spell_f1": 0.41538627302914155,
+            "weighted_70_30": 0.5126177323867241
+          },
+          "sportec": {
+            "cell_count": 2,
+            "d_f1": 0.8968781625174369,
+            "d_precision": 0.9339121839901738,
+            "d_recall": 0.8626716981132075,
+            "macro_f1": 0.8093271402960334,
+            "match_count": 1,
+            "spell_f1": 0.4658603038309115,
+            "weighted_70_30": 0.5689003547704481
+          }
+        }
+      },
+      "2027": {
+        "clean": {
+          "metrica": {
+            "cell_count": 1,
+            "d_f1": 0.8986619996612658,
+            "d_precision": 0.9143651486604476,
+            "d_recall": 0.8834891104056124,
+            "macro_f1": 0.9233964248857661,
+            "match_count": 1,
+            "spell_f1": 0.7983892617449665,
+            "weighted_70_30": 0.8358914106872064
+          },
+          "skillcorner": {
+            "cell_count": 3,
+            "d_f1": 0.7730445593974272,
+            "d_precision": 0.8589573807665842,
+            "d_recall": 0.7029135927555181,
+            "macro_f1": 0.7789455203807152,
+            "match_count": 3,
+            "spell_f1": 0.4476521522377907,
+            "weighted_70_30": 0.547040162680668
+          },
+          "sportec": {
+            "cell_count": 1,
+            "d_f1": 0.8948825324721413,
+            "d_precision": 0.9369952601938861,
+            "d_recall": 0.8563924528301887,
+            "macro_f1": 0.8618979023888697,
+            "match_count": 1,
+            "spell_f1": 0.6458895705521472,
+            "weighted_70_30": 0.7106920701031638
+          }
+        },
+        "feed_like": {
+          "metrica": {
+            "cell_count": 2,
+            "d_f1": 0.8888347362649252,
+            "d_precision": 0.9028119487752257,
+            "d_recall": 0.8752858379770442,
+            "macro_f1": 0.8628529188619889,
+            "match_count": 1,
+            "spell_f1": 0.5871043645949436,
+            "weighted_70_30": 0.6698289308750571
+          },
+          "skillcorner": {
+            "cell_count": 6,
+            "d_f1": 0.7657268829186016,
+            "d_precision": 0.840882886882396,
+            "d_recall": 0.7032209081037847,
+            "macro_f1": 0.7509991019269254,
+            "match_count": 3,
+            "spell_f1": 0.41957670376398376,
+            "weighted_70_30": 0.5190034232128662
+          },
+          "sportec": {
+            "cell_count": 2,
+            "d_f1": 0.8904853145476541,
+            "d_precision": 0.9326211754503788,
+            "d_recall": 0.8519924528301887,
+            "macro_f1": 0.8015850854751594,
+            "match_count": 1,
+            "spell_f1": 0.4638978951160516,
+            "weighted_70_30": 0.565204052223784
+          }
+        }
+      }
+    }
+  },
+  "source_git_commit": "509242a8abef47b86ce40cfeaac8b9db10e54d02",
+  "study_id": "source_conditioned_heads_v1",
+  "verification": "passed"
+}

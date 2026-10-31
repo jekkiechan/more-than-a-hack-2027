@@ -1,7 +1,7 @@
 # Current research state
 
-Reviewed 2026-10-31 against fork `main` through
-[PR #43](https://github.com/jekkiechan/more-than-a-hack-2027/pull/43).
+Reviewed 2026-10-31 against fork `main` at `1b06133` (through PR #48),
+plus the completed supervision experiments in [PR #47](https://github.com/jekkiechan/more-than-a-hack-2027/pull/47).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -19,13 +19,13 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 ## Next work
 
-1. Execute the [supervision alignment plan](../../experiments/SUPERVISION_ALIGNMENT_PLAN.md):
-   compare shared versus source-specific output projections under matched dense
-   D2 training. Exact fold teachers/caches are restored and the dense TRAIN
-   manifest reproduces D2 byte-for-byte. Six reconstructed shared-head controls
-   reproduce clean/feed-like spell .64721456/.50581079, independently verified
-   from sealed probabilities. The fixed twelve H/HD candidate fits are running;
-   candidate efficacy remains unscored until their models are sealed.
+1. Retain the adopted dense shared-head package. The completed
+   [source-head comparison](../../experiments/SOURCE_CONDITIONED_HEADS_REPORT.md)
+   fitted all 18 declared models. Shared control C scores .647215/.505811
+   clean/feed-like spell F1; separate H/A heads score .634885/.494700 and
+   separate H/A+D heads .635602/.495254. Both miss the feed-like floor and
+   clean +.01 screen. Slightly better D frame F1 does not recover possession
+   spells. Do not repeat this fixed head split as a promising upgrade.
    The [Sportec TRAIN rule diagnostic](../../experiments/PROVIDER_TOUCH_CALIBRATION.md)
    is complete: hold-through-contest beats literal challenger attribution, while
    a zero-second gap trades more unknown predictions for a small spell gain.
@@ -49,8 +49,9 @@ Before another local sweep, consult the index's
 ## Artifacts and open work
 
 - **Dense deployment:** private [mtah-data PR #7](https://github.com/jekkiechan/mtah-data/pull/7)
-  is open at review (head `33bcf56`). The versioned dense manifest is on that
-  delivery branch; do not assume private `main` or its generic default has it.
+  is merged (verified 2026-10-31, delivery head `33bcf56`). The versioned dense
+  manifest is delivered; verify the selected manifest rather than assuming
+  the generic default names the dense package.
   Verify the package hashes after restore. See BASELINE for commands.
 - **Previous capacity deployment:** verified remote recovery is complete;
   [receipt](../../experiments/results/baseline_soccernet_capacity_remote_artifacts.json).
