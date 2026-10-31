@@ -16,7 +16,9 @@ The adopted package, open experiments and next actions are tracked in
 [current research status](docs/research/STATUS.md). Use the
 [experiment index](docs/research/EXPERIMENTS.md) to find results and
 [BASELINE.md](experiments/BASELINE.md) for model versions, exact evidence and
-private-cache restore/inference commands. Start agent work at [AGENTS.md](AGENTS.md).
+private-cache restore/inference commands. Start agent work at [AGENTS.md](AGENTS.md). The
+[documentation map](docs/research/README.md) identifies the owner of each fact;
+[research code and vocabulary](experiments/README.md) help locate implementation.
 
 Research reports distinguish external development from the organizer's small
 public pipeline check. No full-match performance or organizer submission is
