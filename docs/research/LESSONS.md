@@ -26,6 +26,8 @@ to its recorded source; results-derived procedures are our interpretation.
 
 | [Local harness verification](NAVIGATION.md#harness-verification), observed environment failure | System Python passed focused preparation tests but lacked full-suite PyTorch/PyArrow. Use the interpreter with pinned dependencies; a small suite passing does not verify the full environment. | AGENTS checks; CI |
 
+| [Fresh-agent hash misstatement](NAVIGATION.md#fresh-agent-smoke-test), observed reporting error | The planner's `manifest_sha256` identifies the source manifest; it is not the plan fingerprint. Name each hash by what it actually seals. | Preparation reference |
+
 Add only durable corrections supported by a source. Put changing scores and
 one-run details in reports. Amend an existing workflow reference before creating overlapping
 ones, and remove superseded instructions instead of accumulating addenda.

@@ -72,7 +72,10 @@ a speed or token improvement from grouping.** Reading estimates are approximate,
 not provider token telemetry; there is one run per layout, no baseline clock and
 unequal evidence coverage. The candidate's extra hash labelled “plan hash” was
 the manifest SHA field; the rubric did not request that hash, and the returned
-plan/counts were correct. This is a reporting precision issue, not a plan failure.
+plan/counts were correct. The preparation reference now explicitly distinguishes
+`manifest_sha256` from `prep.fingerprint(plan)` to prevent that reporting mistake.
+This clarification was added after the agent runs; the plan implementation and
+its tests are unchanged.
 
 Baseline flagged the progress report's historical adoption wording; candidate
 had the explicit BASELINE clarification and did not repeat that ambiguity.

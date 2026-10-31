@@ -68,8 +68,11 @@
    schema. Do not treat the joint feature union as an acceptable ball-aware D
    head. An architecture needing different features gets a new versioned recipe
    and parity contracts, not an edited frozen runner.
-7. Freeze the emitted plan hash and recipe in the new study declaration.
-   The CLI stores prepared plans at `<cache>/plans/<sha256>.json`. Exclude the
+7. Freeze the plan hash and recipe in the new study declaration. The preview's
+   `manifest_sha256` hashes the source manifest, not the returned plan. Compute
+   `prep.fingerprint(plan)` for that plan's hash; do not relabel the manifest SHA.
+   Prepared plans also include recipe/cache identities and are stored by their
+   own hash at `<cache>/plans/<sha256>.json`. Exclude the
    provider from normalization and all learned components, not just D. Selection
    arrays may be prepared in advance but must not fit transformations. Keep
    derived views/windows with their source match. Read
