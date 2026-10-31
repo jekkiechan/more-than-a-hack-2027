@@ -21,6 +21,15 @@ legacy whole-match SoccerNet tracking/video release remains access-gated; no
 such full-match files were present in this workspace. No organizer labels were
 read.
 
+A live, read-only Hub check on 31 October confirmed that the documented legacy
+tracking/video releases return HTTP 403 for the configured account. The current
+action-spotting repository also returns 403 while its access request awaits
+author review. The accessible GAR branch trees expose sharded records, with no
+separate aligned continuous asset found. The
+[availability receipt](results/full_match_coverage_availability.json) records
+exact repository IDs, current branch revisions and responses; no files were
+downloaded for this check.
+
 ## Measurement
 
 The seven pinned TRAIN source files were restored from
