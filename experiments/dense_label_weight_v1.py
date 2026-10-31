@@ -136,14 +136,18 @@ def declaration() -> dict:
             teacher_hashes[f"{fold}/{seed}"] = actual
     old_spec=old.old_spec()
     old_manifest=old.DATA/"experiments/objective_alignment_v1/predeclared.json"
-    old_cache_hashes={match:sha256(data_root/Path(entry["cache"]).relative_to("data"))
-                      for match,entry in old_spec["prepared_training_caches"].items()}
+    old_cache_hashes={}
+    for match,entry in old_spec["prepared_training_caches"].items():
+        actual=sha256(data_root/Path(entry["cache"]).relative_to("data"))
+        if actual!=entry["sha256"]:
+            raise ValueError(f"Original training cache hash mismatch before declaration: {match}")
+        old_cache_hashes[match]=actual
     eval_hashes={entry["path"]:entry["sha256"]
                  for entry in old_spec["evaluation_feature_cache"]["files"].values()}
     for rel,expected in eval_hashes.items():
         if sha256(data_root/Path(rel).relative_to("data"))!=expected:
             raise ValueError(f"Evaluation cache hash mismatch before declaration: {rel}")
-    raw_receipt=RESULTS/"soccernet_huggingface_restore.json"
+    raw_receipt=OUT/"soccernet_train_restore_receipt.json"
     return {
         "schema": 1,
         "study": "dense_label_weight_v1",
@@ -182,8 +186,9 @@ def declaration() -> dict:
         "restore": {
             "dataset": "OpenSportsLab/SoccerNet-GAR tracking-full",
             "revision": "32c840210b7d08d06976e7f9457dfff79fb2da99",
-            "raw_train_restore_receipt": str(RESULTS / "soccernet_huggingface_restore.json"),
+            "raw_train_restore_receipt": str(raw_receipt.relative_to(ROOT)),
             "raw_train_restore_receipt_sha256": sha256(raw_receipt),
+            "prior_raw_train_restore_receipt_sha256": sha256(RESULTS/"soccernet_huggingface_restore.json"),
             "dense_train_manifest_sha256": sha256(train_manifest),
             "expected_dense_train_manifest_sha256": EXPECTED_TRAIN_MANIFEST,
             "dense_train_game_files": prep_manifest["game_files"],
@@ -550,7 +555,7 @@ def require_control_gate() -> dict:
         "member_scores_sha256":sha256(member_path),
         "ensemble_scores_sha256":sha256(ensemble_path),
         "dense_train_manifest_sha256":sha256(RECORDS/"train/manifest.json"),
-        "raw_train_restore_receipt_sha256":sha256(RESULTS/"soccernet_huggingface_restore.json"),
+        "raw_train_restore_receipt_sha256":sha256(OUT/"soccernet_train_restore_receipt.json"),
         "original_training_manifest_sha256":sha256(old.DATA/"experiments/objective_alignment_v1/predeclared.json"),
     }
     for key,actual in checks.items():
@@ -593,7 +598,7 @@ def control_replay() -> dict:
           "ensemble_scores_sha256":sha256(ensemble_path),
           "declaration_sha256":sha256(RESULTS/"dense_label_weight_v1_declaration.json"),
           "dense_train_manifest_sha256":sha256(RECORDS/"train/manifest.json"),
-          "raw_train_restore_receipt_sha256":sha256(RESULTS/"soccernet_huggingface_restore.json"),
+          "raw_train_restore_receipt_sha256":sha256(OUT/"soccernet_train_restore_receipt.json"),
           "original_training_manifest_sha256":sha256(old.DATA/"experiments/objective_alignment_v1/predeclared.json"),
           "expected_source":"PR47 source_conditioned_heads_report reconstructed D2 control",
           "scored_cells":len(rows),"public_labels_accessed":False}

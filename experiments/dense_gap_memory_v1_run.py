@@ -99,7 +99,9 @@ def score_cell(*, item: dict, view: str, replicate: str, inputs: dict,
     if view == "feed_like" and replicate == "clean":
         raise ValueError("Feed-like cell requires a corruption replicate")
     labels = np.asarray(labels)
-    observed = np.asarray(inputs["ball_observed"], dtype=bool)
+    observed = np.asarray(inputs["ball_observed"])
+    if observed.dtype.kind != "b":
+        raise ValueError("Native ball_observed input must be a boolean mask")
     timestamps = np.asarray(inputs["timestamps"], dtype=np.float64)
     if any(x.shape != (len(labels),) for x in (observed, timestamps)):
         raise ValueError("Native inference metadata does not match labels")

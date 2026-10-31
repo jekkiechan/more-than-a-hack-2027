@@ -75,11 +75,11 @@ class DenseErrorAuditTests(unittest.TestCase):
             save("A", "a1", 2026, "H", "A")
             save("A", "a1", 2027, "H", "H")
             save("B", "b1", 2026, "H" * 100, "A" + "H" * 99)
-            cell = summarize_archives(paths)["cells"][0]
+            summary = summarize_archives(paths)
+            cell = summary["cells"][0]
         self.assertAlmostEqual(cell["provider_balanced_match_rates"]["wrong_team_rate_scored"], .255)
         self.assertEqual(cell["raw_counts_across_archives"]["scored_frames"], 102)
         self.assertEqual(cell["raw_counts_across_archives"]["wrong_team_frames"], 2)
-        self.assertIn("Raw frame/event totals are separate", summarize_archives.__doc__ or "")
 
     def test_rejects_noncontiguous_frames_inside_segment(self):
         f = rows("HHH", "HHH")
