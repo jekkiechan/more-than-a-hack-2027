@@ -136,7 +136,9 @@ def verify_inputs() -> dict:
     if len(gar["games"]) != 45:
         raise ValueError("Expected exactly 45 pinned SoccerNet TRAIN fixtures")
     game_ids = sorted(map(str, gar["game_records"]))
-    expected_games = {str(sample["game_id"]) for sample in dense_run.dl.read_split_samples("train")}
+    tracking = dense_run.dl.tracking_root(dense_run.dl.DEFAULT_RAW)
+    expected_games = {str(sample["game_id"])
+                      for sample in dense_run.dl.read_split_samples(tracking, "train")}
     if set(game_ids) != expected_games:
         raise ValueError("Dense GAR TRAIN fixture IDs differ from the frozen source declaration")
     game_files = {}
@@ -441,7 +443,8 @@ def fit_one(arm: str, fold: str, seed: int) -> dict:
     def label_counts(records):
         y = np.concatenate([np.asarray(record["y"], dtype=np.int64) for record in records])
         return dict(ha_frames=int(np.count_nonzero((y == 0) | (y == 1))),
-                    d_frames=int(np.count_nonzero(y >= 0)),
+                    d_loss_valid_frames=int(np.count_nonzero(y >= 0)),
+                    dead_class_frames=int(np.count_nonzero(y == 2)),
                     unknown_frames=int(np.count_nonzero(y < 0)), total_frames=int(y.size))
     source_label_counts = dict(target=label_counts(old_records), soccernet=label_counts(gar_records))
     start = time.monotonic()

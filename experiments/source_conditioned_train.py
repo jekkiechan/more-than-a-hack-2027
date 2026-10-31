@@ -222,9 +222,11 @@ def train(initial_model: dict, old_records: list[dict], new_records: list[dict],
                 source_loss[source] = (source_loss[source] + d_source_terms[source]
                                        if source_loss[source] is not None else d_source_terms[source])
         label_counts["target"]["ha_frames"] += int(((yt == 0) | (yt == 1))[old_mask].sum())
-        label_counts["target"]["d_frames"] += int((yt >= 0)[old_mask].sum())
+        label_counts["target"]["d_loss_valid_frames"] += int((yt >= 0)[old_mask].sum())
+        label_counts["target"]["dead_class_frames"] += int((yt == 2)[old_mask].sum())
         label_counts["soccernet"]["ha_frames"] += int(((yt == 0) | (yt == 1))[new_mask].sum())
-        label_counts["soccernet"]["d_frames"] += int((yt >= 0)[new_mask].sum())
+        label_counts["soccernet"]["d_loss_valid_frames"] += int((yt >= 0)[new_mask].sum())
+        label_counts["soccernet"]["dead_class_frames"] += int((yt == 2)[new_mask].sum())
         if not torch.isfinite(loss):
             raise RuntimeError(f"Non-finite loss at step {step}")
         ha_optimizer.zero_grad(set_to_none=True)
