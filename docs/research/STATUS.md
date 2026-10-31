@@ -1,7 +1,8 @@
 # Current research state
 
 Reviewed 2026-10-31 against fork `main` through
-[PR #43](https://github.com/jekkiechan/more-than-a-hack-2027/pull/43).
+[PR #48](https://github.com/jekkiechan/more-than-a-hack-2027/pull/48), with the
+completed source-head evidence on open [PR #47](https://github.com/jekkiechan/more-than-a-hack-2027/pull/47).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -19,18 +20,23 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 ## Next work
 
-1. Investigate fitting the touch rule to provider possession definitions and
-   source-conditioned heads, as identified after the dense study. These are
-   proposals, not completed comparisons. Check the
-   [dense study progress](../../experiments/results/sn_dense_v1_progress.md)
-   and [label recipe/limits](../../experiments/SOCCERNET_DENSE.md) before declaring
-   a bounded matched study.
-2. Pursue fresh external dense possession evidence and authorized true-broadcast
-   access. The [independent-data search](../../experiments/INDEPENDENT_DATA_SEARCH.md)
+1. Execute the [targeted dense follow-ups](../../experiments/DENSE_TARGETED_FOLLOWUPS.md):
+   current error audit, fixed missing-ball team memory, confidence-dependent
+   decoding, and silver-label transition weighting. These comparisons are
+   running; no improvement or promotion is established. Exact submission replay
+   has passed. Missing dense research checkpoints require explicitly declared
+   matched control reconstruction, not pooled deployment substitutes.
+2. The source-specific head comparison on open PR #47 is completed and negative:
+   retain the shared dense heads. Its provider-definition audit supports holding
+   possession through contested touches; it does not justify rebuilding GAR
+   labels. Whole-stoppage model comparison remains blocked on continuous aligned
+   tracking. See the [PR #47 report](https://github.com/jekkiechan/more-than-a-hack-2027/blob/6e93eb2218a533b8017ff50f284f655021eec9e6/experiments/SOURCE_CONDITIONED_HEADS_REPORT.md).
+3. Fresh external dense possession evidence remains optional stronger
+   confirmation. The [independent-data search](../../experiments/INDEPENDENT_DATA_SEARCH.md)
    acquired a SoccerTrack panorama sample; the
    [blind annotation proposal](../../experiments/SHORT_SPELL_NEXT.md) still needs
    independent H/A/D/X labels. Event-interpolated ball paths are not measured
-   observations. Neither sample acquisition nor GAR silver labels supplies that
+   observations. Sample acquisition and GAR silver labels do not supply
    independent confirmation.
 
 Before another local sweep, consult the index's
@@ -39,9 +45,11 @@ Before another local sweep, consult the index's
 ## Artifacts and open work
 
 - **Dense deployment:** private [mtah-data PR #7](https://github.com/jekkiechan/mtah-data/pull/7)
-  is open at review (head `33bcf56`). The versioned dense manifest is on that
-  delivery branch; do not assume private `main` or its generic default has it.
-  Verify the package hashes after restore. See BASELINE for commands.
+  is merged at `19ee280`. This session restored and verified all four versioned
+  checkpoint hashes and reproduced the sealed full CSV from raw ATD inputs.
+  [Submission receipt](../../experiments/dense_submission_audit_v1/report.json).
+  The deployment package does not include the original dense research fold
+  checkpoints or their probability arrays.
 - **Previous capacity deployment:** verified remote recovery is complete;
   [receipt](../../experiments/results/baseline_soccernet_capacity_remote_artifacts.json).
   This does not establish remote availability of every research fold checkpoint.

@@ -1,0 +1,20 @@
+{
+  "study_id": "dense_boundary_v1",
+  "status": "pre_score_scope_clarification",
+  "created_utc": "2026-10-31",
+  "reason": "The private mtah-data checkout contains dense deployment weights but no external dense frame-level prediction arrays or raw full-provider inputs. The scorer must therefore consume the separately declared label_weighting reconstructed controls if that study provides complete predictions.",
+  "allowed_prediction_source": "Only label_weighting's arm control_D2 and inference ensemble seedensemble (mean of seeds 2026 and 2027 before decoding), evaluated in the provider-left-out fold matching each held-out match. The result receipt must bind exact model/checkpoint and input hashes.",
+  "claim_boundary": "Any resulting evidence is for reconstructed controls, not exact restored dense research checkpoints and not the historical dense ensemble result. It must not be described as an exact current-ensemble replay.",
+  "scoring_and_candidate": "Unchanged from dense_boundary_v1_declaration.json; no probabilities or parameters selected from labels.",
+  "active_policy_guards": {
+    "policy": "experiments/model_decision_policy.json",
+    "policy_sha256": "f63c4bd69881acaa8abadccf515308ebd66890106a24e5f550373a4d20859165",
+    "clean_spell_screen_delta": 0.01,
+    "feed_like_spell_noninferiority_delta": -0.01,
+    "clean_provider_d_f1_tolerance": -0.02,
+    "promotion": false
+  },
+  "aggregation": "Mean realizations within match, mean matches within each provider, then equal provider mean; report separate provider cells and both feed_like corruptions plus their mean.",
+  "holdout_role": "Existing full-provider external development holdout; previously exposed, not a new independent holdout.",
+  "organizer_labels": false
+}
