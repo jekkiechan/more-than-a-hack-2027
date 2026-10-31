@@ -228,7 +228,7 @@ def _source_hashes() -> dict[str, str]:
         "experiments/preparation.py", "experiments/eval_set/manifest.json",
         "experiments/provider_touch_calibration_v2.py",
         "experiments/results/provider_touch_sportec_train_nested_v2_declaration.json",
-        "experiments/results/provider_touch_sportec_train_nested_v2.json",
+        "experiments/results/provider_touch_sportec_train_nested_v2_summary.json",
         "experiments/results/sn_dense_v1_declaration.json",
         "experiments/results/baseline_sn_dense_promotion.json",
         "experiments/results/sn_dense_v1_progress.md",
@@ -244,7 +244,7 @@ def freeze() -> dict:
     inputs = verify_inputs()
     baseline_decl = read(ROOT / "experiments/results/sn_dense_v1_declaration.json")
     touch_decl = read(ROOT / "experiments/results/provider_touch_sportec_train_nested_v2_declaration.json")
-    touch_result = read(ROOT / "experiments/results/provider_touch_sportec_train_nested_v2.json")
+    touch_result = read(ROOT / "experiments/results/provider_touch_sportec_train_nested_v2_summary.json")
     if (touch_decl.get("study_id") != "provider_touch_sportec_train_nested_v2"
             or len(touch_result.get("outer_folds", [])) != 3
             or any(row.get("selected_config", {}).get("id") != "contest_hold_tail_0s"
@@ -305,7 +305,7 @@ def freeze() -> dict:
             decision="Omit L from this full-pipeline matrix before candidate scoring",
             reason="Sportec-only schema and nested TRAIN CV do not establish transfer to GAR/Metrica/SkillCorner; the leave_out_sportec fold has no eligible Sportec calibration matches.",
             calibration_declaration_sha256=sha(ROOT / "experiments/results/provider_touch_sportec_train_nested_v2_declaration.json"),
-            calibration_result_sha256=sha(ROOT / "experiments/results/provider_touch_sportec_train_nested_v2.json")),
+            calibration_result_sha256=sha(ROOT / "experiments/results/provider_touch_sportec_train_nested_v2_summary.json")),
         data=inputs, source_sha256=_source_hashes(),
         execution_stages=["fit six C controls", "seal C models", "score C and require historical aggregate replay",
             "fit fixed H and HD controls only after C passes", "seal all 18 models before H/HD scoring",
