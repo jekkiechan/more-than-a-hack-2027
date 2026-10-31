@@ -1,8 +1,9 @@
 # Agent guide: `experiments/`
 
 Dense map of what has been tried here, so you can resume without reading 40
-reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Numbers
-below are snapshots as of 2026-10-28 (after PR #20). [STATUS](../docs/research/STATUS.md)
+reports. Repo-wide rules in [root AGENTS](../AGENTS.md) still apply. Current
+adoption is `joint_gru_sn_dense_ensemble_v1` as of 2026-10-31 (previously `joint_gru_soccernet_capacity_ensemble_v1`);
+earlier verdicts below are historical evidence. [STATUS](../docs/research/STATUS.md)
 is the coordination summary for adoption and next work. Before model-choice
 advice, follow [the root evidence-refresh checklist](../AGENTS.md#before-answering-model-choice-or-current-results-questions):
 verify the active manifest/policy and recent PR evidence. STATUS and this guide
@@ -15,20 +16,27 @@ Open a detailed report for the study relevant to the question.
   Ranked by possession **spell F1** (H/A intervals, greedy one-to-one matching,
   mean over IoU .3–.7). **Macro F1** breaks exact ties. The 70/30 weighted
   summary is shown but never ranks.
-- **Adopted baseline:** `joint_gru_slotdrop_v1`. One BiGRU (24 hidden) outputs
-  full H/A/D. Its D head sees players only. Trained pooled on 13 external TRAIN
-  matches with ball-gap and player-slot-dropout augmentation, seed 2026, Viterbi
-  switch cost 3. See [BASELINE.md](BASELINE.md).
-- **Its evidence (full provider holdout, 5 dev matches):** clean spell .6088
-  (previous baseline .5338). Feed-like stress spell .4742 (previous .4328).
-  Public 5-min check: .5818 spell / .8689 macro.
-- **Known weaknesses:** composite stress .318 (fails if that guardrail were
-  used). Single seed. Full-match performance is unknown. All dev matches are
-  previously exposed.
-- **Where the error is:** mostly team attribution during long ball gaps, and
-  turnover timing. On Sportec validation, oracle H/A gives .996 spell and oracle
-  dead/live gives nothing ([HEADROOM](HEADROOM.md)). On SkillCorner, D recall
-  is also fragile.
+- **Adopted baseline:** `joint_gru_sn_dense_ensemble_v1` (dense SoccerNet labels + fine-tuned D; see BASELINE.md). Previous: `joint_gru_soccernet_capacity_ensemble_v1`. Two pooled
+  width-96 conditional H/A GRUs plus unchanged combined-objective seed-2026/2027
+  hidden-24 D teachers; equal native probabilities, cost-3 Viterbi. See
+  [BASELINE.md](BASELINE.md).
+- **External evidence (five previously exposed dev matches):** clean/feed-like
+  spell .641790/.502586 vs old .633205/.498830; matched old-only at equal width
+  and budget .633652/.494188. Provider and feed-like guards pass. Frozen study
+  misses +.01 clean by .001415; the user separately approved promotion with
+  that exception disclosed.
+- **Public evidence and limitations:** the already known, one-time 7,500-frame,
+  17-reference diagnostic is .569697 mean spell F1 vs .557576 old; it was not
+  a selection or tuning input. All five external matches were previously
+  exposed; full-match performance remains unknown. SoccerNet supervision is
+  sparse PASS/CROSS/SHOT event-team points, not dense possession labels.
+- **Current study/readout:** the [matched training follow-up](SOCCERNET_FOLLOWUP.md)
+  completed six reference rebuilds and 24 continuations; no new objective meets
+  the +.01 clean screen, so the adopted package stays unchanged. See the
+  [capacity report](SOCCERNET_CAPACITY.md) for adoption evidence and
+  [current status](../docs/research/STATUS.md). The older
+  [combined-loss audit](SPELL_OPPORTUNITY_AUDIT.md) describes the previous
+  baseline and remains historical; do not use it as the current package spec.
 
 ## 2. Vocabulary you must get right
 
@@ -38,9 +46,9 @@ Open a detailed report for the study relevant to the question.
 | Confirmation matches | J03WPY (original test), J03WR9 (PathCRF comparison), J03WQQ (refinement confirmation). All are now spent. No fresh independent set exists. |
 | **Pooled** | Trained on all providers. Used for deployment fits. |
 | **D-only provider holdout** | The D head excludes the provider, but H/A is pooled. Older studies (≤ PR #19) used this. **Not** a full-pipeline transfer claim. |
-| **Full provider holdout** | Every learned H/A, D and normalization component excludes the provider. Current preferred view (policy v3). |
+| **Full provider holdout** | Every learned H/A, D and normalization component excludes the provider. The active selection evidence uses full provider holdouts; see the current policy for guards. |
 | Views | `clean`/native, `legacy` (old coarse augmentation), `composite` stress (frozen [tracking_corruption](tracking_corruption.py)), `feed_like` (composite minus per-frame sampling loss and regional blanking; **the current stress guardrail**), `ball_gaps`, `no_sampling`, `no_regional`. See [stress_components](stress_components.py). |
-| Guardrails | Per seed: feed-like stress spell ≥ baseline − .01. Each provider's clean D-F1 and macro within .02 of baseline. Clean screen +.01 spell. Exact rules are in [`model_decision_policy.json`](model_decision_policy.json) and each declaration. |
+| Guardrails | Full recipes against the adopted ensemble: feed-like spell ≥ baseline − .01; each provider's clean D-F1 and macro within .02; default clean screen +.01 spell. The current adoption is an explicitly user-approved exception after the frozen capacity study missed +.01 clean; the study result remains unchanged. Report component seeds separately. Exact active rules are in [`model_decision_policy.json`](model_decision_policy.json); older declarations retain their original references. |
 | Gate | A one-time exclusive marker for organizer public scoring. Once claimed it stays closed, even after an error. Read saved results; never re-score. |
 | Shortcuts | Sportec freezes the ball during D. Metrica blanks the ball during D. SkillCorner's ≥12-visible filter drops most D frames. This is why ball-based D heads do not transfer and why the D head is player-only. |
 
@@ -72,10 +80,20 @@ Each step reacted to the one before it. ✔ = adopted. ✖ = retained the baseli
 | 16 | Metric audit ([SPELL_METRIC_AUDIT](SPELL_METRIC_AUDIT.md)) | 30 saved rows reproduce. 70% of SkillCorner spells touch grading edges. Report all five IoUs, duration recall and fragmentation. | reporting rule |
 | 17 | Competition check ([TEMPORAL_COMPETITION_CHECK](TEMPORAL_COMPETITION_CHECK.md)) | Four pooled candidates: dropout GRU .5818, robustness blend .5818, clean blend .5500, Full127 .5371. | gate closed |
 | 18 | Stress components ([STRESS_COMPONENT_ABLATION](STRESS_COMPONENT_ABLATION.md), [feed profile](results/feed_defect_profile.json)) | The GRU's composite loss is mostly per-frame sampling loss (53–57%), which the organizer feed lacks. Under feed-like stress the GRU beats the baseline on every provider and seed. LightGBM adds about ±.002. | ✔ guardrail switched to feed-like (decided post hoc, disclosed) → `joint_gru_slotdrop_v1` (PR #20) |
+| 19 | Temporal architecture ([TEMPORAL_ARCHITECTURE](TEMPORAL_ARCHITECTURE.md)) | Fixed-budget BiLSTM/Transformer/TCN comparison against former `joint_gru_slotdrop_v1`: 18 challenger fits / 200 cells. All challengers fail the both-seed screen. Historical GRU clean/feed-like .6132/.4798 is a two-fit arithmetic mean, not an ensemble and not the current baseline's score. | Retain then-current GRU family; no promotion |
+| 20 | Seed ensemble and gap context ([SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md)) | Later, separate study measures the actual two-seed probability ensemble at .6265/.4874 clean/feed-like; fifteen-second context remains experimental. The ensemble was not evaluated in the architecture comparison. | ✔ `joint_gru_seed_ensemble_v1` (PR #22) |
+| 21 | Architecture probability ensembles ([TEMPORAL_ARCHITECTURE_ENSEMBLES](TEMPORAL_ARCHITECTURE_ENSEMBLES.md)) | Zero fits / 900 cells; independent replay passed. All 11 pooled blends fail the declared screen. Closest GRU+TCN .626189/.483176; GRU+BiLSTM+TCN .624938/.487455. Same-seed modes are diagnostic; all 2,101 manifest entries and 184 tests pass. | Retain `joint_gru_seed_ensemble_v1`; no promotion |
+| 22 | SoccerNet capacity/data scale ([SOCCERNET_EXTENSION](SOCCERNET_EXTENSION.md), [SOCCERNET_CAPACITY](SOCCERNET_CAPACITY.md)) | Wider H/A plus sparse SoccerNet event-team anchors; width-96 ensemble .641790/.502586 clean/feed-like, matched old-only .633652/.494188. Frozen +.01 clean screen misses by .001415. Post-selection public check .569697 vs .557576 on 17 references; no tuning from public. | ✔ `joint_gru_soccernet_capacity_ensemble_v1` by explicit user-approved exception; frozen study decision remains `adopt_model: false` |
 
 Public-window history (17 possessions, descriptive only): .4190 context ·
 .4300 refinement · .4889 GRU · .5067 PathCRF hybrid · .5257 ballgap25 ·
-.5371 Full127 · .5818 slotdrop GRU · .6194 pooled player-only-D GRU.
+.5371 Full127 · .5818 slotdrop GRU · .6194 pooled player-only-D GRU ·
+.5697 width-96 SoccerNet-capacity ensemble. These scores use different
+candidates and historical baselines; the latest public score is diagnostic,
+not a selection criterion.
+
+The [combined-objective ensemble](OBJECTIVE_ENSEMBLE.md) was the prior working baseline: .6332/.4988 clean/feed-like spell, with the public spell tie and lower macro recorded at its adoption. It is now archived as the unchanged D teacher source for the
+[current SoccerNet-capacity ensemble](SOCCERNET_CAPACITY.md); its historical comparison and closed gate are not rewritten.
 
 ## 4. Settled: do not re-propose without a new mechanism
 
@@ -88,6 +106,26 @@ Public-window history (17 possessions, descriptive only): .4190 context ·
 - Adding LightGBM to the GRU: no feed-like value, and it lowers D recall.
 - Decoder or threshold tuning, and anything else selected on the public window.
 - Treating a mean of separate seeds as an ensemble.
+- The fixed five-second shifted-core tiling and frozen-backbone contact-memory
+  adapter now have completed negative comparisons. Their small short-recall
+  gains do not establish an overall spell-F1 gain; see [window overlap](WINDOW_OVERLAP.md)
+  and [contact memory](CONTACT_MEMORY.md). A new contact method needs a distinct
+  mechanism, not another offset, weight or adapter sweep on the same cohort.
+
+The short-spell continuation also has completed negative comparisons:
+[native-rate instantaneous H/A geometry](NATIVE_SHORT_SPELL.md) loses to both
+the saved baseline and its matched 5 Hz control; [learned turnover costs](../TURNOVER_DECODER_V2.md)
+recover short references but add false spells and lower overall F1. Do not
+repeat residual-resolution or decoder parameter sweeps on this cohort. The
+[recoverability audit](SHORT_SPELL_RECOVERABILITY.md) distinguishes complete
+short spells from censored grading-edge references; its percentages are
+mechanism descriptions, not achievable gain estimates.
+
+The fixed [Smart Tagging missing-ball prior](SMART_TAGGING_VALIDATION.md) is also
+completed: its single requested public diagnostic loses spell (.5576 → .5371)
+while improving macro. Do not sweep the cap, taper or taxonomy on that window.
+The integration is isolated from the active baseline; credible efficacy or
+calibration needs another genuinely tagged match with independent labels.
 
 ## 5. Open threads (priorities live in STATUS)
 
@@ -96,9 +134,15 @@ Public-window history (17 possessions, descriptive only): .4190 context ·
 2. Native player-frame blanking in the GRU. A six-fit design is proposed in
    [GRU_SLOT_ROBUSTNESS](GRU_SLOT_ROBUSTNESS.md#proposed-native-frame-blanking-experiment).
    Not yet declared.
-3. Untested on the baseline: seed averaging, and a game-state-dependent
-   (turnover/aerial) gap model.
-4. An independent labelled broadcast match. Data-blocked (private mtah-data issue #4).
+3. Actual seed averaging is tested and user-adopted: clean/feed-like .6265/.4874,
+   with modest gains over seed 2027. Matched 15s context improves local long-gap recovery,
+   but not spell F1 consistently; seed 2026 fails the SkillCorner D guard
+   ([SEED_GAP_CONTEXT](SEED_GAP_CONTEXT.md)). A game-state-dependent
+   (turnover/aerial) gap model remains untested.
+4. An independent labelled broadcast match. PFF/SNGAR access remains pending or
+   gated. [SoccerTrack v2 samples are acquired](INDEPENDENT_DATA_SEARCH.md) for a
+   blind panorama annotation pilot; they have no dense possession gold and their
+   ball coordinates are event-interpolated, not measured observations.
 5. Calibrated player defects and ball-fusion confidence.
 
 Draft PRs #8, #11, #13, #16 and #18 hold evidence that is not on main. They are
@@ -113,7 +157,7 @@ pinned in [EXPERIMENTS](../docs/research/EXPERIMENTS.md). Check live PR state.
 | `metrics.py` (`evaluate_tracking`), `eval_set/protocol.py` | Official scorer without joining halves; cohort and fold protocol, `sha256`, paired bootstrap, D-boundary summary |
 | `supervised.py`, `refine_features.py`, `refine_domain.py` | Frame features (geometry/motion, physical, player-only D features) and the HGB+Viterbi decoder |
 | `robust.py`, `stress.py`, `tracking_corruption.py`, `stress_components.py` | Ball masks, composite corruption, component-gated corruption |
-| `learned_temporal.py` (`lt`), `had_gru.py`, `factorized_had.py` | Sequence windows, masks, GRU/TCN; the joint H/A/D GRU with player-only D path (the current baseline's network) |
+| `learned_temporal.py` (`lt`), `had_gru.py`, `factorized_had.py`, `soccernet_capacity_model.py` | Sequence windows, masks, GRU/TCN and factorized H/A/D components. Current inference combines capacity-model H/A with the previous package's unchanged player-only D teacher paths. |
 | `live_gap_experiment.py` | `feature_view(...)` builds the joint-GRU input record. Also used at inference. |
 | `joint_lgbm.py`, `temporal_lgbm.py`, `possession_geometry.py` | Full H/A/D LightGBM features, ordered temporal features, control geometry and anchors |
 | `datasets.py`, `metrica_open.py`, `skillcorner_had.py`, `audit_dataset.py` | Source download and normalization into the shared NPZ contract |
@@ -124,7 +168,9 @@ pinned in [EXPERIMENTS](../docs/research/EXPERIMENTS.md). Check live PR state.
 **Study runners** (one per study, frozen): `*_experiment.py`,
 `confidence_abstention.py`, `stress_component_ablation.py`,
 `temporal_competition_{fit,check,resume}.py`, `light_corruption.py`,
-`refine_*.py`, `promote_*_baseline.py`. Treat these as records. Do not edit
+`refine_*.py`, `promote_*_baseline.py`, `native_short_spell*.py`,
+`turnover_decoder*.py`. The native runtime wrapper preserves its reviewed
+pre-fit mass-assertion amendment; it is not a general training API. Treat these as records. Do not edit
 them to run a new study; write a new runner that imports the libraries.
 **Read-only audits:** `*_audit*.py`, `spell_*`, `feed_defect_profile.py`,
 `headroom.py`, `error_analysis.py`, `verify_temporal_followup.py`.

@@ -1,0 +1,56 @@
+{
+  "checks": {
+    "aggregation_metrics": 12,
+    "aggregation_recipe_view_groups": 4,
+    "baseline_probability_and_decode_digests_reproduced": 15,
+    "baseline_saved_score_rows_match_prior_report_at_abs_tolerance_1e_12": 15,
+    "candidate_ensemble_decode_prediction_digests_reproduced": 15,
+    "candidate_output_and_member_file_array_digests_match": 15,
+    "candidate_two_seed_native_probability_means_exact": 15,
+    "expected_cells": 15,
+    "independently_recomputed_candidate_minus_control_deltas_match": true,
+    "independently_recomputed_provider_and_equal_provider_aggregates_max_abs_delta": 0.0,
+    "post_hoc_selection_gate_passes": true,
+    "saved_recipe_rows": 30,
+    "selection_gate_checks": {
+      "each_provider_clean_d_f1_delta_at_least_minus_0_02": true,
+      "each_provider_clean_macro_delta_at_least_minus_0_02": true,
+      "each_provider_clean_spell_delta_at_least_minus_0_02": true,
+      "strict_positive_clean_spell_gain": true,
+      "strict_positive_feed_like_spell_gain": true
+    }
+  },
+  "equal_provider_spell_f1_delta": {
+    "clean": 0.006673668056240478,
+    "feed_like": 0.011410142291338687
+  },
+  "inputs": {
+    "comparison_source_sha256": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+    "declaration_sha256": "686a10993b74234e0bb02134cd4ec79f781c87a140dcf88cfa31cdbc8f4a0c6e",
+    "prior_baseline_report_sha256": "bf92d15f0027412781554496f3db64ae9705c4fb502ca4c140c9d538c4c4ba86",
+    "report_sha256": "cf267890905ece05aebe366c86c9ea635c07fa5267831f0658ac8932863f51d4",
+    "runs_sha256": "3269e3a08a01d3682fe5ab7c3fd6e60e6b1c722df9c018418e19a8344f2eb329"
+  },
+  "interpretation": "The declared post-hoc practical screen passes and supports proceeding to the separately authorized pooled fits. These previously exposed development matches do not establish statistical superiority or independent confirmation; the screen does not itself promote the baseline.",
+  "provider_clean_deltas": {
+    "metrica": {
+      "d_f1": -0.0055327574169458105,
+      "macro_f1": -0.00011982751302586081,
+      "spell_f1": 0.02502364066193863
+    },
+    "skillcorner": {
+      "d_f1": 0.0023725014628677155,
+      "macro_f1": 0.00016519546840554344,
+      "spell_f1": -0.0070749120437541
+    },
+    "sportec": {
+      "d_f1": -0.0035012391387697628,
+      "macro_f1": -0.0010454847585603666,
+      "spell_f1": 0.002072275550536573
+    }
+  },
+  "schema_version": 1,
+  "study_id": "objective_ensemble_v1",
+  "verification": "Independent read-only verification of saved comparison artifacts. No fitting, model inference, reference-label scoring, or organizer-label access was performed. Replayed only the frozen cost-3 decoder on already-saved probability arrays; independently aggregated the saved per-cell metric rows.",
+  "verified_utc": "2026-10-28T13:27:15.300415+00:00"
+}

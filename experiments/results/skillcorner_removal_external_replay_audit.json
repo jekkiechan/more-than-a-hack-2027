@@ -1,0 +1,78 @@
+{
+  "corrected_reproducible_verifier": {
+    "corrected_external_receipt": "/workspace/removal_verification/external_verification.json",
+    "path": "/workspace/removal_verification/verify_skillcorner_removal.py",
+    "sha256": "96986885efd4ecf3a18cb365a876eeecdeccc970bd22e8b9c26b87e4168ffdad"
+  },
+  "corrections_applied_to_standalone_verifier": [
+    "Restored the complete verify_full body to its function boundary after an initial null receipt; reran the full phase against the unchanged model seal and obtained an explicit passed=true result.",
+    "Routed current controls, no-SkillCorner candidates, and unchanged SkillCorner-parity controls by explicit arm/fold/seed identity, including distinct role-specific model cache keys; synthetic routing tests pass.",
+    "Added a CLI guard that rejects None instead of silently emitting an incomplete phase result; synthetic contract tests pass.",
+    "Added the missing tactical provider constant that stopped the external replay after its per-cell checks and before aggregation.",
+    "Corrected aggregation-only seed-array selection and provider enumeration, and matched the exact quoted NameError text in the preserved-failure-log check. The readout phase now verifies saved cell schemas, hashes, row identities, ensemble means, aggregation, parity, and gates without inference or scoring."
+  ],
+  "failed_replay_prefix": {
+    "approximate_reconstruction": "/workspace/removal_verification/verify_skillcorner_removal_reconstructed_not_exact.py",
+    "approximate_reconstruction_sha256": "0c87268bc7ef6b6e0abbd45856dbb30e13e43503e65309a77da6413c0694dfe5",
+    "captured_executed_script_sha256": "0a9eb4aaf73a0ae4f0c064b465ea42bea43336d6ec1387cfdc3001a5342f50f3",
+    "exact_executed_source_bytes_available": false,
+    "exact_traceback_log": "/workspace/removal_verification/external_second_attempt_failure.log",
+    "failure": "NameError: name 'TACTICAL_PROVIDERS' is not defined, after cell/model/metric checks and before aggregation completed.",
+    "reconstruction_disclosure": "This file is a non-exact reconstruction of the captured run version and is not represented as its source. The execution hash and exact traceback are retained; the exact source bytes could not be recovered.",
+    "reconstruction_matches_captured_execution_hash": false,
+    "traceback_log_sha256": "fd3e50470633a1cf7eccfad141d38f7df9be5a5a0691868deff335b919f31960"
+  },
+  "purpose": "Final audit of static/full verification, the failed external replay prefix, and aggregation-only completion.",
+  "result_and_scope": {
+    "failed_gate": "Primary original-five clean spell F1 removal delta is -0.007418933512994275; threshold is at least +0.01.",
+    "frozen_runtime_models_data_or_runner_outputs_modified_by_verifier": false,
+    "interpretation": "The prespecified removal screen fails one gate. Mixed full-provider and pooled tactical effects do not establish that SkillCorner helps.",
+    "organizer_inputs_labels_or_scores_read": false,
+    "pooled_tactical_clean_spell_delta": 0.013053216606047191,
+    "pooled_tactical_feed_like_spell_delta": 0.012420146431486256,
+    "primary_feed_like_spell_delta": -0.002737150161508828,
+    "recommendation_gate_passes": false
+  },
+  "runner_artifact_rehashes": {
+    "all_declared_inputs_caches_controls_candidates_and_30_cell_json_npz_artifacts": "Rehashed and bound individually in external_verification.json.",
+    "external_rows_path": "/workspace/experiment_restore/data/experiments/skillcorner_removal_v1/external_rows.json",
+    "external_rows_sha256": "5852a144b20c42393640c2f8cd8ef38a4c45272a4f2c0d74ba29c97ceb4c3632",
+    "report_path": "/workspace/experiment_restore/data/experiments/skillcorner_removal_v1/report.json",
+    "report_sha256": "cf822c74e6a5e39c60dbbcf8661d4e5e5c039bdc0a969116d48ab479d15a731d"
+  },
+  "synthetic_routing_and_cli_tests": {
+    "command": "python /workspace/removal_verification/tests/test_model_routing.py",
+    "passed": 2,
+    "path": "/workspace/removal_verification/tests/test_model_routing.py",
+    "total": 2
+  },
+  "verification_stages": {
+    "external": {
+      "archived_primary_control_probabilities_compared_in_prefix": 30,
+      "candidate_member_probabilities_recomputed_in_prefix": 60,
+      "cells_verified": 30,
+      "completion_mode": "Cell, probability, metric, period-reset, historical parity, and original control checks passed in the recorded replay prefix. The missing aggregation tail then completed independently from sealed saved artifacts; inference and scoring were not repeated.",
+      "decoder_period_reset_checks_in_prefix": 180,
+      "historical_primary_ensemble_rows_compared_in_prefix": 15,
+      "independent_aggregation_cells": 24,
+      "model_inference_or_scoring_rerun_after_prefix": false,
+      "official_metric_rows_replayed_in_prefix": 180,
+      "passed": true,
+      "probability_replay_atol": 1e-07,
+      "receipt": "/workspace/removal_verification/external_verification.json",
+      "rows_verified": 180,
+      "sha256": "75876392c015caa4860ccd83c0db82b97aa11bb78023073932bb94e443843af8"
+    },
+    "full": {
+      "checkpoint_seal_sha256": "348a880e8b31dd14e5226e956d20b34139f935ad4818fbc5eac56a9988b94fc8",
+      "passed": true,
+      "receipt": "/workspace/removal_verification/full_preflight.json",
+      "sha256": "05e50821b17a148006d9ce1cf3dae1b13041f8a3778586cb0f813c0ed02942fd"
+    },
+    "static": {
+      "passed": true,
+      "receipt": "/workspace/removal_verification/static_preflight.json",
+      "sha256": "41d97691e1fb3b09026d683a175cd3705d08fed1253feaa39fbcae68cc190865"
+    }
+  }
+}

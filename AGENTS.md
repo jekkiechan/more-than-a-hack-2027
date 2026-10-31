@@ -7,6 +7,14 @@
   first: vocabulary, study lineage, settled directions and code map.
 - Find prior evidence in the [experiment index](docs/research/EXPERIMENTS.md).
   Read the relevant report, not every historical handoff.
+- SoccerNet-GAR data come from [Hugging Face OpenSportsLab/SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR/tree/tracking-full),
+  branch `tracking-full`. Use the pinned revision and TRAIN file hashes in
+  `experiments/results/soccernet_capacity_declaration.json` with configured
+  `HF_TOKEN` access. Remote paths are `train/...`; local paths include the
+  `tracking-full/` prefix. Check this source before asking for a local dataset
+  archive. The dataset source is separate from our locally trained checkpoints
+  and experiment inventory; Hugging Face availability does not restore those.
+  See [data access](experiments/SOCCERNET_DATA_ACCESS.md) for paths and checks.
 - For restore/inference, use [BASELINE.md](experiments/BASELINE.md).
   The active package is bound by `experiments/baseline_manifest.json`;
   ranking/reporting is defined by `experiments/model_decision_policy.json`.
@@ -74,6 +82,8 @@ Pages can contain valid scores but superseded recommendations.
   retraining; preserve native masks, unknown targets and match/half/time breaks.
 
 ## Delivery
+
+After a promising experiment completes, update the [experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9) with dated scores, visualizations, evaluation protocol and adoption status.
 
 Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
 `main`. Preserve `upstream` as `metrica-sports/more-than-a-hack-2027`.

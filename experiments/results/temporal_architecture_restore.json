@@ -1,0 +1,306 @@
+{
+  "archived_source_audit": {
+    "mismatches": {
+      "experiments/baseline_manifest.json": {
+        "archived_sha256": "c8c78b78af355481da4500c1cc341946c80a22ea7836553548e118591e677a18",
+        "current_sha256": "caad9b496103a6d4bd8012aef507cd136fb7059d8226a7510fab8a94430602e6"
+      },
+      "experiments/current_baseline.py": {
+        "archived_sha256": "cffb345cbbd06e3faac283ada279eab9aabb41992736c9decac17ff083645953",
+        "current_sha256": "975c151085afa91a86855c2e7cb95aff871dd855be8d0d78616984497a886736"
+      },
+      "experiments/model_decision_policy.json": {
+        "archived_sha256": "11d1cf3c656042f729f62709b6a596affa53fee3e41d69e3c2407dfb959f09ef",
+        "current_sha256": "71337c4d24caf6989d67f6b0cfa94e89b129ac7695dde612825dd3b9577a9e99"
+      }
+    },
+    "missing": 0,
+    "predeclared_source_entries": 23,
+    "promotion_only_mismatches": 3,
+    "unchanged": 20
+  },
+  "artifacts": {
+    "baseline_clean_composite_probability_artifacts": {
+      "count": 30,
+      "hashes": "30/30 match original manifest entries",
+      "matches": 5,
+      "seeds": [
+        2026,
+        2027
+      ],
+      "views": [
+        "clean",
+        "corrupt_1",
+        "corrupt_2"
+      ]
+    },
+    "baseline_full_provider_holdout_checkpoints": {
+      "checkpoint_and_sidecar_hashes": "6/6 match",
+      "count": 6,
+      "frozen_receipt_hashes": "6/6 match",
+      "held_out_providers": [
+        "sportec",
+        "metrica",
+        "skillcorner"
+      ],
+      "parameters_per_checkpoint": 62643,
+      "recipe": "joint GRU with slot dropout and player-only D head",
+      "seeds": [
+        2026,
+        2027
+      ]
+    },
+    "external_train_and_selection_arrays": {
+      "count": 18,
+      "eval_set_manifest_path_hash_coverage": "18/18 exact; code manifest paths normalized by removing the leading data/",
+      "selection_matches": 5,
+      "training_matches": 13
+    },
+    "metadata_files": {
+      "checkpoint_sidecars": 6,
+      "declaration_and_reports": 3,
+      "freeze_manifest": 1
+    }
+  },
+  "evaluation_feature_cache_preparation": {
+    "cache_bytes_total": 1980687476,
+    "cache_count": 25,
+    "cache_index": [
+      {
+        "bytes": 43944798,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_clean_clean.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_clean_clean.json",
+        "receipt_sha256": "a7967bb9fb9bcce9ba4a4e03e9a58ff22171839e7db2b35ac1888d6597619468",
+        "sha256": "49c9bdecaf730887ae9008d11f54ba215b640714ee8a2e4d08a3fa176e344449"
+      },
+      {
+        "bytes": 61000606,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_feed_like_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_feed_like_corrupt_1.json",
+        "receipt_sha256": "1c9723bbdbe3ec2bbd6fab66a01874cdb47db90ac712494a29724c28cdc492bd",
+        "sha256": "686ccc35765e8f014088f229bfebaf4f3659bbfa1b8352fabde7076dfa063e08"
+      },
+      {
+        "bytes": 61000606,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_feed_like_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_feed_like_corrupt_2.json",
+        "receipt_sha256": "67b5d5b2bd869e3a0065138dba6c7e54c56c0bf2061f7b64c4c101ab947ffe6c",
+        "sha256": "c1dccc02d09969c6eeedd332aa5a2f8635715b4e136b2d77e5f21b3257a4c6af"
+      },
+      {
+        "bytes": 61000606,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_composite_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_composite_corrupt_1.json",
+        "receipt_sha256": "d47c254c44284cb0d11655be57a274b088e64b90b3df1234fa2fe80fbc28e757",
+        "sha256": "de32d7bd19f6d4345360cd27983ab0dbb59695d0021ee4977eac5c708481dd71"
+      },
+      {
+        "bytes": 61000606,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_composite_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996435_composite_corrupt_2.json",
+        "receipt_sha256": "8931ac07c0e180c429dca1df696c468305661a4b905dcf7ed322beb0e07419f0",
+        "sha256": "c7e928630553cd7f2168d2573525a59aa1c4a2a46c69410dd542013c26b97dc0"
+      },
+      {
+        "bytes": 45429343,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_clean_clean.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_clean_clean.json",
+        "receipt_sha256": "3bc37c41c26ff3252791f652be2f3ba82796f853535998d66f1c8a1f2caf7432",
+        "sha256": "c1b581edf693a2684155f8cb7fd6439388a5ee42f55a3ffe0454859cf4b779d7"
+      },
+      {
+        "bytes": 62789983,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_feed_like_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_feed_like_corrupt_1.json",
+        "receipt_sha256": "2991673e38e95934044414e0129e2ad74a4a54572feb4530a7ba11799ae32427",
+        "sha256": "46c60ace9ffb5a124d3e948f19a363b513930a078fa358b48432d8c0859cc518"
+      },
+      {
+        "bytes": 62789983,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_feed_like_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_feed_like_corrupt_2.json",
+        "receipt_sha256": "dedce3c199c5bed194e3657185f345846abf06362fd58bed24bd32a632486dbc",
+        "sha256": "4bab7a0a6536380569af23b8dfe6e82103b00ccb6bd32e368428ab1e8acf6b9d"
+      },
+      {
+        "bytes": 62789983,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_composite_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_composite_corrupt_1.json",
+        "receipt_sha256": "c40eeff0729f72fc038054c0c42f0c68659465b16126e386da1a1580ae608470",
+        "sha256": "7f6b4f28eb085ec97114d632bfdaaa34c976792d622a060f6687345a598f5e7d"
+      },
+      {
+        "bytes": 62789983,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_composite_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_1996436_composite_corrupt_2.json",
+        "receipt_sha256": "0853d9c8e258a36a07ae440816beedd087c9b6bc11d16422b72c2cd77c2e519d",
+        "sha256": "b299c42a3a8c43016eed4bafd9625f1a2d399436d7632460f053b0b294b99755"
+      },
+      {
+        "bytes": 45201734,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_clean_clean.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_clean_clean.json",
+        "receipt_sha256": "c1a522d2d94d3fdfa6fb010d6f20d2c4f7d5df2b847c031703a0a4a40bebe081",
+        "sha256": "641730a03e510b093c19be89837a4925b81dedb559173089a8d4809359461189"
+      },
+      {
+        "bytes": 62745654,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_feed_like_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_feed_like_corrupt_1.json",
+        "receipt_sha256": "8cbff91b3dcb831608fdbb841a0f636a8cc43ac369bc24bd40fa86ccdb6821e8",
+        "sha256": "981b9b4fd40865d529ef12112a35b6f7e887a3e9eed574730077a40ce7040067"
+      },
+      {
+        "bytes": 62745654,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_feed_like_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_feed_like_corrupt_2.json",
+        "receipt_sha256": "5a4511ed258662ea252a45009a1339691cdf03e9646b6cbe6eb15a460d50655c",
+        "sha256": "aab972f091ad64dd2c7bb1002f286acaa4c5f3601952504fe4de64686ba9c8b8"
+      },
+      {
+        "bytes": 62745654,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_composite_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_composite_corrupt_1.json",
+        "receipt_sha256": "93e81428794824f62f942c953ce565f07ca6a08bd3102b526a6ef93f2eebc4aa",
+        "sha256": "4dd4411cdde8a5a17e7a0e0a1e0820289eae8531a947a116846c8eaf2e879ad6"
+      },
+      {
+        "bytes": 62745654,
+        "path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_composite_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_skillcorner_had_2006229_composite_corrupt_2.json",
+        "receipt_sha256": "e95c19ec302fcbf0b3ad82476ab20ed763f435d60735657e36e2ec93a8d2a997",
+        "sha256": "cfcddaa123efe0c6d49fd601b095a0455dbdc696902e55e8ecc73331be05a0bf"
+      },
+      {
+        "bytes": 72501902,
+        "path": "data/experiments/temporal_architecture_v1/eval_J03WOY_clean_clean.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_J03WOY_clean_clean.json",
+        "receipt_sha256": "8feaed8fd10339f1aad95b69c9924e7676a4a6acbf507f52da2f71a58b306cdf",
+        "sha256": "37d32e65350296c0b465dab6ab3a083a44ae98a9c9f3bd6d6e2ccaedc93eb83a"
+      },
+      {
+        "bytes": 124955246,
+        "path": "data/experiments/temporal_architecture_v1/eval_J03WOY_feed_like_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_J03WOY_feed_like_corrupt_1.json",
+        "receipt_sha256": "a0997073fb678639de7cffd6b446694cc8771c7a413eea2b2d1db4d97ea5a636",
+        "sha256": "5ffee7cc5db8662a469dd6eca09450c4f7a2eb8eb7aab6a56f090928ffa7a39a"
+      },
+      {
+        "bytes": 124955246,
+        "path": "data/experiments/temporal_architecture_v1/eval_J03WOY_feed_like_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_J03WOY_feed_like_corrupt_2.json",
+        "receipt_sha256": "49e0c775c91791b89813eb51f7b864551e723ae41be08bbc9130ceb8fed9db7c",
+        "sha256": "4111a59f3df36b289a882daff24932bf213d525b66805f1afcec0ba5013d0397"
+      },
+      {
+        "bytes": 124955246,
+        "path": "data/experiments/temporal_architecture_v1/eval_J03WOY_composite_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_J03WOY_composite_corrupt_1.json",
+        "receipt_sha256": "2bbe0f391df3bb00a50e3b12a673494e4c246f67163407fd61661bf0585d0537",
+        "sha256": "7014c1b9bb68ede75551293f582ea79b660546fe0956ba57b8bcdcce29c1b1a4"
+      },
+      {
+        "bytes": 124955246,
+        "path": "data/experiments/temporal_architecture_v1/eval_J03WOY_composite_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_J03WOY_composite_corrupt_2.json",
+        "receipt_sha256": "a5bae155292af3cf6dba5513ac533bc8fd9b9ccd6713424264521694f9409803",
+        "sha256": "6f56f04a3b5b5bb36e0bcbe3eb2c4cadd6aa0f77a4959698e5534d5cdb6bbc24"
+      },
+      {
+        "bytes": 72406227,
+        "path": "data/experiments/temporal_architecture_v1/eval_metrica_3_clean_clean.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_metrica_3_clean_clean.json",
+        "receipt_sha256": "3fc687c028eaef837477003c17f1ee6ca5c22a9d2f5f9b8f9c6b5965b45d3be2",
+        "sha256": "413486d17dce50075219165008cdca853899d7a192732283a6c99ed4e3a0fb56"
+      },
+      {
+        "bytes": 113809379,
+        "path": "data/experiments/temporal_architecture_v1/eval_metrica_3_feed_like_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_metrica_3_feed_like_corrupt_1.json",
+        "receipt_sha256": "1d344abf8bce11b6e9b9a735fc4e37a38cccd6dd1b78997bcf96327c4c2951e2",
+        "sha256": "e979944af79bd95eaa9bac3b6bea21f742ea164b0b1a0a823c630124d78d27e7"
+      },
+      {
+        "bytes": 113809379,
+        "path": "data/experiments/temporal_architecture_v1/eval_metrica_3_feed_like_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_metrica_3_feed_like_corrupt_2.json",
+        "receipt_sha256": "2c65ca271d0f96d0a239b34efe71831581143e32598d8f9c568378d9377ecc55",
+        "sha256": "e2f1efe01472a661d16ac7d711430eccde17ad78c4ba1afb5275f1d94e5bf7e6"
+      },
+      {
+        "bytes": 113809379,
+        "path": "data/experiments/temporal_architecture_v1/eval_metrica_3_composite_corrupt_1.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_metrica_3_composite_corrupt_1.json",
+        "receipt_sha256": "b2f1565886dcc87e7b444bde8c62f2ee5634c8dc32be4a2ba17b3fe56e24c478",
+        "sha256": "5c2693efc9603e108bc5356452a71ea47c603d1ee29c17b6acc81fc3a3bc171e"
+      },
+      {
+        "bytes": 113809379,
+        "path": "data/experiments/temporal_architecture_v1/eval_metrica_3_composite_corrupt_2.joblib",
+        "receipt_path": "data/experiments/temporal_architecture_v1/eval_metrica_3_composite_corrupt_2.json",
+        "receipt_sha256": "2788226f381c67230b9e6e69d0e90386b81506ee48ae81b19c5db2bb37c17061",
+        "sha256": "568167fe1c85dcdce1addb332145a0bec32f5d70d97a0d913f2ac2cb70400b6c"
+      }
+    ],
+    "frozen_declaration_sha256": "80c6f738f49f8cd5e94da4e30e49f07b673d2eeda8dd8646008b941a32c1fc59",
+    "matches": [
+      "J03WOY",
+      "metrica_3",
+      "skillcorner_had_1996435",
+      "skillcorner_had_1996436",
+      "skillcorner_had_2006229"
+    ],
+    "method": "experiments.temporal_architecture_experiment._prepare_eval_view",
+    "model_predictions_or_metrics_called": false,
+    "operational_notes": "The first foreground exec session lost transport after nine cache pairs; its exit status was unavailable. A logger-backed worker resumed existing pairs and completed all 25. The final independent cache/receipt verification passed; no OOM was observed.",
+    "organizer_labels_read_or_scored": false,
+    "receipt_count": 25,
+    "status": "prepared_and_hash_verified_before_model_scoring",
+    "verification": "25/25 cache and receipt identities, bytes/SHA-256, frozen declaration, source-input hash, raw-view hash, and labels hash verified",
+    "view_cell_counts": {
+      "clean": 5,
+      "composite": 10,
+      "feed_like": 10
+    }
+  },
+  "private_source": {
+    "branch": "experiments/temporal-spell-robustness-v1",
+    "commit": "dbf20825de7c17e2c0fa694561001058ef125948",
+    "manifest": "gru_slot_robustness_cache_manifest.json",
+    "manifest_files": 253,
+    "manifest_sha256": "46702a6be49685047e4a748d4154fd0dcee7fabe0e2bdcb27c46e1155210c512",
+    "repository": "jekkiechan/mtah-data"
+  },
+  "restore": {
+    "bytes_total": 239276134,
+    "destination": "ignored data/",
+    "files_total": 64,
+    "method": "competition_cache.py fetch using a temporary selection of unchanged entries from the original manifest",
+    "original_manifest_membership": "64/64 exact",
+    "selected_lfs_pointer_files": 0,
+    "source_and_destination_hashes": "64/64 match original size and SHA-256 entries"
+  },
+  "scope": {
+    "baseline_prediction_parity_replay": "deferred until the new comparison declaration and candidate seals are frozen",
+    "model_fitting": false,
+    "new_prediction_or_evaluation": false,
+    "organizer_labels_read": false
+  },
+  "status": "verified_artifact_restore_and_pure_feature_cache_prep",
+  "supplemental_feed_like_archive": {
+    "fallback_report": {
+      "baseline_feed_like_cells": 20,
+      "parity_issues": 0,
+      "path": "experiments/results/stress_component_ablation.json",
+      "sha256": "b4161056280220d94153c582c84f39910d70f3af789ab1e62a654498e8158e8a"
+    },
+    "local_binary_restore": "Not restored; shell fetch of the private commit failed because no interactive GitHub username was available",
+    "manifest": "seed_gap_context_cache_manifest.json",
+    "manifest_sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59",
+    "parity_fallback": "Use per-cell numerical feed-like baseline values from experiments/results/stress_component_ablation.json; do not claim byte-level feed-like prediction parity",
+    "private_branch": "experiments/seed-gap-context-v1",
+    "private_commit": "73f226dd469f5da96ae0969d2b8cfa4ccdfc6620",
+    "remote_receipt": "PR #22 artifact receipt reports 176 files / 556780263 bytes freshly downloaded and SHA-256 verified"
+  },
+  "verified_utc": "2026-10-28T09:58:09.802713Z"
+}

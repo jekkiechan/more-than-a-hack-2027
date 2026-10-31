@@ -1,0 +1,42 @@
+{
+  "study_id": "soccernet_training_ideas_v1",
+  "date": "2026-10-30",
+  "status": "synthetic_contracts_passed_real_data_blocked",
+  "base_commit": "a792b097ad833f38c931d0a88605b20f60db5c42",
+  "validation": {
+    "experiment_tests": 385,
+    "new_contract_tests": 22,
+    "root_tests": 18,
+    "file_backed_fit_parity": "exact_pass",
+    "bundled_submission_format": {
+      "valid": true,
+      "rows": 199319
+    },
+    "pip_check": "passed",
+    "diff_check": "passed"
+  },
+  "source_sha256": {
+    "experiments/soccernet_anchor_balance.py": "42b08b46a8521ad3be613b98c66587b2d3cbab0b61a67b4fb7410e8e9478ff31",
+    "experiments/soccernet_gap_consistency.py": "2094c7987e579caf3d450c55407c09947fd2f81031e7b2681f66372cae28dccc",
+    "experiments/soccernet_context_pretrain.py": "2a284afbb3936e7826b1807a3a55f031f5962884f65f00c664caf47c52bc8a96",
+    "experiments/soccernet_training_ideas.py": "0fdab60930575d46bde33abe4070628a9841efd0d794da97ca24363e916f540c"
+  },
+  "frozen_files_sha256": {
+    "experiments/baseline_manifest.json": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
+    "experiments/model_decision_policy.json": "f6330589fc26396d3861e136e0b6c5a22b196c683adf129dbeaefc760dcce40e",
+    "experiments/results/soccernet_capacity_declaration.json": "6dc1aa6df8786aca2b42222cef9d9866ab1383f7988eb304eb4828746febf797",
+    "experiments/results/soccernet_capacity_public_check.json": "25b46c2ae101c0d16760fda4f25be0c0644818c971a8e29bbdeab235b2ea2c63"
+  },
+  "implementation_review": "Luna subagents implemented the three mechanisms; separate Luna review plus parent integration corrected masking, capped weights, sparse-target validation and checkpoint/declaration provenance.",
+  "real_fits": 0,
+  "real_evaluation_cells": 0,
+  "new_organizer_predictions": 0,
+  "organizer_reference_labels_read": false,
+  "baseline_changed": false,
+  "private_artifacts_uploaded": false,
+  "limits": [
+    "No model quality gain is established.",
+    "Real freeze/fit against the historical SoccerNet inventory is not exercised because the archive is absent.",
+    "Raw merged segment extraction and full matched evaluation remain pending restoration."
+  ]
+}

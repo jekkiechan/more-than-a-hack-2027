@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "confirmed_utc_date": "2026-10-28",
+  "version": 7,
+  "confirmed_utc_date": "2026-10-31",
   "primary_order": [
     "spell_f1",
     "macro_f1"
@@ -16,15 +16,15 @@
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
   "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "Joint GRU",
-    "model": "joint_gru_slotdrop",
+    "family": "Two-seed dense-SoccerNet GRU ensemble with fine-tuned D paths",
+    "model": "joint_gru_sn_dense_ensemble",
     "status": "User-authorized working development baseline; independent confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
-    "baseline_manifest_sha256": "caad9b496103a6d4bd8012aef507cd136fb7059d8226a7510fab8a94430602e6",
+    "baseline_manifest_sha256": "76f18b3fa218e4dde357454dc3206b7eeb28ab97eda2862007fff8c987c04ec5",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "reason": "External clean spell +0.075/+0.084 over the previous baseline in both seeds with full provider holdouts; passes all guardrails with feed-like stress",
-    "promotion_record": "experiments/results/baseline_joint_gru_promotion.json",
-    "previous_policy": "experiments/baselines/model_decision_policy_gru_hgb_ballgap25_v1.json",
+    "reason": "User-authorized post-hoc promotion: positive clean/feed-like development gains in both seeds; provider guards pass; +.01 clean screen remains failed.",
+    "promotion_record": "experiments/results/baseline_sn_dense_promotion.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_soccernet_capacity_ensemble_v1.json",
     "public_diagnostic_known_before_user_request": true
   },
   "pathcrf_component": {
@@ -42,7 +42,7 @@
   ],
   "stress_guardrail": {
     "view": "feed_like",
-    "rule": "Each seed: feed-like stress spell F1 no more than 0.01 below the matched baseline",
+    "rule": "Full-pipeline candidate feed_like spell >= adopted ensemble -.01; report component seeds separately and protect provider clean D-F1/macro within .02",
     "components": "Calibrated ball gaps, coordinate drift/noise/jumps, per-slot gaps, same-team ID swaps",
     "diagnostic_only": [
       "composite",
@@ -55,12 +55,18 @@
     "evidence": [
       "experiments/results/feed_defect_profile.json",
       "experiments/results/stress_component_ablation.json"
-    ]
+    ],
+    "reference_recipe": "joint_gru_sn_dense_ensemble"
   },
   "lgbm_component": {
     "default_enabled": false,
     "status": "Not adopted",
     "reason": "Full127 blend adds +0.0016/-0.0020 spell over its GRU under feed-like stress, lowers SkillCorner and public D recall",
     "evidence": "experiments/STRESS_COMPONENT_ABLATION.md"
+  },
+  "clean_improvement_screen": {
+    "default_delta": 0.01,
+    "historical_failures_preserved": true,
+    "current_adoption_exception": "Explicit user decision; two-seed clean gain +.0054 over the previous package; not a retroactive screen pass."
   }
 }

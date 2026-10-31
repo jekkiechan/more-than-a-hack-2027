@@ -1,0 +1,383 @@
+{
+  "correction": {
+    "archived_ensemble_pd": "Still required bit-exact; independently verified for every candidate ensemble.",
+    "archived_member_pd": "Still required bit-exact after copying archived P(D); independently verified for every candidate member.",
+    "change": "np.array_equal -> np.allclose(rtol=0, atol=1e-6)",
+    "fit_view_loss_decoder_score_cells": "unchanged",
+    "reason": "Sub-micro CPU batch-shape replay drift; this guard compared two replays of the same frozen checkpoint.",
+    "scope": "Only candidate-vs-regenerated-local-baseline member P(D) replay guard"
+  },
+  "declaration_sha256": "93926199487a10b465ec9fc3a969c6ae813fb2ecc23facdbe9df18c04efe519e",
+  "drift_probe": {
+    "cell": {
+      "match": "skillcorner_had_1996435",
+      "replicate": "clean",
+      "source": "skillcorner",
+      "view": "clean"
+    },
+    "evaluation_cache_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+    "labels_used": false,
+    "maximum_observed_drift": 3.5762786865234375e-07,
+    "per_seed": {
+      "2026": {
+        "max_abs_candidate_vs_local_base_pd": 2.980232238769531e-07,
+        "max_abs_local_base_vs_archived_pd": 3.5762786865234375e-07
+      },
+      "2027": {
+        "max_abs_candidate_vs_local_base_pd": 1.7881393432617188e-07,
+        "max_abs_local_base_vs_archived_pd": 2.980232238769531e-07
+      }
+    }
+  },
+  "effective_score_function_sha256": "7c05c28fff4a05dcc2c1cbf32d056ea4c691fece53aeb2a25f99686fdd994778",
+  "organizer_labels_read": false,
+  "organizer_scored": false,
+  "original_runner_sha256": "d8eacc5b48a528b3069d67825a86685cef0eadd2d9203551da98837cee860e52",
+  "original_score_function_sha256": "cdf71935af830857bc7c4e1cf46e5cc3658b9e198b477ff18b3de63057a53797",
+  "resumed_missing_cells": [
+    {
+      "match": "skillcorner_had_1996435",
+      "replicate": "clean",
+      "source": "skillcorner",
+      "view": "clean"
+    },
+    {
+      "match": "skillcorner_had_1996435",
+      "replicate": "corrupt_1",
+      "source": "skillcorner",
+      "view": "feed_like"
+    },
+    {
+      "match": "skillcorner_had_1996435",
+      "replicate": "corrupt_2",
+      "source": "skillcorner",
+      "view": "feed_like"
+    }
+  ],
+  "reused_cell_count": 12,
+  "reused_completed_cells": [
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_clean_clean_ensemble.npz",
+          "sha256": "8c262b726b3cbf61552259d4a2b3124a935064e9998dd0176e65f104e2ec0610"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_clean_clean_seed_2026.npz",
+          "sha256": "7e26f43d958c0b9c3eea655110469cf029115eea91f38da062b66cfec9fe39f0"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_clean_clean_seed_2027.npz",
+          "sha256": "303422801a93ef85e9333d41c376341cd871d56f6bf48142a09d50ecac08bd48"
+        }
+      ],
+      "cell": {
+        "match": "J03WOY",
+        "replicate": "clean",
+        "source": "sportec",
+        "view": "clean"
+      },
+      "row_sha256": "e532485ca9b351115d84e58233e85eebdd025d3dd28822cee63db4afd6825b94"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_feed_like_corrupt_1_ensemble.npz",
+          "sha256": "9734c4275ceb5700ffd5ee0f65153075b837de848d8a5f36ada516cbc44bf5e6"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_feed_like_corrupt_1_seed_2026.npz",
+          "sha256": "f107f3fe950701a26b31ff353730e49cb3b968bc59f2015947304fc59a6efd72"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_feed_like_corrupt_1_seed_2027.npz",
+          "sha256": "08ab4b0430e988d0bfc771c87363ef3870b2446eea83e58d193110be1febdda9"
+        }
+      ],
+      "cell": {
+        "match": "J03WOY",
+        "replicate": "corrupt_1",
+        "source": "sportec",
+        "view": "feed_like"
+      },
+      "row_sha256": "6b8dc7af5d49f72aeab28ac640aa07e50b7b8c9fa2894f74997e32495296e5cc"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_feed_like_corrupt_2_ensemble.npz",
+          "sha256": "942f83dbd3a096963e6425f2f5babca423b13c78b6e49dfd044bb72e9c8fcd8c"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_feed_like_corrupt_2_seed_2026.npz",
+          "sha256": "56ccb68f8eca64df47efbc78d5f51d6b6fd1cddd0ed6a3e67182d3587d9c9ac3"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_J03WOY_feed_like_corrupt_2_seed_2027.npz",
+          "sha256": "ca92bdf70bacd07112a2e2664943b4418891ae8ab5c8a7e7ff6c8d071ad4048c"
+        }
+      ],
+      "cell": {
+        "match": "J03WOY",
+        "replicate": "corrupt_2",
+        "source": "sportec",
+        "view": "feed_like"
+      },
+      "row_sha256": "7d0e7e089e336e13b5266d1421b9c84429e92d2897304c620993e045f9688f2c"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_clean_clean_ensemble.npz",
+          "sha256": "adbc0ca73ad21885aec2a13891b0f50b9aad32a6d78fbb3e0f1d34ae984f66e2"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_clean_clean_seed_2026.npz",
+          "sha256": "def6c281363341b0f6a41dfe3a0bbbe3e149ce908cbd33c725de321c6a1a4ef1"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_clean_clean_seed_2027.npz",
+          "sha256": "bf9c6202cfd00d710132e69c8317813fc4d2ad899b921f4949aebc87088e616c"
+        }
+      ],
+      "cell": {
+        "match": "metrica_3",
+        "replicate": "clean",
+        "source": "metrica",
+        "view": "clean"
+      },
+      "row_sha256": "30506b3ee3679ba3c1f37bd8b00cbd188c2773ea5bb506150b42f073c12b09a5"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_feed_like_corrupt_1_ensemble.npz",
+          "sha256": "5e71468c294d71e94643f4d36497f6f1e684996f6861b16dada8f8dff07fe21c"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_feed_like_corrupt_1_seed_2026.npz",
+          "sha256": "80ab76b38d5f33f677fba5a5e9fa645dfdded4f9dba0617d366595e69c4d3569"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_feed_like_corrupt_1_seed_2027.npz",
+          "sha256": "defa8c6f98a892ebe0b32b8b6279a4171ff71694eae4c4109e1e20be89f5d672"
+        }
+      ],
+      "cell": {
+        "match": "metrica_3",
+        "replicate": "corrupt_1",
+        "source": "metrica",
+        "view": "feed_like"
+      },
+      "row_sha256": "c715173c3f48e65c5047be45d573855ec9c536acd466b784a5545e5b8a274cdf"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_feed_like_corrupt_2_ensemble.npz",
+          "sha256": "c8cc29994c0dcd2a11c978c4c0e734cc5b2a39ecc7c847b7d7dc714b28974f32"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_feed_like_corrupt_2_seed_2026.npz",
+          "sha256": "899941e695453372649905b2946f05abf12faa49d7b41be85739ff63e2f50bcd"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_metrica_3_feed_like_corrupt_2_seed_2027.npz",
+          "sha256": "a2a7d68402baeed1aab4b33a37fe8ad74784f9ebb4960793d5dc0d45f532a70d"
+        }
+      ],
+      "cell": {
+        "match": "metrica_3",
+        "replicate": "corrupt_2",
+        "source": "metrica",
+        "view": "feed_like"
+      },
+      "row_sha256": "c84bf3ff546906bd2f3adc48b0ea58c489f7b305fafb3f25bfb222a6dfef50eb"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_clean_clean_ensemble.npz",
+          "sha256": "12983e5d46d3a9f9674f225909fc9d71f9c7ca30795b8ecf17500a17cfbe3266"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_clean_clean_seed_2026.npz",
+          "sha256": "631c90fcac27fe25ff796fc2759f5613721750f1cb974e56c93b965eb8c91b82"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_clean_clean_seed_2027.npz",
+          "sha256": "6cc80c381f18a227ef3561cd9681ef7249d26518ff0827a002b410a9dbf8a6f7"
+        }
+      ],
+      "cell": {
+        "match": "skillcorner_had_1996436",
+        "replicate": "clean",
+        "source": "skillcorner",
+        "view": "clean"
+      },
+      "row_sha256": "bd29c0a48794a819061ef7f9c898c4244845a984cdbecbd72a29bccc93e6ce3d"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_1_ensemble.npz",
+          "sha256": "391f66ee5d0072b2fde01af8d5d1b0b44323a7ec4c064a4051e6679878ce54a4"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_1_seed_2026.npz",
+          "sha256": "dd992f7a0521848b1ac930750d39b2f157e00209645d35e07d533cd94c407bd3"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_1_seed_2027.npz",
+          "sha256": "e07cab13f28bd961c1fd9ca3a179b7270b66d087c9b2241ab50c4e684785f54d"
+        }
+      ],
+      "cell": {
+        "match": "skillcorner_had_1996436",
+        "replicate": "corrupt_1",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      "row_sha256": "86cd0c46cd66e7c31b63561f777ac81a3879d4802a5f70151ade0ffce1d49b9b"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_2_ensemble.npz",
+          "sha256": "a38eeed7953da7e2f49e42fc66d7054fdfc7568cf6c2019dd8954f9945471689"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_2_seed_2026.npz",
+          "sha256": "bb08ad192650c93417f5da37032bcdf3521c069f84ce2c8d664f0528c314f92b"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_2_seed_2027.npz",
+          "sha256": "a3cbba5e72a6caf272b959f1d747a5f5160a55eb1a9c0309a6633d3995148316"
+        }
+      ],
+      "cell": {
+        "match": "skillcorner_had_1996436",
+        "replicate": "corrupt_2",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      "row_sha256": "b6c7327213a82aef50653dfe54f3454f505ddb686b8a9301fb41681bc8028c76"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_clean_clean_ensemble.npz",
+          "sha256": "27aa8be061236fb7dd1b454e57aab4d171c90eb0401f9d2135d353c689bb63ef"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_clean_clean_seed_2026.npz",
+          "sha256": "f270a5fce7fc1732f3aba9125ca5530b55a0d8fcb4201d4b092f84bb17da77af"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_clean_clean_seed_2027.npz",
+          "sha256": "0b3c883283052ab66c1f17601582e6352c3b96f20aa98336e96fa4bee6ab6e43"
+        }
+      ],
+      "cell": {
+        "match": "skillcorner_had_2006229",
+        "replicate": "clean",
+        "source": "skillcorner",
+        "view": "clean"
+      },
+      "row_sha256": "67fd47daca44017c7144382fcf90ca0c4135e43290c6dad508a73beca89be572"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_1_ensemble.npz",
+          "sha256": "4f89690c87bc1b9ece1716d0843797d8fa17584b645bd6d513973ff514f7bbdf"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_1_seed_2026.npz",
+          "sha256": "ccc44cefbb0465363defe660aad7ed3ba7b58d747061b8bdb22b50eaeabad510"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_1_seed_2027.npz",
+          "sha256": "132d1eb7b64d49c55a7aad78666bdc98551ab0fc431c0a6521be90593e2a1af6"
+        }
+      ],
+      "cell": {
+        "match": "skillcorner_had_2006229",
+        "replicate": "corrupt_1",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      "row_sha256": "1d2581c436be52a6d2798626dd5452006b840916969552ae9032f82908f96aed"
+    },
+    {
+      "candidate_artifacts": [
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_2_ensemble.npz",
+          "sha256": "2d51613fd95f21de6b9bb669bbc5e2032f4a9596717f9600ca59736e35a7d788"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_2_seed_2026.npz",
+          "sha256": "a3eeb7e69d709003e0cfa1079da19d0869c0dfb3bd2d210f22865bc2257f7ca9"
+        },
+        {
+          "file": "experiments/contact_memory_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_2_seed_2027.npz",
+          "sha256": "77d479b505c11e947cd843d9c06050da4b29605e26f4f625eaff971acff9592f"
+        }
+      ],
+      "cell": {
+        "match": "skillcorner_had_2006229",
+        "replicate": "corrupt_2",
+        "source": "skillcorner",
+        "view": "feed_like"
+      },
+      "row_sha256": "c591845e3dd6fa071b32e32d1a86b269a4cc23c2db00fa44f63202463d0288f5"
+    }
+  ],
+  "runtime_wrapper": "experiments/contact_memory_runtime_resume.py",
+  "runtime_wrapper_sha256": "e62bfc3ff37b20f698a8e45246cece2a8b394e4f0248c207eacb216c4c24e043",
+  "sealed_models": [
+    {
+      "heldout_provider": "sportec",
+      "path": "experiments/contact_memory_v1/adapter_without_sportec_2026.joblib",
+      "receipt_sha256": "bcea381b56c7bf1091955874fc52c6d18a8be48a15fd031c3203f46fa7fe68de",
+      "seed": 2026,
+      "sha256": "daffd7643a32e0938f34c452750a8c8a9f83a90a99437c8f8f85d4a30b5696bd"
+    },
+    {
+      "heldout_provider": "sportec",
+      "path": "experiments/contact_memory_v1/adapter_without_sportec_2027.joblib",
+      "receipt_sha256": "2480692b49715e7d4932be3a8f17bf35db3c798432aa86dd9efe46b65f5e0d7d",
+      "seed": 2027,
+      "sha256": "ffc070de4258f8d12b21804892ac015d09f6a2a23e43a169825a807dae012763"
+    },
+    {
+      "heldout_provider": "metrica",
+      "path": "experiments/contact_memory_v1/adapter_without_metrica_2026.joblib",
+      "receipt_sha256": "d672cb44d2968b8505394feb353f526cc117c661ef3adc519a9c803172ecac18",
+      "seed": 2026,
+      "sha256": "61404df88de672130c7e16e4fb521c2a291ae184c63070dcc2b513a0f90c8bd5"
+    },
+    {
+      "heldout_provider": "metrica",
+      "path": "experiments/contact_memory_v1/adapter_without_metrica_2027.joblib",
+      "receipt_sha256": "e54315aca9933e63e37166620d428470e36f1b7b224945898d2dbec6605004a9",
+      "seed": 2027,
+      "sha256": "412c7e954bbdb47d16d7448b4797d279af51def4473f02a62dd806a587cdf2df"
+    },
+    {
+      "heldout_provider": "skillcorner",
+      "path": "experiments/contact_memory_v1/adapter_without_skillcorner_2026.joblib",
+      "receipt_sha256": "e34d800686395a3e1bf6e6f0a3d54883e2d07a2248279909de6c2b10e6861826",
+      "seed": 2026,
+      "sha256": "af1af255886bf75470f1f7af2b01c689380337c1b93345fc3d59bed1cd1ff6e1"
+    },
+    {
+      "heldout_provider": "skillcorner",
+      "path": "experiments/contact_memory_v1/adapter_without_skillcorner_2027.joblib",
+      "receipt_sha256": "71279909d2ac4bda09dae66b0ee4c2eccba650d2bdc010134c343da21f434580",
+      "seed": 2027,
+      "sha256": "80005b3fcaf68da32c3450fe7f1b0fb2ff9172cc5079072a976cd4df27944bbf"
+    }
+  ],
+  "study_id": "contact_memory_v1"
+}

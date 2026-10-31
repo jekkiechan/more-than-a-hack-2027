@@ -1,0 +1,862 @@
+{
+  "study_id": "turnover_decoder_v1",
+  "declaration_sha256": "8a5a125cfdad8073968af389ae631334b451b38413a6c0e4a58d1b6f9b09cbcf",
+  "created_utc": "2026-10-29T02:52:04.084974+00:00",
+  "stage": "pre_fit_no_turnover_head_fit_or_evaluation_scoring",
+  "verifier_source": "experiments/turnover_decoder_provenance.py",
+  "verifier_source_sha256": "e0fac95f2008681c04a04f0f37feac4618949acdc28bfd57b04f5de5ce3998e3",
+  "archive_manifests": {
+    "objective_alignment": {
+      "path": "objective_alignment_cache_manifest.json",
+      "sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0",
+      "pinned_sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0",
+      "files": 335,
+      "bytes": 2204568476
+    },
+    "seed_gap_evaluation": {
+      "path": "seed_gap_context_cache_manifest.json",
+      "sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59",
+      "pinned_sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59",
+      "files": 176,
+      "bytes": 556780263
+    },
+    "objective_ensemble": {
+      "path": "objective_ensemble_cache_manifest.json",
+      "sha256": "21cf50ea17b1372ccd6ac5818a9031016aa13104f5e8cd13acb231c9d1b250a1",
+      "artifact_receipt_sha256": "c4e2c5ff362f65ee5974a2c9424adc8b33c43943435b1a248089adea5c72b273",
+      "remote_restore_claim": true,
+      "files": 387,
+      "bytes": 639385391
+    }
+  },
+  "objective_alignment_declaration": {
+    "path": "experiments/objective_alignment_v1/predeclared.json",
+    "bytes": 34167,
+    "sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d"
+  },
+  "prepared_training_manifest": {
+    "path": "experiments/objective_alignment_v1/prepared_training_manifest.json",
+    "bytes": 8189,
+    "sha256": "f9ccff2911c7742ef0a9578a9535fec7e584f56d7b463a8265ab990b524d0f84",
+    "declared_sha256": "f9ccff2911c7742ef0a9578a9535fec7e584f56d7b463a8265ab990b524d0f84",
+    "cache_count": 13
+  },
+  "training_caches": [
+    {
+      "match": "J03WMX",
+      "source": "sportec",
+      "input_sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_J03WMX.joblib",
+        "bytes": 98612664,
+        "sha256": "ab75cb7199d52eab7fd60fdd34ce29ded919bb77b6bf1c301fd90d4b6368dd23"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_J03WMX.json",
+        "bytes": 482,
+        "sha256": "c94d4b1a2a4e2a506ed5974d5562b4a49ed7c55b3029e3682016eeddfcd2950f"
+      }
+    },
+    {
+      "match": "J03WN1",
+      "source": "sportec",
+      "input_sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_J03WN1.joblib",
+        "bytes": 95637464,
+        "sha256": "a6494dd9753f19e3e4a2cea45bde0081b2586ed8d1657bd7e3732de3e5722a5b"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_J03WN1.json",
+        "bytes": 482,
+        "sha256": "57217f499a045a4f1697249dc80bbcb58be413bfc2ba0528cf7e7a565e85a690"
+      }
+    },
+    {
+      "match": "J03WOH",
+      "source": "sportec",
+      "input_sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_J03WOH.joblib",
+        "bytes": 92699488,
+        "sha256": "3d2fb5068e459905c82e2319415de7181e614f84b7f11e5fea50bea0c7275946"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_J03WOH.json",
+        "bytes": 482,
+        "sha256": "6de39c1d9205372b8bb003b0833dfb1863a3afb987081125f8873d488c42e50e"
+      }
+    },
+    {
+      "match": "metrica_1",
+      "source": "metrica",
+      "input_sha256": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_metrica_1.joblib",
+        "bytes": 97964288,
+        "sha256": "2445e56b7704d2669080552aac0415803c8393e3b901fe7c0696446ecbfb01ba"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_metrica_1.json",
+        "bytes": 485,
+        "sha256": "718f02427c335c656dff9b48883f342998050799957ec64cd9b59a23cf2447e2"
+      }
+    },
+    {
+      "match": "metrica_2",
+      "source": "metrica",
+      "input_sha256": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_metrica_2.joblib",
+        "bytes": 95364016,
+        "sha256": "e5189a5ffdcc6142aced86d47612f9f4aad29399052cf8eddeb172b75c98e0bb"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_metrica_2.json",
+        "bytes": 485,
+        "sha256": "47f4720cb394a03d3bc39d2b53d3ba9274a5d0039174d7051765e8952932ebda"
+      }
+    },
+    {
+      "match": "skillcorner_had_1874553",
+      "source": "skillcorner",
+      "input_sha256": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1874553.joblib",
+        "bytes": 101033768,
+        "sha256": "929fda060548385596ee47db27346e315759870ca21ed8648460fc92e09280fa"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1874553.json",
+        "bytes": 502,
+        "sha256": "c53f325bfc513f14bde7b493bf65d5694cc956aee65a299988f24a9e86b11d77"
+      }
+    },
+    {
+      "match": "skillcorner_had_1886347",
+      "source": "skillcorner",
+      "input_sha256": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1886347.joblib",
+        "bytes": 98956760,
+        "sha256": "baff2f2feabd1c43b7c82a6d93ef25d7fe1d4d1049ac7603c3e05efc3f542249"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1886347.json",
+        "bytes": 501,
+        "sha256": "537088160a974202d92b526611ff54da3b9ea3bc9dbbb19e768b6b40b003fc49"
+      }
+    },
+    {
+      "match": "skillcorner_had_1899585",
+      "source": "skillcorner",
+      "input_sha256": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1899585.joblib",
+        "bytes": 101415664,
+        "sha256": "ace42e94689a4d9ebcae21a0ecb40358d33cc831151766aaf4f9fe24b09d5c6b"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1899585.json",
+        "bytes": 502,
+        "sha256": "372516753d855b674505861a3560e801b5bd7ee3614207651e2199b66b54789d"
+      }
+    },
+    {
+      "match": "skillcorner_had_1925299",
+      "source": "skillcorner",
+      "input_sha256": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1925299.joblib",
+        "bytes": 102708760,
+        "sha256": "d10c99821d9944170e0587a50a26770326994c7e9465465eaa0bf30e3c979f7a"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1925299.json",
+        "bytes": 503,
+        "sha256": "ab49645ddbca9f87c0ec64e08fa9d05dee32bff7dc1055ba67f7ba3b1e982ba0"
+      }
+    },
+    {
+      "match": "skillcorner_had_1927964",
+      "source": "skillcorner",
+      "input_sha256": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1927964.joblib",
+        "bytes": 98970144,
+        "sha256": "6a884b98a613351e0eefd1935a5704401a26f18892be7598943159c2ace44bbf"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1927964.json",
+        "bytes": 501,
+        "sha256": "048f39ab5566afbd9c791ca1f9cd3404fc8e50b1bdc6b351059ba8d2b9ed3b6a"
+      }
+    },
+    {
+      "match": "skillcorner_had_1953632",
+      "source": "skillcorner",
+      "input_sha256": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1953632.joblib",
+        "bytes": 99271664,
+        "sha256": "7c104dee9fdbb57bc4dc4a23c1783f7bd0455a1101b70681bd0ad9cb39817cc7"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1953632.json",
+        "bytes": 502,
+        "sha256": "4b380951d4d16be8d1f3bd89819af42e45966700c2d6a1304c510f77ede58210"
+      }
+    },
+    {
+      "match": "skillcorner_had_1959846",
+      "source": "skillcorner",
+      "input_sha256": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1959846.joblib",
+        "bytes": 98085768,
+        "sha256": "0bece376878c1b0aadc98cfd24a2e08c140aea2b287ea912b2181a4db48965a4"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1959846.json",
+        "bytes": 501,
+        "sha256": "2fd2af0801d8528bfff9bedb93b3e4c8217857083cc9ad9f4a92e2bc3b42bf7f"
+      }
+    },
+    {
+      "match": "skillcorner_had_1986691",
+      "source": "skillcorner",
+      "input_sha256": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+      "cache": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1986691.joblib",
+        "bytes": 99003664,
+        "sha256": "6be26d49dd20bc5e69f7c033954c7e22de98e2cc2c2e5b398f176ba786ba4ae8"
+      },
+      "receipt": {
+        "path": "experiments/objective_alignment_v1/train_skillcorner_had_1986691.json",
+        "bytes": 501,
+        "sha256": "f6cff1fbae6d9e5127b8fff13b0defb82a324d06aa7068189bdb4978e666a0e4"
+      }
+    }
+  ],
+  "frozen_fold_checkpoints": [
+    {
+      "provider_excluded": "sportec",
+      "seed": 2026,
+      "model": {
+        "path": "experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+        "bytes": 263111,
+        "sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676"
+      },
+      "fit_receipt": {
+        "path": "experiments/objective_alignment_v1/without_sportec_combined_2026.json",
+        "bytes": 740,
+        "sha256": "acfa6fbf53f2f15ad7fc1768c1d8e4b74cea64498611fb1896a4aedb2d818836"
+      }
+    },
+    {
+      "provider_excluded": "sportec",
+      "seed": 2027,
+      "model": {
+        "path": "experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+        "bytes": 263111,
+        "sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4"
+      },
+      "fit_receipt": {
+        "path": "experiments/objective_alignment_v1/without_sportec_combined_2027.json",
+        "bytes": 740,
+        "sha256": "defb4eec4cb707eb3641c058842d066bcac613fae78c0197b5e1574cb3c8ab4d"
+      }
+    },
+    {
+      "provider_excluded": "metrica",
+      "seed": 2026,
+      "model": {
+        "path": "experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+        "bytes": 263111,
+        "sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91"
+      },
+      "fit_receipt": {
+        "path": "experiments/objective_alignment_v1/without_metrica_combined_2026.json",
+        "bytes": 748,
+        "sha256": "45f3e4d6a62b9b2e122c1dca5a82d638b6ed7570e3a67645cf1199f420828ce3"
+      }
+    },
+    {
+      "provider_excluded": "metrica",
+      "seed": 2027,
+      "model": {
+        "path": "experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+        "bytes": 263111,
+        "sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3"
+      },
+      "fit_receipt": {
+        "path": "experiments/objective_alignment_v1/without_metrica_combined_2027.json",
+        "bytes": 745,
+        "sha256": "76c20b89a7fee43bc1e518d64d86bd0cd2b1e5f87e976903862c80852b65e770"
+      }
+    },
+    {
+      "provider_excluded": "skillcorner",
+      "seed": 2026,
+      "model": {
+        "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+        "bytes": 263111,
+        "sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56"
+      },
+      "fit_receipt": {
+        "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.json",
+        "bytes": 535,
+        "sha256": "4c994e05feee5a28943c2d6357a58b5cdf4cb565d2a5c9ea6f3bfda012b4a26c"
+      }
+    },
+    {
+      "provider_excluded": "skillcorner",
+      "seed": 2027,
+      "model": {
+        "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+        "bytes": 263111,
+        "sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933"
+      },
+      "fit_receipt": {
+        "path": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.json",
+        "bytes": 534,
+        "sha256": "189a2ffdb24653d5d4d971575664d3813f0241627765997d4a8cb4dabac097f1"
+      }
+    }
+  ],
+  "seed_gap_predeclaration": {
+    "path": "experiments/seed_gap_context_v1/predeclared.json",
+    "bytes": 20939,
+    "sha256": "092220e7961c7bc38f7cf2ef562a463c5588b90640e18b469e0e509477f00015"
+  },
+  "evaluation_cells": [
+    {
+      "cell": {
+        "source": "sportec",
+        "match": "J03WOY",
+        "view": "clean",
+        "replicate": "clean"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+        "bytes": 37595123,
+        "sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/J03WOY_clean_clean.npz",
+        "bytes": 5995555,
+        "sha256": "d2f8116dc47146fd68db96c4f733112121fbf55805e2db82e9593fe78d0b45ec"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_J03WOY_clean_clean.npz",
+        "bytes": 2077507,
+        "sha256": "a726076045a822ef9aca68c7507a0ad22932ae59dd1caa3ce119a0f87cdc873d"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2026.npz",
+          "bytes": 1961211,
+          "sha256": "a0a2394498a0616ea5ce6cca85f5b2770dd362e99cdaf4be3648db8738445adc"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/sportec_J03WOY_clean_clean_combined_2027.npz",
+          "bytes": 1952093,
+          "sha256": "5dfdb90c76099ff622338ee8295270a86ec7dc9ff7ac6eb150bb23344097ac91"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "sportec",
+        "match": "J03WOY",
+        "view": "feed_like",
+        "replicate": "corrupt_1"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib",
+        "bytes": 63772461,
+        "sha256": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.npz",
+        "bytes": 5996404,
+        "sha256": "cf0960d4fd17849e209eb428e61ce82b5197c3a77f4c13a107f4c20db516d6a8"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_1.npz",
+        "bytes": 2077857,
+        "sha256": "7748451902d3f60545b05a8d755bf3b042ce0256fbad4da44f158a106524d698"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2026.npz",
+          "bytes": 1958334,
+          "sha256": "dbc65a66c72e332e1a8256c82c13e762802b583628f9ce074d73fa4ced5ff4d9"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_1_combined_2027.npz",
+          "bytes": 1951337,
+          "sha256": "9f77f2677666b37f30015e0cbf7bf94dff80a3aa590c96792d97dc1028d57d8d"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "sportec",
+        "match": "J03WOY",
+        "view": "feed_like",
+        "replicate": "corrupt_2"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib",
+        "bytes": 63092004,
+        "sha256": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.npz",
+        "bytes": 5986497,
+        "sha256": "250cb10ac7c64b230f19224b872bc248c2e3ddf6cb2e9ceb1f0fb9616ffd13da"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_J03WOY_feed_like_corrupt_2.npz",
+        "bytes": 2074290,
+        "sha256": "b4793ecc13a3b61b593b4d04b26735aaff99e9b6b08f77ce0132ff02dcb9830c"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2026.npz",
+          "bytes": 1955929,
+          "sha256": "120f4e085a17cabf8c3fb07249097427c661183a14c9cf4dfd28a5508f3489fd"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/sportec_J03WOY_feed_like_corrupt_2_combined_2027.npz",
+          "bytes": 1948452,
+          "sha256": "f2ae1ff85a3d46726788b0df7d6191b10ffe4e22cf851d592fef476e3c18f65a"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "metrica",
+        "match": "metrica_3",
+        "view": "clean",
+        "replicate": "clean"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib",
+        "bytes": 41630166,
+        "sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/metrica_3_clean_clean.npz",
+        "bytes": 6074252,
+        "sha256": "f0ef52850c3f95d78bff867a9cf31204821c8b38ad529ba727ab7ccbc78317e5"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_metrica_3_clean_clean.npz",
+        "bytes": 2101672,
+        "sha256": "44f52ad86adb70235331dde58ba952f656a7f3253c55b2794d9db282e8d66c59"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2026.npz",
+          "bytes": 1991765,
+          "sha256": "2c41bd8205df7ad082a44ab8caee72079f0ebf3ac3ce5e7e9a93a265b8dc807b"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/metrica_metrica_3_clean_clean_combined_2027.npz",
+          "bytes": 1983681,
+          "sha256": "61de5f13db9b0bee2bbdecf37eb8803e5cf52e4e8a686f8d5ebaf775d386b865"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "metrica",
+        "match": "metrica_3",
+        "view": "feed_like",
+        "replicate": "corrupt_1"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib",
+        "bytes": 60921765,
+        "sha256": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.npz",
+        "bytes": 6066315,
+        "sha256": "c93403bff0b1d649d9b608fad002286d9382ac6edec4a2b79ab87de52bb7d3b6"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_1.npz",
+        "bytes": 2095887,
+        "sha256": "c1226e367d31aeeb0951f14970e39f3a6174cb0970ef2b6b4a3ad3ad2d7dcf99"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2026.npz",
+          "bytes": 1982324,
+          "sha256": "e3bb185860c2840b9248c99384baf0902d18ed12037b2665d88dcc50423b8304"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_1_combined_2027.npz",
+          "bytes": 1975142,
+          "sha256": "6d015cf2bc7ba1e913ced2cb79429377806c8f5a4f4ac139f9b3228053f514c4"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "metrica",
+        "match": "metrica_3",
+        "view": "feed_like",
+        "replicate": "corrupt_2"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib",
+        "bytes": 61148402,
+        "sha256": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.npz",
+        "bytes": 6065502,
+        "sha256": "ce9aabd04666508abf84299ea0ef8b5597a0ca5cdf263f42e42dae2a912890e8"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_metrica_3_feed_like_corrupt_2.npz",
+        "bytes": 2094600,
+        "sha256": "781831c309b14b4bb75568eeeb2bfa281efb9f5227fc90e4f82a126669794abd"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2026.npz",
+          "bytes": 1983205,
+          "sha256": "dd66a6990478bb3495f43916606b88c7710184357dd41c0e220672f67c008f68"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/metrica_metrica_3_feed_like_corrupt_2_combined_2027.npz",
+          "bytes": 1974497,
+          "sha256": "751a1f56d3b52ce57a94a15c99a71bc9a47289e7cc08b3621b8737e7fc146ac9"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996435",
+        "view": "clean",
+        "replicate": "clean"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib",
+        "bytes": 17156906,
+        "sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.npz",
+        "bytes": 2258819,
+        "sha256": "8c3bc72125e4260273ffe0ae061390dadf5226a3b010267476b7e2cdc2d0f9c6"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_clean_clean.npz",
+        "bytes": 774432,
+        "sha256": "885e9fb57687ed7832b683dc39ec67e3ebf8d6db848fc745aae19bf888805234"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2026.npz",
+          "bytes": 741833,
+          "sha256": "34ccb6db2ca675b6572afeb7bf9bb5c1c89dba626d834f2d8ff308f768d32b63"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_clean_clean_combined_2027.npz",
+          "bytes": 741452,
+          "sha256": "cb853d3ab2a8e9b304c90db4b282f76d23b5b0bafac752bac7db7d70e74caa11"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996435",
+        "view": "feed_like",
+        "replicate": "corrupt_1"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib",
+        "bytes": 19881567,
+        "sha256": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.npz",
+        "bytes": 2250756,
+        "sha256": "09f59694926ef9f9b49427bbb649fd5cae8403e74fa0fe5d1f60356675443a81"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_1.npz",
+        "bytes": 770393,
+        "sha256": "2a0638ba69eb45ee401608f5f2fedcbb488a11760c0b21564615f8014cfdc8b9"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2026.npz",
+          "bytes": 739283,
+          "sha256": "61a2615709343478cc3c21edb0384430aadef4226a0de116afe17e883af81326"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_1_combined_2027.npz",
+          "bytes": 737309,
+          "sha256": "f1af48b9376d241881279e0011d33aba9243e8f35708dd8c9005836d4a0dcb70"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996435",
+        "view": "feed_like",
+        "replicate": "corrupt_2"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib",
+        "bytes": 20299503,
+        "sha256": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.npz",
+        "bytes": 2246380,
+        "sha256": "9ec1b5144fba892810998fafc72bebb1f56268fd351ed6e807fa79540514bad2"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996435_feed_like_corrupt_2.npz",
+        "bytes": 770012,
+        "sha256": "acfc20adbcd4afb5dac45e2f289fe3032a9a12737f0168daddc4ff6128829112"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2026.npz",
+          "bytes": 737661,
+          "sha256": "251e1563f4d93f9f40f682bc173ed7999c43022b0d9135b7230b0b3f88b92ec3"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996435_feed_like_corrupt_2_combined_2027.npz",
+          "bytes": 737164,
+          "sha256": "f8390143ed51c16e2189ea49e370b4796d6f5782872510a53b0c1b550ceaa8e2"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996436",
+        "view": "clean",
+        "replicate": "clean"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib",
+        "bytes": 15868178,
+        "sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.npz",
+        "bytes": 2314365,
+        "sha256": "61d38cd93763f929b3b9f2856c57d53dc940a55d4648a63a752e40d35e22e21b"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_clean_clean.npz",
+        "bytes": 794842,
+        "sha256": "06416813dc8498a384bc92fe6de95aa38b680cf435ad8b09e5aaba40ef14bb2d"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2026.npz",
+          "bytes": 759430,
+          "sha256": "053a6722b290bffc97faec796ba3f0c251b1270fc458792c7a14ad0554e28ab3"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_clean_clean_combined_2027.npz",
+          "bytes": 761141,
+          "sha256": "f0acddab4ab9c7ec2f1e8a7b13cabedcd54ce463a52b8296d09ce7a598cc032c"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996436",
+        "view": "feed_like",
+        "replicate": "corrupt_1"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib",
+        "bytes": 18068220,
+        "sha256": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.npz",
+        "bytes": 2308021,
+        "sha256": "f2b84da05befcb5477ebd386bde57625a4b868f2ac06c42898e4b8157f9369c8"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_1.npz",
+        "bytes": 792107,
+        "sha256": "fb510c24aa8c0a017ba18c0cc2e4a0dc66875d60d0676d406ed123d3fbb1362e"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2026.npz",
+          "bytes": 757642,
+          "sha256": "a6d58d92c8e735782ffd1cb342ed7394e6a960494a8db0d221bd1be0d6caf236"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_1_combined_2027.npz",
+          "bytes": 758132,
+          "sha256": "53500f4ff20e3f2da405feac30d43929cb13b9917307620e5c33fdcd5bb1f2f6"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_1996436",
+        "view": "feed_like",
+        "replicate": "corrupt_2"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib",
+        "bytes": 17974485,
+        "sha256": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.npz",
+        "bytes": 2285279,
+        "sha256": "5d4c12746a7a5e50fcd99fc3e2eed4d4e54ce6c34140c39d2f4d9ccc27a0717d"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_1996436_feed_like_corrupt_2.npz",
+        "bytes": 783116,
+        "sha256": "836b72c2b981201655d7edcbb84b9784864439419ccfe89a89b6a5d3adc2c6d7"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2026.npz",
+          "bytes": 749955,
+          "sha256": "0e54444f0e28a3018a6818ddc74a45731f27027e956ddc033667ac110e3c3dbf"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_1996436_feed_like_corrupt_2_combined_2027.npz",
+          "bytes": 750303,
+          "sha256": "576c9e9d3e1be6ce2a55f2c5b68061f9e550c854815a14dfc9eec3782665f619"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_2006229",
+        "view": "clean",
+        "replicate": "clean"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+        "bytes": 17231158,
+        "sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.npz",
+        "bytes": 2264624,
+        "sha256": "f627b4b7a1d03e4d263ec90bd7052cf804c8cfe4cab0cf7c2a010e54368e21ac"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_clean_clean.npz",
+        "bytes": 776074,
+        "sha256": "a595b03e32690afd4c58d7139c14f17d17fd3dde76c3016a0b354a420e6ae7a9"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2026.npz",
+          "bytes": 743481,
+          "sha256": "d262c27c0b20d5c49e7e0efcc0868f9d447f2fe03245d9a7b82bf4bbb0ead02b"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_clean_clean_combined_2027.npz",
+          "bytes": 743248,
+          "sha256": "259e6f12b53f9f03abd9ec3f8da534fe32fb0e5678cfc9e457933fc8a60cd5c4"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_2006229",
+        "view": "feed_like",
+        "replicate": "corrupt_1"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib",
+        "bytes": 19826101,
+        "sha256": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.npz",
+        "bytes": 2248628,
+        "sha256": "f63f3ba9b9d62e68b51d44050fab628926a695184a88482143d387adb3ccba12"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_1.npz",
+        "bytes": 770164,
+        "sha256": "e0fddb4110601d210cddff190d9c3f3e1ed8e1b2d014127208972542fdb5782f"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2026.npz",
+          "bytes": 737666,
+          "sha256": "392f68ddb47b09159b3c61f5dbdc7485420fee56c1b0575351a75d9bde41dc62"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_1_combined_2027.npz",
+          "bytes": 736905,
+          "sha256": "7b61a85535fc67bbc9272d6bab6994fe628f94c496d601edd9a018a10eb2f0b9"
+        }
+      }
+    },
+    {
+      "cell": {
+        "source": "skillcorner",
+        "match": "skillcorner_had_2006229",
+        "view": "feed_like",
+        "replicate": "corrupt_2"
+      },
+      "inputs_labels_record": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib",
+        "bytes": 19988307,
+        "sha256": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d"
+      },
+      "seed_gap_probability_archive": {
+        "path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.npz",
+        "bytes": 2250479,
+        "sha256": "37d45d6f5ffa37f080f2df34b6f016233f428c3a00e31d8c14d0ef2cebf53e97"
+      },
+      "objective_ensemble_candidate": {
+        "path": "experiments/objective_ensemble_v1/candidate_skillcorner_had_2006229_feed_like_corrupt_2.npz",
+        "bytes": 771085,
+        "sha256": "747889bced4376b66a7494ce862efc1dc3ddd749ef0d6245013eba5573a21776"
+      },
+      "member_probabilities": {
+        "2026": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2026.npz",
+          "bytes": 739236,
+          "sha256": "c2ef3a1cc1b9c71f985748c2f7a24684350e518be5ea37b2cd0c96075afa7116"
+        },
+        "2027": {
+          "path": "experiments/objective_alignment_v1/skillcorner_skillcorner_had_2006229_feed_like_corrupt_2_combined_2027.npz",
+          "bytes": 738149,
+          "sha256": "97799791bf1aec78cf6d71d853b53b9750b02b6827072dba8f2a3aabd636cc2b"
+        }
+      }
+    }
+  ],
+  "head_fits": 0,
+  "scores_read": 0,
+  "organizer_data_or_scores_read": false
+}
