@@ -1,279 +1,108 @@
 {
-  "version": 2,
-  "model": "gru_hgb_ballgap25",
-  "package_version": "gru_hgb_ballgap25_v1",
+  "version": 7,
+  "model": "joint_gru_sn_dense_ensemble",
+  "package_version": "joint_gru_sn_dense_ensemble_v1",
   "status": "User-authorized working development baseline; independent confirmation pending",
-  "promoted_utc": "2026-10-26T05:55:11.776064+00:00",
-  "replaced_baseline": "gru_hgb",
-  "previous_manifest": "experiments/baselines/gru_hgb_v1.json",
-  "previous_manifest_sha256": "bd3318056c4f3c19b2df7b744b48f967b36a69a850545fa96913d0f0f72706de",
-  "model_directory": "data/models/gru_hgb_ballgap25_v1",
+  "promoted_utc": "2026-10-31T00:20:41.749359+00:00",
+  "replaced_baseline": "joint_gru_soccernet_capacity_ensemble",
+  "previous_manifest": "experiments/baselines/joint_gru_soccernet_capacity_ensemble_v1.json",
+  "previous_manifest_sha256": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
+  "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_soccernet_capacity_ensemble_v1.json",
+  "previous_policy_sha256": "f6330589fc26396d3861e136e0b6c5a22b196c683adf129dbeaefc760dcce40e",
+  "model_directory": "data/models/joint_gru_sn_dense_ensemble_v1",
   "models_sha256": {
-    "bigru.joblib": "6eceee4c6ea6ac8cdb181cc764ad3a02e309371d477a31014c9141c8cece9bf7",
-    "ordered_hgb.joblib": "a7829557d23a975808698ad78ec9290d4f93f5c06d7b5452e6264d48fa2b9c4c",
-    "attribution.joblib": "cf619aa17f633be2beb100863d0cd585b6dd9e05622149add99e9f3c170bc16a"
+    "dense_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+    "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "dense_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+    "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
   },
-  "default_output": "data/experiments/current_baseline/gru_hgb_ballgap25.csv",
+  "default_output": "data/experiments/current_baseline/joint_gru_sn_dense_ensemble.csv",
   "architecture": {
-    "D_members": {
-      "bigru": 0.5,
-      "ordered_hgb": 0.5
+    "kind": "sn_dense_ensemble",
+    "members": {
+      "dense_2026": 0.5,
+      "dense_2027": 0.5
     },
-    "team": "Pooled contextual HGB; 25% ball-gap-only training replacement",
+    "teachers": {
+      "dense_2026": "teacher_2026",
+      "dense_2027": "teacher_2027"
+    },
+    "hidden_ha": 96,
+    "hidden_d": 24,
+    "core_seconds": 10,
+    "context_each_side_seconds": 5,
+    "rate_hz": 5,
     "decoder_switch_cost": 3,
-    "dead_heads_unchanged": true
+    "combination": "Mean of two native H/A/D probability arrays before Viterbi; each member uses its fine-tuned D path and conditional H/A head with its pooled teacher's normalization"
   },
-  "promotion": {
-    "type": "explicit_user_authorized_working_baseline",
-    "user_request": "so this is good on our internal evals and the public. if so let's update this to the new baseline",
-    "basis": "External corruption robustness with near-tied clean performance; user-authorized tradeoff",
-    "frozen_clean_winner": "previous gru_hgb baseline",
-    "prior_external_selection_rewritten": false,
-    "public_results_known_before_request": true,
-    "raw_reference_labels_read_for_promotion": false,
-    "retraining_performed": false,
-    "public_rescoring_performed": false
+  "training": {
+    "recipe": "D2_f050_g45: dense touch-stream H/A/D targets with complete-spell and transition losses on SoccerNet, D-path fine-tune, fraction .5",
+    "original_train_matches": 13,
+    "soccernet_train_games": 45,
+    "learning_rate": 0.0003,
+    "d_learning_rate": 0.0001,
+    "optimizer_updates": 2048,
+    "seeds": [
+      2026,
+      2027
+    ],
+    "dense_gar_possession_labels": true,
+    "d_path_trained": true,
+    "normalization_frozen": true
   },
   "evidence": {
-    "report": "experiments/results/light_corruption_development.json",
-    "report_sha256": "6be2b870365b507bb475307955746ca75b4247bbaf2694ec83c20fb3d55af783",
-    "view": "provider_holdout_D",
-    "clean": {
-      "evaluation": "provider_holdout_D",
-      "view": "clean",
-      "model": "ball_team25",
-      "per_source": {
-        "sportec": {
-          "spell_f1": 0.5742092457420924,
-          "macro_f1": 0.8657300332712677,
-          "d_f1": 0.9135533384497315,
-          "conditional_team_accuracy": 0.8990640484492567,
-          "raw_d_brier": 0.06420178941844643
-        },
-        "metrica": {
-          "spell_f1": 0.6827489481065918,
-          "macro_f1": 0.9005693890812614,
-          "d_f1": 0.8925427412022973,
-          "conditional_team_accuracy": 0.9448568941682454,
-          "raw_d_brier": 0.05269141904627059
-        },
-        "skillcorner": {
-          "spell_f1": 0.46510742186341253,
-          "macro_f1": 0.7655206092021866,
-          "d_f1": 0.7068675030158551,
-          "conditional_team_accuracy": 0.849128397466853,
-          "raw_d_brier": 0.09327453889857251
-        }
-      },
-      "spell_f1": 0.5740218719040323,
-      "macro_f1": 0.8439400105182385,
-      "d_f1": 0.8376545275559613,
-      "conditional_team_accuracy": 0.8976831133614517,
-      "raw_d_brier": 0.07005591578776317,
-      "weighted_70_30": 0.6549973134882942
+    "declaration": "experiments/results/sn_dense_v1_declaration.json",
+    "declaration_sha256": "9384c959bbd9e5c3cfb45eaaa339200354e96cc0decef64cdf57515677991f09",
+    "progress": "experiments/results/sn_dense_v1_progress.md",
+    "progress_sha256": "1fa767671fe0dd4d509f9144252206d78322ccb50dc469276f54b86bc08f86ce",
+    "development_full_provider_holdout": {
+      "two_seed_ensemble_clean_spell": 0.6472,
+      "two_seed_ensemble_feed_like_spell": 0.5058,
+      "previous_adopted_clean_spell": 0.64179,
+      "previous_adopted_feed_like_spell": 0.502586,
+      "seed_2026_clean_spell_vs_rebuilt_reference": [
+        0.6355,
+        0.6288
+      ],
+      "seed_2027_clean_spell": 0.6372,
+      "provider_and_feed_like_guards_pass": true,
+      "clean_improvement_screen_plus_01_passes": false,
+      "previously_exposed_development_matches": true
     },
-    "previous_clean": {
-      "evaluation": "provider_holdout_D",
-      "view": "clean",
-      "model": "baseline",
-      "per_source": {
-        "sportec": {
-          "spell_f1": 0.5751219512195122,
-          "macro_f1": 0.8655864024804667,
-          "d_f1": 0.9140971022836308,
-          "conditional_team_accuracy": 0.8989067456676192,
-          "raw_d_brier": 0.06420178941844643
-        },
-        "metrica": {
-          "spell_f1": 0.6837273991655076,
-          "macro_f1": 0.904970973845583,
-          "d_f1": 0.8977357990907888,
-          "conditional_team_accuracy": 0.9466898776304337,
-          "raw_d_brier": 0.05269141904627059
-        },
-        "skillcorner": {
-          "spell_f1": 0.46504469360200257,
-          "macro_f1": 0.7642116899369705,
-          "d_f1": 0.7056628900750624,
-          "conditional_team_accuracy": 0.8502403644681301,
-          "raw_d_brier": 0.09327453889857251
-        }
-      },
-      "spell_f1": 0.5746313479956741,
-      "macro_f1": 0.8449230220876734,
-      "d_f1": 0.839165263816494,
-      "conditional_team_accuracy": 0.8986123292553944,
-      "raw_d_brier": 0.07005591578776317,
-      "weighted_70_30": 0.6557188502232738
-    },
-    "corrupted": {
-      "evaluation": "provider_holdout_D",
-      "view": "corrupted",
-      "model": "ball_team25",
-      "per_source": {
-        "sportec": {
-          "spell_f1": 0.3933521631571771,
-          "macro_f1": 0.7861387622333711,
-          "d_f1": 0.8789455365130971,
-          "conditional_team_accuracy": 0.8184398185774585,
-          "raw_d_brier": 0.08562678271037047
-        },
-        "metrica": {
-          "spell_f1": 0.4791300848090551,
-          "macro_f1": 0.8322765979142384,
-          "d_f1": 0.8619410797762457,
-          "conditional_team_accuracy": 0.8602734114996672,
-          "raw_d_brier": 0.07605484384512863
-        },
-        "skillcorner": {
-          "spell_f1": 0.4220897048581886,
-          "macro_f1": 0.7413671374800413,
-          "d_f1": 0.7096673252180815,
-          "conditional_team_accuracy": 0.8077542352833373,
-          "raw_d_brier": 0.09410491372471064
-        }
-      },
-      "spell_f1": 0.4315239842748069,
-      "macro_f1": 0.7865941658758836,
-      "d_f1": 0.8168513138358081,
-      "conditional_team_accuracy": 0.8288224884534877,
-      "raw_d_brier": 0.08526218009340325,
-      "weighted_70_30": 0.5380450387551299
-    },
-    "previous_corrupted": {
-      "evaluation": "provider_holdout_D",
-      "view": "corrupted",
-      "model": "baseline",
-      "per_source": {
-        "sportec": {
-          "spell_f1": 0.3826996250742082,
-          "macro_f1": 0.7698138803753483,
-          "d_f1": 0.8759835988527759,
-          "conditional_team_accuracy": 0.7923472196733345,
-          "raw_d_brier": 0.08562678271037047
-        },
-        "metrica": {
-          "spell_f1": 0.46838569604086844,
-          "macro_f1": 0.8157128766631785,
-          "d_f1": 0.8606859363613604,
-          "conditional_team_accuracy": 0.8355076544979776,
-          "raw_d_brier": 0.07605484384512863
-        },
-        "skillcorner": {
-          "spell_f1": 0.4104545033920047,
-          "macro_f1": 0.7243062910641486,
-          "d_f1": 0.7126578581174855,
-          "conditional_team_accuracy": 0.7750220909117731,
-          "raw_d_brier": 0.09410491372471064
-        }
-      },
-      "spell_f1": 0.42051327483569373,
-      "macro_f1": 0.7699443493675585,
-      "d_f1": 0.8164424644438739,
-      "conditional_team_accuracy": 0.8009589883610285,
-      "raw_d_brier": 0.08526218009340325,
-      "weighted_70_30": 0.5253425971952531
-    },
-    "clean_spell_delta": -0.0006094760916417474,
-    "corrupted_spell_delta": 0.011010709439113198,
-    "clean_rule_candidate_wins": false,
-    "cohort": [
-      [
-        "metrica",
-        "metrica_3",
-        "clean"
-      ],
-      [
-        "metrica",
-        "metrica_3",
-        "corrupt_1"
-      ],
-      [
-        "metrica",
-        "metrica_3",
-        "corrupt_2"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_1996435",
-        "clean"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_1996435",
-        "corrupt_1"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_1996435",
-        "corrupt_2"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_1996436",
-        "clean"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_1996436",
-        "corrupt_1"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_1996436",
-        "corrupt_2"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_2006229",
-        "clean"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_2006229",
-        "corrupt_1"
-      ],
-      [
-        "skillcorner",
-        "skillcorner_had_2006229",
-        "corrupt_2"
-      ],
-      [
-        "sportec",
-        "J03WOY",
-        "clean"
-      ],
-      [
-        "sportec",
-        "J03WOY",
-        "corrupt_1"
-      ],
-      [
-        "sportec",
-        "J03WOY",
-        "corrupt_2"
-      ]
-    ]
+    "gar_valid_silver_note": "GAR-valid dense silver partly rewards agreement with the labelling rule; not neutral evidence",
+    "prediction_seal_sha256": "2afbde9f87492086825b6a79973956cc3247fea9d85965357526f4729d86612a",
+    "prediction_csv_sha256": "57ca788056ccf2f41839730fba492f15885c69f5788f35146ba1610b80b5b22b"
   },
-  "existing_public_diagnostic": {
-    "report": "experiments/results/light_corruption_public_check.json",
-    "report_sha256": "83f53d97d2ab5cd15a5bc6c124ac1cbff93382f67446183dc0f72d82d4ffec6a",
-    "role": "Previously recorded descriptive public-window check; no full-match claim",
-    "spell_f1": 0.5257142857142858,
-    "macro_f1": 0.858782268705506,
-    "d_f1": 0.8568398727465535,
-    "graded_frames": 7500,
-    "reference_possessions": 17
+  "promotion": {
+    "type": "explicit_user_authorized_post_hoc_screen_exception",
+    "user_request": "let's promote this",
+    "original_screen_passes": false,
+    "automatic_promotion": false,
+    "fitting_during_promotion": false,
+    "organizer_rescoring_performed": false,
+    "public_diagnostic_known_before_authorization": true
   },
-  "validated_candidate": {
-    "path": "data/experiments/light_corruption_v1/experimental_candidate.csv",
-    "sha256": "c12854d27e12346640a06ad2d710b622122a4c41e3103588021e0249472f83fc"
+  "organizer_public_diagnostic": {
+    "report": "experiments/results/sn_dense_v1_public_check.json",
+    "known_at_promotion": true,
+    "diagnostic_only": true,
+    "spell_f1": 0.6303030303030303,
+    "macro_f1": 0.8513871111822523,
+    "previous_spell_f1": 0.5696969696969697,
+    "used_for_model_or_hyperparameter_selection": false,
+    "independent_confirmation": false
   },
   "source_sha256": {
-    "experiments/promote_ballgap_baseline.py": "77412bb52e9bfef62aa83da02d8a71ef4543c0f1839702f484fcf098f72a862e",
-    "experiments/current_baseline.py": "cffb345cbbd06e3faac283ada279eab9aabb41992736c9decac17ff083645953",
-    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
-    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad"
+    "experiments/current_baseline.py": "dbd220972123ceee6f4ddb9928f3bee0307aad0603259a57782a2419b0d34b15",
+    "experiments/sn_dense_baseline.py": "c9d6e5fc24943b4543862969c18b57f67f76daede49c315a0c8af20867ff8c9b",
+    "experiments/promote_sn_dense_baseline.py": "a7a9d030b32fd518960f1d97fdfa8e9dbb0b928b73fc270483a339dd0f9b01c0",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/sn_dense_public.py": "8fdc2a22373984abfcec3290a2c10b6a228d7d1eec2eb20f6ceb239cf23c677d",
+    "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
   },
   "organizer_reference_labels_used_for_training": false,
   "historical_selection_records_preserved": true

@@ -1,0 +1,161 @@
+{
+ "created_utc": "2026-10-27T14:54:53.144024+00:00",
+ "user_request": "Isolate which stress components cause the GRU stress loss; check whether the LightGBM adds value under feed-like stress.",
+ "question": "Fraction of each recipe's clean-to-composite spell loss that remains when unrealistic components are removed.",
+ "organizer_labels_read": false,
+ "training": false,
+ "views": {
+  "clean": [],
+  "ball_gaps": [
+   "ball_gaps"
+  ],
+  "feed_like": [
+   "ball_gaps",
+   "coordinates",
+   "slot_gaps",
+   "id_swaps"
+  ],
+  "no_sampling": [
+   "ball_gaps",
+   "coordinates",
+   "id_swaps",
+   "regional",
+   "slot_gaps"
+  ],
+  "no_regional": [
+   "ball_gaps",
+   "coordinates",
+   "id_swaps",
+   "sampling",
+   "slot_gaps"
+  ],
+  "composite": [
+   "coordinates",
+   "ball_gaps",
+   "regional",
+   "slot_gaps",
+   "id_swaps",
+   "sampling"
+  ]
+ },
+ "replicates": [
+  "corrupt_1",
+  "corrupt_2"
+ ],
+ "recipes": [
+  "baseline",
+  "control_2026",
+  "control_2027",
+  "slot_dropout_2026",
+  "slot_dropout_2027",
+  "full_127",
+  "full_127+control_2026",
+  "full_127+control_2027",
+  "full_127+slot_dropout_2026",
+  "full_127+slot_dropout_2027",
+  "geometry_63+control_2026",
+  "geometry_63+control_2027"
+ ],
+ "calibration": {
+  "ball_missing_fraction": 0.40692572565263097,
+  "gap_edges_seconds": [
+   0.08,
+   0.2,
+   0.5,
+   1.0,
+   2.0,
+   5.0,
+   10.0,
+   30.0
+  ],
+  "gap_bin_probability": [
+   0.08666666666666667,
+   0.02,
+   0.006666666666666667,
+   0.0,
+   0.006666666666666667,
+   0.35333333333333333,
+   0.5266666666666666
+  ],
+  "gap_count": 150,
+  "gap_quantiles_seconds": [
+   0.47200000000000003,
+   10.72,
+   30.0,
+   30.0
+  ],
+  "visible_player_quantiles": [
+   18.0,
+   21.0,
+   22.0,
+   22.0,
+   22.0
+  ],
+  "calibration": "Unlabeled tracking only; missingness does not identify true occlusion causes",
+  "coordinate_errors": "Assumed ranges; no coordinate ground truth available"
+ },
+ "view_rationale": {
+  "ball_gaps": "Calibrated renewal ball gaps only (organizer median 10.7 s).",
+  "feed_like": "Ball gaps, coordinate drift/noise/jumps, per-slot gaps and same-team ID swaps; drops whole-frame sampling loss and regional blanking, which the organizer feed does not show (0 empty-player frames; 0.25 vs ~70 frames/min losing >=25% of players).",
+  "no_sampling": "Composite minus 2-8% per-frame loss of every object.",
+  "no_regional": "Composite minus 1-5 s spatial player blanking."
+ },
+ "decision_rules": {
+  "attribution": "Report retained loss = (clean - view)/(clean - composite) per recipe.",
+  "gru_guardrail_on_feed_like": "Each GRU seed vs adopted baseline: feed_like spell delta >= -0.01.",
+  "lgbm_value": "Full127 + slot_dropout blend minus its GRU on feed_like spell: >= +0.02 in both seeds means the tree robustness value survives realistic stress; otherwise it does not.",
+  "caveat": "Five previously exposed external matches; descriptive, no adoption."
+ },
+ "aggregation": "Replicates averaged within match, matches within provider, providers equally.",
+ "source_sha256": {
+  "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+  "experiments/corruption_experiment.py": "07b357b7f9f99af444f110d576eaba8e791134c07b1dfc28d229fc242a6c22e7",
+  "experiments/gru_robustness_experiment.py": "2b85f8e0a89e0b3012da853c3ad3bebfb5933fb2ce6c94d14174705e02c45c05",
+  "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+  "experiments/joint_lgbm.py": "781cc406148b54d2e912599099ad452b00081152dc400aaea4ea8d036d28be92",
+  "experiments/joint_lgbm_experiment.py": "21a0c7ad8f9a8f5650cec9f6e16c6dcfdd9941dbf7f31a69a87712db5c5f9222",
+  "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+  "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+  "experiments/possession_geometry.py": "0d9b24fa2ac1639e1d062205c518ec631f8c2e8ba3b80a4ecb2412d6e4b044c4",
+  "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+  "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+  "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+  "experiments/stress_component_ablation.py": "3c8325fb9a9394d7cd4034d468e7b4ecedcfa6e9d6d7265ae0f2fa61f572d91d"
+ },
+ "checkpoint_sha256": {
+  "data/experiments/archived_full_holdout/without_sportec_full_holdout_equal_sources_team.joblib": "d7dabdfaea8025da1dd2202d98be01ab9ebc06cefb3cf28fd23dd986230bd392",
+  "data/experiments/archived_d_holdout/without_sportec_baseline_bigru.joblib": "dc5b334d907e276d9c8f1ab9191378facc71fc8d8a47af714184f0dca552e0f1",
+  "data/experiments/archived_d_holdout/without_sportec_baseline_ordered_hgb.joblib": "7780188e76e5b80e310d6c6d5a1db55ba44fa22eddcd9b6ea87cec1b5f32e610",
+  "data/experiments/gru_slot_robustness_v2/without_sportec_control_2026.joblib": "0c2e6f57036698f9378fb3dc4265855ceea26402e2a2bae8b6e8933e2525c518",
+  "data/experiments/gru_slot_robustness_v2/without_sportec_control_2027.joblib": "d24cf1eb6148d6f198b7574ee9b56f69f15baebcc2f1983e1ffaf044a70cc092",
+  "data/experiments/gru_slot_robustness_v2/without_sportec_slot_dropout_2026.joblib": "be3eafcad23c71fa7661d809a400624530913a4b440db09caec5ae36b3757094",
+  "data/experiments/gru_slot_robustness_v2/without_sportec_slot_dropout_2027.joblib": "42a8bd7629301e7c999775304bb4239a21a817aa9be1670bbac06bd2436b7497",
+  "data/experiments/joint_lgbm_v1/without_sportec_full_127.joblib": "e90afaea5d18f3d653bb974621fec448717fe8574c0c0758d7b1e4ca7eeaa2fb",
+  "data/experiments/joint_lgbm_v1/without_sportec_geometry_63.joblib": "33b56221b125dd80c92df1616cb7cdc3aafb9f92a345b2c835314e72c634b2d1",
+  "data/experiments/archived_full_holdout/without_metrica_full_holdout_equal_sources_team.joblib": "fdcd1e7fc41843e9fd2c6ba7dbfb0163c4f87fbdbde1581d921d95b25d0b609c",
+  "data/experiments/archived_d_holdout/without_metrica_baseline_bigru.joblib": "4fe046d6f98caa2a326aae4c9f7c5db6e07a2aa066b75c9ea29981e3791b2c97",
+  "data/experiments/archived_d_holdout/without_metrica_baseline_ordered_hgb.joblib": "77c60fe1c70a60bd56a56a8266dbc2741e5cf247eec0ac970eec029cc8987529",
+  "data/experiments/gru_slot_robustness_v2/without_metrica_control_2026.joblib": "c1b68493fb8ef836ace76b7315397753c4d33ae34012778b227d22d291f11af0",
+  "data/experiments/gru_slot_robustness_v2/without_metrica_control_2027.joblib": "05870bb6309fba9f43ffbf8c17c749a590e93ac811da83fe1136598757797a0e",
+  "data/experiments/gru_slot_robustness_v2/without_metrica_slot_dropout_2026.joblib": "9f681359733330445733ddec4c75779fd5a5d58f7ba7717cfd45c5b88a23ce51",
+  "data/experiments/gru_slot_robustness_v2/without_metrica_slot_dropout_2027.joblib": "37df1d2cb93240e3b410280619b5fbf0915a6fef609cc308fb6b24c25e240038",
+  "data/experiments/joint_lgbm_v1/without_metrica_full_127.joblib": "06d2b74fa2811cb34f8470f970083b7b8f77e6f8cf3ee8babff70b83e80f6de8",
+  "data/experiments/joint_lgbm_v1/without_metrica_geometry_63.joblib": "15b161597e56c57b0de16e09eff3b43d0dfaf3c4d34088ba0343d0a4319cb01e",
+  "data/experiments/archived_full_holdout/without_skillcorner_full_holdout_equal_sources_team.joblib": "9324f3109d030f5641e5785f831f2ef0c9cd279468a5190026d32d621a37dbab",
+  "data/experiments/archived_d_holdout/without_skillcorner_baseline_bigru.joblib": "a8e19ff34f49bac39bd1ca631a1796c17565e980b15b9ff375d7f8e39c2ee656",
+  "data/experiments/archived_d_holdout/without_skillcorner_baseline_ordered_hgb.joblib": "e3326fdbe4d83e52331f7205c0a661dc2b48eeb74782c5c1e44bc24ede01c6a4",
+  "data/experiments/gru_slot_robustness_v2/without_skillcorner_control_2026.joblib": "323a513d9f90ea8636129f8982c9a15ffd9d9ab71b34bae230951b72557699ff",
+  "data/experiments/gru_slot_robustness_v2/without_skillcorner_control_2027.joblib": "8500580c6c0cecc9a4979b4060e8fe55a57379b06c050f31d7e391db5e908848",
+  "data/experiments/gru_slot_robustness_v2/without_skillcorner_slot_dropout_2026.joblib": "277e95ca2528384ac44688e7aac69f0cb46859caa32d3fba0cdc4fa331aaa22b",
+  "data/experiments/gru_slot_robustness_v2/without_skillcorner_slot_dropout_2027.joblib": "fceb93d62f8f1b02e44bb84c43f7e7bc142de993af231dc8b3740e4bbeaed1fa",
+  "data/experiments/joint_lgbm_v1/without_skillcorner_full_127.joblib": "bf8bd95ce98a25730a51b94b1eb35f8ce3bad7e26a337b7f28ea55bd203fdad6",
+  "data/experiments/joint_lgbm_v1/without_skillcorner_geometry_63.joblib": "80b6834490726adc8c8e8cc7a9b02f7907ce411b7180acdf149979fad7c0047d"
+ },
+ "data_sha256": {
+  "data/external_audit/sportec/processed/J03WOY.npz": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+  "data/external/processed/metrica_3.npz": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+  "data/external/processed/skillcorner_had_1996435.npz": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+  "data/external/processed/skillcorner_had_1996436.npz": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+  "data/external/processed/skillcorner_had_2006229.npz": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420"
+ }
+}

@@ -3,15 +3,63 @@
 ## Load only what the task needs
 
 - Start with [current status and next work](docs/research/STATUS.md).
+- Working in `experiments/`? Read [experiments/AGENTS.md](experiments/AGENTS.md)
+  first: vocabulary, study lineage, settled directions and code map.
 - Find prior evidence in the [experiment index](docs/research/EXPERIMENTS.md).
   Read the relevant report, not every historical handoff.
+- SoccerNet-GAR data come from [Hugging Face OpenSportsLab/SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR/tree/tracking-full),
+  branch `tracking-full`. Use the pinned revision and TRAIN file hashes in
+  `experiments/results/soccernet_capacity_declaration.json` with configured
+  `HF_TOKEN` access. Remote paths are `train/...`; local paths include the
+  `tracking-full/` prefix. Check this source before asking for a local dataset
+  archive. The dataset source is separate from our locally trained checkpoints
+  and experiment inventory; Hugging Face availability does not restore those.
+  See [data access](experiments/SOCCERNET_DATA_ACCESS.md) for paths and checks.
 - For restore/inference, use [BASELINE.md](experiments/BASELINE.md).
   The active package is bound by `experiments/baseline_manifest.json`;
   ranking/reporting is defined by `experiments/model_decision_policy.json`.
 - For a new experiment, read [possession-experiment](.agents/skills/possession-experiment/SKILL.md).
-  For score comparisons or adoption advice, read
+- For feature preparation or split planning in new runners, start with
+  [`experiments/preparation.py`](experiments/preparation.py) and read
+  [possession-preparation](.agents/skills/possession-preparation/SKILL.md).
+  Reuse its validated whole-match/provider folds and verified unnormalized
+  caches when the feature recipe matches. Fit normalization and every learned
+  component on the training fold only; declare and test a new recipe for
+  unsupported features. Preserve frozen study runners.
+- For score comparisons or adoption advice, read
   [possession-readout](.agents/skills/possession-readout/SKILL.md).
   [Documentation ownership](docs/research/README.md) explains what to update.
+
+## Before answering model-choice or current-results questions
+
+This applies to chat advice as well as code work. Historical reports and saved
+Pages can contain valid scores but superseded recommendations.
+
+1. Check current `main`: read STATUS, BASELINE, the active baseline manifest
+   and model decision policy before describing the working model or guardrails.
+   The manifest identifies the adopted package; the policy defines the active
+   evaluation rule. Historical report verdicts do not override later promotion.
+   If current sources conflict, inspect the promotion record and recent commits
+   and disclose any unresolved discrepancy.
+2. Inspect recent merged and open PRs relevant to the question, including their
+   current heads and saved reports. STATUS and this guide are snapshots and may
+   lag ongoing work. Distinguish adopted, completed experimental, running and
+   proposed work; never call a method untested solely because an older summary
+   says so. Saved Pages are discovery aids, not authoritative current state.
+3. Name the exact stress view with every robustness claim. In particular,
+   `feed_like` and `composite` are different evaluations; compare models on the
+   same view and component holdouts. Check the current policy and component
+   ablation. Preserve composite failures as diagnostics and disclose a
+   post-result guardrail change rather than claiming the old failure vanished.
+4. Distinguish model family, training recipe and pipeline. A failed earlier GRU
+   recipe is not evidence that the current dropout GRU fails. A D-only GRU/TCN
+   comparison does not establish the best joint H/A/D architecture. Describe
+   “best supported current choice” separately from superiority demonstrated by
+   a matched architecture comparison.
+5. Check ensemble status in the latest evidence. Averaging separate seed scores
+   is not ensembling predictions; a measured probability ensemble may exist on
+   a newer branch while the adopted package remains single-seed. Cite the
+   relevant report/PR and its evaluation scope when making recommendations.
 
 ## Constraints that always apply
 
@@ -34,6 +82,8 @@
   retraining; preserve native masks, unknown targets and match/half/time breaks.
 
 ## Delivery
+
+After a promising experiment completes, update the [experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9) with dated scores, visualizations, evaluation protocol and adoption status.
 
 Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
 `main`. Preserve `upstream` as `metrica-sports/more-than-a-hack-2027`.
