@@ -1,0 +1,189 @@
+{
+  "created_utc": "2026-10-28T09:49:07.933791+00:00",
+  "preparation_declaration_sha256": "c4462f965e7bb68f095a65e9c322b6a11a6e5af72cf9d9880d2a14399270d794",
+  "prepared_training_manifest_sha256": "f9ccff2911c7742ef0a9578a9535fec7e584f56d7b463a8265ab990b524d0f84",
+  "objective_losses_sha256": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+  "factorized_had_sha256": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+  "runner_sha256": "6de8bcae3b36b14da9c979848ab2115672a1edbdad5df5f41a753a433e5d2369",
+  "control_checkpoints": {
+    "sportec/2026": {
+      "model": "data/experiments/gru_slot_robustness_v2/without_sportec_slot_dropout_2026.joblib",
+      "sha256": "be3eafcad23c71fa7661d809a400624530913a4b440db09caec5ae36b3757094",
+      "receipt": "data/experiments/gru_slot_robustness_v2/without_sportec_slot_dropout_2026.json",
+      "receipt_sha256": "cec5e8848db74631844754106c000be779d49015a2fe229bc3d50680213f7fb8",
+      "parameters": 62643,
+      "optimizer_updates": 2976,
+      "windows_per_epoch": 23748
+    },
+    "sportec/2027": {
+      "model": "data/experiments/gru_slot_robustness_v2/without_sportec_slot_dropout_2027.joblib",
+      "sha256": "42a8bd7629301e7c999775304bb4239a21a817aa9be1670bbac06bd2436b7497",
+      "receipt": "data/experiments/gru_slot_robustness_v2/without_sportec_slot_dropout_2027.json",
+      "receipt_sha256": "9abb4246f515d9d054c8c14d0d75550f8449eb61f99f7d4906bc51cd31f0c4da",
+      "parameters": 62643,
+      "optimizer_updates": 2976,
+      "windows_per_epoch": 23748
+    },
+    "metrica/2026": {
+      "model": "data/experiments/gru_slot_robustness_v2/without_metrica_slot_dropout_2026.joblib",
+      "sha256": "9f681359733330445733ddec4c75779fd5a5d58f7ba7717cfd45c5b88a23ce51",
+      "receipt": "data/experiments/gru_slot_robustness_v2/without_metrica_slot_dropout_2026.json",
+      "receipt_sha256": "3d6eebaf080ca926478fc1dc27608eb4af83bd1856df1bdd0ac924c8e7084d1c",
+      "parameters": 62643,
+      "optimizer_updates": 3248,
+      "windows_per_epoch": 25976
+    },
+    "metrica/2027": {
+      "model": "data/experiments/gru_slot_robustness_v2/without_metrica_slot_dropout_2027.joblib",
+      "sha256": "37df1d2cb93240e3b410280619b5fbf0915a6fef609cc308fb6b24c25e240038",
+      "receipt": "data/experiments/gru_slot_robustness_v2/without_metrica_slot_dropout_2027.json",
+      "receipt_sha256": "79faebef4d73f1d16ee4fc4390fd317d24325ec24396b01ea83ebd1fdeca4e76",
+      "parameters": 62643,
+      "optimizer_updates": 3248,
+      "windows_per_epoch": 25976
+    },
+    "skillcorner/2026": {
+      "model": "data/experiments/gru_slot_robustness_v2/without_skillcorner_slot_dropout_2026.joblib",
+      "sha256": "277e95ca2528384ac44688e7aac69f0cb46859caa32d3fba0cdc4fa331aaa22b",
+      "receipt": "data/experiments/gru_slot_robustness_v2/without_skillcorner_slot_dropout_2026.json",
+      "receipt_sha256": "22624fa2cf12ca5617ea5a6d29d61ba270092c0d6594dac2ac21b804ac7bb0e5",
+      "parameters": 62643,
+      "optimizer_updates": 1432,
+      "windows_per_epoch": 11396
+    },
+    "skillcorner/2027": {
+      "model": "data/experiments/gru_slot_robustness_v2/without_skillcorner_slot_dropout_2027.joblib",
+      "sha256": "fceb93d62f8f1b02e44bb84c43f7e7bc142de993af231dc8b3740e4bbeaed1fa",
+      "receipt": "data/experiments/gru_slot_robustness_v2/without_skillcorner_slot_dropout_2027.json",
+      "receipt_sha256": "ce79ca4c3cb0cc177c7a87e6c40c062d11fd5c0cc87392f6b4c6573bc7ed58f4",
+      "parameters": 62643,
+      "optimizer_updates": 1432,
+      "windows_per_epoch": 11396
+    }
+  },
+  "rows": [
+    {
+      "heldout": "sportec",
+      "seed": 2026,
+      "checks": {
+        "median": true,
+        "scale": true,
+        "feature_names": true,
+        "player_indices": true,
+        "parameters": true,
+        "windows_per_epoch": true,
+        "optimizer_updates": true
+      },
+      "parameters": 62643,
+      "windows_per_epoch": 23748,
+      "optimizer_updates": 2976,
+      "normalization_sha256": {
+        "median": "1c3d1cce09b2af075fe90a42f172928dc57be0d7bddbb149c1f90d37cd81f0f4",
+        "scale": "159e369c84f9c39bc67b817817fb1a1dfd3ee012912819990958b580e589147f"
+      }
+    },
+    {
+      "heldout": "sportec",
+      "seed": 2027,
+      "checks": {
+        "median": true,
+        "scale": true,
+        "feature_names": true,
+        "player_indices": true,
+        "parameters": true,
+        "windows_per_epoch": true,
+        "optimizer_updates": true
+      },
+      "parameters": 62643,
+      "windows_per_epoch": 23748,
+      "optimizer_updates": 2976,
+      "normalization_sha256": {
+        "median": "1c3d1cce09b2af075fe90a42f172928dc57be0d7bddbb149c1f90d37cd81f0f4",
+        "scale": "159e369c84f9c39bc67b817817fb1a1dfd3ee012912819990958b580e589147f"
+      }
+    },
+    {
+      "heldout": "metrica",
+      "seed": 2026,
+      "checks": {
+        "median": true,
+        "scale": true,
+        "feature_names": true,
+        "player_indices": true,
+        "parameters": true,
+        "windows_per_epoch": true,
+        "optimizer_updates": true
+      },
+      "parameters": 62643,
+      "windows_per_epoch": 25976,
+      "optimizer_updates": 3248,
+      "normalization_sha256": {
+        "median": "36d7f4c92b0248ebdb985b354e260eb8d9957d8104634d6517b7b822bdc36e0b",
+        "scale": "5ce1b7f04c0ab64922bfe1c82faba4d2403c902b626854bf9b11ad3ad7905f11"
+      }
+    },
+    {
+      "heldout": "metrica",
+      "seed": 2027,
+      "checks": {
+        "median": true,
+        "scale": true,
+        "feature_names": true,
+        "player_indices": true,
+        "parameters": true,
+        "windows_per_epoch": true,
+        "optimizer_updates": true
+      },
+      "parameters": 62643,
+      "windows_per_epoch": 25976,
+      "optimizer_updates": 3248,
+      "normalization_sha256": {
+        "median": "36d7f4c92b0248ebdb985b354e260eb8d9957d8104634d6517b7b822bdc36e0b",
+        "scale": "5ce1b7f04c0ab64922bfe1c82faba4d2403c902b626854bf9b11ad3ad7905f11"
+      }
+    },
+    {
+      "heldout": "skillcorner",
+      "seed": 2026,
+      "checks": {
+        "median": true,
+        "scale": true,
+        "feature_names": true,
+        "player_indices": true,
+        "parameters": true,
+        "windows_per_epoch": true,
+        "optimizer_updates": true
+      },
+      "parameters": 62643,
+      "windows_per_epoch": 11396,
+      "optimizer_updates": 1432,
+      "normalization_sha256": {
+        "median": "f095ec1757fc0c8c590415b490b5fd1cc0f1135216dd7d1fa21604bb0c9121c9",
+        "scale": "163d5570b07844654c5b1f19f1c2ec815029f3ae4bada535b1a525d9288b5083"
+      }
+    },
+    {
+      "heldout": "skillcorner",
+      "seed": 2027,
+      "checks": {
+        "median": true,
+        "scale": true,
+        "feature_names": true,
+        "player_indices": true,
+        "parameters": true,
+        "windows_per_epoch": true,
+        "optimizer_updates": true
+      },
+      "parameters": 62643,
+      "windows_per_epoch": 11396,
+      "optimizer_updates": 1432,
+      "normalization_sha256": {
+        "median": "f095ec1757fc0c8c590415b490b5fd1cc0f1135216dd7d1fa21604bb0c9121c9",
+        "scale": "163d5570b07844654c5b1f19f1c2ec815029f3ae4bada535b1a525d9288b5083"
+      }
+    }
+  ],
+  "failures": [],
+  "passed": true,
+  "fitting_performed": false
+}

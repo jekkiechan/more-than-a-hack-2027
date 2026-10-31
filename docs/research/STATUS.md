@@ -322,6 +322,22 @@ record the replay and manifest results.
 [Experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
 shows dated milestones and interactive charts; update it when promising work completes.
 
+## Completed objective comparison
+
+[PR25](https://github.com/jekkiechan/more-than-a-hack-2027/pull/25) completes
+[objective alignment](../../experiments/OBJECTIVE_ALIGNMENT.md): 18 new fits,
+six restored controls and 120 independently verified cases, with full provider
+holdouts and two seeds. All candidate guardrails pass, but no recipe clears the
++.01 clean spell-gain screen in both seeds. Combined improves clean spell by
++.01766/+.00895 and feed-like spell by +.01301/+.00627; clean short-spell recall
+rises +.0540/+.0382. SkillCorner clean spell falls about .01 and extra possessions
+increase there. Retain `joint_gru_slotdrop_v1`; combined is a confirmation
+candidate on these five exposed development matches. Organizer gates remain
+closed. The full private archive (335 files) is independently restored and its isolated
+saved-results audit passes; see the report/receipt. The separate
+[PR22](https://github.com/jekkiechan/more-than-a-hack-2027/pull/22) context/seed
+ensemble study is distinct.
+
 ## Latest evidence
 
 | Scope / evidence | Finding | Decision |

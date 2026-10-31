@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "study": "objective_alignment_v1",
+  "adapter_sha256": "9833d323d48e2517c22ddfe405e05d83ab999df9cafede44d8cf5495d9b7f9d0",
+  "parity_test_sha256": "d1eef96c6c147cc991fc159a0906f3c80b1dbaa82f8d74ffddc84f6954ce6bb4",
+  "predeclared_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+  "runner_sha256": "6de8bcae3b36b14da9c979848ab2115672a1edbdad5df5f41a753a433e5d2369",
+  "objective_losses_sha256": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+  "factorized_had_sha256": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+  "learned_temporal_sha256": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+  "normalization_contract": "Call the frozen learned_temporal.normalize exactly once per original and alternate record, save its returned values without transformation, and pass read-only npy-backed memmaps to the unchanged Dataset/DataLoader.",
+  "timing_disclosure": "The adapter and this addendum were introduced after candidate fits had started. The listed initial fits use the original in-memory path; this addendum applies only to fits launched after its creation.",
+  "initial_fits_started_without_adapter": [
+    "skillcorner/spell_sqrt/2026",
+    "sportec/spell_sqrt/2026",
+    "skillcorner/combined/2027"
+  ],
+  "after_initial_fits_started": true,
+  "adapter_scope": "Subsequent objective fits only; no in-progress fit is switched mid-run.",
+  "training_recipe_changed": false,
+  "model_architecture_changed": false,
+  "arrays_transformed": false,
+  "optimizer_or_rng_changed": false,
+  "created_utc": "2026-10-28T09:58:56.756963+00:00"
+}
