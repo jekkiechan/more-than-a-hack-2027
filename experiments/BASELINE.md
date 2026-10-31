@@ -22,7 +22,12 @@ reproduced the sealed public-check CSV byte for byte. Receipt:
 [baseline_sn_dense_promotion.json](results/baseline_sn_dense_promotion.json);
 evidence: [sn_dense_v1_progress.md](results/sn_dense_v1_progress.md).
 
-## Restore and infer
+The sealed progress report's “published adopted ensemble” comparator refers to
+`joint_gru_soccernet_capacity_ensemble_v1`, the baseline **at study time**.
+Its .641790/.502586 scores are the previous package, not a second estimate of
+the current dense ensemble. Preserve that historical report unchanged.
+
+## Private cache restore
 
 Private [mtah-data PR #7](https://github.com/jekkiechan/mtah-data/pull/7) is open
 as of 2026-10-31 (head `33bcf56`). Use its delivery branch `ccr-9579d51e-9073tq`, or a newer private
@@ -41,7 +46,7 @@ Verify all four checkpoint hashes against the
 matching inference code; no source snapshot overlay is needed. Existing outputs
 are never overwritten: choose a new `--output` path for a replay. Restore is
 separate from fitting or scoring; closed public gates stay closed. See the
-[restore skill](../.agents/skills/possession-restore/SKILL.md) for missing artifacts
+[restore reference](../.agents/skills/possession-research/references/restore.md) for missing artifacts
 and [data access](SOCCERNET_DATA_ACCESS.md) for raw SoccerNet inputs.
 
 ## Historical packages

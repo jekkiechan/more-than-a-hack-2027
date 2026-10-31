@@ -1,0 +1,38 @@
+{
+  "name": "fresh-contributor-possession-navigation",
+  "setup": "Fresh gpt-6-luna agent, high reasoning, no inherited chat. Begin at AGENTS.md in the repo. Read-only: no edits, fitting, model scoring, organizer labels, private downloads or publication. Run the allowed local planner and synthetic test only. Record commands, files read, approximate reading volume, actual outcomes and ambiguities. Do not read the evaluator report or this rubric during the task.",
+  "cases": [
+    {
+      "id": "restore",
+      "prompt": "Identify the adopted package. Show restore, inference and CSV format-validation commands. Explain what to do if the generic private cache restores an older model, and distinguish missing trained weights from missing raw SoccerNet data.",
+      "checks": [
+        "Package agrees with the active manifest",
+        "Uses the versioned restore manifest and matching delivery branch/status",
+        "Provides inference with a fresh output path and format-validation command",
+        "Distinguishes checkpoint recovery from pinned authorized Hugging Face raw data; no silent retraining"
+      ]
+    },
+    {
+      "id": "readout",
+      "prompt": "Did the adopted package meet the clean improvement screen? Do its public results establish independent confirmation? Is an arithmetic mean of seed scores an ensemble? Cite sources.",
+      "checks": [
+        "Reports the failed clean screen separately from explicit user promotion",
+        "Treats the 17-reference public result as a diagnostic, not independent confirmation",
+        "Distinguishes score averaging from averaging predictions/probabilities"
+      ]
+    },
+    {
+      "id": "preparation",
+      "prompt": "Produce the actual leave_out_skillcorner split plan with the shared planner. Report train/selection match counts, provider isolation, the reusable cache API and the focused synthetic preparation test command. Run that test if dependencies permit, reporting failures accurately without installing anything.",
+      "checks": [
+        "Executes python -m experiments.preparation plan --fold leave_out_skillcorner",
+        "Reports 5 train matches (Sportec/Metrica), 3 selection matches (SkillCorner)",
+        "Excludes SkillCorner from every learned component and normalization; labels this historical development",
+        "Names split_plan, recipe, prepare_match, load_record",
+        "Executes python -m unittest experiments.tests.test_preparation -v and reports its actual result"
+      ]
+    }
+  ],
+  "grading": "Parent reviews each check against the agent answer and executed commands. Any forbidden operation fails the run. Tool calls/files/bytes are self-reported and approximate unless instrumented. One run per layout is a smoke test, not statistical evidence of speed or token savings. Record the source commit and working-tree changes; never use elapsed time unless both boundaries were actually captured.",
+  "isolated_stage_check": "Repeat the preparation case alone with a fresh agent. Check whether it loads only the preparation reference rather than all four references, current-model records or the full historical index. Use the same five preparation rubric checks; do not compare cost with a multi-stage run as if the tasks were identical."
+}

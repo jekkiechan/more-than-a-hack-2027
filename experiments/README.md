@@ -5,15 +5,11 @@ Start with [current status](../docs/research/STATUS.md), then use the
 [BASELINE](BASELINE.md) owns the current package and restore/inference commands.
 The first Sportec comparison is the historical [primary tracking report](PRIMARY_TRACKING.md).
 
-## Choose the right procedure
+## Workflow
 
-| Task | Read |
-| --- | --- |
-| Restore data or weights | [Artifact restore skill](../.agents/skills/possession-restore/SKILL.md) |
-| Prepare features or provider splits | [Preparation skill](../.agents/skills/possession-preparation/SKILL.md) |
-| Declare or run a study | [Experiment skill](../.agents/skills/possession-experiment/SKILL.md) |
-| Compare scores or recommend a model | [Readout skill](../.agents/skills/possession-readout/SKILL.md) |
-| Maintain these docs | [Documentation map](../docs/research/README.md) |
+Use the [possession research skill](../.agents/skills/possession-research/SKILL.md)
+for restore, preparation, experiments and readout. It routes directly to the
+reference for the task. Repo editing rules live in [root AGENTS](../AGENTS.md).
 
 ## Vocabulary
 
@@ -46,7 +42,7 @@ The first Sportec comparison is the historical [primary tracking report](PRIMARY
 | `live_gap_experiment.py` | `feature_view(...)` builds the joint-GRU input record. Also used at inference. |
 | `joint_lgbm.py`, `temporal_lgbm.py`, `possession_geometry.py` | Full H/A/D LightGBM features, ordered temporal features, control geometry and anchors |
 | `datasets.py`, `metrica_open.py`, `skillcorner_had.py`, `audit_dataset.py` | Source download and normalization into the shared NPZ contract |
-| `preparation.py` | Validated manifest folds and hash-verified, reusable unnormalized joint feature caches for new runners; see [preparation skill](../.agents/skills/possession-preparation/SKILL.md) |
+| `preparation.py` | Validated manifest folds and hash-verified, reusable unnormalized joint feature caches for new runners; see [preparation reference](../.agents/skills/possession-research/references/preparation.md) |
 | `soccernet_segments.py`, `soccernet_dense_labels.py`, `soccernet_dense_qa.py` | SoccerNet clip assembly, dense touch-stream silver labels and label QA |
 | `challenge.py` | Organizer tracking prep. Never loads ground truth. |
 | `sn_dense_train.py`, `sn_dense_run.py`, `sn_dense_baseline.py` | Dense silver-label training harness, bounded study runner and dense-package inference |

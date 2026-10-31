@@ -4,6 +4,25 @@ Reviewed 2026-10-31 through PR #43. Find evidence here; adoption and next work l
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
+## Find a study
+
+Use `rg -n "<mechanism-or-study-ID>" docs/research/EXPERIMENTS.md`, then read
+the matching section/report. These are study families, not one leaderboard.
+
+- [Dense SoccerNet supervision](#dense-soccernet-supervision)
+- [SoccerNet matched training follow-up](#soccernet-matched-training-follow-up)
+- [Merged studies](#merged-studies)
+- [Draft-only evidence](#draft-only-evidence)
+- [Temporal robustness follow-up](#temporal-robustness-follow-up)
+- [Spell-F1 follow-up](#spell-f1-follow-up)
+- [Short-spell continuation](#short-spell-continuation)
+- [Supporting references](#supporting-references)
+- [Objective alignment follow-up](#objective-alignment-follow-up)
+- [Dataset expansion](#dataset-expansion)
+- [SkillCorner source contribution](#skillcorner-source-contribution)
+- [Smart Tagging](#smart-tagging)
+- [Settled directions](#settled-directions)
+
 ## Dense SoccerNet supervision
 
 | ID / state | Scope / outcome | Evidence |

@@ -1,26 +1,17 @@
 # Agent guide: possession research
 
-## Start here
+## Find what the task needs
 
-1. Read [current status](docs/research/STATUS.md) for adoption, next work and blockers.
-2. Use [the experiment index](docs/research/EXPERIMENTS.md) to find prior evidence;
-   read the relevant report rather than historical handoffs.
-3. Working in `experiments/`? Read its [AGENTS](experiments/AGENTS.md) and
-   task-relevant [code map/vocabulary](experiments/README.md).
-4. [BASELINE](experiments/BASELINE.md) owns restore/inference commands.
-   `experiments/baseline_manifest.json` identifies the adopted package;
-   `experiments/model_decision_policy.json` defines active ranking and guards.
-   Check current `main` and relevant open PRs before current-results advice;
-   follow the readout skill below. Saved Pages and historical verdicts may lag.
-
-## Load a skill when its task applies
-
-| Task | Skill |
-| --- | --- |
-| Missing datasets, weights or private cache | [possession-restore](.agents/skills/possession-restore/SKILL.md) |
-| New feature preparation or provider splits | [possession-preparation](.agents/skills/possession-preparation/SKILL.md) |
-| New experiment, fitting or evaluation | [possession-experiment](.agents/skills/possession-experiment/SKILL.md) |
-| Scores, model choice or adoption advice (including chat) | [possession-readout](.agents/skills/possession-readout/SKILL.md) |
+- [STATUS](docs/research/STATUS.md): current adoption, priorities and blockers.
+- [BASELINE](experiments/BASELINE.md): package evidence and restore/inference.
+  The active manifest identifies the adopted package; the policy defines ranking
+  and guards. Historical reports and saved Pages may describe older packages.
+- [Research skill](.agents/skills/possession-research/SKILL.md): choose restore,
+  preparation, experiment or readout; load only the applicable reference.
+- [Code map and vocabulary](experiments/README.md): locate shared implementation.
+- [Experiment index](docs/research/EXPERIMENTS.md): search by mechanism/study ID
+  for prior evidence; read the relevant section/report, not the whole index.
+- [Documentation map](docs/research/README.md): ownership and maintenance checks.
 
 ## Constraints that always apply
 
@@ -29,35 +20,40 @@
   199,319 consecutive `frame,label` rows at 25 Hz, H/A/D/X. Loose or contested
   ball stays with the last controlling team. Use the official evaluator.
 - Organizer public labels are pipeline checks only (7,500 frames, 17 possessions).
-  Never train, tune, select candidates, thresholds, repairs or seeds on them.
-  Do not manually label/correct this match or use human-produced event/possession
-  data about it. Label-free tracking improvements are allowed.
-- Read saved diagnostics; never reset a closed scoring gate or rewrite a frozen
-  declaration. A fresh directory does not make inspected data fresh evidence.
-- Split by whole match/provider. Identify which learned components are held out;
-  D-only holdout with pooled H/A is not full-pipeline holdout. Audit pretrained
-  checkpoint exposure and source-specific label/missingness shortcuts.
+  Never train, tune or select candidates, repairs, thresholds or seeds on them.
+  No manual labels/corrections or human-produced event/possession data about
+  this match. Label-free tracking improvements are allowed.
+- Preserve frozen runners, declarations, manifests, policies, receipts, hashes,
+  results and hash-bound Markdown (including `results/sn_dense_v1_progress.md`).
+  Never reset a closed scoring gate. A new directory is not fresh evidence.
+- Split by whole match/provider and exclude it from every learned component for
+  full-pipeline holdout. Audit checkpoint exposure and source-specific shortcuts.
 - Keep organizer assets, reconstructive derivatives, weights and frame outputs
-  out of this public repo. Use ignored `data/`, `MTAH_DATA_DIR`, or the authorized
-  private cache. Publish aggregate evidence. Restore verified artifacts before
-  retraining; preserve native masks, unknown targets and match/half/time breaks.
+  in ignored `data/`, `MTAH_DATA_DIR`, or authorized private storage. Publish
+  aggregate evidence. Restore verified artifacts before retraining; preserve
+  native masks, unknown targets and match/half/time breaks.
+- Import shared libraries; a new study gets a new runner/ID. Do not copy or edit
+  a frozen runner to start another sweep. Check prior outcomes first.
 
 ## Delivery and checks
 
 Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
 `main`. Preserve `upstream` as `metrica-sports/more-than-a-hack-2027` when configured.
-Publish an authorized PR without a separate confirmation step. Documentation
-maintenance does not promote models. Existing [CI/auto-merge](docs/CI.md) applies.
-[Documentation ownership](docs/research/README.md) explains what to update.
+Publish an authorized PR without another confirmation. Existing
+[CI/auto-merge](docs/CI.md) applies. Docs maintenance never promotes a model.
+After a promising experiment, update the
+[progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
+with dated scores, protocol, visualizations and adoption status.
 
-After a promising experiment completes, update the
-[experiment progress Page](https://chatgpt.com/space/page_1df518ea32448191bf885da4952259a9)
-with dated scores, visualizations, protocol and adoption status.
-
-For code changes, run `python -m unittest discover -s experiments/tests -v`
-with pinned dependencies (including CPU PyTorch for neural contracts), plus
-applicable checks in [CI](docs/CI.md). Validate generated CSVs with
+Run commands from the repo root. Full suites need pinned experiment/SoccerNet
+dependencies and CPU PyTorch; activate the repo `.venv` when present (`python`
+examples assume that environment), or use its interpreter explicitly. System
+Python may support the focused planner tests while lacking full-suite dependencies.
+Focused preparation check:
+`python -m unittest experiments.tests.test_preparation -v`.
+For code changes: `python -m unittest discover -s experiments/tests -v`, plus
+applicable checks in [CI](docs/CI.md). CSV format:
 `python evaluation/validate_submission.py <candidate.csv>`.
-For docs-only changes, check links, evidence and frozen-file preservation;
-CI runs the synthetic suite and bundled format check. Do not fit or score
-organizer labels to verify documentation.
+For docs-only changes, run the documentation check in the documentation map and
+verify current-state claims/frozen preservation. Never score organizer labels
+just to verify documentation.

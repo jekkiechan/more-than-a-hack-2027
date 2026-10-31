@@ -27,6 +27,8 @@ jobs:
           cache-dependency-path: |
             experiments/requirements.txt
             experiments/requirements-soccernet.txt
+      - name: Check documentation links and skill routing
+        run: python scripts/check_docs.py
       - name: Install test dependencies
         run: python -m pip install -r experiments/requirements-soccernet.txt
       - name: Install CPU PyTorch for temporal model contract tests

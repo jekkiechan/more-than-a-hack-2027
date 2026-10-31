@@ -1,8 +1,3 @@
----
-name: possession-readout
-description: Compare possession experiment scores, explain wins or regressions, write a research readout, or recommend baseline adoption using saved evidence and explicit protocol boundaries.
----
-
 # Evidence-backed possession readout
 
 1. Refresh current evidence before answering, including chat advice. Check current
@@ -44,8 +39,9 @@ description: Compare possession experiment scores, explain wins or regressions, 
    a matched architecture comparison. A user-approved screen exception changes
    adoption, not the original study's failed decision.
 7. End with the concrete next experiment or blocker and artifact availability.
-   Update the study's index row and STATUS. Keep the full methods/scorecard in
-   the report, not in AGENTS or every README.
+   For a completed study, update its index row and STATUS. A chat answer or a
+   read-only audit does not by itself request a documentation write. Keep full
+   methods/scorecards in the report, not in AGENTS or every README.
 
-Use the [template](../../../docs/research/templates/EXPERIMENT.md) for a
-standalone report. Guidance provenance: [LESSONS](../../../docs/research/LESSONS.md).
+Use the [template](../../../../docs/research/templates/EXPERIMENT.md) for a
+standalone report. Guidance provenance: [LESSONS](../../../../docs/research/LESSONS.md).

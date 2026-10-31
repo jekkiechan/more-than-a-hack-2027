@@ -1,7 +1,8 @@
 # PR checks and automatic merges
 
 `CI` runs on every PR targeting `main` and on pushes to `main`. Its `tests`
-check installs the pinned experiment dependencies and CPU PyTorch 2.8.0, runs the synthetic/contract
+check validates local documentation links, heading anchors and skill routing,
+installs the pinned experiment dependencies and CPU PyTorch 2.8.0, runs the synthetic/contract
 test suite, and validates the bundled example submission format. It does not
 download organizer assets or score the public five-minute ground truth. A newer
 commit on the same PR cancels its older CI run.

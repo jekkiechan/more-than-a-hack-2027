@@ -1,16 +1,11 @@
----
-name: possession-preparation
-description: Prepare reusable external possession features or resolve whole-match/provider splits for a new runner. Use for feature-cache and dataset-pipeline work, before copying preparation code from a frozen study. Does not authorize fitting, evaluation, or organizer scoring.
----
-
 # Reusable external feature preparation
 
-1. Read [STATUS](../../../docs/research/STATUS.md) and the
-   [code map](../../../experiments/README.md#code-map). Restore verified private
-   arrays first. Missing cache access is not a reason to download organizer
+1. Restore verified private arrays before feature generation. A split-plan
+   preview reads the manifest only and needs no private arrays. Missing cache
+   access is not a reason to download organizer
    labels, rebuild external labels, or retrain a model.
-2. Use [preparation.py](../../../experiments/preparation.py) and the existing
-   [split manifest](../../../experiments/eval_set/manifest.json). Do not invent
+2. Use [preparation.py](../../../../experiments/preparation.py) and the existing
+   [split manifest](../../../../experiments/eval_set/manifest.json). Do not invent
    a random frame/window split. Preview the exact training and selection list:
 
    ```sh
@@ -73,16 +68,27 @@ description: Prepare reusable external possession features or resolve whole-matc
    schema. Do not treat the joint feature union as an acceptable ball-aware D
    head. An architecture needing different features gets a new versioned recipe
    and parity contracts, not an edited frozen runner.
-7. Freeze the emitted plan hash and recipe in the new study declaration.
-   The CLI stores prepared plans at `<cache>/plans/<sha256>.json`. Exclude the
+7. Freeze the plan hash and recipe in the new study declaration. The preview's
+   `manifest_sha256` hashes the source manifest, not the returned plan. Compute
+   `prep.fingerprint(plan)` for that plan's hash; do not relabel the manifest SHA.
+   Prepared plans also include recipe/cache identities and are stored by their
+   own hash at `<cache>/plans/<sha256>.json`. Exclude the
    provider from normalization and all learned components, not just D. Selection
    arrays may be prepared in advance but must not fit transformations. Keep
    derived views/windows with their source match. Read
-   [possession-experiment](../possession-experiment/SKILL.md) before any fitting
+   [possession-experiment](experiment.md) before any fitting
    or scoring; this skill does neither.
 8. Run the synthetic preparation contracts and required repository suite. Check
    native grading, masks, unknown targets, team symmetry, discontinuities, input
    seals and cache tampering. Existing frozen runners and declarations stay
    unchanged; migrate a future runner when its declared recipe matches this API.
 
-Tests: [test_preparation.py](../../../experiments/tests/test_preparation.py).
+Focused synthetic check (no private arrays, fitting or organizer scoring):
+
+```sh
+python -m unittest experiments.tests.test_preparation -v
+```
+
+Tests: [test_preparation.py](../../../../experiments/tests/test_preparation.py).
+Deliver the actual plan/counts, excluded provider and per-component training-only
+normalization rule; for preparation, include the recipe/plan hash and cache receipt.

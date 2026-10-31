@@ -1,50 +1,43 @@
 # Documentation map
 
-A new contributor starts at [root AGENTS](../../AGENTS.md), reads
-[STATUS](STATUS.md), then follows the task's skill and relevant index row.
-The [root README](../../README.md) also links the upstream challenge guide.
+Start at [AGENTS](../../AGENTS.md). Choose the relevant destination below;
+there is no required tour of every document.
 
-| Location | Owns | Update when |
-| --- | --- | --- |
-| [AGENTS](../../AGENTS.md) | Task routing, durable constraints, delivery/checks | An operating rule changes |
-| [experiments/AGENTS](../../experiments/AGENTS.md) | Local editing and frozen-evidence rules | Experiment workflow changes |
-| [experiments/README](../../experiments/README.md) | Vocabulary and code map | A shared module's role changes |
-| [STATUS](STATUS.md) | Current adoption, next actions, blockers and open delivery | Priorities/adoption change or relevant work merges |
-| [EXPERIMENTS](EXPERIMENTS.md) | One study entry, outcome, protocol/evidence links and settled directions | A study is declared or reported |
-| [BASELINE](../../experiments/BASELINE.md) | Active package, promotion evidence, restore/inference commands and archived package pointers | A package is adopted or delivered |
-| [LESSONS](LESSONS.md) | Source-backed corrections and the skills that encode them | A durable lesson changes a procedure |
-| [.agents/skills/](../../.agents/skills/) | Task-triggered reusable procedures | A correction warrants a reusable step |
-| [Experiment template](templates/EXPERIMENT.md) | Declaration and final readout structure | Reporting requirements change |
-| `experiments/*.md` and `experiments/results/` | Detailed methods, scorecards and saved evidence | That study produces evidence |
+| Question | Owner |
+| --- | --- |
+| What is adopted, next, blocked or awaiting delivery? | [STATUS](STATUS.md) |
+| How do I restore/run the package or find its evidence? | [BASELINE](../../experiments/BASELINE.md), active manifest and policy |
+| How do I perform this research task? | [One research skill](../../.agents/skills/possession-research/SKILL.md), then its applicable reference |
+| Where is the implementation / what do terms mean? | [Research code map and vocabulary](../../experiments/README.md) |
+| What was tried / what should not be repeated? | [Searchable experiment index](EXPERIMENTS.md#find-a-study), then a study report |
+| Which past correction produced a procedure? | [LESSONS](LESSONS.md) |
+| What must a new study declare/report? | [Experiment template](templates/EXPERIMENT.md) |
+| Why this layout / does navigation work? | [Navigation evaluation](NAVIGATION.md) |
 
-## Keep one owner for each fact
+## Maintenance rules
 
-Keep changing adoption/priorities in STATUS, package details in BASELINE and
-scorecards in the study report. Entrypoints link to those owners. Skills contain
-procedures, never current model versions, priorities or score snapshots. Add a
-lesson with its evidence source; amend an existing skill before creating a new
-overlapping one. Remove completed proposals from the current queue.
+- AGENTS owns universal constraints, repo commands and task routing. Do not
+  duplicate them in another AGENTS or README. Put task-specific procedures in
+  the research skill's four direct references; read only those needed.
+- STATUS owns changing adoption/priorities/blockers, BASELINE owns the package
+  and restore instructions, reports own detailed scorecards. Entrypoints link
+  to each owner. Skills have no current package names or score snapshots.
+- Add one index row per bounded study and update it and STATUS when work
+  completes. Remove completed proposals from the active queue. Date/pin PR
+  snapshots and check live heads when resuming.
+- Record code merged, results published, uploaded, restored and adopted as
+  separate states. Use a later receipt for changed artifact availability.
+- Use Git history for superseded handoffs; retain unique reports and link them
+  from the index. Keep source-bound paths such as the root turnover reports.
+- Frozen-evidence restrictions live in AGENTS. This includes JSON and sealed
+  progress Markdown, not just code. A prose correction goes beside the record
+  or in a new receipt. Upstream challenge documents remain authoritative.
 
-Record code merged, results published, artifacts uploaded/restored and model
-adopted as separate states. Date PR snapshots and pin draft-only evidence to a
-commit; check live state when resuming. A later verified receipt supersedes an
-availability note without rewriting it.
+## Checks
 
-## Preserve evidence and validate edits
-
-Use Git history for superseded handoffs and setup notes; do not create another
-archive copy. Keep unique historical reports discoverable through the index.
-The original Sportec report is [PRIMARY_TRACKING](../../experiments/PRIMARY_TRACKING.md).
-Root turnover reports stay in place because frozen runner provenance references
-their paths. Upstream challenge/rule/data/evaluation documents remain authoritative.
-
-Do not rewrite frozen declarations, manifests, policies, receipts, source hashes,
-result JSON or hash-bound Markdown (including `results/sn_dense_v1_progress.md`).
-Use a dated explanatory note or new receipt for corrections. Documentation
-maintenance never promotes a model or reopens a scoring gate.
-
-For docs-only edits, check local links and heading anchors, current-state claims
-against the active manifest/policy and PR evidence, and the changed-file list for
-frozen evidence. Confirm a moved report retains its content. CI runs the
-synthetic/contract suites and bundled CSV format check; never score organizer
-labels to verify docs.
+Run `python scripts/check_docs.py` for local links, heading anchors and skill
+routing. CI runs this alongside existing checks. Verify current-state claims
+against manifest/policy and relevant PR evidence; inspect the changed-file list
+for frozen evidence. No organizer scoring is needed. For navigation changes,
+repeat the fresh-agent tasks documented in NAVIGATION and record observed
+answers, command outcomes and limitations; a link checker cannot grade reasoning.
