@@ -1,6 +1,34 @@
-# Current adopted baseline: SoccerNet-capacity H/A with teacher D
+# Current adopted baseline: dense-SoccerNet H/A with fine-tuned D
 
-The current package is `joint_gru_soccernet_capacity_ensemble_v1`, with
+The current package is `joint_gru_sn_dense_ensemble_v1`, with architecture kind
+`sn_dense_ensemble`, adopted by explicit user decision on 2026-10-31. Its default
+prediction is `data/experiments/current_baseline/joint_gru_sn_dense_ensemble.csv`.
+Each of the two pooled members (seeds 2026/2027) is a width-96 conditional H/A GRU
+plus a fine-tuned hidden-24 D path, trained from the matching combined-objective
+teacher with the [sn_dense_v1](SOCCERNET_DENSE.md) D2 recipe: dense touch-stream
+H/A/D targets with complete-spell and transition losses on 45 SoccerNet-GAR TRAIN
+games, SoccerNet batch fraction .5, 2,048 updates. Normalizer, feature schema and
+the cost-3 decoder are unchanged. Members average native probabilities before
+decoding. The package holds four weights: two dense members and their teachers.
+
+Full-provider development (five previously exposed matches): two-seed ensemble
+.6472/.5058 clean/feed-like versus .641790/.502586 for the previous package.
+Seed 2026 scores .6355 versus .6288 for the rebuilt previous recipe; seed 2027
+scores .6372. All provider D/macro and feed-like guards pass; the +.01 clean
+screen is not met. The one-time public diagnostic, known before authorization and
+never used for selection, scores .6303 spell / .8514 macro versus .5697 / .8613
+on 17 references. Promotion performed no fitting or rescoring: the baseline CLI
+reproduced the sealed public-check CSV byte for byte. Receipt:
+[baseline_sn_dense_promotion.json](results/baseline_sn_dense_promotion.json);
+evidence: [sn_dense_v1_progress.md](results/sn_dense_v1_progress.md).
+
+Restore with the `mtah-data` manifest
+`baseline_cache_manifest_joint_gru_sn_dense_ensemble_v1.json`, then run
+`python -m experiments.current_baseline predict`.
+
+## Previous package: SoccerNet-capacity H/A with teacher D
+
+The previous package is `joint_gru_soccernet_capacity_ensemble_v1`, with
 architecture kind `soccernet_capacity_ensemble`. Its default prediction is
 `data/experiments/current_baseline/joint_gru_soccernet_capacity_ensemble.csv`.
 The model averages two pooled width-96 conditional H/A GRUs trained with the

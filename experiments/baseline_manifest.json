@@ -1,31 +1,31 @@
 {
-  "version": 6,
-  "model": "joint_gru_soccernet_capacity_ensemble",
-  "package_version": "joint_gru_soccernet_capacity_ensemble_v1",
+  "version": 7,
+  "model": "joint_gru_sn_dense_ensemble",
+  "package_version": "joint_gru_sn_dense_ensemble_v1",
   "status": "User-authorized working development baseline; independent confirmation pending",
-  "promoted_utc": "2026-10-30T04:34:15.863188+00:00",
-  "replaced_baseline": "joint_gru_combined_ensemble",
-  "previous_manifest": "experiments/baselines/joint_gru_combined_ensemble_v1.json",
-  "previous_manifest_sha256": "c0eeeb8a11c59f2821ca306d7d7ab27052f98ccfd8ad720256d8fa3eae56baf0",
-  "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_combined_ensemble_v1.json",
-  "previous_policy_sha256": "e5cc29d00b6608b625f3ba539ea9632565334190264f8af498c2fbb35695fcb3",
-  "model_directory": "data/models/joint_gru_soccernet_capacity_ensemble_v1",
+  "promoted_utc": "2026-10-31T00:20:41.749359+00:00",
+  "replaced_baseline": "joint_gru_soccernet_capacity_ensemble",
+  "previous_manifest": "experiments/baselines/joint_gru_soccernet_capacity_ensemble_v1.json",
+  "previous_manifest_sha256": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
+  "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_soccernet_capacity_ensemble_v1.json",
+  "previous_policy_sha256": "f6330589fc26396d3861e136e0b6c5a22b196c683adf129dbeaefc760dcce40e",
+  "model_directory": "data/models/joint_gru_sn_dense_ensemble_v1",
   "models_sha256": {
-    "capacity_2026.joblib": "8abd9ebc72dec40035da1081241a6e55fec19101787a9cc0917fe27190f5befd",
+    "dense_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
     "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
-    "capacity_2027.joblib": "e693d7acbe75e97b52e4ddb3803793d121702c53f68006084b294b8ed2d59f6a",
+    "dense_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
     "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
   },
-  "default_output": "data/experiments/current_baseline/joint_gru_soccernet_capacity_ensemble.csv",
+  "default_output": "data/experiments/current_baseline/joint_gru_sn_dense_ensemble.csv",
   "architecture": {
-    "kind": "soccernet_capacity_ensemble",
+    "kind": "sn_dense_ensemble",
     "members": {
-      "capacity_2026": 0.5,
-      "capacity_2027": 0.5
+      "dense_2026": 0.5,
+      "dense_2027": 0.5
     },
     "teachers": {
-      "capacity_2026": "teacher_2026",
-      "capacity_2027": "teacher_2027"
+      "dense_2026": "teacher_2026",
+      "dense_2027": "teacher_2027"
     },
     "hidden_ha": 96,
     "hidden_d": 24,
@@ -33,407 +33,49 @@
     "context_each_side_seconds": 5,
     "rate_hz": 5,
     "decoder_switch_cost": 3,
-    "combination": "Mean of two native H/A/D probability arrays before Viterbi; each H/A conditioned on its matching unchanged teacher P(D)"
+    "combination": "Mean of two native H/A/D probability arrays before Viterbi; each member uses its fine-tuned D path and conditional H/A head with its pooled teacher's normalization"
   },
   "training": {
-    "recipe": "w96_lr3e-4_step2048",
+    "recipe": "D2_f050_g45: dense touch-stream H/A/D targets with complete-spell and transition losses on SoccerNet, D-path fine-tune, fraction .5",
     "original_train_matches": 13,
     "soccernet_train_games": 45,
-    "sparse_ha_anchors": 42919,
-    "retained_tracking_hours": 44.67,
-    "gar_batch_fraction": 0.5,
     "learning_rate": 0.0003,
+    "d_learning_rate": 0.0001,
     "optimizer_updates": 2048,
     "seeds": [
       2026,
       2027
     ],
-    "dense_gar_possession_labels": false,
-    "normalization_and_d_frozen": true
+    "dense_gar_possession_labels": true,
+    "d_path_trained": true,
+    "normalization_frozen": true
   },
   "evidence": {
-    "comparison": {
-      "view": "full_provider_holdout",
-      "previously_exposed_development_matches": true,
-      "candidate": {
-        "clean": {
-          "cell_count": 5,
-          "equal_provider_mean": {
-            "d_f1": 0.8488056025738283,
-            "d_precision": 0.9082216877556156,
-            "d_recall": 0.8006947156440214,
-            "fragmented_reference_spells": 7.888888888888888,
-            "graded_frames": 105658.33333333333,
-            "macro_f1": 0.8550988379297438,
-            "n_gt_spells": 404.3333333333333,
-            "n_pred_spells": 372.3333333333333,
-            "short_spell_recall": 0.4021448714849731,
-            "spell_by_iou": {
-              "0.3": 0.726266396002301,
-              "0.4": 0.7041032572141473,
-              "0.5": 0.6548678598104746,
-              "0.6": 0.5982932016863367,
-              "0.7": 0.5254181007046238
-            },
-            "spell_f1": 0.6417897630835767,
-            "weighted_70_30": 0.7057824855374268
-          },
-          "per_provider": {
-            "metrica": {
-              "d_f1": 0.8902322990879767,
-              "d_precision": 0.9324728359950412,
-              "d_recall": 0.8516528650400729,
-              "fragmented_reference_spells": 5.0,
-              "graded_frames": 142698.0,
-              "macro_f1": 0.918875925981182,
-              "n_gt_spells": 382.0,
-              "n_pred_spells": 349.0,
-              "short_spell_recall": 0.5476190476190477,
-              "spell_by_iou": {
-                "0.3": 0.8727770177838576,
-                "0.4": 0.8673050615595075,
-                "0.5": 0.8262653898768809,
-                "0.6": 0.7715458276333789,
-                "0.7": 0.7004103967168263
-              },
-              "spell_f1": 0.8076607387140904,
-              "weighted_70_30": 0.8410252948942177
-            },
-            "skillcorner": {
-              "d_f1": 0.7433810275381316,
-              "d_precision": 0.862040560187323,
-              "d_recall": 0.6543407158542552,
-              "fragmented_reference_spells": 14.666666666666666,
-              "graded_frames": 31741.0,
-              "macro_f1": 0.7721366588176345,
-              "n_gt_spells": 375.0,
-              "n_pred_spells": 409.0,
-              "short_spell_recall": 0.29333333333333333,
-              "spell_by_iou": {
-                "0.3": 0.5526479370942112,
-                "0.4": 0.518624341984775,
-                "0.5": 0.46594555151773287,
-                "0.6": 0.41229083264035515,
-                "0.7": 0.3629604698142232
-              },
-              "spell_f1": 0.46249382661025945,
-              "weighted_70_30": 0.555386676272472
-            },
-            "sportec": {
-              "d_f1": 0.9128034810953766,
-              "d_precision": 0.9301516670844824,
-              "d_recall": 0.8960905660377358,
-              "fragmented_reference_spells": 4.0,
-              "graded_frames": 142536.0,
-              "macro_f1": 0.8742839289904153,
-              "n_gt_spells": 456.0,
-              "n_pred_spells": 359.0,
-              "short_spell_recall": 0.36548223350253806,
-              "spell_by_iou": {
-                "0.3": 0.7533742331288343,
-                "0.4": 0.7263803680981595,
-                "0.5": 0.6723926380368098,
-                "0.6": 0.611042944785276,
-                "0.7": 0.512883435582822
-              },
-              "spell_f1": 0.6552147239263804,
-              "weighted_70_30": 0.7209354854455908
-            }
-          }
-        },
-        "feed_like": {
-          "cell_count": 10,
-          "equal_provider_mean": {
-            "d_f1": 0.8440503540124297,
-            "d_precision": 0.8978104622432271,
-            "d_recall": 0.8000229312994596,
-            "fragmented_reference_spells": 7.0555555555555545,
-            "graded_frames": 105658.33333333333,
-            "macro_f1": 0.8109846321786679,
-            "n_gt_spells": 404.3333333333333,
-            "n_pred_spells": 320.8888888888889,
-            "short_spell_recall": 0.21280999425587602,
-            "spell_by_iou": {
-              "0.3": 0.6121897499059008,
-              "0.4": 0.5693280723346813,
-              "0.5": 0.5071421004828842,
-              "0.6": 0.4455775922211329,
-              "0.7": 0.3786920190394989
-            },
-            "spell_f1": 0.5025859067968196,
-            "weighted_70_30": 0.5951055244113741
-          },
-          "per_provider": {
-            "metrica": {
-              "d_f1": 0.888341502619597,
-              "d_precision": 0.9275960286609712,
-              "d_recall": 0.8522744932619941,
-              "fragmented_reference_spells": 6.5,
-              "graded_frames": 142698.0,
-              "macro_f1": 0.8657467967010117,
-              "n_gt_spells": 382.0,
-              "n_pred_spells": 286.0,
-              "short_spell_recall": 0.25396825396825395,
-              "spell_by_iou": {
-                "0.3": 0.7200229489386116,
-                "0.4": 0.687087636259323,
-                "0.5": 0.6167885829030408,
-                "0.6": 0.5448938611589214,
-                "0.7": 0.478951520367183
-              },
-              "spell_f1": 0.609548909925416,
-              "weighted_70_30": 0.6864082759580947
-            },
-            "skillcorner": {
-              "d_f1": 0.7371883561097539,
-              "d_precision": 0.8466623041227573,
-              "d_recall": 0.6533867534665734,
-              "fragmented_reference_spells": 9.166666666666666,
-              "graded_frames": 31741.0,
-              "macro_f1": 0.7496921653813221,
-              "n_gt_spells": 375.0,
-              "n_pred_spells": 383.6666666666667,
-              "short_spell_recall": 0.24232974910394267,
-              "spell_by_iou": {
-                "0.3": 0.5183630824800775,
-                "0.4": 0.48015090166195334,
-                "0.5": 0.4279036474715144,
-                "0.6": 0.38047832569214507,
-                "0.7": 0.33259584472005477
-              },
-              "spell_f1": 0.427898360405149,
-              "weighted_70_30": 0.524436501898001
-            },
-            "sportec": {
-              "d_f1": 0.9066212033079379,
-              "d_precision": 0.9191730539459528,
-              "d_recall": 0.8944075471698113,
-              "fragmented_reference_spells": 5.5,
-              "graded_frames": 142536.0,
-              "macro_f1": 0.8175149344536696,
-              "n_gt_spells": 456.0,
-              "n_pred_spells": 293.0,
-              "short_spell_recall": 0.14213197969543145,
-              "spell_by_iou": {
-                "0.3": 0.5981832182990132,
-                "0.4": 0.5407456790827677,
-                "0.5": 0.4767340710740974,
-                "0.6": 0.41136058981233237,
-                "0.7": 0.3245286920312589
-              },
-              "spell_f1": 0.4703104500598939,
-              "weighted_70_30": 0.5744717953780266
-            }
-          }
-        },
-        "recipe": "w96_lr3e-4_step2048"
-      },
-      "previous_baseline": {
-        "clean": {
-          "cell_count": 5,
-          "equal_provider_mean": {
-            "d_f1": 0.8491245575667349,
-            "d_precision": 0.9050317350730825,
-            "d_recall": 0.8028971083776355,
-            "fragmented_reference_spells": 9.0,
-            "graded_frames": 105658.33333333333,
-            "macro_f1": 0.8542255020721911,
-            "n_gt_spells": 404.3333333333333,
-            "n_pred_spells": 374.6666666666667,
-            "short_spell_recall": 0.3841608250745307,
-            "spell_by_iou": {
-              "0.3": 0.7231653355818443,
-              "0.4": 0.6958033566018238,
-              "0.5": 0.6463111641496219,
-              "0.6": 0.5878394904880602,
-              "0.7": 0.5129057379976653
-            },
-            "spell_f1": 0.6332050169638032,
-            "weighted_70_30": 0.6995111624963194
-          },
-          "per_provider": {
-            "metrica": {
-              "d_f1": 0.8890950845531095,
-              "d_precision": 0.930856102003643,
-              "d_recall": 0.8509202317785227,
-              "fragmented_reference_spells": 4.0,
-              "graded_frames": 142698.0,
-              "macro_f1": 0.9169124294779919,
-              "n_gt_spells": 382.0,
-              "n_pred_spells": 338.0,
-              "short_spell_recall": 0.5079365079365079,
-              "spell_by_iou": {
-                "0.3": 0.8666666666666667,
-                "0.4": 0.8472222222222222,
-                "0.5": 0.8166666666666667,
-                "0.6": 0.7666666666666666,
-                "0.7": 0.6888888888888889
-              },
-              "spell_f1": 0.7972222222222223,
-              "weighted_70_30": 0.8331292843989531
-            },
-            "skillcorner": {
-              "d_f1": 0.7468892996025515,
-              "d_precision": 0.8547787827661596,
-              "d_recall": 0.6637635461845725,
-              "fragmented_reference_spells": 19.0,
-              "graded_frames": 31741.0,
-              "macro_f1": 0.7733918345737236,
-              "n_gt_spells": 375.0,
-              "n_pred_spells": 437.0,
-              "short_spell_recall": 0.30444444444444446,
-              "spell_by_iou": {
-                "0.3": 0.5525187810726547,
-                "0.4": 0.519690953173311,
-                "0.5": 0.4613972605648076,
-                "0.6": 0.4055474569714271,
-                "0.7": 0.35790285926559745
-              },
-              "spell_f1": 0.4594114622095596,
-              "weighted_70_30": 0.5536055739188087
-            },
-            "sportec": {
-              "d_f1": 0.9113892885445438,
-              "d_precision": 0.9294603204494453,
-              "d_recall": 0.8940075471698113,
-              "fragmented_reference_spells": 4.0,
-              "graded_frames": 142536.0,
-              "macro_f1": 0.872372242164858,
-              "n_gt_spells": 456.0,
-              "n_pred_spells": 349.0,
-              "short_spell_recall": 0.3401015228426396,
-              "spell_by_iou": {
-                "0.3": 0.7503105590062111,
-                "0.4": 0.7204968944099379,
-                "0.5": 0.6608695652173915,
-                "0.6": 0.5913043478260869,
-                "0.7": 0.49192546583850927
-              },
-              "spell_f1": 0.6429813664596274,
-              "weighted_70_30": 0.7117986291711966
-            }
-          }
-        },
-        "feed_like": {
-          "cell_count": 10,
-          "equal_provider_mean": {
-            "d_f1": 0.8446089072735106,
-            "d_precision": 0.8959654104237779,
-            "d_recall": 0.8020247265316476,
-            "fragmented_reference_spells": 8.5,
-            "graded_frames": 105658.33333333333,
-            "macro_f1": 0.8113874678654279,
-            "n_gt_spells": 404.3333333333333,
-            "n_pred_spells": 317.6666666666667,
-            "short_spell_recall": 0.20337142822487508,
-            "spell_by_iou": {
-              "0.3": 0.6105641078856979,
-              "0.4": 0.5703819558595237,
-              "0.5": 0.5031042866926201,
-              "0.6": 0.4387573280074683,
-              "0.7": 0.37134036067634996
-            },
-            "spell_f1": 0.498829607824332,
-            "weighted_70_30": 0.5925969658366608
-          },
-          "per_provider": {
-            "metrica": {
-              "d_f1": 0.8892163098521726,
-              "d_precision": 0.9277559979100292,
-              "d_recall": 0.8537508602890571,
-              "fragmented_reference_spells": 7.5,
-              "graded_frames": 142698.0,
-              "macro_f1": 0.8678295492358543,
-              "n_gt_spells": 382.0,
-              "n_pred_spells": 276.0,
-              "short_spell_recall": 0.23412698412698413,
-              "spell_by_iou": {
-                "0.3": 0.7081404695252086,
-                "0.4": 0.6762151574784963,
-                "0.5": 0.607832811330691,
-                "0.6": 0.5409425612313719,
-                "0.7": 0.47707345916830657
-              },
-              "spell_f1": 0.6020408917468149,
-              "weighted_70_30": 0.6817774889935266
-            },
-            "skillcorner": {
-              "d_f1": 0.7390977161739517,
-              "d_precision": 0.8416753123163815,
-              "d_recall": 0.6594025645889044,
-              "fragmented_reference_spells": 13.0,
-              "graded_frames": 31741.0,
-              "macro_f1": 0.748232731502307,
-              "n_gt_spells": 375.0,
-              "n_pred_spells": 396.0,
-              "short_spell_recall": 0.2414695340501792,
-              "spell_by_iou": {
-                "0.3": 0.5156725440410069,
-                "0.4": 0.47591873537514,
-                "0.5": 0.4210954730177126,
-                "0.6": 0.3722061258384753,
-                "0.7": 0.3220145664337184
-              },
-              "spell_f1": 0.42138148894121064,
-              "weighted_70_30": 0.5194368617095396
-            },
-            "sportec": {
-              "d_f1": 0.9055126957944075,
-              "d_precision": 0.9184649210449229,
-              "d_recall": 0.8929207547169812,
-              "fragmented_reference_spells": 5.0,
-              "graded_frames": 142536.0,
-              "macro_f1": 0.8181001228581224,
-              "n_gt_spells": 456.0,
-              "n_pred_spells": 281.0,
-              "short_spell_recall": 0.13451776649746194,
-              "spell_by_iou": {
-                "0.3": 0.6078793100908784,
-                "0.4": 0.5590119747249348,
-                "0.5": 0.48038457572945664,
-                "0.6": 0.4031232969525577,
-                "0.7": 0.31493305642702485
-              },
-              "spell_f1": 0.4730664427849705,
-              "weighted_70_30": 0.5765765468069161
-            }
-          }
-        },
-        "recipe": null
-      },
-      "clean_and_feed_like_spell_deltas": {
-        "clean": 0.008584746119773556,
-        "feed_like": 0.0037562989724875817
-      },
-      "matched_control_spell_deltas": {
-        "clean": 0.008138032427284392,
-        "feed_like": 0.008397987367805393
-      },
-      "provider_clean_guards": {
-        "metrica_d_f1": true,
-        "metrica_macro_f1": true,
-        "skillcorner_d_f1": true,
-        "skillcorner_macro_f1": true,
-        "sportec_d_f1": true,
-        "sportec_macro_f1": true
-      },
-      "feed_like_guard_passes": true,
-      "historical_improvement_screen_passes": false,
-      "historical_adopt_model": false,
-      "original_clean_screen": 0.01,
-      "exception_is_post_hoc": true,
-      "independent_confirmation": false
+    "declaration": "experiments/results/sn_dense_v1_declaration.json",
+    "declaration_sha256": "9384c959bbd9e5c3cfb45eaaa339200354e96cc0decef64cdf57515677991f09",
+    "progress": "experiments/results/sn_dense_v1_progress.md",
+    "progress_sha256": "1fa767671fe0dd4d509f9144252206d78322ccb50dc469276f54b86bc08f86ce",
+    "development_full_provider_holdout": {
+      "two_seed_ensemble_clean_spell": 0.6472,
+      "two_seed_ensemble_feed_like_spell": 0.5058,
+      "previous_adopted_clean_spell": 0.64179,
+      "previous_adopted_feed_like_spell": 0.502586,
+      "seed_2026_clean_spell_vs_rebuilt_reference": [
+        0.6355,
+        0.6288
+      ],
+      "seed_2027_clean_spell": 0.6372,
+      "provider_and_feed_like_guards_pass": true,
+      "clean_improvement_screen_plus_01_passes": false,
+      "previously_exposed_development_matches": true
     },
-    "verification": "experiments/results/soccernet_capacity_verification.json",
-    "verification_sha256": "162715bda90c0a5d1edcf41ae8223804baf4fece819b07149a8f5efbae72ec07",
-    "declaration_sha256": "27e16319fd5d8ab430429732f74f4c3821651cce9f109e9fbabfc037a3951dc7",
-    "prediction_seal_sha256": "4a48909e18e45fae3ae133d9af1a3bc2c16569a5f93cb036aa0d49e1c3900449",
-    "prediction_csv_sha256": "68aa3a3e1e908e60f61ab2a68fef987504e097262f500c7374549c89332dcc0a"
+    "gar_valid_silver_note": "GAR-valid dense silver partly rewards agreement with the labelling rule; not neutral evidence",
+    "prediction_seal_sha256": "2afbde9f87492086825b6a79973956cc3247fea9d85965357526f4729d86612a",
+    "prediction_csv_sha256": "57ca788056ccf2f41839730fba492f15885c69f5788f35146ba1610b80b5b22b"
   },
   "promotion": {
     "type": "explicit_user_authorized_post_hoc_screen_exception",
-    "user_request": "yeah let's go",
-    "prior_context": "Promote width 96 as the working development baseline; explicitly preserve failed +.01 clean screen.",
+    "user_request": "let's promote this",
     "original_screen_passes": false,
     "automatic_promotion": false,
     "fitting_during_promotion": false,
@@ -441,33 +83,26 @@
     "public_diagnostic_known_before_authorization": true
   },
   "organizer_public_diagnostic": {
-    "report": "experiments/results/soccernet_capacity_public_check.json",
+    "report": "experiments/results/sn_dense_v1_public_check.json",
     "known_at_promotion": true,
     "diagnostic_only": true,
+    "spell_f1": 0.6303030303030303,
+    "macro_f1": 0.8513871111822523,
+    "previous_spell_f1": 0.5696969696969697,
     "used_for_model_or_hyperparameter_selection": false,
     "independent_confirmation": false
   },
-  "artifact_availability": {
-    "local_hash_verified": true,
-    "remote_uploaded": false,
-    "private_cache_default_still_predecessor": true,
-    "receipt": "experiments/results/soccernet_capacity_artifacts.json"
-  },
   "source_sha256": {
-    "experiments/current_baseline.py": "5873f6552174152b7d5baaa76fac7c352f65bbb8f36cea10c92a6bf992b42956",
-    "experiments/soccernet_baseline.py": "4945c65041ba6588b41171250a2cedf98bc1dc63fc65eef6382cd8cd50245aca",
-    "experiments/promote_soccernet_baseline.py": "484ed0e75e79a1da22b3e9d803297ff4f10578e85bdb38acce8d890bae22e3c5",
+    "experiments/current_baseline.py": "dbd220972123ceee6f4ddb9928f3bee0307aad0603259a57782a2419b0d34b15",
+    "experiments/sn_dense_baseline.py": "c9d6e5fc24943b4543862969c18b57f67f76daede49c315a0c8af20867ff8c9b",
+    "experiments/promote_sn_dense_baseline.py": "a7a9d030b32fd518960f1d97fdfa8e9dbb0b928b73fc270483a339dd0f9b01c0",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/sn_dense_public.py": "8fdc2a22373984abfcec3290a2c10b6a228d7d1eec2eb20f6ceb239cf23c677d",
     "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
-    "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
     "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
     "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
     "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
-    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
-    "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
-    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
-    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
-    "experiments/stress.py": "c4d9f47ea8e77e29bac74ea26831f4cd4597ca79ea3cadcb316183f84dcae32e",
-    "experiments/challenge.py": "204ac7ff7a8e530facd9e19fc7d264f2eb35698df1cda60bf32c7f6a720abba1"
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
   },
   "organizer_reference_labels_used_for_training": false,
   "historical_selection_records_preserved": true

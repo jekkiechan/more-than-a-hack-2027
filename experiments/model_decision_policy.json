@@ -1,6 +1,6 @@
 {
-  "version": 6,
-  "confirmed_utc_date": "2026-10-30",
+  "version": 7,
+  "confirmed_utc_date": "2026-10-31",
   "primary_order": [
     "spell_f1",
     "macro_f1"
@@ -16,15 +16,15 @@
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
   "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "Two-seed SoccerNet conditional H/A GRU ensemble with frozen original D paths",
-    "model": "joint_gru_soccernet_capacity_ensemble",
+    "family": "Two-seed dense-SoccerNet GRU ensemble with fine-tuned D paths",
+    "model": "joint_gru_sn_dense_ensemble",
     "status": "User-authorized working development baseline; independent confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
-    "baseline_manifest_sha256": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
+    "baseline_manifest_sha256": "76f18b3fa218e4dde357454dc3206b7eeb28ab97eda2862007fff8c987c04ec5",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "reason": "User-authorized post-hoc promotion: positive clean/feed-like gains and matched-control gains; provider guards pass; +.01 clean screen remains failed.",
-    "promotion_record": "experiments/results/baseline_soccernet_capacity_promotion.json",
-    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_combined_ensemble_v1.json",
+    "reason": "User-authorized post-hoc promotion: positive clean/feed-like development gains in both seeds; provider guards pass; +.01 clean screen remains failed.",
+    "promotion_record": "experiments/results/baseline_sn_dense_promotion.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_soccernet_capacity_ensemble_v1.json",
     "public_diagnostic_known_before_user_request": true
   },
   "pathcrf_component": {
@@ -56,7 +56,7 @@
       "experiments/results/feed_defect_profile.json",
       "experiments/results/stress_component_ablation.json"
     ],
-    "reference_recipe": "joint_gru_soccernet_capacity_ensemble"
+    "reference_recipe": "joint_gru_sn_dense_ensemble"
   },
   "lgbm_component": {
     "default_enabled": false,
@@ -67,6 +67,6 @@
   "clean_improvement_screen": {
     "default_delta": 0.01,
     "historical_failures_preserved": true,
-    "current_adoption_exception": "Explicit user decision; measured clean gain +.008584746; not a retroactive screen pass."
+    "current_adoption_exception": "Explicit user decision; two-seed clean gain +.0054 over the previous package; not a retroactive screen pass."
   }
 }
