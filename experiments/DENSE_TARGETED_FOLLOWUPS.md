@@ -123,7 +123,12 @@ closed historical scoring gates remain unchanged.
 
 Code and aggregate evidence: [PR #49](https://github.com/jekkiechan/more-than-a-hack-2027/pull/49).
 Exact derived inputs, model weights, native predictions and full evaluator
-outputs are being finalized in private [mtah-data PR #8](https://github.com/jekkiechan/mtah-data/pull/8).
+outputs are archived in private [mtah-data PR #8](https://github.com/jekkiechan/mtah-data/pull/8).
+A fresh isolated remote download verified all 338 manifest entries. The restore
+check recovered 241 original-path files (1,277,182,412 bytes), with zero missing
+files or size/hash mismatches. See the [remote verification receipt](results/dense_targeted_followups_remote_verification.json)
+for pinned commits and manifest hash. The code/results snapshot is `d7bbe9d`;
+this delivery receipt is added afterward to avoid circular archive hashes.
 The private full boundary output includes transition locations; its public
 aggregate preserves metrics and binds the original digest. Its separate
 execution-incident receipt discloses an accidental duplicate deterministic
