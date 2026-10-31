@@ -6,7 +6,7 @@ description: Prepare reusable external possession features or resolve whole-matc
 # Reusable external feature preparation
 
 1. Read [STATUS](../../../docs/research/STATUS.md) and the
-   [code map](../../../experiments/AGENTS.md#6-code-map). Restore verified private
+   [code map](../../../experiments/README.md#code-map). Restore verified private
    arrays first. Missing cache access is not a reason to download organizer
    labels, rebuild external labels, or retrain a model.
 2. Use [preparation.py](../../../experiments/preparation.py) and the existing

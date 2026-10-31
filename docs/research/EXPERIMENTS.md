@@ -1,8 +1,14 @@
 # Experiment index
 
-Reviewed 2026-10-30. Find evidence here; adoption and next work live in
+Reviewed 2026-10-31 through PR #43. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
+
+## Dense SoccerNet supervision
+
+| ID / state | Scope / outcome | Evidence |
+| --- | --- | --- |
+| `sn_dense_v1` — completed; D2 separately user-adopted | Dense touch-stream silver H/A/D labels and fine-tuned D paths. Two-seed ensemble .6472/.5058 clean/feed-like on exposed full-provider development; provider/stress guards pass, +.01 clean screen not met. Public diagnostic .6303 spell on 17 references, known before authorization; gate closed. GAR-valid silver metrics are distinct from external development and independent gold labels. | [Label recipe and QA](../../experiments/SOCCERNET_DENSE.md), [training harness](../../experiments/SN_DENSE_HARNESS.md), [frozen declaration](../../experiments/results/sn_dense_v1_declaration.json), [sealed progress/readout](../../experiments/results/sn_dense_v1_progress.md), [public check](../../experiments/results/sn_dense_v1_public_check.json), [promotion](../../experiments/results/baseline_sn_dense_promotion.json), [current package](../../experiments/BASELINE.md) |
 
 ## SoccerNet matched training follow-up
 
@@ -14,7 +20,7 @@ Detailed reports own their original selection rules and aggregate JSON paths.
 
 | ID | Scope / outcome | Reports |
 | --- | --- | --- |
-| `primary-tracking` | Fixed Sportec match split; gap-augmented boosting selected before test. Frozen-ball D shortcut limits transfer. | [Original report](../../experiments/README.md), [state machine](../../experiments/STATE_MACHINE.md), [temporal](../../experiments/TEMPORAL.md), [supervised](../../experiments/SUPERVISED.md), [robust](../../experiments/ROBUST.md) |
+| `primary-tracking` | Fixed Sportec match split; gap-augmented boosting selected before test. Frozen-ball D shortcut limits transfer. | [Original report](../../experiments/PRIMARY_TRACKING.md), [state machine](../../experiments/STATE_MACHINE.md), [temporal](../../experiments/TEMPORAL.md), [supervised](../../experiments/SUPERVISED.md), [robust](../../experiments/ROBUST.md) |
 | `refinement` | Features/capacity/weights/ensembles/decoder; external confirmation improved, competition transfer weak. No .90 competition target or intrinsic ceiling established. | [REFINEMENT](../../experiments/REFINEMENT.md) links individual ablations; [protocol](../../experiments/REFINE_PROTOCOL.md), [headroom](../../experiments/HEADROOM.md), [errors](../../experiments/REFINE_ERRORS.md) |
 | `pathcrf-transfer` | Pretrained H/A model; audit match exposure and roster imputation. Native output lacks D. | [PATHCRF](../../experiments/PATHCRF.md), [challenge transfer](../../experiments/CHALLENGE_TRANSFER.md), [data audit](../../experiments/PATHCRF_DATA.md) |
 | `multisource` | Metrica/SkillCorner reveal provider-specific D shortcuts. Historical development, not fresh confirmation. | [OPEN_DATA](../../experiments/OPEN_DATA.md), [evaluation provenance](../../experiments/eval_set/README.md), [benchmark audit](../../experiments/BENCHMARK_AUDIT.md) |
@@ -25,7 +31,6 @@ Detailed reports own their original selection rules and aggregate JSON paths.
 | `light-corruption` | 90 new + 30 reused comparisons; ball-only teams explicitly adopted as robustness tradeoff. D replacements not adopted. | [LIGHT_CORRUPTION](../../experiments/LIGHT_CORRUPTION.md), [baseline improvements](../../experiments/BASELINE_IMPROVEMENTS.md), [BASELINE](../../experiments/BASELINE.md) |
 | `tracking-pilot` | 80 pooled development evaluations; matched gap/suppression features lose overall spell. Fusion quality/player calibration unresolved. | [TOP_THREE_PILOT](../../experiments/TOP_THREE_PILOT.md) |
 | `confidence-abstention` | 135 evaluations with exact baseline parity; four X thresholds and matched hold controls all lose stress spell. Primary .60 improves clean spell slightly but loses macro/short-spell recall. No adoption. | [CONFIDENCE_ABSTENTION](../../experiments/CONFIDENCE_ABSTENTION.md), [declaration](../../experiments/results/confidence_abstention_declaration.json), [results](../../experiments/results/confidence_abstention.json) |
-
 | `temporal-competition-check` | User-requested four-candidate public diagnostic, completed; gate closed. Dropout GRU .5818, robustness blend .5818, clean blend .5500, Full127 .5371 spell. | [TEMPORAL_COMPETITION_CHECK](../../experiments/TEMPORAL_COMPETITION_CHECK.md), [declaration](../../experiments/results/temporal_competition_declaration.json) |
 | `stress-component-ablation` | GRU composite-stress loss is mostly per-frame sampling loss, absent from the organizer feed; under feed-like stress every GRU seed beats the baseline. Guardrail switched to feed-like (decided after composite results). | [STRESS_COMPONENT_ABLATION](../../experiments/STRESS_COMPONENT_ABLATION.md), [results](../../experiments/results/stress_component_ablation.json) |
 | `joint-gru-slotdrop-promotion` | User-authorized promotion of the sealed slot-dropout joint GRU to `joint_gru_slotdrop_v1`; no refit or rescoring. | [BASELINE](../../experiments/BASELINE.md), [receipt](../../experiments/results/baseline_joint_gru_promotion.json) |
@@ -39,6 +44,8 @@ check live PR state before resuming.
 
 | ID / PR | Scope / outcome | Pinned report |
 | --- | --- | --- |
+| `label-free-followup` / #35 | Completed context gaps, possession-rate diagnostic and target adaptation; all no go against the former combined-objective baseline. Open unmerged PR at review; not a matched comparison with dense SoccerNet. | [Summary at 143d010](https://github.com/jekkiechan/more-than-a-hack-2027/blob/143d01025215133238b45381c9d0f6aba0943b63/experiments/LABEL_FREE_FOLLOWUP.md) |
+| `objective-alignment` / #25 | Draft loss-study work; later combined-objective adoption is separately recorded below. Check live PR scope before resuming. | [PR #25](https://github.com/jekkiechan/more-than-a-hack-2027/pull/25), [inspected head 7f70a0a](https://github.com/jekkiechan/more-than-a-hack-2027/commit/7f70a0aa55c946feca37ce12da25e22533dd1ab2) |
 | `context-pipeline` / #8 | Context helps its matched external protocol; preprocessing-only does not. No adoption. | [PIPELINE at 7433fef](https://github.com/jekkiechan/more-than-a-hack-2027/blob/7433fef721a810a2f8af383ca29fad7d13fa28d1/experiments/PIPELINE.md), [merged history](../../experiments/RESEARCH_LOG.md) |
 | `live-attribution` / #11 | Pooled-D study; small weighted-team gain has uncertainty spanning zero and does not reproduce on public diagnostic. | [LIVE_ATTRIBUTION at b93ce36](https://github.com/jekkiechan/more-than-a-hack-2027/blob/b93ce3600853a72aed1100c9f8919aff9341e12b/experiments/LIVE_ATTRIBUTION.md) |
 | `possession-gaps` / #13 | Reports only. Short-spell weighting, boundaries, ball-hidden averaging, duration priors and provider transfer measured; no overall replacement. | [POSSESSION_GAPS at 33c03ca](https://github.com/jekkiechan/more-than-a-hack-2027/blob/33c03caaddcc4a33ebc29637858aa2b3cd2cf2a9/experiments/POSSESSION_GAPS.md), [next studies](https://github.com/jekkiechan/more-than-a-hack-2027/blob/33c03caaddcc4a33ebc29637858aa2b3cd2cf2a9/experiments/NEXT_RESEARCH.md) |
@@ -96,7 +103,7 @@ tracks dated numbers without mixing evaluation protocols.
 [Data](../../experiments/DATASETS.md), [licenses](../../experiments/LICENSES.md),
 [literature/metric compatibility](../../experiments/REFERENCE_METHODS.md),
 [early error analysis](../../experiments/ERROR_ANALYSIS.md),
-[historical task setup](../WORKPLAN.md).
+[original setup in Git history](https://github.com/jekkiechan/more-than-a-hack-2027/blob/96314f8f4489ae356afea03111fa4b0dbfd40ec5/docs/WORKPLAN.md).
 
 Add a stable study ID, proposed/running/completed state, protocol, outcome and
 evidence link for a new study. The report should link its exact JSON/receipt
@@ -128,3 +135,22 @@ paths. Replace the proposal outcome when complete; do not duplicate scorecards.
 | ID and state | Scope and outcome | Evidence |
 | --- | --- | --- |
 | `smart-tagging-validation-v1` — completed; no adoption | Genuine-XML label-free audit plus one explicitly requested fixed public diagnostic. Missing-ball H/A prior, max odds multiplier 2, 1s taper, unchanged model and cost-3 decoder. Public spell .557576 → .537143; macro .854088 → .866346; predicted possessions 16 → 18 vs 17 references. No public tuning; no independent/external efficacy claim. Luna artifact replay passes. | [Report/protocol](../../experiments/SMART_TAGGING_VALIDATION.md), [declaration](../../experiments/results/smart_tagging_declaration.json), [public result](../../experiments/results/smart_tagging_public_check.json), [label-free audit](../../experiments/results/smart_tagging_label_free_audit.json), [verification](../../experiments/results/smart_tagging_verification.json), [artifacts](../../experiments/results/smart_tagging_artifacts.json) |
+
+## Settled directions
+
+Revisit only with a distinct mechanism and matched external evidence. These
+outcomes describe their tested recipes/cohorts, not universal impossibility.
+
+| Direction | Evidence / limitation |
+| --- | --- |
+| Short-gap interpolation or broad corruption as a general fix | [Tracking pilot](../../experiments/TOP_THREE_PILOT.md), [realistic corruption](../../experiments/REALISTIC_CORRUPTION.md); coverage alone did not improve spell F1. |
+| Ball-aware D heads | [Provider shortcuts](../../experiments/BENCHMARK_AUDIT.md), [player-only D repair](../../experiments/DEADBALL_TRANSFER.md). |
+| PathCRF default, fixed confidence/hold gates, or LightGBM added to the GRU | [PathCRF retention](../../experiments/PATHCRF_ENSEMBLE.md), [abstention](../../experiments/CONFIDENCE_ABSTENTION.md), [joint LightGBM](../../experiments/JOINT_LGBM.md), [feed-like ablation](../../experiments/STRESS_COMPONENT_ABLATION.md). |
+| More shifted-core, frozen contact-adapter, native instantaneous-geometry or turnover-cost sweeps on the same cohort | [Window overlap](../../experiments/WINDOW_OVERLAP.md), [contact memory](../../experiments/CONTACT_MEMORY.md), [native short spells](../../experiments/NATIVE_SHORT_SPELL.md), [turnover v2](../../TURNOVER_DECODER_V2.md). Short recall gains did not establish overall spell gain. |
+| Smart Tagging cap/taper/taxonomy tuning on the public window | [Fixed diagnostic](../../experiments/SMART_TAGGING_VALIDATION.md) completed; no public-driven follow-up sweep. |
+| Further SoccerNet objective/scale sweeps without a new hypothesis | [Matched training follow-up](../../experiments/SOCCERNET_FOLLOWUP.md) found no qualifying objective; [dense progress](../../experiments/results/sn_dense_v1_progress.md) found dense H/A alone, longer training and GAR-only gains did not transfer, and 11/22/45-game scaling was flat. |
+
+Native player-frame blanking, calibrated player defects and ball-fusion
+confidence remain historical proposals, not current priorities or completed
+causal studies. See [slot robustness](../../experiments/GRU_SLOT_ROBUSTNESS.md)
+and [tracking directions](../../experiments/DIRECTIONS.md) before revisiting.

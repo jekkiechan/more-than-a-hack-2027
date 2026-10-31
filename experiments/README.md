@@ -1,153 +1,72 @@
-# Original tracking baseline experiment
+# Possession research code
 
-Historical report: the original Sportec experiment and frozen selection are
-preserved below. For the adopted package and latest draft results, use
-[current status](../docs/research/STATUS.md); for all experiment families, use
-[the index](../docs/research/EXPERIMENTS.md). Restore current models with
-[BASELINE.md](BASELINE.md). The reproduction commands below belong to this
-completed study, not a new selection or repeated public-scoring loop.
+Start with [current status](../docs/research/STATUS.md), then use the
+[study index](../docs/research/EXPERIMENTS.md) to find the relevant evidence.
+[BASELINE](BASELINE.md) owns the current package and restore/inference commands.
+The first Sportec comparison is the historical [primary tracking report](PRIMARY_TRACKING.md).
 
-We reached **0.9298 frame macro F1** and **0.6232 possession-spell F1** on a
-held-out Sportec match with the model selected before test access. With synthetic
-ball-observation gaps, it scored **0.9090 / 0.5355**. These are external benchmark
-results, not demonstrated accuracy on the hackathon match.
+## Choose the right procedure
 
-Sportec freezes ball coordinates during dead play. That makes dead-ball detection
-unusually easy, even though explicit possession/status fields never enter model
-features. Read [the source audit](BENCHMARK_AUDIT.md) before interpreting the score.
-Away-team F1 is 0.8673; reaching 0.90 macro F1 does not mean every class reaches it.
+| Task | Read |
+| --- | --- |
+| Restore data or weights | [Artifact restore skill](../.agents/skills/possession-restore/SKILL.md) |
+| Prepare features or provider splits | [Preparation skill](../.agents/skills/possession-preparation/SKILL.md) |
+| Declare or run a study | [Experiment skill](../.agents/skills/possession-experiment/SKILL.md) |
+| Compare scores or recommend a model | [Readout skill](../.agents/skills/possession-readout/SKILL.md) |
+| Maintain these docs | [Documentation map](../docs/research/README.md) |
 
-## Data and evaluation
+## Vocabulary
 
-- Primary: [Sportec Open DFL, Bassek et al., version 1](https://doi.org/10.6084/m9.figshare.28196177.v1),
-  CC BY 4.0, provider H/A/D labels. Downloads verify published sizes and checksums.
-- Fixed whole-match split: train J03WMX/J03WN1/J03WOH, validation J03WOY,
-  test J03WPY. Düsseldorf appears in each partition; this is a new match, not an
-  unseen team or provider. No random-frame splitting.
-- Auxiliary: [SkillCorner open data](https://github.com/SkillCorner/opendata), MIT,
-  five separately partitioned matches. Its H/A labels are algorithmic and null
-  labels remain X. It does not establish three-class H/A/D accuracy. See
-  [DATASETS.md](DATASETS.md).
-- Metrics: unchanged competition evaluator, with explicit breaks between halves
-  and time discontinuities. Frame macro F1 averages H/A/D F1. Spell F1 matches
-  H/A intervals at temporal IoU 0.3, 0.4, 0.5, 0.6 and 0.7, then averages F1.
-- Selection: highest validation spell F1 among models with frame macro F1 at
-  least 0.90; otherwise highest frame macro F1. All four methods and the selected
-  model were frozen and hashed before test access. Stress results did not select
-  parameters. No challenge ground truth was used for training or model selection.
+| Term | Meaning |
+| --- | --- |
+| Providers / dev cohort | Sportec (J03WOY), Metrica (Game 3), SkillCorner (3 IDs). Five dev matches, averaged within provider, then equally across providers. 13 TRAIN matches = 3 Sportec + 2 Metrica + 8 SkillCorner. Defined in [`eval_set/manifest.json`](eval_set/manifest.json). |
+| Confirmation matches | J03WPY (original test), J03WR9 (PathCRF comparison), J03WQQ (refinement confirmation). All are now spent. No fresh independent set exists. |
+| **Pooled** | Trained on all providers. Used for deployment fits. |
+| **D-only provider holdout** | The D head excludes the provider, but H/A is pooled. Older studies (≤ PR #19) used this. **Not** a full-pipeline transfer claim. |
+| **Full provider holdout** | Every learned H/A, D and normalization component excludes the provider. The active selection evidence uses full provider holdouts; see the current policy for guards. |
+| Views | `clean`/native, `legacy` (old coarse augmentation), `composite` stress (frozen [tracking_corruption](tracking_corruption.py)), `feed_like` (composite minus per-frame sampling loss and regional blanking; **the current stress guardrail**), `ball_gaps`, `no_sampling`, `no_regional`. See [stress_components](stress_components.py). |
+| Guardrails | The active rules are in [`model_decision_policy.json`](model_decision_policy.json). Frozen studies retain their original thresholds and references. Explicit promotion exceptions do not rewrite a failed screen. |
+| Gate | A one-time exclusive marker for organizer public scoring. Once claimed it stays closed, even after an error. Read saved results; never re-score. |
+| Shortcuts | Sportec freezes the ball during D. Metrica blanks the ball during D. SkillCorner's ≥12-visible filter drops most D frames. This is why ball-based D heads do not transfer and why the D head is player-only. |
 
-## Held-out results
+**Never subtract across protocols.** For example, .5740 (D-only holdout) and
+.5338 (full holdout) are the *same* old baseline. Public-window deltas below
+~.06 spell are about one possession out of 17.
 
-One test match, J03WPY: 146,211 graded frames at 25 Hz, 421 reference possessions.
-The masked condition hides 40.25% of ball coordinates in label-independent random
-blocks, expected rate 41%, mean gap one second, seed 2026. All methods receive the
-same mask; player coordinates remain available. Real camera occlusions are more
-structured, so this is a sensitivity test rather than a broadcast benchmark.
+## Code map
 
-| Method | Clean frame macro F1 | Clean spell F1 | Masked frame macro F1 | Masked spell F1 |
-| --- | ---: | ---: | ---: | ---: |
-| Nearest team | 0.3662 | 0.0895 | 0.2892 | 0.1253 |
-| Nearest team + geometric dead-ball cue | 0.8462 | 0.1147 | 0.6155 | 0.1285 |
-| [Confirmed-control state machine](STATE_MACHINE.md) | 0.9095 | 0.5679 | 0.8528 | 0.4681 |
-| [Gaussian mixtures + HMM](TEMPORAL.md) | 0.9151 | 0.5523 | 0.8764 | 0.4463 |
-| [Gradient boosting + Viterbi](SUPERVISED.md) | 0.9325 | 0.6311 | 0.7708 | 0.2934 |
-| **[Gap-augmented boosting + Viterbi](ROBUST.md), preselected** | **0.9298** | **0.6232** | **0.9090** | **0.5355** |
+**Shared libraries** (import these, do not fork them):
 
-The clean-trained model's slightly higher test score does not change our
-validation-based selection. Differences this small on one match are not strong
-evidence of superiority. The selected model's validation scores were 0.9188 frame
-macro F1 and 0.6108 spell F1. A separate dead/alive then H/A boosting variant was
-also tested on validation and did not improve the selection objective.
+| Module | Role |
+| --- | --- |
+| `metrics.py` (`evaluate_tracking`), `eval_set/protocol.py` | Official scorer without joining halves; cohort and fold protocol, `sha256`, paired bootstrap, D-boundary summary |
+| `supervised.py`, `refine_features.py`, `refine_domain.py` | Frame features (geometry/motion, physical, player-only D features) and the HGB+Viterbi decoder |
+| `robust.py`, `stress.py`, `tracking_corruption.py`, `stress_components.py` | Ball masks, composite corruption, component-gated corruption |
+| `learned_temporal.py` (`lt`), `had_gru.py`, `factorized_had.py`, `soccernet_capacity_model.py` | Sequence windows, masks, GRU/TCN and factorized H/A/D components. See `sn_dense_baseline.py` for the adopted dense H/A and fine-tuned D paths. |
+| `live_gap_experiment.py` | `feature_view(...)` builds the joint-GRU input record. Also used at inference. |
+| `joint_lgbm.py`, `temporal_lgbm.py`, `possession_geometry.py` | Full H/A/D LightGBM features, ordered temporal features, control geometry and anchors |
+| `datasets.py`, `metrica_open.py`, `skillcorner_had.py`, `audit_dataset.py` | Source download and normalization into the shared NPZ contract |
+| `preparation.py` | Validated manifest folds and hash-verified, reusable unnormalized joint feature caches for new runners; see [preparation skill](../.agents/skills/possession-preparation/SKILL.md) |
+| `soccernet_segments.py`, `soccernet_dense_labels.py`, `soccernet_dense_qa.py` | SoccerNet clip assembly, dense touch-stream silver labels and label QA |
+| `challenge.py` | Organizer tracking prep. Never loads ground truth. |
+| `sn_dense_train.py`, `sn_dense_run.py`, `sn_dense_baseline.py` | Dense silver-label training harness, bounded study runner and dense-package inference |
+| `current_baseline.py` | `predict` with the active manifest; dispatches on `architecture.kind` |
 
-![Clean and masked held-out scores](results/primary_comparison.png)
+**Study runners** (one per study, frozen): `*_experiment.py`,
+`confidence_abstention.py`, `stress_component_ablation.py`,
+`temporal_competition_{fit,check,resume}.py`, `light_corruption.py`,
+`refine_*.py`, `promote_*_baseline.py`, `native_short_spell*.py`,
+`turnover_decoder*.py`. The native runtime wrapper preserves its reviewed
+pre-fit mass-assertion amendment; it is not a general training API. Treat these as records. Do not edit
+them to run a new study; write a new runner that imports the libraries.
+**Read-only audits:** `*_audit*.py`, `spell_*`, `feed_defect_profile.py`,
+`headroom.py`, `error_analysis.py`, `verify_temporal_followup.py`.
 
-For the selected model on the clean test:
+## Data and outputs
 
-- Accuracy 94.54%; H/A/D F1 **0.9233 / 0.8673 / 0.9989**.
-- Correct team label on reference live frames: 90.23%.
-- Estimated home possession **63.83%**, reference **62.84%**: 0.99 percentage
-  points error, each calculated as H/(H+A).
-- Predicted 319 possession spells versus 421 reference spells. At IoU 0.5,
-  229 match, 192 reference spells are missed, and 90 predictions are unmatched.
-- Official 1,000-draw bootstrap, 5th–95th percentiles: macro F1
-  **[0.9183, 0.9394]**, spell F1 **[0.5838, 0.6616]**. These intervals are
-  conditional on this match, not uncertainty across leagues or tracking providers.
-
-The best observed spell F1 is about 0.63 in these experiments. This is not an
-estimated ceiling. Accurate long possessions can dominate frame scores while
-short turnovers and interval boundaries still fail the spell metric.
-The [post-hoc error analysis](ERROR_ANALYSIS.md) finds that possessions under
-three seconds account for 68.2% of missed spells, despite occupying only 7.9% of
-live time. No model parameters were changed after that analysis.
-
-## Industry and open-source comparison
-
-[The reference-method audit](REFERENCE_METHODS.md) distinguishes compatible
-metrics from reported results. Borghesi et al. (2023) reported **86.2% possession
-accuracy** and **89.2% dead/alive accuracy** for a temporal convolutional network
-on confidential professional data. Those are accuracy figures, not possession
-spell F1. We did not find a verified universal industry standard for this
-competition's particular F1 definition.
-
-PathCRF has public code and pretrained weights, but its supplied trial 140 was
-trained on our primary validation and test matches. A separate evaluation must
-use a match excluded from that checkpoint and remove the stock inference path's
-use of true in-play episodes. Its published event F1 is also a different task.
-The [separate pretrained-model comparison](PATHCRF.md) uses J03WR9. On that same
-match, PathCRF plus a frozen geometric dead-ball rule scored **0.9382 macro F1 /
-0.6015 spell F1**, versus **0.9320 / 0.6122** for our frozen model. Native PathCRF
-H/A F1 on reference-live frames was **0.9148**. It is a competitive reusable model;
-these small differences on one match do not establish a reliable winner.
-
-## Reproduce
-
-From the repository root, with Python 3.12:
-
-```sh
-python -m pip install -r experiments/requirements.txt
-python experiments/audit_dataset.py
-
-python experiments/state_machine.py tune --dead-ball \
-  --split data/external_audit/sportec/split.json \
-  --data data/external_audit/sportec/processed \
-  --out data/experiments/state_machine/sportec
-python experiments/state_machine.py tune --refine \
-  --split data/external_audit/sportec/split.json \
-  --data data/external_audit/sportec/processed \
-  --out data/experiments/state_machine/sportec
-python experiments/temporal.py --split data/external_audit/sportec/split.json \
-  --out data/experiments/temporal_sportec
-python experiments/supervised.py
-python experiments/robust.py --baseline data/experiments/supervised/model.joblib
-
-python -m unittest discover -s experiments/tests -v
-python -m experiments.benchmark freeze
-python -m experiments.benchmark test
-python -m experiments.export_reports
-```
-
-Training uses CPU only. Roughly 1.9 GB of Sportec source data is downloaded for
-the primary five matches. Raw data, processed arrays, model weights and frame
-predictions remain under gitignored `data/`. The benchmark refuses to overwrite
-an existing frozen manifest or restart a test evaluation. Use a fresh checkout
-for a reproduction, not repeated test-driven tuning.
-
-The tracked `results/primary_test.json` contains aggregate scores and
-`results/primary_manifest.json` records the exact configuration and SHA-256 hashes.
-The local runtime manifest is `data/experiments/benchmark/frozen_manifest.json`.
-No model should be selected again using the reported test results.
-
-## Challenge inference
-
-After placing the organizer's data in the paths configured by `games.py`:
-
-```sh
-python -m experiments.benchmark challenge
-```
-
-This writes and validates the 199,319-row submission
-`data/experiments/benchmark/challenge_robust.csv`, using the validation-selected
-model. Frames outside the published halves are X. Inference reads no challenge
-ground truth. The file is a transfer candidate; it has not established 0.90
-accuracy on the hackathon's tracking distribution and was not submitted to the
-competition. Organizer assets and per-frame predictions are not published.
+Run commands from the repository root. Use pinned `requirements*.txt` in this
+directory (CPU PyTorch for neural contracts); [CI](../docs/CI.md) lists checks.
+Organizer assets and external arrays, checkpoints and frame predictions belong
+under ignored `data/` or private storage. Commit aggregate results and receipts
+in `results/`, detailed reports alongside the runner, and one entry per study
+in the index. Never reset a completed scoring gate.
