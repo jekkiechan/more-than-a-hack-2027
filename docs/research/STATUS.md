@@ -19,12 +19,13 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 ## Next work
 
-1. Investigate fitting the touch rule to provider possession definitions and
-   source-conditioned heads, as identified after the dense study. These are
-   proposals, not completed comparisons. Check the
-   [dense study progress](../../experiments/results/sn_dense_v1_progress.md)
-   and [label recipe/limits](../../experiments/SOCCERNET_DENSE.md) before declaring
-   a bounded matched study.
+1. Execute the [supervision alignment plan](../../experiments/SUPERVISION_ALIGNMENT_PLAN.md):
+   audit provider event mapping before calibrating the GAR touch rule; compare
+   shared versus source-specific output projections under matched dense D2
+   training; assess full-match stoppage coverage when aligned data arrive.
+   Three Luna workstreams supply feasibility reports and synthetic prototypes.
+   These are proposed comparisons, not fitted models or new score evidence.
+   Freeze an execution declaration after event-adapter and fold-artifact checks.
 2. Pursue fresh external dense possession evidence and authorized true-broadcast
    access. The [independent-data search](../../experiments/INDEPENDENT_DATA_SEARCH.md)
    acquired a SoccerTrack panorama sample; the

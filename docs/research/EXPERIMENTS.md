@@ -1,5 +1,13 @@
 # Experiment index
 
+## Supervision alignment proposals — 31 October 2026
+
+| ID / state | Scope | Evidence |
+| --- | --- | --- |
+| `provider_touch_alignment_v1` — proposed; mapping prerequisite | Audit provider event semantics and calibrate only on eligible TRAIN matches; exclude held-out providers from calibration. No real calibration or fitting. | [Integrated plan](../../experiments/SUPERVISION_ALIGNMENT_PLAN.md), [mapping audit and scaffold](../../experiments/PROVIDER_TOUCH_CALIBRATION.md) |
+| `source_heads_v1` — proposed; synthetic prototype | Matched shared, H/A-separated and H/A+D-separated projections; fixed target-task head for inference. No fitted candidate or parity claim. | [Integrated matrix](../../experiments/SUPERVISION_ALIGNMENT_PLAN.md), [head prototype](../../experiments/SOURCE_CONDITIONED_HEADS.md) |
+| `full_match_coverage_v1` — conditional proposal | Separate complete stoppage/restart coverage from labeled hours; keep five-second context. Requires aligned tracking and adequate event/interval semantics. | [Readiness and coverage design](../../experiments/FULL_MATCH_STOPPAGES.md) |
+
 Reviewed 2026-10-31 through PR #43. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
