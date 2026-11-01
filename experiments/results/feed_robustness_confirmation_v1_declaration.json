@@ -1,0 +1,116 @@
+{
+  "calibration": {
+    "ball_missing_fraction": 0.40692572565263097,
+    "calibration": "Unlabeled tracking only; missingness does not identify true occlusion causes",
+    "coordinate_errors": "Assumed ranges; no coordinate ground truth available",
+    "gap_bin_probability": [
+      0.08666666666666667,
+      0.02,
+      0.006666666666666667,
+      0.0,
+      0.006666666666666667,
+      0.35333333333333333,
+      0.5266666666666666
+    ],
+    "gap_count": 150,
+    "gap_edges_seconds": [
+      0.08,
+      0.2,
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0,
+      30.0
+    ],
+    "gap_quantiles_seconds": [
+      0.47200000000000003,
+      10.72,
+      30.0,
+      30.0
+    ],
+    "visible_player_quantiles": [
+      18.0,
+      21.0,
+      22.0,
+      22.0,
+      22.0
+    ]
+  },
+  "components": [
+    "coordinates",
+    "ball_gaps",
+    "slot_gaps",
+    "id_swaps"
+  ],
+  "condition": "Score only if the frozen feed_robustness_v1 winner improves feed spell over baseline and passes its guards; otherwise record skipped.",
+  "evidence": "New synthetic realizations on the same previously exposed five matches; not independent-match confirmation.",
+  "matches": [
+    {
+      "group_id": "J03WOY",
+      "match": "J03WOY",
+      "path": "data/external_audit/sportec/processed/J03WOY.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+      "source": "sportec"
+    },
+    {
+      "group_id": "metrica_3",
+      "match": "metrica_3",
+      "path": "data/external/processed/metrica_3.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+      "source": "metrica"
+    },
+    {
+      "group_id": "skillcorner_had_1996435",
+      "match": "skillcorner_had_1996435",
+      "path": "data/external/processed/skillcorner_had_1996435.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+      "source": "skillcorner"
+    },
+    {
+      "group_id": "skillcorner_had_1996436",
+      "match": "skillcorner_had_1996436",
+      "path": "data/external/processed/skillcorner_had_1996436.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+      "source": "skillcorner"
+    },
+    {
+      "group_id": "skillcorner_had_2006229",
+      "match": "skillcorner_had_2006229",
+      "path": "data/external/processed/skillcorner_had_2006229.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+      "source": "skillcorner"
+    }
+  ],
+  "organizer_reference_access": false,
+  "parent_declaration_sha256": "8810a724fe20028524337d70dbaea272b7c8d83009dfcd70ea72a950a8b9d105",
+  "seeds": [
+    551201,
+    551202
+  ],
+  "selection": "Use the exact earlier winner. No reselection, threshold, mixture, seed or decoder tuning from these results.",
+  "source_sha256": {
+    "experiments/dead_transfer.py": "f38aa33ddf8b7619973cadbe99b9c16c99e37cfa466aa8a5e2a05bb456ad3186",
+    "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+    "experiments/feed_robustness_confirmation_v1.py": "ad5561bda2d96c8c97def257eb3204c0e7427acb42e7c231f39cd8156005c88f",
+    "experiments/feed_robustness_v1.py": "fd2d512a7e1752a4b545946c532a1e658593d49c14508b169bde0ad0fcac2087",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/multisource_eval.py": "1e166cf7169c81ca1393a8cd503f8fd99891ce7693156c73133f8002c847f592",
+    "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+    "experiments/stress.py": "c4d9f47ea8e77e29bac74ea26831f4cd4597ca79ea3cadcb316183f84dcae32e",
+    "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5"
+  },
+  "study": "feed_robustness_confirmation_v1",
+  "training": false,
+  "utc": "2026-11-01T04:50:08.252955+00:00"
+}
