@@ -14,6 +14,13 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 
 ## Latest delivery
 
+The completed [stacking study](../../experiments/SMART_STACKING_V1.md) and all
+495 independent replays are local and verified. GitHub push/PR creation was
+rejected by automatic approval review because testing authorization did not
+explicitly cover external publication. The checked restricted-site update is
+also paused pending approval. Current site version 20 remains deployed.
+[Actual delivery state](../../experiments/results/smart_stacking_v1_delivery.json).
+
 The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
 and research site version **20**, with desktop/mobile checks and restricted
 access revision 2 unchanged. The two pooled models, full CSVs and sealed native

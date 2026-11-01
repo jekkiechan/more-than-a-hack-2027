@@ -227,6 +227,12 @@ The [artifact receipt](results/smart_stacking_v1_artifacts.json) records
 **582 locally verified native/metadata files / 2,286,245,722 bytes**, separate
 from 230 hash-verified inherited dependencies. New reconstructive artifacts
 are local in ignored storage; new remote upload and independent remote restore
-are not claimed. Source and aggregate evidence are delivered through the
-research PR. Research-site publication is recorded in a separate delivery
-receipt after deployment, with its existing audience preserved.
+are not claimed. Source and aggregate evidence are committed locally. Automatic approval review
+rejected the GitHub push/PR because the request authorized testing but not
+external publication. GitHub and research-site publication are paused pending
+explicit user approval. The locally checked site preserves restricted access;
+its current deployed version remains 20. The
+[delivery snapshot](results/smart_stacking_v1_delivery.json) records the actual
+state and clarifies that the earlier artifact receipt names an intended PR
+destination, not an observed publication. The report and complete publication
+draft are ready for review; no new remote artifact upload is claimed.
