@@ -1,0 +1,933 @@
+{
+  "aggregate_sha256": "7ddd7c86108443d144cd85e96b2a903c441bac8a792da975f346a21c83d0cbdf",
+  "all_118_scalar_receipts_verified": true,
+  "cross_provider_mean": {
+    "clean": {
+      "d_f1": 0.8531534666301458,
+      "macro_f1": 0.8592677404415525,
+      "spell_f1": 0.6488400457610745
+    },
+    "feed_like": {
+      "d_f1": 0.8528985306710432,
+      "macro_f1": 0.8179619156145962,
+      "spell_f1": 0.5063572661123348
+    }
+  },
+  "cross_provider_minus_adopted": {
+    "clean": {
+      "d_f1": 0.0029768892595711804,
+      "macro_f1": 0.0015905451391776682,
+      "spell_f1": 0.001625486686702704
+    },
+    "feed_like": {
+      "d_f1": 0.005177488353847126,
+      "macro_f1": 0.0024266019703940156,
+      "spell_f1": 0.0005464766875828975
+    }
+  },
+  "family_best": {
+    "anchor_segments": {
+      "config": {
+        "confidence": 0.55,
+        "family": "anchor_segments",
+        "id": "r092",
+        "seconds": 0.3,
+        "sigma": 0
+      },
+      "passes_guards": true,
+      "scores": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9008651319128776,
+              "d_precision": 0.9156234236712982,
+              "d_recall": 0.886575050507293,
+              "macro_f1": 0.9244137445383115,
+              "predicted_spell_count": 357.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.8064952638700946,
+              "weighted_70_30": 0.8418708080705597
+            },
+            "SkillCorner": {
+              "d_f1": 0.7533616547171665,
+              "d_precision": 0.8946048062493414,
+              "d_recall": 0.6507735132095696,
+              "macro_f1": 0.7841717725081766,
+              "predicted_spell_count": 405.3333333333333,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.48181486413599434,
+              "weighted_70_30": 0.5725219366476489
+            },
+            "Sportec": {
+              "d_f1": 0.9024495598017734,
+              "d_precision": 0.9406506327870463,
+              "d_recall": 0.8672301886792453,
+              "macro_f1": 0.8686392895951546,
+              "predicted_spell_count": 356.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6615763546798029,
+              "weighted_70_30": 0.7236952351544084
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8522254488106059,
+            "d_precision": 0.916959620902562,
+            "d_recall": 0.8015262507987027,
+            "macro_f1": 0.8590749355472141,
+            "predicted_spell_count": 372.77777777777777,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.6499621608952973,
+            "weighted_70_30": 0.7126959932908723
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8955158071898001,
+              "d_precision": 0.9102156725893329,
+              "d_recall": 0.8812912106209623,
+              "macro_f1": 0.8747660731033451,
+              "predicted_spell_count": 286.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6027799255489142,
+              "weighted_70_30": 0.6843757698152435
+            },
+            "SkillCorner": {
+              "d_f1": 0.7580418049705161,
+              "d_precision": 0.8845697809744676,
+              "d_recall": 0.6632714872932585,
+              "macro_f1": 0.7654906486490441,
+              "predicted_spell_count": 382.0,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.44415201208181165,
+              "weighted_70_30": 0.5405536030519814
+            },
+            "Sportec": {
+              "d_f1": 0.9015398550524781,
+              "d_precision": 0.9331427224656919,
+              "d_recall": 0.8720150943396227,
+              "macro_f1": 0.8134181950692081,
+              "predicted_spell_count": 293.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.47861666948918385,
+              "weighted_70_30": 0.579057127163191
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.851699155737598,
+            "d_precision": 0.9093093920098307,
+            "d_recall": 0.8055259307512812,
+            "macro_f1": 0.8178916389405324,
+            "predicted_spell_count": 320.3333333333333,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.5085162023733033,
+            "weighted_70_30": 0.601328833343472
+          }
+        }
+      }
+    },
+    "dead_closing": {
+      "config": {
+        "confidence": 0.6,
+        "dead": 12,
+        "family": "dead_closing",
+        "ha": 3,
+        "id": "r050",
+        "seconds": 0.2
+      },
+      "passes_guards": true,
+      "scores": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9036554650450408,
+              "d_precision": 0.9240353604491983,
+              "d_recall": 0.8841551406433852,
+              "macro_f1": 0.9265551670437691,
+              "predicted_spell_count": 336.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.8144846796657383,
+              "weighted_70_30": 0.8481058258791474
+            },
+            "SkillCorner": {
+              "d_f1": 0.7406294114391923,
+              "d_precision": 0.9026852102944547,
+              "d_recall": 0.628155263442774,
+              "macro_f1": 0.7785482964091076,
+              "predicted_spell_count": 389.3333333333333,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4880966839291368,
+              "weighted_70_30": 0.575232167673128
+            },
+            "Sportec": {
+              "d_f1": 0.8998476830551325,
+              "d_precision": 0.9376431703645527,
+              "d_recall": 0.8649811320754717,
+              "macro_f1": 0.8652688067187583,
+              "predicted_spell_count": 341.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6514429109159348,
+              "weighted_70_30": 0.7155906796567817
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8480441865131217,
+            "d_precision": 0.921454580369402,
+            "d_recall": 0.7924305120538769,
+            "macro_f1": 0.8567907567238784,
+            "predicted_spell_count": 355.4444444444444,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.6513414248369366,
+            "weighted_70_30": 0.7129762244030191
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8968390899939801,
+              "d_precision": 0.917649344432765,
+              "d_recall": 0.8769620140754391,
+              "macro_f1": 0.8754738972155045,
+              "predicted_spell_count": 271.5,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6086972200367164,
+              "weighted_70_30": 0.6887302231903529
+            },
+            "SkillCorner": {
+              "d_f1": 0.7441030159413938,
+              "d_precision": 0.8940794216193968,
+              "d_recall": 0.6374011250452775,
+              "macro_f1": 0.7594037999291176,
+              "predicted_spell_count": 378.1666666666667,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.44582386658261913,
+              "weighted_70_30": 0.5398978465865686
+            },
+            "Sportec": {
+              "d_f1": 0.8972163928928795,
+              "d_precision": 0.9325823078424023,
+              "d_recall": 0.8644377358490567,
+              "macro_f1": 0.8096273525225698,
+              "predicted_spell_count": 284.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.47002461668821544,
+              "weighted_70_30": 0.5719054374385217
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8460528329427511,
+            "d_precision": 0.9147703579648546,
+            "d_recall": 0.7929336249899244,
+            "macro_f1": 0.8148350165557305,
+            "predicted_spell_count": 311.22222222222223,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.5081819011025169,
+            "weighted_70_30": 0.600177835738481
+          }
+        }
+      }
+    },
+    "dead_duration": {
+      "config": {
+        "dead": 12,
+        "family": "dead_duration",
+        "ha": 3,
+        "id": "r034",
+        "seconds": 0.25
+      },
+      "passes_guards": true,
+      "scores": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9036554650450408,
+              "d_precision": 0.9240353604491983,
+              "d_recall": 0.8841551406433852,
+              "macro_f1": 0.9265551670437691,
+              "predicted_spell_count": 336.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.8144846796657383,
+              "weighted_70_30": 0.8481058258791474
+            },
+            "SkillCorner": {
+              "d_f1": 0.7406294114391923,
+              "d_precision": 0.9026852102944547,
+              "d_recall": 0.628155263442774,
+              "macro_f1": 0.7785482964091076,
+              "predicted_spell_count": 389.3333333333333,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4880966839291368,
+              "weighted_70_30": 0.575232167673128
+            },
+            "Sportec": {
+              "d_f1": 0.8998476830551325,
+              "d_precision": 0.9376431703645527,
+              "d_recall": 0.8649811320754717,
+              "macro_f1": 0.8652688067187583,
+              "predicted_spell_count": 341.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6514429109159348,
+              "weighted_70_30": 0.7155906796567817
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8480441865131217,
+            "d_precision": 0.921454580369402,
+            "d_recall": 0.7924305120538769,
+            "macro_f1": 0.8567907567238784,
+            "predicted_spell_count": 355.4444444444444,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.6513414248369366,
+            "weighted_70_30": 0.7129762244030191
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8968390899939801,
+              "d_precision": 0.917649344432765,
+              "d_recall": 0.8769620140754391,
+              "macro_f1": 0.8754738972155045,
+              "predicted_spell_count": 271.5,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6086972200367164,
+              "weighted_70_30": 0.6887302231903529
+            },
+            "SkillCorner": {
+              "d_f1": 0.7441030159413938,
+              "d_precision": 0.8940794216193968,
+              "d_recall": 0.6374011250452775,
+              "macro_f1": 0.7594037999291176,
+              "predicted_spell_count": 378.1666666666667,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.44582386658261913,
+              "weighted_70_30": 0.5398978465865686
+            },
+            "Sportec": {
+              "d_f1": 0.8972163928928795,
+              "d_precision": 0.9325823078424023,
+              "d_recall": 0.8644377358490567,
+              "macro_f1": 0.8096273525225698,
+              "predicted_spell_count": 284.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.47002461668821544,
+              "weighted_70_30": 0.5719054374385217
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8460528329427511,
+            "d_precision": 0.9147703579648546,
+            "d_recall": 0.7929336249899244,
+            "macro_f1": 0.8148350165557305,
+            "predicted_spell_count": 311.22222222222223,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.5081819011025169,
+            "weighted_70_30": 0.600177835738481
+          }
+        }
+      }
+    },
+    "dead_filter": {
+      "config": {
+        "dead": 12,
+        "family": "dead_filter",
+        "ha": 3,
+        "id": "r084",
+        "seconds": 0.6
+      },
+      "passes_guards": true,
+      "scores": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9035163339382941,
+              "d_precision": 0.9236959899807501,
+              "d_recall": 0.8841995426592367,
+              "macro_f1": 0.9264674822180584,
+              "predicted_spell_count": 336.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.8139275766016713,
+              "weighted_70_30": 0.8476895482865874
+            },
+            "SkillCorner": {
+              "d_f1": 0.7370236532374,
+              "d_precision": 0.8995829452717112,
+              "d_recall": 0.6247298401459873,
+              "macro_f1": 0.7771893465209508,
+              "predicted_spell_count": 387.0,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4890566144184598,
+              "weighted_70_30": 0.5754964340492071
+            },
+            "Sportec": {
+              "d_f1": 0.8999992150028653,
+              "d_precision": 0.9376175599862608,
+              "d_recall": 0.8652830188679246,
+              "macro_f1": 0.8655073304477939,
+              "predicted_spell_count": 341.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6519447929736513,
+              "weighted_70_30": 0.7160135542158941
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8468464007261866,
+            "d_precision": 0.9202988317462407,
+            "d_recall": 0.7914041338910495,
+            "macro_f1": 0.8563880530622677,
+            "predicted_spell_count": 354.6666666666667,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.6516429946645941,
+            "weighted_70_30": 0.7130665121838962
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8971936291210442,
+              "d_precision": 0.9185056859206032,
+              "d_recall": 0.8768621095397731,
+              "macro_f1": 0.8748332968789267,
+              "predicted_spell_count": 271.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6073329346513292,
+              "weighted_70_30": 0.6875830433196084
+            },
+            "SkillCorner": {
+              "d_f1": 0.7431636841100963,
+              "d_precision": 0.8921494031942802,
+              "d_recall": 0.6370406282618203,
+              "macro_f1": 0.7589239590531139,
+              "predicted_spell_count": 376.0,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.44663693477052374,
+              "weighted_70_30": 0.5403230420553008
+            },
+            "Sportec": {
+              "d_f1": 0.8985752733862296,
+              "d_precision": 0.9329899533567232,
+              "d_recall": 0.866611320754717,
+              "macro_f1": 0.8107817340096433,
+              "predicted_spell_count": 283.5,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4727792061500876,
+              "weighted_70_30": 0.5741799645079543
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8463108622057899,
+            "d_precision": 0.9145483474905355,
+            "d_recall": 0.7935046861854368,
+            "macro_f1": 0.8148463299805613,
+            "predicted_spell_count": 310.1666666666667,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.5089163585239802,
+            "weighted_70_30": 0.6006953499609545
+          }
+        }
+      }
+    },
+    "dead_temperature": {
+      "config": {
+        "dead": 6,
+        "family": "dead_temperature",
+        "ha": 3,
+        "id": "r069",
+        "temperature": 1.5
+      },
+      "passes_guards": true,
+      "scores": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9068778413257076,
+              "d_precision": 0.9218420328410237,
+              "d_recall": 0.8923917145838421,
+              "macro_f1": 0.9284364399932018,
+              "predicted_spell_count": 335.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.8161785216178522,
+              "weighted_70_30": 0.8498558971304571
+            },
+            "SkillCorner": {
+              "d_f1": 0.7529603725011699,
+              "d_precision": 0.8955282528738805,
+              "d_recall": 0.6496531619610314,
+              "macro_f1": 0.783930967390221,
+              "predicted_spell_count": 383.3333333333333,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4886068442450007,
+              "weighted_70_30": 0.5772040811885668
+            },
+            "Sportec": {
+              "d_f1": 0.9056459777275914,
+              "d_precision": 0.9354407979407979,
+              "d_recall": 0.8776905660377359,
+              "macro_f1": 0.8698234753364232,
+              "predicted_spell_count": 339.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6540880503144654,
+              "weighted_70_30": 0.7188086778210527
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.855161397184823,
+            "d_precision": 0.9176036945519007,
+            "d_recall": 0.8065784808608698,
+            "macro_f1": 0.8607302942399486,
+            "predicted_spell_count": 352.4444444444444,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.6529578053924394,
+            "weighted_70_30": 0.7152895520466922
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8996114197260037,
+              "d_precision": 0.9075688878418595,
+              "d_recall": 0.8917922873698466,
+              "macro_f1": 0.8772869576535115,
+              "predicted_spell_count": 273.5,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.607469279463787,
+              "weighted_70_30": 0.6884145829207043
+            },
+            "SkillCorner": {
+              "d_f1": 0.7636409442279503,
+              "d_precision": 0.883627125497565,
+              "d_recall": 0.6725133839222256,
+              "macro_f1": 0.7676728250206547,
+              "predicted_spell_count": 370.6666666666667,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4479719415515409,
+              "weighted_70_30": 0.543882206592275
+            },
+            "Sportec": {
+              "d_f1": 0.9038214968009333,
+              "d_precision": 0.9278446960847295,
+              "d_recall": 0.881011320754717,
+              "macro_f1": 0.8152332766631321,
+              "predicted_spell_count": 282.5,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.47775259637387785,
+              "weighted_70_30": 0.578996800460654
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8556912869182957,
+            "d_precision": 0.9063469031413846,
+            "d_recall": 0.8151056640155964,
+            "macro_f1": 0.8200643531124326,
+            "predicted_spell_count": 308.8888888888889,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.5110646057964019,
+            "weighted_70_30": 0.6037645299912111
+          }
+        }
+      }
+    },
+    "matrix": {
+      "config": {
+        "dead": 9,
+        "family": "matrix",
+        "ha": 3.5,
+        "id": "r019"
+      },
+      "passes_guards": true,
+      "scores": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9040101903873713,
+              "d_precision": 0.926777510901756,
+              "d_recall": 0.8823346579934729,
+              "macro_f1": 0.9270526736570099,
+              "predicted_spell_count": 335.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.8145048814504883,
+              "weighted_70_30": 0.8482692191124447
+            },
+            "SkillCorner": {
+              "d_f1": 0.7439771692789776,
+              "d_precision": 0.9053840594825905,
+              "d_recall": 0.6317067837019953,
+              "macro_f1": 0.7801124652615329,
+              "predicted_spell_count": 385.3333333333333,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4892446706757047,
+              "weighted_70_30": 0.5765050090514531
+            },
+            "Sportec": {
+              "d_f1": 0.9004865034526052,
+              "d_precision": 0.93771858146756,
+              "d_recall": 0.8660981132075471,
+              "macro_f1": 0.8660271124846601,
+              "predicted_spell_count": 338.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6539042821158689,
+              "weighted_70_30": 0.7175411312265063
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.849491287706318,
+            "d_precision": 0.9232933839506355,
+            "d_recall": 0.7933798516343384,
+            "macro_f1": 0.8577307504677343,
+            "predicted_spell_count": 352.77777777777777,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.6525512780806874,
+            "weighted_70_30": 0.7141051197968014
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8938375309941813,
+              "d_precision": 0.9137379854283254,
+              "d_recall": 0.8747863152987145,
+              "macro_f1": 0.87440384507811,
+              "predicted_spell_count": 271.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6064056472133301,
+              "weighted_70_30": 0.6868051065727641
+            },
+            "SkillCorner": {
+              "d_f1": 0.7487938385443312,
+              "d_precision": 0.895397415893804,
+              "d_recall": 0.6435264090346304,
+              "macro_f1": 0.7612894106181968,
+              "predicted_spell_count": 376.1666666666667,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4466506730787307,
+              "weighted_70_30": 0.5410422943405705
+            },
+            "Sportec": {
+              "d_f1": 0.897304066912434,
+              "d_precision": 0.9323581143299656,
+              "d_recall": 0.8648,
+              "macro_f1": 0.809911064586135,
+              "predicted_spell_count": 283.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.47199882809638904,
+              "weighted_70_30": 0.5733724990433129
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8466451454836489,
+            "d_precision": 0.9138311718840316,
+            "d_recall": 0.794370908111115,
+            "macro_f1": 0.8152014400941473,
+            "predicted_spell_count": 310.0555555555556,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.5083517161294833,
+            "weighted_70_30": 0.6004066333188826
+          }
+        }
+      }
+    },
+    "total_variation": {
+      "config": {
+        "family": "total_variation",
+        "id": "r109",
+        "iterations": 100,
+        "norm": "joint",
+        "seconds": 0.05
+      },
+      "passes_guards": false,
+      "scores": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.900617744891725,
+              "d_precision": 0.918279768359366,
+              "d_recall": 0.883622316453167,
+              "macro_f1": 0.9236365467289273,
+              "predicted_spell_count": 387.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.777113133940182,
+              "weighted_70_30": 0.8210701577768055
+            },
+            "SkillCorner": {
+              "d_f1": 0.7514446278401112,
+              "d_precision": 0.8940103235079367,
+              "d_recall": 0.6482655101203437,
+              "macro_f1": 0.783069764970111,
+              "predicted_spell_count": 416.0,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.47567857190015655,
+              "weighted_70_30": 0.5678959298211429
+            },
+            "Sportec": {
+              "d_f1": 0.899181530018451,
+              "d_precision": 0.9413260252261771,
+              "d_recall": 0.8606490566037736,
+              "macro_f1": 0.865688628554269,
+              "predicted_spell_count": 405.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.6313588850174215,
+              "weighted_70_30": 0.7016578080784758
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8504146342500958,
+            "d_precision": 0.91787203903116,
+            "d_recall": 0.7975122943924281,
+            "macro_f1": 0.8574649800844357,
+            "predicted_spell_count": 402.6666666666667,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.6280501969525868,
+            "weighted_70_30": 0.6968746318921414
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8945927822621275,
+              "d_precision": 0.9098375709537568,
+              "d_recall": 0.8798592456097507,
+              "macro_f1": 0.8718977084866818,
+              "predicted_spell_count": 374.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.5644090547150495,
+              "weighted_70_30": 0.6566556508465391
+            },
+            "SkillCorner": {
+              "d_f1": 0.7496435690705897,
+              "d_precision": 0.8841946258287073,
+              "d_recall": 0.6507256364573119,
+              "macro_f1": 0.7597918295091398,
+              "predicted_spell_count": 415.5,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.4263447278454924,
+              "weighted_70_30": 0.5263788583445865
+            },
+            "Sportec": {
+              "d_f1": 0.8971398245034257,
+              "d_precision": 0.9360409135731368,
+              "d_recall": 0.8613509433962264,
+              "macro_f1": 0.812066630060708,
+              "predicted_spell_count": 402.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": null,
+              "short_reference_spell_count": null,
+              "short_spell_recall_iou_0_5_lt3s": null,
+              "spell_f1": 0.450865597330101,
+              "weighted_70_30": 0.5592259071492831
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8471253919453808,
+            "d_precision": 0.9100243701185337,
+            "d_recall": 0.7973119418210963,
+            "macro_f1": 0.8145853893521765,
+            "predicted_spell_count": 397.1666666666667,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": null,
+            "short_reference_spell_count": null,
+            "short_spell_recall_iou_0_5_lt3s": null,
+            "spell_f1": 0.48053979329688096,
+            "weighted_70_30": 0.5807534721134696
+          }
+        }
+      }
+    }
+  },
+  "independent_hierarchy_and_rank_passed": true,
+  "plus_0_01_clean_screen": false,
+  "public_labels_read": false,
+  "selected_config": {
+    "dead": 6,
+    "family": "dead_temperature",
+    "ha": 3,
+    "id": "r069",
+    "temperature": 1.5
+  },
+  "selected_minus_adopted": {
+    "clean": {
+      "d_f1": 0.004984819814248365,
+      "macro_f1": 0.0030530989375737727,
+      "spell_f1": 0.005743246318067663
+    },
+    "feed_like": {
+      "d_f1": 0.00797024460109963,
+      "macro_f1": 0.004529039468230467,
+      "spell_f1": 0.005253816371650011
+    }
+  },
+  "selected_minus_previous": {
+    "clean": {
+      "d_f1": 0.007117210671701235,
+      "macro_f1": 0.003939537516070235,
+      "spell_f1": 0.0016163805555028388
+    },
+    "feed_like": {
+      "d_f1": 0.009638453975544525,
+      "macro_f1": 0.005229336556702102,
+      "spell_f1": 0.002882704693884963
+    }
+  },
+  "study": "decoder_refinement_v3"
+}

@@ -22,13 +22,16 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 ## Next work
 
-1. The user-requested [134-arm decoder search](../../experiments/DECODER_SEARCH_V2.md)
-   found an opt-in development winner: H/A cost 3, team/dead cost 12,
-   .651341/.508182 clean/feed-like versus .647215/.505811. Guards pass,
-   but the +.01 screen fails and selecting on two providers transfers poorly
-   (.639413/.495678 on omitted providers). Keep the adopted cost-3 package;
-   independent dense evaluation is needed before treating the selected setting
-   as a transferable upgrade. No organizer scoring or promotion.
+1. The [118-arm decoder refinement](../../experiments/DECODER_REFINEMENT_V3.md)
+   improves external clean/feed-like spell to .652958/.511065, and a non-Viterbi
+   anchor segmenter reaches .649962/.508516. Both beat .647215/.505811;
+   provider guards pass, but the +.01 screen fails. The explicitly requested
+   one-time public diagnostic is negative: both the previous split-cost winner
+   and the selected refinement score .575000 versus saved .630303. Public macro
+   improves, while spell F1 does not transfer. Retain the adopted package; no
+   public-driven tuning follows. Fresh independent dense evidence remains the
+   priority. The [earlier 134-arm study](../../experiments/DECODER_SEARCH_V2.md)
+   is development evidence, not a confirmed competition improvement.
 2. The [subsecond-team follow-up](../../experiments/DENSE_SHORT_TEAM_V1.md)
    is complete: six fixed 2× H/A-weighted fits and a fixed 50/50 ensemble blend
    both reduce clean/feed-like spell F1. Short-team errors improve marginally
@@ -58,21 +61,18 @@ Before another local sweep, consult the index's
 
 - **Decoder search delivery:** code/results merged in PR #54; private PR #11
   has 295 remotely restored, hash-verified entries. The experimental full CSV
-  passes format validation. Research site version 12 is saved and passes
-  desktop/mobile QA, but automatic approval review rejected publication to its
-  existing two external viewers. Explicit user approval is pending; live site
-  remains version 11. [Report and receipts](../../experiments/DECODER_SEARCH_V2.md#artifact-and-site-delivery).
+  passes format validation. Research site version 12 was published after explicit
+  user approval; the previous approval blocker is resolved. [Report and receipts](../../experiments/DECODER_SEARCH_V2.md#artifact-and-site-delivery).
 
 - **Spell-F1 postprocessing (2026-11-01):** fixed posterior expected-spell-F1
   decoding completed all 45 paired cells. Ensemble clean/feed-like changes
   −.004235/−.002601; both individual seeds also decline. Retain cost-3 Viterbi;
-  no sample-budget or seed sweep follows. Site update remains blocked by the
-  missing helper. [Report](../../experiments/SPELL_MBR_V1.md).
+  no sample-budget or seed sweep follows. The result is included in published research site version 12. [Report](../../experiments/SPELL_MBR_V1.md).
 
 - **Postprocessing runtime (2026-11-01):** optional decoder reduces synthetic
   199,319-frame decoding time by 16%, with independent numerical parity tests.
   Not integrated or promoted; real-input parity and end-to-end timing remain.
-  Site update blocked by missing Sites helper.
+  Included in published research site version 12.
   [Report](../../experiments/POSTPROCESSING_RUNTIME_V1.md).
 
 - **Subsecond team attribution:** six fits and the fixed blend are complete;
