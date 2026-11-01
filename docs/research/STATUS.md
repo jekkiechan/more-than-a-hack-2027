@@ -2,7 +2,8 @@
 
 Reviewed 2026-11-01 against fork `main` through
 [PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64), plus the
-completed [short-label quality and diversity study](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md).
+completed [short-label quality and diversity study](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md)
+on [PR #65](https://github.com/jekkiechan/more-than-a-hack-2027/pull/65).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -14,7 +15,15 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 
 ## Latest delivery
 
-The short-possession continuation is delivered through [PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64): twelve fits, fixed component checks and 27 calibration settings. All 752 new archive/source files pass an independent remote restore; research site version 18 is published with restricted access unchanged. The bounded readout recovery preserves the original failure and all decoded outputs. See the [delivery receipt](../../experiments/results/feed_short_sampling_v1_delivery.json). Archive identifiers and restore instructions remain private.
+Research code and aggregate evidence are on [PR #65](https://github.com/jekkiechan/more-than-a-hack-2027/pull/65).
+All **559 new archive/source entries / 1,714,557,333 bytes** pass an independent
+remote fetch and empty-directory restore with exact hashes and a separate LFS
+store. Research site version **19** is published; desktop/mobile chart, data,
+navigation and download checks pass, with restricted access revision 2 unchanged.
+The [delivery receipt](../../experiments/results/short_quality_diversity_v1_delivery.json)
+and [publication receipt](../../experiments/results/short_quality_diversity_v1_site_publication.json)
+record the observed states. Archive identifiers and exact restore instructions
+remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
 
