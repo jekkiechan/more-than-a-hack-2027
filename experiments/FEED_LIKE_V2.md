@@ -2,7 +2,13 @@
 
 Studies `feed_like_v2_benchmark`, `feed_like_v2_train` and `feed_like_v2_eval`,
 1 November 2026. No organizer labels are read and nothing is scored on the public
-window. The adopted model is unchanged.
+window. No model is promoted here.
+
+> **Naming.** "Adopted" below means `joint_gru_sn_dense_calibrated_ensemble_v1`, the
+> package adopted when this study started. The user later promoted `original_full`
+> (`joint_gru_sn_dense_original_diversity_ensemble_v1`, PR #70); it appears below as the
+> "`original_full` candidate". The organizer predicted-state statistics use the earlier
+> package's sealed label-free CSV.
 
 ## Why a new feed view
 
@@ -140,12 +146,14 @@ scores stay in ignored `data/experiments/feed_like_v2_*`.
 
 ## Decision and limitations
 
-* **Keep the adopted model.** The best-scoring option tested is adopted + 5 Hz phase TTA.
-  It is label-free and adds no learned parameters, but needs a separate declared
-  integration and confirmation before any promotion.
+* **The v1-feed advantage behind the `original_full` promotion does not hold on v2.** The
+  previous calibrated-dense package, especially with 5 Hz phase TTA, ranks higher on the
+  more realistic feed and also on the 17-spell public window. Whether to revert is the
+  user's decision. Phase TTA is label-free and adds no learned parameters, but needs a
+  separate declared integration and confirmation before any promotion.
 * **Use `feed_like_v2` (4+ realizations) as the stress guardrail instead of the two v1
-  replicas.** The .55 target was set on v1. On v2 the adopted model already scores
-  .584–.588, and v1 rankings did not survive the move to a more realistic feed.
+  replicas.** The .55 target was set on v1. On v2 the previous calibrated-dense package already
+  scores .584–.588, and v1 rankings did not survive the move to a more realistic feed.
 * **Circularity:** calibration conditions on the adopted model's predicted dead state,
   which may favor models that call dead play like it does. The placement itself uses true
   state on development data.
