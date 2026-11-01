@@ -1,8 +1,9 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #59](https://github.com/jekkiechan/more-than-a-hack-2027/pull/59), plus the completed
-[feed-first calibration and pooling study](../../experiments/FEED_SPELL_PUSH.md).
+[PR #63](https://github.com/jekkiechan/more-than-a-hack-2027/pull/63), plus the
+completed [short-possession sampling and calibration study](../../experiments/FEED_SHORT_SAMPLING_V1.md)
+on [PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -17,6 +18,9 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 Raw-feed research PR #62 is merged with passing CI. All 408 new archive/source files verify after an independent remote restore. Archive identifiers and restore instructions remain private. Research site version 17 is published with restricted access unchanged. See the [delivery receipt](../../experiments/results/feed_robustness_v1_delivery.json).
 
 ## Next work
+
+The [short-possession sampling comparison](../../experiments/FEED_SHORT_SAMPLING_V1.md) is complete: 12 fixed fits, an equal blend and fixed H/A component checks. Best eligible original feed spell across controls and candidates is **0.527396** (Resampled H/A + control D); .55 is unmet. Sampling exposure increased as designed; no promotion or organizer scoring occurred.
+
 
 The completed [raw-feed training study](../../experiments/FEED_ROBUSTNESS_V1.md) reaches **0.525240** original feed-like spell F1 versus .518527 promoted. Twelve fits, fixed blends/component checks and fresh corruption checks are complete; 0.55 remains unmet and adoption is unchanged. The two-seed fresh score is .533871 versus matched baseline .524936. Prioritize short-possession supervision/exposure and independent dense evaluation; fresh synthetic views are not new matches.
 
