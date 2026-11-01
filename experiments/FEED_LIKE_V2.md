@@ -114,6 +114,27 @@ equal-provider means.
   views, the v2-trained model gains +.0043 on v2 (4 of 4 realizations, +.0002 to +.0067).
   It still trails the adopted model by .0009.
 
+## Scorecard: every arm on every view
+
+Equal-provider spell F1 / macro F1. Clean and v1 use the original archived cells (v1 has
+2 replicas). v2 uses 4 realizations, and the full-pitch column averages Sportec and
+Metrica only. Public scores are the existing one-time 17-spell diagnostics, reused and
+not rescored; the other arms were never scored on the public window.
+[Scorecard JSON](results/feed_like_v2_scorecard.json).
+
+| Arm | Clean | v1 feed-like | v2 | v2 full-pitch spell | Public (17 spells) |
+| --- | --- | --- | --- | ---: | --- |
+| Calibrated dense (previous adopted) | .6586 / .8714 | .5185 / .8233 | .5836 / .8513 | .6298 | .6303 / .8642 |
+| + phase TTA | .6589 / .8709 | .5231 / .8246 | **.5880** / .8525 | **.6365** | — |
+| `original_full` (now adopted) | .6626 / .8702 | .5282 / .8254 | .5785 / .8488 | .6257 | .6118 / .8517 |
+| + phase TTA | **.6676** / .8713 | **.5316** / .8269 | .5836 / .8500 | .6333 | — |
+| Raw-feed (v1 training views) | .6547 / .8686 | .5252 / .8269 | .5784 / .8495 | .6228 | — |
+| + phase TTA | .6607 / .8704 | .5268 / .8271 | .5824 / .8499 | .6289 | — |
+| v2-trained (v2 training views) | .6499 / .8693 | .5169 / .8224 | .5827 / .8515 | .6284 | — |
+| + phase TTA | .6562 / .8706 | .5226 / .8233 | .5856 / .8527 | .6332 | — |
+
+Phase TTA raises spell F1 for every arm on every view.
+
 ## v2-trained model on the older benchmarks
 
 | Benchmark | Adopted | Raw-feed (v1 views) | v2-trained |
