@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "study_id": "spell_mbr_v1",
+  "verification_status": "private_archive_remote_restore_passed",
+  "private_archive": {
+    "repository": "jekkiechan/mtah-data",
+    "pull_request": 10,
+    "pull_request_url": "https://github.com/jekkiechan/mtah-data/pull/10",
+    "branch": "research/spell-mbr-archive-v1",
+    "commit": "9a270280110c3bbd525da460b4a136567b87f105",
+    "manifest": "spell_mbr_v1_cache_manifest.json",
+    "manifest_sha256": "0986772e689d05a142efa6c5fa7d9e39bc2ea10083c98e499ad43b4b9d8e3c8a",
+    "manifest_entries_verified": 57
+  },
+  "remote_verification": {
+    "fresh_clone": true,
+    "fresh_restore_directory": "/tmp/spell-mbr-remote-restore",
+    "restore_command": "python scripts/competition_cache.py fetch --manifest spell_mbr_v1_cache_manifest.json --data-dir /tmp/spell-mbr-remote-restore",
+    "verify_command": "python scripts/competition_cache.py verify --manifest spell_mbr_v1_cache_manifest.json --data-dir /tmp/spell-mbr-remote-restore",
+    "restored_files_verified": 57,
+    "lfs_payloads_fetched": true,
+    "hash_and_size_checks_passed": true
+  },
+  "scope": {
+    "score_values_in_receipt": false,
+    "raw_prediction_arrays_in_public_repository": false,
+    "scoring_or_inference_performed_during_verification": false
+  }
+}

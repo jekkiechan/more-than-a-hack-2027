@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "study_id": "spell_mbr_v1",
+  "review_status": "completed_independent_snapshot_and_output_checks_passed",
+  "declaration_path": "experiments/results/spell_mbr_v1_declaration.json",
+  "declaration_sha256": "d2779bb22ec9417f9706f00dcdeaa74e23a0644393ab75c56570990fa2fab237",
+  "frozen_source_files": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/dense_boundary_v1.py": "bc531d74e071040aaee415e8db8d8c10e8ac23c607290d46470a2fa7a1d6548c",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/spell_mbr.py": "3121148ae4c0614be8240544ab683fe737e783b1b975a87e37b52bb243b36f83",
+    "experiments/spell_mbr_run.py": "c7518e3a7a8d88776cd659d406585df4f36f1c753749afad0748adf23e51f9f4",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+  },
+  "artifacts": {
+    "aggregate_report_sha256": "cdffcac03f76008b516676f41a4d60dadabed719bae96f7981a5cab2ba2d4db0",
+    "private_cell_scores_sha256": "011c80d3c9bfde336aaa909c1e957e359bbe56124ccc43700fa1a76a013e6d13",
+    "private_baseline_cell_scores_sha256": "aeccfd96272ab9ba0082981a348347cc62b72732bedcb65185cc4ac506d3b811",
+    "control_replay_sha256": "486a9feb3adf11c7bc302c716ff654ac61337401a826da31ac80172b8c59c379",
+    "run_lock_sha256": "b17b6114dd3f47ef0cd24a5130388c56c0e419e52428b49c41eac7f8560f9653",
+    "candidate_prediction_count": 45,
+    "candidate_prediction_index_sha256": "810c65e718e3f5aa128ee95a1093395f8563aed4891fff9ec12b8ba6928da012"
+  },
+  "verified_counts": {
+    "candidate_cells": 45,
+    "baseline_cells": 45,
+    "ensemble_replay_cells": 15,
+    "prediction_only_npz": 45
+  },
+  "checks": {
+    "run_claim_matches_frozen_declaration": true,
+    "all_frozen_source_hashes_unchanged": true,
+    "all_declared_inputs_hash_verified": true,
+    "all_candidate_predictions_hash_shape_and_schema_verified": true,
+    "all_45_candidate_cells_unique_and_complete": true,
+    "control_replay_receipt_passed": true,
+    "aggregate_report_matches_independent_means_from_saved_scalar_rows": true,
+    "stored_deltas_and_guard_flags_match_saved_aggregates": true,
+    "no_label_based_recalculation_or_metric_scoring_by_reviewer": true,
+    "organizer_labels_accessed": false,
+    "automatic_promotion": false
+  },
+  "raw_per_cell_metrics_in_public_receipt": false,
+  "candidate_prediction_arrays_public": false
+}
