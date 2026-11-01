@@ -95,3 +95,18 @@ averaging. This is a change in access to existing windows, not a new threshold
 or rate sweep. There is no extra-corruption selection; all evidence remains
 original exposed development. All models are sealed before scores, and the
 same promoted-baseline guards and .55 stretch apply.
+
+## Verified first-round finding
+
+The within-record full model is nearly flat in feed spell (.525090 versus
+.525240 control) and improves clean spell to .657930. The equal blend reaches
+.524193 feed spell. Both pass guards but do not improve the primary metric.
+The predeclared H/A cross reaches **.527396 feed / .657215 clean**, passes all
+guards and improves short-spell recall from .199402 to .212521. Feed macro F1
+falls from .826937 to .824460, a tradeoff retained in the report rather than
+hidden by the spell gain. Metrica and Sportec feed spell improve; SkillCorner
+falls slightly, .457600 to .456672. The whole-model and component comparisons
+pass independent official-score, native-grading and probability-algebra replay.
+
+The game-level continuation remains a separate, predeclared comparison. Its
+condition is met because neither first-round arm reaches .55 under the guards.
