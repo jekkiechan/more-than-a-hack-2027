@@ -1,7 +1,8 @@
 # Current research state
 
-Reviewed 2026-10-31 against fork `main` through
-[PR #50](https://github.com/jekkiechan/more-than-a-hack-2027/pull/50), including the completed
+Reviewed 2026-11-01 against fork `main` through
+[PR #53](https://github.com/jekkiechan/more-than-a-hack-2027/pull/53) and the completed
+[decoder search](../../experiments/DECODER_SEARCH_V2.md), including the completed
 [subsecond-team comparison](../../experiments/DENSE_SHORT_TEAM_V1.md) and the
 completed source-head evidence on open [PR #47](https://github.com/jekkiechan/more-than-a-hack-2027/pull/47).
 Check newer merged/open PRs before current-results advice. Detailed historical
@@ -21,7 +22,14 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 ## Next work
 
-1. The [subsecond-team follow-up](../../experiments/DENSE_SHORT_TEAM_V1.md)
+1. The user-requested [134-arm decoder search](../../experiments/DECODER_SEARCH_V2.md)
+   found an opt-in development winner: H/A cost 3, team/dead cost 12,
+   .651341/.508182 clean/feed-like versus .647215/.505811. Guards pass,
+   but the +.01 screen fails and selecting on two providers transfers poorly
+   (.639413/.495678 on omitted providers). Keep the adopted cost-3 package;
+   independent dense evaluation is needed before treating the selected setting
+   as a transferable upgrade. No organizer scoring or promotion.
+2. The [subsecond-team follow-up](../../experiments/DENSE_SHORT_TEAM_V1.md)
    is complete: six fixed 2× H/A-weighted fits and a fixed 50/50 ensemble blend
    both reduce clean/feed-like spell F1. Short-team errors improve marginally
    clean but worsen under stress. Exact sampler replay shows only 0.09–0.10%
@@ -30,12 +38,12 @@ is synthetic, and dense GAR labels are derived silver labels.
    dense evaluation. This follows the negative
    [targeted dense comparisons](../../experiments/DENSE_TARGETED_FOLLOWUPS.md).
    The adopted model and closed organizer gates remain unchanged.
-2. The source-specific head comparison on open PR #47 is completed and negative:
+3. The source-specific head comparison on open PR #47 is completed and negative:
    retain the shared dense heads. Its provider-definition audit supports holding
    possession through contested touches; it does not justify rebuilding GAR
    labels. Whole-stoppage model comparison remains blocked on continuous aligned
    tracking. See the [PR #47 report](https://github.com/jekkiechan/more-than-a-hack-2027/blob/6e93eb2218a533b8017ff50f284f655021eec9e6/experiments/SOURCE_CONDITIONED_HEADS_REPORT.md).
-3. Fresh external dense possession evidence remains optional stronger
+4. Fresh external dense possession evidence remains optional stronger
    confirmation. The [independent-data search](../../experiments/INDEPENDENT_DATA_SEARCH.md)
    acquired a SoccerTrack panorama sample; the
    [blind annotation proposal](../../experiments/SHORT_SPELL_NEXT.md) still needs
