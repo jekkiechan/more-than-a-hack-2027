@@ -1,0 +1,95 @@
+{
+  "calibration": {
+    "ball_missing_fraction": 0.40692572565263097,
+    "calibration": "Unlabeled tracking only; missingness does not identify true occlusion causes",
+    "coordinate_errors": "Assumed ranges; no coordinate ground truth available",
+    "gap_bin_probability": [
+      0.08666666666666667,
+      0.02,
+      0.006666666666666667,
+      0.0,
+      0.006666666666666667,
+      0.35333333333333333,
+      0.5266666666666666
+    ],
+    "gap_count": 150,
+    "gap_edges_seconds": [
+      0.08,
+      0.2,
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0,
+      30.0
+    ],
+    "gap_quantiles_seconds": [
+      0.47200000000000003,
+      10.72,
+      30.0,
+      30.0
+    ],
+    "visible_player_quantiles": [
+      18.0,
+      21.0,
+      22.0,
+      22.0,
+      22.0
+    ]
+  },
+  "evidence": "Two previously unused synthetic realizations on the same exposed matches. Not independent-match or gold-label confirmation.",
+  "extension_declaration_sha256": "9455eea0794b091fbca6dd68c8e4f1011117455662d712d92a7148ea8921a8db",
+  "matches": [
+    {
+      "group_id": "J03WOY",
+      "match": "J03WOY",
+      "path": "data/external_audit/sportec/processed/J03WOY.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "e07027e68822b224f22870ac8a1afb7e99e07535494ac22f953de3cf57345a84",
+      "source": "sportec"
+    },
+    {
+      "group_id": "metrica_3",
+      "match": "metrica_3",
+      "path": "data/external/processed/metrica_3.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "4b0692864f5e6cf694de834046d1ca5b8ff7dcd91af075e93673800ea713c187",
+      "source": "metrica"
+    },
+    {
+      "group_id": "skillcorner_had_1996435",
+      "match": "skillcorner_had_1996435",
+      "path": "data/external/processed/skillcorner_had_1996435.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "66248c0fe230de27a49f15037241f304574191aac4c268f458a6462dd10c1a4a",
+      "source": "skillcorner"
+    },
+    {
+      "group_id": "skillcorner_had_1996436",
+      "match": "skillcorner_had_1996436",
+      "path": "data/external/processed/skillcorner_had_1996436.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "5b551c99859e3245fcf30483b3a652431a739c7306a27e131a31ee6be61be6be",
+      "source": "skillcorner"
+    },
+    {
+      "group_id": "skillcorner_had_2006229",
+      "match": "skillcorner_had_2006229",
+      "path": "data/external/processed/skillcorner_had_2006229.npz",
+      "prior_exposure": "previously_evaluated_development_match",
+      "sha256": "3a9aed45a5c17b2d48db4b9c59defef31aef90ff2fda05913c701b5b4b376420",
+      "source": "skillcorner"
+    }
+  ],
+  "organizer_reference_access": false,
+  "parent_declaration_sha256": "4e251b41556167e47f8aa6eaffbaf8ab0d69f8bc9a53e3caeea1c153785d2cc1",
+  "promotion": false,
+  "rule": "Freeze the highest eligible original-benchmark arm across both declared studies using original feed spell, macro tie-break; compare only if it exceeds the archived .527396 numerical leader. No fresh-view reselection.",
+  "seeds": [
+    746201,
+    746202
+  ],
+  "source_sha256": "a03b7077923ef2ae27e0df90af6c144758d5e9539a39b53c8613679786ca7b1c",
+  "study": "short_quality_fresh_v1",
+  "utc": "2026-11-01T07:07:34.920177+00:00"
+}
