@@ -1,0 +1,37 @@
+{
+  "algebra": "Full model; conditional H/A with raw-feed control D within seed then averaged; fixed equal native blend of that cross with archived .527396 leader.",
+  "arms": [
+    "original_full",
+    "original_ha",
+    "original_leader_half"
+  ],
+  "bindings": {
+    "experiments/results/short_original_diversity_v1_training_audit.json": "77b3e5e4c220beed96fd1f9206975d5fd5e287a9f5105f6ed620862317c86013",
+    "experiments/short_original_diversity.py": "edd868fb349855cb73e87fd791d4709b7fed1d99aef2caaa287a63b3a2fce7b3",
+    "experiments/short_original_diversity_v1.py": "f423614e6f1ab06416365e45877ff537b33c1a2bf1855468da18060911dbb666",
+    "experiments/tests/test_short_original_diversity.py": "4b9d348fc90f2829f0a6ff125a38219cb63f6c50792280ba49a58302c10191ff"
+  },
+  "condition": "Run only if the five fixed quality/diversity parent arms fail to reach .55 under guards. Frozen before parent scores.",
+  "fits": 6,
+  "fixed": "GAR quality/diversity bags identical to parent diversity variant. Six same teacher/fold/seed fits, width96, 2048 updates, batch32, half original/GAR, identical losses/raw-feed views/normalization/learning rates and f062 decoder.",
+  "folds": [
+    "leave_out_sportec",
+    "leave_out_metrica",
+    "leave_out_skillcorner"
+  ],
+  "intervention": "With probability .25 replace original draw with a window overlapping the next unique complete <=3s native possession from a shuffled bag within the same selected record. Preserve source/match/paired view/orientation and base/GAR RNG schedules. Exhaust each bag before reuse. Ordinary draws and every target unchanged.",
+  "limitations": "Exposed five-match development, silver labels, more even repeated examples without new independent supervision. Original paired records duplicate physical spans and are counted separately; do not call them new examples.",
+  "organizer_reference_access": false,
+  "parent_declaration_sha256": "4e251b41556167e47f8aa6eaffbaf8ab0d69f8bc9a53e3caeea1c153785d2cc1",
+  "promotion": false,
+  "question": "Does cycling distinct native short original-provider possessions improve over window-uniform original sampling, with the GAR quality/diversity recipe fixed?",
+  "seeds": [
+    2026,
+    2027
+  ],
+  "selection": "Same official original feed spell ranking and promoted-baseline guards as parent; compare against archived leader and all fixed parent arms. Report macro, 70/30, providers, seeds and historical +.01 clean screen.",
+  "steps": 2048,
+  "stop": "Six sealed fits and three fixed arms, no new duration/rate/weight/decoder/seed settings. Stop this continuation. A new numerical leader may be checked on two new synthetic corruption views without reselection.",
+  "study": "short_original_diversity_v1",
+  "utc": "2026-11-01T07:05:54.284811+00:00"
+}
