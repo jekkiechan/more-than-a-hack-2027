@@ -116,6 +116,25 @@ the leader, lock it and compare it with that leader on two newly generated
 target-independent corruption realizations per match, without reselection.
 New synthetic views still do not provide independent-match confirmation.
 
+## Conditional original-provider diversity continuation
+
+Before any parent scores, `short_original_diversity_v1` declares six additional
+fits only if the five parent arms miss .55 under guards. Keep the GAR quality
+and distinct-possession schedule exactly fixed. Change only the original
+training windows: instead of uniform eligible-window selection, cycle distinct
+complete native short possessions within the same already-selected record,
+then choose one of its existing overlapping windows. The replacement request
+rate remains .25; source, match, paired feature view and H/A orientation stay
+fixed. A separate RNG leaves the entire GAR draw schedule unchanged.
+
+Original-provider labels are not rewritten or newly corroborated in this
+continuation. Its hypothesis concerns exposure diversity on the other half
+of the batch. Counts retain paired-record duplication explicitly; they are
+not presented as additional physical examples. Six checkpoints must be sealed
+before the three fixed full/H/A-cross/equal-leader-blend arms are scored.
+The primary metric, decoder, guards, seeds and update budget remain fixed.
+No additional rates, durations or decoder settings follow this continuation.
+
 ## Verification and reproduction
 
 The preflight reproduces all 90 archived leader/raw-feed control cells exactly.
