@@ -61,6 +61,13 @@ Stop this bounded weight/context comparison. Stronger error-complementarity
 evidence and independent match evaluation are more informative than another
 sweep on these five exposed matches.
 
+The [feed-like benchmark audit](../../experiments/FEED_BENCHMARK_AUDIT_V1.md) finds
+small decoder/arm-combination ceilings (+.005/+.0076 per-cell oracles) and shows that
+synthetic feed-like gaps ignore game state, unlike the real feed. Under
+challenge-matched gaps the `original_full` candidate beats the adopted model in 12/12
+realizations (SkillCorner trails); 5 Hz phase TTA is a small, consistent gain. Prefer a
+pre-declared multi-realization benchmark over the two original replicas for selection.
+
 The separately requested [fixed public diagnostic](../../experiments/SHORT_QUALITY_PUBLIC_V1.md)
 is complete after two pooled fits. Public spell is **.611765** versus adopted
 .630303; macro **.851742** versus .864181. The full CSV replays/validation and
