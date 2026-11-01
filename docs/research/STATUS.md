@@ -27,6 +27,16 @@ Phase TTA and learned stacking are not enabled.
 
 ## Latest delivery
 
+The exact-package GAR comparison and original-provider phase guard audit are
+complete on PR #73: 19 match evaluations, 470 official scalar replays with zero
+error, all seven active guards passing and both component seeds improving.
+The [complete scorecard](../../experiments/ORIGINAL_FULL_PHASE_AVERAGE.md) records
+Astra's provisional phase-upgrade recommendation and the still-failed historical
+clean screen. Research site **version 24** is published with desktop/mobile
+interaction checks and unchanged restricted access revision 2. New native
+prediction artifacts are locally verified; no new remote-native upload is
+claimed. No model, default or adoption policy changes.
+
 The original-full default CLI replays the already-sealed candidate exactly, with
 199,319 valid rows. Private delivery PR #17 is merged; all **213 entries /
 6,417,817 bytes** pass independent remote fetch and empty restore. Research site
@@ -81,11 +91,11 @@ separate. All 380 GAR and 90 guard cells replay officially with zero scalar
 error. No additional experiment is required before the adoption decision.
 The historical +.01 clean screen fails and requires an explicit new exception
 if promoted. Default and policy remain unchanged; no new public scoring.
-Research site version 23 publishes the initial complete saved scorecard and
-Astra review; the final results update follows. Desktop/mobile controls and layouts pass.
+Research site version 24 publishes the completed scorecard, TEST/VALID results,
+guard/seed checks and final Astra review. Desktop/mobile controls and layouts pass.
 Restricted access revision 2 and the same two external viewers are preserved.
 The user explicitly approved the scoped-credential fallback after the initial
-automatic-review rejection. The [publication receipt](../../experiments/results/original_full_phase_average_publication_v1.json)
+automatic-review rejection. The [publication receipt](../../experiments/results/original_full_phase_average_publication_v2.json)
 records the resolved delivery state.
 
 The [challenge-calibrated feed study](../../experiments/FEED_LIKE_V2.md) replaces the

@@ -191,3 +191,11 @@ The [GAR report](GAR_DEPLOYMENT_EVAL_V2.md) owns protocol and artifact details; 
 Astra recommends provisional adoption of uniform phase averaging as an incremental upgrade to the chosen original_full baseline. All seven active stress/provider guards pass, both component seeds improve clean/v1 spell, and GAR TEST corroborates a small spell gain with higher macro and D-F1. The primary spell interval still includes zero. Calibrated dense plus phases remains the numerical spell leader on the original v2 benchmark and GAR TEST; original_full plus phases is not an established overall winner. Preserve the failed +.01 original-clean screen and record an explicit new user-approved exception if adopted. No further experiment is required before the adoption decision; continuous full-match gold confirmation remains unknown.
 
 The adopted manifest and policy remain unchanged. A promotion would require its own explicit working-baseline decision and a preserved exception to the failed historical clean screen. No new local tuning or organizer scoring follows from this readout.
+
+Research-site version 24 publishes the completed readout after desktop/mobile
+interaction checks, preserving restricted access revision 2 and the same two
+external viewers. The [publication receipt](results/original_full_phase_average_publication_v2.json)
+records source and deployment provenance. The [completion checks](results/phase_average_completion_checks_v1.json)
+record 583 experiment tests, 26 integrity tests, exact fit parity, CSV format and
+documentation validation. New native prediction artifacts remain locally
+verified; the existing sealed deployment weights remain separately restorable.
