@@ -48,6 +48,12 @@ Before another local sweep, consult the index's
 
 ## Artifacts and open work
 
+- **Postprocessing runtime (2026-11-01):** optional decoder reduces synthetic
+  199,319-frame decoding time by 16%, with independent numerical parity tests.
+  Not integrated or promoted; real-input parity and end-to-end timing remain.
+  Site update blocked by missing Sites helper.
+  [Report](../../experiments/POSTPROCESSING_RUNTIME_V1.md).
+
 - **Subsecond team attribution:** six fits and the fixed blend are complete;
   neither improves the adopted ensemble. Code/results are merged in PR #50.
   Private [mtah-data PR #9](https://github.com/jekkiechan/mtah-data/pull/9)
