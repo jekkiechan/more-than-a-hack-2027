@@ -66,7 +66,17 @@ class BaselinePromotionContracts(unittest.TestCase):
         self.assertEqual(policy['working_candidate']['model'], manifest['model'])
         self.assertEqual(policy['working_candidate']['baseline_manifest_sha256'],
                          sha256(root/'baseline_manifest.json'))
-        if manifest['architecture']['kind']=='sn_dense_ensemble':
+        if manifest['architecture']['kind']=='sn_dense_calibrated_ensemble':
+            development = manifest['evidence']['development_full_provider_holdout']
+            self.assertTrue(development['provider_and_feed_like_guards_pass'])
+            self.assertTrue(development['clean_improvement_screen_plus_01_passes'])
+            self.assertEqual(manifest['architecture']['postprocessing']['temperature'], 4)
+            self.assertTrue(manifest['promotion']['model_checkpoints_unchanged'])
+            self.assertTrue(manifest['promotion']['public_diagnostic_known_before_authorization'])
+            self.assertFalse(manifest['organizer_public_diagnostic']['used_for_model_or_hyperparameter_selection'])
+            previous_manifest = json.loads((root.parent/manifest['previous_manifest']).read_text())
+            self.assertEqual(manifest['models_sha256'], previous_manifest['models_sha256'])
+        elif manifest['architecture']['kind']=='sn_dense_ensemble':
             development = manifest['evidence']['development_full_provider_holdout']
             self.assertTrue(development['provider_and_feed_like_guards_pass'])
             self.assertFalse(development['clean_improvement_screen_plus_01_passes'])
