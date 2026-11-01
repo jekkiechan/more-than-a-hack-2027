@@ -1,29 +1,44 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68), including the
-completed [provider-excluded stacking comparison](../../experiments/SMART_STACKING_V1.md).
+[PR #69](https://github.com/jekkiechan/more-than-a-hack-2027/pull/69), plus the
+explicitly user-authorized original-full promotion on PR #70.
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
 ## Adopted package
 
-`joint_gru_sn_dense_calibrated_ensemble_v1`: the same two dense-SoccerNet H/A GRUs and fine-tuned D paths, now using the frozen temperature-4 D-logit transform and cost-3 decoder. Explicitly user-adopted on 1 November 2026. The [baseline guide](../../experiments/BASELINE.md) owns restore/inference; the [promotion report](../../experiments/CALIBRATED_DENSE_PROMOTION.md) and receipt bind the change.
+`joint_gru_sn_dense_original_diversity_ensemble_v1`: the exact already-sealed
+`original_full` two-seed pooled recipe, explicitly user-adopted on 1 November
+2026 after Astra consultation. The [baseline guide](../../experiments/BASELINE.md)
+owns restore/inference; the [promotion report](../../experiments/ORIGINAL_FULL_PROMOTION.md)
+and [receipt](../../experiments/results/baseline_original_full_promotion.json)
+bind the version-9 manifest/policy and byte-exact full-CSV replay.
 
-Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811. Both seeds and every provider improve spell in both views; all guards and +.01 clean screen pass. Public spell ties .630303, macro improves to .864181 and D-F1 to .873502. Promotion performs no fitting or organizer rescoring and reproduces the sealed full CSV exactly. Historical failed screens and closed gates are preserved. Independent dense confirmation and full-match organizer performance remain unknown.
+Matched clean/feed-like spell is **.662590/.528180** versus predecessor
+.658625/.518527; all feed-first guards pass. The historical +.01 clean screen
+fails and remains failed, with an explicit user adoption exception. SkillCorner
+feed spell declines .003720 against the predecessor. Public spell/macro/D-F1
+are .611765/.851742/.862420 versus predecessor .630303/.864181/.873502 on 17
+possessions, diagnostic only. No refitting, public-label access or rescoring
+occurs during promotion. Independent/full-match confirmation remains unknown.
+Phase TTA and learned stacking are not enabled.
 
 ## Latest delivery
 
+The original-full default CLI replays the already-sealed candidate exactly, with
+199,319 valid rows. Package/source private-cache and research-site delivery are
+recorded separately in the [promotion report](../../experiments/ORIGINAL_FULL_PROMOTION.md).
+
 The [stacking study](../../experiments/SMART_STACKING_V1.md) is merged on
 [PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68) with passing
-CI. All 495 independent replays pass; the combined suite has 568 tests. Research
-site version **21** is published with desktop/mobile checks and restricted
-access revision 2 unchanged. The best stack is a credible replacement candidate
-for adopted, while the stricter study-win rule remains unmet. A complete pooled
-deployment package still needs verification before adoption. The
-[publication receipt](../../experiments/results/smart_stacking_v1_publication.json)
-supersedes the preserved blocked snapshot. New native artifacts remain locally
-verified; no new remote native upload or organizer scoring occurred.
+CI. All 495 independent replays pass; its combined suite has 568 tests. Research
+site version **21** was published with desktop/mobile checks and restricted
+access revision 2 unchanged. The stack improves its historical adopted control,
+but original diversity is now selected for adoption. No pooled stack is installed.
+The [publication receipt](../../experiments/results/smart_stacking_v1_publication.json)
+supersedes the preserved blocked snapshot. New stack native artifacts remain locally
+verified; no new remote stack-native upload or organizer scoring occurred.
 
 The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
 and research site version **20**, with desktop/mobile checks and restricted
@@ -51,6 +66,14 @@ remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
 
+Prioritize independent dense evaluation and corroborated short-possession
+supervision. If pursuing phase TTA, use a separately declared fixed follow-up
+and multi-realization benchmark; do not silently add it to the adopted package.
+The numerical comparisons below retain each completed study's historical
+baseline. The adopted recipe is now original diversity; PR #68's stack remains
+an archived comparator, with no pooled deployment package.
+
+
 The [stacking comparison](../../experiments/SMART_STACKING_V1.md) completes
 24 meta-models, zero base refits and 495 paired original score cells.
 Best guard-passing learned stack: **.661814/.525872 clean/feed-like spell**,
@@ -60,8 +83,8 @@ spell to .638640/.513886 and fails guards. Uniform averaging reaches .523795
 feed. No stack beats the strongest single recipe, so the predeclared new-view
 and expert-fallback checks are skipped. It remains a credible replacement
 candidate for adopted: higher clean/feed spell, both seeds improve feed, and
-feed-first guards pass. Advance a fixed pooled deployment package before
-adoption; failing the stricter study-win rule does not negate baseline gains.
+feed-first guards pass. Original diversity is now adopted instead; failing the stricter study-win rule
+does not negate the stack's measured gains against the historical baseline.
 No adoption or organizer scoring.
 All base, teacher, normalization and meta-label components exclude the target
 provider; other-provider OOF arrays are deliberately not reused for training.

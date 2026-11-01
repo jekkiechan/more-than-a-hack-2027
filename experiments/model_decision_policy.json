@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "confirmed_utc_date": "2026-11-01",
   "primary_order": [
     "spell_f1",
@@ -16,15 +16,15 @@
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
   "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "Dense-SoccerNet two-seed ensemble with frozen D-logit temperature 4",
-    "model": "joint_gru_sn_dense_calibrated_ensemble",
+    "family": "Two-seed original-possession diversity with frozen temperature-4 decoding",
+    "model": "joint_gru_sn_dense_original_diversity_ensemble",
     "status": "User-authorized working development baseline; independent confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
-    "baseline_manifest_sha256": "b9f7ade00ae94f4306e7e8966a29a88fc57be2d00f657be58a9b5bc38f89732c",
+    "baseline_manifest_sha256": "0f4191815f91c53b3cbbb7df620dc747e5faa140fc08a70576115d359b36ce8c",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "reason": "Explicit user promotion of the externally selected feed-like leader; both seeds and all providers improve spell in both views; all guards and +.01 clean screen pass",
-    "promotion_record": "experiments/results/baseline_calibrated_dense_promotion.json",
-    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_ensemble_v1.json",
+    "reason": "Explicit user adoption on 2026-11-01 despite the preserved failed +.01 clean screen; matched clean/feed spell gains and passing provider guards support a working baseline, with SkillCorner regression and independent-confirmation limits disclosed",
+    "promotion_record": "experiments/results/baseline_original_full_promotion.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_calibrated_ensemble_v1.json",
     "public_diagnostic_known_before_user_request": true
   },
   "pathcrf_component": {
@@ -56,7 +56,7 @@
       "experiments/results/feed_defect_profile.json",
       "experiments/results/stress_component_ablation.json"
     ],
-    "reference_recipe": "joint_gru_sn_dense_calibrated_ensemble"
+    "reference_recipe": "joint_gru_sn_dense_original_diversity_ensemble"
   },
   "lgbm_component": {
     "default_enabled": false,
@@ -67,8 +67,8 @@
   "clean_improvement_screen": {
     "default_delta": 0.01,
     "historical_failures_preserved": true,
-    "current_screen_passes": true,
-    "current_adoption_exception": null
+    "current_screen_passes": false,
+    "current_adoption_exception": "Explicit user adoption on 2026-11-01 despite the preserved failed +.01 clean screen; matched clean/feed spell gains and passing provider guards support a working baseline, with SkillCorner regression and independent-confirmation limits disclosed"
   },
   "primary_evaluation_view": "feed_like"
 }

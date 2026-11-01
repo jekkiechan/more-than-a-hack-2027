@@ -66,7 +66,24 @@ class BaselinePromotionContracts(unittest.TestCase):
         self.assertEqual(policy['working_candidate']['model'], manifest['model'])
         self.assertEqual(policy['working_candidate']['baseline_manifest_sha256'],
                          sha256(root/'baseline_manifest.json'))
-        if manifest['architecture']['kind']=='sn_dense_calibrated_ensemble':
+        if manifest['architecture']['kind']=='sn_dense_original_diversity_ensemble':
+            development = manifest['evidence']['development_full_provider_holdout']
+            self.assertTrue(development['provider_and_feed_like_guards_pass'])
+            self.assertFalse(development['clean_improvement_screen_plus_01_passes'])
+            self.assertFalse(policy['clean_improvement_screen']['current_screen_passes'])
+            self.assertTrue(policy['clean_improvement_screen']['current_adoption_exception'])
+            self.assertEqual(manifest['architecture']['postprocessing']['temperature'], 4)
+            self.assertFalse(manifest['architecture']['phase_tta'])
+            self.assertFalse(manifest['promotion']['fitting_during_promotion'])
+            self.assertFalse(manifest['organizer_public_diagnostic']['used_for_model_or_hyperparameter_selection'])
+            self.assertEqual(sorted(manifest['architecture']['members'].values()), [.5, .5])
+            previous_manifest = json.loads((root.parent/manifest['previous_manifest']).read_text())
+            for seed in (2026, 2027):
+                name = f'teacher_{seed}.joblib'
+                self.assertEqual(manifest['models_sha256'][name], previous_manifest['models_sha256'][name])
+                name = f'dense_{seed}.joblib'
+                self.assertNotEqual(manifest['models_sha256'][name], previous_manifest['models_sha256'][name])
+        elif manifest['architecture']['kind']=='sn_dense_calibrated_ensemble':
             development = manifest['evidence']['development_full_provider_holdout']
             self.assertTrue(development['provider_and_feed_like_guards_pass'])
             self.assertTrue(development['clean_improvement_screen_plus_01_passes'])
