@@ -1,0 +1,259 @@
+{
+  "aggregation": "Mean over four realizations within game, then equal mean over games; VALID separate",
+  "averaging": "Equal native probability mean over two sealed pooled seeds, then equal mean over phases",
+  "bootstrap": {
+    "draws": 2000,
+    "seed": 20261101,
+    "unit": "whole match"
+  },
+  "calibration_sha256": "ac42d0e7697b9d3a5c6684a903e7ea8c27d34a99091597432ab2d32e21faf684",
+  "created_utc": "2026-11-01T14:04:07.727621+00:00",
+  "decoder": "Unchanged f062, D-logit temperature 4, switch costs 3",
+  "exposure": {
+    "test": "TRAIN-disjoint; prior label QA, no known prior model selection/scoring in saved lineage",
+    "valid": "All nine matches previously used for dense-model selection; development only"
+  },
+  "fitting": false,
+  "guards": {
+    "clean_d_f1_delta_min": -0.02,
+    "clean_macro_delta_min": -0.02,
+    "clean_spell_delta_min": -0.005,
+    "historical_clean_improvement_screen": 0.01,
+    "no_automatic_promotion": true,
+    "report_all_game_deltas": true
+  },
+  "inference_tolerance": 1e-06,
+  "limits": [
+    "Event-derived silver labels",
+    "Discontinuous event clips, not full-match coverage",
+    "Same GAR provider and label recipe as TRAIN",
+    "True states place synthetic defects only",
+    "V2 calibration uses predecessor predicted D states",
+    "No corruption or arm reselection"
+  ],
+  "match_ids": {
+    "test": [
+      "3850",
+      "3851",
+      "3852",
+      "3853",
+      "3854",
+      "3855",
+      "3856",
+      "3857",
+      "3858",
+      "3859"
+    ],
+    "valid": [
+      "3841",
+      "3842",
+      "3843",
+      "3844",
+      "3845",
+      "3846",
+      "3847",
+      "3848",
+      "3849"
+    ]
+  },
+  "modes": [
+    "phase0",
+    "phase_avg"
+  ],
+  "organizer_reference_access": false,
+  "packages": {
+    "calibrated": {
+      "manifest_sha256": "b9f7ade00ae94f4306e7e8966a29a88fc57be2d00f657be58a9b5bc38f89732c",
+      "model_sha256": {
+        "dense_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+        "dense_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+        "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+        "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+      },
+      "normalization": "Sealed paired teacher normalization; no target-data fitting",
+      "package": "joint_gru_sn_dense_calibrated_ensemble_v1",
+      "teacher_scope": "Original-provider pooled combined-objective teachers; no GAR training",
+      "training_game_ids": [
+        "10502",
+        "10503",
+        "10504",
+        "10505",
+        "10506",
+        "10507",
+        "10508",
+        "10509",
+        "10510",
+        "10511",
+        "10512",
+        "10513",
+        "10514",
+        "10515",
+        "10516",
+        "10517",
+        "3812",
+        "3813",
+        "3814",
+        "3815",
+        "3816",
+        "3817",
+        "3818",
+        "3819",
+        "3820",
+        "3821",
+        "3822",
+        "3823",
+        "3824",
+        "3825",
+        "3826",
+        "3827",
+        "3828",
+        "3829",
+        "3830",
+        "3831",
+        "3832",
+        "3833",
+        "3834",
+        "3835",
+        "3836",
+        "3837",
+        "3838",
+        "3839",
+        "3840"
+      ]
+    },
+    "original_full": {
+      "manifest_sha256": "0f4191815f91c53b3cbbb7df620dc747e5faa140fc08a70576115d359b36ce8c",
+      "model_sha256": {
+        "dense_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+        "dense_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+        "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+        "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+      },
+      "normalization": "Sealed paired teacher normalization; no target-data fitting",
+      "package": "joint_gru_sn_dense_original_diversity_ensemble_v1",
+      "teacher_scope": "Original-provider pooled combined-objective teachers; no GAR training",
+      "training_game_ids": [
+        "10502",
+        "10503",
+        "10504",
+        "10505",
+        "10506",
+        "10507",
+        "10508",
+        "10509",
+        "10510",
+        "10511",
+        "10512",
+        "10513",
+        "10514",
+        "10515",
+        "10516",
+        "10517",
+        "3812",
+        "3813",
+        "3814",
+        "3815",
+        "3816",
+        "3817",
+        "3818",
+        "3819",
+        "3820",
+        "3821",
+        "3822",
+        "3823",
+        "3824",
+        "3825",
+        "3826",
+        "3827",
+        "3828",
+        "3829",
+        "3830",
+        "3831",
+        "3832",
+        "3833",
+        "3834",
+        "3835",
+        "3836",
+        "3837",
+        "3838",
+        "3839",
+        "3840"
+      ]
+    }
+  },
+  "phase0_feature_tolerance": 0.0,
+  "phase_count": "round(native_fps / 5): six phases on GAR 29.97 Hz, five on competition 25 Hz",
+  "primary": "TEST mean per-game v2 spell F1; macro breaks exact ties; clean secondary",
+  "promotion": false,
+  "public_scoring": false,
+  "question": "Does phase averaging improve exact original_full pooled deployment on held-out GAR TEST?",
+  "raw_files": [
+    {
+      "bytes": 1671596,
+      "hf_lfs_sha256": "d2c570bcc7cd508eaceab3bef72579b5882b825295ddcfb5e69ddc70df750359",
+      "path": "test/metadata.parquet",
+      "sha256": "d2c570bcc7cd508eaceab3bef72579b5882b825295ddcfb5e69ddc70df750359",
+      "verified": true
+    },
+    {
+      "bytes": 126530,
+      "hf_lfs_sha256": "5b8b68b9c5232448f0235f423de1c6cfcfa5dc092cd7dad00e8ec449e7b93ebf",
+      "path": "test/shard_manifest.parquet",
+      "sha256": "5b8b68b9c5232448f0235f423de1c6cfcfa5dc092cd7dad00e8ec449e7b93ebf",
+      "verified": true
+    },
+    {
+      "bytes": 1012981760,
+      "hf_lfs_sha256": "ba9ca8f305236dc2c20a732c399821ee16af11a5d19c4c68d426442ed5928e7d",
+      "path": "test/shards/shard-000000.tar",
+      "sha256": "ba9ca8f305236dc2c20a732c399821ee16af11a5d19c4c68d426442ed5928e7d",
+      "verified": true
+    },
+    {
+      "bytes": 78366720,
+      "hf_lfs_sha256": "88e93a7b28141dcbfb3654e27d75e79af1a970478dcdf5694a4b577cf31e35fd",
+      "path": "test/shards/shard-000001.tar",
+      "sha256": "88e93a7b28141dcbfb3654e27d75e79af1a970478dcdf5694a4b577cf31e35fd",
+      "verified": true
+    },
+    {
+      "bytes": 1477794,
+      "hf_lfs_sha256": "38fce1638a36772fce042b314acc83b800a42feb3cf3238b1494aaf7937a2627",
+      "path": "valid/metadata.parquet",
+      "sha256": "38fce1638a36772fce042b314acc83b800a42feb3cf3238b1494aaf7937a2627",
+      "verified": true
+    },
+    {
+      "bytes": 114529,
+      "hf_lfs_sha256": "d317e3d18da9b294239272ae9f5dcad039f22fa9c79e960343d92ce54106b634",
+      "path": "valid/shard_manifest.parquet",
+      "sha256": "d317e3d18da9b294239272ae9f5dcad039f22fa9c79e960343d92ce54106b634",
+      "verified": true
+    },
+    {
+      "bytes": 974571520,
+      "hf_lfs_sha256": "7af4a91e66d1b0a51dab129df4e582c0c3e4930c31c095d1f570d992215b6c31",
+      "path": "valid/shards/shard-000000.tar",
+      "sha256": "7af4a91e66d1b0a51dab129df4e582c0c3e4930c31c095d1f570d992215b6c31",
+      "verified": true
+    }
+  ],
+  "source_revision": "32c840210b7d08d06976e7f9457dfff79fb2da99",
+  "source_sha256": {
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+    "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+    "experiments/gar_deployment_eval_v2.py": "33b8fc765c6a0cc438c21127e5780a3fd2064f616289eb3706b7da8c9f9de345",
+    "experiments/gar_heldout_eval_v1.py": "331cd117807b33afea1930b21a217cb65fb11bad274fd0459fa6f480cd32e4bf",
+    "experiments/sn_dense_baseline.py": "c9d6e5fc24943b4543862969c18b57f67f76daede49c315a0c8af20867ff8c9b",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061"
+  },
+  "study": "gar_deployment_eval_v2",
+  "views": [
+    "clean",
+    "v2_1",
+    "v2_2",
+    "v2_3",
+    "v2_4"
+  ]
+}

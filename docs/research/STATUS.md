@@ -69,6 +69,18 @@ remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
 
+The user-requested [phase-average readout](../../experiments/ORIGINAL_FULL_PHASE_AVERAGE.md)
+collects all saved metrics for original_full plus uniform sampling-phase
+averaging. Astra recommends retaining it as the leading upgrade candidate while
+completing the [exact-package GAR TEST comparison](../../experiments/GAR_DEPLOYMENT_EVAL_V2.md)
+before promotion. That fixed 2×2 evaluation uses current/predecessor pooled
+two-seed packages with/without phases, clean and four v2 realizations. Previously
+selected-on VALID is reported separately. Source, model and match seals are
+frozen; preparation/evaluation is in progress. No default or policy changes and
+no new public scoring. The existing restricted-site update is outstanding:
+the standard Sites helper is absent and automatic review rejected the custom
+credential fallback; a direct read-only clone also lacks authentication.
+
 The [challenge-calibrated feed study](../../experiments/FEED_LIKE_V2.md) replaces the
 state-blind feed-like view with `feed_like_v2` (fidelity error .72 → .09 on full-pitch
 providers). Under v2 the previous calibrated-dense baseline scores .5836 (.5880 with

@@ -1,0 +1,279 @@
+{
+  "adoption_status": "Experimental upgrade candidate; current adopted package has phase averaging disabled",
+  "averaging": "5 phases at 25 Hz; unchanged f062 D-logit temperature4/cost3 decoder",
+  "evidence_scope": "Exposed development plus synthetic stress; public 7500 graded frames/17 reference spells diagnostic only",
+  "extra_sportec": {
+    "clean": {
+      "J03WOY": {
+        "macro_f1": 0.8877273279941166,
+        "source": "feed_benchmark_audit_v1.tta",
+        "spell_f1": 0.6794805194805195
+      },
+      "arm": "cand",
+      "mean_three_sportec_matches": {
+        "macro_f1": 0.8965150638147468,
+        "spell_f1": 0.6879707040509223
+      },
+      "mean_two_new_matches": {
+        "d_f1": 0.9234128922337524,
+        "macro_f1": 0.9009089317250618,
+        "spell_f1": 0.6922157963361237
+      },
+      "mode": "phase_tta",
+      "per_new_match": {
+        "J03WPY": {
+          "d_f1": 0.9293349702069048,
+          "macro_f1": 0.8999992590218264,
+          "n_realizations": 1,
+          "predicted_spell_count": 280.0,
+          "reference_spell_count": 421.0,
+          "spell_f1": 0.6687589158345221,
+          "spell_f1_per_realization": [
+            0.6687589158345221
+          ]
+        },
+        "J03WQQ": {
+          "d_f1": 0.9174908142606001,
+          "macro_f1": 0.9018186044282972,
+          "n_realizations": 1,
+          "predicted_spell_count": 320.0,
+          "reference_spell_count": 401.0,
+          "spell_f1": 0.7156726768377254,
+          "spell_f1_per_realization": [
+            0.7156726768377254
+          ]
+        }
+      },
+      "view": "clean"
+    },
+    "feed_like_v2": {
+      "J03WOY": {
+        "d_f1": 0.9095699452515431,
+        "macro_f1": 0.8539793591558323,
+        "source": "feed_like_v2_benchmark/scores/J03WOY__{1..4}",
+        "spell_f1": 0.5856688687952748
+      },
+      "arm": "cand",
+      "mean_three_sportec_matches": {
+        "macro_f1": 0.8647678622142657,
+        "spell_f1": 0.5952961837237644
+      },
+      "mean_two_new_matches": {
+        "d_f1": 0.9134181225309237,
+        "macro_f1": 0.8701621137434823,
+        "spell_f1": 0.600109841188009
+      },
+      "mode": "phase_tta",
+      "per_new_match": {
+        "J03WPY": {
+          "d_f1": 0.9196720029349841,
+          "macro_f1": 0.8652799913676678,
+          "n_realizations": 4,
+          "predicted_spell_count": 276.25,
+          "reference_spell_count": 421.0,
+          "spell_f1": 0.5764754780334732,
+          "spell_f1_per_realization": [
+            0.5834285714285714,
+            0.5525773195876289,
+            0.5732954545454546,
+            0.5966005665722379
+          ]
+        },
+        "J03WQQ": {
+          "d_f1": 0.9071642421268633,
+          "macro_f1": 0.8750442361192968,
+          "n_realizations": 4,
+          "predicted_spell_count": 310.0,
+          "reference_spell_count": 401.0,
+          "spell_f1": 0.6237442043425447,
+          "spell_f1_per_realization": [
+            0.614950634696756,
+            0.6343096234309623,
+            0.6293785310734463,
+            0.6163380281690141
+          ]
+        }
+      },
+      "view": "feed_like_v2"
+    },
+    "v1": {
+      "J03WOY": {
+        "macro_f1": 0.827951186770586,
+        "source": "feed_benchmark_audit_v1.tta",
+        "spell_f1": 0.5144437156831512
+      },
+      "arm": "cand",
+      "mean_three_sportec_matches": {
+        "macro_f1": 0.8372271368587528,
+        "spell_f1": 0.5261229605812083
+      },
+      "mean_two_new_matches": {
+        "d_f1": 0.9040381504332566,
+        "macro_f1": 0.8418651119028364,
+        "spell_f1": 0.5319625830302369
+      },
+      "mode": "phase_tta",
+      "per_new_match": {
+        "J03WPY": {
+          "d_f1": 0.910461023014167,
+          "macro_f1": 0.8386248459057808,
+          "n_realizations": 2,
+          "predicted_spell_count": 249.5,
+          "reference_spell_count": 421.0,
+          "spell_f1": 0.5071311311311311,
+          "spell_f1_per_realization": [
+            0.5141141141141141,
+            0.5001481481481481
+          ]
+        },
+        "J03WQQ": {
+          "d_f1": 0.8976152778523463,
+          "macro_f1": 0.8451053778998922,
+          "n_realizations": 2,
+          "predicted_spell_count": 278.0,
+          "reference_spell_count": 401.0,
+          "spell_f1": 0.5567940349293428,
+          "spell_f1_per_realization": [
+            0.579250720461095,
+            0.5343373493975904
+          ]
+        }
+      },
+      "view": "v1"
+    }
+  },
+  "fitting": false,
+  "missing_metrics": "Original five-match phase-average D metrics, per-seed metrics and per-IoU breakdowns were not published in the saved aggregate phase scorecards. Do not invent or infer them.",
+  "model": "original_full pooled two-seed + equal sampling-phase probability mean",
+  "original_five_match_aggregates": {
+    "clean": {
+      "macro": 0.8712713689886137,
+      "spell": 0.6675555328266306
+    },
+    "v1_feed_like": {
+      "macro": 0.826852823195384,
+      "spell": 0.5315755112553304
+    },
+    "v2": {
+      "full_pitch_spell": 0.6332876617366893,
+      "macro": 0.8499746497420088,
+      "spell": 0.5835712076382747
+    }
+  },
+  "original_provider_macro": {
+    "clean": {
+      "Metrica": 0.9360744526305741,
+      "SkillCorner": 0.7900123263411505,
+      "Sportec": 0.8877273279941166
+    },
+    "v1": {
+      "Metrica": 0.8782321696817854,
+      "SkillCorner": 0.7743751131337806,
+      "Sportec": 0.827951186770586
+    }
+  },
+  "original_provider_spell": {
+    "clean": {
+      "Metrica": 0.8462173314993123,
+      "SkillCorner": 0.4769687475000602,
+      "Sportec": 0.6794805194805195
+    },
+    "v1": {
+      "Metrica": 0.6292824167451032,
+      "SkillCorner": 0.4510004013377369,
+      "Sportec": 0.5144437156831512
+    }
+  },
+  "promotion": false,
+  "public_csv_sha256": "eb011268af14b4de77b4b1c823916631442ae2090efbb9526314007ddf27ceea",
+  "public_delta_vs_original_full": {
+    "d_f1": 0.0004494873857788795,
+    "macro_f1": -0.0022693264601839624,
+    "spell_f1_mean": 0.0
+  },
+  "public_diagnostic": {
+    "auxiliary_70_30": 0.683077072873707,
+    "bootstrap_draws": 1000,
+    "d_f1": 0.862869869551384,
+    "d_precision": 0.8100358422939068,
+    "d_recall": 0.9230769230769231,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "headline_iou": 0.5,
+    "macro_f1": 0.8494725958535332,
+    "macro_f1_bootstrap_5_95": [
+      0.6996015850364905,
+      0.8850591096238479
+    ],
+    "predicted_spells": 17,
+    "primary_metric": "spell_f1_mean",
+    "spell_by_iou": {
+      "0.3": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.4": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.5": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.6": {
+        "f1": 0.5882352941176471,
+        "n_matched": 10,
+        "n_missed": 7,
+        "n_spurious": 7,
+        "precision": 0.5882352941176471,
+        "recall": 0.5882352941176471
+      },
+      "0.7": {
+        "f1": 0.35294117647058826,
+        "n_matched": 6,
+        "n_missed": 11,
+        "n_spurious": 11,
+        "precision": 0.35294117647058826,
+        "recall": 0.35294117647058826
+      }
+    },
+    "spell_f1_at_headline": 0.7058823529411765,
+    "spell_f1_bootstrap_5_95": [
+      0.4470588235294118,
+      0.7647058823529412
+    ],
+    "spell_f1_mean": 0.611764705882353
+  },
+  "public_rescoring": false,
+  "source_sha256": {
+    "experiments/results/feed_benchmark_audit_v1.json": "02502e2341df7233f8ef3d52a86e33860eca218063be6b50c310a9a813d0f93c",
+    "experiments/results/feed_like_v2_benchmark.json": "9150fbc449e4877757229c46ad860e04abfa86ab6c0eb425ea98a3d6a0c1df9f",
+    "experiments/results/feed_like_v2_public_result.json": "0ed472d0245705dbc0ca89f01b9faeba8286924b9d9fc324264db755a3f0bef5",
+    "experiments/results/feed_like_v2_scorecard.json": "4c91f4da392a5779bafb4ef8cb6f59f0d199e349dd296d70fcc6a9aefced5d85",
+    "experiments/results/sportec_extra_eval_v1.json": "44e5a63a4a8b10f3e8d6eafb9091749bbef14ff2f217e1939fe2a9832a9b9eda"
+  },
+  "v2_provider_spell": {
+    "Metrica": 0.6809064546781038,
+    "SkillCorner": 0.48413829944144554,
+    "Sportec": 0.5856688687952747
+  },
+  "v2_spell_per_realization": [
+    0.58493198946779,
+    0.5850226174378159,
+    0.5757254948429685,
+    0.5886047288045243
+  ]
+}

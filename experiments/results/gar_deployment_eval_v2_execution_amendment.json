@@ -1,0 +1,26 @@
+{
+  "correction": [
+    "Use independently prepared native dense records for GAR phase0 feature/probability/decoded parity",
+    "Preserve native timestamps and fps; no 30-Hz metadata substitution",
+    "Keep per-seed native arrays until package-specific decoding",
+    "Original_full: raw mean over phases and seeds, then normalize/decode as one member",
+    "Calibrated: mean phases within each seed, then pass two arrays to frozen decoder",
+    "Assert unchanged graded/reference counts across every arm, mode and view"
+  ],
+  "created_utc": "2026-11-01T14:10:13.317382+00:00",
+  "fitting": false,
+  "model_scores_observed": false,
+  "original_declaration_sha256": "35ec557c4b5ad65ed210d937d38ba868c82fdbf5c043b01820afa4dc8ec23905",
+  "promotion": false,
+  "public_scoring": false,
+  "reason": [
+    "GAR native rate fails the ordinary deployment integer-multiple-of-5 sampler",
+    "Calibrated package normalizes seeds before pooling; original_full pools before normalization"
+  ],
+  "remaining_limit": "Frozen v2 simulator treats unknown X context as live for defect placement; X remains ungraded",
+  "scoring_budget_changed": false,
+  "source_sha256": {
+    "experiments/gar_deployment_eval_v2_execution.py": "f7861584aec90b7859daa956ed9dae3dc97bf39d17332cf342a941cddaac55f8"
+  },
+  "study": "gar_deployment_eval_v2"
+}
