@@ -77,9 +77,12 @@ before promotion. That fixed 2×2 evaluation uses current/predecessor pooled
 two-seed packages with/without phases, clean and four v2 realizations. Previously
 selected-on VALID is reported separately. Source, model and match seals are
 frozen; preparation/evaluation is in progress. No default or policy changes and
-no new public scoring. The existing restricted-site update is outstanding:
-the standard Sites helper is absent and automatic review rejected the custom
-credential fallback; a direct read-only clone also lacks authentication.
+no new public scoring. Research site version 23 is published with the complete
+saved scorecard and Astra review; desktop/mobile controls and layouts pass.
+Restricted access revision 2 and the same two external viewers are preserved.
+The user explicitly approved the scoped-credential fallback after the initial
+automatic-review rejection. The [publication receipt](../../experiments/results/original_full_phase_average_publication_v1.json)
+records the resolved delivery state.
 
 The [challenge-calibrated feed study](../../experiments/FEED_LIKE_V2.md) replaces the
 state-blind feed-like view with `feed_like_v2` (fidelity error .72 → .09 on full-pitch

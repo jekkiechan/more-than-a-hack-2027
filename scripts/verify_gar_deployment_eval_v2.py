@@ -3,9 +3,11 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import sys
 
 import numpy as np
 
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from experiments import gar_deployment_eval_v2 as study
 from experiments import gar_deployment_eval_v2_execution as execution
 from experiments import metrics
