@@ -1,24 +1,24 @@
 {
-  "version": 7,
-  "model": "joint_gru_sn_dense_ensemble",
-  "package_version": "joint_gru_sn_dense_ensemble_v1",
+  "version": 8,
+  "model": "joint_gru_sn_dense_calibrated_ensemble",
+  "package_version": "joint_gru_sn_dense_calibrated_ensemble_v1",
   "status": "User-authorized working development baseline; independent confirmation pending",
-  "promoted_utc": "2026-10-31T00:20:41.749359+00:00",
-  "replaced_baseline": "joint_gru_soccernet_capacity_ensemble",
-  "previous_manifest": "experiments/baselines/joint_gru_soccernet_capacity_ensemble_v1.json",
-  "previous_manifest_sha256": "139e00e2374624e01788e83e64871c1dd5a0aa19e62bfcbc6931ba276a94b8b5",
-  "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_soccernet_capacity_ensemble_v1.json",
-  "previous_policy_sha256": "f6330589fc26396d3861e136e0b6c5a22b196c683adf129dbeaefc760dcce40e",
-  "model_directory": "data/models/joint_gru_sn_dense_ensemble_v1",
+  "promoted_utc": "2026-11-01T03:58:07.947040+00:00",
+  "replaced_baseline": "joint_gru_sn_dense_ensemble",
+  "previous_manifest": "experiments/baselines/joint_gru_sn_dense_ensemble_v1.json",
+  "previous_manifest_sha256": "76f18b3fa218e4dde357454dc3206b7eeb28ab97eda2862007fff8c987c04ec5",
+  "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_ensemble_v1.json",
+  "previous_policy_sha256": "f63c4bd69881acaa8abadccf515308ebd66890106a24e5f550373a4d20859165",
+  "model_directory": "data/models/joint_gru_sn_dense_calibrated_ensemble_v1",
   "models_sha256": {
     "dense_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
     "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
     "dense_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
     "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
   },
-  "default_output": "data/experiments/current_baseline/joint_gru_sn_dense_ensemble.csv",
+  "default_output": "data/experiments/current_baseline/joint_gru_sn_dense_calibrated_ensemble.csv",
   "architecture": {
-    "kind": "sn_dense_ensemble",
+    "kind": "sn_dense_calibrated_ensemble",
     "members": {
       "dense_2026": 0.5,
       "dense_2027": 0.5
@@ -33,7 +33,16 @@
     "context_each_side_seconds": 5,
     "rate_hz": 5,
     "decoder_switch_cost": 3,
-    "combination": "Mean of two native H/A/D probability arrays before Viterbi; each member uses its fine-tuned D path and conditional H/A head with its pooled teacher's normalization"
+    "combination": "Normalize each member, average native H/A/D probabilities, soften D log odds by temperature 4, preserve conditional H/A, decode with cost 3",
+    "postprocessing": {
+      "kind": "dead_logit_temperature",
+      "temperature": 4.0,
+      "member_normalization": "before_equal_native_probability_pooling",
+      "ha_switch_cost": 3,
+      "dead_switch_cost": 3,
+      "frozen_study": "feed_spell_push_v1",
+      "frozen_arm": "f062"
+    }
   },
   "training": {
     "recipe": "D2_f050_g45: dense touch-stream H/A/D targets with complete-spell and transition losses on SoccerNet, D-path fine-tune, fraction .5",
@@ -51,58 +60,420 @@
     "normalization_frozen": true
   },
   "evidence": {
-    "declaration": "experiments/results/sn_dense_v1_declaration.json",
-    "declaration_sha256": "9384c959bbd9e5c3cfb45eaaa339200354e96cc0decef64cdf57515677991f09",
-    "progress": "experiments/results/sn_dense_v1_progress.md",
-    "progress_sha256": "1fa767671fe0dd4d509f9144252206d78322ccb50dc469276f54b86bc08f86ce",
-    "development_full_provider_holdout": {
-      "two_seed_ensemble_clean_spell": 0.6472,
-      "two_seed_ensemble_feed_like_spell": 0.5058,
-      "previous_adopted_clean_spell": 0.64179,
-      "previous_adopted_feed_like_spell": 0.502586,
-      "seed_2026_clean_spell_vs_rebuilt_reference": [
-        0.6355,
-        0.6288
-      ],
-      "seed_2027_clean_spell": 0.6372,
-      "provider_and_feed_like_guards_pass": true,
-      "clean_improvement_screen_plus_01_passes": false,
-      "previously_exposed_development_matches": true
+    "declaration": "experiments/results/feed_spell_push_v1_declaration.json",
+    "declaration_sha256": "d78257e88bd0d204f2f1eafd7af7dc3d59ef030bfd06dc89d2aa47f32b784d60",
+    "aggregate": "experiments/results/feed_spell_push_v1_aggregate.json",
+    "aggregate_sha256": "a3990cf6a06eeca45cceaa7d874c6a1b9e275c2909c653aa783e1749f6a26422",
+    "frozen_config": {
+      "family": "calibration",
+      "dt": 4,
+      "ht": 1,
+      "ha": 3,
+      "dead": 3,
+      "id": "f062"
     },
-    "gar_valid_silver_note": "GAR-valid dense silver partly rewards agreement with the labelling rule; not neutral evidence",
-    "prediction_seal_sha256": "2afbde9f87492086825b6a79973956cc3247fea9d85965357526f4729d86612a",
-    "prediction_csv_sha256": "57ca788056ccf2f41839730fba492f15885c69f5788f35146ba1610b80b5b22b"
+    "development_full_provider_holdout": {
+      "two_seed_ensemble_clean_spell": 0.6586246206778443,
+      "two_seed_ensemble_feed_like_spell": 0.5185274872966922,
+      "previous_adopted_clean_spell": 0.6472145590743718,
+      "previous_adopted_feed_like_spell": 0.5058107894247519,
+      "provider_and_feed_like_guards_pass": true,
+      "clean_improvement_screen_plus_01_passes": true,
+      "previously_exposed_development_matches": true,
+      "synthetic_feed_like_stress": true
+    },
+    "provider_and_seed_summaries": {
+      "2026": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9111060304188305,
+              "d_precision": 0.8939283883096907,
+              "d_recall": 0.9289567746375685,
+              "macro_f1": 0.9282740116567275,
+              "predicted_spell_count": 320.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": 60.0,
+              "short_reference_spell_count": 126.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.47619047619047616,
+              "spell_f1": 0.7948717948717949,
+              "weighted_70_30": 0.8348924599072747
+            },
+            "SkillCorner": {
+              "d_f1": 0.7497722417221938,
+              "d_precision": 0.8506141815068154,
+              "d_recall": 0.6707681869208958,
+              "macro_f1": 0.7817279867925563,
+              "predicted_spell_count": 373.3333333333333,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": 41.666666666666664,
+              "short_reference_spell_count": 153.33333333333334,
+              "short_spell_recall_iou_0_5_lt3s": 0.27154121863799285,
+              "spell_f1": 0.48527972567182526,
+              "weighted_70_30": 0.5742142040080445
+            },
+            "Sportec": {
+              "d_f1": 0.9169566260723498,
+              "d_precision": 0.9111352865786415,
+              "d_recall": 0.9228528301886793,
+              "macro_f1": 0.8788864897953695,
+              "predicted_spell_count": 314.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": 60.0,
+              "short_reference_spell_count": 197.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.30456852791878175,
+              "spell_f1": 0.6514285714285715,
+              "weighted_70_30": 0.7196659469386109
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.859278299404458,
+            "d_precision": 0.8852259521317158,
+            "d_recall": 0.8408592639157145,
+            "macro_f1": 0.8629628294148844,
+            "predicted_spell_count": 335.77777777777777,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": 53.888888888888886,
+            "short_reference_spell_count": 158.7777777777778,
+            "short_spell_recall_iou_0_5_lt3s": 0.3507667409157502,
+            "spell_f1": 0.6438600306573973,
+            "weighted_70_30": 0.7095908702846433
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8891809733326881,
+              "d_precision": 0.8504569265228947,
+              "d_recall": 0.9316097950846969,
+              "macro_f1": 0.8716882366211633,
+              "predicted_spell_count": 266.5,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": 23.0,
+              "short_reference_spell_count": 126.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.18253968253968253,
+              "spell_f1": 0.5960206600368114,
+              "weighted_70_30": 0.678720933012117
+            },
+            "SkillCorner": {
+              "d_f1": 0.7609096376435797,
+              "d_precision": 0.816825513075344,
+              "d_recall": 0.7124058821796408,
+              "macro_f1": 0.7654817582543963,
+              "predicted_spell_count": 347.3333333333333,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": 35.166666666666664,
+              "short_reference_spell_count": 153.33333333333334,
+              "short_spell_recall_iou_0_5_lt3s": 0.22906810035842295,
+              "spell_f1": 0.44937828758184545,
+              "weighted_70_30": 0.5442093287836106
+            },
+            "Sportec": {
+              "d_f1": 0.9083379917506698,
+              "d_precision": 0.8846580956720913,
+              "d_recall": 0.9333283018867924,
+              "macro_f1": 0.8213520063760458,
+              "predicted_spell_count": 256.5,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": 25.5,
+              "short_reference_spell_count": 197.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.12944162436548223,
+              "spell_f1": 0.483933812666207,
+              "weighted_70_30": 0.5851592707791586
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8528095342423124,
+            "d_precision": 0.85064684509011,
+            "d_recall": 0.8591146597170433,
+            "macro_f1": 0.8195073337505351,
+            "predicted_spell_count": 290.1111111111111,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": 27.888888888888886,
+            "short_reference_spell_count": 158.7777777777778,
+            "short_spell_recall_iou_0_5_lt3s": 0.18034980242119591,
+            "spell_f1": 0.5097775867616213,
+            "weighted_70_30": 0.6026965108582955
+          }
+        }
+      },
+      "2027": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9042636502066566,
+              "d_precision": 0.8863893212785466,
+              "d_recall": 0.9228736984659104,
+              "macro_f1": 0.9256929771495699,
+              "predicted_spell_count": 325.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": 60.0,
+              "short_reference_spell_count": 126.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.47619047619047616,
+              "spell_f1": 0.7920792079207921,
+              "weighted_70_30": 0.8321633386894254
+            },
+            "SkillCorner": {
+              "d_f1": 0.7863949471772488,
+              "d_precision": 0.8337137618675069,
+              "d_recall": 0.7442830971400619,
+              "macro_f1": 0.7978126116050617,
+              "predicted_spell_count": 354.0,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": 42.333333333333336,
+              "short_reference_spell_count": 153.33333333333334,
+              "short_spell_recall_iou_0_5_lt3s": 0.27598566308243727,
+              "spell_f1": 0.4910263517208418,
+              "weighted_70_30": 0.5830622296861078
+            },
+            "Sportec": {
+              "d_f1": 0.9172324311276063,
+              "d_precision": 0.9167898181379498,
+              "d_recall": 0.9176754716981133,
+              "macro_f1": 0.8797868499863651,
+              "predicted_spell_count": 316.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": 61.0,
+              "short_reference_spell_count": 197.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.3096446700507614,
+              "spell_f1": 0.6595854922279794,
+              "weighted_70_30": 0.7256458995554951
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8692970095038373,
+            "d_precision": 0.8789643004280011,
+            "d_recall": 0.8616107557680285,
+            "macro_f1": 0.8677641462469988,
+            "predicted_spell_count": 331.6666666666667,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": 54.44444444444445,
+            "short_reference_spell_count": 158.7777777777778,
+            "short_spell_recall_iou_0_5_lt3s": 0.35394026977455834,
+            "spell_f1": 0.6475636839565377,
+            "weighted_70_30": 0.7136238226436761
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.883565016405468,
+              "d_precision": 0.8408163319684747,
+              "d_recall": 0.9309659658548498,
+              "macro_f1": 0.8622934531258981,
+              "predicted_spell_count": 269.5,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": 26.5,
+              "short_reference_spell_count": 126.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.2103174603174603,
+              "spell_f1": 0.5897198727765344,
+              "weighted_70_30": 0.6714919468813434
+            },
+            "SkillCorner": {
+              "d_f1": 0.7848639509622722,
+              "d_precision": 0.7922297480369537,
+              "d_recall": 0.7778148733230205,
+              "macro_f1": 0.7721499375518007,
+              "predicted_spell_count": 331.1666666666667,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": 34.166666666666664,
+              "short_reference_spell_count": 153.33333333333334,
+              "short_spell_recall_iou_0_5_lt3s": 0.2229032258064516,
+              "spell_f1": 0.4453554625417233,
+              "weighted_70_30": 0.5433938050447465
+            },
+            "Sportec": {
+              "d_f1": 0.9074559124228052,
+              "d_precision": 0.8868736698688608,
+              "d_recall": 0.9290264150943397,
+              "macro_f1": 0.8190352376862391,
+              "predicted_spell_count": 265.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": 26.0,
+              "short_reference_spell_count": 197.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.1319796954314721,
+              "spell_f1": 0.4831979070483226,
+              "weighted_70_30": 0.5839491062396975
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8586282932635152,
+            "d_precision": 0.8399732499580964,
+            "d_recall": 0.8792690847574033,
+            "macro_f1": 0.8178262094546459,
+            "predicted_spell_count": 288.5555555555556,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": 28.888888888888886,
+            "short_reference_spell_count": 158.7777777777778,
+            "short_spell_recall_iou_0_5_lt3s": 0.188400127185128,
+            "spell_f1": 0.5060910807888601,
+            "weighted_70_30": 0.5996116193885959
+          }
+        }
+      },
+      "ensemble": {
+        "clean": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.9122784164305641,
+              "d_precision": 0.8925612812778793,
+              "d_recall": 0.932886353040428,
+              "macro_f1": 0.930976225835055,
+              "predicted_spell_count": 315.0,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": 62.0,
+              "short_reference_spell_count": 126.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.49206349206349204,
+              "spell_f1": 0.8086083213773314,
+              "weighted_70_30": 0.8453186927146483
+            },
+            "SkillCorner": {
+              "d_f1": 0.7808852372371664,
+              "d_precision": 0.8504818135786755,
+              "d_recall": 0.722112882534271,
+              "macro_f1": 0.7967725806358112,
+              "predicted_spell_count": 355.6666666666667,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": 41.333333333333336,
+              "short_reference_spell_count": 153.33333333333334,
+              "short_spell_recall_iou_0_5_lt3s": 0.26924731182795697,
+              "spell_f1": 0.49626424026608446,
+              "weighted_70_30": 0.5864167423770025
+            },
+            "Sportec": {
+              "d_f1": 0.9250925152202458,
+              "d_precision": 0.9146381045115223,
+              "d_recall": 0.935788679245283,
+              "macro_f1": 0.8865081627558832,
+              "predicted_spell_count": 313.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": 64.0,
+              "short_reference_spell_count": 197.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.3248730964467005,
+              "spell_f1": 0.6710013003901171,
+              "weighted_70_30": 0.7356533590998469
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8727520562959921,
+            "d_precision": 0.8858937331226923,
+            "d_recall": 0.8635959716066607,
+            "macro_f1": 0.8714189897422498,
+            "predicted_spell_count": 327.8888888888889,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": 55.77777777777778,
+            "short_reference_spell_count": 158.7777777777778,
+            "short_spell_recall_iou_0_5_lt3s": 0.3620613001127165,
+            "spell_f1": 0.6586246206778443,
+            "weighted_70_30": 0.7224629313971659
+          }
+        },
+        "feed_like": {
+          "by_provider": {
+            "Metrica": {
+              "d_f1": 0.8876622957683796,
+              "d_precision": 0.8423361885581,
+              "d_recall": 0.938170192926759,
+              "macro_f1": 0.8709441323530696,
+              "predicted_spell_count": 259.5,
+              "reference_spell_count": 382.0,
+              "short_matched_spell_count": 28.5,
+              "short_reference_spell_count": 126.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.22619047619047616,
+              "spell_f1": 0.6067487047891212,
+              "weighted_70_30": 0.6860073330583057
+            },
+            "SkillCorner": {
+              "d_f1": 0.7808209940226635,
+              "d_precision": 0.8057553605326565,
+              "d_recall": 0.7575242982563125,
+              "macro_f1": 0.7754261520464674,
+              "predicted_spell_count": 332.5,
+              "reference_spell_count": 375.0,
+              "short_matched_spell_count": 35.0,
+              "short_reference_spell_count": 153.33333333333334,
+              "short_spell_recall_iou_0_5_lt3s": 0.2281362007168459,
+              "spell_f1": 0.4545917884350273,
+              "weighted_70_30": 0.5508420975184593
+            },
+            "Sportec": {
+              "d_f1": 0.908661998733765,
+              "d_precision": 0.8821452905305835,
+              "d_recall": 0.936822641509434,
+              "macro_f1": 0.8236598002642808,
+              "predicted_spell_count": 255.0,
+              "reference_spell_count": 456.0,
+              "short_matched_spell_count": 28.0,
+              "short_reference_spell_count": 197.0,
+              "short_spell_recall_iou_0_5_lt3s": 0.14213197969543145,
+              "spell_f1": 0.4942419686659282,
+              "weighted_70_30": 0.5930673181454339
+            }
+          },
+          "equal_provider_mean": {
+            "d_f1": 0.8590484295082694,
+            "d_precision": 0.84341227987378,
+            "d_recall": 0.8775057108975018,
+            "macro_f1": 0.8233433615546059,
+            "predicted_spell_count": 282.3333333333333,
+            "reference_spell_count": 404.3333333333333,
+            "short_matched_spell_count": 30.5,
+            "short_reference_spell_count": 158.7777777777778,
+            "short_spell_recall_iou_0_5_lt3s": 0.19881955220091785,
+            "spell_f1": 0.5185274872966922,
+            "weighted_70_30": 0.6099722495740663
+          }
+        }
+      }
+    },
+    "prediction_seal_sha256": "ba491e208bc176cf192f3dab43eadebead1d06d8cbed92e35cf2ea2d567e6031",
+    "prediction_csv_sha256": "7d0e55b84e6080c5ffc5a9d47868e7ff30b397352102ed52f7d179486604b8e5"
   },
   "promotion": {
-    "type": "explicit_user_authorized_post_hoc_screen_exception",
-    "user_request": "let's promote this",
-    "original_screen_passes": false,
+    "type": "explicit_user_authorized_decoder_promotion",
+    "user_request": "i think we should promote this?",
+    "original_screen_passes": true,
     "automatic_promotion": false,
     "fitting_during_promotion": false,
     "organizer_rescoring_performed": false,
-    "public_diagnostic_known_before_authorization": true
+    "public_diagnostic_known_before_authorization": true,
+    "model_checkpoints_unchanged": true
   },
   "organizer_public_diagnostic": {
-    "report": "experiments/results/sn_dense_v1_public_check.json",
+    "report": "experiments/results/feed_spell_public_v1.json",
     "known_at_promotion": true,
     "diagnostic_only": true,
     "spell_f1": 0.6303030303030303,
-    "macro_f1": 0.8513871111822523,
-    "previous_spell_f1": 0.5696969696969697,
+    "macro_f1": 0.8641807821574824,
+    "d_f1": 0.873501997336884,
+    "previous_spell_f1": 0.6303030303030303,
     "used_for_model_or_hyperparameter_selection": false,
     "independent_confirmation": false
   },
   "source_sha256": {
-    "experiments/current_baseline.py": "dbd220972123ceee6f4ddb9928f3bee0307aad0603259a57782a2419b0d34b15",
+    "experiments/current_baseline.py": "23a239a3cc9bf99295dfd0f0f93b121b7a30928153cac761eda348e8c3298cf7",
+    "experiments/calibrated_dense_baseline.py": "b51dd8c5810f6ff75fd801176626669b98d4254eaa3144520af3c8554ae25be3",
+    "experiments/promote_calibrated_dense_baseline.py": "56cfab9fc80bc54617e9978b6bb86afe16d097e6dca43606bcd655a613f47585",
     "experiments/sn_dense_baseline.py": "c9d6e5fc24943b4543862969c18b57f67f76daede49c315a0c8af20867ff8c9b",
-    "experiments/promote_sn_dense_baseline.py": "a7a9d030b32fd518960f1d97fdfa8e9dbb0b928b73fc270483a339dd0f9b01c0",
     "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
-    "experiments/sn_dense_public.py": "8fdc2a22373984abfcec3290a2c10b6a228d7d1eec2eb20f6ceb239cf23c677d",
     "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
     "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
     "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
     "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
-    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee"
+    "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+    "experiments/feed_spell_push_run.py": "fa7ef979c8be5e9698bc5562b8cc704e087e05d271e84184cb828b0bd40c2cd4",
+    "experiments/decoder_refinement.py": "3157ce0ef6a9f2417c0d365e6ac7b759cf99bda6d91b6f62ea343c2cbb28c962",
+    "experiments/decoder_search.py": "a9ce4d61bd21b35a096839df25682f92a8f4f455ea37d59d8cb7075c5fb54294",
+    "experiments/decoder_search_run.py": "a5d200d3bbd004dfb6ffa0cfd0c33207f9dbb60f9d01d3a8f5dfb413954838fc",
+    "experiments/spell_mbr_run.py": "c7518e3a7a8d88776cd659d406585df4f36f1c753749afad0748adf23e51f9f4",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d"
+  },
+  "historical_source": {
+    "repository_commit_before_promotion": "466ca1ef9dd58f0d6dc3987c77f2d1183e1c3828",
+    "predecessor_dispatch_sha256": "dbd220972123ceee6f4ddb9928f3bee0307aad0603259a57782a2419b0d34b15",
+    "note": "Original sealed studies require predecessor metadata and source; their receipts and hashes are unchanged"
   },
   "organizer_reference_labels_used_for_training": false,
   "historical_selection_records_preserved": true

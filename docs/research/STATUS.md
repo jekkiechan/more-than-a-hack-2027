@@ -1,22 +1,16 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #57](https://github.com/jekkiechan/more-than-a-hack-2027/pull/57), plus the completed
+[PR #59](https://github.com/jekkiechan/more-than-a-hack-2027/pull/59), plus the completed
 [feed-first calibration and pooling study](../../experiments/FEED_SPELL_PUSH.md).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
 ## Adopted package
 
-`joint_gru_sn_dense_ensemble_v1`: two width-96 conditional H/A GRUs with
-fine-tuned D paths, trained with dense SoccerNet-GAR touch-stream silver labels.
-The [baseline guide](../../experiments/BASELINE.md) owns the package, evidence,
-restore and inference commands; the active manifest and decision policy are
-linked there. The user explicitly approved promotion despite missing the +.01
-clean spell screen. The frozen failed screen and closed public diagnostic remain
-unchanged. Full-match organizer performance and independent broadcast confirmation
-are unknown. All five development matches have prior exposure; feed-like stress
-is synthetic, and dense GAR labels are derived silver labels.
+`joint_gru_sn_dense_calibrated_ensemble_v1`: the same two dense-SoccerNet H/A GRUs and fine-tuned D paths, now using the frozen temperature-4 D-logit transform and cost-3 decoder. Explicitly user-adopted on 1 November 2026. The [baseline guide](../../experiments/BASELINE.md) owns restore/inference; the [promotion report](../../experiments/CALIBRATED_DENSE_PROMOTION.md) and receipt bind the change.
+
+Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811. Both seeds and every provider improve spell in both views; all guards and +.01 clean screen pass. Public spell ties .630303, macro improves to .864181 and D-F1 to .873502. Promotion performs no fitting or organizer rescoring and reproduces the sealed full CSV exactly. Historical failed screens and closed gates are preserved. Independent dense confirmation and full-match organizer performance remain unknown.
 
 ## Next work
 
@@ -31,9 +25,9 @@ is synthetic, and dense GAR labels are derived silver labels.
    This is tuned evidence from the same exposed matches and synthetic stress.
    After selection, the user-requested fixed public diagnostic ties adopted spell
    at .630303 and raises macro .851387 → .864181, D-F1 .843424 → .873502
-   on 17 references. No public-driven tuning or promotion follows; the manifest
-   stays unchanged. An opt-in full CSV
-   generator and frozen evidence are supplied. Fresh dense evaluation or new
+   on 17 references. The user subsequently authorized promotion; f062 is now
+   the default package under a versioned manifest. Promotion replays the fixed
+   candidate without public-driven tuning or rescoring. Fresh dense evaluation or new
    corruption realizations are more informative than another local temperature sweep.
    The [earlier refinement](../../experiments/DECODER_REFINEMENT_V3.md) and its
    separately frozen public diagnostic remain historical evidence for those candidates.
@@ -64,6 +58,9 @@ Before another local sweep, consult the index's
 
 ## Artifacts and open work
 
+- **Calibrated dense promotion:** active manifest/policy are version 8; the four checkpoint hashes are unchanged. The baseline CLI matches the sealed candidate byte for byte and format validation passes. The [promotion report](../../experiments/CALIBRATED_DENSE_PROMOTION.md) owns current delivery and restore state.
+
+
 - **Feed-first iteration:** five rounds / 522 declared configurations, 7,830 ensemble cells
   and 360 seed cells complete. The fixed public diagnostic scores one unique CSV
   once and ties adopted spell F1 at .630303, with higher macro and D-F1. Separate scalar replays pass. The refinement's
@@ -76,7 +73,7 @@ Before another local sweep, consult the index's
 
 
 - **Decoder refinement:** 118 arms and the fixed public diagnostic are complete;
-  `r069` remains the strongest external candidate. Private PR #12 has 432
+  `r069` was its strongest external candidate, superseded by the adopted temperature-4 rule. Private PR #12 has 432
   fresh-restore hash-verified entries. Site version 14 is published with external-first
   interpretation and desktop/mobile QA. The user authorized this publication and
   future experiment-report updates to the same existing restricted audience.
@@ -112,7 +109,7 @@ Before another local sweep, consult the index's
   [mtah-data PR #8](https://github.com/jekkiechan/mtah-data/pull/8);
   [coordinated report](../../experiments/DENSE_TARGETED_FOLLOWUPS.md).
 
-- **Dense deployment:** private [mtah-data PR #7](https://github.com/jekkiechan/mtah-data/pull/7)
+- **Previous dense deployment:** private [mtah-data PR #7](https://github.com/jekkiechan/mtah-data/pull/7)
   is merged at `19ee280`. This session restored and verified all four versioned
   checkpoint hashes and reproduced the sealed full CSV from raw ATD inputs.
   [Submission receipt](../../experiments/dense_submission_audit_v1/report.json).

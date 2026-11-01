@@ -141,6 +141,9 @@ def joint_gru_ensemble_probabilities(inputs, models, manifest):
 
 
 def predict_probabilities(inputs, models, manifest=None):
+    if manifest and manifest.get('architecture', {}).get('kind') == 'sn_dense_calibrated_ensemble':
+        from experiments import calibrated_dense_baseline
+        return calibrated_dense_baseline.predict_probabilities(inputs, models, manifest)
     if manifest and manifest.get('architecture', {}).get('kind') == 'sn_dense_ensemble':
         from experiments import sn_dense_baseline
         return sn_dense_baseline.predict_probabilities(inputs, models, manifest)
@@ -173,8 +176,13 @@ def main():
     if output.exists():
         raise ValueError('Refusing to overwrite a generated baseline candidate')
     inputs = load_inputs(args.inputs)
-    probabilities = predict_probabilities(inputs, load_models(args.models_dir, args.manifest), manifest)
-    labels = supervised.decode(probabilities, supervised.model_periods(inputs), float(inputs['fps']), lt.COST)
+    models = load_models(args.models_dir, args.manifest)
+    if manifest.get('architecture', {}).get('kind') == 'sn_dense_calibrated_ensemble':
+        from experiments import calibrated_dense_baseline
+        labels = calibrated_dense_baseline.predict_labels(inputs, models, manifest)
+    else:
+        probabilities = predict_probabilities(inputs, models, manifest)
+        labels = supervised.decode(probabilities, supervised.model_periods(inputs), float(inputs['fps']), lt.COST)
     labels[np.asarray(inputs['period']) <= 0] = 'X'
     challenge.write_submission(labels, output)
     output.with_suffix('.json').write_text(json.dumps(dict(
