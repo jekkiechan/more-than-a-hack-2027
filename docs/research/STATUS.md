@@ -1,7 +1,7 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #53](https://github.com/jekkiechan/more-than-a-hack-2027/pull/53) and the completed
+[PR #54](https://github.com/jekkiechan/more-than-a-hack-2027/pull/54) and the completed
 [decoder search](../../experiments/DECODER_SEARCH_V2.md), including the completed
 [subsecond-team comparison](../../experiments/DENSE_SHORT_TEAM_V1.md) and the
 completed source-head evidence on open [PR #47](https://github.com/jekkiechan/more-than-a-hack-2027/pull/47).
@@ -55,6 +55,13 @@ Before another local sweep, consult the index's
 [settled directions](EXPERIMENTS.md#settled-directions).
 
 ## Artifacts and open work
+
+- **Decoder search delivery:** code/results merged in PR #54; private PR #11
+  has 295 remotely restored, hash-verified entries. The experimental full CSV
+  passes format validation. Research site version 12 is saved and passes
+  desktop/mobile QA, but automatic approval review rejected publication to its
+  existing two external viewers. Explicit user approval is pending; live site
+  remains version 11. [Report and receipts](../../experiments/DECODER_SEARCH_V2.md#artifact-and-site-delivery).
 
 - **Spell-F1 postprocessing (2026-11-01):** fixed posterior expected-spell-F1
   decoding completed all 45 paired cells. Ensemble clean/feed-like changes

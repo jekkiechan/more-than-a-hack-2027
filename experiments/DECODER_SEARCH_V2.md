@@ -1,6 +1,6 @@
 # Diverse postprocessing search
 
-Status: declared before scoring, 2026-11-01. Branch `research/decoder-search-v2`,
+Status: completed, 2026-11-01. Branch `research/decoder-search-v2`,
 base fork main `f7364fb`. This is a user-requested broad development search,
 following the negative fixed [posterior-MBR trial](SPELL_MBR_V1.md) and
 [confidence-boundary trial](DENSE_TARGETED_FOLLOWUPS.md).
@@ -161,3 +161,39 @@ After evaluation, `experiments.decoder_search_predict` provides an opt-in, refer
 ```
 
 The 134-way full-cohort maximum is optimistically selected on repeatedly exposed data. The +.01 screen fails and provider-selected transfer is negative. Stronger evidence requires independent dense matches; more tuning on these five cannot turn them into fresh confirmation.
+
+## Artifact and site delivery
+
+Code, results and tests merged in [public PR #54](https://github.com/jekkiechan/more-than-a-hack-2027/pull/54), with passing CI.
+Private [mtah-data PR #11](https://github.com/jekkiechan/mtah-data/pull/11)
+archives all 134 scalar receipts, 135 finalist arrays, the reference-free full CSV,
+source/results and logs. A fresh remote clone and empty-directory restore
+verified **all 295 entries** by size and SHA-256. The archive commit is
+`fcc11fc701faa4c53dbedd0d2db5e031da1b5fb8`; use
+`decoder_search_v2_cache_manifest.json`. This verification performs no new
+inference, fitting or scoring. The earlier private archive remains the pinned
+source of the 45 input probability arrays and six reconstructed fold weights.
+[Remote verification receipt](results/decoder_search_v2_remote_artifacts.json).
+
+The experimental CSV contains exactly 199,319 rows and passes format validation.
+[Prediction receipt](results/decoder_search_v2_prediction_receipt.json).
+Its full-match organizer spell F1 remains unknown; no public scoring was requested
+or performed.
+
+The existing restricted [research site](https://more-than-a-hack-progress.buffhen.chatgpt.site/)
+source is updated and saved as **version 12**, including an interactive comparison
+of the ten families, matched controls, failed transfer result, timeline entry,
+and the earlier MBR/runtime studies. Chromium QA passes at 1440×1100 and 390×844:
+selector updates, failed-guard display, overview chart interactions, no page
+width overflow or JavaScript errors. The unavailable Sites helper was replaced
+with ordinary authenticated source Git and a manifest-bearing static archive;
+source push and save succeeded without changing access.
+
+**Publication is blocked by automatic approval review.** It first rejected an
+unverified audience/destination. A fresh Sites read confirmed the same custom
+policy revision 2 and existing two external viewers, and AGENTS explicitly names
+this research destination. A second native publication attempt was still
+rejected because the user requested experimentation without explicitly approving
+external disclosure. No workaround followed. Version 12 is saved, the published
+site remains version 11, and explicit user approval is required for the final
+publication step. [Site delivery receipt](results/decoder_search_v2_site_delivery.json).
