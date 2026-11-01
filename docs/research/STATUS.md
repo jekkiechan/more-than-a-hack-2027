@@ -1,7 +1,7 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #67](https://github.com/jekkiechan/more-than-a-hack-2027/pull/67), plus the
+[PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68), including the
 completed [provider-excluded stacking comparison](../../experiments/SMART_STACKING_V1.md).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
@@ -14,12 +14,16 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 
 ## Latest delivery
 
-The completed [stacking study](../../experiments/SMART_STACKING_V1.md) and all
-495 independent replays are verified. The user has now authorized GitHub and
-restricted-site publication. The earlier
-[blocked snapshot](../../experiments/results/smart_stacking_v1_delivery.json)
-is preserved; completed publication is recorded in a later receipt. Adoption
-remains separate from publishing this study.
+The [stacking study](../../experiments/SMART_STACKING_V1.md) is merged on
+[PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68) with passing
+CI. All 495 independent replays pass; the combined suite has 568 tests. Research
+site version **21** is published with desktop/mobile checks and restricted
+access revision 2 unchanged. The best stack is a credible replacement candidate
+for adopted, while the stricter study-win rule remains unmet. A complete pooled
+deployment package still needs verification before adoption. The
+[publication receipt](../../experiments/results/smart_stacking_v1_publication.json)
+supersedes the preserved blocked snapshot. New native artifacts remain locally
+verified; no new remote native upload or organizer scoring occurred.
 
 The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
 and research site version **20**, with desktop/mobile checks and restricted
