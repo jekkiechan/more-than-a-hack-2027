@@ -15,6 +15,16 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 
 ## Latest delivery
 
+The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
+and research site version **20**, with desktop/mobile checks and restricted
+access revision 2 unchanged. The two pooled models, full CSVs and sealed native
+outputs are preserved in a locally verified 22-file archive (14,774,217 bytes).
+Remote upload of this new archive is blocked pending explicit authorization;
+its remote availability/restore is not claimed. See the
+[public-check delivery receipt](../../experiments/results/short_quality_public_v1_delivery.json).
+The previous research archive below remains remotely verified.
+
+
 Research code and aggregate evidence are on [PR #65](https://github.com/jekkiechan/more-than-a-hack-2027/pull/65).
 All **559 new archive/source entries / 1,714,557,333 bytes** pass an independent
 remote fetch and empty-directory restore with exact hashes and a separate LFS
