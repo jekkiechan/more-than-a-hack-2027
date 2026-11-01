@@ -58,7 +58,7 @@ Before another local sweep, consult the index's
 
 ## Artifacts and open work
 
-- **Calibrated dense promotion:** active manifest/policy are version 8; the four checkpoint hashes are unchanged. The baseline CLI matches the sealed candidate byte for byte and format validation passes. The [promotion report](../../experiments/CALIBRATED_DENSE_PROMOTION.md) owns current delivery and restore state.
+- **Calibrated dense promotion:** active manifest/policy are version 8; the four checkpoint hashes are unchanged. The baseline CLI matches the sealed candidate byte for byte and format validation passes. Public promotion PR #60 and private cache PR #14 are merged; all 191 package/source entries pass a fresh remote restore. Site version 16 is published with the new adoption timeline, pipeline and desktop/mobile QA. The [promotion report](../../experiments/CALIBRATED_DENSE_PROMOTION.md) owns current delivery and restore state.
 
 
 - **Feed-first iteration:** five rounds / 522 declared configurations, 7,830 ensemble cells
