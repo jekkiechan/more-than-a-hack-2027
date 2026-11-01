@@ -69,6 +69,13 @@ remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
 
+The [expanded 26-match evaluation](../../experiments/EXPANDED_EVAL_V1.md) (19 never-used
+GAR VALID/TEST matches, two more Sportec matches and the 5 development matches, all on
+`feed_like_v2`) ranks the adopted `original_full` with 5 Hz phase TTA first: +.0035 spell
+over calibrated dense (90% CI +.0005 to +.0064). This supersedes the 5-match v2 preference
+for calibrated dense. Phase TTA is not yet in the adopted package and needs a declared
+integration. The public window does not distinguish the candidates.
+
 The [challenge-calibrated feed study](../../experiments/FEED_LIKE_V2.md) replaces the
 state-blind feed-like view with `feed_like_v2` (fidelity error .72 → .09 on full-pitch
 providers). Under v2 the previous calibrated-dense baseline scores .5836 (.5880 with
