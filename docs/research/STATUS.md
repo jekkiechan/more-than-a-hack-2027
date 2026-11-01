@@ -15,7 +15,7 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 
 ## Latest delivery
 
-Raw-feed research PR #62 is merged with passing CI. All 408 new archive/source files verify after an independent remote restore. Archive identifiers and restore instructions remain private. Research site version 17 is published with restricted access unchanged. See the [delivery receipt](../../experiments/results/feed_robustness_v1_delivery.json).
+The short-possession continuation is delivered through [PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64): twelve fits, fixed component checks and 27 calibration settings. All 752 new archive/source files pass an independent remote restore; research site version 18 is published with restricted access unchanged. The bounded readout recovery preserves the original failure and all decoded outputs. See the [delivery receipt](../../experiments/results/feed_short_sampling_v1_delivery.json). Archive identifiers and restore instructions remain private.
 
 ## Next work
 

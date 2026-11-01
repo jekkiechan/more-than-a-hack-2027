@@ -252,3 +252,19 @@ from oversampling, or prove that the labels are wrong. The next useful work is
 a TRAIN-only audit of short-span label fidelity and diversity, alongside new
 independently labeled evaluation when available. Stop this declared sampling
 comparison and calibration grid; no post-result rates or settings are added.
+
+## Verified delivery
+
+[Research PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64)
+contains the frozen protocols, aggregate results and bounded readout recovery.
+All **752 new archive/source files / 402,204,042 bytes** passed an independent
+remote fetch and restore into an empty destination with exact size/hash checks.
+Original dependencies remain separately pinned. Archive identifiers and exact
+restore instructions remain in private storage.
+
+Research site version 18 is [published](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#short-sampling),
+with restricted access unchanged. Desktop/mobile layouts, anchor navigation,
+the existing chart interaction and live HTTP checks pass. The
+[delivery receipt](results/feed_short_sampling_v1_delivery.json) records these
+checks. The adopted baseline, decision policy and organizer scoring gates are
+unchanged.
