@@ -69,6 +69,9 @@ Before another local sweep, consult the index's
   once and ties adopted spell F1 at .630303, with higher macro and D-F1. Separate scalar replays pass. The refinement's
   unsupported aggregate-field lookup failed before candidate scoring; its
   frozen runner/lock are preserved with a bounded execution amendment.
+  Code/results are merged in public PR #58; private PR #13 has 1,176 entries
+  verified by fresh remote download and empty-directory restore. Research site
+  version 15 is published with unchanged restricted access and desktop/mobile QA.
   [Report, checks and artifact state](../../experiments/FEED_SPELL_PUSH.md).
 
 
