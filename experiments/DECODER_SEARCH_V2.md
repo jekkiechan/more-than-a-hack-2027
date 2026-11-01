@@ -197,3 +197,9 @@ rejected because the user requested experimentation without explicitly approving
 external disclosure. No workaround followed. Version 12 is saved, the published
 site remains version 11, and explicit user approval is required for the final
 publication step. [Site delivery receipt](results/decoder_search_v2_site_delivery.json).
+
+The user subsequently explicitly approved “Publish version 12”. Publication succeeded
+on 2026-11-01 at [the research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site),
+with unchanged custom access policy revision 2 and two existing external viewers.
+The preceding blocked receipt remains the historical record;
+[the publication receipt](results/decoder_search_v2_site_publication.json) resolves it.
