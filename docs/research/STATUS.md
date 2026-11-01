@@ -48,6 +48,12 @@ Before another local sweep, consult the index's
 
 ## Artifacts and open work
 
+- **Spell-F1 postprocessing (2026-11-01):** fixed posterior expected-spell-F1
+  decoding completed all 45 paired cells. Ensemble clean/feed-like changes
+  −.004235/−.002601; both individual seeds also decline. Retain cost-3 Viterbi;
+  no sample-budget or seed sweep follows. Site update remains blocked by the
+  missing helper. [Report](../../experiments/SPELL_MBR_V1.md).
+
 - **Postprocessing runtime (2026-11-01):** optional decoder reduces synthetic
   199,319-frame decoding time by 16%, with independent numerical parity tests.
   Not integrated or promoted; real-input parity and end-to-end timing remain.
