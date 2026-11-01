@@ -1,9 +1,8 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64), plus the
-completed [short-label quality and diversity study](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md)
-on [PR #65](https://github.com/jekkiechan/more-than-a-hack-2027/pull/65).
+[PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66), plus the
+completed [provider-excluded stacking comparison](../../experiments/SMART_STACKING_V1.md).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -40,6 +39,20 @@ record the observed states. Archive identifiers and exact restore instructions
 remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
+
+The [stacking comparison](../../experiments/SMART_STACKING_V1.md) completes
+24 meta-models, zero base refits and 495 paired original score cells.
+Best guard-passing learned stack: **.661814/.525872 clean/feed-like spell**,
+versus adopted .658625/.518527 and original-diversity .662590/.528180.
+It retains raw-feed D; learning the D combination instead reduces clean/feed
+spell to .638640/.513886 and fails guards. Uniform averaging reaches .523795
+feed. No stack beats the strongest single recipe, so the predeclared new-view
+and expert-fallback checks are skipped. No adoption or organizer scoring.
+All base, teacher, normalization and meta-label components exclude the target
+provider; other-provider OOF arrays are deliberately not reused for training.
+Stop this bounded weight/context comparison. Stronger error-complementarity
+evidence and independent match evaluation are more informative than another
+sweep on these five exposed matches.
 
 The separately requested [fixed public diagnostic](../../experiments/SHORT_QUALITY_PUBLIC_V1.md)
 is complete after two pooled fits. Public spell is **.611765** versus adopted
