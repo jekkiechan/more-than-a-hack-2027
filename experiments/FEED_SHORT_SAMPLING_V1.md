@@ -110,3 +110,26 @@ pass independent official-score, native-grading and probability-algebra replay.
 
 The game-level continuation remains a separate, predeclared comparison. Its
 condition is met because neither first-round arm reaches .55 under the guards.
+
+The first-round gain belongs to the probability ensemble: the H/A cross's
+individual feed scores are .514093 and .513095, below the augmented control's
+.518567 and .516938 respectively. Its ensemble improves .525240 → .527396.
+Thus the evidence supports this fixed combination, not a claim that each seed
+became more robust. An average of individual scores would miss this behavior.
+
+## Bounded calibration after model selection
+
+Before game-level results, `feed_short_calibration_v1` freezes one additional
+check if the final eligible model leader improves .525240 but still misses .55.
+Lock that model using the original fixed-decoder scores before any grid scores.
+The 27 fixed combinations are D temperatures {2,4,6}, conditional H/A
+temperatures {.75,1,1.25}, and shared transition costs {2,3,4}. The inherited
+setting T(D)=4/T(H/A)=1/cost=3 must replay its saved result exactly.
+
+This calibrates the changed probability model; it does not rerun the old
+522-configuration search on the old model. Evaluate one fixed ensemble only,
+retain the original guards and spell-first ranking, and run the selected
+setting on both individual seeds as a diagnostic without reselection. Stop
+after this grid: no local refinement, new weights or decoder families. The
+435 score cells comprise 405 grid cells and 30 seed diagnostics, all on the
+same exposed development cohort. This is additional tuning, not confirmation.
