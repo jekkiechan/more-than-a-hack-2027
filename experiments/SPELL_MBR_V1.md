@@ -140,7 +140,7 @@ branch `research/spell-mbr-archive-v1`, commit
 restored all 57 manifest entries with matching SHA-256 and size, including 45
 candidate arrays, private reports, the declaration and six source snapshots.
 [Remote verification receipt](results/spell_mbr_v1_private_archive_remote_verification.json).
-The archive uses `spell_mbr_cache_manifest_v1.json`; its receipt binds the exact
+The archive uses `spell_mbr_v1_cache_manifest.json`; its receipt binds the exact
 manifest and remote commit. This restores run artifacts without reopening the
 exclusive scoring directory or requiring another evaluation.
 No organizer predictions or labels were used. The adopted manifest, decision
