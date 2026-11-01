@@ -1,26 +1,42 @@
-# Current adopted baseline: original-possession diversity ensemble
+# Current adopted baseline: original-full with phase averaging
 
-The current package is `joint_gru_sn_dense_original_diversity_ensemble_v1`, architecture kind `sn_dense_original_diversity_ensemble`, explicitly adopted by the user on 1 November 2026 after consultation with Astra. It uses the already-sealed `original_full` pooled seed-2026/2027 checkpoints from the fixed public diagnostic. The [promotion report](ORIGINAL_FULL_PROMOTION.md), [active manifest](baseline_manifest.json), [active policy](model_decision_policy.json) and [promotion receipt](results/baseline_original_full_promotion.json) own the current package and evidence.
+The user authorized `joint_gru_sn_dense_original_diversity_phase_ensemble_v1`
+on 1 November 2026. It enables uniform sampling-phase averaging for the exact
+previous original_full two-seed pooled models. The [promotion report](ORIGINAL_FULL_PHASE_PROMOTION.md),
+[active manifest](baseline_manifest.json), [policy](model_decision_policy.json)
+and [receipt](results/baseline_original_full_phase_promotion.json) identify the package.
 
-The width-96 conditional H/A GRUs and fine-tuned D paths use the original-possession diversity sampler, raw-feed training views and unchanged paired teacher normalization. Average the native full H/A/D probability vectors equally, then apply the frozen temperature-4 D-logit transform and cost-3 decoder. Phase averaging and stacking are not part of this package. Promotion restores existing checkpoints; it does no fitting or organizer scoring.
+At 25 Hz, evaluate all five 5 Hz sampling offsets. Average the native two-seed
+probabilities within each phase, then average phases, then apply the unchanged
+f062 D-logit temperature 4 and cost-3 decoder. The four checkpoint hashes,
+paired teacher normalization, widths 96/24 and five-second context are unchanged.
+There is no fitting or organizer rescoring during promotion.
 
-Matched clean/feed-like spell F1 is **0.662590 / 0.528180**, versus the previous calibrated dense package's **0.658625 / 0.518527**. All feed-first provider guards pass. The historical +0.01 clean screen **fails**; explicit user adoption records an exception and preserves that failed result. SkillCorner feed spell declines by .003720 against the predecessor, within its guard. The five exposed development matches and synthetic views do not establish independent or full-match performance.
-
-The already-known public diagnostic is **0.611765 spell / 0.851742 macro / 0.862420 D-F1**, versus predecessor .630303/.864181/.873502 on 17 reference possessions. These saved results are diagnostic only and do not select the recipe. The public gate remains closed.
+Original exposed development clean/v1/v2 spell F1 is **.667556/.531576/.583571**.
+GAR TEST (ten games, separate from nine selected-on VALID games) clean/v2 spell
+is **.701641/.701289**. All seven historical active guards pass; the +.01 clean
+screen remains failed with an explicit user adoption exception. Calibrated plus
+phases remains the TEST/v2 spell point leader. The TEST phase gain interval
+includes zero; silver segments do not establish independent continuous-match
+accuracy. The saved public diagnostic is .611765 spell / .849473 macro on 17
+possessions, diagnostic only.
 
 ## Private cache restore
 
-Private [delivery PR #17](https://github.com/jekkiechan/mtah-data/pull/17) is merged. Use current private main or delivery branch `research/promote-original-full-v1`; the versioned manifest is authoritative even if a checkout is older. The four-checkpoint weight cache and matching source cache are versioned separately. See the promotion report for current remote verification and site delivery state.
+Use the versioned private cache manifest for this package once the promotion
+report records remote delivery. Its matching source snapshot preserves inference
+code; the original-full phase0 package remains separately restorable.
 
 ```sh
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_original_diversity_ensemble_v1.json --data-dir data
-python -m experiments.current_baseline predict --output data/experiments/current_baseline/original_full_restored.csv
-python evaluation/validate_submission.py data/experiments/current_baseline/original_full_restored.csv
+python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json --data-dir data
+python -m experiments.current_baseline predict --output data/experiments/current_baseline/phase_restored.csv
+python evaluation/validate_submission.py data/experiments/current_baseline/phase_restored.csv
 ```
 
-Restore the existing organizer input cache separately if missing. Model hashes must match the active manifest. Use a fresh output path. Matching public code is required; the private source snapshot supports an isolated version restore after incompatible shared-code changes. See the [restore reference](../.agents/skills/possession-research/references/restore.md).
-
-Fresh feature-only baseline inference reproduces the sealed **199,319-row** candidate CSV byte for byte, SHA-256 `7fe3da71b0cbd66bee046597611aac016fd714ddfaec6ba924dc400d7466bd1f`. No organizer reference labels are loaded or rescored. The default output is `data/experiments/current_baseline/joint_gru_sn_dense_original_diversity_ensemble.csv`.
+Restore organizer tracking inputs separately if missing. The default CLI checks
+all checkpoint hashes and refuses to overwrite an output. Expected sealed output:
+199,319 rows, SHA-256 `eb011268af14b4de77b4b1c823916631442ae2090efbb9526314007ddf27ceea`.
+See the [restore reference](../.agents/skills/possession-research/references/restore.md).
 
 ## Historical packages
 
@@ -31,6 +47,7 @@ original session; restore an older model with its versioned manifest.
 
 | Archived version | Evidence / promotion | Manifest |
 | --- | --- | --- |
+| `joint_gru_sn_dense_original_diversity_ensemble_v1` | [Phase0 promotion](ORIGINAL_FULL_PROMOTION.md) | [Package](baselines/joint_gru_sn_dense_original_diversity_ensemble_v1.json) |
 | `joint_gru_sn_dense_calibrated_ensemble_v1` | [Calibrated promotion](CALIBRATED_DENSE_PROMOTION.md), [successor adoption](ORIGINAL_FULL_PROMOTION.md) | [Package](baselines/joint_gru_sn_dense_calibrated_ensemble_v1.json) |
 | `joint_gru_sn_dense_ensemble_v1` | [Dense training](SOCCERNET_DENSE.md), [original promotion](results/baseline_sn_dense_promotion.json), [decoder successor](CALIBRATED_DENSE_PROMOTION.md) | [Package](baselines/joint_gru_sn_dense_ensemble_v1.json) |
 | `joint_gru_soccernet_capacity_ensemble_v1` | [Capacity study](SOCCERNET_CAPACITY.md), [promotion](results/baseline_soccernet_capacity_promotion.json), [verified remote delivery](results/baseline_soccernet_capacity_remote_artifacts.json) | [Package](baselines/joint_gru_soccernet_capacity_ensemble_v1.json) |

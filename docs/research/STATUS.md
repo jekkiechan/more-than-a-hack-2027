@@ -3,27 +3,29 @@
 Reviewed against fork `main` through
 [PR #72](https://github.com/jekkiechan/more-than-a-hack-2027/pull/72), plus the
 completed phase-average comparison and guard audit on PR #73. The
-explicitly user-authorized original-full promotion on PR #70 remains current.
+subsequent explicitly user-authorized phase-average promotion supersedes PR #70.
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
 ## Adopted package
 
-`joint_gru_sn_dense_original_diversity_ensemble_v1`: the exact already-sealed
-`original_full` two-seed pooled recipe, explicitly user-adopted on 1 November
-2026 after Astra consultation. The [baseline guide](../../experiments/BASELINE.md)
-owns restore/inference; the [promotion report](../../experiments/ORIGINAL_FULL_PROMOTION.md)
-and [receipt](../../experiments/results/baseline_original_full_promotion.json)
-bind the version-9 manifest/policy and byte-exact full-CSV replay.
+The user authorized **original_full with phase averaging** on 1 November 2026:
+`joint_gru_sn_dense_original_diversity_phase_ensemble_v1`. This supersedes the
+phase0 promotion on PR #70. The [promotion report](../../experiments/ORIGINAL_FULL_PHASE_PROMOTION.md)
+and [active manifest](../../experiments/baseline_manifest.json) own delivery and
+inference. All four checkpoint hashes are unchanged; five-phase averaging is
+now enabled. No fitting or organizer rescoring is part of promotion.
 
-Matched clean/feed-like spell is **.662590/.528180** versus predecessor
-.658625/.518527; all feed-first guards pass. The historical +.01 clean screen
-fails and remains failed, with an explicit user adoption exception. SkillCorner
-feed spell declines .003720 against the predecessor. Public spell/macro/D-F1
-are .611765/.851742/.862420 versus predecessor .630303/.864181/.873502 on 17
-possessions, diagnostic only. No refitting, public-label access or rescoring
-occurs during promotion. Independent/full-match confirmation remains unknown.
-Phase TTA and learned stacking are not enabled.
+Original clean/v1/v2 spell: **.667556/.531576/.583571**. Exact-package GAR TEST
+clean/v2 spell: **.701641/.701289** on ten games. All seven historical active
+guards pass; the +.01 clean screen remains failed with a user-authorized
+exception. Calibrated+phase remains the TEST/original-v2 spell point leader;
+the paired TEST phase-gain interval includes zero. Independent continuous-match
+gold confirmation remains pending.
+
+The evaluation policy now uses clean plus `feed_like_v2` with 4+ realizations
+for original-provider development. Keep GAR TEST separate from selected-on
+VALID and record future reuse. V1 and composite remain historical diagnostics.
 
 ## Latest delivery
 
@@ -89,8 +91,8 @@ positive in 8/10 games, but its paired 95% interval includes zero. Calibrated+ph
 still leads TEST spell (.704846/.704118). VALID's nine selected-on games stay
 separate. All 380 GAR and 90 guard cells replay officially with zero scalar
 error. No additional experiment is required before the adoption decision.
-The historical +.01 clean screen fails and requires an explicit new exception
-if promoted. Default and policy remain unchanged; no new public scoring.
+The historical +.01 clean screen failed. The subsequent user-authorized promotion
+records the new exception and enables phase averaging; no new public scoring.
 Research site version 24 publishes the completed scorecard, TEST/VALID results,
 guard/seed checks and final Astra review. Desktop/mobile controls and layouts pass.
 Restricted access revision 2 and the same two external viewers are preserved.
@@ -106,8 +108,8 @@ training (.5784) also does not transfer. The v1-feed advantage behind the promot
 does not hold on v2. Use v2 with 4+ realizations as the stress guardrail.
 
 Prioritize independent continuous-match gold labels and corroborated short-possession
-supervision. Phase TTA's fixed follow-up is complete; do not silently add it to
-the adopted package without the explicit versioned decision.
+supervision. Phase TTA's fixed follow-up is complete and the user has authorized its
+versioned promotion; prioritize new independent gold evidence next.
 The numerical comparisons below retain each completed study's historical
 baseline. The adopted recipe is now original diversity; PR #68's stack remains
 an archived comparator, with no pooled deployment package.

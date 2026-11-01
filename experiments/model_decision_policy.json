@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "confirmed_utc_date": "2026-11-01",
   "primary_order": [
     "spell_f1",
@@ -16,16 +16,15 @@
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
   "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "Two-seed original-possession diversity with frozen temperature-4 decoding",
-    "model": "joint_gru_sn_dense_original_diversity_ensemble",
-    "status": "User-authorized working development baseline; independent confirmation pending",
+    "family": "Original-full two-seed ensemble with uniform phase averaging",
+    "model": "joint_gru_sn_dense_original_diversity_phase_ensemble",
+    "status": "User-authorized provisional working baseline; independent gold confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
-    "baseline_manifest_sha256": "0f4191815f91c53b3cbbb7df620dc747e5faa140fc08a70576115d359b36ce8c",
+    "baseline_manifest_sha256": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "reason": "Explicit user adoption on 2026-11-01 despite the preserved failed +.01 clean screen; matched clean/feed spell gains and passing provider guards support a working baseline, with SkillCorner regression and independent-confirmation limits disclosed",
-    "promotion_record": "experiments/results/baseline_original_full_promotion.json",
-    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_calibrated_ensemble_v1.json",
-    "public_diagnostic_known_before_user_request": true
+    "reason": "Explicit user adoption of original_full phase averaging; historical +.01 clean screen remains failed. All seven historical active guards pass; original clean/v1/v2 and GAR TEST paired gains support a provisional upgrade. TEST silver-label interval includes zero; calibrated+phase remains spell point leader. Independent continuous-match gold confirmation remains pending.",
+    "promotion_record": "experiments/results/baseline_original_full_phase_promotion.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_original_diversity_ensemble_v1.json"
   },
   "pathcrf_component": {
     "default_enabled": false,
@@ -41,22 +40,24 @@
     "Organizer public labels are pipeline checks only, never selection or tuning data"
   ],
   "stress_guardrail": {
-    "view": "feed_like",
-    "rule": "Full-pipeline candidate feed_like spell >= adopted ensemble -.01; report component seeds separately and protect provider clean D-F1/macro within .02",
-    "components": "Calibrated ball gaps, coordinate drift/noise/jumps, per-slot gaps, same-team ID swaps",
+    "view": "feed_like_v2",
+    "reference_recipe": "joint_gru_sn_dense_original_diversity_phase_ensemble",
+    "minimum_realizations": 4,
+    "rule": "Matched full-provider candidate v2 spell >= adopted -.01; protect each provider clean macro/D-F1 within .02; report component seeds separately",
+    "changed_from": "feed_like",
+    "changed_after_v2_results": true,
+    "historical_guard_results_preserved": true,
     "diagnostic_only": [
+      "feed_like_v1",
       "composite",
       "no_sampling",
       "no_regional",
       "ball_gaps"
     ],
-    "changed_from": "composite",
-    "decided_after_composite_results": true,
     "evidence": [
-      "experiments/results/feed_defect_profile.json",
-      "experiments/results/stress_component_ablation.json"
-    ],
-    "reference_recipe": "joint_gru_sn_dense_original_diversity_ensemble"
+      "experiments/FEED_LIKE_V2.md",
+      "experiments/GAR_DEPLOYMENT_EVAL_V2.md"
+    ]
   },
   "lgbm_component": {
     "default_enabled": false,
@@ -68,7 +69,14 @@
     "default_delta": 0.01,
     "historical_failures_preserved": true,
     "current_screen_passes": false,
-    "current_adoption_exception": "Explicit user adoption on 2026-11-01 despite the preserved failed +.01 clean screen; matched clean/feed spell gains and passing provider guards support a working baseline, with SkillCorner regression and independent-confirmation limits disclosed"
+    "current_adoption_exception": "Explicit user adoption of original_full phase averaging; historical +.01 clean screen remains failed. All seven historical active guards pass; original clean/v1/v2 and GAR TEST paired gains support a provisional upgrade. TEST silver-label interval includes zero; calibrated+phase remains spell point leader. Independent continuous-match gold confirmation remains pending."
   },
-  "primary_evaluation_view": "feed_like"
+  "primary_evaluation_view": "feed_like_v2",
+  "evaluation_roles": {
+    "development": "Original five matches, full-provider holdout, clean plus feed_like_v2, equal provider means",
+    "frozen_candidate_check": "GAR TEST ten games; exact deployment weights; clean plus four v2 realizations; equal game means",
+    "gar_valid": "Nine previously selected-on games, development only; never pool with TEST for confirmation",
+    "organizer_public": "17-possession pipeline diagnostic only; no tuning, selection or fresh scoring",
+    "limitations": "Repeated TEST reuse becomes development exposure; silver segments are not continuous-match gold; new independent gold remains needed"
+  }
 }

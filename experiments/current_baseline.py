@@ -141,6 +141,9 @@ def joint_gru_ensemble_probabilities(inputs, models, manifest):
 
 
 def predict_probabilities(inputs, models, manifest=None):
+    if manifest and manifest.get('architecture', {}).get('kind') == 'sn_dense_original_diversity_phase_ensemble':
+        from experiments import original_full_phase_baseline
+        return original_full_phase_baseline.predict_probabilities(inputs, models, manifest)
     if manifest and manifest.get('architecture', {}).get('kind') == 'sn_dense_original_diversity_ensemble':
         from experiments import original_full_baseline
         return original_full_baseline.predict_probabilities(inputs, models, manifest)
@@ -180,7 +183,10 @@ def main():
         raise ValueError('Refusing to overwrite a generated baseline candidate')
     inputs = load_inputs(args.inputs)
     models = load_models(args.models_dir, args.manifest)
-    if manifest.get('architecture', {}).get('kind') == 'sn_dense_original_diversity_ensemble':
+    if manifest.get('architecture', {}).get('kind') == 'sn_dense_original_diversity_phase_ensemble':
+        from experiments import original_full_phase_baseline
+        labels = original_full_phase_baseline.predict_labels(inputs, models, manifest)
+    elif manifest.get('architecture', {}).get('kind') == 'sn_dense_original_diversity_ensemble':
         from experiments import original_full_baseline
         labels = original_full_baseline.predict_labels(inputs, models, manifest)
     elif manifest.get('architecture', {}).get('kind') == 'sn_dense_calibrated_ensemble':
