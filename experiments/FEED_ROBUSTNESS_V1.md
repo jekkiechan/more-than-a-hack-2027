@@ -1,6 +1,6 @@
 # Feed-like training views for the calibrated dense ensemble
 
-Status: initial comparison completed; fixed diversity continuation running.
+Status: completed; stretch unmet; baseline unchanged.
 Study `feed_robustness_v1`, 2026-11-01, based on fork
 main `7b60056`. The stretch target is 0.55 feed-like official spell F1 against
 the promoted calibrated ensemble's 0.518527 (clean 0.658625).
@@ -172,3 +172,46 @@ Evidence: [parent declaration](results/feed_robustness_v1_declaration.json),
 [fresh-view declaration](results/feed_robustness_confirmation_v1_declaration.json),
 [bounded execution amendment](results/feed_confirmation_runtime_v1_parent_amendment.json),
 [diversity declaration](results/feed_seed_diversity_v1_declaration.json).
+
+## Completed diversity and fresh checks
+
+| Fixed rule | Original clean | Original feed-like | Fresh feed-like |
+| --- | ---: | ---: | ---: |
+| Promoted baseline | 0.658625 | 0.518527 | 0.524936 |
+| Two augmented seeds | 0.654740 | 0.525240 | 0.533871 |
+| Four augmented seeds | 0.656688 | 0.524077 | 0.535179 |
+
+Four-seed guards pass: **True**. Improves the two-seed candidate: **False**. The original-benchmark 0.55 stretch is **not reached**. Best eligible arm is Two augmented seeds, 0.525240. No model promotion occurs.
+
+All twelve fits completed at the declared budget. The fresh two-seed improvement is +0.008936 relative to its matched baseline; these are new synthetic realizations on the same previously exposed matches, not independent-match confirmation. The additional four-seed rule was fixed before fresh results and evaluated regardless of its original result.
+
+The independent verifiers replay 135 parent, 90 component-transfer, 60 fresh parent and 55 diversity score cells. They check official scores, equal-provider aggregation, unchanged native grading, component algebra and original-view probability ensemble parity. Fresh four-seed scores and grading are replayed; its probability averaging is not separately reconstructed by the verifier.
+
+## Diagnostics and next decision
+
+The initial two-seed augmentation raises feed macro F1 from 0.823343 to 0.826937, while D-F1 declines from 0.859048 to 0.857715 (D precision 0.843498, recall 0.875295). Short-spell recall changes only from 0.198820 to 0.199402. Predicted spell count is 282.778 versus 404.333 reference spells under equal-provider weighting. This points to substantial remaining short-possession recovery work; the robustness improvement does not solve that failure mode.
+
+The strongest next hypothesis is better short-possession supervision and coverage, tested with an explicit sampling/exposure audit before fitting. Prior 2× weighting barely exposed the relevant examples, and adding training seeds alone is a different intervention. Independent densely labeled matches would give stronger evidence than further tuning these five development matches.
+
+Validation: 531 tests pass, plus integrity, file-backed training-contract, bundled CSV-format and documentation checks. No organizer references were accessed or scored.
+
+Evidence: [fresh aggregate](results/feed_robustness_confirmation_v1_aggregate.json), [fresh replay](results/feed_confirmation_independent_verification_v1.json), [diversity aggregate](results/feed_seed_diversity_v1_aggregate.json), [diversity fresh result](results/feed_seed_diversity_v1_fresh.json), [diversity replay](results/feed_diversity_independent_verification_v1.json).
+
+## Provider and seed spread
+
+| Provider | Baseline feed | Two-seed augmented feed | Four-seed augmented feed |
+| --- | ---: | ---: | ---: |
+| Metrica | 0.606749 | 0.617628 | 0.618407 |
+| SkillCorner | 0.454592 | 0.457600 | 0.456015 |
+| Sportec | 0.494242 | 0.500494 | 0.497808 |
+
+| Augmented training seed | Clean spell | Feed spell |
+| --- | ---: | ---: |
+| 2026 | 0.645040 | 0.518567 |
+| 2027 | 0.648017 | 0.516938 |
+| 2028 | 0.645852 | 0.518603 |
+| 2029 | 0.642903 | 0.511507 |
+
+These individual-score spreads are descriptive, not confidence intervals. The ensemble is evaluated from averaged probabilities rather than averaged metrics.
+
+Four-seed historical +0.01 clean screen: **False**.

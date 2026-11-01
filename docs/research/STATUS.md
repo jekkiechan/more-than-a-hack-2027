@@ -14,6 +14,8 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 
 ## Next work
 
+The completed [raw-feed training study](../../experiments/FEED_ROBUSTNESS_V1.md) reaches **0.525240** original feed-like spell F1 versus .518527 promoted. Twelve fits, fixed blends/component checks and fresh corruption checks are complete; 0.55 remains unmet and adoption is unchanged. The two-seed fresh score is .533871 versus matched baseline .524936. Prioritize short-possession supervision/exposure and independent dense evaluation; fresh synthetic views are not new matches.
+
 1. The [feed-first calibration and pooling study](../../experiments/FEED_SPELL_PUSH.md)
    is complete: five rounds, 522 declared configurations (including controls).
    D-logit temperature 4 with the original cost-3 decoder (`f062` / `g001`)
