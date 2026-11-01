@@ -1,0 +1,37 @@
+{
+  "all_hashes_and_sizes_match": true,
+  "branch": "research/decoder-refinement-v3",
+  "commit": "fef71417d4f06a5dd84220a3e43bb63a3dd6a6ad",
+  "dependencies": [
+    {
+      "branch": "research/dense-targeted-archive-v1",
+      "commit": "64b6eaafef0f25bd3229aae2021efc9e13a8a1c9",
+      "manifest": "dense_targeted_followups_cache_manifest_v1.json",
+      "repository": "jekkiechan/mtah-data",
+      "role": "45 source probabilities and 6 reconstructed control fold checkpoints"
+    },
+    {
+      "branch": "research/decoder-search-v2",
+      "commit": "fcc11fc701faa4c53dbedd0d2db5e031da1b5fb8",
+      "manifest": "decoder_search_v2_cache_manifest.json",
+      "repository": "jekkiechan/mtah-data",
+      "role": "previous winner path/scalar controls and original experimental CSV"
+    },
+    {
+      "manifest": "baseline_cache_manifest_joint_gru_sn_dense_ensemble_v1.json",
+      "role": "exact deployed weights and raw organizer inputs; compare hashes to public seal"
+    }
+  ],
+  "empty_directory_restore": "/tmp/decoder-refinement-v3-restored",
+  "fresh_remote_clone": true,
+  "inference_training_or_scoring_during_verification": false,
+  "manifest": "decoder_refinement_v3_cache_manifest.json",
+  "manifest_sha256": "178fff1a0be561de653a5e52973cfd85acfd5cf2cc218626f089ae7e88abe64c",
+  "organizer_reference_labels_included": false,
+  "private_repository": "jekkiechan/mtah-data",
+  "public_gate_remains_closed": true,
+  "pull_request_url": "https://github.com/jekkiechan/mtah-data/pull/12",
+  "source_public_commit": "3f42868",
+  "study": "decoder_refinement_v3",
+  "verified_entries": 432
+}

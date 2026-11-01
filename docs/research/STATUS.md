@@ -26,11 +26,13 @@ is synthetic, and dense GAR labels are derived silver labels.
    improves external clean/feed-like spell to .652958/.511065, and a non-Viterbi
    anchor segmenter reaches .649962/.508516. Both beat .647215/.505811;
    provider guards pass, but the +.01 screen fails. The explicitly requested
-   one-time public diagnostic is negative: both the previous split-cost winner
-   and the selected refinement score .575000 versus saved .630303. Public macro
-   improves, while spell F1 does not transfer. Retain the adopted package; no
-   public-driven tuning follows. Fresh independent dense evidence remains the
-   priority. The [earlier 134-arm study](../../experiments/DECODER_SEARCH_V2.md)
+   one-time public diagnostic scores both the previous split-cost winner
+   and the selected refinement at .575000 versus saved .630303. Keep `r069`
+   as the strongest external candidate: both seeds and every provider gain in
+   clean and feed-like spell. The public window is diagnostic and does not veto
+   that external ranking. The deployed manifest is unchanged pending a separate
+   explicit promotion decision; no public-driven tuning follows. Independent
+   dense evidence remains the next confirmation priority. The [earlier 134-arm study](../../experiments/DECODER_SEARCH_V2.md)
    is development evidence, not a confirmed competition improvement.
 2. The [subsecond-team follow-up](../../experiments/DENSE_SHORT_TEAM_V1.md)
    is complete: six fixed 2× H/A-weighted fits and a fixed 50/50 ensemble blend
@@ -58,6 +60,13 @@ Before another local sweep, consult the index's
 [settled directions](EXPERIMENTS.md#settled-directions).
 
 ## Artifacts and open work
+
+- **Decoder refinement:** 118 arms and the fixed public diagnostic are complete;
+  `r069` remains the strongest external candidate. Private PR #12 has 432
+  fresh-restore hash-verified entries. Site version 14 is saved with external-first
+  interpretation and desktop/mobile QA. Publication awaits explicit authorization
+  after approval review limited the earlier authorization to version 12.
+  [Report and receipts](../../experiments/DECODER_REFINEMENT_V3.md#delivery-and-reproduction-state).
 
 - **Decoder search delivery:** code/results merged in PR #54; private PR #11
   has 295 remotely restored, hash-verified entries. The experimental full CSV

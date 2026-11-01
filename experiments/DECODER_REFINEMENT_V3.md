@@ -1,6 +1,6 @@
 # Decoder refinement and public diagnostic
 
-Status: completed, 2026-11-01. Base fork main `866d86a`.
+Status: completed; strongest external development candidate, 2026-11-01. Base fork main `866d86a`.
 The user requested iteration on the [134-arm study](DECODER_SEARCH_V2.md),
 explicitly welcomed non-Viterbi methods, and requested a public-score diagnostic.
 
@@ -145,12 +145,13 @@ All **505 experiment tests**, 26 integrity/gate tests and the synthetic file-bac
 
 [Declaration](results/decoder_refinement_v3_declaration.json), [control replay](results/decoder_refinement_v3_control_replay.json), [all-arm aggregate](results/decoder_refinement_v3_aggregate.json), [independent scalar readout](results/decoder_refinement_v3_readout.json).
 
-## One-time public diagnostic: spell gain does not transfer
+## Separate public diagnostic: external ranking is unchanged
 
 **Both frozen candidates score 0.575000 public spell F1, below the adopted
 baseline's saved 0.630303 (−0.055303).** The selected refinement raises macro
 F1 by 0.012029 and D-F1 by 0.021422, but spell F1 is the headline metric.
-This outcome must accompany the positive development comparison.
+This outcome must accompany the positive development comparison. It does not replace
+the external selection criterion or veto the externally selected candidate.
 
 | Fixed prediction | Public spell F1 | Public macro F1 | D-F1 | Predicted possessions |
 | --- | ---: | ---: | ---: | ---: |
@@ -178,8 +179,50 @@ are not paired significance and do not estimate full-match performance. The
 non-Viterbi anchor arm was not part of this fixed diagnostic and has no new
 public score.
 
-Decision: retain the adopted package; preserve the calibrated and anchor
-methods as experimental development findings. The +.01 external screen already
-failed before the public diagnostic. No public-driven reselection follows the
-negative result. Any stronger next efficacy claim needs independent dense
-possession evidence, not additional tuning on this organizer window.
+Decision: **keep `r069` as the strongest external development candidate and the
+lead for subsequent external evaluation.** Relative to adopted, it gains .005743
+clean spell and .005254 feed-like spell, with both seeds and every provider
+positive in both views. The non-Viterbi anchor segmenter is a second useful
+external result. If synthetic feed-like defects adequately represent the target
+feed, the .511065 result is a meaningful improvement on the chosen proxy.
+
+The public window is a descriptive diagnostic, not a tuning or selection set;
+its negative point estimate does not undo that external ranking. The +.01 clean
+screen was already unmet before public access and remains honestly recorded.
+The deployed manifest is unchanged because model promotion is a separate explicit
+decision; no public-driven reselection or automatic promotion occurs. Selection
+optimism from repeatedly exposed external matches and the synthetic-to-real
+assumption remain unconfirmed by independent dense data.
+
+## Delivery and reproduction state
+
+[Public PR #56](https://github.com/jekkiechan/more-than-a-hack-2027/pull/56)
+contains code, all aggregate results and the external-first readout.
+Private [mtah-data PR #12](https://github.com/jekkiechan/mtah-data/pull/12)
+archives **432 entries**, all restored from a fresh remote clone into an empty
+directory and verified by byte size and SHA-256. Manifest:
+`decoder_refinement_v3_cache_manifest.json`; private commit
+`fef71417d4f06a5dd84220a3e43bb63a3dd6a6ad`.
+The archive contains all 118 arm scalar receipts, 135 finalist arrays, the
+fixed full CSVs, probability cache, source snapshots, logs and the closed gate.
+No organizer reference labels are included. Dependency manifests pin the input
+probabilities, previous-winner controls and deployed weights/raw inputs.
+[Remote receipt](results/decoder_refinement_v3_remote_artifacts.json).
+
+The source/results snapshot is pinned to initial public commit `3f42868`.
+Later delivery receipts and clarified external-first prose do not alter any
+sealed executable, configuration, prediction, score, gate or selected candidate.
+`r069` was selected before the public diagnostic and remains the external leader.
+
+The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site)
+has a prepared **version 14**, source `0833ddbb98b91906343dd0dbb3473facfcd1525b`,
+with separate external and public tables and explicit external selection
+priority. Chromium QA passes at 1440×1100 and 390×844, including table contents,
+prior interactive controls, overview chart, no page overflow and no JS errors.
+
+Production publication is blocked by automatic approval review: it rejected
+new version 13 because the user's earlier approval covered version 12 only,
+and requested explicit approval for new disclosure to the same two external
+viewers. The revised version 14 is saved without another publication attempt;
+the live site stays at approved version 12 and custom access revision 2 is
+unchanged. [Site receipt](results/decoder_refinement_v3_site_delivery.json).
