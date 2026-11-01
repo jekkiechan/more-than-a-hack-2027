@@ -51,6 +51,13 @@ remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
 
+The [challenge-calibrated feed study](../../experiments/FEED_LIKE_V2.md) replaces the
+state-blind feed-like view with `feed_like_v2` (fidelity error .72 → .09 on full-pitch
+providers). Under v2 the adopted model leads (.5836; .5880 with 5 Hz phase TTA); the
+`original_full` candidate (.5785) and raw-feed training (.5784) do not transfer, which
+supersedes the audit's candidate preference. Use v2 with 4+ realizations as the stress
+guardrail; phase-TTA integration is the strongest label-free next step.
+
 The [stacking comparison](../../experiments/SMART_STACKING_V1.md) completes
 24 meta-models, zero base refits and 495 paired original score cells.
 Best guard-passing learned stack: **.661814/.525872 clean/feed-like spell**,

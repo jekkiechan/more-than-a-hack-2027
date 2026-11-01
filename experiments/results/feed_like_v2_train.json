@@ -1,0 +1,403 @@
+{
+ "study": "feed_like_v2_train",
+ "recipe": "feed_robustness_v1 raw-feed recipe; only original-provider TRAIN views replaced by feed_like_v2 views",
+ "parity": {
+  "fold": "leave_out_metrica",
+  "seed": 2026,
+  "sha_equal": false,
+  "max_abs_parameter_difference": 5.058944225311279e-06,
+  "arrays": 23
+ },
+ "gar_train_records": {
+  "games": 45,
+  "records": 11249,
+  "native_frames": 5063339,
+  "source": "OpenSportsLab/SoccerNet-GAR tracking-full @32c84021; 7/7 TRAIN files match frozen SHA-256"
+ },
+ "models": {
+  "leave_out_metrica_2026.joblib": {
+   "sha256": "300a3234e4097167a298cc58a2c973d0ce4f364faf1355be89cf31f636855687",
+   "wall_seconds": 420.4,
+   "old_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "source": "v2"
+  },
+  "leave_out_metrica_2027.joblib": {
+   "sha256": "d1e96ec8bf8ebf81c6d6d6165bc9bc983b0551ee7869e048734660e81ce8d898",
+   "wall_seconds": 423.6,
+   "old_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "source": "v2"
+  },
+  "leave_out_skillcorner_2026.joblib": {
+   "sha256": "5a8049f9f54e38ac66c1d309c961267184b0b15ce8dca6795b824dc32bbe6afc",
+   "wall_seconds": 422.3,
+   "old_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "metrica_1",
+    "metrica_2"
+   ],
+   "source": "v2"
+  },
+  "leave_out_skillcorner_2027.joblib": {
+   "sha256": "c82612efe1ac64f0bfb6c63ea94ccc2334434161a4b14ca4cd05cd769d4f3918",
+   "wall_seconds": 421.0,
+   "old_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "metrica_1",
+    "metrica_2"
+   ],
+   "source": "v2"
+  },
+  "leave_out_sportec_2026.joblib": {
+   "sha256": "45a2755e5c1609bbe63081851f818e59e582d7fd236858afa57380d960a19759",
+   "wall_seconds": 415.2,
+   "old_matches": [
+    "metrica_1",
+    "metrica_2",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "source": "v2"
+  },
+  "leave_out_sportec_2027.joblib": {
+   "sha256": "cd60de0a465c396499bb59fdaaa8900425fd29c8dc57a566ae4b8efe5c0caa46",
+   "wall_seconds": 422.3,
+   "old_matches": [
+    "metrica_1",
+    "metrica_2",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "source": "v2"
+  }
+ },
+ "train_views": {
+  "J03WMX": {
+   "seed": 2382305641,
+   "sha256": "9bab1e19880d7254dfd04eb84e6b29583627b0d2d71f9d74139d66dd53d7996d",
+   "raw_sha256": "35369f95cd014fd6d51ed311f79e36e8414b1eaed30901f1db95a20255116ee0",
+   "profile_truth_state": {
+    "ball_missing": 0.3607527728870224,
+    "ball_missing_given_pred_dead": 0.7581768375193901,
+    "ball_missing_given_pred_live": 0.07864681558879687,
+    "ball_gaps_per_min": 1.469510231764714,
+    "ball_gap_time_share_ge15s": 0.8008659652854268,
+    "live_missing_runs_touching_dead": 0.7876106194690266,
+    "isolated_live_gaps_per_live_min": 0.42169874310346844,
+    "visible_players_dead_minus_live": -1.7538118027709366,
+    "frames_dead_below_live_median_by_3plus": 0.2960493745668174,
+    "frames_live_below_live_median_by_3plus": 0.0746641052372641,
+    "player_dropouts_per_min_dead": 19.060034984652958,
+    "player_dropouts_per_min_live": 5.482083660345089,
+    "player_gap_median_s": 7.88,
+    "player_gap_share_lt1s": 0.0,
+    "dropout_start_outside_pitch": 0.12939001848428835
+   }
+  },
+  "J03WN1": {
+   "seed": 919399290,
+   "sha256": "2f4aa7b9532fcecaab6950f0d78881d17eab0be79d52acb9c2d2a84e80b1b9c9",
+   "raw_sha256": "ab43dc3705f01b611c8bb908cdfef88908724df5888681fb98cd40c0d0595b2b",
+   "profile_truth_state": {
+    "ball_missing": 0.41303748913895777,
+    "ball_missing_given_pred_dead": 0.7093627022299956,
+    "ball_missing_given_pred_live": 0.09588019363236176,
+    "ball_gaps_per_min": 1.4728632886176278,
+    "ball_gap_time_share_ge15s": 0.84563023772875,
+    "live_missing_runs_touching_dead": 0.8796296296296297,
+    "isolated_live_gaps_per_live_min": 0.2851836143732542,
+    "visible_players_dead_minus_live": -1.3905877406702984,
+    "frames_dead_below_live_median_by_3plus": 0.24674792304328816,
+    "frames_live_below_live_median_by_3plus": 0.09038126855521593,
+    "player_dropouts_per_min_dead": 17.319359422824657,
+    "player_dropouts_per_min_live": 4.562937829972067,
+    "player_gap_median_s": 7.72,
+    "player_gap_share_lt1s": 0.0,
+    "dropout_start_outside_pitch": 0.09686609686609686
+   }
+  },
+  "J03WOH": {
+   "seed": 3471254930,
+   "sha256": "e98917e65c2a76a73e44b0cc3e0646b891b51082312cdc53de2ecc655290e52d",
+   "raw_sha256": "8c4c1594336b2ec888312a1e348135590c8b00f0b5b535776a630cbec8f71980",
+   "profile_truth_state": {
+    "ball_missing": 0.39591441106592623,
+    "ball_missing_given_pred_dead": 0.738681456740566,
+    "ball_missing_given_pred_live": 0.084953784140663,
+    "ball_gaps_per_min": 1.4211377847741482,
+    "ball_gap_time_share_ge15s": 0.8111919005982513,
+    "live_missing_runs_touching_dead": 0.8854166666666666,
+    "isolated_live_gaps_per_live_min": 0.22934185836402807,
+    "visible_players_dead_minus_live": -1.9492807957270237,
+    "frames_dead_below_live_median_by_3plus": 0.5040064961926796,
+    "frames_live_below_live_median_by_3plus": 0.13902286468830358,
+    "player_dropouts_per_min_dead": 18.27054191116763,
+    "player_dropouts_per_min_live": 5.087219403711168,
+    "player_gap_median_s": 7.52,
+    "player_gap_share_lt1s": 0.0,
+    "dropout_start_outside_pitch": 0.10009624639076034
+   }
+  },
+  "metrica_1": {
+   "seed": 1637814085,
+   "sha256": "7601c3a47a119bf1776c1a277480a9511f1bbbf046ff1cfeedd8a2ade941a438",
+   "raw_sha256": "341b8eaaddecf827486f300b39e35c52897404a48a0bf74a0c4f615db9ccf1b2",
+   "profile_truth_state": {
+    "ball_missing": 0.4517330317366178,
+    "ball_missing_given_pred_dead": 0.9953778519174964,
+    "ball_missing_given_pred_live": 0.09400048023600169,
+    "ball_gaps_per_min": 1.7068259244445059,
+    "ball_gap_time_share_ge15s": 0.8718093551538838,
+    "live_missing_runs_touching_dead": 0.6344827586206897,
+    "isolated_live_gaps_per_live_min": 0.9090181460603496,
+    "visible_players_dead_minus_live": -1.7004662252290288,
+    "frames_dead_below_live_median_by_3plus": 0.31312446784479314,
+    "frames_live_below_live_median_by_3plus": 0.08720857106921115,
+    "player_dropouts_per_min_dead": 17.280925819736225,
+    "player_dropouts_per_min_live": 5.402655019037927,
+    "player_gap_median_s": 8.12,
+    "player_gap_share_lt1s": 0.0,
+    "dropout_start_outside_pitch": 0.09202453987730061
+   }
+  },
+  "metrica_2": {
+   "seed": 3441802980,
+   "sha256": "4c52ebce0d56bb24de02bb2d20ebefaa560bdee62b73c20dde56057362227a70",
+   "raw_sha256": "1fc761db31b35b1db23bbf2e56cc4500ca0b3e27aef8a4b2eecb54652a007b32",
+   "profile_truth_state": {
+    "ball_missing": 0.4543554648757403,
+    "ball_missing_given_pred_dead": 0.9989757174392936,
+    "ball_missing_given_pred_live": 0.08952928511433675,
+    "ball_gaps_per_min": 1.987163138655105,
+    "ball_gap_time_share_ge15s": 0.8541669915022999,
+    "live_missing_runs_touching_dead": 0.6285714285714286,
+    "isolated_live_gaps_per_live_min": 1.1534230045782021,
+    "visible_players_dead_minus_live": -1.3560416976224339,
+    "frames_dead_below_live_median_by_3plus": 0.22804415011037527,
+    "frames_live_below_live_median_by_3plus": 0.06961942955838686,
+    "player_dropouts_per_min_dead": 16.7682119205298,
+    "player_dropouts_per_min_live": 4.915356496433262,
+    "player_gap_median_s": 7.8,
+    "player_gap_share_lt1s": 0.0,
+    "dropout_start_outside_pitch": 0.06703296703296703
+   }
+  },
+  "skillcorner_had_1874553": {
+   "seed": 1575797551,
+   "sha256": "7bbe9321582508c8377d37a9355034e65c9e3090f9379a92832abab22472fa52",
+   "raw_sha256": "4072a8eab0630e965b0c75e5546e1b2367c5490a1bad39012da082fb1e97dda4",
+   "profile_truth_state": {
+    "ball_missing": 0.4687468896187917,
+    "ball_missing_given_pred_dead": 0.5732980214986758,
+    "ball_missing_given_pred_live": 0.45628724727549524,
+    "ball_gaps_per_min": 2.30914700905743,
+    "ball_gap_time_share_ge15s": 0.7001097073291574,
+    "live_missing_runs_touching_dead": 0.7829457364341085,
+    "isolated_live_gaps_per_live_min": 0.62380483820062,
+    "visible_players_dead_minus_live": 7.352743017742558,
+    "frames_dead_below_live_median_by_3plus": 0.0,
+    "frames_live_below_live_median_by_3plus": 0.4356237120100997,
+    "player_dropouts_per_min_dead": 35.70649633899362,
+    "player_dropouts_per_min_live": 49.258303473627535,
+    "player_gap_median_s": 6.8,
+    "player_gap_share_lt1s": 0.04142381348875937,
+    "dropout_start_outside_pitch": 0.01727726894254788
+   }
+  },
+  "skillcorner_had_1886347": {
+   "seed": 4056384216,
+   "sha256": "25901c7838deecc9e733ea22874e143f14929c82d8235ef21f7ec72087590fa8",
+   "raw_sha256": "290e363045bed4d2f31c3c5b9f642dd75d87c914401be50f1e3f0f89193555fc",
+   "profile_truth_state": {
+    "ball_missing": 0.4599945801293994,
+    "ball_missing_given_pred_dead": 0.5724907063197026,
+    "ball_missing_given_pred_live": 0.44618339481991404,
+    "ball_gaps_per_min": 2.2966701669997627,
+    "ball_gap_time_share_ge15s": 0.7165580470562246,
+    "live_missing_runs_touching_dead": 0.7656903765690377,
+    "isolated_live_gaps_per_live_min": 0.6389533335868861,
+    "visible_players_dead_minus_live": 7.178557167061818,
+    "frames_dead_below_live_median_by_3plus": 0.0,
+    "frames_live_below_live_median_by_3plus": 0.4328338341003309,
+    "player_dropouts_per_min_dead": 28.71747211895911,
+    "player_dropouts_per_min_live": 48.161107519111546,
+    "player_gap_median_s": 7.8,
+    "player_gap_share_lt1s": 0.040176600441501106,
+    "dropout_start_outside_pitch": 0.013686534216335542
+   }
+  },
+  "skillcorner_had_1899585": {
+   "seed": 265404209,
+   "sha256": "02ae5d6e5c3bafdedc0ac009f5e9c44aa735490cf184976c500eb9504f9b4816",
+   "raw_sha256": "4a3efbfed91cdfff4ef21b8d44a8fe60b980045b6d39cf3c9992ad362a4df5ff",
+   "profile_truth_state": {
+    "ball_missing": 0.5319363421526665,
+    "ball_missing_given_pred_dead": 0.5562161216995978,
+    "ball_missing_given_pred_live": 0.5294021024967148,
+    "ball_gaps_per_min": 2.449141478408884,
+    "ball_gap_time_share_ge15s": 0.7318876599975147,
+    "live_missing_runs_touching_dead": 0.7106227106227107,
+    "isolated_live_gaps_per_live_min": 0.8650897941305301,
+    "visible_players_dead_minus_live": 8.044158211029412,
+    "frames_dead_below_live_median_by_3plus": 0.0,
+    "frames_live_below_live_median_by_3plus": 0.48070886260768,
+    "player_dropouts_per_min_dead": 33.887043189368775,
+    "player_dropouts_per_min_live": 42.27989487516426,
+    "player_gap_median_s": 9.7,
+    "player_gap_share_lt1s": 0.03011472275334608,
+    "dropout_start_outside_pitch": 0.019837476099426387
+   }
+  },
+  "skillcorner_had_1925299": {
+   "seed": 510590207,
+   "sha256": "6af5ca85b5ebda309b2812e0ba1518427b9be383090adf1c74dc33465d538c71",
+   "raw_sha256": "c411d0bb4c135a427a42cc47737e9950e8cbd2b7cf5b28c8d85524baa35521ef",
+   "profile_truth_state": {
+    "ball_missing": 0.4352175190104762,
+    "ball_missing_given_pred_dead": 0.669300518134715,
+    "ball_missing_given_pred_live": 0.401478660244203,
+    "ball_gaps_per_min": 2.330211154988414,
+    "ball_gap_time_share_ge15s": 0.7385174909077278,
+    "live_missing_runs_touching_dead": 0.6812749003984063,
+    "isolated_live_gaps_per_live_min": 0.8961577237593817,
+    "visible_players_dead_minus_live": 6.766930222551638,
+    "frames_dead_below_live_median_by_3plus": 0.0,
+    "frames_live_below_live_median_by_3plus": 0.38850304320227025,
+    "player_dropouts_per_min_dead": 33.10880829015544,
+    "player_dropouts_per_min_live": 52.43642881147082,
+    "player_gap_median_s": 6.4,
+    "player_gap_share_lt1s": 0.044448795770511064,
+    "dropout_start_outside_pitch": 0.00998629332289015
+   }
+  },
+  "skillcorner_had_1927964": {
+   "seed": 3328941340,
+   "sha256": "3e099a0e42f05aa6f0c33c77af8bb8318aebab15da348bc87c10e261c1f02059",
+   "raw_sha256": "91fd677e3c9ff043c674e3a7f8b96912a6b29fdccc1a718c8979e701fc548e83",
+   "profile_truth_state": {
+    "ball_missing": 0.39706355523191816,
+    "ball_missing_given_pred_dead": 0.6170038272279934,
+    "ball_missing_given_pred_live": 0.3825393100211218,
+    "ball_gaps_per_min": 1.5850705322517824,
+    "ball_gap_time_share_ge15s": 0.7672196869535548,
+    "live_missing_runs_touching_dead": 0.6666666666666666,
+    "isolated_live_gaps_per_live_min": 0.6499016121170544,
+    "visible_players_dead_minus_live": 6.31075484714091,
+    "frames_dead_below_live_median_by_3plus": 0.0,
+    "frames_live_below_live_median_by_3plus": 0.40745220515227554,
+    "player_dropouts_per_min_dead": 36.08529250956807,
+    "player_dropouts_per_min_live": 45.698915025364215,
+    "player_gap_median_s": 7.6,
+    "player_gap_share_lt1s": 0.04167605316512728,
+    "dropout_start_outside_pitch": 0.011263798152737103
+   }
+  },
+  "skillcorner_had_1953632": {
+   "seed": 3102437069,
+   "sha256": "c387066b4333d8bce82158d927e511a467c30234db98dedb7328f6f187023b48",
+   "raw_sha256": "7f2e2e9a9b528eae56ea8768361b65135a252f937730526c6636894a60c9b15b",
+   "profile_truth_state": {
+    "ball_missing": 0.470547517347335,
+    "ball_missing_given_pred_dead": 0.6252420916720465,
+    "ball_missing_given_pred_live": 0.4524747808051287,
+    "ball_gaps_per_min": 2.218432915196434,
+    "ball_gap_time_share_ge15s": 0.7234401349072512,
+    "live_missing_runs_touching_dead": 0.7154471544715447,
+    "isolated_live_gaps_per_live_min": 0.7919298576411804,
+    "visible_players_dead_minus_live": 7.057036277552317,
+    "frames_dead_below_live_median_by_3plus": 0.0,
+    "frames_live_below_live_median_by_3plus": 0.44738380314886395,
+    "player_dropouts_per_min_dead": 32.14977404777276,
+    "player_dropouts_per_min_live": 47.75337041576318,
+    "player_gap_median_s": 8.0,
+    "player_gap_share_lt1s": 0.03514166483637162,
+    "dropout_start_outside_pitch": 0.014715572150230618
+   }
+  },
+  "skillcorner_had_1959846": {
+   "seed": 3847769286,
+   "sha256": "81637c3864294e45f269c8ff48641803a452800a6b929c00e50c4b6799fcb3d4",
+   "raw_sha256": "61c0b191c699cb4b2b761649dd9f016f055d20830f446f0d7f6cd6fa892e168e",
+   "profile_truth_state": {
+    "ball_missing": 0.4588942800519374,
+    "ball_missing_given_pred_dead": 0.49040477342364136,
+    "ball_missing_given_pred_live": 0.4551604211652749,
+    "ball_gaps_per_min": 2.1321670197498803,
+    "ball_gap_time_share_ge15s": 0.701228592702904,
+    "live_missing_runs_touching_dead": 0.7822222222222223,
+    "isolated_live_gaps_per_live_min": 0.5618084882765474,
+    "visible_players_dead_minus_live": 8.214485421160422,
+    "frames_dead_below_live_median_by_3plus": 0.0,
+    "frames_live_below_live_median_by_3plus": 0.4392998413942023,
+    "player_dropouts_per_min_dead": 36.6715045960329,
+    "player_dropouts_per_min_live": 49.56526724121458,
+    "player_gap_median_s": 8.1,
+    "player_gap_share_lt1s": 0.03849425776265419,
+    "dropout_start_outside_pitch": 0.010421097405359422
+   }
+  },
+  "skillcorner_had_1986691": {
+   "seed": 634808759,
+   "sha256": "21f3cee12c400100b040befa1d5c1f02aafe91fbbc8470a337dca4f7f039dbc0",
+   "raw_sha256": "0784c3327524e9829a6611f1609b4b870e773eb43a75236c1b9e34d28b1f8153",
+   "profile_truth_state": {
+    "ball_missing": 0.49362631409659563,
+    "ball_missing_given_pred_dead": 0.5874348581354951,
+    "ball_missing_given_pred_live": 0.48120315165922206,
+    "ball_gaps_per_min": 2.204127236715139,
+    "ball_gap_time_share_ge15s": 0.7557186460441031,
+    "live_missing_runs_touching_dead": 0.804,
+    "isolated_live_gaps_per_live_min": 0.5636178900753408,
+    "visible_players_dead_minus_live": 8.149575940083855,
+    "frames_dead_below_live_median_by_3plus": 0.0,
+    "frames_live_below_live_median_by_3plus": 0.45800663305408046,
+    "player_dropouts_per_min_dead": 28.8361320208454,
+    "player_dropouts_per_min_live": 48.89672756551579,
+    "player_gap_median_s": 9.1,
+    "player_gap_share_lt1s": 0.039275583678813,
+    "dropout_start_outside_pitch": 0.01636482653283875
+   }
+  }
+ },
+ "organizer_reference_access": false,
+ "development_labels_read": false
+}

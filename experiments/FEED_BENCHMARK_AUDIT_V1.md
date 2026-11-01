@@ -3,6 +3,11 @@
 Study `feed_benchmark_audit_v1`, 1 November 2026. A post-hoc audit with no fitting,
 no organizer labels and no public scoring. The adopted model is unchanged.
 
+> **Superseded preference.** The [challenge-calibrated `feed_like_v2` study](FEED_LIKE_V2.md)
+> adds realistic player dropouts. Under it the adopted model leads the `original_full`
+> candidate (.5836 vs .5785), so the candidate preference below does not hold on the
+> more realistic feed. The other findings here stand.
+
 ## Question
 
 The `original_full` candidate leads the original feed-like benchmark (.528180 vs
