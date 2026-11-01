@@ -90,3 +90,21 @@ dependency hashes and the known reconstructed-D2 provenance.
 ```
 
 Completed declarations, locks and results must not be overwritten or reused.
+
+## Conditional component follow-up
+
+Before any candidate scores were available, `feed_head_transfer_v1` declared
+two fixed follow-ups if the full augmentation study misses 0.55: augmented
+conditional H/A with baseline D, and baseline conditional H/A with augmented D.
+Cross components within each matching seed, average native probabilities, and
+apply the same frozen calibrated decoder. This isolates whether one output
+component benefits while the other regresses. It adds zero fits and 90 scored
+cells, with no calibration or blend-weight tuning. The controls, primary metric
+and guards remain unchanged. The fixed whole-model blend and the component
+crosses are different experiments, with separate declarations and scoring locks.
+
+```sh
+.venv/bin/python -m experiments.feed_head_transfer_v1 declare
+# After the parent comparison and its independent replay complete:
+.venv/bin/python -m experiments.feed_head_transfer_v1 run
+```

@@ -1,0 +1,22 @@
+{
+  "arms": {
+    "robust_d": "Baseline conditional H/A, augmented D",
+    "robust_ha": "Augmented conditional H/A, baseline D"
+  },
+  "condition": "Run only if parent study does not reach 0.55; two arms fixed before parent scores are available.",
+  "ensemble": "Cross within each matched seed first, then average native probabilities. Apply unchanged f062 decoder after averaging.",
+  "evidence": "Reused development matches and synthetic defects. This component comparison is not independent confirmation.",
+  "fits": 0,
+  "guards": "Same feed-first guards as parent against promoted baseline",
+  "hypothesis": "Raw defects may help team attribution and dead-ball inference differently; retain a useful component without the other component's regression.",
+  "organizer_reference_access": false,
+  "parent_declaration_sha256": "8810a724fe20028524337d70dbaea272b7c8d83009dfcd70ea72a950a8b9d105",
+  "promotion": false,
+  "scored_cells": 90,
+  "selection": "Rank these two arms and the three frozen parent arms on original development feed spell, macro tie-break. No fresh-corruption results used.",
+  "source_sha256": {
+    "experiments/feed_head_transfer_v1.py": "801e221f41ff219e631c72128aa7a410f509e5cdf138973a6a02bf7de396f905"
+  },
+  "study": "feed_head_transfer_v1",
+  "utc": "2026-11-01T04:54:39.240940+00:00"
+}
