@@ -10,7 +10,7 @@ The already-known public diagnostic is **0.611765 spell / 0.851742 macro / 0.862
 
 ## Private cache restore
 
-Use private delivery branch `research/promote-original-full-v1` until its PR is merged; the versioned manifest is authoritative even if a generic default or private main is older. The four-checkpoint weight cache and matching source cache are versioned separately. See the promotion report for current remote verification and site delivery state.
+Private [delivery PR #17](https://github.com/jekkiechan/mtah-data/pull/17) is merged. Use current private main or delivery branch `research/promote-original-full-v1`; the versioned manifest is authoritative even if a checkout is older. The four-checkpoint weight cache and matching source cache are versioned separately. See the promotion report for current remote verification and site delivery state.
 
 ```sh
 python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_original_diversity_ensemble_v1.json --data-dir data

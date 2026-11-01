@@ -27,8 +27,11 @@ Phase TTA and learned stacking are not enabled.
 ## Latest delivery
 
 The original-full default CLI replays the already-sealed candidate exactly, with
-199,319 valid rows. Package/source private-cache and research-site delivery are
-recorded separately in the [promotion report](../../experiments/ORIGINAL_FULL_PROMOTION.md).
+199,319 valid rows. Private delivery PR #17 is merged; all **213 entries /
+6,417,817 bytes** pass independent remote fetch and empty restore. Research site
+**version 22** is published with desktop/mobile interaction checks and unchanged
+restricted access revision 2. The [promotion report](../../experiments/ORIGINAL_FULL_PROMOTION.md)
+links the separate verification and publication receipts.
 
 The [stacking study](../../experiments/SMART_STACKING_V1.md) is merged on
 [PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68) with passing
