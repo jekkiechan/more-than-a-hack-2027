@@ -19,6 +19,9 @@ def verify():
     cells, max_error = 0, 0.
     iou_rows = {}
     for split in study.SPLITS:
+        observed = report['splits'][split]
+        if (observed['games'],observed['records']) != study.previous.EXPECTED[split]:
+            raise ValueError('Prepared cohort count differs from the frozen GAR inventory')
         iou_rows[split] = {}
         for game in declaration['match_ids'][split]:
             path = study.OUT/'games'/f'{split}__{game}.json'

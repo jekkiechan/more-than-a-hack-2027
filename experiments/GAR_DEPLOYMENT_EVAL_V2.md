@@ -94,6 +94,9 @@ corrections before any model scoring. GAR parity uses the independently
 assembled native dense records, retaining the actual fps and verifying decoded
 labels as well as per-seed probabilities. The frozen simulator treats unknown
 X context as live for defect placement; these frames remain ungraded.
+The [label-free target-feed adapter check](results/original_full_phase_average_adapter_replay_v1.json)
+reproduces the sealed five-phase competition CSV exactly; native probability
+association differences are bounded by 3.33 × 10⁻¹⁶.
 Native records,
 predictions, coverage and replay receipts are under
 `data/experiments/gar_deployment_eval_v2/`. Remote availability of these new

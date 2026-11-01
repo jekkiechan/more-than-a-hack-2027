@@ -90,6 +90,10 @@ A fresh label-free replay reproduces this CSV and the adopted phase0 CSV
 byte for byte; both pass the 199,319-row format check. The
 [replay receipt](results/original_full_phase_average_replay_v1.json) records
 input, model and manifest hashes. No reference labels were loaded or scored.
+The [evaluation-adapter replay](results/original_full_phase_average_adapter_replay_v1.json)
+also reproduces the same sealed CSV exactly. Changing the association of the
+phase/seed means changes native probabilities by at most 3.33 × 10⁻¹⁶ and
+does not change decoded output.
 
 Original five-match phase-average D metrics, per-seed scores and per-IoU
 breakdowns were not published in the saved aggregate phase scorecards; they
