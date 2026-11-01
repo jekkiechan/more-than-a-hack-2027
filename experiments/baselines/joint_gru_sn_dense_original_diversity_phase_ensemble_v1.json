@@ -1,0 +1,198 @@
+{
+  "version": 10,
+  "model": "joint_gru_sn_dense_original_diversity_phase_ensemble",
+  "package_version": "joint_gru_sn_dense_original_diversity_phase_ensemble_v1",
+  "status": "User-authorized provisional working baseline; independent gold confirmation pending",
+  "promoted_utc": "2026-11-01T23:12:18.337690+00:00",
+  "replaced_baseline": "joint_gru_sn_dense_original_diversity_ensemble",
+  "previous_manifest": "experiments/baselines/joint_gru_sn_dense_original_diversity_ensemble_v1.json",
+  "previous_manifest_sha256": "0f4191815f91c53b3cbbb7df620dc747e5faa140fc08a70576115d359b36ce8c",
+  "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_original_diversity_ensemble_v1.json",
+  "previous_policy_sha256": "459d9af709fb1ff469e5d16cd3fd08543e703ad02ea7eeece62d046e334852f8",
+  "model_directory": "data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1",
+  "models_sha256": {
+    "dense_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+    "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "dense_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+    "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+  },
+  "default_output": "data/experiments/current_baseline/joint_gru_sn_dense_original_diversity_phase_ensemble.csv",
+  "training": {
+    "recipe": "original_full",
+    "seeds": [
+      2026,
+      2027
+    ],
+    "steps": 2048,
+    "original_train_matches": 13,
+    "gar_train_games": 45,
+    "sampler": "OriginalDiversitySampler",
+    "frozen_model_receipts": {
+      "data/experiments/short_quality_public_v1/models/pooled_2026.json": "3529763ea07405d21465b5e8eec04ec4b3337c39adf2be5d4b095e296f00e309",
+      "data/experiments/short_quality_public_v1/models/pooled_2027.json": "76722663a95c139e3138f6a21f49e9af605fb4f2674f687b54aaaa595aba5561"
+    }
+  },
+  "architecture": {
+    "kind": "sn_dense_original_diversity_phase_ensemble",
+    "members": {
+      "dense_2026": 0.5,
+      "dense_2027": 0.5
+    },
+    "teachers": {
+      "dense_2026": "teacher_2026",
+      "dense_2027": "teacher_2027"
+    },
+    "hidden_ha": 96,
+    "hidden_d": 24,
+    "core_seconds": 10,
+    "context_each_side_seconds": 5,
+    "rate_hz": 5,
+    "decoder_switch_cost": 3,
+    "combination": "Uniform native seed mean per phase, uniform five-phase mean, then frozen f062 normalization/temperature-4/cost-3 decoding",
+    "postprocessing": {
+      "kind": "dead_logit_temperature",
+      "temperature": 4.0,
+      "member_normalization": "after_equal_native_probability_pooling",
+      "ha_switch_cost": 3,
+      "dead_switch_cost": 3,
+      "frozen_study": "feed_spell_push_v1",
+      "frozen_arm": "f062"
+    },
+    "phase_tta": true,
+    "phase_averaging": {
+      "rate_hz": 5,
+      "weighting": "uniform",
+      "order": "seeds_then_phases",
+      "native_fps": 25,
+      "phases": 5
+    }
+  },
+  "evidence": {
+    "report": "experiments/ORIGINAL_FULL_PHASE_AVERAGE.md",
+    "artifacts_sha256": {
+      "experiments/results/original_full_phase_average_scorecard_v2.json": "cf5ae7ce85b1c68af5097cd21134a447a8e64afc71625a734caaaef229bad25b",
+      "experiments/results/original_full_phase_average_replay_v1.json": "c41cb5c7450484005696b8db1112ccab7db1dc3abb6ee7f87d85f0e8541c57a7",
+      "experiments/results/original_full_phase_average_adapter_replay_v1.json": "acbbef5669786e395b62bd7fcb1d5eef6d06b37e94beea4b14d03a49be53fca1",
+      "experiments/results/phase_average_guard_v1.json": "c2bbfbb129d23f45aafec9a1066c3cbdc26b66dff5a2583fa3d8ef52a055febf",
+      "experiments/results/phase_average_guard_v1_verification.json": "336d179a55ad64a64799767170c1a3e514c4cc4fc3502bcb8680f8fadb38cf8f",
+      "experiments/results/gar_deployment_eval_v2.json": "29a33186115ff11fdef904e2b70ee760ba861ef58c078fda43ec59343c9026a3",
+      "experiments/results/gar_deployment_eval_v2_verification.json": "eca2aa5f72c28bb8020945654bd704011f882e23fa717854b96c34cb015de977",
+      "experiments/results/feed_like_v2_public_result.json": "0ed472d0245705dbc0ca89f01b9faeba8286924b9d9fc324264db755a3f0bef5"
+    },
+    "original_development": {
+      "clean": {
+        "macro": 0.8712713689886137,
+        "spell": 0.6675555328266306
+      },
+      "v1_feed_like": {
+        "macro": 0.826852823195384,
+        "spell": 0.5315755112553304
+      },
+      "v2": {
+        "full_pitch_spell": 0.6332876617366893,
+        "macro": 0.8499746497420088,
+        "spell": 0.5835712076382747
+      }
+    },
+    "prediction_csv_sha256": "eb011268af14b4de77b4b1c823916631442ae2090efbb9526314007ddf27ceea",
+    "historical_active_guards_pass": true,
+    "historical_clean_screen_passes": false,
+    "gar_test_games": 10,
+    "gar_valid_games": 9,
+    "gar_valid_previously_selected_on": true,
+    "independent_continuous_gold_confirmation": false
+  },
+  "promotion": {
+    "type": "explicit_user_authorized_phase_upgrade",
+    "user_request": "update AGENTS.md as necessary, update the site, and promote the latest model",
+    "clean_screen_exception": "Explicit user adoption of original_full phase averaging; historical +.01 clean screen remains failed. All seven historical active guards pass; original clean/v1/v2 and GAR TEST paired gains support a provisional upgrade. TEST silver-label interval includes zero; calibrated+phase remains spell point leader. Independent continuous-match gold confirmation remains pending.",
+    "original_screen_passes": false,
+    "automatic_promotion": false,
+    "fitting_during_promotion": false,
+    "phase_tta_added": true,
+    "organizer_rescoring_performed": false,
+    "public_diagnostic_known_before_authorization": true
+  },
+  "organizer_public_diagnostic": {
+    "report": "experiments/results/feed_like_v2_public_result.json",
+    "diagnostic_only": true,
+    "known_at_promotion": true,
+    "metrics": {
+      "auxiliary_70_30": 0.683077072873707,
+      "bootstrap_draws": 1000,
+      "d_f1": 0.862869869551384,
+      "d_precision": 0.8100358422939068,
+      "d_recall": 0.9230769230769231,
+      "frames": 199319,
+      "graded_frames": 7500,
+      "ground_truth_spells": 17,
+      "headline_iou": 0.5,
+      "macro_f1": 0.8494725958535332,
+      "macro_f1_bootstrap_5_95": [
+        0.6996015850364905,
+        0.8850591096238479
+      ],
+      "predicted_spells": 17,
+      "primary_metric": "spell_f1_mean",
+      "spell_by_iou": {
+        "0.3": {
+          "f1": 0.7058823529411765,
+          "n_matched": 12,
+          "n_missed": 5,
+          "n_spurious": 5,
+          "precision": 0.7058823529411765,
+          "recall": 0.7058823529411765
+        },
+        "0.4": {
+          "f1": 0.7058823529411765,
+          "n_matched": 12,
+          "n_missed": 5,
+          "n_spurious": 5,
+          "precision": 0.7058823529411765,
+          "recall": 0.7058823529411765
+        },
+        "0.5": {
+          "f1": 0.7058823529411765,
+          "n_matched": 12,
+          "n_missed": 5,
+          "n_spurious": 5,
+          "precision": 0.7058823529411765,
+          "recall": 0.7058823529411765
+        },
+        "0.6": {
+          "f1": 0.5882352941176471,
+          "n_matched": 10,
+          "n_missed": 7,
+          "n_spurious": 7,
+          "precision": 0.5882352941176471,
+          "recall": 0.5882352941176471
+        },
+        "0.7": {
+          "f1": 0.35294117647058826,
+          "n_matched": 6,
+          "n_missed": 11,
+          "n_spurious": 11,
+          "precision": 0.35294117647058826,
+          "recall": 0.35294117647058826
+        }
+      },
+      "spell_f1_at_headline": 0.7058823529411765,
+      "spell_f1_bootstrap_5_95": [
+        0.4470588235294118,
+        0.7647058823529412
+      ],
+      "spell_f1_mean": 0.611764705882353
+    },
+    "used_for_model_or_hyperparameter_selection": false,
+    "independent_confirmation": false
+  },
+  "source_sha256": {
+    "experiments/current_baseline.py": "2f8e5725d215fbe5f97bfa46d7544780d7755f1f0d208a02397afa7aac1d5867",
+    "experiments/original_full_phase_baseline.py": "4ce3381464c01fe57ce1e1a260d3de517b946664d0bc50b02362064b0da5257d",
+    "experiments/promote_original_full_phase.py": "3eb12dd0e3fd7b47cb204766f769335636b8c00d33a1d14b030adf1e1bae90db",
+    "experiments/feed_like_v2_public.py": "d09d3adc7483cfae39a106ae809a9335e3176aaffdfbaade3f38d04da7ef33cc",
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38"
+  },
+  "organizer_reference_labels_used_for_training": false,
+  "historical_selection_records_preserved": true
+}

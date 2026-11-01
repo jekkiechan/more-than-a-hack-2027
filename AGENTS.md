@@ -35,6 +35,28 @@
 - Import shared libraries; a new study gets a new runner/ID. Do not copy or edit
   a frozen runner to start another sweep. Check prior outcomes first.
 
+## Evaluation roles
+
+- Develop on the original multi-provider whole-match cohort with clean inputs
+  and `feed_like_v2`, using at least four fixed corruption realizations and
+  equal-provider means. These five matches are exposed development data.
+- Check frozen candidates separately on the ten GAR TEST games, using the exact
+  deployment package, clean inputs and four or more fixed v2 realizations.
+  Average realizations within game, then games equally. Track each use: repeated
+  selection on TEST makes it development exposure, not fresh confirmation.
+- Keep the nine selected-on GAR VALID games separate from TEST. Never use a
+  pooled 19/26-match headline as independent confirmation, or substitute
+  provider-fold ensembles for deployed pooled weights without labelling it.
+- GAR uses generated silver labels and discontinuous segments. Neither GAR nor
+  new synthetic views establish continuous-match gold performance. Prioritize
+  new independently annotated continuous matches for stronger confirmation.
+- Retain v1/composite as historical regression diagnostics. Record v2's
+  model-conditioned calibration limitation and any post-result policy change;
+  do not rewrite earlier guard failures. See the active
+  [decision policy](experiments/model_decision_policy.json),
+  [v2 report](experiments/FEED_LIKE_V2.md) and
+  [GAR protocol](experiments/GAR_DEPLOYMENT_EVAL_V2.md).
+
 ## Delivery and checks
 
 Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
@@ -42,7 +64,7 @@ Work on a branch in `jekkiechan/more-than-a-hack-2027`; PRs target the fork's
 Publish an authorized PR without another confirmation. Existing
 [CI/auto-merge](docs/CI.md) applies. Docs maintenance never promotes a model.
 Whenever a promising or useful experiment completes, update and publish the
-[research progress site](https://more-than-a-hack-progress.buffhen.chatgpt.site/)
+[research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
 as part of delivery. Useful negative results and diagnostics count, even when
 the model is not adopted. The site replaces the progress Page as the team-facing
 update destination; repository reports remain the source of evidence.

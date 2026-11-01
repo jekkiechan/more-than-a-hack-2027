@@ -25,6 +25,10 @@ the matching section/report. These are study families, not one leaderboard.
 
 ## Dense SoccerNet supervision
 
+The user subsequently adopted the exact original_full package with phase averaging.
+See the [promotion and eval-policy update](../../experiments/ORIGINAL_FULL_PHASE_PROMOTION.md);
+historical study verdicts below remain unchanged.
+
 | ID / state | Scope / outcome | Evidence |
 | --- | --- | --- |
 | `phase_average_guard_v1` — complete, active guards pass | All seven active guards pass; both seeds improve clean/v1. All 90 cells pass official replay with zero error. Published score replay within 2.22e-16. Same exposed clean/v1 cohort; +.01 clean screen still fails. | [Guard-completion protocol](../../experiments/PHASE_AVERAGE_GUARD_V1.md) |
