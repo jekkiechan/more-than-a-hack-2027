@@ -1,8 +1,8 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68), plus the
-explicitly user-authorized original-full promotion.
+[PR #69](https://github.com/jekkiechan/more-than-a-hack-2027/pull/69), plus the
+explicitly user-authorized original-full promotion on PR #70.
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -30,13 +30,15 @@ The original-full default CLI replays the already-sealed candidate exactly, with
 199,319 valid rows. Package/source private-cache and research-site delivery are
 recorded separately in the [promotion report](../../experiments/ORIGINAL_FULL_PROMOTION.md).
 
-
-The completed [stacking study](../../experiments/SMART_STACKING_V1.md) and all
-495 independent replays are verified. The user has now authorized GitHub and
-restricted-site publication. The earlier
-[blocked snapshot](../../experiments/results/smart_stacking_v1_delivery.json)
-is preserved; completed publication is recorded in a later receipt. Adoption
-remains separate from publishing this study.
+The [stacking study](../../experiments/SMART_STACKING_V1.md) is merged on
+[PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68) with passing
+CI. All 495 independent replays pass; its combined suite has 568 tests. Research
+site version **21** was published with desktop/mobile checks and restricted
+access revision 2 unchanged. The stack improves its historical adopted control,
+but original diversity is now selected for adoption. No pooled stack is installed.
+The [publication receipt](../../experiments/results/smart_stacking_v1_publication.json)
+supersedes the preserved blocked snapshot. New stack native artifacts remain locally
+verified; no new remote stack-native upload or organizer scoring occurred.
 
 The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
 and research site version **20**, with desktop/mobile checks and restricted

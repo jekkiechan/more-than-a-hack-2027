@@ -251,8 +251,13 @@ The [artifact receipt](results/smart_stacking_v1_artifacts.json) records
 **582 locally verified native/metadata files / 2,286,245,722 bytes**, separate
 from 230 hash-verified inherited dependencies. New reconstructive artifacts
 are local in ignored storage; new remote upload and independent remote restore
-are not claimed. The user subsequently authorized publication of source and
-aggregate evidence to the code repository and the existing restricted research
-site. The original [blocked delivery snapshot](results/smart_stacking_v1_delivery.json)
-is preserved; a later publication receipt records the completed state.
-Publication does not change model adoption or upload the native artifacts.
+are not claimed. After the user authorized publication, source and aggregate evidence merged
+with passing CI on [PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68).
+The combined suite after integrating PR #67 passes **568 experiment tests**.
+Research site version **21** is
+[published](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#smart-stacking),
+with desktop/mobile chart, provider/view switching, downloads and navigation
+checked. Restricted access revision 2 is unchanged. The
+[publication receipt](results/smart_stacking_v1_publication.json) supersedes the
+preserved [blocked snapshot](results/smart_stacking_v1_delivery.json). Publication
+does not change model adoption or upload the native artifacts.
