@@ -1,0 +1,315 @@
+{
+ "arms": {
+  "adop": {
+   "full_pitch_spell_f1": 0.6298491972612706,
+   "macro_f1": 0.8512582683081981,
+   "per_replicate": [
+    0.5941163126790062,
+    0.5863650757336413,
+    0.5728009227573159,
+    0.581205159830691
+   ],
+   "providers": {
+    "Metrica": 0.6888608880194544,
+    "SkillCorner": 0.4911672087279495,
+    "Sportec": 0.5708375065030868
+   },
+   "spell_f1": 0.5836218677501636
+  },
+  "adop_phase_tta": {
+   "full_pitch_spell_f1": 0.6365400298307702,
+   "macro_f1": 0.8525336268970203,
+   "per_replicate": [
+    0.600562336218604,
+    0.5919100682106845,
+    0.578503420010991,
+    0.5811036798165822
+   ],
+   "providers": {
+    "Metrica": 0.7048128618348973,
+    "SkillCorner": 0.49097956853110564,
+    "Sportec": 0.5682671978266431
+   },
+   "spell_f1": 0.5880198760642154
+  },
+  "cand": {
+   "full_pitch_spell_f1": 0.6256568337940736,
+   "macro_f1": 0.8488190517225039,
+   "per_replicate": [
+    0.5836347942317679,
+    0.578172467926691,
+    0.5731267563405519,
+    0.579058818898921
+   ],
+   "providers": {
+    "Metrica": 0.6656122009565846,
+    "SkillCorner": 0.48418096046030196,
+    "Sportec": 0.5857014666315624
+   },
+   "spell_f1": 0.5784982093494829
+  },
+  "cand_phase_tta": {
+   "full_pitch_spell_f1": 0.6332876617366893,
+   "macro_f1": 0.8499746497420088,
+   "per_replicate": [
+    0.58493198946779,
+    0.5850226174378159,
+    0.5757254948429685,
+    0.5886047288045243
+   ],
+   "providers": {
+    "Metrica": 0.6809064546781038,
+    "SkillCorner": 0.48413829944144554,
+    "Sportec": 0.5856688687952747
+   },
+   "spell_f1": 0.5835712076382747
+  },
+  "raw": {
+   "full_pitch_spell_f1": 0.6228457936622628,
+   "macro_f1": 0.8495499973957363,
+   "per_replicate": [
+    0.5878133103878458,
+    0.5783353301690729,
+    0.5686937485259823,
+    0.5786139957082979
+   ],
+   "providers": {
+    "Metrica": 0.6745696024071757,
+    "SkillCorner": 0.48940070126887364,
+    "Sportec": 0.5711219849173499
+   },
+   "spell_f1": 0.5783640961977997
+  }
+ },
+ "fidelity": {
+  "median_relative_error_full_pitch": {
+   "feed_like_v1": 0.7219667056203274,
+   "feed_like_v2": 0.09183229597840137
+  },
+  "table": {
+   "ball_gap_time_share_ge15s": {
+    "feed_like_v1": {
+     "Metrica": 0.8122237871042013,
+     "SkillCorner": 0.7897710239258737,
+     "Sportec": 0.6374997497896855
+    },
+    "feed_like_v2": {
+     "Metrica": 0.7162630920307065,
+     "SkillCorner": 0.7265818207482179,
+     "Sportec": 0.794932371947014
+    },
+    "organizer": 0.748418235539811
+   },
+   "ball_gaps_per_min": {
+    "feed_like_v1": {
+     "Metrica": 2.086796836415996,
+     "SkillCorner": 2.4127553550110328,
+     "Sportec": 2.0205421788179834
+    },
+    "feed_like_v2": {
+     "Metrica": 1.8233387358184765,
+     "SkillCorner": 2.3518137391724143,
+     "Sportec": 1.531192119885503
+    },
+    "organizer": 1.4163681801872126
+   },
+   "ball_missing": {
+    "feed_like_v1": {
+     "Metrica": 0.5809642392582133,
+     "SkillCorner": 0.6558420000035491,
+     "Sportec": 0.42158823034180837
+    },
+    "feed_like_v2": {
+     "Metrica": 0.3511296526874465,
+     "SkillCorner": 0.48498832831860605,
+     "Sportec": 0.37296542627827356
+    },
+    "organizer": 0.40692572565263097
+   },
+   "ball_missing_given_pred_dead": {
+    "feed_like_v1": {
+     "Metrica": 0.936078467586896,
+     "SkillCorner": 0.8554585899717527,
+     "Sportec": 0.4280625016803675
+    },
+    "feed_like_v2": {
+     "Metrica": 0.9071482612501153,
+     "SkillCorner": 0.832998026313155,
+     "Sportec": 0.6668334278520754
+    },
+    "organizer": 0.7551574753792364
+   },
+   "ball_missing_given_pred_live": {
+    "feed_like_v1": {
+     "Metrica": 0.38456742566975,
+     "SkillCorner": 0.5129080813289472,
+     "Sportec": 0.4152908506073221
+    },
+    "feed_like_v2": {
+     "Metrica": 0.07034258078917406,
+     "SkillCorner": 0.2616511564648411,
+     "Sportec": 0.10578259584524137
+    },
+    "organizer": 0.11980291266596224
+   },
+   "dropout_start_outside_pitch": {
+    "feed_like_v1": {
+     "Metrica": 0.008065232943828993,
+     "SkillCorner": 0.013513191428899701,
+     "Sportec": 0.010006839717069265
+    },
+    "feed_like_v2": {
+     "Metrica": 0.08274569639782142,
+     "SkillCorner": 0.014833436151838636,
+     "Sportec": 0.10192899330467534
+    },
+    "organizer": 0.1343906510851419
+   },
+   "frames_dead_below_live_median_by_3plus": {
+    "feed_like_v1": {
+     "Metrica": 0.015712121265513787,
+     "SkillCorner": 0.7358491423927206,
+     "Sportec": 0.017313538875333108
+    },
+    "feed_like_v2": {
+     "Metrica": 0.2671781403925287,
+     "SkillCorner": 0.7405314243761562,
+     "Sportec": 0.24883414225756265
+    },
+    "organizer": 0.2765465461282369
+   },
+   "frames_live_below_live_median_by_3plus": {
+    "feed_like_v1": {
+     "Metrica": 0.017461758735505768,
+     "SkillCorner": 0.31205811219984747,
+     "Sportec": 0.017372587187297284
+    },
+    "feed_like_v2": {
+     "Metrica": 0.096312849074319,
+     "SkillCorner": 0.3297304327593919,
+     "Sportec": 0.10053172787364836
+    },
+    "organizer": 0.04354068084715395
+   },
+   "isolated_live_gaps_per_live_min": {
+    "feed_like_v1": {
+     "Metrica": 1.710242390042246,
+     "SkillCorner": 1.4440949469035287,
+     "Sportec": 1.236672544929058
+    },
+    "feed_like_v2": {
+     "Metrica": 1.1267694506906252,
+     "SkillCorner": 1.0681180097601288,
+     "Sportec": 0.7134755553215991
+    },
+    "organizer": 0.7580282078375523
+   },
+   "live_missing_runs_touching_dead": {
+    "feed_like_v1": {
+     "Metrica": 0.4986129743741331,
+     "SkillCorner": 0.6179501641972625,
+     "Sportec": 0.5922516302263138
+    },
+    "feed_like_v2": {
+     "Metrica": 0.5284345520997356,
+     "SkillCorner": 0.6676733306966076,
+     "Sportec": 0.700105207935766
+    },
+    "organizer": 0.6691729323308271
+   },
+   "player_dropouts_per_min_dead": {
+    "feed_like_v1": {
+     "Metrica": 19.92154466742824,
+     "SkillCorner": 61.02328644324371,
+     "Sportec": 19.742422642012563
+    },
+    "feed_like_v2": {
+     "Metrica": 16.52402127405493,
+     "SkillCorner": 58.844675282343616,
+     "Sportec": 16.578965730192344
+    },
+    "organizer": 17.446962626586245
+   },
+   "player_dropouts_per_min_live": {
+    "feed_like_v1": {
+     "Metrica": 20.110353059468643,
+     "SkillCorner": 47.73284793252204,
+     "Sportec": 20.16842102712537
+    },
+    "feed_like_v2": {
+     "Metrica": 6.21952175802353,
+     "SkillCorner": 36.1478152530614,
+     "Sportec": 6.018124004087313
+    },
+    "organizer": 6.253732714659806
+   },
+   "player_gap_median_s": {
+    "feed_like_v1": {
+     "Metrica": 1.5,
+     "SkillCorner": 5.758333333333334,
+     "Sportec": 1.5
+    },
+    "feed_like_v2": {
+     "Metrica": 8.209999999999999,
+     "SkillCorner": 8.166666666666666,
+     "Sportec": 8.035
+    },
+    "organizer": 8.0
+   },
+   "player_gap_share_lt1s": {
+    "feed_like_v1": {
+     "Metrica": 0.32375777744054457,
+     "SkillCorner": 0.08955749043292406,
+     "Sportec": 0.33004109390987146
+    },
+    "feed_like_v2": {
+     "Metrica": 0.0,
+     "SkillCorner": 0.04299861077750149,
+     "Sportec": 0.0002376425855513308
+    },
+    "organizer": 0.0
+   },
+   "visible_players_dead_minus_live": {
+    "feed_like_v1": {
+     "Metrica": 0.009610573548185286,
+     "SkillCorner": -7.720886696145645,
+     "Sportec": 0.008892719642991764
+    },
+    "feed_like_v2": {
+     "Metrica": -1.1782800631068868,
+     "SkillCorner": -7.66851305769934,
+     "Sportec": -1.0631553359865462
+    },
+    "organizer": -2.0248210954500223
+   }
+  }
+ },
+ "frame_arrays_published": false,
+ "organizer_profile": {
+  "ball_gap_time_share_ge15s": 0.748418235539811,
+  "ball_gaps_per_min": 1.4163681801872126,
+  "ball_missing": 0.40692572565263097,
+  "ball_missing_given_pred_dead": 0.7551574753792364,
+  "ball_missing_given_pred_live": 0.11980291266596224,
+  "dropout_start_outside_pitch": 0.1343906510851419,
+  "frames_dead_below_live_median_by_3plus": 0.2765465461282369,
+  "frames_live_below_live_median_by_3plus": 0.04354068084715395,
+  "isolated_live_gaps_per_live_min": 0.7580282078375523,
+  "live_missing_runs_touching_dead": 0.6691729323308271,
+  "player_dropouts_per_min_dead": 17.446962626586245,
+  "player_dropouts_per_min_live": 6.253732714659806,
+  "player_gap_median_s": 8.0,
+  "player_gap_share_lt1s": 0.0,
+  "visible_players_dead_minus_live": -2.0248210954500223
+ },
+ "organizer_reference_access": false,
+ "promotion": false,
+ "public_scoring": false,
+ "replicates": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "study": "feed_like_v2_benchmark"
+}
