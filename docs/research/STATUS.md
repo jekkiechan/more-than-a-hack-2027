@@ -69,6 +69,13 @@ remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
 
+The [challenge-calibrated feed study](../../experiments/FEED_LIKE_V2.md) replaces the
+state-blind feed-like view with `feed_like_v2` (fidelity error .72 → .09 on full-pitch
+providers). Under v2 the previous calibrated-dense baseline scores .5836 (.5880 with
+5 Hz phase TTA) versus .5785 for the now-adopted `original_full` recipe; raw-feed
+training (.5784) also does not transfer. The v1-feed advantage behind the promotion
+does not hold on v2. Use v2 with 4+ realizations as the stress guardrail.
+
 Prioritize independent dense evaluation and corroborated short-possession
 supervision. If pursuing phase TTA, use a separately declared fixed follow-up
 and multi-realization benchmark; do not silently add it to the adopted package.
