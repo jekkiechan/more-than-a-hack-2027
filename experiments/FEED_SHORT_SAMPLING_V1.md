@@ -63,3 +63,12 @@ PYTHONPATH=. .venv/bin/python scripts/audit_feed_short_sampling_v1.py
 
 The target-mask, same-record/RNG, disabled-training parity and exception cleanup
 contracts are in `experiments/tests/test_feed_short_sampler.py`.
+
+## Predeclared component check
+
+Before parent scores, `feed_short_head_v1` fixes one conditional follow-up if
+resampling misses .55: use resampled conditional H/A with the existing raw-feed
+D probabilities, cross within each seed and then average. This adds zero fits
+and 45 original-cohort cells. It isolates the team-attribution component from
+D-distribution changes caused by sampling. Same guards; no other crosses,
+weights or decoding settings. No new independent confirmation is claimed.

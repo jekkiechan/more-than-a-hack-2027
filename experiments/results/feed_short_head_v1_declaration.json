@@ -1,0 +1,14 @@
+{
+  "arm": "Conditional H/A from short_sampling + native D from raw-feed augmented control, within matched seed, then equal mean across both seeds; fixed f062 decoder.",
+  "condition": "Only if parent misses .55; one fixed arm, 45 original score cells, zero fits.",
+  "guards": "Same promoted-baseline guards as parent; must improve .525240 control. Report historical +.01 clean screen separately.",
+  "parent_declaration_sha256": "c72e75b7e63d66cc337f71985883b185d8e98a54781c2d4fc522f19ad2caa35f",
+  "question": "Can targeted H/A sampling help without the accompanying resampled D path?",
+  "source_sha256": {
+    "experiments/feed_head_transfer_v1.py": "801e221f41ff219e631c72128aa7a410f509e5cdf138973a6a02bf7de396f905",
+    "experiments/feed_short_head_v1.py": "c4c2acea2dc5d7a9d61bc481ab5ecb63583b5197647dbf82cee32d0c50590bba"
+  },
+  "stop": "No other crosses, weights or decoders. Original development evidence only; no organizer scoring or promotion.",
+  "study": "feed_short_head_v1",
+  "utc": "2026-11-01T05:52:49.483592+00:00"
+}
