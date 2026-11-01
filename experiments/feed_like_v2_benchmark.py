@@ -42,10 +42,13 @@ PHASE_ARMS = ("adop", "cand")
 V2TRAIN = ROOT / "data/experiments/feed_like_v2_train/models"
 
 
+_AUDIT_MODEL_PATH = audit.model_path
+
+
 def model_path(arm, provider, seed):
     if arm == "v2train":
         return V2TRAIN / f"leave_out_{audit.FOLD[provider]}_{seed}.joblib"
-    return audit.model_path(arm, provider, seed)
+    return _AUDIT_MODEL_PATH(arm, provider, seed)
 
 
 audit.model_path = model_path  # audit.predict resolves checkpoints through this name
