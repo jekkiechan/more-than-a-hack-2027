@@ -1,0 +1,33 @@
+{
+  "package_version": "joint_gru_sn_dense_original_diversity_ensemble_v1",
+  "verified_utc": "2026-11-01T11:04:02.654229+00:00",
+  "experiment_tests": 575,
+  "integrity_and_gate_tests": 26,
+  "file_backed_fit_contract_exact": true,
+  "documentation_errors": 0,
+  "bundled_submission_format_passes": true,
+  "full_candidate_rows": 199319,
+  "csv_sha256": "7fe3da71b0cbd66bee046597611aac016fd714ddfaec6ba924dc400d7466bd1f",
+  "csv_equals_sealed_candidate": true,
+  "organizer_reference_accessed": false,
+  "organizer_rescored": false,
+  "fitting_during_promotion": false,
+  "all_manifest_source_hashes_match_with_preserved_predecessor_metadata": true,
+  "source_metadata_aliases": {
+    "experiments/baseline_manifest.json": "experiments/baselines/joint_gru_sn_dense_calibrated_ensemble_v1.json",
+    "experiments/model_decision_policy.json": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_calibrated_ensemble_v1.json"
+  },
+  "test_only_amendment": {
+    "path": "experiments/tests/test_baseline_promotion.py",
+    "original_sha256": "d653071390b1d05b94e9a171b76b0ad13e0bcbfc49c029d7892afb8d58b3b5cb",
+    "current_sha256": "38525018c04109f0d235048b6ae19641e29f3057b193571d22b6b24f8a3f4918",
+    "preserved_original": "data/models/joint_gru_sn_dense_original_diversity_ensemble_v1/previous_source/experiments/tests/test_baseline_promotion.py",
+    "reason": "Generic active-baseline contract did not recognize the new architecture; add checks for failed screen exception, exact teacher reuse and absence of TTA. Runtime, weights, manifest and output unchanged.",
+    "test_is_outside_manifest_source_set": true
+  },
+  "initial_test_failure": {
+    "unknown_architecture_fell_through_to_legacy_seed_schema": true,
+    "missing_pinned_dependency": "pyarrow==20.0.0",
+    "resolved": true
+  }
+}
