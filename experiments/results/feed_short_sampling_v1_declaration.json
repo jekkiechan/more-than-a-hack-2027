@@ -1,0 +1,44 @@
+{
+  "arms": [
+    "short_sampling",
+    "fixed_half_blend"
+  ],
+  "bindings": {
+    "data/experiments/feed_robustness_confirmation_v1/preparation.json": "39a1ca1008c7eddb6432547b17d886bb733d4fb4030c75393c60813fec6228b6",
+    "experiments/feed_short_sampler.py": "138f0efd17b5bae018d4fe15b93686379fd4682853a354c016bb8789ed1fd703",
+    "experiments/feed_short_sampling_v1.py": "e67620679b7609e759ab2a2e569a1e2ca094e8e73dbf35e10c059914351cb098",
+    "experiments/results/feed_robustness_confirmation_v1_aggregate.json": "05ff2325e5c74c9eb730e1ea33e50466a6ba594923d137f5ee273841c122731f",
+    "experiments/results/feed_robustness_v1_aggregate.json": "b350de13e90192dda6243bd4dbd868840c86240a97916418f257287f93fe71a0",
+    "experiments/results/feed_robustness_v1_model_seal.json": "9b9852bc35cdbf93db334f32a2514e157659ce48c09c2349e2fdfa99baa05faa",
+    "experiments/results/feed_robustness_v1_verification.json": "d5ac80e51d8006f5ebf1f404613eef73eb2219d9c2e01f901a9a1f5de69a675a",
+    "experiments/results/feed_short_sampling_v1_exposure.json": "669d89d80e074b00210add1ba02ae99c0f14ac55d7d3d5431d3bc74d658d5458",
+    "experiments/tests/test_feed_short_sampler.py": "7ae7419309c8a2d38ba5cb98b94622e38e0fa99308cf8044af30f7d87470212d",
+    "scripts/audit_feed_short_sampling_v1.py": "514b1ea56d54f9ac3ef8dd0e40bc89455fd54e0596a113417dafa17b40da3c85"
+  },
+  "blend": "Exactly .5 new native probability + .5 raw-feed augmented probability, within each seed and then across both seeds. No weight or seed selection.",
+  "controls": "Archived two-seed raw-feed augmented model (.5252404582) and promoted baseline (.5185274873). No control refits.",
+  "evidence": "Same five previously exposed matches and synthetic feed stress; target-derived TRAIN sampling, no inference labels; original teacher reconstruction provenance retained.",
+  "fits": 6,
+  "fixed": "Same provider-excluded teachers, normalizers, raw-feed views, labels, D2 losses, width96, lrHA3e-4, lrD1e-4, batch32, 50/50 original/GAR, original source/match/record RNG, GAR team-swap RNG, 2048 updates; changes window distribution for BOTH H/A and D.",
+  "folds": [
+    "leave_out_sportec",
+    "leave_out_metrica",
+    "leave_out_skillcorner"
+  ],
+  "fresh_diagnostic": "Only if eligible original winner beats augmented control: evaluate that fixed winner on the previous two extra corruption realizations. These results are previously exposed development diagnostics, NOT fresh independent confirmation; no reselection.",
+  "guards": "Against promoted baseline: aggregate clean spell >= baseline-.005; provider clean macro/D F1 >= baseline-.02; provider feed spell >= baseline-.01. Report +.01 historical clean screen separately.",
+  "intervention": "With probability .25 replace a base draw by a uniform existing window containing a complete <=3s H/A span, within the same record. Separate seed+773311 RNG. Fallback unchanged if no eligible windows. Native time-block, unknown and record-edge censoring retained.",
+  "organizer_reference_access": false,
+  "parent_declaration_sha256": "8810a724fe20028524337d70dbaea272b7c8d83009dfcd70ea72a950a8b9d105",
+  "primary": "Equal-provider original feed_like official spell F1; macro tie-breaker. Must beat raw-feed augmented control; .55 stretch.",
+  "promotion": false,
+  "question": "Does increasing exposure to complete short TRAIN possessions improve the raw-feed augmented ensemble?",
+  "seeds": [
+    2026,
+    2027
+  ],
+  "steps": 2048,
+  "stop": "Six sealed fits; two fixed arms only. No additional rates, thresholds, epochs, weights or decoder settings in this ID.",
+  "study": "feed_short_sampling_v1",
+  "utc": "2026-11-01T05:50:46.808538+00:00"
+}
