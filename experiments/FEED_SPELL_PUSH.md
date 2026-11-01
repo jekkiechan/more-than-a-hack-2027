@@ -131,3 +131,19 @@ The public spell delta is **+0.000000**. This public outcome accompanies the pos
 [Public aggregate](results/feed_spell_public_v1.json); the complete prediction/model/input/source seal and permanent gate remain private.
 
 The public candidate improves macro F1 by +0.012794 and D-F1 by +0.030078. It predicts 16 public possessions against 17 references, with the same matched counts as the saved adopted score at every official IoU threshold (12/12/12/9/7). This tie is not a claim that the frame predictions are identical.
+
+## Delivered code and private restore
+
+Code, frozen results and the five-round report are merged in [public PR #58](https://github.com/jekkiechan/more-than-a-hack-2027/pull/58), with successful CI. Source/results snapshot: `68ca82884f83602e800e4f792448e6ad87b48c65`.
+
+Private [mtah-data PR #13](https://github.com/jekkiechan/mtah-data/pull/13), commit `1dac5a00baa1328cb99c4a497758974fe2e780fe`, delivers `feed_spell_push_delivery_v1_cache_manifest.json`. A fresh remote clone and empty-destination original-path restore verified **all 1,176 entries**, 58,838,258 bytes, with no missing files, size differences or SHA-256 mismatches. No inference, fitting or rescoring occurred during verification. Organizer reference labels are excluded. The archive binds the original source/results snapshot; this later delivery receipt is separate to avoid circular hashes.
+
+The first archive checkout was interrupted during slow per-file LFS materialization and resumed with explicit skip-smudge checkout plus batch download. Git reported an index-update warning during that recovery. Every final file was independently read and verified against the manifest, then copied and verified again in an empty destination; the repository-index warning does not substitute for a file-content check. [Remote verification receipt](results/feed_spell_delivery_v1_remote_verification.json).
+
+The private PR's first automatic review misidentified its destination as an unverified public repository. Fresh native GitHub metadata confirmed the exact repository is private and the user has admin/push access. The same native PR action then succeeded with no visibility or audience change; no approval bypass was used.
+
+## Published research site
+
+The existing restricted [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#feed-first) is published as **version 15**, source `879cfee9aab4923ad1c55d64b3f36a9bc9f04513`. Experiments contains the five-round comparison, an interactive family selector, matched controls and the separate public diagnostic. The overview timeline and next steps reflect the fixed external winner. Desktop (1440×1100) and mobile (390×844) checks pass for both pages, all eight selector options, the existing overview chart, page overflow and browser errors. Access remains custom policy revision 2 with the same two external viewers.
+
+The Sites helper is unavailable in this runtime, so the existing authenticated source Git/static-archive workflow was used. The first gzip-archive save stalled without a listed saved version. After reconciling state and canceling its caller, an uncompressed TAR of the same source saved and published successfully. No extra deployment or access change followed. [Publication and QA receipt](results/feed_spell_delivery_v1_site_publication.json).
