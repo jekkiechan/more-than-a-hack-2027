@@ -60,3 +60,21 @@ binds the active manifest/policy, predecessor and output. The
 Local promotion, private remote delivery, source merge and site publication are
 separate states. Subsequent delivery receipts record completed remote verification
 and publication; no remote-native research archive is implied by package delivery.
+
+## Delivery state
+
+- Code and policy merged in [PR #74](https://github.com/jekkiechan/more-than-a-hack-2027/pull/74)
+  after CI passed. Locally, 587 experiment tests, 26 root tests, file-backed fit
+  parity, documentation and submission-format checks pass; see the
+  [check receipt](results/baseline_original_full_phase_checks.json).
+- Research site version **25** is published with the same restricted audience,
+  access revision 2 and two external viewers. Twelve page/viewport checks,
+  twelve phase-control combinations and six progress-control combinations pass,
+  with no JavaScript errors or horizontal overflow. See the
+  [publication receipt](results/baseline_original_full_phase_site_publication.json).
+- The new private package contains 399 locally verified weight/metadata/source
+  entries. Automatic approval review rejected its upload because explicit
+  authorization to export to `jekkiechan/mtah-data` was required; that request
+  is pending. No remote upload or fresh remote restore is claimed. The
+  [baseline guide](BASELINE.md#private-cache-restore) provides a working fallback
+  using the identical checkpoints already uploaded with the phase0 package.
