@@ -1,6 +1,7 @@
 # Feed-like training views for the calibrated dense ensemble
 
-Status: preparation. Study `feed_robustness_v1`, 2026-11-01, based on fork
+Status: initial comparison completed; fixed diversity continuation running.
+Study `feed_robustness_v1`, 2026-11-01, based on fork
 main `7b60056`. The stretch target is 0.55 feed-like official spell F1 against
 the promoted calibrated ensemble's 0.518527 (clean 0.658625).
 
@@ -108,3 +109,66 @@ crosses are different experiments, with separate declarations and scoring locks.
 # After the parent comparison and its independent replay complete:
 .venv/bin/python -m experiments.feed_head_transfer_v1 run
 ```
+
+## Initial results
+
+All six fits completed at 2,048 updates. The 45 control cells reproduce the
+promoted calibrated pipeline exactly; real restored-model inference differs
+by at most 2.38 × 10⁻⁷ in probabilities and changes zero decoded labels.
+
+| Fixed arm | Clean spell F1 | Feed-like spell F1 | Guards |
+| --- | ---: | ---: | --- |
+| Promoted baseline | 0.658625 | 0.518527 | Pass |
+| Raw-feed augmented ensemble | 0.654740 | 0.525240 | Pass |
+| Fixed equal whole-model blend | 0.660076 | 0.520468 | Pass |
+| Augmented H/A, baseline D | 0.656137 | 0.523298 | Pass |
+| Baseline H/A, augmented D | 0.656566 | 0.517831 | Pass |
+
+The full augmented ensemble gains +0.006713 feed spell and loses 0.003885
+clean spell, inside the declared clean tolerance. Feed gains occur in both
+seeds and all three providers. Neither component swap beats the complete
+augmented model. The +0.01 historical clean-gain screen fails for every arm;
+these are feed-first experimental candidates, not a promotion.
+
+The separate replay verifies 135 parent score rows and 90 component-transfer
+rows, native probability ensembles/blends, unchanged grading, and exact
+training-sample exposure parity with the old D2 fits.
+
+## Fixed diversity continuation
+
+After this positive original-cohort result, `feed_seed_diversity_v1` tests two
+additional dense-training seeds, 2028/2029. They reuse provider-excluded
+teachers 2026/2027 respectively; they are not newly trained teacher seeds.
+The same augmentation, examples, objectives, normalization and 2,048-update
+budget apply to six new fits. The sole primary candidate is the equal native
+probability average of all four augmented members. There is no seed/subset
+selection or mixture-weight search. Compare with both the two-member candidate
+and promoted baseline, retaining the original guards. All additional models
+must be sealed before scoring.
+
+This continuation was declared before reading fresh-corruption scores. Evaluate
+the fixed four-member rule on the frozen fresh views regardless of its original
+score, without reselection. New corruption realizations on exposed matches
+remain weaker evidence than new independently labeled matches.
+
+## Preserved fresh-view runtime correction
+
+The first fresh-view evaluation stopped before scoring any candidate or writing
+prediction arrays: `preparation.build_record` stores feature names as a NumPy
+array, while the frozen predictor compares lists. The original runner,
+preparation hashes, failure log and scoring lock are preserved. A separately
+recorded runtime adapter converts only feature-name metadata to an equal Python
+list at the feature-only boundary. It changes no numerical features, targets,
+models, decoder, arms or score population. A contract confirms array/list
+equivalence and exclusion of target fields. The same correction is declared
+before the diversity continuation's fresh evaluation.
+
+Evidence: [parent declaration](results/feed_robustness_v1_declaration.json),
+[parent aggregate](results/feed_robustness_v1_aggregate.json),
+[parent verification](results/feed_robustness_v1_verification.json),
+[component declaration](results/feed_head_transfer_v1_declaration.json),
+[component aggregate](results/feed_head_transfer_v1_aggregate.json),
+[component verification](results/feed_head_transfer_v1_verification.json),
+[fresh-view declaration](results/feed_robustness_confirmation_v1_declaration.json),
+[bounded execution amendment](results/feed_confirmation_runtime_v1_parent_amendment.json),
+[diversity declaration](results/feed_seed_diversity_v1_declaration.json).

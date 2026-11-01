@@ -1,0 +1,32 @@
+{
+  "ensemble": "Equal native probability mean of all four seeds 2026/2027/2028/2029, then fixed f062 decoder. Never select a seed or subset.",
+  "evidence": "Exposed five-match development; new synthetic realizations are not independent matches",
+  "fits": 6,
+  "fresh_check": "Evaluate the same fixed four-member rule on the already frozen two fresh corruption realizations, regardless of its original score. No selection or changes from the fresh check.",
+  "fresh_preparation_sha256": "39a1ca1008c7eddb6432547b17d886bb733d4fb4030c75393c60813fec6228b6",
+  "guards": "Parent clean aggregate >= baseline-.005; each provider clean macro/D >= baseline-.02; each provider feed spell >= baseline-.01",
+  "organizer_reference_access": false,
+  "parent_aggregate_sha256": "b350de13e90192dda6243bd4dbd868840c86240a97916418f257287f93fe71a0",
+  "parent_declaration_sha256": "8810a724fe20028524337d70dbaea272b7c8d83009dfcd70ea72a950a8b9d105",
+  "parent_model_seal_sha256": "9b9852bc35cdbf93db334f32a2514e157659ce48c09c2349e2fdfa99baa05faa",
+  "primary": "Four-member original-development feed spell must exceed the existing two-member score; guards remain against the promoted baseline. .55 stretch.",
+  "promotion": false,
+  "question": "Does adding two fixed augmented-model seeds improve the two-member ensemble by reducing training variance?",
+  "rationale": "Parent gains feed spell in both seeds and all providers; same training data and raw defect views, no new objective.",
+  "recipe": "Same raw-feed augmented D2 recipe as parent",
+  "seeds": [
+    2028,
+    2029
+  ],
+  "source_sha256": {
+    "experiments/feed_seed_diversity_v1.py": "4fc9eac6e0c8ec6c62d95290d260504c7781eff42e422c8ab1c4f0b0146f88ae"
+  },
+  "study": "feed_seed_diversity_v1",
+  "teacher_note": "Reuse the exact provider-excluded teachers and normalizers; new dense-training randomness only. These are not newly trained teacher seeds.",
+  "teacher_seed_mapping": {
+    "2028": 2026,
+    "2029": 2027
+  },
+  "updates_per_fit": 2048,
+  "utc": "2026-11-01T05:03:48.783452+00:00"
+}
