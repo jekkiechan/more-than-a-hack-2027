@@ -27,6 +27,15 @@ remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
 
+The separately requested [fixed public diagnostic](../../experiments/SHORT_QUALITY_PUBLIC_V1.md)
+is complete after two pooled fits. Public spell is **.611765** versus adopted
+.630303; macro **.851742** versus .864181. The full CSV replays/validation and
+reference-free artifact checks pass. The one-use gate is closed, with no
+public-driven tuning, repairs or model promotion. External selection results
+below remain unchanged; this is a 17-reference diagnostic, not new independent
+or full-match confirmation.
+
+
 The [short-label quality and diversity comparison](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md)
 is complete: **18 fixed fits** and eight fixed arms. Best eligible original
 feed-like spell is **.528180**, clean **.662590**, versus the previous numerical
