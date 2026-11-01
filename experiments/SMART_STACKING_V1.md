@@ -140,7 +140,7 @@ does not establish remote availability of new reconstructive artifacts.
 
 ## Completed results
 
-Decision: **retain the adopted baseline; no learned stack beats the strongest single recipe under the declared rule.** All 24 meta-models and 495 original score cells completed. No extra settings follow this result.
+Outcome: **the temporal H/A stack improves on the adopted model and passes the feed-first guards; no learned stack beats the strongest single recipe under the study’s stricter rule.** Deployment remains unchanged in this testing study. All 24 meta-models and 495 original score cells completed. No extra settings follow this result.
 
 | Fixed arm | Clean spell | Feed-like spell | Feed macro | Auxiliary 70/30 | Feed-first guards |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -157,6 +157,30 @@ Decision: **retain the adopted baseline; no learned stack beats the strongest si
 | Fixed half temporal H/A / adopted blend | 0.658817 | 0.519920 | 0.824383 | 0.611259 | Pass |
 
 The best guard-passing learned arm is the **temporal H/A stack retaining raw-feed D**. It gains **+.007344** feed spell and **+.003190** clean spell against the adopted package, but loses **.002308** feed spell against the original-diversity recipe. Its four-family stack also trails the simpler short-H/A/raw-feed-D cross (.527396). Uniform averaging reaches only .523795. No learned arm qualifies as the study winner, and none passes the historical +.01 clean-improvement screen.
+
+### Adoption interpretation after user review
+
+Improvement over the adopted model and winning this study are separate questions.
+The best stack raises clean spell by .003190 and feed-like spell by .007344,
+passes the declared provider robustness guards, and improves both individual
+seeds’ feed spell over adopted. Failing to beat the stronger experimental
+`original_full` recipe does not negate those gains or establish that the adopted
+model is better. The appropriate recommendation is to advance the stack as a
+replacement candidate, rather than dismiss it as a negative baseline comparison.
+
+There are tradeoffs: clean macro changes .871419 → .869859, clean D-F1
+.872752 → .868146, and feed D-F1 .859048 → .857084. These remain within the
+declared guards; SkillCorner feed spell decreases .000199. The historical
++.01 clean-improvement screen fails and remains failed. That screen is a
+conservative adoption criterion, not evidence that the measured gains are false.
+The stack also combines four model recipes, increasing base inference work.
+
+The current artifacts are provider-excluded research pipelines. Promotion needs
+an explicitly adopted, complete pooled deployment stack, its matching base
+checkpoints and meta-fit, and reference-free end-to-end inference verification.
+No pooled stack has been fitted or installed in this study. The follow-up user
+message authorizes publication and questions the adoption rationale; it does not
+alter the frozen study rule, reopen scoring gates or change the default package.
 
 ### Provider and seed spread
 
@@ -201,7 +225,7 @@ Counts are equal-provider means. Short recall uses globally one-to-one matched r
 
 The ten new corruption inputs were prepared and hash-bound before candidate scoring. The declared follow-up and expert-fallback diagnostic are **skipped**, because no eligible learned arm beats the strongest single-model, uniform and calibration controls. No new corruption scores are claimed and no public diagnostic follows. Original clean/feed-like results are exposed development evidence, not independent confirmation or proof of full-match organizer robustness.
 
-The .55 original feed-like target remains unmet. Retain the adopted package and keep original diversity as the numerical research leader. A future stacking study should first establish complementary errors from genuinely different model families and obtain stronger match-level evaluation; this result does not justify another weight, context or decoder sweep on these five matches.
+The .55 original feed-like target remains unmet. Original diversity remains the numerical leader on this fixed benchmark, while the temporal H/A stack is a credible replacement candidate for the adopted baseline. Advance that fixed candidate toward a verified deployment package if adoption is chosen. This does not require another weight, context or decoder sweep on the same five matches. Independent match evaluation would provide stronger evidence.
 
 Evidence: [aggregate and all rows](results/smart_stacking_v1_aggregate.json), [model seal](results/smart_stacking_v1_model_seal.json), [follow-up skip](results/smart_stacking_v1_fresh_skipped.json).
 
@@ -227,12 +251,8 @@ The [artifact receipt](results/smart_stacking_v1_artifacts.json) records
 **582 locally verified native/metadata files / 2,286,245,722 bytes**, separate
 from 230 hash-verified inherited dependencies. New reconstructive artifacts
 are local in ignored storage; new remote upload and independent remote restore
-are not claimed. Source and aggregate evidence are committed locally. Automatic approval review
-rejected the GitHub push/PR because the request authorized testing but not
-external publication. GitHub and research-site publication are paused pending
-explicit user approval. The locally checked site preserves restricted access;
-its current deployed version remains 20. The
-[delivery snapshot](results/smart_stacking_v1_delivery.json) records the actual
-state and clarifies that the earlier artifact receipt names an intended PR
-destination, not an observed publication. The report and complete publication
-draft are ready for review; no new remote artifact upload is claimed.
+are not claimed. The user subsequently authorized publication of source and
+aggregate evidence to the code repository and the existing restricted research
+site. The original [blocked delivery snapshot](results/smart_stacking_v1_delivery.json)
+is preserved; a later publication receipt records the completed state.
+Publication does not change model adoption or upload the native artifacts.

@@ -1,7 +1,7 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66), plus the
+[PR #67](https://github.com/jekkiechan/more-than-a-hack-2027/pull/67), plus the
 completed [provider-excluded stacking comparison](../../experiments/SMART_STACKING_V1.md).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
@@ -15,11 +15,11 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 ## Latest delivery
 
 The completed [stacking study](../../experiments/SMART_STACKING_V1.md) and all
-495 independent replays are local and verified. GitHub push/PR creation was
-rejected by automatic approval review because testing authorization did not
-explicitly cover external publication. The checked restricted-site update is
-also paused pending approval. Current site version 20 remains deployed.
-[Actual delivery state](../../experiments/results/smart_stacking_v1_delivery.json).
+495 independent replays are verified. The user has now authorized GitHub and
+restricted-site publication. The earlier
+[blocked snapshot](../../experiments/results/smart_stacking_v1_delivery.json)
+is preserved; completed publication is recorded in a later receipt. Adoption
+remains separate from publishing this study.
 
 The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
 and research site version **20**, with desktop/mobile checks and restricted
@@ -54,7 +54,11 @@ versus adopted .658625/.518527 and original-diversity .662590/.528180.
 It retains raw-feed D; learning the D combination instead reduces clean/feed
 spell to .638640/.513886 and fails guards. Uniform averaging reaches .523795
 feed. No stack beats the strongest single recipe, so the predeclared new-view
-and expert-fallback checks are skipped. No adoption or organizer scoring.
+and expert-fallback checks are skipped. It remains a credible replacement
+candidate for adopted: higher clean/feed spell, both seeds improve feed, and
+feed-first guards pass. Advance a fixed pooled deployment package before
+adoption; failing the stricter study-win rule does not negate baseline gains.
+No adoption or organizer scoring.
 All base, teacher, normalization and meta-label components exclude the target
 provider; other-provider OOF arrays are deliberately not reused for training.
 Stop this bounded weight/context comparison. Stronger error-complementarity
