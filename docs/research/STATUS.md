@@ -19,9 +19,13 @@ The fixed public diagnostic is published on [PR #66](https://github.com/jekkiech
 and research site version **20**, with desktop/mobile checks and restricted
 access revision 2 unchanged. The two pooled models, full CSVs and sealed native
 outputs are preserved in a locally verified 22-file archive (14,774,217 bytes).
-Remote upload of this new archive is blocked pending explicit authorization;
-its remote availability/restore is not claimed. See the
-[public-check delivery receipt](../../experiments/results/short_quality_public_v1_delivery.json).
+The user subsequently authorized private upload. All 22 entries pass an
+independent remote fetch and empty-directory restore with exact hashes and a
+separate LFS store. The
+[remote verification receipt](../../experiments/results/short_quality_public_v1_remote_verification.json)
+supersedes the earlier
+[local-only delivery snapshot](../../experiments/results/short_quality_public_v1_delivery.json),
+which is preserved unchanged.
 The previous research archive below remains remotely verified.
 
 
