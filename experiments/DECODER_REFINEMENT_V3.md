@@ -226,3 +226,10 @@ and requested explicit approval for new disclosure to the same two external
 viewers. The revised version 14 is saved without another publication attempt;
 the live site stays at approved version 12 and custom access revision 2 is
 unchanged. [Site receipt](results/decoder_refinement_v3_site_delivery.json).
+
+The user subsequently authorized “Publish this and future experiment updates”
+to the same restricted audience. **Version 14 is now published successfully**
+at [the research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site),
+with unchanged custom policy revision 2 and two existing external viewers.
+[Publication receipt and authorization scope](results/decoder_refinement_v3_site_publication.json)
+resolve the preceding historical blocker; its receipt is preserved unchanged.

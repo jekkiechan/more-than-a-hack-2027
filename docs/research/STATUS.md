@@ -63,9 +63,9 @@ Before another local sweep, consult the index's
 
 - **Decoder refinement:** 118 arms and the fixed public diagnostic are complete;
   `r069` remains the strongest external candidate. Private PR #12 has 432
-  fresh-restore hash-verified entries. Site version 14 is saved with external-first
-  interpretation and desktop/mobile QA. Publication awaits explicit authorization
-  after approval review limited the earlier authorization to version 12.
+  fresh-restore hash-verified entries. Site version 14 is published with external-first
+  interpretation and desktop/mobile QA. The user authorized this publication and
+  future experiment-report updates to the same existing restricted audience.
   [Report and receipts](../../experiments/DECODER_REFINEMENT_V3.md#delivery-and-reproduction-state).
 
 - **Decoder search delivery:** code/results merged in PR #54; private PR #11
