@@ -12,6 +12,10 @@ results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
 Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811. Both seeds and every provider improve spell in both views; all guards and +.01 clean screen pass. Public spell ties .630303, macro improves to .864181 and D-F1 to .873502. Promotion performs no fitting or organizer rescoring and reproduces the sealed full CSV exactly. Historical failed screens and closed gates are preserved. Independent dense confirmation and full-match organizer performance remain unknown.
 
+## Latest delivery
+
+Raw-feed research PR #62 is merged with passing CI. All 408 new archive/source files verify after an independent remote restore. Archive identifiers and restore instructions remain private. Research site version 17 is published with restricted access unchanged. See the [delivery receipt](../../experiments/results/feed_robustness_v1_delivery.json).
+
 ## Next work
 
 The completed [raw-feed training study](../../experiments/FEED_ROBUSTNESS_V1.md) reaches **0.525240** original feed-like spell F1 versus .518527 promoted. Twelve fits, fixed blends/component checks and fresh corruption checks are complete; 0.55 remains unmet and adoption is unchanged. The two-seed fresh score is .533871 versus matched baseline .524936. Prioritize short-possession supervision/exposure and independent dense evaluation; fresh synthetic views are not new matches.

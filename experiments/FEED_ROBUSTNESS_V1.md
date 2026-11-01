@@ -215,3 +215,19 @@ Evidence: [fresh aggregate](results/feed_robustness_confirmation_v1_aggregate.js
 These individual-score spreads are descriptive, not confidence intervals. The ensemble is evaluated from averaged probabilities rather than averaged metrics.
 
 Four-seed historical +0.01 clean screen: **False**.
+
+## Verified delivery
+
+Research [PR #62](https://github.com/jekkiechan/more-than-a-hack-2027/pull/62)
+is merged with passing CI. An independent private archive clone with its own
+LFS store fetched and restored all **408 files / 1,672,495,783 bytes**, with exact
+size and SHA-256 checks. This covers the new artifacts and source overlay;
+original dependencies remain those in the declaration and reproduction section.
+Archive identifiers and restore instructions remain in the private archive.
+
+The [delivery receipt](results/feed_robustness_v1_delivery.json) records the
+verification totals and publication. Research site version 17 is
+[published](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#feed-robustness)
+with unchanged restricted access (revision 2). Desktop/mobile layouts, chart
+view switching and live HTTP checks pass. The adopted package and organizer
+scoring gates remain unchanged.
