@@ -1,9 +1,8 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64), plus the
-completed [short-label quality and diversity study](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md)
-on [PR #65](https://github.com/jekkiechan/more-than-a-hack-2027/pull/65).
+[PR #67](https://github.com/jekkiechan/more-than-a-hack-2027/pull/67), plus the
+completed [provider-excluded stacking comparison](../../experiments/SMART_STACKING_V1.md).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -14,6 +13,13 @@ results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811. Both seeds and every provider improve spell in both views; all guards and +.01 clean screen pass. Public spell ties .630303, macro improves to .864181 and D-F1 to .873502. Promotion performs no fitting or organizer rescoring and reproduces the sealed full CSV exactly. Historical failed screens and closed gates are preserved. Independent dense confirmation and full-match organizer performance remain unknown.
 
 ## Latest delivery
+
+The completed [stacking study](../../experiments/SMART_STACKING_V1.md) and all
+495 independent replays are verified. The user has now authorized GitHub and
+restricted-site publication. The earlier
+[blocked snapshot](../../experiments/results/smart_stacking_v1_delivery.json)
+is preserved; completed publication is recorded in a later receipt. Adoption
+remains separate from publishing this study.
 
 The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
 and research site version **20**, with desktop/mobile checks and restricted
@@ -40,6 +46,24 @@ record the observed states. Archive identifiers and exact restore instructions
 remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
+
+The [stacking comparison](../../experiments/SMART_STACKING_V1.md) completes
+24 meta-models, zero base refits and 495 paired original score cells.
+Best guard-passing learned stack: **.661814/.525872 clean/feed-like spell**,
+versus adopted .658625/.518527 and original-diversity .662590/.528180.
+It retains raw-feed D; learning the D combination instead reduces clean/feed
+spell to .638640/.513886 and fails guards. Uniform averaging reaches .523795
+feed. No stack beats the strongest single recipe, so the predeclared new-view
+and expert-fallback checks are skipped. It remains a credible replacement
+candidate for adopted: higher clean/feed spell, both seeds improve feed, and
+feed-first guards pass. Advance a fixed pooled deployment package before
+adoption; failing the stricter study-win rule does not negate baseline gains.
+No adoption or organizer scoring.
+All base, teacher, normalization and meta-label components exclude the target
+provider; other-provider OOF arrays are deliberately not reused for training.
+Stop this bounded weight/context comparison. Stronger error-complementarity
+evidence and independent match evaluation are more informative than another
+sweep on these five exposed matches.
 
 The [feed-like benchmark audit](../../experiments/FEED_BENCHMARK_AUDIT_V1.md) finds
 small decoder/arm-combination ceilings (+.005/+.0076 per-cell oracles) and shows that
