@@ -72,3 +72,26 @@ D probabilities, cross within each seed and then average. This adds zero fits
 and 45 original-cohort cells. It isolates the team-attribution component from
 D-distribution changes caused by sampling. Same guards; no other crosses,
 weights or decoding settings. No new independent confirmation is claimed.
+
+## Conditional game-level access experiment
+
+Before any within-record scores, `feed_short_game_v1` declares six additional
+fits only if that comparison and its fixed H/A cross both miss .55 under the
+guards. The hypothesis is that GAR record fragmentation blocks access to useful
+short examples: within-record replacement actually fires on only about 4% of
+GAR draws, despite a 25% request rate.
+
+Keep the original-provider windows exactly matched to the first study. For
+GAR, use a separate RNG and select eligible windows across records from the
+same already-selected game. Consume the prior within-record RNG identically so
+old-provider sampling remains exact. Game/source balance, labels, native
+eligibility, all training settings and decoder stay fixed. The TRAIN audit
+finds eligible windows in all 45 games and raises GAR short-row exposure to
+about 7.8%; it verifies identical original-provider counts and source/game draws.
+
+The two fixed candidates are the complete game-sampled ensemble and its
+conditional H/A crossed with raw-feed control D, within each seed before
+averaging. This is a change in access to existing windows, not a new threshold
+or rate sweep. There is no extra-corruption selection; all evidence remains
+original exposed development. All models are sealed before scores, and the
+same promoted-baseline guards and .55 stretch apply.

@@ -1,0 +1,37 @@
+{
+  "arms": {
+    "game_ha": "Conditional H/A from game_sampling with raw-feed control D, cross within seed then mean",
+    "game_sampling": "Equal probability ensemble of both fixed seeds"
+  },
+  "bindings": {
+    "experiments/feed_short_game_sampler.py": "5fc97e3f4b7cbccc429cf5e5d0774d8ccaf586f10e3b4d0f21a7e15a1ea76e89",
+    "experiments/feed_short_game_v1.py": "1b08c52d773ef649c56392d51775d7fc52108470ab53f794b44e26b1c9691594",
+    "experiments/results/feed_short_game_v1_exposure.json": "a5739012b656e273815c333ee4a6c2386a23a74c588a36af127e904abf1dab9e",
+    "experiments/tests/test_feed_short_game_sampler.py": "b820d4499e035cc2f8f1438cb755fbfa824cad02618f738c677a750883c77715",
+    "scripts/audit_feed_short_game_v1.py": "749215600a31634f7577fc4cbc2d5bec964708949ef24f14a0accb9091cc562f"
+  },
+  "condition": "Run six fits only if within-record sampling and its fixed H/A cross both miss .55 under guards.",
+  "controls": "Raw-feed augmented .525240 plus within-record results. Primary original feed spell; macro tie-break. Same promoted-baseline guards and separately reported historical clean screen.",
+  "evidence": "Same five exposed development matches, synthetic stress, silver labels. Repeated TRAIN examples, no new supervision or independent evaluation.",
+  "fits": 6,
+  "fixed": "Same teachers, normalizers, raw-feed views, features, targets, losses, width96, batch32, 50/50 sources, HA lr3e-4/D lr1e-4 and f062 decoder. Window distribution changes both heads. Target-derived sampling is TRAIN-only.",
+  "folds": [
+    "leave_out_sportec",
+    "leave_out_metrica",
+    "leave_out_skillcorner"
+  ],
+  "head_declaration_sha256": "d0a481e19c983467528902a2ab51dba55de161fb8ce91e5b5253c0bf8a2d325d",
+  "hypothesis": "Record fragmentation limits GAR short-window access. Sampling within the selected game supplies eligible windows while preserving game balance.",
+  "intervention": "Original-provider sampler exactly identical to within-record round. GAR draw with probability .25 replaced by uniform eligible existing window from same game, across records. Same complete <=3s native eligibility. Base and within-record RNG consumption preserved; independent game RNG seed+884422.",
+  "organizer_reference_access": false,
+  "parent_declaration_sha256": "c72e75b7e63d66cc337f71985883b185d8e98a54781c2d4fc522f19ad2caa35f",
+  "promotion": false,
+  "seeds": [
+    2026,
+    2027
+  ],
+  "steps": 2048,
+  "stop": "Six sealed fits, two fixed arms, no replacement-rate/duration/seed/decoder/blend search. No extra-corruption selection or organizer reference scoring.",
+  "study": "feed_short_game_v1",
+  "utc": "2026-11-01T05:58:57.236404+00:00"
+}
