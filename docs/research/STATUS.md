@@ -1,10 +1,8 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #54](https://github.com/jekkiechan/more-than-a-hack-2027/pull/54) and the completed
-[decoder search](../../experiments/DECODER_SEARCH_V2.md), including the completed
-[subsecond-team comparison](../../experiments/DENSE_SHORT_TEAM_V1.md) and the
-completed source-head evidence on open [PR #47](https://github.com/jekkiechan/more-than-a-hack-2027/pull/47).
+[PR #57](https://github.com/jekkiechan/more-than-a-hack-2027/pull/57), plus the completed
+[feed-first calibration and pooling study](../../experiments/FEED_SPELL_PUSH.md).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -22,18 +20,23 @@ is synthetic, and dense GAR labels are derived silver labels.
 
 ## Next work
 
-1. The [118-arm decoder refinement](../../experiments/DECODER_REFINEMENT_V3.md)
-   improves external clean/feed-like spell to .652958/.511065, and a non-Viterbi
-   anchor segmenter reaches .649962/.508516. Both beat .647215/.505811;
-   provider guards pass, but the +.01 screen fails. The explicitly requested
-   one-time public diagnostic scores both the previous split-cost winner
-   and the selected refinement at .575000 versus saved .630303. Keep `r069`
-   as the strongest external candidate: both seeds and every provider gain in
-   clean and feed-like spell. The public window is diagnostic and does not veto
-   that external ranking. The deployed manifest is unchanged pending a separate
-   explicit promotion decision; no public-driven tuning follows. Independent
-   dense evidence remains the next confirmation priority. The [earlier 134-arm study](../../experiments/DECODER_SEARCH_V2.md)
-   is development evidence, not a confirmed competition improvement.
+1. The [feed-first calibration and pooling study](../../experiments/FEED_SPELL_PUSH.md)
+   is complete: five rounds, 522 declared configurations (including controls).
+   D-logit temperature 4 with the original cost-3 decoder (`f062` / `g001`)
+   leads feed-like spell F1 at **.518527**, with clean **.658625**, versus adopted
+   .505811/.647215. Every provider and both seeds improve spell in both views;
+   all guards and the historical +.01 clean screen pass. Two-provider selection
+   reaches .513611 feed-like in the broad round. Pooling alternatives, filtering,
+   uncertainty transforms and the local refinement do not beat the simple rule.
+   This is tuned evidence from the same exposed matches and synthetic stress.
+   After selection, the user-requested fixed public diagnostic ties adopted spell
+   at .630303 and raises macro .851387 → .864181, D-F1 .843424 → .873502
+   on 17 references. No public-driven tuning or promotion follows; the manifest
+   stays unchanged. An opt-in full CSV
+   generator and frozen evidence are supplied. Fresh dense evaluation or new
+   corruption realizations are more informative than another local temperature sweep.
+   The [earlier refinement](../../experiments/DECODER_REFINEMENT_V3.md) and its
+   separately frozen public diagnostic remain historical evidence for those candidates.
 2. The [subsecond-team follow-up](../../experiments/DENSE_SHORT_TEAM_V1.md)
    is complete: six fixed 2× H/A-weighted fits and a fixed 50/50 ensemble blend
    both reduce clean/feed-like spell F1. Short-team errors improve marginally
@@ -60,6 +63,14 @@ Before another local sweep, consult the index's
 [settled directions](EXPERIMENTS.md#settled-directions).
 
 ## Artifacts and open work
+
+- **Feed-first iteration:** five rounds / 522 declared configurations, 7,830 ensemble cells
+  and 360 seed cells complete. The fixed public diagnostic scores one unique CSV
+  once and ties adopted spell F1 at .630303, with higher macro and D-F1. Separate scalar replays pass. The refinement's
+  unsupported aggregate-field lookup failed before candidate scoring; its
+  frozen runner/lock are preserved with a bounded execution amendment.
+  [Report, checks and artifact state](../../experiments/FEED_SPELL_PUSH.md).
+
 
 - **Decoder refinement:** 118 arms and the fixed public diagnostic are complete;
   `r069` remains the strongest external candidate. Private PR #12 has 432
