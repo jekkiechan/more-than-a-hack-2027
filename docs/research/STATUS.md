@@ -1,8 +1,9 @@
 # Current research state
 
-Reviewed 2026-11-01 against fork `main` through
-[PR #69](https://github.com/jekkiechan/more-than-a-hack-2027/pull/69), plus the
-explicitly user-authorized original-full promotion on PR #70.
+Reviewed against fork `main` through
+[PR #72](https://github.com/jekkiechan/more-than-a-hack-2027/pull/72), plus the
+completed phase-average comparison and guard audit on PR #73. The
+explicitly user-authorized original-full promotion on PR #70 remains current.
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -25,6 +26,16 @@ occurs during promotion. Independent/full-match confirmation remains unknown.
 Phase TTA and learned stacking are not enabled.
 
 ## Latest delivery
+
+The exact-package GAR comparison and original-provider phase guard audit are
+complete on PR #73: 19 match evaluations, 470 official scalar replays with zero
+error, all seven active guards passing and both component seeds improving.
+The [complete scorecard](../../experiments/ORIGINAL_FULL_PHASE_AVERAGE.md) records
+Astra's provisional phase-upgrade recommendation and the still-failed historical
+clean screen. Research site **version 24** is published with desktop/mobile
+interaction checks and unchanged restricted access revision 2. New native
+prediction artifacts are locally verified; no new remote-native upload is
+claimed. No model, default or adoption policy changes.
 
 The original-full default CLI replays the already-sealed candidate exactly, with
 199,319 valid rows. Private delivery PR #17 is merged; all **213 entries /
@@ -69,6 +80,24 @@ remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
 
+The user-requested [phase-average readout](../../experiments/ORIGINAL_FULL_PHASE_AVERAGE.md)
+contains the completed exact-package comparison and original-provider guard
+audit. Astra now supports provisional phase averaging as an incremental upgrade
+to original_full; all seven active guards pass and both component seeds improve.
+TEST clean/v2 spell is .701641/.701289 versus .698836/.699133 phase0; v2 gain is
+positive in 8/10 games, but its paired 95% interval includes zero. Calibrated+phase
+still leads TEST spell (.704846/.704118). VALID's nine selected-on games stay
+separate. All 380 GAR and 90 guard cells replay officially with zero scalar
+error. No additional experiment is required before the adoption decision.
+The historical +.01 clean screen fails and requires an explicit new exception
+if promoted. Default and policy remain unchanged; no new public scoring.
+Research site version 24 publishes the completed scorecard, TEST/VALID results,
+guard/seed checks and final Astra review. Desktop/mobile controls and layouts pass.
+Restricted access revision 2 and the same two external viewers are preserved.
+The user explicitly approved the scoped-credential fallback after the initial
+automatic-review rejection. The [publication receipt](../../experiments/results/original_full_phase_average_publication_v2.json)
+records the resolved delivery state.
+
 The [challenge-calibrated feed study](../../experiments/FEED_LIKE_V2.md) replaces the
 state-blind feed-like view with `feed_like_v2` (fidelity error .72 → .09 on full-pitch
 providers). Under v2 the previous calibrated-dense baseline scores .5836 (.5880 with
@@ -76,9 +105,9 @@ providers). Under v2 the previous calibrated-dense baseline scores .5836 (.5880 
 training (.5784) also does not transfer. The v1-feed advantage behind the promotion
 does not hold on v2. Use v2 with 4+ realizations as the stress guardrail.
 
-Prioritize independent dense evaluation and corroborated short-possession
-supervision. If pursuing phase TTA, use a separately declared fixed follow-up
-and multi-realization benchmark; do not silently add it to the adopted package.
+Prioritize independent continuous-match gold labels and corroborated short-possession
+supervision. Phase TTA's fixed follow-up is complete; do not silently add it to
+the adopted package without the explicit versioned decision.
 The numerical comparisons below retain each completed study's historical
 baseline. The adopted recipe is now original diversity; PR #68's stack remains
 an archived comparator, with no pooled deployment package.
@@ -183,7 +212,7 @@ Before another local sweep, consult the index's
 
 ## Artifacts and open work
 
-- **Calibrated dense promotion:** active manifest/policy are version 8; the four checkpoint hashes are unchanged. The baseline CLI matches the sealed candidate byte for byte and format validation passes. Public promotion PR #60 and private cache PR #14 are merged; all 191 package/source entries pass a fresh remote restore. Site version 16 is published with the new adoption timeline, pipeline and desktop/mobile QA. The [promotion report](../../experiments/CALIBRATED_DENSE_PROMOTION.md) owns current delivery and restore state.
+- **Historical calibrated dense promotion:** its manifest/policy were version 8; the four checkpoint hashes are unchanged. The baseline CLI matches the sealed candidate byte for byte and format validation passes. Public promotion PR #60 and private cache PR #14 are merged; all 191 package/source entries pass a fresh remote restore. Site version 16 is published with the new adoption timeline, pipeline and desktop/mobile QA. The [promotion report](../../experiments/CALIBRATED_DENSE_PROMOTION.md) owns current delivery and restore state.
 
 
 - **Feed-first iteration:** five rounds / 522 declared configurations, 7,830 ensemble cells
