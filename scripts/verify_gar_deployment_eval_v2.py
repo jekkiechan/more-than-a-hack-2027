@@ -17,12 +17,13 @@ def verify():
     declaration = execution.check()
     report = study.read(study.RESULT)
     cells, max_error = 0, 0.
-    iou_rows = {}
+    iou_rows, class_rows = {}, {}
     for split in study.SPLITS:
         observed = report['splits'][split]
         if (observed['games'],observed['records']) != study.previous.EXPECTED[split]:
             raise ValueError('Prepared cohort count differs from the frozen GAR inventory')
         iou_rows[split] = {}
+        class_rows[split] = {}
         for game in declaration['match_ids'][split]:
             path = study.OUT/'games'/f'{split}__{game}.json'
             receipt = study.read(path)
@@ -50,6 +51,9 @@ def verify():
                             key = f'{arm}/{mode}/{"clean" if view == "clean" else "v2"}'
                             iou_rows[split].setdefault(key,{}).setdefault(game,[]).append({
                                 str(iou):float(x['f1']) for iou,x in official['spell_f1'].items()})
+                            class_rows[split].setdefault(key,{}).setdefault(game,[]).append({
+                                f'{label}/{name}':float(value) for label,row in official['per_class'].items()
+                                for name,value in row.items() if isinstance(value,(int,float,np.number))})
                             cells += 1
             print('VERIFIED',split,game,flush=True)
         # Verify result aggregation independently using saved per-game scalar cells.
@@ -66,10 +70,14 @@ def verify():
     for split,rows in iou_rows.items():
         iou_means[split] = {key:{iou:float(np.mean([np.mean([x[iou] for x in reps]) for reps in games.values()]))
             for iou in next(iter(games.values()))[0]} for key,games in rows.items()}
+    class_means={}
+    for split,rows in class_rows.items():
+        class_means[split]={key:{name:float(np.mean([np.mean([x[name] for x in reps]) for reps in games.values()]))
+            for name in next(iter(games.values()))[0]} for key,games in rows.items()}
     result = dict(study=study.STUDY,verification='official metric replay and independent equal-game aggregation',
         cells_verified=cells,max_scalar_error=max_error,report_sha256=study.digest(study.RESULT),
         execution_amendment_sha256=study.digest(execution.AMENDMENT),
-        mean_spell_f1_by_iou=iou_means,organizer_reference_access=False,public_scoring=False,
+        mean_spell_f1_by_iou=iou_means,mean_per_class=class_means,organizer_reference_access=False,public_scoring=False,
         inference=False,fitting=False,promotion=False)
     study.write_once(study.ROOT/'experiments/results/gar_deployment_eval_v2_verification.json',result)
 

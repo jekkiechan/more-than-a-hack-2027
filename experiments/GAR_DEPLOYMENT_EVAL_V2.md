@@ -87,7 +87,8 @@ the pinned raw inputs:
 .venv/bin/python scripts/verify_gar_deployment_eval_v2.py
 ```
 
-Execution is in progress. The declaration is immutable. The
+Execution is complete: all 19 matches and 380 scalar score cells are verified.
+The declaration is immutable. The
 [pre-score execution amendment](results/gar_deployment_eval_v2_execution_amendment.json)
 preserves the first runner and records Astra's sampling and normalization
 corrections before any model scoring. GAR parity uses the independently
@@ -101,3 +102,22 @@ Native records,
 predictions, coverage and replay receipts are under
 `data/experiments/gar_deployment_eval_v2/`. Remote availability of these new
 native artifacts has not been established.
+
+## Completed matched results
+
+TEST uses ten TRAIN-disjoint games with prior label QA; VALID is the nine-game, previously selected-on development split. No combined 19-game confirmation score is used.
+
+| Exact pooled configuration | TEST clean spell / macro | TEST v2 spell / macro |
+| --- | ---: | ---: |
+| original_full phase0 | 0.698836485 / 0.775378751 | 0.699133249 / 0.776583079 |
+| original_full phase_avg | 0.701640993 / 0.779072746 | 0.701288850 / 0.780501635 |
+| calibrated phase0 | 0.701271380 / 0.772717198 | 0.701215165 / 0.774048811 |
+| calibrated phase_avg | 0.704845626 / 0.775564626 | 0.704117630 / 0.776682332 |
+
+Phase averaging adds +.002156 TEST v2 spell for original_full, positive in 8/10 games; paired 95% interval [−.000348, +.004637]. Clean adds +.002805 in 6/10 games. Macro and D-F1 improve. Calibrated+phase still leads TEST spell; both package-difference spell intervals include zero. These are small silver-label engineering gains, not established full-match superiority.
+
+On exposed VALID, original_full phases improve clean/v2 spell by +.002019/+.001392, while macro falls .000501/.000130 and D-F1 falls .001862/.001796. Preserve these small declines; they are not fresh confirmation.
+
+TEST has 2,439 records, 968,965 graded frames and 8.980879 graded hours; VALID has 2,191 records, 851,015 graded frames and 7.887656 graded hours. All 380 cells pass official scalar replay with zero error. Native phase0 feature/decoded parity and unchanged grading/reference counts pass. All seven source files and both sealed pooled packages verify.
+
+[Complete metrics and paired intervals](ORIGINAL_FULL_PHASE_AVERAGE.md#completed-exact-package-gar-evaluation), [aggregate result](results/gar_deployment_eval_v2.json), [official replay and per-IoU/class metrics](results/gar_deployment_eval_v2_verification.json), [guard decision](results/gar_deployment_eval_v2_decision.json), and [local/remote artifact availability](results/gar_deployment_eval_v2_artifacts.json).

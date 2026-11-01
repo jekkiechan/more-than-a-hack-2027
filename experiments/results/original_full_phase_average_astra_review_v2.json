@@ -1,0 +1,65 @@
+{
+  "adopted_manifest_changed": false,
+  "all_active_policy_guards_pass": true,
+  "created_utc": "2026-11-01T15:20:28.787153+00:00",
+  "explicit_new_user_adoption_exception_required": true,
+  "historical_clean_screen_passes": false,
+  "model_requested": "gpt-6-astra",
+  "more_experiments_required_before_decision": false,
+  "primary_test_phase_gain": {
+    "d_f1": {
+      "ci90": [
+        0.0038416816047446823,
+        0.01423871502505931
+      ],
+      "ci95": [
+        0.0029849836399964353,
+        0.015687623400401755
+      ],
+      "delta": 0.009068571933263625,
+      "games": 10,
+      "games_positive": 9,
+      "p_positive": 0.999
+    },
+    "macro_f1": {
+      "ci90": [
+        0.0017428957346473384,
+        0.006111276518161799
+      ],
+      "ci95": [
+        0.0013360730412176876,
+        0.006783309622795347
+      ],
+      "delta": 0.003918556199365186,
+      "games": 10,
+      "games_positive": 9,
+      "p_positive": 1.0
+    },
+    "spell_f1": {
+      "ci90": [
+        5.2902237743204256e-05,
+        0.004243465358463876
+      ],
+      "ci95": [
+        -0.0003480970526474214,
+        0.004636954443216159
+      ],
+      "delta": 0.0021556014268776626,
+      "games": 10,
+      "games_positive": 8,
+      "p_positive": 0.9525
+    }
+  },
+  "promotion": false,
+  "public_scoring": false,
+  "recommendation": "yes_provisional_incremental_phase_upgrade",
+  "recommendation_text": "Astra recommends provisional adoption of uniform phase averaging as an incremental upgrade to the chosen original_full baseline. All seven active stress/provider guards pass, both component seeds improve clean/v1 spell, and GAR TEST corroborates a small spell gain with higher macro and D-F1. The primary spell interval still includes zero. Calibrated dense plus phases remains the numerical spell leader on the original v2 benchmark and GAR TEST; original_full plus phases is not an established overall winner. Preserve the failed +.01 original-clean screen and record an explicit new user-approved exception if adopted. No further experiment is required before the adoption decision; continuous full-match gold confirmation remains unknown.",
+  "reviewer": "Astra",
+  "source_sha256": {
+    "gar_deployment_eval_v2.json": "29a33186115ff11fdef904e2b70ee760ba861ef58c078fda43ec59343c9026a3",
+    "gar_deployment_eval_v2_verification.json": "eca2aa5f72c28bb8020945654bd704011f882e23fa717854b96c34cb015de977",
+    "phase_average_guard_v1.json": "c2bbfbb129d23f45aafec9a1066c3cbdc26b66dff5a2583fa3d8ef52a055febf",
+    "phase_average_guard_v1_verification.json": "336d179a55ad64a64799767170c1a3e514c4cc4fc3502bcb8680f8fadb38cf8f"
+  },
+  "study": "original_full_phase_average_promotion_review_v2"
+}

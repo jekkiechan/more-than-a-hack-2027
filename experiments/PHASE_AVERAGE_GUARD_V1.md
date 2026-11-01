@@ -42,14 +42,21 @@ gates, old frozen results or adoption metadata are accessed or changed.
 ## Execution
 
 The pinned assets have been restored and hash-verified (27 files, 504,652,102
-bytes). The fixed audit is executing on the remaining CPU while GAR VALID
-finishes. Its declaration already exists and must not be recreated.
+bytes). The fixed audit is complete: all 90 cells pass official replay with
+zero scalar error. Published control/phase scorecards reproduce within
+2.22 × 10⁻¹⁶. All seven active stress/provider guards pass and both component
+seeds improve clean/v1 spell. The historical +.01 clean screen remains failed.
+Its declaration already exists and must not be recreated.
 
 ```sh
 .venv/bin/python -m experiments.phase_average_guard_v1 run
 .venv/bin/python -m experiments.phase_average_guard_v1 report
+.venv/bin/python scripts/verify_phase_average_guard_v1.py
 ```
 
 This audit closes reporting/guard gaps; the
 [GAR comparison](GAR_DEPLOYMENT_EVAL_V2.md) owns the new match evidence and the
 [phase-average readout](ORIGINAL_FULL_PHASE_AVERAGE.md) owns promotion advice.
+Full class precision/recall/F1 and per-IoU metrics are in the
+[verification receipt](results/phase_average_guard_v1_verification.json) and
+[expanded scorecard](results/original_full_phase_average_scorecard_v2.json).
