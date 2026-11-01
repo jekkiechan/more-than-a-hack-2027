@@ -15,6 +15,20 @@ Matched clean/feed-like spell is .658625/.518527 versus previous .647215/.505811
 
 ## Latest delivery
 
+The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
+and research site version **20**, with desktop/mobile checks and restricted
+access revision 2 unchanged. The two pooled models, full CSVs and sealed native
+outputs are preserved in a locally verified 22-file archive (14,774,217 bytes).
+The user subsequently authorized private upload. All 22 entries pass an
+independent remote fetch and empty-directory restore with exact hashes and a
+separate LFS store. The
+[remote verification receipt](../../experiments/results/short_quality_public_v1_remote_verification.json)
+supersedes the earlier
+[local-only delivery snapshot](../../experiments/results/short_quality_public_v1_delivery.json),
+which is preserved unchanged.
+The previous research archive below remains remotely verified.
+
+
 Research code and aggregate evidence are on [PR #65](https://github.com/jekkiechan/more-than-a-hack-2027/pull/65).
 All **559 new archive/source entries / 1,714,557,333 bytes** pass an independent
 remote fetch and empty-directory restore with exact hashes and a separate LFS
@@ -26,6 +40,15 @@ record the observed states. Archive identifiers and exact restore instructions
 remain private. No model promotion or organizer scoring occurred.
 
 ## Next work
+
+The separately requested [fixed public diagnostic](../../experiments/SHORT_QUALITY_PUBLIC_V1.md)
+is complete after two pooled fits. Public spell is **.611765** versus adopted
+.630303; macro **.851742** versus .864181. The full CSV replays/validation and
+reference-free artifact checks pass. The one-use gate is closed, with no
+public-driven tuning, repairs or model promotion. External selection results
+below remain unchanged; this is a 17-reference diagnostic, not new independent
+or full-match confirmation.
+
 
 The [short-label quality and diversity comparison](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md)
 is complete: **18 fixed fits** and eight fixed arms. Best eligible original
