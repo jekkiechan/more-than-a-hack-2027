@@ -1,9 +1,8 @@
 # Current research state
 
 Reviewed 2026-11-01 against fork `main` through
-[PR #63](https://github.com/jekkiechan/more-than-a-hack-2027/pull/63), plus the
-completed [short-possession sampling and calibration study](../../experiments/FEED_SHORT_SAMPLING_V1.md)
-on [PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64).
+[PR #64](https://github.com/jekkiechan/more-than-a-hack-2027/pull/64), plus the
+completed [short-label quality and diversity study](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md).
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -19,8 +18,24 @@ The short-possession continuation is delivered through [PR #64](https://github.c
 
 ## Next work
 
-The [short-possession sampling comparison](../../experiments/FEED_SHORT_SAMPLING_V1.md) is complete: 12 fixed fits, an equal blend and fixed H/A component checks. Best eligible original feed spell across controls and candidates is **0.527396** (Resampled H/A + control D); .55 is unmet. Sampling exposure increased as designed; no promotion or organizer scoring occurred.
+The [short-label quality and diversity comparison](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md)
+is complete: **18 fixed fits** and eight fixed arms. Best eligible original
+feed-like spell is **.528180**, clean **.662590**, versus the previous numerical
+leader .527396/.657215. All guards pass; the historical +.01 clean screen fails.
+The aggregate feed gain comes from Sportec; Metrica and SkillCorner decline.
+The fixed new-corruption check reaches .547221 versus matched leader .546583;
+these are different realizations, not a replacement for the original benchmark
+or independent matches. All 420 new score cells pass separate official/algebra
+replay. The .55 original-benchmark target remains unmet; adoption is unchanged.
 
+The TRAIN audit finds only **38 corroborated subsecond GAR spans out of 198**,
+and 403 complete <=3s spans across all 45 games. Original pools contain 515–948
+physical short spans per fold; paired views do not add examples. Prioritize more
+varied, externally corroborated short supervision and independent dense
+evaluation. Stop the declared sampling comparisons without new rate, duration,
+blend-weight or decoder settings. The earlier
+[short-window sampling and calibration study](../../experiments/FEED_SHORT_SAMPLING_V1.md)
+remains the .527396 comparator.
 
 The completed [raw-feed training study](../../experiments/FEED_ROBUSTNESS_V1.md) reaches **0.525240** original feed-like spell F1 versus .518527 promoted. Twelve fits, fixed blends/component checks and fresh corruption checks are complete; 0.55 remains unmet and adoption is unchanged. The two-seed fresh score is .533871 versus matched baseline .524936. Prioritize short-possession supervision/exposure and independent dense evaluation; fresh synthetic views are not new matches.
 
