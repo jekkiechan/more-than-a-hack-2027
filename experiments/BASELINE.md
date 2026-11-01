@@ -8,7 +8,7 @@ Matched clean/feed-like spell F1 is **0.658625 / 0.518527**, versus **0.647215 /
 
 ## Private cache restore
 
-Use private branch `research/calibrated-dense-baseline-v1` until its delivery merges. Fetch this exact versioned manifest, and use the matching public inference code:
+Private [delivery PR #14](https://github.com/jekkiechan/mtah-data/pull/14) is merged. Use current private `main` or delivery branch `research/calibrated-dense-baseline-v1` if your checkout is older. Fetch this exact versioned manifest, and use the matching public inference code:
 
 ```sh
 python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_calibrated_ensemble_v1.json --data-dir data

@@ -34,7 +34,7 @@ The replay accesses neither organizer reference labels nor public scoring. All e
 
 ## Restore and default inference
 
-Use the private delivery branch `research/calibrated-dense-baseline-v1` until its delivery is merged. The versioned package and source-cache manifests identify this package even when generic private defaults are older:
+Private [delivery PR #14](https://github.com/jekkiechan/mtah-data/pull/14) is merged at `32157d0db6b7ac588ca38b8a85e1404f3668ef71`. Use a current private `main` checkout; an older checkout can use delivery branch `research/calibrated-dense-baseline-v1`. The versioned package and source-cache manifests identify this package even when generic private defaults are older:
 
 ```sh
 python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_calibrated_ensemble_v1.json --data-dir data
@@ -47,3 +47,15 @@ The cache includes the four checkpoints and matching metadata, not organizer ref
 ## Delivery checks
 
 Focused inference and promotion contracts pass: frozen decoder parity, package validation, predecessor dispatch, current-CLI routing and inactive-period masking, policy coherence and immutable archives. All **525 experiment tests**, **26 integrity/gate tests**, the file-backed fit contract, documentation links and CSV format validation pass. Private remote restore is recorded separately in delivery receipts when complete. Research-site updates change adoption status and pipeline descriptions while retaining the original five-round evidence.
+
+## Completed remote delivery
+
+[Public promotion PR #60](https://github.com/jekkiechan/more-than-a-hack-2027/pull/60) passed CI and merged. Private [mtah-data PR #14](https://github.com/jekkiechan/mtah-data/pull/14) is merged; its generic baseline and source-cache defaults point to the new package. The versioned manifests remain the authoritative restore targets. A fresh remote clone of delivery head `8c91fad7d7f6656de2a0840389764d21a221004e` and empty-directory restoration verified all **191 entries**, 7,908,074 bytes, with zero size/hash mismatches. The 7-entry weight/metadata cache, 179-entry source cache and generic defaults agree. Restored manifest/policy/receipt hashes are coherent, and every checkpoint hash equals the predecessor's. [Remote verification receipt](results/baseline_calibrated_dense_remote_verification.json).
+
+Initial CI found that the new CLI test hashed the real local default input after mocking its loader. The fixture was corrected to create and pass an isolated synthetic NPZ. No runtime code, selected configuration, model, package metadata or replay output changed; the next CI run passed. The private inference source snapshot remains pinned to `4f4362d`, since the subsequent change only affects a test outside that snapshot.
+
+## Published adoption update
+
+The existing restricted [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#calibrated-promotion) is published as **version 16**, source `3180926e8af2db25def4796c66c3a0138db1312d`. Overview KPIs, adoption timeline and metric chart identify the new default. Experiments records the explicit promotion separately from the frozen search. Architecture and Method explain native member normalization, D-logit temperature 4 and the unchanged cost-3 decoder.
+
+All four affected pages pass desktop (1440×1100) and mobile (390×844) QA: no page-width overflow or browser errors, all three overview metrics and eight family-selector options work, and the seven-row chart marks only the calibrated package as current. The custom audience remains policy revision 2 with the same two external viewers. [Publication receipt](results/baseline_calibrated_dense_site_publication.json).
