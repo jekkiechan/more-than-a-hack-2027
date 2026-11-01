@@ -86,6 +86,11 @@ frames and 17 reference possessions. This diagnostic does not select models.
 Against phase0, spell is unchanged, macro falls .002269326 and D-F1 rises
 .000449487. The full candidate CSV hash is
 `eb011268af14b4de77b4b1c823916631442ae2090efbb9526314007ddf27ceea`.
+A fresh label-free replay reproduces this CSV and the adopted phase0 CSV
+byte for byte; both pass the 199,319-row format check. The
+[replay receipt](results/original_full_phase_average_replay_v1.json) records
+input, model and manifest hashes. No reference labels were loaded or scored.
+
 Original five-match phase-average D metrics, per-seed scores and per-IoU
 breakdowns were not published in the saved aggregate phase scorecards; they
 are unavailable here rather than inferred from other models or views.

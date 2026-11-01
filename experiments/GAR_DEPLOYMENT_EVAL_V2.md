@@ -76,12 +76,15 @@ All seven downloaded VALID/TEST inputs independently match the existing pinned
 receipt's SHA-256 values (2.07 GB); raw data and native outputs remain ignored.
 Source revision is `32c840210b7d08d06976e7f9457dfff79fb2da99`.
 
+The declaration and amendment already exist in the repository. Preserve them;
+do not rerun their creation steps. To execute the fixed study after restoring
+the pinned raw inputs:
+
 ```sh
-.venv/bin/python -m experiments.gar_deployment_eval_v2 declare
 .venv/bin/python -m experiments.gar_deployment_eval_v2 prepare
-.venv/bin/python -m experiments.gar_deployment_eval_v2_execution amend
 .venv/bin/python -m experiments.gar_deployment_eval_v2_execution games --workers 2
 .venv/bin/python -m experiments.gar_deployment_eval_v2_execution report
+.venv/bin/python scripts/verify_gar_deployment_eval_v2.py
 ```
 
 Execution is in progress. The declaration is immutable. The
