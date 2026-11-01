@@ -47,10 +47,12 @@ class CalibratedDenseContracts(unittest.TestCase):
             root = Path(temp); manifest = root/'manifest.json'; output = root/'candidate.csv'
             manifest.write_text(json.dumps(dict(self.manifest, model=promotion.MODEL)))
             inputs = dict(ball=np.zeros((4,2)), period=np.array([0,1,1,2]), fps=25.)
+            inputs_path = root/'synthetic_inputs.npz'
+            np.savez(inputs_path, **inputs)
             def write(labels, target):
                 np.testing.assert_array_equal(labels, np.array(list('XHAD')))
                 target.write_text('fixture')
-            with mock.patch('sys.argv', ['baseline','predict','--manifest',str(manifest),'--output',str(output)]), \
+            with mock.patch('sys.argv', ['baseline','predict','--manifest',str(manifest),'--inputs',str(inputs_path),'--output',str(output)]), \
                  mock.patch.object(baseline,'load_inputs',return_value=inputs), \
                  mock.patch.object(baseline,'load_models',return_value={}), \
                  mock.patch.object(inference,'predict_labels',return_value=np.array(list('DHAD'))) as decode, \
