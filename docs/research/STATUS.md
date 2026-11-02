@@ -61,8 +61,9 @@ ball inputs remain the priority. The twelve games are now exposed diagnostics,
 not a fresh source for future selection claims. Source anonymity limits exhaustive
 fixture deduplication and intervals describe this source only.
 
-Repository aggregate delivery is in progress. The existing restricted research
-site remains at version 26, access revision 2: its update is blocked because the
+Code and aggregate evidence are published in
+[PR #78](https://github.com/jekkiechan/more-than-a-hack-2027/pull/78).
+The existing restricted research site remains at version 26, access revision 2: its update is blocked because the
 Sites source-workflow helper is unavailable in this environment. The linked report
 contains the verified result and records the outstanding site update. Raw data
 and native predictions are locally verified only; no raw-data upload is claimed.

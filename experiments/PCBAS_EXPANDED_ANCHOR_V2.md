@@ -166,6 +166,9 @@ closed. Raw tracking, events and native outputs are locally verified under
 ignored data; no raw-data upload or independent remote restore is claimed.
 Existing deployment artifact availability is unchanged.
 
+Code and aggregate evidence are published in
+[PR #78](https://github.com/jekkiechan/more-than-a-hack-2027/pull/78).
+
 The [research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
 still needs this experiment update. Its current version is 26 and audience
 revision 2 remains restricted. Site lookup and source-credential acquisition
