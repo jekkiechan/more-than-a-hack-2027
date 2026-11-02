@@ -63,11 +63,11 @@ fixture deduplication and intervals describe this source only.
 
 Code and aggregate evidence are published in
 [PR #78](https://github.com/jekkiechan/more-than-a-hack-2027/pull/78).
-Research site **version 27** is published after explicit user approval, with all
+Research site **version 28** is published after explicit user approval, with all
 12 desktop/mobile page checks and 16 chart-control combinations passing. Access
 revision 2 and the same two external viewers are unchanged. Native scoped Git
 source access and Sites deployment resolve the earlier missing-helper blocker.
-The [publication receipt](../../experiments/results/pcbas_expanded_anchor_v2_publication.json)
+The [final publication receipt](../../experiments/results/pcbas_expanded_anchor_v2_publication_v2.json)
 records the observed state. Raw data and native predictions remain locally
 verified only; no raw-data upload is claimed.
 
