@@ -1,0 +1,477 @@
+{
+  "anchors": {
+    "baseline": "Per-game majority direction alias; descriptive only, computed from that game's anchors",
+    "classes": {
+      "1": "drive",
+      "2": "pass",
+      "3": "cross",
+      "5": "shot"
+    },
+    "primary": "Drive equal-game decoded team agreement; D/X count incorrect",
+    "secondary": "Pass, Cross and Shot per-class accuracy and predicted-D rate; per-game and pooled counts",
+    "visibility": "At selected anchor frames, stratify by visible players: 0-5, 6-11, 12+"
+  },
+  "baseline_manifest_sha256": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+  "cohort": {
+    "halves": [
+      "game_39_H1",
+      "game_39_H2",
+      "game_38_H1",
+      "game_38_H2",
+      "game_51_H1",
+      "game_51_H2",
+      "game_35_H1",
+      "game_35_H2",
+      "game_4_H1",
+      "game_4_H2",
+      "game_23_H1",
+      "game_23_H2",
+      "game_1_H1",
+      "game_1_H2",
+      "game_22_H1",
+      "game_22_H2",
+      "game_3_H1",
+      "game_3_H2",
+      "game_16_H1",
+      "game_16_H2",
+      "game_17_H1",
+      "game_17_H2",
+      "game_37_H1",
+      "game_37_H2"
+    ],
+    "reserve": [
+      {
+        "game_id": "game_48",
+        "rank_sha256": "3bc70fe390f82fbccd0466072d63eac6f386c32edb289258fcffa0dc0ab319a5"
+      },
+      {
+        "game_id": "game_33",
+        "rank_sha256": "3f8afd649c187b42a231681253409308eb28f9974bcab7c1ceca83c0a213ea36"
+      },
+      {
+        "game_id": "game_13",
+        "rank_sha256": "4696ac1da4b81e902764fe1e0eb088b0bc13e9bbecbf49d62cc112aa6bb56b12"
+      },
+      {
+        "game_id": "game_34",
+        "rank_sha256": "49a8f7518b0110b90de5057c14e0e3bdddcbf5044c291a07e19d5b5c300bfeba"
+      },
+      {
+        "game_id": "game_41",
+        "rank_sha256": "618c736a456a7379ff66c2c82726c1e5d437427d98e3341513b1887f1896445b"
+      },
+      {
+        "game_id": "game_28",
+        "rank_sha256": "70781535fedaceb487bc7cd387de38468c9a2e5cbfb47d5d112e0c9e705627e9"
+      },
+      {
+        "game_id": "game_5",
+        "rank_sha256": "734a5d348755136c4ad4877a56fe559e591554007427943bd8b9f1151d758386"
+      },
+      {
+        "game_id": "game_12",
+        "rank_sha256": "739328f304ea8957d56f74ff027a94a7e59e12416dfbd50615a1f8a2e15cc6a5"
+      },
+      {
+        "game_id": "game_29",
+        "rank_sha256": "768d1576907731f08c436f76fa976ce4453fc2508449f466f21f8d5898b1a20e"
+      },
+      {
+        "game_id": "game_21",
+        "rank_sha256": "76d0b0f32bbabb105fbda162e0e0f8a4be0a726f86036bff727b0ad30b98fa24"
+      },
+      {
+        "game_id": "game_15",
+        "rank_sha256": "7d424845083910143495f6dbe7e948910b28b668a5de67b7f2180167e7ec41e5"
+      },
+      {
+        "game_id": "game_30",
+        "rank_sha256": "88de2cbafe747da8ce7381fb727c870c10c22af13c61a0bbcdfd6401eadba3de"
+      },
+      {
+        "game_id": "game_53",
+        "rank_sha256": "949e2bce65bfbc3a6d23a5f24ef77fa49d01fc156ee37944a01cb2f434427214"
+      },
+      {
+        "game_id": "game_8",
+        "rank_sha256": "97192da7015b77dde6ec053472c802f5cd14d7992f3ddcaf587636d5e658f68f"
+      },
+      {
+        "game_id": "game_14",
+        "rank_sha256": "a3c1532bcb6231d8fcbdd969091a7fa0b3f5dd33d61b8813d19fdfff46370728"
+      },
+      {
+        "game_id": "game_26",
+        "rank_sha256": "abe35cb3524303c082864d865a0377eedd854be00d4d4b14ba42d15caf15c063"
+      },
+      {
+        "game_id": "game_6",
+        "rank_sha256": "b0844d0a232c2910a6e3ddea98e7d02cb53757079101986b29c2c632448f8360"
+      },
+      {
+        "game_id": "game_52",
+        "rank_sha256": "b20bec06b3ed696803a702024d88f4571f38b627fa477d095d079ebc437c82ca"
+      },
+      {
+        "game_id": "game_46",
+        "rank_sha256": "b4118963b4cba6b954ae24c6dcf96f1263c63a3ede754dc1eba4a9e15b91156b"
+      },
+      {
+        "game_id": "game_7",
+        "rank_sha256": "b491713457772bbe0c546d7b46ced6dd23ec2d361619ce00a42d10d5577a86a2"
+      },
+      {
+        "game_id": "game_42",
+        "rank_sha256": "b8d81ab05aa9886457fdeb9e427b67b00bacac49c5f122dc6b3735b5a13aef97"
+      },
+      {
+        "game_id": "game_40",
+        "rank_sha256": "c4178b11b1e81ad059fdc254c62fd32ef509d60c0f3e0a0a95171244fca86d85"
+      },
+      {
+        "game_id": "game_31",
+        "rank_sha256": "c7654fa7c2a9f3e521ec55245c96d02536d6f4e9bd35f4799c4ae55d7db32337"
+      },
+      {
+        "game_id": "game_25",
+        "rank_sha256": "c98608d9ec664455eb532a135a7446f2e567aa7c07300e8ef7ecd57a4bcc761b"
+      },
+      {
+        "game_id": "game_32",
+        "rank_sha256": "c9b8e6c718d75e80ce29202539de87fad97fafa85a86343f0c0a8bdf53869071"
+      },
+      {
+        "game_id": "game_43",
+        "rank_sha256": "cdddd99c2f991983f7cd7936b20fd41bb7cd1277d6efc7ff62716f7b9eac9807"
+      },
+      {
+        "game_id": "game_11",
+        "rank_sha256": "d11a9b0574033181f5cbf27ed5e19d8c7b5fa90618cbbe584f1cded9b0e3f169"
+      },
+      {
+        "game_id": "game_45",
+        "rank_sha256": "d189c0f5f0f2b0c47fb032b92b9edb4a1df5889c535938515b27add380c09d95"
+      },
+      {
+        "game_id": "game_44",
+        "rank_sha256": "d43c21ff1e8416a7dfcc871bd069d14d4e165545e5d218decfedb249c56e3520"
+      },
+      {
+        "game_id": "game_10",
+        "rank_sha256": "d8cb475e7a807d3009d80cb8e3f6fb230239eb2ea1e34745a3a35ca456ca5076"
+      },
+      {
+        "game_id": "game_19",
+        "rank_sha256": "e0a8976d5682a2c4ade48f92b892ef188de931187fe025ae36971399c5f234d0"
+      },
+      {
+        "game_id": "game_2",
+        "rank_sha256": "e4d8343ae8734197dd655b9eb5b61346008a4bf7a955d9be67a4657c9198dd6d"
+      },
+      {
+        "game_id": "game_20",
+        "rank_sha256": "f293a2a049c19d94e807711b9742c87034f90210ba74e8f40d28461bba551edf"
+      },
+      {
+        "game_id": "game_9",
+        "rank_sha256": "f8055fb85875f3433e2ff6be4ff5ab60b3cb193018a387817e000411365009ab"
+      },
+      {
+        "game_id": "game_27",
+        "rank_sha256": "fca047e7ff3fb43d7e3fc0297a2a05d300b266f524ff976f61b20237da152e1b"
+      },
+      {
+        "game_id": "game_49",
+        "rank_sha256": "ffb9c656e33ba000948022a5831ea1b570eae48c4eeb98f4e84927953b1f0088"
+      }
+    ],
+    "salt": "pcbas_expanded_anchor_v2",
+    "selected": [
+      {
+        "game_id": "game_39",
+        "rank_sha256": "0a24a0d9f7825a73481263f8303cda898e0902d6bdb413776cfd8fea00d39037"
+      },
+      {
+        "game_id": "game_38",
+        "rank_sha256": "0d57411e86edc263607543b549ac1f7b33bacc3b922d6fb9dec5705fcdd9415c"
+      },
+      {
+        "game_id": "game_51",
+        "rank_sha256": "0f2d3e5a61e2abd187fa75ae7dc3ab0d5e28a147d42daf2e715ade88e28d43d4"
+      },
+      {
+        "game_id": "game_35",
+        "rank_sha256": "17801829d3871a24f27496b5795ae1f31d503b394fe16a0a5c38dd072d68c4f3"
+      },
+      {
+        "game_id": "game_4",
+        "rank_sha256": "2287996e185efbddc46ed5dc3f4e512361b14de6a12677d0a65fb5f44d75ac5a"
+      },
+      {
+        "game_id": "game_23",
+        "rank_sha256": "22f2aa22f7f87a9ee824526e3eb773542c85ab454d6e2e33744c2f5f56c94fbd"
+      },
+      {
+        "game_id": "game_1",
+        "rank_sha256": "25fa88bc9ad62d3dac1d43b88d59a50f31ecc2fea6558ec9125145a887d88f57"
+      },
+      {
+        "game_id": "game_22",
+        "rank_sha256": "28a6f3914590938aba52221eee57c8e53f482b7c09cab9259199865375c98552"
+      },
+      {
+        "game_id": "game_3",
+        "rank_sha256": "2fa46c9789f6b61159d14727a2f4ba8ae8f32261bce73b7146315c6bcaaaa8cd"
+      },
+      {
+        "game_id": "game_16",
+        "rank_sha256": "316a678f44d49e16ef9b07c0e830a266c9976ab37375d253f91cabbd9b60af6b"
+      },
+      {
+        "game_id": "game_17",
+        "rank_sha256": "3255588a6115332fe94ddadbcd116bb836eca708ba6f03fb376dbe076683c7ca"
+      },
+      {
+        "game_id": "game_37",
+        "rank_sha256": "349c74a579139cfc6e0dcb602afddfeeb1cfe40a2e84982365058255f5bacecc"
+      }
+    ],
+    "selected_games": 12,
+    "selection": "ascending SHA256('pcbas_expanded_anchor_v2:' + game_id) among complete H1/H2 keys; first 12 selected; remainder reserved"
+  },
+  "commands": [
+    "python -m experiments.pcbas_expanded_anchor_v2 freeze",
+    "python -m experiments.pcbas_expanded_anchor_v2 parity",
+    "python -m experiments.pcbas_expanded_anchor_v2 predict --half GAME_H1",
+    "python -m experiments.pcbas_expanded_anchor_v2 seal",
+    "python -m experiments.pcbas_expanded_anchor_v2 score"
+  ],
+  "created_utc": "2026-11-02T07:59:34.692393+00:00",
+  "dataset": {
+    "games_available": 48,
+    "hdf5_inventory": [
+      "game_10_H1",
+      "game_10_H2",
+      "game_11_H1",
+      "game_11_H2",
+      "game_12_H1",
+      "game_12_H2",
+      "game_13_H1",
+      "game_13_H2",
+      "game_14_H1",
+      "game_14_H2",
+      "game_15_H1",
+      "game_15_H2",
+      "game_16_H1",
+      "game_16_H2",
+      "game_17_H1",
+      "game_17_H2",
+      "game_19_H1",
+      "game_19_H2",
+      "game_1_H1",
+      "game_1_H2",
+      "game_20_H1",
+      "game_20_H2",
+      "game_21_H1",
+      "game_21_H2",
+      "game_22_H1",
+      "game_22_H2",
+      "game_23_H1",
+      "game_23_H2",
+      "game_25_H1",
+      "game_25_H2",
+      "game_26_H1",
+      "game_26_H2",
+      "game_27_H1",
+      "game_27_H2",
+      "game_28_H1",
+      "game_28_H2",
+      "game_29_H1",
+      "game_29_H2",
+      "game_2_H1",
+      "game_2_H2",
+      "game_30_H1",
+      "game_30_H2",
+      "game_31_H1",
+      "game_31_H2",
+      "game_32_H1",
+      "game_32_H2",
+      "game_33_H1",
+      "game_33_H2",
+      "game_34_H1",
+      "game_34_H2",
+      "game_35_H1",
+      "game_35_H2",
+      "game_37_H1",
+      "game_37_H2",
+      "game_38_H1",
+      "game_38_H2",
+      "game_39_H1",
+      "game_39_H2",
+      "game_3_H1",
+      "game_3_H2",
+      "game_40_H1",
+      "game_40_H2",
+      "game_41_H1",
+      "game_41_H2",
+      "game_42_H1",
+      "game_42_H2",
+      "game_43_H1",
+      "game_43_H2",
+      "game_44_H1",
+      "game_44_H2",
+      "game_45_H1",
+      "game_45_H2",
+      "game_46_H1",
+      "game_46_H2",
+      "game_48_H1",
+      "game_48_H2",
+      "game_49_H1",
+      "game_49_H2",
+      "game_4_H1",
+      "game_4_H2",
+      "game_51_H1",
+      "game_51_H2",
+      "game_52_H1",
+      "game_52_H2",
+      "game_53_H1",
+      "game_53_H2",
+      "game_5_H1",
+      "game_5_H2",
+      "game_6_H1",
+      "game_6_H2",
+      "game_7_H1",
+      "game_7_H2",
+      "game_8_H1",
+      "game_8_H2",
+      "game_9_H1",
+      "game_9_H2"
+    ],
+    "known_val_game_ids_excluded": [],
+    "partition": "TRAIN",
+    "partition_role": "benchmark train; matches are held out from this project's frozen weights",
+    "repo_id": "SoccerNet/SN-PCBAS-2026",
+    "revision": "a16e373c8c8d26b1af4874f4208810baf337e709"
+  },
+  "exclusions": [
+    "replay events",
+    "unselected classes",
+    "opposing-team events on same frame",
+    "duplicate anchors",
+    "anchors without exact tracking frame"
+  ],
+  "inference": {
+    "ball": "all missing; observation mask false",
+    "coordinates": "same standardized 105x68 adapter assumption as PCBAS v1; no tuning/clipping",
+    "fits": 0,
+    "fps": 25,
+    "model": "unchanged exact adopted package and decoder",
+    "parity": "direct deployed API vs v1 adapter on first 750 available frames of first selected half",
+    "player_visibility": "v1 adapt_rows proxy: finite coordinates and finite ROI columns; nonobserved positions masked",
+    "target_separation": "HDF5 columns [:, :13] only during predict; action class and event JSON are not read until all predictions are sealed"
+  },
+  "input_sha256": {
+    "data/independent/sn_pcbas_2026/playbyplay_train.json": "c37a6096b87fc74dad16b8dc0ed6a995570d9bdabe4de833804ee657a40d23eb",
+    "data/independent/sn_pcbas_2026/train_tactical_data.h5": "bcc02cd2f05509d1e82ba16a81ada5349895410a349aeedcb13e539339379058"
+  },
+  "interpretation": "Sparse event-anchor portability only; no possession-spell or dead-ball evaluation.",
+  "limitations": [
+    "Action anchors are sparse and have no duration; official possession spell F1 is not measurable",
+    "No dead-ball reference, so dead precision/recall is not measurable",
+    "All ball positions are missing: severe input-regime shift",
+    "Only one data source; 12-game intervals quantify match variation within this source, not unseen-provider variation",
+    "Dataset IDs are anonymized; fixture overlap cannot be exhaustively certified",
+    "Player positions include source-imputed tracks; visibility is proxied by ROI fields",
+    "Standardized 105x68 pitch scale is assumed, not measured"
+  ],
+  "model_paths_sha256": {
+    "dense_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+    "dense_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+    "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+  },
+  "model_sha256": {
+    "dense_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+    "dense_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+    "teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+  },
+  "no_organizer_labels": true,
+  "no_threshold_or_offset_search": true,
+  "no_training_or_selection": true,
+  "output_directory": "data/experiments/pcbas_expanded_anchor_v2",
+  "package": "joint_gru_sn_dense_original_diversity_phase_ensemble_v1",
+  "question": "Does the exact adopted package agree with acting-team labels at reliable action anchors across a deterministic 12-game PCBAS TRAIN sample?",
+  "selected_half_feature_sha256": {
+    "game_16_H1": "92530a0e35c033a14c30af518d564618140b56b4e99b9ae970a9042442a7336f",
+    "game_16_H2": "6520702daadc37b8dca6a8596dcc28bed3001643466378cb03a835e1d64c0072",
+    "game_17_H1": "01e2821a535146b024439f04137c2aa5a700a40f37a3c6389ae5c3805dab1d2e",
+    "game_17_H2": "e38c49f6c88a10e720af088474a3f0ca64a0e928c4a2be7023f27b87e6b7ff24",
+    "game_1_H1": "f9d96c67751674c65b5360dc3808b0d416e98c6370cd5d15cebb839aebf95c31",
+    "game_1_H2": "f9edb8c475abf95f14ccaf7f3fdd29f7b854288c32cc2db22a37569914d8d9cc",
+    "game_22_H1": "c3e367ab0d0cf5d182949ae4d28f8c3218c0320517196cf0830b1784e8d407b0",
+    "game_22_H2": "2d9cce04affd1990f342f84d0100936d1e5330bd66c7344357bad5acbe534bad",
+    "game_23_H1": "dfb1864ecb1bb56d2e9ae93263c7c9f70ae38d24a98d20dbd2bdedb08e3ff370",
+    "game_23_H2": "4a2bb7ece405e942b26fcd1483b2356b47bf051802c35aab870497e2879b41b1",
+    "game_35_H1": "5384e8651557c1c7ba6e15123768b5769e69edc303eb262e3c6f624a7f2d64e7",
+    "game_35_H2": "74babeb840a9a9a7690eb6145c31768b69ca838be7c0871b5769f2d62982f4e0",
+    "game_37_H1": "0e49ed2390a82eeb1bb9bed8159da61420e4fda1a0c4a1418688a70bd3790d16",
+    "game_37_H2": "2602ec558f316ee87ac6dc0dcecf7b44b0f9ffbb47e200e5d572949ff19e3cbc",
+    "game_38_H1": "8c437c7a2b2d87204df9d3ec58817e962b0c4e26c1e63ec1e22d6c59e7982193",
+    "game_38_H2": "6f113b2bfe3e635a6b37d0d097ec4c61baf38c18c0c2a82878bbc28d86d7c4ac",
+    "game_39_H1": "88255163d8f47465af0bae8fb12e89717ab24d6a88587c5e38bc1d165d40ea29",
+    "game_39_H2": "4872aee5e40ce5112fb146291b6ff6d1a7debc749b12c29a1d70ef0b5de71eb2",
+    "game_3_H1": "20fc38341671d745a7077c0f71a7d95de247dc0f69c82d63d61ba6c2591246ba",
+    "game_3_H2": "dc4b1735a4cccd962911e8f8e6f55decf349a8dd3a096e297d1709631a79af39",
+    "game_4_H1": "93f7abb83701475e6d5bc15afd424bf17073ea2f4685d900309734a2cb7b67b7",
+    "game_4_H2": "63bf25e0de6c836cc979e147bd098815c7692ff4e3b03497d55fc2e9038d4269",
+    "game_51_H1": "333486e422db04e1bee9d756a0bc690159a5f5d3232d03ef0ff9a7885b53f991",
+    "game_51_H2": "41edb6e7d5f769908d3dbb1b42536ec3350be016e368cc1ffba02c4634240fea"
+  },
+  "source_sha256": {
+    "experiments/calibrated_dense_baseline.py": "b51dd8c5810f6ff75fd801176626669b98d4254eaa3144520af3c8554ae25be3",
+    "experiments/current_baseline.py": "2f8e5725d215fbe5f97bfa46d7544780d7755f1f0d208a02397afa7aac1d5867",
+    "experiments/decoder_refinement.py": "3157ce0ef6a9f2417c0d365e6ac7b759cf99bda6d91b6f62ea343c2cbb28c962",
+    "experiments/decoder_search.py": "a9ce4d61bd21b35a096839df25682f92a8f4f455ea37d59d8cb7075c5fb54294",
+    "experiments/eval_set/protocol.py": "c50021b526afa7f1647d71f3ab6c864470c6de00b27304fb828c199bf4505b16",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+    "experiments/feed_like_v2_public.py": "d09d3adc7483cfae39a106ae809a9335e3176aaffdfbaade3f38d04da7ef33cc",
+    "experiments/feed_spell_more.py": "d5ea1a55a96fb63681e5fc33542f09c6399f7f66ae18f2639fef5e2696bc4473",
+    "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+    "experiments/had_gru.py": "d7597831f2af606a2a68e89747fa4756b5288c620ca710d06e0280bea6d90fa6",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+    "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+    "experiments/original_full_baseline.py": "8155441faec1870f351b29cff358961bbfbab2217f25907416ee1fb3a2575d66",
+    "experiments/original_full_phase_baseline.py": "4ce3381464c01fe57ce1e1a260d3de517b946664d0bc50b02362064b0da5257d",
+    "experiments/pcbas_event_anchor_v1.py": "8dd8d0d150ffc7e1610b2e93eb5b1f6712e0ca6e3409f9257011742a16efba01",
+    "experiments/pcbas_expanded_anchor_v2.py": "2177cc3fd8cd3108b1eb48764cd73af14a6629b3d006d40ec9bd8d926cae958d",
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+    "experiments/sn_dense_baseline.py": "c9d6e5fc24943b4543862969c18b57f67f76daede49c315a0c8af20867ff8c9b",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+    "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+    "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+    "experiments/stress.py": "c4d9f47ea8e77e29bac74ea26831f4cd4597ca79ea3cadcb316183f84dcae32e",
+    "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5"
+  },
+  "status": "frozen",
+  "study": "pcbas_expanded_anchor_v2",
+  "uncertainty": {
+    "method": "paired whole-game percentile bootstrap",
+    "no_frame_bootstrap": true,
+    "replicates": 10000,
+    "reported": [
+      "equal-game Drive accuracy 95% interval",
+      "equal-game Drive accuracy minus per-game majority alias 95% interval"
+    ],
+    "scope": "conditional on this one PCBAS source and selected 12 games; not provider-level uncertainty",
+    "seed": 20261102,
+    "unit": "game; halves and event anchors remain clustered"
+  }
+}

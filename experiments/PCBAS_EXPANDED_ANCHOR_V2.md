@@ -1,12 +1,13 @@
 # Expanded PCBAS match evaluation
 
-Study `pcbas_expanded_anchor_v2`, 2 November 2026. Execution is being prepared;
-the declaration will be frozen before inference. No model changes or fitting.
+Study `pcbas_expanded_anchor_v2`, completed 2 November 2026. All 24 halves and
+96 class/half cells independently verify. The adopted package is retained.
+No model changes or fitting. Runner source commit: `8fe3d37`.
 
 ## Question and evidence scope
 
 Does the exact adopted submission package reliably identify the acting team at
-live action moments across more previously unevaluated broadcast matches?
+live action moments across additional matches from the new SoccerNet/FOOTPASS source?
 This extends the [three-game VAL diagnostic](PCBAS_CONFIDENCE_V1.md), whose
 results are already exposed. It tests the same player-only input regime across
 more matches and estimates uncertainty across games. It does not supply
@@ -28,6 +29,12 @@ Rank complete TRAIN game IDs by SHA-256 of
 Exclude the three previously scored VAL IDs. The remaining 36 games stay in
 reserve and receive no predictions or model scores. The cohort is selected
 without reading event targets, class balance, visibility or predictions.
+
+The frozen game order is 39, 38, 51, 35, 4, 23, 1, 22, 3, 16, 17 and 37.
+The [declaration](results/pcbas_expanded_anchor_v2_declaration.json) binds all
+24 halves, their target-free feature hashes, 30 source files and all four
+checkpoint hashes. The [acquisition receipt](results/pcbas_expanded_anchor_v2_acquisition.json)
+verifies the archive, 8,801,202,512-byte HDF5 and official event file.
 
 Use the unchanged
 `joint_gru_sn_dense_original_diversity_phase_ensemble_v1` package: both sealed
@@ -96,10 +103,80 @@ not recreate them to obtain another result. The independent verifier recomputes
 counts, exclusions, visibility strata and bootstrap intervals from the sealed
 arrays without repeating inference or reopening a score gate.
 
+## Completed results
+
+The fixed package processed **1,800,471 native frames** across 24 full halves.
+Only sparse event moments are graded; this is not twenty hours of dense gold
+possession evaluation. All 23,039 source events independently join to the
+tracking frame, direction, shirt and action class. The score includes **19,152
+eligible anchors**: 1,916 unselected-class events and 1,971 selected-class
+replay events are excluded. There are no duplicate, opposing-team-collision or
+unmatched-frame exclusions in this sample. The 36 reserved games are unscored.
+
+| Action | Correct / anchors | Pooled agreement | Equal-game agreement | Pooled predicted D at live anchors |
+| --- | ---: | ---: | ---: | ---: |
+| Drive, primary | 5,819 / 8,071 | 72.10% | **71.57%** | 631 / 8,071 = 7.82% |
+| Pass | 7,114 / 10,303 | 69.05% | 68.80% | 843 / 10,303 = 8.18% |
+| Cross | 333 / 500 | 66.60% | 66.89% | 148 / 500 = 29.60% |
+| Shot | 167 / 278 | 60.07% | 58.79% | 93 / 278 = 33.45% |
+
+The primary 95% whole-game bootstrap interval is **68.95–74.10%**. Drive
+agreement ranges from 63.40% to 79.54% across games. Every game exceeds its
+descriptive majority-direction reference; the equal-game difference is
+**+15.80 percentage points**, paired 95% interval **+12.47 to +18.99 points**.
+The reference itself averages 55.77%. These intervals assume game-level
+exchangeability within this one source; anonymized fixtures and repeated teams
+limit broader independence claims.
+
+The earlier VAL result, 71.66% across three different games, is consistent with
+this larger result. This is corroboration of a diagnostic, not a measured model
+improvement. Do not subtract these different-cohort means or pool the fifteen
+games into an untouched confirmation headline. No checkpoint or decoder changed.
+
+![Per-game Drive agreement and action-class diagnostics](results/pcbas_expanded_anchor_v2.svg)
+
+The fixed visibility breakdown pools all four action classes:
+
+| Visible players | Anchors | Correct agreement | Predicted D at live anchors |
+| --- | ---: | ---: | ---: |
+| 0–5 | 144 | 47 / 144 = 32.64% | 48 / 144 = 33.33% |
+| 6–11 | 4,205 | 2,439 / 4,205 = 58.00% | 559 / 4,205 = 13.29% |
+| 12+ | 14,803 | 10,947 / 14,803 = 73.95% | 1,108 / 14,803 = 7.48% |
+
+Performance is weaker in the low-visibility strata, but this is observational:
+the class, game and camera-condition mixtures differ. Only 144 anchors have
+0–5 visible players. Do not infer a causal visibility effect or use this table
+to choose filtering thresholds. The repeat cross/shot dead-play pattern remains
+material even with more games; the current study does not isolate its cause.
+
+## Verification and delivery
+
+All **609 experiment tests**, **26 root tests**, the synthetic file-backed fit
+contract and bundled 199,319-row CSV format check pass. A real 750-frame parity
+control matches the exact deployed API before inference. All source, input and
+four checkpoint hashes verify. The independent verifier reproduces all 96
+class/half cells, 23,039 source-event joins, exclusions, visibility summaries,
+per-game/pooled counts and bootstrap intervals. No inference or organizer scoring
+was repeated for verification. The aggregate chart was visually checked.
+
+The [result](results/pcbas_expanded_anchor_v2_result.json) and
+[independent verification](results/pcbas_expanded_anchor_v2_verification.json)
+retain full precision. The declaration, score gate and prediction seal stay
+closed. Raw tracking, events and native outputs are locally verified under
+ignored data; no raw-data upload or independent remote restore is claimed.
+Existing deployment artifact availability is unchanged.
+
+The [research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
+still needs this experiment update. Its current version is 26 and audience
+revision 2 remains restricted. Site lookup and source-credential acquisition
+succeeded, but the required Sites `scripts/site-workflow.mjs` helper is absent
+from this execution environment; opening the source with the supported workflow
+and publication are blocked. No Site source or audience change is claimed.
+
 ## Decision and remaining gap
 
-Keep the submission package unchanged. A larger sparse-anchor sample can
-strengthen or weaken confidence in player-only team attribution, but cannot
+Keep the submission package unchanged. The larger sparse-anchor sample supports
+useful player-only team attribution across more games, but cannot
 answer continuous possession segmentation, boundary accuracy, short-spell
 recovery, or official spell F1. The more representative input source still
 lacks measured ball input and continuous H/A/D/X targets.

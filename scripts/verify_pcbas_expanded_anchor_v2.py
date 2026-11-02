@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import h5py
 
 ROOT = Path(__file__).resolve().parents[1]
 STUDY = "pcbas_expanded_anchor_v2"
@@ -36,6 +37,12 @@ def verify():
     assert seal["declaration_sha256"] == sha(declaration_path)
     assert seal["target_events_read"] is False and seal["input_action_class_read"] is False
     assert set(seal["halves"]) == set(declaration["cohort"]["halves"])
+    games_available = {key.rsplit("_H", 1)[0] for key in declaration["dataset"]["hdf5_inventory"]}
+    games_available -= {"game_18", "game_24", "game_47"}
+    ranked = sorted(games_available, key=lambda game: hashlib.sha256((STUDY + ":" + game).encode()).hexdigest())
+    assert len(ranked) == 48
+    assert [row["game_id"] for row in declaration["cohort"]["selected"]] == ranked[:12]
+    assert [row["game_id"] for row in declaration["cohort"]["reserve"]] == ranked[12:]
     for group in ("input_sha256", "source_sha256"):
         for path, expected in declaration[group].items():
             assert sha(ROOT / path) == expected, path
@@ -49,6 +56,7 @@ def verify():
     classes = {1: "drive", 2: "pass", 3: "cross", 5: "shot"}
     totals = {}
     replayed = 0
+    joined_events = 0
     for half in declaration["cohort"]["halves"]:
         path = OUT / f"{half}.npz"
         assert sha(path) == seal["halves"][half]["output_sha256"]
@@ -56,6 +64,9 @@ def verify():
         assert sha(OUT / f"{half}.receipt.json") == receipt["receipt_path_sha256"]
         assert receipt["declaration_sha256"] == sha(declaration_path)
         assert receipt["half"] == half and receipt["model_sha256"] == declaration["model_sha256"]
+        assert receipt["baseline_manifest_sha256"] == declaration["baseline_manifest_sha256"]
+        assert receipt["input_sha256"] == declaration["input_sha256"]["data/independent/sn_pcbas_2026/train_tactical_data.h5"]
+        assert receipt["target_free_feature_rows_sha256"] == declaration["selected_half_feature_sha256"][half]
         assert receipt["target_events_read"] is False and receipt["input_action_class_read"] is False
         with np.load(path, allow_pickle=False) as saved:
             frames, predictions, visible = saved["frames"], saved["prediction"], saved["visible_players"]
@@ -64,6 +75,15 @@ def verify():
         assert set(predictions) <= {"H", "A", "D"}
         frame_to_index = {int(f): i for i, f in enumerate(frames)}
         events = truth["events"][half]
+        # Only verification reads the source target column, after predictions
+        # have been sealed and the study has completed its score pass.
+        with h5py.File(ROOT / "data/independent/sn_pcbas_2026/train_tactical_data.h5", "r") as source:
+            action_rows = source[half][:, [0, 2, 3, 13]]
+        action_rows = action_rows[np.isin(action_rows[:, 0], [row[0] for row in events])]
+        source_actions = {tuple(map(int, row)) for row in action_rows}
+        for frame, team, shirt, cls, box, replay in events:
+            assert (int(frame), int(team), int(shirt), int(cls)) in source_actions, (half, frame, cls)
+            joined_events += 1
         teams_at_frame = {}
         for frame, team, shirt, cls, box, replay in events:
             if replay == 0 and 1 <= cls <= 8:
@@ -145,6 +165,7 @@ def verify():
                                np.quantile(deltas[indices].mean(axis=1), [.025, .975]), rtol=0, atol=1e-15)
     receipt = dict(study=STUDY, result_sha256=sha(result_path), declaration_sha256=sha(declaration_path),
                    prediction_seal_sha256=sha(seal_path), independently_replayed_class_half_cells=replayed,
+                   independently_joined_source_events=joined_events,
                    all_counts_exclusions_visibility_and_intervals_match=True,
                    inference_repeated=False, organizer_labels_accessed=False,
                    artifact_state="local verification; no raw-data upload or independent remote restore claimed")
