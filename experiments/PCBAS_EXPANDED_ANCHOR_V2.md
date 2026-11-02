@@ -170,11 +170,19 @@ Code and aggregate evidence are published in
 [PR #78](https://github.com/jekkiechan/more-than-a-hack-2027/pull/78).
 
 The [research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
-still needs this experiment update. Its current version is 26 and audience
-revision 2 remains restricted. Site lookup and source-credential acquisition
-succeeded, but the required Sites `scripts/site-workflow.mjs` helper is absent
-from this execution environment; opening the source with the supported workflow
-and publication are blocked. No Site source or audience change is claimed.
+is published as **version 27** after the user's explicit 2 November approval.
+The expanded experiment, per-game interactive chart, Overview/model timeline,
+Data, Metrics and Method updates are live. All 12 desktop/mobile page checks,
+16 chart-control combinations, aggregate parity and local links pass, with no
+JavaScript errors. Restricted audience revision 2 and the same two external
+viewers are verified unchanged.
+
+The initial missing-helper blocker is resolved through native scoped Git source
+access, local static packaging, and native Sites save/deploy. Source commit
+`585e1ab3fe574888fd95ec1ed4a2c1ae36abd44a` is remotely verified and deployment
+succeeded. The [publication receipt](results/pcbas_expanded_anchor_v2_publication.json)
+records the saved version, deployment and verification. No raw data, weights or
+native predictions are uploaded as part of this site update.
 
 ## Decision and remaining gap
 

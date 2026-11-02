@@ -63,10 +63,13 @@ fixture deduplication and intervals describe this source only.
 
 Code and aggregate evidence are published in
 [PR #78](https://github.com/jekkiechan/more-than-a-hack-2027/pull/78).
-The existing restricted research site remains at version 26, access revision 2: its update is blocked because the
-Sites source-workflow helper is unavailable in this environment. The linked report
-contains the verified result and records the outstanding site update. Raw data
-and native predictions are locally verified only; no raw-data upload is claimed.
+Research site **version 27** is published after explicit user approval, with all
+12 desktop/mobile page checks and 16 chart-control combinations passing. Access
+revision 2 and the same two external viewers are unchanged. Native scoped Git
+source access and Sites deployment resolve the earlier missing-helper blocker.
+The [publication receipt](../../experiments/results/pcbas_expanded_anchor_v2_publication.json)
+records the observed state. Raw data and native predictions remain locally
+verified only; no raw-data upload is claimed.
 
 ## Latest delivery
 
