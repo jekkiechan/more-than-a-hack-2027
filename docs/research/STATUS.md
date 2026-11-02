@@ -27,6 +27,23 @@ The evaluation policy now uses clean plus `feed_like_v2` with 4+ realizations
 for original-provider development. Keep GAR TEST separate from selected-on
 VALID and record future reuse. V1 and composite remain historical diagnostics.
 
+## New external confidence check — 2 November 2026
+
+[PCBAS validation](../../experiments/PCBAS_CONFIDENCE_V1.md) acquired and audited
+three broadcast validation matches (six halves), then evaluated the frozen
+adopted package with all ball input missing. Primary Drive team agreement is
+**71.66% equal-game** (1,616/2,239 pooled correct), above each game's majority
+direction-alias reference. Pass/Cross/Shot agreement is 70.96%/60.98%/56.84%.
+Predicted dead play at live cross/shot anchors is 35.35%/40.00% pooled, a material
+failure pattern in this severe missing-ball regime. No fitting or adoption change.
+
+These are sparse action anchors, not continuous possession gold or spell F1.
+Coordinates use a declared 105×68 m standardization; imputed off-screen tracks
+are masked, replay events excluded, and full fixture identities remain unknown.
+The three VAL matches are now exposed. New independent continuous labels and
+observed-ball inputs remain the priority; no top-20 probability is established.
+Raw assets/predictions are locally verified only, with no new remote upload.
+
 ## Latest delivery
 
 The phase-average promotion and eval-policy update are merged in
