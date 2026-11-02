@@ -1,0 +1,59 @@
+{
+  "study": "pcbas_confidence_v1_acquisition",
+  "date": "2026-11-02",
+  "repo_id": "SoccerNet/SN-PCBAS-2026",
+  "revision": "a16e373c8c8d26b1af4874f4208810baf337e709",
+  "artifacts": [
+    {
+      "filename": "README.md",
+      "url": "https://huggingface.co/datasets/SoccerNet/SN-PCBAS-2026/resolve/a16e373c8c8d26b1af4874f4208810baf337e709/README.md",
+      "bytes": 1560,
+      "sha256": "d37e31722d6088f698d4851be7e74f4e8d4ed66cd752a5730237d81585739330"
+    },
+    {
+      "filename": "tactical_data_format.txt",
+      "url": "https://huggingface.co/datasets/SoccerNet/SN-PCBAS-2026/resolve/a16e373c8c8d26b1af4874f4208810baf337e709/tactical_data_format.txt",
+      "bytes": 365,
+      "sha256": "e719559fe29a6ea3fe70c680ab4ab3defefdb5e6999d054e9c3b1d85b22cbec4"
+    },
+    {
+      "filename": "tactical_data_VAL.zip",
+      "url": "https://huggingface.co/datasets/SoccerNet/SN-PCBAS-2026/resolve/a16e373c8c8d26b1af4874f4208810baf337e709/tactical_data_VAL.zip",
+      "bytes": 156773777,
+      "sha256": "caa9740e5d8e0c1d3dbf5e60ca2598746457bdaefbd0e8dee26d5ac890579c7b"
+    },
+    {
+      "filename": "val_tactical_data.h5",
+      "bytes": 555386336,
+      "sha256": "747c54d3faa18854dc76a4ec47ebdd5aa6d5850d9f26d29e818b1ec559a50ec8"
+    }
+  ],
+  "aggregate": {
+    "games": 3,
+    "halves": 6,
+    "native_fps": 25,
+    "frames": 451161,
+    "player_rows": 9917540,
+    "events": 6070,
+    "replay_events": 614,
+    "missing_frame_slots_within_halves": 0,
+    "all_event_frame_shirt_class_joins_match": true,
+    "ball_entities": 0,
+    "continuous_possession_targets": false
+  },
+  "limits": [
+    "Sparse action targets, not H/A/D intervals",
+    "Normalized coordinates; physical pitch dimensions absent",
+    "Off-screen positions imputed; observation masks required",
+    "Per-half direction identity, not persistent home/away",
+    "2023/24 cohort; anonymized fixtures not individually resolved"
+  ],
+  "storage": "Raw data and reconstructive outputs remain ignored/local; no upload or remote restore claimed",
+  "annotation_source": {
+    "repo": "https://github.com/JeremieOchin/FOOTPASS",
+    "revision": "f63f37c1a0c6bcebf568a8ce716495a459376af5",
+    "path": "playbyplay_GT/playbyplay_val.json",
+    "bytes": 151487,
+    "sha256": "938317e5115de622089bfe8cf36d94ce1c9bf95eb6876f10e5fecb6200242c4a"
+  }
+}
