@@ -1,0 +1,3670 @@
+{
+  "ball_missing_fraction": 1.0,
+  "bootstrap": {
+    "equal_game_drive_accuracy": 0.7157350095263703,
+    "equal_game_drive_accuracy_95_interval": [
+      0.6895151667189883,
+      0.741030830881973
+    ],
+    "equal_game_drive_minus_majority_95_interval": [
+      0.12465922159132618,
+      0.1898745470608357
+    ],
+    "equal_game_drive_minus_majority_accuracy": 0.15801938039800395,
+    "game_count": 12,
+    "interpretation": "Conditional on these selected matches from one PCBAS source; not an unseen-provider interval.",
+    "method": "paired whole-game percentile bootstrap",
+    "no_frame_or_anchor_bootstrap": true,
+    "replicates": 10000,
+    "seed": 20261102
+  },
+  "calibration": "Assumed standardized105x68; physical calibration unverified",
+  "declaration_sha256": "2dd2ea20639842864374bec5ade0fe6e79a98c69242c7252091c6de32f4e5d0e",
+  "excluded": {
+    "game_16_H1": {
+      "nonselected_class": 89,
+      "replay": 59
+    },
+    "game_16_H2": {
+      "nonselected_class": 87,
+      "replay": 93
+    },
+    "game_17_H1": {
+      "nonselected_class": 79,
+      "replay": 31
+    },
+    "game_17_H2": {
+      "nonselected_class": 113,
+      "replay": 51
+    },
+    "game_1_H1": {
+      "nonselected_class": 87,
+      "replay": 96
+    },
+    "game_1_H2": {
+      "nonselected_class": 89,
+      "replay": 57
+    },
+    "game_22_H1": {
+      "nonselected_class": 91,
+      "replay": 111
+    },
+    "game_22_H2": {
+      "nonselected_class": 73,
+      "replay": 53
+    },
+    "game_23_H1": {
+      "nonselected_class": 101,
+      "replay": 34
+    },
+    "game_23_H2": {
+      "nonselected_class": 97,
+      "replay": 52
+    },
+    "game_35_H1": {
+      "nonselected_class": 71,
+      "replay": 49
+    },
+    "game_35_H2": {
+      "nonselected_class": 74,
+      "replay": 62
+    },
+    "game_37_H1": {
+      "nonselected_class": 69,
+      "replay": 67
+    },
+    "game_37_H2": {
+      "nonselected_class": 102,
+      "replay": 66
+    },
+    "game_38_H1": {
+      "nonselected_class": 68,
+      "replay": 175
+    },
+    "game_38_H2": {
+      "nonselected_class": 72,
+      "replay": 122
+    },
+    "game_39_H1": {
+      "nonselected_class": 71,
+      "replay": 60
+    },
+    "game_39_H2": {
+      "nonselected_class": 70,
+      "replay": 53
+    },
+    "game_3_H1": {
+      "nonselected_class": 82,
+      "replay": 177
+    },
+    "game_3_H2": {
+      "nonselected_class": 58,
+      "replay": 124
+    },
+    "game_4_H1": {
+      "nonselected_class": 79,
+      "replay": 106
+    },
+    "game_4_H2": {
+      "nonselected_class": 55,
+      "replay": 125
+    },
+    "game_51_H1": {
+      "nonselected_class": 69,
+      "replay": 99
+    },
+    "game_51_H2": {
+      "nonselected_class": 70,
+      "replay": 49
+    }
+  },
+  "game_results": [
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.6774193548387096,
+          "correct": 21,
+          "n": 31,
+          "predicted_d_rate": 0.3225806451612903,
+          "predicted_state_counts": {
+            "A": 12,
+            "D": 10,
+            "H": 9
+          },
+          "target_direction_team_counts": {
+            "0": 12,
+            "1": 19
+          }
+        },
+        "drive": {
+          "accuracy": 0.7515822784810127,
+          "correct": 475,
+          "n": 632,
+          "predicted_d_rate": 0.058544303797468354,
+          "predicted_state_counts": {
+            "A": 327,
+            "D": 37,
+            "H": 268
+          },
+          "target_direction_team_counts": {
+            "0": 283,
+            "1": 349
+          }
+        },
+        "pass": {
+          "accuracy": 0.7423167848699763,
+          "correct": 628,
+          "n": 846,
+          "predicted_d_rate": 0.0591016548463357,
+          "predicted_state_counts": {
+            "A": 434,
+            "D": 50,
+            "H": 362
+          },
+          "target_direction_team_counts": {
+            "0": 378,
+            "1": 468
+          }
+        },
+        "shot": {
+          "accuracy": 0.4,
+          "correct": 8,
+          "n": 20,
+          "predicted_d_rate": 0.5,
+          "predicted_state_counts": {
+            "A": 5,
+            "D": 10,
+            "H": 5
+          },
+          "target_direction_team_counts": {
+            "0": 7,
+            "1": 13
+          }
+        }
+      },
+      "drive_accuracy": 0.7515822784810127,
+      "drive_n": 632,
+      "game_id": "game_39",
+      "majority_direction_accuracy": 0.5522151898734177
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.68,
+          "correct": 17,
+          "n": 25,
+          "predicted_d_rate": 0.32,
+          "predicted_state_counts": {
+            "A": 11,
+            "D": 8,
+            "H": 6
+          },
+          "target_direction_team_counts": {
+            "0": 9,
+            "1": 16
+          }
+        },
+        "drive": {
+          "accuracy": 0.7162673392181589,
+          "correct": 568,
+          "n": 793,
+          "predicted_d_rate": 0.11223203026481715,
+          "predicted_state_counts": {
+            "A": 417,
+            "D": 89,
+            "H": 287
+          },
+          "target_direction_team_counts": {
+            "0": 374,
+            "1": 419
+          }
+        },
+        "pass": {
+          "accuracy": 0.6682974559686888,
+          "correct": 683,
+          "n": 1022,
+          "predicted_d_rate": 0.12720156555772993,
+          "predicted_state_counts": {
+            "A": 508,
+            "D": 130,
+            "H": 384
+          },
+          "target_direction_team_counts": {
+            "0": 514,
+            "1": 508
+          }
+        },
+        "shot": {
+          "accuracy": 0.5294117647058824,
+          "correct": 9,
+          "n": 17,
+          "predicted_d_rate": 0.47058823529411764,
+          "predicted_state_counts": {
+            "A": 4,
+            "D": 8,
+            "H": 5
+          },
+          "target_direction_team_counts": {
+            "0": 7,
+            "1": 10
+          }
+        }
+      },
+      "drive_accuracy": 0.7162673392181589,
+      "drive_n": 793,
+      "game_id": "game_38",
+      "majority_direction_accuracy": 0.5283732660781841
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.7575757575757576,
+          "correct": 25,
+          "n": 33,
+          "predicted_d_rate": 0.21212121212121213,
+          "predicted_state_counts": {
+            "A": 12,
+            "D": 7,
+            "H": 14
+          },
+          "target_direction_team_counts": {
+            "0": 21,
+            "1": 12
+          }
+        },
+        "drive": {
+          "accuracy": 0.7953757225433526,
+          "correct": 688,
+          "n": 865,
+          "predicted_d_rate": 0.06242774566473988,
+          "predicted_state_counts": {
+            "A": 430,
+            "D": 54,
+            "H": 381
+          },
+          "target_direction_team_counts": {
+            "0": 416,
+            "1": 449
+          }
+        },
+        "pass": {
+          "accuracy": 0.7610441767068273,
+          "correct": 758,
+          "n": 996,
+          "predicted_d_rate": 0.06526104417670683,
+          "predicted_state_counts": {
+            "A": 496,
+            "D": 65,
+            "H": 435
+          },
+          "target_direction_team_counts": {
+            "0": 474,
+            "1": 522
+          }
+        },
+        "shot": {
+          "accuracy": 0.8709677419354839,
+          "correct": 27,
+          "n": 31,
+          "predicted_d_rate": 0.0967741935483871,
+          "predicted_state_counts": {
+            "A": 9,
+            "D": 3,
+            "H": 19
+          },
+          "target_direction_team_counts": {
+            "0": 19,
+            "1": 12
+          }
+        }
+      },
+      "drive_accuracy": 0.7953757225433526,
+      "drive_n": 865,
+      "game_id": "game_51",
+      "majority_direction_accuracy": 0.5190751445086705
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.6458333333333334,
+          "correct": 31,
+          "n": 48,
+          "predicted_d_rate": 0.3541666666666667,
+          "predicted_state_counts": {
+            "A": 22,
+            "D": 17,
+            "H": 9
+          },
+          "target_direction_team_counts": {
+            "0": 19,
+            "1": 29
+          }
+        },
+        "drive": {
+          "accuracy": 0.7588466579292268,
+          "correct": 579,
+          "n": 763,
+          "predicted_d_rate": 0.04193971166448231,
+          "predicted_state_counts": {
+            "A": 412,
+            "D": 32,
+            "H": 319
+          },
+          "target_direction_team_counts": {
+            "0": 304,
+            "1": 459
+          }
+        },
+        "pass": {
+          "accuracy": 0.708029197080292,
+          "correct": 679,
+          "n": 959,
+          "predicted_d_rate": 0.049009384775808136,
+          "predicted_state_counts": {
+            "A": 481,
+            "D": 47,
+            "H": 431
+          },
+          "target_direction_team_counts": {
+            "0": 410,
+            "1": 549
+          }
+        },
+        "shot": {
+          "accuracy": 0.71875,
+          "correct": 23,
+          "n": 32,
+          "predicted_d_rate": 0.25,
+          "predicted_state_counts": {
+            "A": 17,
+            "D": 8,
+            "H": 7
+          },
+          "target_direction_team_counts": {
+            "0": 12,
+            "1": 20
+          }
+        }
+      },
+      "drive_accuracy": 0.7588466579292268,
+      "drive_n": 763,
+      "game_id": "game_35",
+      "majority_direction_accuracy": 0.601572739187418
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.6530612244897959,
+          "correct": 32,
+          "n": 49,
+          "predicted_d_rate": 0.2653061224489796,
+          "predicted_state_counts": {
+            "A": 12,
+            "D": 13,
+            "H": 24
+          },
+          "target_direction_team_counts": {
+            "0": 36,
+            "1": 13
+          }
+        },
+        "drive": {
+          "accuracy": 0.6808510638297872,
+          "correct": 544,
+          "n": 799,
+          "predicted_d_rate": 0.0951188986232791,
+          "predicted_state_counts": {
+            "A": 317,
+            "D": 76,
+            "H": 406
+          },
+          "target_direction_team_counts": {
+            "0": 464,
+            "1": 335
+          }
+        },
+        "pass": {
+          "accuracy": 0.6512287334593573,
+          "correct": 689,
+          "n": 1058,
+          "predicted_d_rate": 0.09546313799621928,
+          "predicted_state_counts": {
+            "A": 418,
+            "D": 101,
+            "H": 539
+          },
+          "target_direction_team_counts": {
+            "0": 582,
+            "1": 476
+          }
+        },
+        "shot": {
+          "accuracy": 0.36666666666666664,
+          "correct": 11,
+          "n": 30,
+          "predicted_d_rate": 0.5333333333333333,
+          "predicted_state_counts": {
+            "A": 6,
+            "D": 16,
+            "H": 8
+          },
+          "target_direction_team_counts": {
+            "0": 21,
+            "1": 9
+          }
+        }
+      },
+      "drive_accuracy": 0.6808510638297872,
+      "drive_n": 799,
+      "game_id": "game_4",
+      "majority_direction_accuracy": 0.5807259073842302
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.6595744680851063,
+          "correct": 31,
+          "n": 47,
+          "predicted_d_rate": 0.2553191489361702,
+          "predicted_state_counts": {
+            "A": 18,
+            "D": 12,
+            "H": 17
+          },
+          "target_direction_team_counts": {
+            "0": 26,
+            "1": 21
+          }
+        },
+        "drive": {
+          "accuracy": 0.672316384180791,
+          "correct": 357,
+          "n": 531,
+          "predicted_d_rate": 0.06779661016949153,
+          "predicted_state_counts": {
+            "A": 246,
+            "D": 36,
+            "H": 249
+          },
+          "target_direction_team_counts": {
+            "0": 254,
+            "1": 277
+          }
+        },
+        "pass": {
+          "accuracy": 0.6553398058252428,
+          "correct": 405,
+          "n": 618,
+          "predicted_d_rate": 0.0970873786407767,
+          "predicted_state_counts": {
+            "A": 269,
+            "D": 60,
+            "H": 289
+          },
+          "target_direction_team_counts": {
+            "0": 294,
+            "1": 324
+          }
+        },
+        "shot": {
+          "accuracy": 0.6842105263157895,
+          "correct": 13,
+          "n": 19,
+          "predicted_d_rate": 0.21052631578947367,
+          "predicted_state_counts": {
+            "A": 9,
+            "D": 4,
+            "H": 6
+          },
+          "target_direction_team_counts": {
+            "0": 6,
+            "1": 13
+          }
+        }
+      },
+      "drive_accuracy": 0.672316384180791,
+      "drive_n": 531,
+      "game_id": "game_23",
+      "majority_direction_accuracy": 0.5216572504708098
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.6666666666666666,
+          "correct": 20,
+          "n": 30,
+          "predicted_d_rate": 0.3,
+          "predicted_state_counts": {
+            "A": 10,
+            "D": 9,
+            "H": 11
+          },
+          "target_direction_team_counts": {
+            "0": 13,
+            "1": 17
+          }
+        },
+        "drive": {
+          "accuracy": 0.6340425531914894,
+          "correct": 298,
+          "n": 470,
+          "predicted_d_rate": 0.13617021276595745,
+          "predicted_state_counts": {
+            "A": 206,
+            "D": 64,
+            "H": 200
+          },
+          "target_direction_team_counts": {
+            "0": 189,
+            "1": 281
+          }
+        },
+        "pass": {
+          "accuracy": 0.6325036603221084,
+          "correct": 432,
+          "n": 683,
+          "predicted_d_rate": 0.13323572474377746,
+          "predicted_state_counts": {
+            "A": 292,
+            "D": 91,
+            "H": 300
+          },
+          "target_direction_team_counts": {
+            "0": 313,
+            "1": 370
+          }
+        },
+        "shot": {
+          "accuracy": 0.5,
+          "correct": 7,
+          "n": 14,
+          "predicted_d_rate": 0.35714285714285715,
+          "predicted_state_counts": {
+            "A": 6,
+            "D": 5,
+            "H": 3
+          },
+          "target_direction_team_counts": {
+            "0": 6,
+            "1": 8
+          }
+        }
+      },
+      "drive_accuracy": 0.6340425531914894,
+      "drive_n": 470,
+      "game_id": "game_1",
+      "majority_direction_accuracy": 0.597872340425532
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.6956521739130435,
+          "correct": 32,
+          "n": 46,
+          "predicted_d_rate": 0.21739130434782608,
+          "predicted_state_counts": {
+            "A": 23,
+            "D": 10,
+            "H": 13
+          },
+          "target_direction_team_counts": {
+            "0": 22,
+            "1": 24
+          }
+        },
+        "drive": {
+          "accuracy": 0.7082683307332294,
+          "correct": 454,
+          "n": 641,
+          "predicted_d_rate": 0.0686427457098284,
+          "predicted_state_counts": {
+            "A": 320,
+            "D": 44,
+            "H": 277
+          },
+          "target_direction_team_counts": {
+            "0": 303,
+            "1": 338
+          }
+        },
+        "pass": {
+          "accuracy": 0.6786570743405276,
+          "correct": 566,
+          "n": 834,
+          "predicted_d_rate": 0.05875299760191847,
+          "predicted_state_counts": {
+            "A": 398,
+            "D": 49,
+            "H": 387
+          },
+          "target_direction_team_counts": {
+            "0": 409,
+            "1": 425
+          }
+        },
+        "shot": {
+          "accuracy": 0.631578947368421,
+          "correct": 12,
+          "n": 19,
+          "predicted_d_rate": 0.2631578947368421,
+          "predicted_state_counts": {
+            "A": 8,
+            "D": 5,
+            "H": 6
+          },
+          "target_direction_team_counts": {
+            "0": 7,
+            "1": 12
+          }
+        }
+      },
+      "drive_accuracy": 0.7082683307332294,
+      "drive_n": 641,
+      "game_id": "game_22",
+      "majority_direction_accuracy": 0.5273010920436817
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.6363636363636364,
+          "correct": 21,
+          "n": 33,
+          "predicted_d_rate": 0.36363636363636365,
+          "predicted_state_counts": {
+            "A": 14,
+            "D": 12,
+            "H": 7
+          },
+          "target_direction_team_counts": {
+            "0": 11,
+            "1": 22
+          }
+        },
+        "drive": {
+          "accuracy": 0.6715210355987055,
+          "correct": 415,
+          "n": 618,
+          "predicted_d_rate": 0.13106796116504854,
+          "predicted_state_counts": {
+            "A": 262,
+            "D": 81,
+            "H": 275
+          },
+          "target_direction_team_counts": {
+            "0": 322,
+            "1": 296
+          }
+        },
+        "pass": {
+          "accuracy": 0.6798975672215108,
+          "correct": 531,
+          "n": 781,
+          "predicted_d_rate": 0.0998719590268886,
+          "predicted_state_counts": {
+            "A": 324,
+            "D": 78,
+            "H": 379
+          },
+          "target_direction_team_counts": {
+            "0": 420,
+            "1": 361
+          }
+        },
+        "shot": {
+          "accuracy": 0.6153846153846154,
+          "correct": 16,
+          "n": 26,
+          "predicted_d_rate": 0.34615384615384615,
+          "predicted_state_counts": {
+            "A": 10,
+            "D": 9,
+            "H": 7
+          },
+          "target_direction_team_counts": {
+            "0": 15,
+            "1": 11
+          }
+        }
+      },
+      "drive_accuracy": 0.6715210355987055,
+      "drive_n": 618,
+      "game_id": "game_3",
+      "majority_direction_accuracy": 0.5210355987055016
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.6551724137931034,
+          "correct": 38,
+          "n": 58,
+          "predicted_d_rate": 0.3103448275862069,
+          "predicted_state_counts": {
+            "A": 24,
+            "D": 18,
+            "H": 16
+          },
+          "target_direction_team_counts": {
+            "0": 21,
+            "1": 37
+          }
+        },
+        "drive": {
+          "accuracy": 0.7063758389261745,
+          "correct": 421,
+          "n": 596,
+          "predicted_d_rate": 0.07046979865771812,
+          "predicted_state_counts": {
+            "A": 314,
+            "D": 42,
+            "H": 240
+          },
+          "target_direction_team_counts": {
+            "0": 257,
+            "1": 339
+          }
+        },
+        "pass": {
+          "accuracy": 0.6591511936339522,
+          "correct": 497,
+          "n": 754,
+          "predicted_d_rate": 0.08620689655172414,
+          "predicted_state_counts": {
+            "A": 373,
+            "D": 65,
+            "H": 316
+          },
+          "target_direction_team_counts": {
+            "0": 340,
+            "1": 414
+          }
+        },
+        "shot": {
+          "accuracy": 0.6190476190476191,
+          "correct": 13,
+          "n": 21,
+          "predicted_d_rate": 0.3333333333333333,
+          "predicted_state_counts": {
+            "A": 12,
+            "D": 7,
+            "H": 2
+          },
+          "target_direction_team_counts": {
+            "0": 7,
+            "1": 14
+          }
+        }
+      },
+      "drive_accuracy": 0.7063758389261745,
+      "drive_n": 596,
+      "game_id": "game_16",
+      "majority_direction_accuracy": 0.5687919463087249
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.76,
+          "correct": 38,
+          "n": 50,
+          "predicted_d_rate": 0.22,
+          "predicted_state_counts": {
+            "A": 15,
+            "D": 11,
+            "H": 24
+          },
+          "target_direction_team_counts": {
+            "0": 33,
+            "1": 17
+          }
+        },
+        "drive": {
+          "accuracy": 0.7242472266244057,
+          "correct": 457,
+          "n": 631,
+          "predicted_d_rate": 0.039619651347068144,
+          "predicted_state_counts": {
+            "A": 268,
+            "D": 25,
+            "H": 338
+          },
+          "target_direction_team_counts": {
+            "0": 377,
+            "1": 254
+          }
+        },
+        "pass": {
+          "accuracy": 0.6816524908869988,
+          "correct": 561,
+          "n": 823,
+          "predicted_d_rate": 0.054678007290400975,
+          "predicted_state_counts": {
+            "A": 355,
+            "D": 45,
+            "H": 423
+          },
+          "target_direction_team_counts": {
+            "0": 436,
+            "1": 387
+          }
+        },
+        "shot": {
+          "accuracy": 0.6428571428571429,
+          "correct": 18,
+          "n": 28,
+          "predicted_d_rate": 0.2857142857142857,
+          "predicted_state_counts": {
+            "A": 8,
+            "D": 8,
+            "H": 12
+          },
+          "target_direction_team_counts": {
+            "0": 17,
+            "1": 11
+          }
+        }
+      },
+      "drive_accuracy": 0.7242472266244057,
+      "drive_n": 631,
+      "game_id": "game_17",
+      "majority_direction_accuracy": 0.5974643423137876
+    },
+    {
+      "classes": {
+        "cross": {
+          "accuracy": 0.54,
+          "correct": 27,
+          "n": 50,
+          "predicted_d_rate": 0.42,
+          "predicted_state_counts": {
+            "A": 15,
+            "D": 21,
+            "H": 14
+          },
+          "target_direction_team_counts": {
+            "0": 22,
+            "1": 28
+          }
+        },
+        "drive": {
+          "accuracy": 0.7691256830601093,
+          "correct": 563,
+          "n": 732,
+          "predicted_d_rate": 0.06967213114754098,
+          "predicted_state_counts": {
+            "A": 358,
+            "D": 51,
+            "H": 323
+          },
+          "target_direction_team_counts": {
+            "0": 310,
+            "1": 422
+          }
+        },
+        "pass": {
+          "accuracy": 0.7373519913885899,
+          "correct": 685,
+          "n": 929,
+          "predicted_d_rate": 0.06673842841765339,
+          "predicted_state_counts": {
+            "A": 451,
+            "D": 62,
+            "H": 416
+          },
+          "target_direction_team_counts": {
+            "0": 387,
+            "1": 542
+          }
+        },
+        "shot": {
+          "accuracy": 0.47619047619047616,
+          "correct": 10,
+          "n": 21,
+          "predicted_d_rate": 0.47619047619047616,
+          "predicted_state_counts": {
+            "A": 7,
+            "D": 10,
+            "H": 4
+          },
+          "target_direction_team_counts": {
+            "0": 9,
+            "1": 12
+          }
+        }
+      },
+      "drive_accuracy": 0.7691256830601093,
+      "drive_n": 732,
+      "game_id": "game_37",
+      "majority_direction_accuracy": 0.5765027322404371
+    }
+  ],
+  "half_counts": {
+    "game_16_H1": {
+      "cross": {
+        "actor_bbox_absent": 2,
+        "correct": 16,
+        "n": 24,
+        "predicted_state_counts": {
+          "A": 3,
+          "D": 7,
+          "H": 14
+        },
+        "target_direction_team_counts": {
+          "0": 18,
+          "1": 6
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 21,
+        "correct": 198,
+        "n": 310,
+        "predicted_state_counts": {
+          "A": 76,
+          "D": 27,
+          "H": 207
+        },
+        "target_direction_team_counts": {
+          "0": 204,
+          "1": 106
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 29,
+        "correct": 254,
+        "n": 417,
+        "predicted_state_counts": {
+          "A": 105,
+          "D": 35,
+          "H": 277
+        },
+        "target_direction_team_counts": {
+          "0": 257,
+          "1": 160
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 1,
+        "correct": 5,
+        "n": 8,
+        "predicted_state_counts": {
+          "A": 3,
+          "D": 3,
+          "H": 2
+        },
+        "target_direction_team_counts": {
+          "0": 4,
+          "1": 4
+        }
+      }
+    },
+    "game_16_H2": {
+      "cross": {
+        "actor_bbox_absent": 6,
+        "correct": 22,
+        "n": 34,
+        "predicted_state_counts": {
+          "A": 21,
+          "D": 11,
+          "H": 2
+        },
+        "target_direction_team_counts": {
+          "0": 3,
+          "1": 31
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 37,
+        "correct": 223,
+        "n": 286,
+        "predicted_state_counts": {
+          "A": 238,
+          "D": 15,
+          "H": 33
+        },
+        "target_direction_team_counts": {
+          "0": 53,
+          "1": 233
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 50,
+        "correct": 243,
+        "n": 337,
+        "predicted_state_counts": {
+          "A": 268,
+          "D": 30,
+          "H": 39
+        },
+        "target_direction_team_counts": {
+          "0": 83,
+          "1": 254
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 2,
+        "correct": 8,
+        "n": 13,
+        "predicted_state_counts": {
+          "A": 9,
+          "D": 4
+        },
+        "target_direction_team_counts": {
+          "0": 3,
+          "1": 10
+        }
+      }
+    },
+    "game_17_H1": {
+      "cross": {
+        "actor_bbox_absent": 5,
+        "correct": 21,
+        "n": 26,
+        "predicted_state_counts": {
+          "A": 13,
+          "D": 5,
+          "H": 8
+        },
+        "target_direction_team_counts": {
+          "0": 11,
+          "1": 15
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 31,
+        "correct": 211,
+        "n": 310,
+        "predicted_state_counts": {
+          "A": 131,
+          "D": 15,
+          "H": 164
+        },
+        "target_direction_team_counts": {
+          "0": 192,
+          "1": 118
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 47,
+        "correct": 248,
+        "n": 393,
+        "predicted_state_counts": {
+          "A": 156,
+          "D": 27,
+          "H": 210
+        },
+        "target_direction_team_counts": {
+          "0": 236,
+          "1": 157
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 2,
+        "correct": 8,
+        "n": 15,
+        "predicted_state_counts": {
+          "A": 4,
+          "D": 6,
+          "H": 5
+        },
+        "target_direction_team_counts": {
+          "0": 7,
+          "1": 8
+        }
+      }
+    },
+    "game_17_H2": {
+      "cross": {
+        "actor_bbox_absent": 7,
+        "correct": 17,
+        "n": 24,
+        "predicted_state_counts": {
+          "A": 2,
+          "D": 6,
+          "H": 16
+        },
+        "target_direction_team_counts": {
+          "0": 22,
+          "1": 2
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 36,
+        "correct": 246,
+        "n": 321,
+        "predicted_state_counts": {
+          "A": 137,
+          "D": 10,
+          "H": 174
+        },
+        "target_direction_team_counts": {
+          "0": 185,
+          "1": 136
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 63,
+        "correct": 313,
+        "n": 430,
+        "predicted_state_counts": {
+          "A": 199,
+          "D": 18,
+          "H": 213
+        },
+        "target_direction_team_counts": {
+          "0": 200,
+          "1": 230
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 4,
+        "correct": 10,
+        "n": 13,
+        "predicted_state_counts": {
+          "A": 4,
+          "D": 2,
+          "H": 7
+        },
+        "target_direction_team_counts": {
+          "0": 10,
+          "1": 3
+        }
+      }
+    },
+    "game_1_H1": {
+      "cross": {
+        "actor_bbox_absent": 4,
+        "correct": 15,
+        "n": 20,
+        "predicted_state_counts": {
+          "A": 7,
+          "D": 4,
+          "H": 9
+        },
+        "target_direction_team_counts": {
+          "0": 9,
+          "1": 11
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 8,
+        "correct": 157,
+        "n": 269,
+        "predicted_state_counts": {
+          "A": 97,
+          "D": 37,
+          "H": 135
+        },
+        "target_direction_team_counts": {
+          "0": 119,
+          "1": 150
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 32,
+        "correct": 236,
+        "n": 388,
+        "predicted_state_counts": {
+          "A": 136,
+          "D": 57,
+          "H": 195
+        },
+        "target_direction_team_counts": {
+          "0": 187,
+          "1": 201
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 0,
+        "correct": 7,
+        "n": 9,
+        "predicted_state_counts": {
+          "A": 5,
+          "D": 1,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 4,
+          "1": 5
+        }
+      }
+    },
+    "game_1_H2": {
+      "cross": {
+        "actor_bbox_absent": 2,
+        "correct": 5,
+        "n": 10,
+        "predicted_state_counts": {
+          "A": 3,
+          "D": 5,
+          "H": 2
+        },
+        "target_direction_team_counts": {
+          "0": 4,
+          "1": 6
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 15,
+        "correct": 141,
+        "n": 201,
+        "predicted_state_counts": {
+          "A": 109,
+          "D": 27,
+          "H": 65
+        },
+        "target_direction_team_counts": {
+          "0": 70,
+          "1": 131
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 29,
+        "correct": 196,
+        "n": 295,
+        "predicted_state_counts": {
+          "A": 156,
+          "D": 34,
+          "H": 105
+        },
+        "target_direction_team_counts": {
+          "0": 126,
+          "1": 169
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 0,
+        "correct": 0,
+        "n": 5,
+        "predicted_state_counts": {
+          "A": 1,
+          "D": 4
+        },
+        "target_direction_team_counts": {
+          "0": 2,
+          "1": 3
+        }
+      }
+    },
+    "game_22_H1": {
+      "cross": {
+        "actor_bbox_absent": 7,
+        "correct": 20,
+        "n": 28,
+        "predicted_state_counts": {
+          "A": 11,
+          "D": 7,
+          "H": 10
+        },
+        "target_direction_team_counts": {
+          "0": 14,
+          "1": 14
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 21,
+        "correct": 260,
+        "n": 364,
+        "predicted_state_counts": {
+          "A": 191,
+          "D": 22,
+          "H": 151
+        },
+        "target_direction_team_counts": {
+          "0": 140,
+          "1": 224
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 53,
+        "correct": 310,
+        "n": 485,
+        "predicted_state_counts": {
+          "A": 227,
+          "D": 28,
+          "H": 230
+        },
+        "target_direction_team_counts": {
+          "0": 211,
+          "1": 274
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 3,
+        "correct": 6,
+        "n": 11,
+        "predicted_state_counts": {
+          "A": 5,
+          "D": 3,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 4,
+          "1": 7
+        }
+      }
+    },
+    "game_22_H2": {
+      "cross": {
+        "actor_bbox_absent": 2,
+        "correct": 12,
+        "n": 18,
+        "predicted_state_counts": {
+          "A": 12,
+          "D": 3,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 8,
+          "1": 10
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 24,
+        "correct": 194,
+        "n": 277,
+        "predicted_state_counts": {
+          "A": 129,
+          "D": 22,
+          "H": 126
+        },
+        "target_direction_team_counts": {
+          "0": 163,
+          "1": 114
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 46,
+        "correct": 256,
+        "n": 349,
+        "predicted_state_counts": {
+          "A": 171,
+          "D": 21,
+          "H": 157
+        },
+        "target_direction_team_counts": {
+          "0": 198,
+          "1": 151
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 1,
+        "correct": 6,
+        "n": 8,
+        "predicted_state_counts": {
+          "A": 3,
+          "D": 2,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 3,
+          "1": 5
+        }
+      }
+    },
+    "game_23_H1": {
+      "cross": {
+        "actor_bbox_absent": 5,
+        "correct": 14,
+        "n": 19,
+        "predicted_state_counts": {
+          "A": 10,
+          "D": 5,
+          "H": 4
+        },
+        "target_direction_team_counts": {
+          "0": 6,
+          "1": 13
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 31,
+        "correct": 199,
+        "n": 286,
+        "predicted_state_counts": {
+          "A": 150,
+          "D": 17,
+          "H": 119
+        },
+        "target_direction_team_counts": {
+          "0": 110,
+          "1": 176
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 38,
+        "correct": 222,
+        "n": 331,
+        "predicted_state_counts": {
+          "A": 165,
+          "D": 26,
+          "H": 140
+        },
+        "target_direction_team_counts": {
+          "0": 132,
+          "1": 199
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 1,
+        "correct": 6,
+        "n": 10,
+        "predicted_state_counts": {
+          "A": 5,
+          "D": 3,
+          "H": 2
+        },
+        "target_direction_team_counts": {
+          "0": 3,
+          "1": 7
+        }
+      }
+    },
+    "game_23_H2": {
+      "cross": {
+        "actor_bbox_absent": 3,
+        "correct": 17,
+        "n": 28,
+        "predicted_state_counts": {
+          "A": 8,
+          "D": 7,
+          "H": 13
+        },
+        "target_direction_team_counts": {
+          "0": 20,
+          "1": 8
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 31,
+        "correct": 158,
+        "n": 245,
+        "predicted_state_counts": {
+          "A": 96,
+          "D": 19,
+          "H": 130
+        },
+        "target_direction_team_counts": {
+          "0": 144,
+          "1": 101
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 48,
+        "correct": 183,
+        "n": 287,
+        "predicted_state_counts": {
+          "A": 104,
+          "D": 34,
+          "H": 149
+        },
+        "target_direction_team_counts": {
+          "0": 162,
+          "1": 125
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 2,
+        "correct": 7,
+        "n": 9,
+        "predicted_state_counts": {
+          "A": 4,
+          "D": 1,
+          "H": 4
+        },
+        "target_direction_team_counts": {
+          "0": 3,
+          "1": 6
+        }
+      }
+    },
+    "game_35_H1": {
+      "cross": {
+        "actor_bbox_absent": 7,
+        "correct": 13,
+        "n": 24,
+        "predicted_state_counts": {
+          "A": 7,
+          "D": 11,
+          "H": 6
+        },
+        "target_direction_team_counts": {
+          "0": 13,
+          "1": 11
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 14,
+        "correct": 281,
+        "n": 385,
+        "predicted_state_counts": {
+          "A": 224,
+          "D": 20,
+          "H": 141
+        },
+        "target_direction_team_counts": {
+          "0": 147,
+          "1": 238
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 29,
+        "correct": 325,
+        "n": 485,
+        "predicted_state_counts": {
+          "A": 270,
+          "D": 24,
+          "H": 191
+        },
+        "target_direction_team_counts": {
+          "0": 205,
+          "1": 280
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 3,
+        "correct": 15,
+        "n": 20,
+        "predicted_state_counts": {
+          "A": 11,
+          "D": 5,
+          "H": 4
+        },
+        "target_direction_team_counts": {
+          "0": 8,
+          "1": 12
+        }
+      }
+    },
+    "game_35_H2": {
+      "cross": {
+        "actor_bbox_absent": 4,
+        "correct": 18,
+        "n": 24,
+        "predicted_state_counts": {
+          "A": 15,
+          "D": 6,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 6,
+          "1": 18
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 10,
+        "correct": 298,
+        "n": 378,
+        "predicted_state_counts": {
+          "A": 188,
+          "D": 12,
+          "H": 178
+        },
+        "target_direction_team_counts": {
+          "0": 157,
+          "1": 221
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 30,
+        "correct": 354,
+        "n": 474,
+        "predicted_state_counts": {
+          "A": 211,
+          "D": 23,
+          "H": 240
+        },
+        "target_direction_team_counts": {
+          "0": 205,
+          "1": 269
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 2,
+        "correct": 8,
+        "n": 12,
+        "predicted_state_counts": {
+          "A": 6,
+          "D": 3,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 4,
+          "1": 8
+        }
+      }
+    },
+    "game_37_H1": {
+      "cross": {
+        "actor_bbox_absent": 8,
+        "correct": 10,
+        "n": 22,
+        "predicted_state_counts": {
+          "A": 3,
+          "D": 11,
+          "H": 8
+        },
+        "target_direction_team_counts": {
+          "0": 16,
+          "1": 6
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 14,
+        "correct": 315,
+        "n": 406,
+        "predicted_state_counts": {
+          "A": 198,
+          "D": 33,
+          "H": 175
+        },
+        "target_direction_team_counts": {
+          "0": 181,
+          "1": 225
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 22,
+        "correct": 392,
+        "n": 519,
+        "predicted_state_counts": {
+          "A": 266,
+          "D": 38,
+          "H": 215
+        },
+        "target_direction_team_counts": {
+          "0": 225,
+          "1": 294
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 2,
+        "correct": 4,
+        "n": 11,
+        "predicted_state_counts": {
+          "A": 2,
+          "D": 7,
+          "H": 2
+        },
+        "target_direction_team_counts": {
+          "0": 6,
+          "1": 5
+        }
+      }
+    },
+    "game_37_H2": {
+      "cross": {
+        "actor_bbox_absent": 8,
+        "correct": 17,
+        "n": 28,
+        "predicted_state_counts": {
+          "A": 12,
+          "D": 10,
+          "H": 6
+        },
+        "target_direction_team_counts": {
+          "0": 6,
+          "1": 22
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 14,
+        "correct": 248,
+        "n": 326,
+        "predicted_state_counts": {
+          "A": 160,
+          "D": 18,
+          "H": 148
+        },
+        "target_direction_team_counts": {
+          "0": 129,
+          "1": 197
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 24,
+        "correct": 293,
+        "n": 410,
+        "predicted_state_counts": {
+          "A": 185,
+          "D": 24,
+          "H": 201
+        },
+        "target_direction_team_counts": {
+          "0": 162,
+          "1": 248
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 2,
+        "correct": 6,
+        "n": 10,
+        "predicted_state_counts": {
+          "A": 5,
+          "D": 3,
+          "H": 2
+        },
+        "target_direction_team_counts": {
+          "0": 3,
+          "1": 7
+        }
+      }
+    },
+    "game_38_H1": {
+      "cross": {
+        "actor_bbox_absent": 1,
+        "correct": 9,
+        "n": 13,
+        "predicted_state_counts": {
+          "A": 6,
+          "D": 4,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 5,
+          "1": 8
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 17,
+        "correct": 259,
+        "n": 404,
+        "predicted_state_counts": {
+          "A": 180,
+          "D": 64,
+          "H": 160
+        },
+        "target_direction_team_counts": {
+          "0": 235,
+          "1": 169
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 28,
+        "correct": 319,
+        "n": 528,
+        "predicted_state_counts": {
+          "A": 241,
+          "D": 87,
+          "H": 200
+        },
+        "target_direction_team_counts": {
+          "0": 294,
+          "1": 234
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 0,
+        "correct": 7,
+        "n": 10,
+        "predicted_state_counts": {
+          "A": 3,
+          "D": 3,
+          "H": 4
+        },
+        "target_direction_team_counts": {
+          "0": 5,
+          "1": 5
+        }
+      }
+    },
+    "game_38_H2": {
+      "cross": {
+        "actor_bbox_absent": 2,
+        "correct": 8,
+        "n": 12,
+        "predicted_state_counts": {
+          "A": 5,
+          "D": 4,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 4,
+          "1": 8
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 18,
+        "correct": 309,
+        "n": 389,
+        "predicted_state_counts": {
+          "A": 237,
+          "D": 25,
+          "H": 127
+        },
+        "target_direction_team_counts": {
+          "0": 139,
+          "1": 250
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 22,
+        "correct": 364,
+        "n": 494,
+        "predicted_state_counts": {
+          "A": 267,
+          "D": 43,
+          "H": 184
+        },
+        "target_direction_team_counts": {
+          "0": 220,
+          "1": 274
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 0,
+        "correct": 2,
+        "n": 7,
+        "predicted_state_counts": {
+          "A": 1,
+          "D": 5,
+          "H": 1
+        },
+        "target_direction_team_counts": {
+          "0": 2,
+          "1": 5
+        }
+      }
+    },
+    "game_39_H1": {
+      "cross": {
+        "actor_bbox_absent": 3,
+        "correct": 9,
+        "n": 16,
+        "predicted_state_counts": {
+          "A": 1,
+          "D": 7,
+          "H": 8
+        },
+        "target_direction_team_counts": {
+          "0": 9,
+          "1": 7
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 23,
+        "correct": 213,
+        "n": 289,
+        "predicted_state_counts": {
+          "A": 60,
+          "D": 15,
+          "H": 214
+        },
+        "target_direction_team_counts": {
+          "0": 210,
+          "1": 79
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 40,
+        "correct": 292,
+        "n": 398,
+        "predicted_state_counts": {
+          "A": 93,
+          "D": 21,
+          "H": 284
+        },
+        "target_direction_team_counts": {
+          "0": 273,
+          "1": 125
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 1,
+        "correct": 3,
+        "n": 11,
+        "predicted_state_counts": {
+          "A": 1,
+          "D": 6,
+          "H": 4
+        },
+        "target_direction_team_counts": {
+          "0": 4,
+          "1": 7
+        }
+      }
+    },
+    "game_39_H2": {
+      "cross": {
+        "actor_bbox_absent": 4,
+        "correct": 12,
+        "n": 15,
+        "predicted_state_counts": {
+          "A": 11,
+          "D": 3,
+          "H": 1
+        },
+        "target_direction_team_counts": {
+          "0": 3,
+          "1": 12
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 34,
+        "correct": 262,
+        "n": 343,
+        "predicted_state_counts": {
+          "A": 267,
+          "D": 22,
+          "H": 54
+        },
+        "target_direction_team_counts": {
+          "0": 73,
+          "1": 270
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 54,
+        "correct": 336,
+        "n": 448,
+        "predicted_state_counts": {
+          "A": 341,
+          "D": 29,
+          "H": 78
+        },
+        "target_direction_team_counts": {
+          "0": 105,
+          "1": 343
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 1,
+        "correct": 5,
+        "n": 9,
+        "predicted_state_counts": {
+          "A": 4,
+          "D": 4,
+          "H": 1
+        },
+        "target_direction_team_counts": {
+          "0": 3,
+          "1": 6
+        }
+      }
+    },
+    "game_3_H1": {
+      "cross": {
+        "actor_bbox_absent": 3,
+        "correct": 13,
+        "n": 19,
+        "predicted_state_counts": {
+          "A": 9,
+          "D": 6,
+          "H": 4
+        },
+        "target_direction_team_counts": {
+          "0": 5,
+          "1": 14
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 30,
+        "correct": 208,
+        "n": 339,
+        "predicted_state_counts": {
+          "A": 165,
+          "D": 59,
+          "H": 115
+        },
+        "target_direction_team_counts": {
+          "0": 156,
+          "1": 183
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 60,
+        "correct": 262,
+        "n": 431,
+        "predicted_state_counts": {
+          "A": 207,
+          "D": 63,
+          "H": 161
+        },
+        "target_direction_team_counts": {
+          "0": 211,
+          "1": 220
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 3,
+        "correct": 7,
+        "n": 11,
+        "predicted_state_counts": {
+          "A": 5,
+          "D": 4,
+          "H": 2
+        },
+        "target_direction_team_counts": {
+          "0": 4,
+          "1": 7
+        }
+      }
+    },
+    "game_3_H2": {
+      "cross": {
+        "actor_bbox_absent": 3,
+        "correct": 8,
+        "n": 14,
+        "predicted_state_counts": {
+          "A": 5,
+          "D": 6,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 6,
+          "1": 8
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 21,
+        "correct": 207,
+        "n": 279,
+        "predicted_state_counts": {
+          "A": 97,
+          "D": 22,
+          "H": 160
+        },
+        "target_direction_team_counts": {
+          "0": 166,
+          "1": 113
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 47,
+        "correct": 269,
+        "n": 350,
+        "predicted_state_counts": {
+          "A": 117,
+          "D": 15,
+          "H": 218
+        },
+        "target_direction_team_counts": {
+          "0": 209,
+          "1": 141
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 4,
+        "correct": 9,
+        "n": 15,
+        "predicted_state_counts": {
+          "A": 5,
+          "D": 5,
+          "H": 5
+        },
+        "target_direction_team_counts": {
+          "0": 11,
+          "1": 4
+        }
+      }
+    },
+    "game_4_H1": {
+      "cross": {
+        "actor_bbox_absent": 3,
+        "correct": 20,
+        "n": 28,
+        "predicted_state_counts": {
+          "A": 6,
+          "D": 6,
+          "H": 16
+        },
+        "target_direction_team_counts": {
+          "0": 22,
+          "1": 6
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 21,
+        "correct": 256,
+        "n": 376,
+        "predicted_state_counts": {
+          "A": 141,
+          "D": 33,
+          "H": 202
+        },
+        "target_direction_team_counts": {
+          "0": 263,
+          "1": 113
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 46,
+        "correct": 328,
+        "n": 494,
+        "predicted_state_counts": {
+          "A": 180,
+          "D": 43,
+          "H": 271
+        },
+        "target_direction_team_counts": {
+          "0": 319,
+          "1": 175
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 1,
+        "correct": 3,
+        "n": 13,
+        "predicted_state_counts": {
+          "A": 2,
+          "D": 8,
+          "H": 3
+        },
+        "target_direction_team_counts": {
+          "0": 12,
+          "1": 1
+        }
+      }
+    },
+    "game_4_H2": {
+      "cross": {
+        "actor_bbox_absent": 4,
+        "correct": 12,
+        "n": 21,
+        "predicted_state_counts": {
+          "A": 6,
+          "D": 7,
+          "H": 8
+        },
+        "target_direction_team_counts": {
+          "0": 14,
+          "1": 7
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 18,
+        "correct": 288,
+        "n": 423,
+        "predicted_state_counts": {
+          "A": 176,
+          "D": 43,
+          "H": 204
+        },
+        "target_direction_team_counts": {
+          "0": 201,
+          "1": 222
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 63,
+        "correct": 361,
+        "n": 564,
+        "predicted_state_counts": {
+          "A": 238,
+          "D": 58,
+          "H": 268
+        },
+        "target_direction_team_counts": {
+          "0": 263,
+          "1": 301
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 2,
+        "correct": 8,
+        "n": 17,
+        "predicted_state_counts": {
+          "A": 4,
+          "D": 8,
+          "H": 5
+        },
+        "target_direction_team_counts": {
+          "0": 9,
+          "1": 8
+        }
+      }
+    },
+    "game_51_H1": {
+      "cross": {
+        "actor_bbox_absent": 2,
+        "correct": 13,
+        "n": 18,
+        "predicted_state_counts": {
+          "A": 10,
+          "D": 4,
+          "H": 4
+        },
+        "target_direction_team_counts": {
+          "0": 9,
+          "1": 9
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 21,
+        "correct": 361,
+        "n": 446,
+        "predicted_state_counts": {
+          "A": 332,
+          "D": 28,
+          "H": 86
+        },
+        "target_direction_team_counts": {
+          "0": 97,
+          "1": 349
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 44,
+        "correct": 398,
+        "n": 520,
+        "predicted_state_counts": {
+          "A": 379,
+          "D": 35,
+          "H": 106
+        },
+        "target_direction_team_counts": {
+          "0": 127,
+          "1": 393
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 1,
+        "correct": 12,
+        "n": 12,
+        "predicted_state_counts": {
+          "A": 5,
+          "H": 7
+        },
+        "target_direction_team_counts": {
+          "0": 7,
+          "1": 5
+        }
+      }
+    },
+    "game_51_H2": {
+      "cross": {
+        "actor_bbox_absent": 0,
+        "correct": 12,
+        "n": 15,
+        "predicted_state_counts": {
+          "A": 2,
+          "D": 3,
+          "H": 10
+        },
+        "target_direction_team_counts": {
+          "0": 12,
+          "1": 3
+        }
+      },
+      "drive": {
+        "actor_bbox_absent": 17,
+        "correct": 327,
+        "n": 419,
+        "predicted_state_counts": {
+          "A": 98,
+          "D": 26,
+          "H": 295
+        },
+        "target_direction_team_counts": {
+          "0": 319,
+          "1": 100
+        }
+      },
+      "pass": {
+        "actor_bbox_absent": 32,
+        "correct": 360,
+        "n": 476,
+        "predicted_state_counts": {
+          "A": 117,
+          "D": 30,
+          "H": 329
+        },
+        "target_direction_team_counts": {
+          "0": 347,
+          "1": 129
+        }
+      },
+      "shot": {
+        "actor_bbox_absent": 2,
+        "correct": 15,
+        "n": 19,
+        "predicted_state_counts": {
+          "A": 4,
+          "D": 3,
+          "H": 12
+        },
+        "target_direction_team_counts": {
+          "0": 12,
+          "1": 7
+        }
+      }
+    }
+  },
+  "interpretation": "PCBAS TRAIN sparse action-anchor portability check for the frozen exact package. No continuous H/A/D supervision, possession-spell metric, dead-ball accuracy, fitting, tuning or promotion.",
+  "package": "joint_gru_sn_dense_original_diversity_phase_ensemble_v1",
+  "prediction_seal_sha256": "745c6be2b106c74a620e15aef5bae3720990abb37cf3ae17c182de8971298179",
+  "reserve_games": [
+    "game_48",
+    "game_33",
+    "game_13",
+    "game_34",
+    "game_41",
+    "game_28",
+    "game_5",
+    "game_12",
+    "game_29",
+    "game_21",
+    "game_15",
+    "game_30",
+    "game_53",
+    "game_8",
+    "game_14",
+    "game_26",
+    "game_6",
+    "game_52",
+    "game_46",
+    "game_7",
+    "game_42",
+    "game_40",
+    "game_31",
+    "game_25",
+    "game_32",
+    "game_43",
+    "game_11",
+    "game_45",
+    "game_44",
+    "game_10",
+    "game_19",
+    "game_2",
+    "game_20",
+    "game_9",
+    "game_27",
+    "game_49"
+  ],
+  "selected_games": [
+    "game_39",
+    "game_38",
+    "game_51",
+    "game_35",
+    "game_4",
+    "game_23",
+    "game_1",
+    "game_22",
+    "game_3",
+    "game_16",
+    "game_17",
+    "game_37"
+  ],
+  "study": "pcbas_expanded_anchor_v2",
+  "summary": {
+    "cross": {
+      "by_game": {
+        "game_1": {
+          "correct": 20,
+          "majority_direction_alias_fraction": 0.5666666666666667,
+          "n": 30,
+          "predicted_dead_at_live_anchor_rate": 0.3,
+          "predicted_state_counts": {
+            "A": 10,
+            "D": 9,
+            "H": 11
+          },
+          "target_direction_team_counts": {
+            "0": 13,
+            "1": 17
+          },
+          "team_agreement": 0.6666666666666666
+        },
+        "game_16": {
+          "correct": 38,
+          "majority_direction_alias_fraction": 0.6379310344827587,
+          "n": 58,
+          "predicted_dead_at_live_anchor_rate": 0.3103448275862069,
+          "predicted_state_counts": {
+            "A": 24,
+            "D": 18,
+            "H": 16
+          },
+          "target_direction_team_counts": {
+            "0": 21,
+            "1": 37
+          },
+          "team_agreement": 0.6551724137931034
+        },
+        "game_17": {
+          "correct": 38,
+          "majority_direction_alias_fraction": 0.66,
+          "n": 50,
+          "predicted_dead_at_live_anchor_rate": 0.22,
+          "predicted_state_counts": {
+            "A": 15,
+            "D": 11,
+            "H": 24
+          },
+          "target_direction_team_counts": {
+            "0": 33,
+            "1": 17
+          },
+          "team_agreement": 0.76
+        },
+        "game_22": {
+          "correct": 32,
+          "majority_direction_alias_fraction": 0.5217391304347826,
+          "n": 46,
+          "predicted_dead_at_live_anchor_rate": 0.21739130434782608,
+          "predicted_state_counts": {
+            "A": 23,
+            "D": 10,
+            "H": 13
+          },
+          "target_direction_team_counts": {
+            "0": 22,
+            "1": 24
+          },
+          "team_agreement": 0.6956521739130435
+        },
+        "game_23": {
+          "correct": 31,
+          "majority_direction_alias_fraction": 0.5531914893617021,
+          "n": 47,
+          "predicted_dead_at_live_anchor_rate": 0.2553191489361702,
+          "predicted_state_counts": {
+            "A": 18,
+            "D": 12,
+            "H": 17
+          },
+          "target_direction_team_counts": {
+            "0": 26,
+            "1": 21
+          },
+          "team_agreement": 0.6595744680851063
+        },
+        "game_3": {
+          "correct": 21,
+          "majority_direction_alias_fraction": 0.6666666666666666,
+          "n": 33,
+          "predicted_dead_at_live_anchor_rate": 0.36363636363636365,
+          "predicted_state_counts": {
+            "A": 14,
+            "D": 12,
+            "H": 7
+          },
+          "target_direction_team_counts": {
+            "0": 11,
+            "1": 22
+          },
+          "team_agreement": 0.6363636363636364
+        },
+        "game_35": {
+          "correct": 31,
+          "majority_direction_alias_fraction": 0.6041666666666666,
+          "n": 48,
+          "predicted_dead_at_live_anchor_rate": 0.3541666666666667,
+          "predicted_state_counts": {
+            "A": 22,
+            "D": 17,
+            "H": 9
+          },
+          "target_direction_team_counts": {
+            "0": 19,
+            "1": 29
+          },
+          "team_agreement": 0.6458333333333334
+        },
+        "game_37": {
+          "correct": 27,
+          "majority_direction_alias_fraction": 0.56,
+          "n": 50,
+          "predicted_dead_at_live_anchor_rate": 0.42,
+          "predicted_state_counts": {
+            "A": 15,
+            "D": 21,
+            "H": 14
+          },
+          "target_direction_team_counts": {
+            "0": 22,
+            "1": 28
+          },
+          "team_agreement": 0.54
+        },
+        "game_38": {
+          "correct": 17,
+          "majority_direction_alias_fraction": 0.64,
+          "n": 25,
+          "predicted_dead_at_live_anchor_rate": 0.32,
+          "predicted_state_counts": {
+            "A": 11,
+            "D": 8,
+            "H": 6
+          },
+          "target_direction_team_counts": {
+            "0": 9,
+            "1": 16
+          },
+          "team_agreement": 0.68
+        },
+        "game_39": {
+          "correct": 21,
+          "majority_direction_alias_fraction": 0.6129032258064516,
+          "n": 31,
+          "predicted_dead_at_live_anchor_rate": 0.3225806451612903,
+          "predicted_state_counts": {
+            "A": 12,
+            "D": 10,
+            "H": 9
+          },
+          "target_direction_team_counts": {
+            "0": 12,
+            "1": 19
+          },
+          "team_agreement": 0.6774193548387096
+        },
+        "game_4": {
+          "correct": 32,
+          "majority_direction_alias_fraction": 0.7346938775510204,
+          "n": 49,
+          "predicted_dead_at_live_anchor_rate": 0.2653061224489796,
+          "predicted_state_counts": {
+            "A": 12,
+            "D": 13,
+            "H": 24
+          },
+          "target_direction_team_counts": {
+            "0": 36,
+            "1": 13
+          },
+          "team_agreement": 0.6530612244897959
+        },
+        "game_51": {
+          "correct": 25,
+          "majority_direction_alias_fraction": 0.6363636363636364,
+          "n": 33,
+          "predicted_dead_at_live_anchor_rate": 0.21212121212121213,
+          "predicted_state_counts": {
+            "A": 12,
+            "D": 7,
+            "H": 14
+          },
+          "target_direction_team_counts": {
+            "0": 21,
+            "1": 12
+          },
+          "team_agreement": 0.7575757575757576
+        }
+      },
+      "correct": 333,
+      "equal_game_team_agreement": 0.6689432524215961,
+      "n": 500,
+      "pooled_team_agreement": 0.666
+    },
+    "drive": {
+      "by_game": {
+        "game_1": {
+          "correct": 298,
+          "majority_direction_alias_fraction": 0.597872340425532,
+          "n": 470,
+          "predicted_dead_at_live_anchor_rate": 0.13617021276595745,
+          "predicted_state_counts": {
+            "A": 206,
+            "D": 64,
+            "H": 200
+          },
+          "target_direction_team_counts": {
+            "0": 189,
+            "1": 281
+          },
+          "team_agreement": 0.6340425531914894
+        },
+        "game_16": {
+          "correct": 421,
+          "majority_direction_alias_fraction": 0.5687919463087249,
+          "n": 596,
+          "predicted_dead_at_live_anchor_rate": 0.07046979865771812,
+          "predicted_state_counts": {
+            "A": 314,
+            "D": 42,
+            "H": 240
+          },
+          "target_direction_team_counts": {
+            "0": 257,
+            "1": 339
+          },
+          "team_agreement": 0.7063758389261745
+        },
+        "game_17": {
+          "correct": 457,
+          "majority_direction_alias_fraction": 0.5974643423137876,
+          "n": 631,
+          "predicted_dead_at_live_anchor_rate": 0.039619651347068144,
+          "predicted_state_counts": {
+            "A": 268,
+            "D": 25,
+            "H": 338
+          },
+          "target_direction_team_counts": {
+            "0": 377,
+            "1": 254
+          },
+          "team_agreement": 0.7242472266244057
+        },
+        "game_22": {
+          "correct": 454,
+          "majority_direction_alias_fraction": 0.5273010920436817,
+          "n": 641,
+          "predicted_dead_at_live_anchor_rate": 0.0686427457098284,
+          "predicted_state_counts": {
+            "A": 320,
+            "D": 44,
+            "H": 277
+          },
+          "target_direction_team_counts": {
+            "0": 303,
+            "1": 338
+          },
+          "team_agreement": 0.7082683307332294
+        },
+        "game_23": {
+          "correct": 357,
+          "majority_direction_alias_fraction": 0.5216572504708098,
+          "n": 531,
+          "predicted_dead_at_live_anchor_rate": 0.06779661016949153,
+          "predicted_state_counts": {
+            "A": 246,
+            "D": 36,
+            "H": 249
+          },
+          "target_direction_team_counts": {
+            "0": 254,
+            "1": 277
+          },
+          "team_agreement": 0.672316384180791
+        },
+        "game_3": {
+          "correct": 415,
+          "majority_direction_alias_fraction": 0.5210355987055016,
+          "n": 618,
+          "predicted_dead_at_live_anchor_rate": 0.13106796116504854,
+          "predicted_state_counts": {
+            "A": 262,
+            "D": 81,
+            "H": 275
+          },
+          "target_direction_team_counts": {
+            "0": 322,
+            "1": 296
+          },
+          "team_agreement": 0.6715210355987055
+        },
+        "game_35": {
+          "correct": 579,
+          "majority_direction_alias_fraction": 0.601572739187418,
+          "n": 763,
+          "predicted_dead_at_live_anchor_rate": 0.04193971166448231,
+          "predicted_state_counts": {
+            "A": 412,
+            "D": 32,
+            "H": 319
+          },
+          "target_direction_team_counts": {
+            "0": 304,
+            "1": 459
+          },
+          "team_agreement": 0.7588466579292268
+        },
+        "game_37": {
+          "correct": 563,
+          "majority_direction_alias_fraction": 0.5765027322404371,
+          "n": 732,
+          "predicted_dead_at_live_anchor_rate": 0.06967213114754098,
+          "predicted_state_counts": {
+            "A": 358,
+            "D": 51,
+            "H": 323
+          },
+          "target_direction_team_counts": {
+            "0": 310,
+            "1": 422
+          },
+          "team_agreement": 0.7691256830601093
+        },
+        "game_38": {
+          "correct": 568,
+          "majority_direction_alias_fraction": 0.5283732660781841,
+          "n": 793,
+          "predicted_dead_at_live_anchor_rate": 0.11223203026481715,
+          "predicted_state_counts": {
+            "A": 417,
+            "D": 89,
+            "H": 287
+          },
+          "target_direction_team_counts": {
+            "0": 374,
+            "1": 419
+          },
+          "team_agreement": 0.7162673392181589
+        },
+        "game_39": {
+          "correct": 475,
+          "majority_direction_alias_fraction": 0.5522151898734177,
+          "n": 632,
+          "predicted_dead_at_live_anchor_rate": 0.058544303797468354,
+          "predicted_state_counts": {
+            "A": 327,
+            "D": 37,
+            "H": 268
+          },
+          "target_direction_team_counts": {
+            "0": 283,
+            "1": 349
+          },
+          "team_agreement": 0.7515822784810127
+        },
+        "game_4": {
+          "correct": 544,
+          "majority_direction_alias_fraction": 0.5807259073842302,
+          "n": 799,
+          "predicted_dead_at_live_anchor_rate": 0.0951188986232791,
+          "predicted_state_counts": {
+            "A": 317,
+            "D": 76,
+            "H": 406
+          },
+          "target_direction_team_counts": {
+            "0": 464,
+            "1": 335
+          },
+          "team_agreement": 0.6808510638297872
+        },
+        "game_51": {
+          "correct": 688,
+          "majority_direction_alias_fraction": 0.5190751445086705,
+          "n": 865,
+          "predicted_dead_at_live_anchor_rate": 0.06242774566473988,
+          "predicted_state_counts": {
+            "A": 430,
+            "D": 54,
+            "H": 381
+          },
+          "target_direction_team_counts": {
+            "0": 416,
+            "1": 449
+          },
+          "team_agreement": 0.7953757225433526
+        }
+      },
+      "correct": 5819,
+      "equal_game_team_agreement": 0.7157350095263703,
+      "n": 8071,
+      "pooled_team_agreement": 0.7209763350266386
+    },
+    "pass": {
+      "by_game": {
+        "game_1": {
+          "correct": 432,
+          "majority_direction_alias_fraction": 0.541727672035139,
+          "n": 683,
+          "predicted_dead_at_live_anchor_rate": 0.13323572474377746,
+          "predicted_state_counts": {
+            "A": 292,
+            "D": 91,
+            "H": 300
+          },
+          "target_direction_team_counts": {
+            "0": 313,
+            "1": 370
+          },
+          "team_agreement": 0.6325036603221084
+        },
+        "game_16": {
+          "correct": 497,
+          "majority_direction_alias_fraction": 0.5490716180371353,
+          "n": 754,
+          "predicted_dead_at_live_anchor_rate": 0.08620689655172414,
+          "predicted_state_counts": {
+            "A": 373,
+            "D": 65,
+            "H": 316
+          },
+          "target_direction_team_counts": {
+            "0": 340,
+            "1": 414
+          },
+          "team_agreement": 0.6591511936339522
+        },
+        "game_17": {
+          "correct": 561,
+          "majority_direction_alias_fraction": 0.5297691373025516,
+          "n": 823,
+          "predicted_dead_at_live_anchor_rate": 0.054678007290400975,
+          "predicted_state_counts": {
+            "A": 355,
+            "D": 45,
+            "H": 423
+          },
+          "target_direction_team_counts": {
+            "0": 436,
+            "1": 387
+          },
+          "team_agreement": 0.6816524908869988
+        },
+        "game_22": {
+          "correct": 566,
+          "majority_direction_alias_fraction": 0.5095923261390888,
+          "n": 834,
+          "predicted_dead_at_live_anchor_rate": 0.05875299760191847,
+          "predicted_state_counts": {
+            "A": 398,
+            "D": 49,
+            "H": 387
+          },
+          "target_direction_team_counts": {
+            "0": 409,
+            "1": 425
+          },
+          "team_agreement": 0.6786570743405276
+        },
+        "game_23": {
+          "correct": 405,
+          "majority_direction_alias_fraction": 0.5242718446601942,
+          "n": 618,
+          "predicted_dead_at_live_anchor_rate": 0.0970873786407767,
+          "predicted_state_counts": {
+            "A": 269,
+            "D": 60,
+            "H": 289
+          },
+          "target_direction_team_counts": {
+            "0": 294,
+            "1": 324
+          },
+          "team_agreement": 0.6553398058252428
+        },
+        "game_3": {
+          "correct": 531,
+          "majority_direction_alias_fraction": 0.5377720870678617,
+          "n": 781,
+          "predicted_dead_at_live_anchor_rate": 0.0998719590268886,
+          "predicted_state_counts": {
+            "A": 324,
+            "D": 78,
+            "H": 379
+          },
+          "target_direction_team_counts": {
+            "0": 420,
+            "1": 361
+          },
+          "team_agreement": 0.6798975672215108
+        },
+        "game_35": {
+          "correct": 679,
+          "majority_direction_alias_fraction": 0.5724713242961418,
+          "n": 959,
+          "predicted_dead_at_live_anchor_rate": 0.049009384775808136,
+          "predicted_state_counts": {
+            "A": 481,
+            "D": 47,
+            "H": 431
+          },
+          "target_direction_team_counts": {
+            "0": 410,
+            "1": 549
+          },
+          "team_agreement": 0.708029197080292
+        },
+        "game_37": {
+          "correct": 685,
+          "majority_direction_alias_fraction": 0.5834230355220668,
+          "n": 929,
+          "predicted_dead_at_live_anchor_rate": 0.06673842841765339,
+          "predicted_state_counts": {
+            "A": 451,
+            "D": 62,
+            "H": 416
+          },
+          "target_direction_team_counts": {
+            "0": 387,
+            "1": 542
+          },
+          "team_agreement": 0.7373519913885899
+        },
+        "game_38": {
+          "correct": 683,
+          "majority_direction_alias_fraction": 0.50293542074364,
+          "n": 1022,
+          "predicted_dead_at_live_anchor_rate": 0.12720156555772993,
+          "predicted_state_counts": {
+            "A": 508,
+            "D": 130,
+            "H": 384
+          },
+          "target_direction_team_counts": {
+            "0": 514,
+            "1": 508
+          },
+          "team_agreement": 0.6682974559686888
+        },
+        "game_39": {
+          "correct": 628,
+          "majority_direction_alias_fraction": 0.5531914893617021,
+          "n": 846,
+          "predicted_dead_at_live_anchor_rate": 0.0591016548463357,
+          "predicted_state_counts": {
+            "A": 434,
+            "D": 50,
+            "H": 362
+          },
+          "target_direction_team_counts": {
+            "0": 378,
+            "1": 468
+          },
+          "team_agreement": 0.7423167848699763
+        },
+        "game_4": {
+          "correct": 689,
+          "majority_direction_alias_fraction": 0.5500945179584121,
+          "n": 1058,
+          "predicted_dead_at_live_anchor_rate": 0.09546313799621928,
+          "predicted_state_counts": {
+            "A": 418,
+            "D": 101,
+            "H": 539
+          },
+          "target_direction_team_counts": {
+            "0": 582,
+            "1": 476
+          },
+          "team_agreement": 0.6512287334593573
+        },
+        "game_51": {
+          "correct": 758,
+          "majority_direction_alias_fraction": 0.5240963855421686,
+          "n": 996,
+          "predicted_dead_at_live_anchor_rate": 0.06526104417670683,
+          "predicted_state_counts": {
+            "A": 496,
+            "D": 65,
+            "H": 435
+          },
+          "target_direction_team_counts": {
+            "0": 474,
+            "1": 522
+          },
+          "team_agreement": 0.7610441767068273
+        }
+      },
+      "correct": 7114,
+      "equal_game_team_agreement": 0.6879558443086727,
+      "n": 10303,
+      "pooled_team_agreement": 0.6904785014073571
+    },
+    "shot": {
+      "by_game": {
+        "game_1": {
+          "correct": 7,
+          "majority_direction_alias_fraction": 0.5714285714285714,
+          "n": 14,
+          "predicted_dead_at_live_anchor_rate": 0.35714285714285715,
+          "predicted_state_counts": {
+            "A": 6,
+            "D": 5,
+            "H": 3
+          },
+          "target_direction_team_counts": {
+            "0": 6,
+            "1": 8
+          },
+          "team_agreement": 0.5
+        },
+        "game_16": {
+          "correct": 13,
+          "majority_direction_alias_fraction": 0.6666666666666666,
+          "n": 21,
+          "predicted_dead_at_live_anchor_rate": 0.3333333333333333,
+          "predicted_state_counts": {
+            "A": 12,
+            "D": 7,
+            "H": 2
+          },
+          "target_direction_team_counts": {
+            "0": 7,
+            "1": 14
+          },
+          "team_agreement": 0.6190476190476191
+        },
+        "game_17": {
+          "correct": 18,
+          "majority_direction_alias_fraction": 0.6071428571428571,
+          "n": 28,
+          "predicted_dead_at_live_anchor_rate": 0.2857142857142857,
+          "predicted_state_counts": {
+            "A": 8,
+            "D": 8,
+            "H": 12
+          },
+          "target_direction_team_counts": {
+            "0": 17,
+            "1": 11
+          },
+          "team_agreement": 0.6428571428571429
+        },
+        "game_22": {
+          "correct": 12,
+          "majority_direction_alias_fraction": 0.631578947368421,
+          "n": 19,
+          "predicted_dead_at_live_anchor_rate": 0.2631578947368421,
+          "predicted_state_counts": {
+            "A": 8,
+            "D": 5,
+            "H": 6
+          },
+          "target_direction_team_counts": {
+            "0": 7,
+            "1": 12
+          },
+          "team_agreement": 0.631578947368421
+        },
+        "game_23": {
+          "correct": 13,
+          "majority_direction_alias_fraction": 0.6842105263157895,
+          "n": 19,
+          "predicted_dead_at_live_anchor_rate": 0.21052631578947367,
+          "predicted_state_counts": {
+            "A": 9,
+            "D": 4,
+            "H": 6
+          },
+          "target_direction_team_counts": {
+            "0": 6,
+            "1": 13
+          },
+          "team_agreement": 0.6842105263157895
+        },
+        "game_3": {
+          "correct": 16,
+          "majority_direction_alias_fraction": 0.5769230769230769,
+          "n": 26,
+          "predicted_dead_at_live_anchor_rate": 0.34615384615384615,
+          "predicted_state_counts": {
+            "A": 10,
+            "D": 9,
+            "H": 7
+          },
+          "target_direction_team_counts": {
+            "0": 15,
+            "1": 11
+          },
+          "team_agreement": 0.6153846153846154
+        },
+        "game_35": {
+          "correct": 23,
+          "majority_direction_alias_fraction": 0.625,
+          "n": 32,
+          "predicted_dead_at_live_anchor_rate": 0.25,
+          "predicted_state_counts": {
+            "A": 17,
+            "D": 8,
+            "H": 7
+          },
+          "target_direction_team_counts": {
+            "0": 12,
+            "1": 20
+          },
+          "team_agreement": 0.71875
+        },
+        "game_37": {
+          "correct": 10,
+          "majority_direction_alias_fraction": 0.5714285714285714,
+          "n": 21,
+          "predicted_dead_at_live_anchor_rate": 0.47619047619047616,
+          "predicted_state_counts": {
+            "A": 7,
+            "D": 10,
+            "H": 4
+          },
+          "target_direction_team_counts": {
+            "0": 9,
+            "1": 12
+          },
+          "team_agreement": 0.47619047619047616
+        },
+        "game_38": {
+          "correct": 9,
+          "majority_direction_alias_fraction": 0.5882352941176471,
+          "n": 17,
+          "predicted_dead_at_live_anchor_rate": 0.47058823529411764,
+          "predicted_state_counts": {
+            "A": 4,
+            "D": 8,
+            "H": 5
+          },
+          "target_direction_team_counts": {
+            "0": 7,
+            "1": 10
+          },
+          "team_agreement": 0.5294117647058824
+        },
+        "game_39": {
+          "correct": 8,
+          "majority_direction_alias_fraction": 0.65,
+          "n": 20,
+          "predicted_dead_at_live_anchor_rate": 0.5,
+          "predicted_state_counts": {
+            "A": 5,
+            "D": 10,
+            "H": 5
+          },
+          "target_direction_team_counts": {
+            "0": 7,
+            "1": 13
+          },
+          "team_agreement": 0.4
+        },
+        "game_4": {
+          "correct": 11,
+          "majority_direction_alias_fraction": 0.7,
+          "n": 30,
+          "predicted_dead_at_live_anchor_rate": 0.5333333333333333,
+          "predicted_state_counts": {
+            "A": 6,
+            "D": 16,
+            "H": 8
+          },
+          "target_direction_team_counts": {
+            "0": 21,
+            "1": 9
+          },
+          "team_agreement": 0.36666666666666664
+        },
+        "game_51": {
+          "correct": 27,
+          "majority_direction_alias_fraction": 0.6129032258064516,
+          "n": 31,
+          "predicted_dead_at_live_anchor_rate": 0.0967741935483871,
+          "predicted_state_counts": {
+            "A": 9,
+            "D": 3,
+            "H": 19
+          },
+          "target_direction_team_counts": {
+            "0": 19,
+            "1": 12
+          },
+          "team_agreement": 0.8709677419354839
+        }
+      },
+      "correct": 167,
+      "equal_game_team_agreement": 0.5879221250393415,
+      "n": 278,
+      "pooled_team_agreement": 0.6007194244604317
+    }
+  },
+  "visibility_by_half": {
+    "game_16_H1": {
+      "0-5": {
+        "accuracy": 0.3333333333333333,
+        "correct": 1,
+        "n": 3,
+        "predicted_d_rate": 0.0
+      },
+      "12+": {
+        "accuracy": 0.6634980988593155,
+        "correct": 349,
+        "n": 526,
+        "predicted_d_rate": 0.07604562737642585
+      },
+      "6-11": {
+        "accuracy": 0.5347826086956522,
+        "correct": 123,
+        "n": 230,
+        "predicted_d_rate": 0.1391304347826087
+      }
+    },
+    "game_16_H2": {
+      "0-5": {
+        "accuracy": 0.18181818181818182,
+        "correct": 2,
+        "n": 11,
+        "predicted_d_rate": 0.45454545454545453
+      },
+      "12+": {
+        "accuracy": 0.8059701492537313,
+        "correct": 378,
+        "n": 469,
+        "predicted_d_rate": 0.06183368869936034
+      },
+      "6-11": {
+        "accuracy": 0.6105263157894737,
+        "correct": 116,
+        "n": 190,
+        "predicted_d_rate": 0.1368421052631579
+      }
+    },
+    "game_17_H1": {
+      "0-5": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "n": 2,
+        "predicted_d_rate": 0.5
+      },
+      "12+": {
+        "accuracy": 0.7084805653710248,
+        "correct": 401,
+        "n": 566,
+        "predicted_d_rate": 0.061837455830388695
+      },
+      "6-11": {
+        "accuracy": 0.4943181818181818,
+        "correct": 87,
+        "n": 176,
+        "predicted_d_rate": 0.09659090909090909
+      }
+    },
+    "game_17_H2": {
+      "0-5": {
+        "accuracy": 0.36363636363636365,
+        "correct": 4,
+        "n": 11,
+        "predicted_d_rate": 0.36363636363636365
+      },
+      "12+": {
+        "accuracy": 0.7962962962962963,
+        "correct": 516,
+        "n": 648,
+        "predicted_d_rate": 0.023148148148148147
+      },
+      "6-11": {
+        "accuracy": 0.5116279069767442,
+        "correct": 66,
+        "n": 129,
+        "predicted_d_rate": 0.13178294573643412
+      }
+    },
+    "game_1_H1": {
+      "0-5": {
+        "accuracy": 0.5,
+        "correct": 1,
+        "n": 2,
+        "predicted_d_rate": 0.5
+      },
+      "12+": {
+        "accuracy": 0.6334519572953736,
+        "correct": 356,
+        "n": 562,
+        "predicted_d_rate": 0.13701067615658363
+      },
+      "6-11": {
+        "accuracy": 0.47540983606557374,
+        "correct": 58,
+        "n": 122,
+        "predicted_d_rate": 0.1721311475409836
+      }
+    },
+    "game_1_H2": {
+      "0-5": {
+        "accuracy": 0.5,
+        "correct": 2,
+        "n": 4,
+        "predicted_d_rate": 0.5
+      },
+      "12+": {
+        "accuracy": 0.6847290640394089,
+        "correct": 278,
+        "n": 406,
+        "predicted_d_rate": 0.11330049261083744
+      },
+      "6-11": {
+        "accuracy": 0.6138613861386139,
+        "correct": 62,
+        "n": 101,
+        "predicted_d_rate": 0.21782178217821782
+      }
+    },
+    "game_22_H1": {
+      "0-5": {
+        "accuracy": 0.2,
+        "correct": 1,
+        "n": 5,
+        "predicted_d_rate": 0.0
+      },
+      "12+": {
+        "accuracy": 0.7068645640074211,
+        "correct": 381,
+        "n": 539,
+        "predicted_d_rate": 0.06679035250463822
+      },
+      "6-11": {
+        "accuracy": 0.622093023255814,
+        "correct": 214,
+        "n": 344,
+        "predicted_d_rate": 0.06976744186046512
+      }
+    },
+    "game_22_H2": {
+      "0-5": {
+        "accuracy": 0.42857142857142855,
+        "correct": 3,
+        "n": 7,
+        "predicted_d_rate": 0.14285714285714285
+      },
+      "12+": {
+        "accuracy": 0.769406392694064,
+        "correct": 337,
+        "n": 438,
+        "predicted_d_rate": 0.0639269406392694
+      },
+      "6-11": {
+        "accuracy": 0.6183574879227053,
+        "correct": 128,
+        "n": 207,
+        "predicted_d_rate": 0.09178743961352658
+      }
+    },
+    "game_23_H1": {
+      "0-5": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "n": 1,
+        "predicted_d_rate": 0.0
+      },
+      "12+": {
+        "accuracy": 0.7200854700854701,
+        "correct": 337,
+        "n": 468,
+        "predicted_d_rate": 0.0641025641025641
+      },
+      "6-11": {
+        "accuracy": 0.5875706214689266,
+        "correct": 104,
+        "n": 177,
+        "predicted_d_rate": 0.11864406779661017
+      }
+    },
+    "game_23_H2": {
+      "0-5": {
+        "accuracy": 0.3333333333333333,
+        "correct": 3,
+        "n": 9,
+        "predicted_d_rate": 0.3333333333333333
+      },
+      "12+": {
+        "accuracy": 0.6761658031088082,
+        "correct": 261,
+        "n": 386,
+        "predicted_d_rate": 0.08290155440414508
+      },
+      "6-11": {
+        "accuracy": 0.5804597701149425,
+        "correct": 101,
+        "n": 174,
+        "predicted_d_rate": 0.14942528735632185
+      }
+    },
+    "game_35_H1": {
+      "0-5": {
+        "accuracy": 0.3333333333333333,
+        "correct": 1,
+        "n": 3,
+        "predicted_d_rate": 0.0
+      },
+      "12+": {
+        "accuracy": 0.7158620689655173,
+        "correct": 519,
+        "n": 725,
+        "predicted_d_rate": 0.038620689655172416
+      },
+      "6-11": {
+        "accuracy": 0.6129032258064516,
+        "correct": 114,
+        "n": 186,
+        "predicted_d_rate": 0.17204301075268819
+      }
+    },
+    "game_35_H2": {
+      "0-5": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "n": 1,
+        "predicted_d_rate": 0.0
+      },
+      "12+": {
+        "accuracy": 0.7914364640883977,
+        "correct": 573,
+        "n": 724,
+        "predicted_d_rate": 0.034530386740331494
+      },
+      "6-11": {
+        "accuracy": 0.6441717791411042,
+        "correct": 105,
+        "n": 163,
+        "predicted_d_rate": 0.1165644171779141
+      }
+    },
+    "game_37_H1": {
+      "0-5": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "n": 2,
+        "predicted_d_rate": 1.0
+      },
+      "12+": {
+        "accuracy": 0.7772877618522602,
+        "correct": 705,
+        "n": 907,
+        "predicted_d_rate": 0.07276736493936053
+      },
+      "6-11": {
+        "accuracy": 0.32653061224489793,
+        "correct": 16,
+        "n": 49,
+        "predicted_d_rate": 0.42857142857142855
+      }
+    },
+    "game_37_H2": {
+      "0-5": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "n": 3,
+        "predicted_d_rate": 0.3333333333333333
+      },
+      "12+": {
+        "accuracy": 0.752112676056338,
+        "correct": 534,
+        "n": 710,
+        "predicted_d_rate": 0.061971830985915494
+      },
+      "6-11": {
+        "accuracy": 0.4918032786885246,
+        "correct": 30,
+        "n": 61,
+        "predicted_d_rate": 0.16393442622950818
+      }
+    },
+    "game_38_H1": {
+      "0-5": {
+        "accuracy": 0.4090909090909091,
+        "correct": 9,
+        "n": 22,
+        "predicted_d_rate": 0.36363636363636365
+      },
+      "12+": {
+        "accuracy": 0.6833910034602076,
+        "correct": 395,
+        "n": 578,
+        "predicted_d_rate": 0.13667820069204153
+      },
+      "6-11": {
+        "accuracy": 0.5352112676056338,
+        "correct": 190,
+        "n": 355,
+        "predicted_d_rate": 0.2
+      }
+    },
+    "game_38_H2": {
+      "0-5": {
+        "accuracy": 0.25,
+        "correct": 1,
+        "n": 4,
+        "predicted_d_rate": 0.75
+      },
+      "12+": {
+        "accuracy": 0.7895622895622896,
+        "correct": 469,
+        "n": 594,
+        "predicted_d_rate": 0.07912457912457913
+      },
+      "6-11": {
+        "accuracy": 0.7006578947368421,
+        "correct": 213,
+        "n": 304,
+        "predicted_d_rate": 0.08881578947368421
+      }
+    },
+    "game_39_H1": {
+      "0-5": {
+        "accuracy": 0.25,
+        "correct": 3,
+        "n": 12,
+        "predicted_d_rate": 0.5
+      },
+      "12+": {
+        "accuracy": 0.8075,
+        "correct": 323,
+        "n": 400,
+        "predicted_d_rate": 0.0425
+      },
+      "6-11": {
+        "accuracy": 0.6324503311258278,
+        "correct": 191,
+        "n": 302,
+        "predicted_d_rate": 0.08609271523178808
+      }
+    },
+    "game_39_H2": {
+      "0-5": {
+        "accuracy": 0.45,
+        "correct": 9,
+        "n": 20,
+        "predicted_d_rate": 0.15
+      },
+      "12+": {
+        "accuracy": 0.7951127819548872,
+        "correct": 423,
+        "n": 532,
+        "predicted_d_rate": 0.05639097744360902
+      },
+      "6-11": {
+        "accuracy": 0.6958174904942965,
+        "correct": 183,
+        "n": 263,
+        "predicted_d_rate": 0.09505703422053231
+      }
+    },
+    "game_3_H1": {
+      "0-5": {
+        "accuracy": 0.25,
+        "correct": 1,
+        "n": 4,
+        "predicted_d_rate": 0.5
+      },
+      "12+": {
+        "accuracy": 0.6661442006269592,
+        "correct": 425,
+        "n": 638,
+        "predicted_d_rate": 0.14890282131661442
+      },
+      "6-11": {
+        "accuracy": 0.4050632911392405,
+        "correct": 64,
+        "n": 158,
+        "predicted_d_rate": 0.22151898734177214
+      }
+    },
+    "game_3_H2": {
+      "0-5": {
+        "accuracy": 1.0,
+        "correct": 4,
+        "n": 4,
+        "predicted_d_rate": 0.0
+      },
+      "12+": {
+        "accuracy": 0.7719298245614035,
+        "correct": 440,
+        "n": 570,
+        "predicted_d_rate": 0.06491228070175438
+      },
+      "6-11": {
+        "accuracy": 0.5833333333333334,
+        "correct": 49,
+        "n": 84,
+        "predicted_d_rate": 0.13095238095238096
+      }
+    },
+    "game_4_H1": {
+      "0-5": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "n": 2,
+        "predicted_d_rate": 0.0
+      },
+      "12+": {
+        "accuracy": 0.7,
+        "correct": 532,
+        "n": 760,
+        "predicted_d_rate": 0.09342105263157895
+      },
+      "6-11": {
+        "accuracy": 0.5033557046979866,
+        "correct": 75,
+        "n": 149,
+        "predicted_d_rate": 0.12751677852348994
+      }
+    },
+    "game_4_H2": {
+      "0-5": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "n": 3,
+        "predicted_d_rate": 0.6666666666666666
+      },
+      "12+": {
+        "accuracy": 0.6740576496674058,
+        "correct": 608,
+        "n": 902,
+        "predicted_d_rate": 0.11197339246119734
+      },
+      "6-11": {
+        "accuracy": 0.5083333333333333,
+        "correct": 61,
+        "n": 120,
+        "predicted_d_rate": 0.10833333333333334
+      }
+    },
+    "game_51_H1": {
+      "0-5": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "n": 3,
+        "predicted_d_rate": 0.6666666666666666
+      },
+      "12+": {
+        "accuracy": 0.8153846153846154,
+        "correct": 742,
+        "n": 910,
+        "predicted_d_rate": 0.05934065934065934
+      },
+      "6-11": {
+        "accuracy": 0.5060240963855421,
+        "correct": 42,
+        "n": 83,
+        "predicted_d_rate": 0.13253012048192772
+      }
+    },
+    "game_51_H2": {
+      "0-5": {
+        "accuracy": 0.3333333333333333,
+        "correct": 2,
+        "n": 6,
+        "predicted_d_rate": 0.3333333333333333
+      },
+      "12+": {
+        "accuracy": 0.7869822485207101,
+        "correct": 665,
+        "n": 845,
+        "predicted_d_rate": 0.054437869822485205
+      },
+      "6-11": {
+        "accuracy": 0.6025641025641025,
+        "correct": 47,
+        "n": 78,
+        "predicted_d_rate": 0.1794871794871795
+      }
+    }
+  }
+}

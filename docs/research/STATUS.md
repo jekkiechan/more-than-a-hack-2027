@@ -44,6 +44,30 @@ The three VAL matches are now exposed. New independent continuous labels and
 observed-ball inputs remain the priority; no top-20 probability is established.
 Raw assets/predictions are locally verified only, with no new remote upload.
 
+## Expanded PCBAS evaluation — 2 November 2026
+
+The [twelve-game continuation](../../experiments/PCBAS_EXPANDED_ANCHOR_V2.md)
+is complete on twelve deterministic additional TRAIN games, with 36 games kept
+unscored. The unchanged submission package reaches **71.57% equal-game Drive
+agreement**, 95% whole-game bootstrap interval **68.95–74.10%**, across 8,071
+primary anchors. All 96 class/half cells and 23,039 source-event joins independently
+verify. No fitting, parameter search, organizer scoring or promotion occurred.
+
+This corroborates the earlier three-game diagnostic on more matches; it does
+not establish continuous possession spell accuracy. Cross/shot live-anchor
+predicted-D rates remain 29.60%/33.45%; pooled low-visibility performance is weak
+and class mixtures differ. Independent continuous H/A/D/X labels and measured
+ball inputs remain the priority. The twelve games are now exposed diagnostics,
+not a fresh source for future selection claims. Source anonymity limits exhaustive
+fixture deduplication and intervals describe this source only.
+
+Code and aggregate evidence are published in
+[PR #78](https://github.com/jekkiechan/more-than-a-hack-2027/pull/78).
+The existing restricted research site remains at version 26, access revision 2: its update is blocked because the
+Sites source-workflow helper is unavailable in this environment. The linked report
+contains the verified result and records the outstanding site update. Raw data
+and native predictions are locally verified only; no raw-data upload is claimed.
+
 ## Latest delivery
 
 The phase-average promotion and eval-policy update are merged in
