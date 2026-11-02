@@ -24,20 +24,13 @@ possessions, diagnostic only.
 ## Private cache restore
 
 The code promotion is merged in [PR #74](https://github.com/jekkiechan/more-than-a-hack-2027/pull/74).
-The new private package is locally verified but its upload awaits explicit
-destination approval. Meanwhile, restore the already-uploaded original_full
-checkpoints: all four hashes are identical. With current public code and its
-promoted default manifest, select that existing checkpoint directory explicitly:
-
-```sh
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_original_diversity_ensemble_v1.json --data-dir data
-python -m experiments.current_baseline predict --models-dir data/models/joint_gru_sn_dense_original_diversity_ensemble_v1 --output data/experiments/current_baseline/phase_restored.csv
-python evaluation/validate_submission.py data/experiments/current_baseline/phase_restored.csv
-```
-
-After the promotion report records new private-package delivery, its versioned
-manifest removes the need for the directory override. Its matching source
-snapshot preserves inference code; the phase0 package stays separately restorable.
+Private [delivery PR #18](https://github.com/jekkiechan/mtah-data/pull/18) is
+merged after explicit upload approval on 2 November 2026. All 399 package/source
+entries (7,978,448 bytes) pass fresh remote download and empty-directory restore
+checks with an independent LFS store. Generic and versioned cache defaults agree.
+The [remote verification receipt](results/baseline_original_full_phase_remote_verification.json)
+records the observed delivery state. The matching source snapshot preserves
+inference code; the phase0 package stays separately restorable.
 
 ```sh
 python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json --data-dir data

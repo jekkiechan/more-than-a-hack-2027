@@ -33,10 +33,12 @@ The phase-average promotion and eval-policy update are merged in
 [PR #74](https://github.com/jekkiechan/more-than-a-hack-2027/pull/74) with passing
 CI. Research site **version 25** is published; all 12 desktop/mobile page checks
 and 18 chart-control combinations pass. The audience remains restricted at
-revision 2. The new private package is locally verified (399 entries); its
-upload awaits explicit destination approval following automatic review rejection.
-The [baseline guide](../../experiments/BASELINE.md#private-cache-restore) supports
-immediate inference using the identical already-uploaded original_full checkpoints.
+revision 2. Following explicit user upload approval on 2 November, private
+[PR #18](https://github.com/jekkiechan/mtah-data/pull/18) is merged. All 399 entries /
+7,978,448 bytes pass independent remote download and empty-directory restore;
+generic and versioned defaults select the promoted phase-average package. The
+[baseline guide](../../experiments/BASELINE.md#private-cache-restore) gives direct
+restore/inference commands without the previous directory override.
 The [promotion report](../../experiments/ORIGINAL_FULL_PHASE_PROMOTION.md#delivery-state)
 owns the latest delivery state; earlier version receipts below remain historical.
 

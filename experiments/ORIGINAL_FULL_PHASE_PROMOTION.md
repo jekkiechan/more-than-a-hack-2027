@@ -72,9 +72,15 @@ and publication; no remote-native research archive is implied by package deliver
   twelve phase-control combinations and six progress-control combinations pass,
   with no JavaScript errors or horizontal overflow. See the
   [publication receipt](results/baseline_original_full_phase_site_publication.json).
-- The new private package contains 399 locally verified weight/metadata/source
-  entries. Automatic approval review rejected its upload because explicit
-  authorization to export to `jekkiechan/mtah-data` was required; that request
-  is pending. No remote upload or fresh remote restore is claimed. The
-  [baseline guide](BASELINE.md#private-cache-restore) provides a working fallback
-  using the identical checkpoints already uploaded with the phase0 package.
+- The user explicitly approved the private upload on 2 November 2026, resolving
+  the earlier automatic-review blocker. Private
+  [PR #18](https://github.com/jekkiechan/mtah-data/pull/18) is merged at
+  `56191d01512bfc4febfc27bda1e44ee5ccd2b82e`. A fresh independent checkout and LFS
+  store verify all **399 entries / 7,978,448 bytes**, restored into an empty
+  destination. Generic and versioned weight/source defaults agree; checkpoint,
+  manifest, policy and receipt hashes match. Inference from the downloaded source
+  and restored checkpoints reproduces all 199,319 sealed CSV rows byte for byte
+  without organizer reference access. See the
+  [remote verification receipt](results/baseline_original_full_phase_remote_verification.json).
+  The [baseline guide](BASELINE.md#private-cache-restore) now provides direct
+  package restore commands. Earlier frozen receipts remain unchanged.
