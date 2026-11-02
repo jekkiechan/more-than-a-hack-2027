@@ -71,6 +71,24 @@ The [final publication receipt](../../experiments/results/pcbas_expanded_anchor_
 records the observed state. Raw data and native predictions remain locally
 verified only; no raw-data upload is claimed.
 
+## Bridge and package check on new PCBAS/GAR evidence — 2 November 2026
+
+Two frozen, fit-free studies close the main questions the PCBAS results raised.
+
+- [GAR no-ball bridge](../../experiments/GAR_NOBALL_BRIDGE_V1.md): removing the
+  ball on the ten GAR TEST games drops adopted pass-anchor agreement to **67.5%**
+  versus PCBAS **68.8%**, consistent by the declared rule (within 5 points). The
+  PCBAS cross/shot dead-play pattern reproduces on GAR without ball (shot predicted
+  D 20%→38%). Conclusion: PCBAS measures player-only inference, not a 2023–24
+  cohort transfer penalty. The ball is worth **+.211 spell F1 (95% CI +.180 to
+  +.238)** on GAR. Clean parity with `gar_deployment_eval_v2` is exact. Per the
+  declared rule, PCBAS H/A training is not prioritized.
+- [PCBAS package comparison](../../experiments/PCBAS_PACKAGE_COMPARISON_V1.md):
+  on 18 never-scored reserve games, adopted Drive agreement is **71.97%**
+  (69.40–74.43%), replicating the 3- and 12-game results. Calibrated+phase minus
+  adopted is **−0.45 points (−0.86, −0.02)**; the adopted package wins in 12 of 18
+  games. No case for switching packages. The last 18 PCBAS TRAIN games stay sealed.
+
 ## Latest delivery
 
 The phase-average promotion and eval-policy update are merged in

@@ -1,0 +1,75 @@
+{
+  "arms": [
+    "original_full",
+    "calibrated"
+  ],
+  "bootstrap": {
+    "draws": 2000,
+    "seed": 20261102,
+    "unit": "whole game"
+  },
+  "created_utc": "2026-11-02T08:59:15.920538+00:00",
+  "decision_rule": {
+    "caveat": "GAR and PCBAS anchors are defined by different annotation schemes; this is a bridge, not an equivalence test",
+    "consistent": "GAR noball pass agreement within 5 points of PCBAS: no evidence of a 2022->2023/24 cohort penalty in player-only team attribution; PCBAS team-head training is not prioritized",
+    "gap": "GAR noball pass agreement more than 5 points above PCBAS: cohort/visibility gap; an H/A-only PCBAS auxiliary fine-tune becomes the recommended training experiment"
+  },
+  "exposure": "GAR TEST was scored once by gar_deployment_eval_v2 (clean/v2). No model was selected on it; this adds a new input view only.",
+  "fitting": false,
+  "games": [
+    "3850",
+    "3851",
+    "3852",
+    "3853",
+    "3854",
+    "3855",
+    "3856",
+    "3857",
+    "3858",
+    "3859"
+  ],
+  "metrics": [
+    "official-scorer spell_f1/macro_f1/d_f1 on silver labels",
+    "live-frame team agreement (silver H/A frames; D/X wrong)",
+    "predicted-D rate on silver live frames",
+    "PCBAS-like anchor agreement at controlled touch-run end frames: BC->drive, PA->pass, CR->cross, SH->shot",
+    "anchor agreement by visible players 0-5/6-11/12+"
+  ],
+  "mode": "phase_avg (six GAR sampling phases, frozen decoder)",
+  "organizer_reference_access": false,
+  "packages": {
+    "calibrated": {
+      "manifest": "experiments/baselines/joint_gru_sn_dense_calibrated_ensemble_v1.json",
+      "manifest_sha256": "b9f7ade00ae94f4306e7e8966a29a88fc57be2d00f657be58a9b5bc38f89732c"
+    },
+    "original_full": {
+      "manifest": "experiments/baseline_manifest.json",
+      "manifest_sha256": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b"
+    }
+  },
+  "parity": "clean original_full and calibrated phase_avg per-game spell/macro F1 must equal the saved gar_deployment_eval_v2 TEST values within 1e-9 before any noball readout",
+  "pcbas_reference": {
+    "cross": 0.6689,
+    "drive": 0.7157,
+    "pass_": 0.688,
+    "shot": 0.5879
+  },
+  "primary": "equal-game noball pass-anchor agreement of original_full, compared descriptively with PCBAS 0.688; and clean-minus-noball spell F1 with paired whole-game bootstrap",
+  "promotion": false,
+  "question": "On GAR TEST, how much does removing every ball observation cost the exact adopted package, and is PCBAS player-only pass agreement consistent with GAR under the same regime?",
+  "source_sha256": {
+    "experiments/gar_deployment_eval_v2.py": "33b8fc765c6a0cc438c21127e5780a3fd2064f616289eb3706b7da8c9f9de345",
+    "experiments/gar_heldout_eval_v1.py": "331cd117807b33afea1930b21a217cb65fb11bad274fd0459fa6f480cd32e4bf",
+    "experiments/gar_noball_bridge_v1.py": "976f216fb438ee2af0c5bfc1abb4580b555f53ba8a25d8c9515b22393af30e9e",
+    "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+    "experiments/tests/test_gar_noball_bridge_v1.py": "3d32353fbaaf04681cd388c39a45abe6278505ca0e53637ef4e50159f666a9aa"
+  },
+  "split": "test",
+  "status": "frozen",
+  "study": "gar_noball_bridge_v1",
+  "threshold_search": false,
+  "views": {
+    "clean": "unchanged tracking",
+    "noball": "all ball coordinates NaN and ball_observed False; players, masks, periods and timestamps unchanged"
+  }
+}
