@@ -1,0 +1,20 @@
+{
+  "study_id": "v2_spell_target",
+  "status": "failed_preflight_before_emission_cache_or_scoring",
+  "declaration": "experiments/results/v2_spell_target_declaration.json",
+  "declaration_sha256": "2f9657ec1193388a6498699bf74eba021733db03060cbab846285a558030f38f",
+  "runner": "experiments/v2_spell_target.py",
+  "runner_sha256": "527f97bb31710119b3fabf171c44a50b0a8403128b145c97af44fba3cb4c51d1",
+  "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 python -m experiments.v2_spell_target preflight",
+  "failure": {
+    "exception": "AttributeError",
+    "message": "module 'experiments.stress_components' has no attribute 'inputs_only'",
+    "cause": "The runner aliased stress_components as tc, but the archived inference path obtains inputs_only from tracking_corruption."
+  },
+  "candidate_scores_written": false,
+  "preflight_receipt_written": false,
+  "emission_cache_files_written": 0,
+  "organizer_reference_access": false,
+  "public_scoring": false,
+  "correction": "experiments/v2_spell_target_runtime.py; new study ID and output namespace; frozen predecessor preserved"
+}
