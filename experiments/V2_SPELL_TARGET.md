@@ -228,3 +228,13 @@ New training views, checkpoints and native predictions stay in ignored local
 storage. Aggregate reports and provenance receipts are suitable for the
 research repository. Remote availability of older restored archives does not
 establish remote availability of the new artifacts.
+
+Code and aggregate evidence are delivered in
+[PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82).
+The [research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
+is published at version 29 after desktop/mobile layout and chart-control checks.
+The existing restricted audience is unchanged at access revision 2. The
+[delivery receipt](results/v2_spell_target_delivery.json) records source,
+archive, native publication and validation metadata. The first automatic
+publication review rejected the action; a fresh owner/allowlist check resolved
+the concern and the same native tool published the saved version successfully.

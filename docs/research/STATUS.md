@@ -52,6 +52,14 @@ continuous-match gold remain outstanding evidence needs. The report preserves
 failed attempts, mechanical runtime corrections and the disclosed recovery
 receipt preservation exception.
 
+Research code and aggregate evidence are on
+[PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82).
+Research site **version 29** is published with desktop/mobile checks,
+all six chart-control combinations and seven comparison rows. Restricted
+access remains at revision 2 with the same allowlist. The
+[delivery receipt](../../experiments/results/v2_spell_target_delivery.json)
+records the native publication result and local-only artifact availability.
+
 ## New external confidence check — 2 November 2026
 
 [PCBAS validation](../../experiments/PCBAS_CONFIDENCE_V1.md) acquired and audited
