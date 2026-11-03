@@ -1,9 +1,9 @@
 # Current research state
 
-Reviewed against fork `main` through
-[PR #72](https://github.com/jekkiechan/more-than-a-hack-2027/pull/72), plus the
-completed phase-average comparison and guard audit on PR #73. The
-subsequent explicitly user-authorized phase-average promotion supersedes PR #70.
+Reviewed 3 November 2026 against fork `main` through
+[PR #81](https://github.com/jekkiechan/more-than-a-hack-2027/pull/81), plus the
+completed v2 target studies below. The user-authorized phase-average promotion
+remains the adopted package.
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -19,13 +19,46 @@ now enabled. No fitting or organizer rescoring is part of promotion.
 Original clean/v1/v2 spell: **.667556/.531576/.583571**. Exact-package GAR TEST
 clean/v2 spell: **.701641/.701289** on ten games. All seven historical active
 guards pass; the +.01 clean screen remains failed with a user-authorized
-exception. Calibrated+phase remains the TEST/original-v2 spell point leader;
+exception. Calibrated+phase leads the earlier exact-package TEST comparison;
 the paired TEST phase-gain interval includes zero. Independent continuous-match
 gold confirmation remains pending.
 
 The evaluation policy now uses clean plus `feed_like_v2` with 4+ realizations
 for original-provider development. Keep GAR TEST separate from selected-on
 VALID and record future reuse. V1 and composite remain historical diagnostics.
+
+## V2 spell target — 3 November 2026
+
+The completed [v2 target studies](../../experiments/V2_SPELL_TARGET.md) reach
+**0.592749 eligible v2 spell F1**, versus adopted **0.583571** (+0.009178).
+Clean spell is **0.665355** versus **0.667556** (-0.002201). The **0.60 target
+remains unmet**. The winner blends the new four-view original-possession model
+and archived calibrated model 50/50, averages native phases, and uses H/A
+transition cost 1.5. Common clean/provider retention checks pass; the historical
+clean-gain screen remains failed and adoption is unchanged.
+
+Six fixed provider-excluded fits use the eligible original TRAIN pool and
+45 GAR TRAIN games. Nine consensus arms, 109 calibration arms, three new-model
+arms, three fixed decoder-transfer arms and a final 20-arm boundary check use
+the same five exposed development matches, clean plus four fixed v2 views.
+All eight archived C0 spell/macro aggregates replay with zero error. Final
+local validation passes 639 experiment tests and 26 root tests. The H/A-cost-2
+numerical maximum is 0.592926 but fails the fixed clean floor; it is not chosen.
+
+New views, research weights and native outputs are locally verified, not newly
+uploaded. No pooled deployment fit, organizer scoring, GAR TEST reuse or
+default change occurs. An exact pooled-package check and independent
+continuous-match gold remain outstanding evidence needs. The report preserves
+failed attempts, mechanical runtime corrections and the disclosed recovery
+receipt preservation exception.
+
+Research code and aggregate evidence are on
+[PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82).
+Research site **version 29** is published with desktop/mobile checks,
+all six chart-control combinations and seven comparison rows. Restricted
+access remains at revision 2 with the same allowlist. The
+[delivery receipt](../../experiments/results/v2_spell_target_delivery.json)
+records the native publication result and local-only artifact availability.
 
 ## New external confidence check — 2 November 2026
 
