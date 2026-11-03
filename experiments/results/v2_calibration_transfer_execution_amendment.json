@@ -1,0 +1,72 @@
+{
+ "cache_identity_rules": {
+  "comparison": "normalize expected values to strings to match the frozen transfer reader's string conversion",
+  "integer_scalar_fields": [
+   "replicate",
+   "seed",
+   "phase"
+  ],
+  "model_seal_key": "leave_out_{provider_fold}/{seed}"
+ },
+ "main_evaluation_cache_correction": {
+  "cache_inventory_count": 160,
+  "cache_only_no_inference": true,
+  "path": "experiments/results/v2_training_eval_runtime_v3_declaration.json",
+  "sha256": "e7e48bfce991c6ab720dd40abfd4dc424b20dfd1d904f855ef63ca103bf64896",
+  "source_path": "experiments/v2_training_eval_runtime_v3.py",
+  "source_sha256": "d14bb4c5c6772ef1f5e0a2cadc8cceadf7e5e1204b4ccc66a8f5087cb2a37e62"
+ },
+ "new_decoder_settings": 0,
+ "new_emissions": 0,
+ "new_fits": 0,
+ "organizer_reference_access": false,
+ "prior_main_runtime_correction": {
+  "path": "experiments/results/v2_training_eval_runtime_correction.json",
+  "sha256": "46e9d4335a91b4e2b679ad73abfba9dcb20917efcbed402eaf080d8f793d5236"
+ },
+ "promotion": false,
+ "public_scoring": false,
+ "scope": "Normalize expected cache identity scalars to strings for the frozen transfer reader and map short provider aliases to the exact leave_out_* model seal keys; do not alter arrays, selected decoder, arms, labels, scoring or cohort.",
+ "status": "mechanical_cache_reader_and_seal_key_correction_frozen_before_transfer_seal_or_scores",
+ "study_id": "v2_calibration_transfer_execution_amendment",
+ "transfer_declaration": {
+  "arms": [
+   "new_full_phase_tta",
+   "new_conditional_HA_x_archived_calibrated_D",
+   "equal_50_50_new_full_plus_archived_calibrated"
+  ],
+  "config": {
+   "arm": "adop_dt4_dead3_ha1.5_ht1",
+   "calibration_declaration_sha256": "e333507534b4f3e8094210046dabccf8e07053f865e9a60e96a0df38f084e003",
+   "calibration_result_sha256": "b1faf27eaa3245ca37391eed3b60e068b884b87ce9402876aee8cf3502cd1ab5",
+   "config": {
+    "dead": 3,
+    "dt": 4,
+    "family": "calibration",
+    "ha": 1.5,
+    "ht": 1.0,
+    "id": "f062"
+   }
+  },
+  "path": "experiments/results/v2_calibration_transfer_declaration.json",
+  "sha256": "1753ab4716c7b1653e34851639ab88f124a149fb618c22ba4bdca896d041ce40",
+  "study_id": "v2_calibration_transfer"
+ },
+ "transfer_source_bindings": {
+  "data/experiments/v2_training_eval/evaluation_seal.json": "a0da655e3b09a9570ab4a699cb59d4dca71fef222a99b69ef5d6608a5fb8ad27",
+  "experiments/results/v2_calibration_target.json": "b1faf27eaa3245ca37391eed3b60e068b884b87ce9402876aee8cf3502cd1ab5",
+  "experiments/results/v2_calibration_target_declaration.json": "e333507534b4f3e8094210046dabccf8e07053f865e9a60e96a0df38f084e003",
+  "experiments/results/v2_calibration_transfer_declaration.json": "1753ab4716c7b1653e34851639ab88f124a149fb618c22ba4bdca896d041ce40",
+  "experiments/results/v2_spell_target_runtime_declaration.json": "4da243d7f3fbe3fa4c53686c5f272aff7742895a430589808e2da75a0dc1e8cc",
+  "experiments/results/v2_spell_target_runtime_preflight.json": "fdbaae330dcd76cfea0fa6fab62fd00d560b6a5ed8254c860286f75a2e11ef1e",
+  "experiments/results/v2_training_eval_declaration.json": "d9f6a63dd5c68c5d31bbf0494a86646cdc2c23cd38d54c5863d486eeca6a0689",
+  "experiments/results/v2_training_eval_runtime_correction.json": "46e9d4335a91b4e2b679ad73abfba9dcb20917efcbed402eaf080d8f793d5236",
+  "experiments/results/v2_training_eval_runtime_v2_declaration.json": "d5237f044ce49ebdd0fd72a479eb628b0b491e650a7e6d357912e6981b55e8e6",
+  "experiments/results/v2_training_eval_runtime_v3_declaration.json": "e7e48bfce991c6ab720dd40abfd4dc424b20dfd1d904f855ef63ca103bf64896",
+  "experiments/v2_calibration_transfer.py": "d4f1e35e907be124ae328bb62f7334d951b719176e1e6a6495faf1600065e262",
+  "experiments/v2_calibration_transfer_runtime.py": "9f71f91e7e1f7c80d489c821b8c53bea6be02d3f88a3f318e5983996516b1891",
+  "experiments/v2_training_eval.py": "c853a1599046cdeae927b79022b8c85676ded58f15dc2e64d882289ab818dd9b",
+  "experiments/v2_training_eval_runtime_v2.py": "421c9998209baa72cfba3eefdad5ff1bef37ddb75aec784d8ac88e514c095f83",
+  "experiments/v2_training_eval_runtime_v3.py": "d14bb4c5c6772ef1f5e0a2cadc8cceadf7e5e1204b4ccc66a8f5087cb2a37e62"
+ }
+}

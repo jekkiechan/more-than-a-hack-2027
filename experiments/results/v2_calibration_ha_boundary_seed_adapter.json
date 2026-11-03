@@ -1,0 +1,27 @@
+{
+ "adapter_source_sha256": "d9d965912415ea2b5bea24fca8a36e6a537c4d0b552e71c881916967530b8d9b",
+ "arms_or_parameters_changed": false,
+ "candidate_grid_or_selection_changed": false,
+ "change": "map each (phase, probability) pair to (phase, requested_seed, probability) before calling the frozen phase pooling helper",
+ "fits": 0,
+ "frozen_declaration_sha256": "11f6e50306946f2339245d0c7cc3050d88ccf3924d58b9b3578cf57ee5c6f8af",
+ "preflight_controls": {
+  "archived_calibrated_at_ha_1.5": {
+   "abs_error": 0.0,
+   "actual": 0.5896580922453691,
+   "expected": 0.5896580922453691,
+   "tolerance": 1e-12
+  },
+  "new_blend_at_f062_ha_3": {
+   "abs_error": 0.0,
+   "actual": 0.5913931524970455,
+   "expected": 0.5913931524970455,
+   "tolerance": 1e-12
+  }
+ },
+ "preflight_sha256": "295e04353632c75eb4e25ac64c8f1bb88111c7fa214c367e55911b9e9d0afe7c",
+ "purpose": "repair only per-seed tuple arity in selected-arm diagnostics after fixed grid completed but before result was written",
+ "re_inference": false,
+ "status": "frozen_before_replay_of_same_fixed_grid_and_seed_readout",
+ "study_id": "v2_calibration_ha_boundary_v1"
+}
