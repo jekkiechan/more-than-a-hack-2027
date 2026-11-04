@@ -1,12 +1,14 @@
-# Direct weight edits after v2 model reconstruction
+# Direct GRU weight edits reach 0.594110 v2 spell F1
 
-Status: running. The six provider-held-out checkpoints have been reconstructed
-under a new study ID from the frozen recipe and verified sources. The seven-arm primary and post-selection v1 development readouts are complete.
-Two pooled fits are sealed. The authorized one-use public diagnostic has run;
-GAR TEST deployment remains pending. This report will be updated from frozen
-receipts as those stages finish.
+Status: complete; retain the adopted package. Six provider-held-out checkpoints
+were reconstructed under a new study ID from the frozen recipe and verified
+sources. The primary development, v1, public, and GAR readouts and final
+independent verification are complete. The .60 v2 target remains unmet; there
+was no promotion or deployment change.
 
-Date / branch / source: 4 November 2026; `research/weight-edit-v2-spell`.
+Date / branch / source: 4 November 2026; `research/weight-edit-v2-spell`;
+[research PR #83](https://github.com/jekkiechan/more-than-a-hack-2027/pull/83)
+tracks the code and evidence.
 The active baseline remains `joint_gru_sn_dense_original_diversity_phase_ensemble_v1`.
 The reconstruction declaration is
 [`v2_weight_edit_reconstruction_v1_declaration.json`](results/v2_weight_edit_reconstruction_v1_declaration.json).
@@ -190,28 +192,89 @@ average the four fixed realizations within match.
 
 ## Matched readout
 
-The six-fit unedited reconstruction control reproduces the prior selected blend’s
-clean spell F1 at **0.665354983** (reported previously as 0.665355) and v2 at
-**0.5927491913**, exactly matching the archived eligible-v2 aggregate. The
-separate adopted original-full control replays all 25 clean/v2 cells for spell
-and macro F1 with zero error. Phase averaging uses every offset supported by
-each source’s native sample rate: five at 25 Hz (Sportec/Metrica), two at 10 Hz
-(SkillCorner), and six at 29.97 Hz for GAR. The frozen declaration’s “five
-native phases” phrase is shorthand and is not universal; runtime uses a
-sample-rate-derived stride. This documentation clarification does not alter the
-frozen declaration, model tensors, or score cells. This validates the comparison reference; it is not an edit result. The fixed primary development winner is `update_bias_p025`: clean spell **0.664316**, v2 spell **0.594110**, macro **0.872560 / 0.854513** and auxiliary 70/30 **0.726789 / 0.672231**. It gains **.001360** v2 spell (+0.136 pp) over the unedited reconstruction while losing **.001039** clean spell (−0.104 pp); versus adopted, clean is −.003240 and v2 is +.010538. All fixed development guards pass, but the .60 target remains **.005890** away. The opposite-sign update-bias control won; the hypothesis that reducing recurrent persistence would help was not confirmed. The post-selection v1 diagnostic is **0.518850 spell / 0.823766 macro**, versus unedited **0.518637 / 0.823302** and adopted **0.531576 / 0.826853**. The edit itself gains **.000213 v1 spell** versus the matched unedited reconstruction; the **.012726** adopted-package gap is a whole-pipeline comparison, not an isolated edit effect. v1 did not participate in selection. The frozen primary choice remains the best eligible v2 arm; later v1/GAR/public readouts do not rerank it. Two pooled deployment fits are sealed; GAR TEST remains pending. External GAR/public comparisons are against the adopted whole pipeline, with no unedited-new-pooled control. Adoption remains unchanged because promotion was not requested.
+The six-fit unedited reconstruction control reproduces the prior selected
+blend’s clean spell F1 at **0.665354983** (previously reported as 0.665355) and
+v2 at **0.5927491913**, exactly matching the archived eligible-v2 aggregate.
+The 25-cell full-cohort adopted control reproduces all four saved clean/v2 spell
+and macro aggregates with zero error; independent official replay also computes
+metrics from every new cell artifact. Phase averaging uses all offsets supported
+by the native rate: five at 25 Hz (Sportec/Metrica), two at 10 Hz (SkillCorner),
+and six at 29.97 Hz (GAR). The frozen declaration’s blanket “five native
+phases” wording is inaccurate away from 25 Hz; runtime derives the stride from
+sampling rate. This clarification does not alter the frozen declaration or score
+cells.
 
-| Cohort and protocol | Clean | v1 | v2 | Status |
-| --- | --- | --- | --- | --- |
-| Five original-provider development matches; paired to unedited reconstruction | See seven-arm table | .518850 spell / .823766 macro (post-selection) | Primary clean/v2 in table | v1 diagnostic complete |
-| Ten GAR TEST games; exact selected deployment package, games averaged equally | Pending | Outside declared deployment check | Pending | Not started |
-| Organizer public window; one authorized fixed diagnostic | Not applicable | Not applicable | .594286 spell / .852078 macro | Complete; diagnostic only |
+The primary development winner is `update_bias_p025`: clean spell **0.664316**,
+v2 spell **0.594110**, clean/v2 macro **0.872560 / 0.854513**, and clean/v2
+auxiliary 70/30 **0.726789 / 0.672231**. It gains **.001360** v2 spell over
+the unedited reconstruction and loses **.001039** clean spell; versus adopted,
+clean is −.003240 and v2 is +.010538. All fixed guards pass, but the .60 target
+remains **.005890** away. The opposite-sign update-bias arm wins; reducing
+recurrent persistence was not supported by this development comparison.
+
+The post-selection v1 diagnostic is **.518850 spell / .823766 macro / .610325
+auxiliary 70/30**, versus unedited **.518637 / .823302 / .610036** and adopted
+**.531576 / .826853 / .620159**. The edit itself gains **.000213 v1 spell**
+versus the matched unedited reconstruction. The **.012726** gap to adopted is a
+whole-pipeline difference, not an isolated edit effect; v1 was not part of the
+selection rule.
+
+The one-use public result is **.594286 spell / .852078 macro / .671623 auxiliary
+70/30**, versus adopted **.611765 / .849473 / .683077**. GAR is **.703713 clean /
+.700806 v2 spell** and **.779585 / .780529 macro**, versus adopted **.701641 /
+.701289 spell** and **.779073 / .780502 macro**. GAR’s v2 paired interval
+includes zero. Neither external readout had an unedited-new-pooled control, so
+these whole-pipeline differences are not attributable specifically to the
+weight edit. The GAR TEST cohort is now development exposure for future work.
+Later v1, GAR, and public results do not rerank the frozen five-match v2 winner.
+The adopted package is unchanged because promotion was not requested.
+
+| Evaluation | Candidate spell F1 | Adopted spell F1 | Candidate macro F1 | Adopted macro F1 |
+| --- | ---: | ---: | ---: | ---: |
+| Clean development, five exposed matches | .664316 | .667556 | .872560 | .871271 |
+| v1 development, five exposed matches (post-selection) | .518850 | .531576 | .823766 | .826853 |
+| v2 development, five exposed matches | .594110 | .583571 | .854513 | .849975 |
+| GAR clean, ten equal-weight games | .703713 | .701641 | .779585 | .779073 |
+| GAR v2, ten equal-weight games; mean over four views | .700806 | .701289 | .780529 | .780502 |
+| Public one-use diagnostic; fixed window | .594286 | .611765 | .852078 | .849473 |
+
+## GAR TEST deployment readout
+
+The selected pooled candidate pipeline was evaluated on ten GAR TEST games
+against the saved adopted-package results, with clean tracking and four fixed v2
+realizations. Scores are equal-game means; each v2 view averages the four
+realizations within each game. The candidate reaches **.703713 clean spell /
+.779585 macro** and **.700806 v2 spell / .780529 macro**, compared with adopted
+**.701641 / .779073 / .724871** clean and **.701289 / .780502 / .725053** v2
+(spell / macro / auxiliary 70-30). The candidate auxiliary 70-30 is **.726474
+clean / .724723 v2**. Clean spell delta is
++.002072 (6/10 games positive; paired game-bootstrap 95% interval
+[−.001374, +.005370]). Primary v2 spell delta is **−.000483** (6/10 positive;
+interval [−.004562, +.003461]); the interval includes zero, so this does not
+show a clear GAR v2 improvement.
+
+D precision rises (.515565 vs .504421 clean; .518311 vs .505975 v2) while D
+recall falls (.664551 vs .695753; .676480 vs .710661). Under-3-second spell
+recall at IoU .5 is .263919 vs .271665 clean and .267162 vs .268274 v2. Across
+the ten games, the mean reference count is 374 spells; the candidate predicts
+307.2, versus adopted 311.7 clean and 309.75 v2. The v2 target remains unmet.
+
+This reuses GAR TEST for a new predeclared candidate, so those ten games are now
+development exposure for future selection; this is not untouched confirmation.
+GAR targets are event-derived silver labels over discontinuous segments. The
+reported difference is between whole pooled pipelines, not an isolated tensor
+edit effect, because no unedited-new-pooled GAR control was scored. No later
+readout reranks the frozen five-match v2 winner. See the [GAR result]
+(results/v2_weight_edit_evaluation_v1.json), [execution receipt]
+(results/v2_weight_edit_evaluation_v1_gar_execution_result_receipt.json), and
+[final independent verification](results/v2_weight_edit_final_verification.json).
 
 ## One-use public diagnostic
 
 After the edit was frozen, the user-authorized one-use diagnostic scored the
-selected output on the fixed public window. Spell F1 is **.594286** and macro
-F1 **.852078**, compared with the saved adopted result **.611765 / .849473**:
+selected output on the fixed public window. Spell F1 is **.594286**, macro
+F1 **.852078**, and auxiliary 70/30 **.671623**, compared with the saved adopted
+result **.611765 / .849473 / .683077** (spell / macro / auxiliary):
 spell falls **.017479**, while macro rises **.002605**. The scored CSV has 199,319
 rows, of which 7,500 are graded; there are 17 reference and 18 predicted
 spells. The single-match bootstrap 5th–95th percentile ranges are .434286–.742857
@@ -230,8 +293,8 @@ control replay. The separate post-selection v1 readout is in
 70/30**, versus unedited **.518637 / .823302 / .610036** and adopted
 **.531576 / .826853 / .620159**. The edit itself adds .000213 v1 spell versus the matched unedited
 reconstruction. The larger .012726 gap to adopted is a whole-pipeline comparison
-and cannot be attributed to the tensor edit; v1 is not a selection criterion. Two pooled fits are sealed. The one-use public readout is complete; GAR TEST
-remains pending. Provider means, seed spread, spell and macro F1, and boundary
+and cannot be attributed to the tensor edit; v1 is not a selection criterion. Two pooled fits are sealed. The one-use public and GAR TEST readouts are
+complete. Future values require their own predeclared evaluations and receipts. Provider means, seed spread, spell and macro F1, and boundary
 diagnostics stay together; the
 per-provider table includes clean and v2 D precision/recall, short-spell recall,
 and reference/predicted spell counts. Keep PR82 numbers labeled as historical
@@ -258,19 +321,40 @@ MTAH_DATA_DIR=/workspace/mtah-data MTAH_SQD_DIR=/workspace/mtah-sqd MTAH_DT_DIR=
 .venv/bin/python -c "from experiments import v2_weight_edit_development as d; from experiments import v2_weight_edit_development_v1_readout_v2 as r; d.upstream.frozen._roots(); r.run_v1(workers=3)"
 ```
 
-The current experiment suite passes **683 tests**. The root suite has 26 passes;
-file-backed parity and bundled-CSV checks also passed.
+GAR’s first phase-count guard stopped before scoring because it used the ~4.995 Hz
+sampled dense-record rate and expected one phase, while the frozen helper emitted
+six. The preserved [failed-attempt receipt](results/v2_weight_edit_evaluation_v1_gar_failed_attempt.json)
+confirms no GAR score artifact was written. A separate GAR-only executor then
+used `round(raw_fps / 5)` to validate the six native offsets for 29.97 Hz GAR;
+the frozen evaluation module and public gate stayed unchanged. The amendment and
+[execution receipt](results/v2_weight_edit_evaluation_v1_gar_execution_amendment.json)
+record that correction. Final verification replays all 50 GAR native prediction
+sets, metrics, aggregates, and bootstrap values; it confirms six native phases
+per view and does not rerun candidate inference or reopen the public labels.
+
+The current experiment suite passes **684 tests**. The root suite has 26 passes;
+file-backed parity and bundled-CSV checks also passed. The public candidate CSV
+contains 199,319 rows.
 
 The [primary aggregate](results/v2_weight_edit_development_v1.json), [winner
-receipt](results/v2_weight_edit_development_v1_winner.json), and
-[control replay](results/v2_weight_edit_development_v1_control_replay.json)
-contain the machine-readable scorecard and replay evidence.
+receipt](results/v2_weight_edit_development_v1_winner.json), [control
+replay](results/v2_weight_edit_development_v1_control_replay.json), the
+[development verification](results/v2_weight_edit_development_v1_independent_verification.json), and
+[final GAR/public verification](results/v2_weight_edit_final_verification.json)
+contain the scorecard and audit evidence. Independent scalar replay verified all
+25 candidate and 25 control cells; the v1 readout and winner receipt passed. The
+public result provenance was checked without reopening organizer labels; the
+verifier did not regenerate model inference.
 
 ## Evidence limits and current state
 
-The candidate's boundary direction is derived from original-provider TRAIN
-H/A targets and GRU activations. It is an observational diagnostic, not evidence
-that the direction is causal or that an edit caused any measured change. The
+The boundary direction is an observational contrast derived from original-provider
+TRAIN H/A targets and GRU activations. The matched clean/v1/v2 comparisons against
+the unedited reconstruction measure tensor-edit differences within this declared
+training and evaluation setup; they do not establish the causal mechanism behind
+the activation contrast. GAR and public comparisons use the adopted whole pipeline
+as reference, so without an unedited-new-pooled control those external differences
+cannot isolate the tensor edit. The
 archived PR82 weights are unavailable,
 so reconstruction parity is recipe-level rather than byte-level. GAR uses
 generated silver labels and discontinuous segments. Synthetic corruption
@@ -281,7 +365,9 @@ policy remain unchanged.
 The external references motivate a mechanism, not a model equivalence:
 [Qwen weight editing / reduced thinking loops](https://dev.to/axrisi/qwen-weight-editing-how-astra-reduced-thinking-loops-2ccc)
 and the primary [Weight-Space Programming article](https://rikiyat.github.io/blog/weight-space-programming/).
-Code, declarations, results, and receipts will be linked here after their
-respective stages complete. See the [development runner](v2_weight_edit_development.py),
+The repository tracks code, declarations, result aggregates, and verification
+receipts. Reconstructed fold and pooled weights, full-resolution public CSV, and
+native prediction arrays remain in ignored local `data/experiments/v2_weight_edit_*`
+paths; they are not committed. The published progress site presents this study on the [experiment page](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#v2-weight-edit) and in the [overview timeline](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/). See the [development runner](v2_weight_edit_development.py),
 [reconstruction runner](v2_weight_edit_reconstruction.py), and
 [deployment runner](v2_weight_edit_deployment.py).

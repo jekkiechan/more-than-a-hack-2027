@@ -2,7 +2,7 @@
 
 Reviewed 4 November 2026 against fork `main` through
 [PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82), plus the
-completed v2 target studies and the running weight-edit study below. The user-authorized phase-average promotion
+completed v2 target and weight-edit studies below. The user-authorized phase-average promotion
 remains the adopted package.
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
@@ -62,30 +62,36 @@ records the native publication result and local-only artifact availability.
 
 ## Direct GRU weight-edit follow-up — 4 November 2026
 
-The [weight-edit study](../../experiments/V2_WEIGHT_EDIT.md) has reconstructed
+The [weight-edit study](../../experiments/V2_WEIGHT_EDIT.md) in open [PR #83](https://github.com/jekkiechan/more-than-a-hack-2027/pull/83) reconstructed
 six provider-held-out folds from PR82’s frozen recipe because the prior local
 checkpoints were not available in the reachable archive. Recipe-level parity is
 declared; byte identity is not claimed. A TRAIN-only, match-balanced delayed
-transition direction and bounded update-gate edits are being compared against
-the unedited reconstruction on matched clean, v1 and v2 development views.
-The unedited reconstruction control reproduces the historical .665355 clean /
-.592749 v2 blend (v2 exact to the archived aggregate); all 25 archived adopted
-clean/v2 spell and macro control cells replay with zero error. The primary
-seven-arm comparison selects `update_bias_p025` at .664316 clean / .594110 v2
-spell, +.001360 v2 and -.001039 clean versus the unedited control; all fixed
-guards pass. The .60 target remains .005890 away. This is a fixed development
-selection, not an adoption. The post-selection v1 diagnostic is .518850 spell / .823766 macro, versus
+transition direction and bounded update-gate edits were compared against the
+unedited reconstruction on matched clean, v1, and v2 development views. The
+unedited control reproduces the historical .665355 clean / .592749 v2 blend
+(v2 exact to its archived aggregate); the 25-cell full-cohort control
+reproduces all four saved clean/v2 spell and macro aggregates with zero error,
+and independent official replay computes metrics from every new cell artifact. The primary seven-arm comparison selects
+`update_bias_p025` at .664316 clean / .594110 v2 spell, +.001360 v2 and -.001039
+clean versus unedited; all fixed guards pass. The .60 target remains .005890
+away. This is a fixed development selection, not an adoption.
+
+The post-selection v1 diagnostic is .518850 spell / .823766 macro, versus
 .518637 / .823302 unedited and .531576 / .826853 adopted. The edit itself gains
 +.000213 spell versus its matched unedited reconstruction; the -.012726 adopted
-gap is a whole-pipeline comparison, not an isolated edit effect. Two pooled
-fits are sealed. The one-use public diagnostic returns .594286 spell / .852078
-macro versus adopted .611765 / .849473 on the fixed window (199,319 rows; 7,500
+gap is a whole-pipeline comparison, not an isolated edit effect. Two pooled fits
+are sealed. The one-use public diagnostic returns .594286 spell / .852078 macro
+versus adopted .611765 / .849473 on the fixed window (199,319 rows; 7,500
 graded; 17 reference spells). No unedited-new-pooled public control was scored,
 so this external difference cannot be attributed specifically to the tensor
-edit; it is diagnostic only and not full-match confirmation. GAR TEST remains
-pending. PR82’s historical .592749 v2 / .665355 clean
-result remains unchanged, the .60 target remains unmet, and the adopted package
-is unchanged.
+edit; it is diagnostic only and not full-match confirmation. Neither v1 nor
+public results rerank the frozen v2 winner. The ten-game GAR readout is .703713
+clean / .700806 v2 spell versus adopted .701641 / .701289; its v2 paired
+interval crosses zero. All 50 GAR prediction sets and aggregates pass final
+independent replay. This external comparison is whole-pipeline, with no
+unedited-new-pooled control. The study is complete; adoption is unchanged. PR82’s
+historical .592749 v2 / .665355 clean result remains unchanged, the .60 target
+remains unmet, and adoption is unchanged.
 
 ## New external confidence check — 2 November 2026
 

@@ -219,7 +219,8 @@ class FreezeAndAggregationTests(unittest.TestCase):
                                            "arms": {},
                                            "guard_results": {selected_arm: {"eligible": True}}}))
             with mock.patch.multiple(dev, ROOT=root, RESULT=primary, WINNER_RECEIPT=winner_path,
-                                     SELECTED_CHOICE=selected_choice_path, V1_RESULT=v1_path), \
+                                     SELECTED_CHOICE=selected_choice_path, V1_RESULT=v1_path,
+                                     CELL_OUT=root / "cell_artifacts"), \
                     mock.patch.object(dev, "sha", return_value="sealed"), \
                     mock.patch.object(dev, "_verify_training_artifacts", return_value={"models": {}}):
                 winner = dev.freeze_winner()
@@ -237,7 +238,8 @@ class FreezeAndAggregationTests(unittest.TestCase):
                     def fake_score(*args, **kwargs):
                         calls.append(args[4])
                         return {arm: {"spell_f1": .5, "macro_f1": .8} for arm in args[4]}
-                    with mock.patch.object(dev, "_score_cell", side_effect=fake_score), \
+                    with mock.patch.object(dev, "_load_cell", return_value=None), \
+                            mock.patch.object(dev, "_score_cell", side_effect=fake_score), \
                             mock.patch.object(dev, "_aggregate", side_effect=lambda rows, arm, view: {"spell_f1": .5}), \
                             mock.patch.object(dev.joblib, "load", return_value={
                                 "inputs": {"x": np.zeros((2, 1))},
