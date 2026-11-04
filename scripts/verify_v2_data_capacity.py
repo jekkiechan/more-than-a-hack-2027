@@ -16,8 +16,21 @@ DECLARATION = ROOT / f"experiments/results/{STUDY}_declaration.json"
 TRAIN_DECLARATION = ROOT / "experiments/results/v2_data_capacity_v1_declaration.json"
 VERIFICATION = ROOT / f"experiments/results/{STUDY}_verification.json"
 REPLAY = ROOT / f"experiments/results/{STUDY}_control_replay.json"
+REPLAY_V3 = ROOT / f"experiments/results/{STUDY}_control_replay_v3.json"
+RECOVERY_V3_AMENDMENT = ROOT / "experiments/results/v2_data_capacity_eval_execution_v3_amendment.json"
+RECOVERY_V3_SOURCE = ROOT / "experiments/v2_data_capacity_eval_execution_v3.py"
+RECOVERY_V3_FAILURE_LOG = ROOT / "data/experiments/v2_data_capacity_v1/control_replay_recovery.log"
+PARTIAL_V2_RECEIPT = ROOT / "data/experiments/v2_data_capacity_v1/preserved_control_replay_partial_v2.json"
+PARTIAL_V2_SHA256 = "9d583026fbfc4b58c2a8e3b760310b9c29b7f4610be392a94c669672559e0422"
 SEAL = ROOT / f"data/experiments/{STUDY}/evaluation_seal.json"
+
+
+def selected_replay_path() -> Path:
+    return REPLAY_V3 if RECOVERY_V3_AMENDMENT.is_file() else REPLAY
 EXECUTION_AMENDMENT = ROOT / "experiments/results/v2_data_capacity_eval_execution_amendment.json"
+RECOVERY_AMENDMENT = ROOT / "experiments/results/v2_data_capacity_eval_recovery_v2_amendment.json"
+RECOVERY_SOURCE = ROOT / "experiments/v2_data_capacity_eval_recovery.py"
+RECOVERY_FAILURE_LOG = ROOT / "data/experiments/v2_data_capacity_v1/control_replay.log"
 METRICS = ("spell_f1", "macro_f1", "d_f1", "d_precision", "d_recall",
            "predicted_spell_count", "reference_spell_count",
            "short_spell_recall_iou_0_5_lt3s")
@@ -41,16 +54,18 @@ def _close(a: float, b: float, atol: float = 1e-12) -> bool:
 
 def equal_provider(values: dict[tuple[str, str, int], float]) -> tuple[float, dict[str, float]]:
     """Average reps within match, matches within provider, providers equally."""
+    import numpy as np
+
     grouped: dict[str, dict[str, list[float]]] = {}
-    for (provider, match, _rep), score in values.items():
+    for (provider, match, rep), score in sorted(values.items()):
         grouped.setdefault(provider, {}).setdefault(match, []).append(float(score))
     if not grouped or any(not matches for matches in grouped.values()):
         raise ValueError("Cannot aggregate an empty or malformed cohort")
     providers = {
-        provider: sum(sum(reps) / len(reps) for reps in matches.values()) / len(matches)
-        for provider, matches in grouped.items()
+        provider: float(np.mean([np.mean(matches[match]) for match in sorted(matches)]))
+        for provider, matches in sorted(grouped.items())
     }
-    return sum(providers.values()) / len(providers), providers
+    return float(np.mean([providers[provider] for provider in sorted(providers)])), providers
 
 
 def recompute_aggregates(matches: dict, arms: list[str]) -> dict:
@@ -264,6 +279,104 @@ def _verify_control_aggregates(replay: dict) -> None:
                 raise ValueError(f"Control reference spell count changed: {key}")
 
 
+def _verify_recovery_amendment(replay: dict) -> bool:
+    """Check the additive receipt-recovery provenance and its immutable cache binds."""
+    if not RECOVERY_AMENDMENT.is_file():
+        return False
+    from experiments import v2_data_capacity_eval as core
+    from experiments import v2_data_capacity_eval_execution as execution
+    from experiments import v2_data_capacity_eval_recovery as recovery
+    amendment = json.loads(RECOVERY_AMENDMENT.read_text())
+    expected = {
+        "study_id": "v2_data_capacity_eval_recovery_v2",
+        "core_declaration_sha256": sha(DECLARATION),
+        "prior_execution_amendment_sha256": sha(EXECUTION_AMENDMENT),
+        "core_source_sha256": sha(ROOT / "experiments/v2_data_capacity_eval.py"),
+        "execution_wrapper_sha256": sha(ROOT / "experiments/v2_data_capacity_eval_execution.py"),
+        "recovery_source_sha256": sha(RECOVERY_SOURCE),
+        "failure_log_sha256": sha(RECOVERY_FAILURE_LOG),
+        "change": recovery.CHANGE,
+        "candidate_scoring": False,
+        "organizer_reference_access": False,
+    }
+    if any(amendment.get(key) != value for key, value in expected.items()):
+        raise ValueError("Recovery amendment provenance or no-scoring scope mismatch")
+    prepared_facts = amendment.get("prepared_tuple_inventory", {})
+    expected_prepared_keys = {f"{provider}|{match}|{view}|{rep}"
+                              for provider, match, view, rep in core._views()}
+    if set(prepared_facts) != expected_prepared_keys or len(prepared_facts) != 35:
+        raise ValueError("Recovery amendment prepared-tuple inventory mismatch")
+    for key, fact in prepared_facts.items():
+        provider, match, view, rep = key.split("|")
+        expected_path = execution._tuple_path(provider, match, view, int(rep))
+        expected_receipt = expected_path.with_suffix(".receipt.json")
+        if (fact.get("path") != str(expected_path.relative_to(ROOT)) or
+                fact.get("receipt_path") != str(expected_receipt.relative_to(ROOT))):
+            raise ValueError(f"Recovery amendment prepared tuple path mismatch: {key}")
+        for path_key, hash_key in (("path", "sha256"), ("receipt_path", "receipt_sha256")):
+            path = ROOT / fact[path_key]
+            if not path.is_file() or sha(path) != fact[hash_key]:
+                raise ValueError(f"Recovery amendment prepared tuple changed: {key}/{path_key}")
+        receipt = json.loads(expected_receipt.read_text())
+        if fact.get("identity") != receipt.get("identity"):
+            raise ValueError(f"Recovery amendment prepared tuple identity mismatch: {key}")
+    facts = amendment.get("immutable_control_emissions", {})
+    if set(facts) != set(replay.get("emission_cache", {})) or len(facts) != 35:
+        raise ValueError("Recovery amendment control emission inventory mismatch")
+    for key, fact in facts.items():
+        replay_fact = replay["emission_cache"][key]
+        if fact != {"path": replay_fact["path"], "sha256": replay_fact["sha256"]}:
+            raise ValueError(f"Recovery amendment changed original control emission binding: {key}")
+        path = ROOT / fact["path"]
+        if not path.is_file() or sha(path) != fact["sha256"]:
+            raise ValueError(f"Recovered control emission bytes changed: {key}")
+    if replay.get("controls_only") is not True or replay.get("candidate_scoring") is not False:
+        raise ValueError("Recovered receipt does not identify controls-only scoring")
+    # Also bind the prior cache-only execution amendment to the frozen core.
+    prior = json.loads(EXECUTION_AMENDMENT.read_text())
+    from experiments import v2_data_capacity_eval as core
+    expected_prior = {
+        "core_declaration_sha256": sha(DECLARATION),
+        "core_source_sha256": sha(Path(core.__file__)),
+        "wrapper_source_sha256": sha(Path(execution.__file__)),
+        "change": "memoize deterministic _raw_cache tuples and use verified raw-path-only lookup during core freeze; no inference, metric, arm, cohort, budget or threshold changes",
+    }
+    if any(prior.get(key) != value for key, value in expected_prior.items()):
+        raise ValueError("Prior execution amendment no longer matches frozen core")
+    return True
+
+
+def _verify_recovery_v3_amendment() -> bool:
+    if not RECOVERY_V3_AMENDMENT.is_file():
+        return False
+    from experiments import v2_data_capacity_eval as core
+    from experiments import v2_data_capacity_eval_recovery as recovery
+
+    amendment = json.loads(RECOVERY_V3_AMENDMENT.read_text())
+    expected = {
+        "study_id": "v2_data_capacity_eval_execution_v3",
+        "core_declaration_sha256": sha(DECLARATION),
+        "prior_recovery_amendment_sha256": sha(RECOVERY_AMENDMENT),
+        "core_source_sha256": sha(Path(core.__file__)),
+        "recovery_source_sha256": sha(Path(recovery.__file__)),
+        "wrapper_source_sha256": sha(RECOVERY_V3_SOURCE),
+        "failure_log_sha256": sha(RECOVERY_V3_FAILURE_LOG),
+        "new_replay_path": str(REPLAY_V3.relative_to(ROOT)),
+        "change": "write a versioned controls receipt and omit native prediction arrays from JSON rows; keep sealed NPZ probabilities unchanged",
+        "candidate_scoring": False,
+        "organizer_reference_access": False,
+    }
+    if any(amendment.get(key) != value for key, value in expected.items()):
+        raise ValueError("v3 recovery amendment provenance or scope mismatch")
+    partial = amendment.get("preserved_partial_receipt", {})
+    if partial != {"path": str(PARTIAL_V2_RECEIPT.relative_to(ROOT)),
+                   "sha256": PARTIAL_V2_SHA256, "bytes": PARTIAL_V2_RECEIPT.stat().st_size}:
+        raise ValueError("v3 amendment partial-receipt preservation binding mismatch")
+    if sha(PARTIAL_V2_RECEIPT) != PARTIAL_V2_SHA256:
+        raise ValueError("Preserved partial v2 receipt changed")
+    return True
+
+
 def _verify_execution_cache(matches: dict, seal: dict) -> int | None:
     """Audit the additive prepared-tuple cache when the wrapper amendment was used."""
     if not EXECUTION_AMENDMENT.is_file():
@@ -312,9 +425,13 @@ def _verify_execution_cache(matches: dict, seal: dict) -> int | None:
         receipt = json.loads(receipt_path.read_text())
         identity = receipt.get("identity", {})
         filename = core.audit.FILE[match]
-        raw_path = (core.audit.EVAL_INPUTS / f"{filename}_feed_like_corrupt_{rep}.joblib"
-                    if view == "feed_like_v1" else
-                    core.audit.EVAL_INPUTS / f"{filename}_clean_clean.joblib")
+        raw_path = Path(identity.get("raw_path", ""))
+        expected_raw_name = (f"{filename}_feed_like_corrupt_{rep}.joblib"
+                             if view == "feed_like_v1" else f"{filename}_clean_clean.joblib")
+        if (not raw_path.is_file() or raw_path.name != expected_raw_name or
+                raw_path.parent.name != "seed_gap_context_v1" or
+                raw_path.parent.parent.parent != Path("/workspace/mtah-dt")):
+            raise ValueError(f"Prepared tuple raw input path mismatch: {key}")
         raw_sha = sha(raw_path)
         calibration_sha = sha(core.runtime.frozen.CALIBRATION) if view == "feed_like_v2" else "not_applicable"
         expected_identity = {
@@ -414,17 +531,21 @@ def verify(result: dict, declaration: dict, replay: dict, seal: dict) -> dict:
         raise ValueError("Wrong evaluation result identity")
     if result.get("declaration_sha256") != sha(DECLARATION):
         raise ValueError("Evaluation result is not bound to the frozen declaration")
-    if result.get("evaluation_seal_sha256") != sha(SEAL) or result.get("control_replay_sha256") != sha(REPLAY):
+    replay_path = selected_replay_path()
+    if result.get("evaluation_seal_sha256") != sha(SEAL) or result.get("control_replay_sha256") != sha(replay_path):
         raise ValueError("Evaluation result seal/replay binding mismatch")
     if (result.get("organizer_reference_access") is not False or
             result.get("public_or_GAR_scoring") is not False or result.get("promotion") is not False):
         raise ValueError("Evaluation result must explicitly exclude public/GAR scoring and promotion")
-    if replay.get("passed") is not True or replay.get("organizer_reference_access") is not False:
-        raise ValueError("Control replay did not pass or lacks its no-organizer assertion")
-    if seal.get("declaration_sha256") != sha(DECLARATION) or seal.get("control_replay_sha256") != sha(REPLAY):
+    if (replay.get("passed") is not True or replay.get("controls_only") is not True or
+            replay.get("candidate_scoring") is not False):
+        raise ValueError("Control replay did not pass as controls-only without candidate scoring")
+    if seal.get("declaration_sha256") != sha(DECLARATION) or seal.get("control_replay_sha256") != sha(replay_path):
         raise ValueError("Evaluation seal declaration or replay binding mismatch")
     _verify_source_bindings(declaration)
     _verify_control_aggregates(replay)
+    recovery_amendment_verified = _verify_recovery_amendment(replay)
+    recovery_v3_amendment_verified = _verify_recovery_v3_amendment()
     prepared_cache_cells = _verify_execution_cache(result["matches"], seal)
     fit_facts = _verify_fit_receipts(json.loads(TRAIN_DECLARATION.read_text()))
     if set(seal.get("models", {})) != set(fit_facts):
@@ -486,6 +607,8 @@ def verify(result: dict, declaration: dict, replay: dict, seal: dict) -> dict:
         "cell_count": len(result["matches"]),
         "official_scalar_cells_replayed": replayed,
         "prepared_execution_cache_cells_verified": prepared_cache_cells,
+        "recovery_amendment_verified": recovery_amendment_verified,
+        "recovery_v3_amendment_verified": recovery_v3_amendment_verified,
         "aggregates_recomputed_from_saved_official_cell_metrics": True,
         "aggregation_order": "realizations within match, matches within provider, providers equally",
         "gates_recomputed_with_zero_tolerance": gates,
@@ -664,7 +787,7 @@ def _verify_source_bindings(declaration: dict) -> None:
 def main() -> dict:
     result = json.loads(RESULT.read_text())
     declaration = json.loads(DECLARATION.read_text())
-    replay = json.loads(REPLAY.read_text())
+    replay = json.loads(selected_replay_path().read_text())
     seal = json.loads(SEAL.read_text())
     receipt = verify(result, declaration, replay, seal)
     with VERIFICATION.open("x") as stream:
