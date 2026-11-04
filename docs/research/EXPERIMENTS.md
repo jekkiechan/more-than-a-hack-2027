@@ -1,6 +1,6 @@
 # Experiment index
 
-Reviewed 2026-11-03 through merged PR #81 and the completed v2 target studies below. Find evidence here; adoption and next work live in
+Reviewed 2026-11-04 through PR #82 and the completed v2 target studies below. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
@@ -15,6 +15,7 @@ the matching section/report. These are study families, not one leaderboard.
 - [Draft-only evidence](#draft-only-evidence)
 - [Temporal robustness follow-up](#temporal-robustness-follow-up)
 - [Spell-F1 follow-up](#spell-f1-follow-up)
+- [Weight-edit follow-up](#weight-edit-follow-up)
 - [Short-spell continuation](#short-spell-continuation)
 - [Supporting references](#supporting-references)
 - [Objective alignment follow-up](#objective-alignment-follow-up)
@@ -133,6 +134,12 @@ no new organizer scoring or baseline promotion is part of this work.
 | `pcbas_expanded_anchor_v2` — completed, retain package | Twelve deterministic additional PCBAS TRAIN games, 24 native halves, 36 games reserved; fixed package, no fitting. Drive equal-game agreement 71.57% (95% whole-game interval 68.95–74.10%), 8,071 primary anchors. Cross/shot predicted-D rates 29.60%/33.45%; low visibility remains weak. All 96 cells and 23,039 source-event joins independently verify. Sparse actions and entirely missing ball; no spell-F1 or promotion claim. | [Report](../../experiments/PCBAS_EXPANDED_ANCHOR_V2.md), [declaration](../../experiments/results/pcbas_expanded_anchor_v2_declaration.json), [result](../../experiments/results/pcbas_expanded_anchor_v2_result.json), [verification](../../experiments/results/pcbas_expanded_anchor_v2_verification.json) |
 | `pcbas_event_anchor_v1` — completed, retain package | Three new-release broadcast VAL games, six halves, exact frozen package with ball entirely missing. Drive equal-game agreement 71.66%; Pass/Cross/Shot 70.96%/60.98%/56.84%. Cross/shot live-anchor D rates 35.35%/40.00% pooled. Sparse action labels, assumed pitch scale and masked imputation; no spell F1, fitting or promotion. | [Report](../../experiments/PCBAS_CONFIDENCE_V1.md), [declaration](../../experiments/results/pcbas_event_anchor_v1_declaration.json), [result](../../experiments/results/pcbas_event_anchor_v1_result.json), [verification](../../experiments/results/pcbas_event_anchor_v1_verification.json) |
 | `independent-data-search` — acquired sample, no possession evaluation | SoccerTrack v2 117093 public sample acquired with exact hashes; panorama/player tracking and event points, no dense possession gold. Ball paths are event-interpolated. True broadcast PFF/SNGAR access remains pending/gated. | [Search and acquisition plan](../../experiments/INDEPENDENT_DATA_SEARCH.md), [metadata receipt](../../experiments/results/soccertrack_v2_acquisition_manifest.json) |
+
+## Weight-edit follow-up
+
+| ID and state | Scope and outcome | Evidence |
+| --- | --- | --- |
+| `v2_weight_edit_reconstruction_v1` / `v2_weight_edit_development_v1` — running | Six provider-held-out models reconstructed from PR82’s frozen recipe and verified sources; prior local checkpoints were unavailable, so byte identity is not claimed. The unedited control reproduces .665355 clean / .592749 v2 spell; 25 adopted clean/v2 spell and macro control cells replay with zero error. Seven fixed direct edits select `update_bias_p025` at .664316 clean / .594110 v2 spell, +.001360 v2 and -.001039 clean versus unedited; all declared guards pass, but .60 remains .005890 away. The post-selection v1 diagnostic is .518850 spell / .823766 macro versus .518637 / .823302 unedited and .531576 / .826853 adopted, a +.000213 v1 spell change versus its matched unedited reconstruction; the -.012726 gap to adopted is a whole-pipeline comparison, not an isolated edit effect. v1 did not select the arm. Two pooled fits are sealed. The one-use public window scores .594286 spell / .852078 macro versus adopted .611765 / .849473 (199,319 rows, 7,500 graded, 17 reference spells). No unedited-new-pooled public control exists, so do not attribute this external difference specifically to the tensor edit; it is diagnostic, not full-match confirmation. Neither later diagnostic reranks the frozen v2 winner. GAR TEST remains pending; adoption is unchanged. | [Study report](../../experiments/V2_WEIGHT_EDIT.md), [reconstruction declaration](../../experiments/results/v2_weight_edit_reconstruction_v1_declaration.json), [fit receipt](../../experiments/results/v2_weight_edit_reconstruction_v1_fit_receipt.json), [primary aggregate](../../experiments/results/v2_weight_edit_development_v1.json), [winner receipt](../../experiments/results/v2_weight_edit_development_v1_winner.json), [post-selection v1](../../experiments/results/v2_weight_edit_development_v1_v1.json), [public result](../../experiments/results/v2_weight_edit_evaluation_v1_public_result.json) |
 
 ## Short-spell continuation
 

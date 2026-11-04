@@ -1,8 +1,8 @@
 # Current research state
 
-Reviewed 3 November 2026 against fork `main` through
-[PR #81](https://github.com/jekkiechan/more-than-a-hack-2027/pull/81), plus the
-completed v2 target studies below. The user-authorized phase-average promotion
+Reviewed 4 November 2026 against fork `main` through
+[PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82), plus the
+completed v2 target studies and the running weight-edit study below. The user-authorized phase-average promotion
 remains the adopted package.
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
@@ -59,6 +59,33 @@ all six chart-control combinations and seven comparison rows. Restricted
 access remains at revision 2 with the same allowlist. The
 [delivery receipt](../../experiments/results/v2_spell_target_delivery.json)
 records the native publication result and local-only artifact availability.
+
+## Direct GRU weight-edit follow-up — 4 November 2026
+
+The [weight-edit study](../../experiments/V2_WEIGHT_EDIT.md) has reconstructed
+six provider-held-out folds from PR82’s frozen recipe because the prior local
+checkpoints were not available in the reachable archive. Recipe-level parity is
+declared; byte identity is not claimed. A TRAIN-only, match-balanced delayed
+transition direction and bounded update-gate edits are being compared against
+the unedited reconstruction on matched clean, v1 and v2 development views.
+The unedited reconstruction control reproduces the historical .665355 clean /
+.592749 v2 blend (v2 exact to the archived aggregate); all 25 archived adopted
+clean/v2 spell and macro control cells replay with zero error. The primary
+seven-arm comparison selects `update_bias_p025` at .664316 clean / .594110 v2
+spell, +.001360 v2 and -.001039 clean versus the unedited control; all fixed
+guards pass. The .60 target remains .005890 away. This is a fixed development
+selection, not an adoption. The post-selection v1 diagnostic is .518850 spell / .823766 macro, versus
+.518637 / .823302 unedited and .531576 / .826853 adopted. The edit itself gains
++.000213 spell versus its matched unedited reconstruction; the -.012726 adopted
+gap is a whole-pipeline comparison, not an isolated edit effect. Two pooled
+fits are sealed. The one-use public diagnostic returns .594286 spell / .852078
+macro versus adopted .611765 / .849473 on the fixed window (199,319 rows; 7,500
+graded; 17 reference spells). No unedited-new-pooled public control was scored,
+so this external difference cannot be attributed specifically to the tensor
+edit; it is diagnostic only and not full-match confirmation. GAR TEST remains
+pending. PR82’s historical .592749 v2 / .665355 clean
+result remains unchanged, the .60 target remains unmet, and the adopted package
+is unchanged.
 
 ## New external confidence check — 2 November 2026
 

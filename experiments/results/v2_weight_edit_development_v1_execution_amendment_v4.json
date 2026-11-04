@@ -1,0 +1,20 @@
+{
+ "amendment_id": "v2_weight_edit_development_v1_execution_amendment_v4",
+ "cli_wrapper_sha256": "c74faedc304b9b7be5b69264cb4d5ad3235dc9f18b4c6b587069d3960e71daf0",
+ "declaration_sha256": "d94dcf3db9dd0af5b73bdca87d6e5139a3baea8afd4522e0ae77a4d36d13bad5",
+ "fix": "The frozen runner aggregates component seeds for deployed_original_full, but saved pooled control artifacts intentionally have no per-seed fields. The separate v1 adapter returns an empty supplemental per-seed row for this pooled control while retaining official pooled metrics; it still filters/deduplicates editable arms as in amendment v3.",
+ "frozen_runner_sha256": "6fd19be1bddb409dd99faeba119a4c4a5ec3d28e7af47af33b2cafb799830fb1",
+ "full_orchestration_test": "Synthetic 10-cell v1 orchestration was run through the actual ProcessPool fork path with official score functions mocked; verifies winner=unedited, archived control remains in pooled results, and deployed control per-seed rows are empty.",
+ "inference_or_selection_logic_changed": false,
+ "invocation": "python -m experiments.v2_weight_edit_development_v1_readout --workers 4",
+ "organizer_reference_access": false,
+ "parent_amendment_path": "experiments/results/v2_weight_edit_development_v1_execution_amendment_v3.json",
+ "parent_amendment_sha256": "8812f336d3c5bbbc87f973b685b7bb7e4ace9d0f6eafdb2d07eed3109ef319d6",
+ "promotion": false,
+ "public_scoring": false,
+ "study_id": "v2_weight_edit_development_v1",
+ "v1_readout_helper_sha256": "21b8a1188078794909c91dd2ac647e07215db876906f9026caa945839ead415a",
+ "v1_readout_tests_sha256": "6a326c4419b246e8648716652eac9dcb61149fefb563178ab9a6e788671f57ac",
+ "v1_scoring_started": false,
+ "verification": ".venv/bin/python -m unittest experiments.tests.test_v2_weight_edit_development_v1_readout -v (5 tests passed)"
+}
