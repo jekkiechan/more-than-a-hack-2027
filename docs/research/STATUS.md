@@ -1,9 +1,9 @@
 # Current research state
 
-Reviewed against fork `main` through
-[PR #72](https://github.com/jekkiechan/more-than-a-hack-2027/pull/72), plus the
-completed phase-average comparison and guard audit on PR #73. The
-subsequent explicitly user-authorized phase-average promotion supersedes PR #70.
+Reviewed 4 November 2026 against fork `main` through
+[PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82), plus the
+completed v2 target and weight-edit studies below. The user-authorized phase-average promotion
+remains the adopted package.
 Check newer merged/open PRs before current-results advice. Detailed historical
 results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -19,13 +19,79 @@ now enabled. No fitting or organizer rescoring is part of promotion.
 Original clean/v1/v2 spell: **.667556/.531576/.583571**. Exact-package GAR TEST
 clean/v2 spell: **.701641/.701289** on ten games. All seven historical active
 guards pass; the +.01 clean screen remains failed with a user-authorized
-exception. Calibrated+phase remains the TEST/original-v2 spell point leader;
+exception. Calibrated+phase leads the earlier exact-package TEST comparison;
 the paired TEST phase-gain interval includes zero. Independent continuous-match
 gold confirmation remains pending.
 
 The evaluation policy now uses clean plus `feed_like_v2` with 4+ realizations
 for original-provider development. Keep GAR TEST separate from selected-on
 VALID and record future reuse. V1 and composite remain historical diagnostics.
+
+## V2 spell target — 3 November 2026
+
+The completed [v2 target studies](../../experiments/V2_SPELL_TARGET.md) reach
+**0.592749 eligible v2 spell F1**, versus adopted **0.583571** (+0.009178).
+Clean spell is **0.665355** versus **0.667556** (-0.002201). The **0.60 target
+remains unmet**. The winner blends the new four-view original-possession model
+and archived calibrated model 50/50, averages native phases, and uses H/A
+transition cost 1.5. Common clean/provider retention checks pass; the historical
+clean-gain screen remains failed and adoption is unchanged.
+
+Six fixed provider-excluded fits use the eligible original TRAIN pool and
+45 GAR TRAIN games. Nine consensus arms, 109 calibration arms, three new-model
+arms, three fixed decoder-transfer arms and a final 20-arm boundary check use
+the same five exposed development matches, clean plus four fixed v2 views.
+All eight archived C0 spell/macro aggregates replay with zero error. Final
+local validation passes 639 experiment tests and 26 root tests. The H/A-cost-2
+numerical maximum is 0.592926 but fails the fixed clean floor; it is not chosen.
+
+New views, research weights and native outputs are locally verified, not newly
+uploaded. No pooled deployment fit, organizer scoring, GAR TEST reuse or
+default change occurs. An exact pooled-package check and independent
+continuous-match gold remain outstanding evidence needs. The report preserves
+failed attempts, mechanical runtime corrections and the disclosed recovery
+receipt preservation exception.
+
+Research code and aggregate evidence are on
+[PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82).
+Research site **version 29** is published with desktop/mobile checks,
+all six chart-control combinations and seven comparison rows. Restricted
+access remains at revision 2 with the same allowlist. The
+[delivery receipt](../../experiments/results/v2_spell_target_delivery.json)
+records the native publication result and local-only artifact availability.
+
+## Direct GRU weight-edit follow-up — 4 November 2026
+
+The [weight-edit study](../../experiments/V2_WEIGHT_EDIT.md) in open [PR #83](https://github.com/jekkiechan/more-than-a-hack-2027/pull/83) reconstructed
+six provider-held-out folds from PR82’s frozen recipe because the prior local
+checkpoints were not available in the reachable archive. Recipe-level parity is
+declared; byte identity is not claimed. A TRAIN-only, match-balanced delayed
+transition direction and bounded update-gate edits were compared against the
+unedited reconstruction on matched clean, v1, and v2 development views. The
+unedited control reproduces the historical .665355 clean / .592749 v2 blend
+(v2 exact to its archived aggregate); the 25-cell full-cohort control
+reproduces all four saved clean/v2 spell and macro aggregates with zero error,
+and independent official replay computes metrics from every new cell artifact. The primary seven-arm comparison selects
+`update_bias_p025` at .664316 clean / .594110 v2 spell, +.001360 v2 and -.001039
+clean versus unedited; all fixed guards pass. The .60 target remains .005890
+away. This is a fixed development selection, not an adoption.
+
+The post-selection v1 diagnostic is .518850 spell / .823766 macro, versus
+.518637 / .823302 unedited and .531576 / .826853 adopted. The edit itself gains
++.000213 spell versus its matched unedited reconstruction; the -.012726 adopted
+gap is a whole-pipeline comparison, not an isolated edit effect. Two pooled fits
+are sealed. The one-use public diagnostic returns .594286 spell / .852078 macro
+versus adopted .611765 / .849473 on the fixed window (199,319 rows; 7,500
+graded; 17 reference spells). No unedited-new-pooled public control was scored,
+so this external difference cannot be attributed specifically to the tensor
+edit; it is diagnostic only and not full-match confirmation. Neither v1 nor
+public results rerank the frozen v2 winner. The ten-game GAR readout is .703713
+clean / .700806 v2 spell versus adopted .701641 / .701289; its v2 paired
+interval crosses zero. All 50 GAR prediction sets and aggregates pass final
+independent replay. This external comparison is whole-pipeline, with no
+unedited-new-pooled control. The study is complete; adoption is unchanged. PR82’s
+historical .592749 v2 / .665355 clean result remains unchanged, the .60 target
+remains unmet, and adoption is unchanged.
 
 ## New external confidence check — 2 November 2026
 

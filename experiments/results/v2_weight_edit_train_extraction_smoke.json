@@ -1,0 +1,42 @@
+{
+  "status": "smoke_pass",
+  "model": "archived_calibrated_dense_2026",
+  "records": [
+    "metrica_1",
+    "metrica_2",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347"
+  ],
+  "same_model_inference_argmax_parity": true,
+  "activation_shape": [
+    29002,
+    192
+  ],
+  "event_counts": [
+    {
+      "match": "metrica_1",
+      "frames": 29002,
+      "late": 32,
+      "correct": 139
+    },
+    {
+      "match": "metrica_2",
+      "frames": 28232,
+      "late": 30,
+      "correct": 115
+    },
+    {
+      "match": "skillcorner_had_1874553",
+      "frames": 30152,
+      "late": 9,
+      "correct": 2
+    },
+    {
+      "match": "skillcorner_had_1886347",
+      "frames": 29532,
+      "late": 3,
+      "correct": 2
+    }
+  ],
+  "purpose": "extractor wiring check only; not candidate direction or evaluation"
+}

@@ -1,0 +1,12 @@
+{
+ "attempt": 1,
+ "error": "FileNotFoundError: frozen cand model path was rooted at /workspace/mtah-data because runtime _roots() had not been initialized; restored model exists under /workspace/mtah-sqd.",
+ "fix": "Execution amendment v6 explicitly sets MTAH_SQD_DIR and calls frozen _roots() before the bound v1 adapter, so worker processes inherit correct roots.",
+ "outcome": "failed before any cell artifact or score was written",
+ "primary_winner_changed": false,
+ "public_or_gar_scoring": false,
+ "stage": "post-winner v1 regression setup",
+ "study_id": "v2_weight_edit_development_v1",
+ "v1_cell_artifacts_written": 0,
+ "v1_scores_written": false
+}
