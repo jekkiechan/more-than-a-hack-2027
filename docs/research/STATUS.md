@@ -118,16 +118,19 @@ further search is planned.
 No package or manifest changed. The .60 stretch target remains unmet. Evidence
 is limited to the five previously exposed matches and synthetic feed-like
 views; there is no GAR TEST, organizer or independent continuous-match gold
-result. New weights and source remain local. Automatic review rejected both
-publication attempts before any remote mutation. For GitHub, the stated reason
-was that research authorization did not authorize public disclosure of code,
-provenance and results to the fork; no push or PR exists. The Site source is
-prepared locally at `6d9e0436e7ca18209863f40a348143c154f3c5e9`, with owner,
-custom audience, revision 2 and one external viewer in its metadata. The live
-Site remains version 30. Review rejected source push, native save and deploy
-because the non-public results would be shared with that viewer without
-authorization for the payload and destination. Static checks passed; browser QA
-was unavailable. User approval is pending for both destinations.
+result. New private weights remain local. Automatic review initially rejected both
+publication attempts before any remote mutation; that historical state is
+preserved in the [delivery receipt](../../experiments/results/v2_data_capacity_delivery.json).
+The user has since explicitly authorized both destinations. GitHub branch
+`research/v2-data-capacity-v1` is pushed at `2764bba` and [PR #84](https://github.com/jekkiechan/more-than-a-hack-2027/pull/84)
+is open; no CI checks had started at Site deployment. The Site deployment
+succeeded as version 31 at the [research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/),
+from source commit `c9d66174510a7a2415648caa5b937b6f8fda6d3a`. It retains the
+custom audience, revision 2 and one external viewer. The
+[publication receipt](../../experiments/results/v2_data_capacity_publication_v1.json)
+records deployment and static checks. Browser QA was unavailable; no
+desktop/mobile visual check is claimed. New private weights and frame outputs
+were not published; model adoption is unchanged.
 
 ## New external confidence check — 2 November 2026
 

@@ -255,18 +255,23 @@ The scalar result is saved in [`v2_data_capacity_eval.json`](results/v2_data_cap
 
 The package remains unchanged. The .60 stretch target is unmet by the best result by 0.0072508087. The wider arm costs about 1.5× fit time at equal update count and loses v2 spell against the matched width-96 blend; the mixed-view recipe also loses v2 spell. The frozen adopted-D mask preserves D metrics but leaves H/A quality below the strict all-view requirements. These results do not support promotion or a further selection on this cohort.
 
-Repository source and results remain local. An automatic approval review rejected the GitHub push and public draft PR before any remote change, stating that authorization to conduct the research did not authorize public disclosure of code, provenance and results to this fork. No push or PR was created.
+The user explicitly authorized both publication destinations. The GitHub
+branch is pushed at commit `2764bba`, and [PR #84](https://github.com/jekkiechan/more-than-a-hack-2027/pull/84)
+is open. The earlier automatic-review rejection is preserved as historical
+delivery state in the [delivery receipt](results/v2_data_capacity_delivery.json);
+it predates the user's authorization and does not describe the current GitHub
+state.
 
-The research Site update is also prepared locally at source commit
-`6d9e0436e7ca18209863f40a348143c154f3c5e9`. Site metadata was refreshed for
-the owner, custom audience, access revision 2 and existing external viewer;
-the live Site remains version 30. Its source push, native save and deployment
-were rejected before remote mutation because the new non-public results would
-be shared with that external viewer without explicit authorization for this
-payload and destination. Static checks passed; browser QA was unavailable. Both
-publications are blocked pending user approval for those destinations.
-The local delivery state is recorded in the
-[delivery receipt](results/v2_data_capacity_delivery.json).
+The Site deployment succeeded as version 31 at the
+[research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
+from source commit `c9d66174510a7a2415648caa5b937b6f8fda6d3a`. It retains the
+custom audience, access revision 2 and one external viewer. The [publication
+receipt](results/v2_data_capacity_publication_v1.json) records the deployment
+and checks. Static links, anchors, scripts, JSON sanitation and JavaScript
+syntax passed; browser QA was unavailable, so no desktop/mobile visual check is
+claimed. PR #84 remains open; no CI check runs had started as of the Site
+deployment. New private weights and frame outputs were not published. The
+earlier blocked delivery receipt remains unchanged as a historical record.
 
 ## Scope, commands and outstanding work
 
