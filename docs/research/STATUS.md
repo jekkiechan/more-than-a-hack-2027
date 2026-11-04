@@ -93,6 +93,42 @@ unedited-new-pooled control. The study is complete; adoption is unchanged. PR82�
 historical .592749 v2 / .665355 clean result remains unchanged, the .60 target
 remains unmet, and adoption is unchanged.
 
+## V2 data and capacity follow-up — 4 November 2026
+
+The [data/capacity study](../../experiments/V2_DATA_CAPACITY.md) completed all
+18 provider-held-out fits and 105 scoring jobs across 35 exposed development
+cells. The width-96 PR82-style blend reproduces the eligible v2 spell score
+(.592749), but falls below adopted clean and v1 spell. Width 192 reaches
+.592533 v2 spell (−.000216 versus its matched width-96 blend); the balanced
+v1/v2 width-96 recipe reaches .591496 (−.001253). Across the 12 candidate arms,
+**0 pass all 19 strict checks**. The D-mask arm preserves D metrics but does
+not solve the H/A and all-view retention tradeoffs. The archived controls
+replay all 35 cells and 24 official aggregate checks, with maximum error
+2.22e-16; the independent audit verified the original 35-cell result.
+
+A separately declared final check uniformly averaged the three already-trained
+experts across the same four pipeline types, without new fits or inference. It
+also has **0/4 strict passes**; the best v2 spell is .592585, .000165 below the
+PR82 threshold, and clean/v1 regressions remain. Across the original and final
+checks, **0/16 candidate pipelines qualify**. Verification of this final
+uniform result replayed all 140 arm/cell scalars, recomputed all four means and
+the 19 gates, and confirmed no inference was repeated. Both audits pass; no
+further search is planned.
+
+No package or manifest changed. The .60 stretch target remains unmet. Evidence
+is limited to the five previously exposed matches and synthetic feed-like
+views; there is no GAR TEST, organizer or independent continuous-match gold
+result. New weights and source remain local. Automatic review rejected both
+publication attempts before any remote mutation. For GitHub, the stated reason
+was that research authorization did not authorize public disclosure of code,
+provenance and results to the fork; no push or PR exists. The Site source is
+prepared locally at `6d9e0436e7ca18209863f40a348143c154f3c5e9`, with owner,
+custom audience, revision 2 and one external viewer in its metadata. The live
+Site remains version 30. Review rejected source push, native save and deploy
+because the non-public results would be shared with that viewer without
+authorization for the payload and destination. Static checks passed; browser QA
+was unavailable. User approval is pending for both destinations.
+
 ## New external confidence check — 2 November 2026
 
 [PCBAS validation](../../experiments/PCBAS_CONFIDENCE_V1.md) acquired and audited
