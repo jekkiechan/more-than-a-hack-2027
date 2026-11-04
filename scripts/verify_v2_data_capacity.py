@@ -15,6 +15,7 @@ RESULT = ROOT / f"experiments/results/{STUDY}.json"
 DECLARATION = ROOT / f"experiments/results/{STUDY}_declaration.json"
 TRAIN_DECLARATION = ROOT / "experiments/results/v2_data_capacity_v1_declaration.json"
 VERIFICATION = ROOT / f"experiments/results/{STUDY}_verification.json"
+FIT_RECEIPT = ROOT / "experiments/results/v2_data_capacity_v1_fit_receipt.json"
 REPLAY = ROOT / f"experiments/results/{STUDY}_control_replay.json"
 REPLAY_V3 = ROOT / f"experiments/results/{STUDY}_control_replay_v3.json"
 RECOVERY_V3_AMENDMENT = ROOT / "experiments/results/v2_data_capacity_eval_execution_v3_amendment.json"
@@ -634,6 +635,7 @@ def _verify_fit_receipts(training_declaration: dict) -> None:
     if len(arms) != 3 or len(folds) != 3 or len(seeds) != 2:
         raise ValueError("Training declaration must bind three arms, folds, and two seeds")
     fit_facts = {}
+    fit_receipts = []
     for fold in folds:
         plan = plans[fold]
         train_rows = plan["train"]
@@ -648,6 +650,7 @@ def _verify_fit_receipts(training_declaration: dict) -> None:
                 if not model_path.is_file() or not receipt_path.is_file():
                     raise ValueError(f"Missing declared fit or receipt: {arm}/{fold}/{seed}")
                 receipt = json.loads(receipt_path.read_text())
+                fit_receipts.append(receipt)
                 if receipt.get("study") != "v2_data_capacity_v1":
                     raise ValueError(f"Wrong fit study identity: {arm}/{fold}/{seed}")
                 if receipt.get("arm") != arm or receipt.get("fold") != fold or int(receipt.get("seed", -1)) != int(seed):
@@ -682,7 +685,55 @@ def _verify_fit_receipts(training_declaration: dict) -> None:
                     "path": str(model_path.relative_to(ROOT)), "sha256": sha(model_path),
                     "receipt": str(receipt_path.relative_to(ROOT)),
                     "receipt_sha256": sha(receipt_path)}
+    _verify_training_cross_arm_contract(fit_receipts)
+    if FIT_RECEIPT.is_file():
+        aggregate = json.loads(FIT_RECEIPT.read_text())
+        if (aggregate.get("study_id") != "v2_data_capacity_v1" or
+                aggregate.get("declaration_sha256") != sha(TRAIN_DECLARATION) or
+                aggregate.get("all_18_fits_complete") is not True or
+                aggregate.get("candidate_scoring") is not False):
+            raise ValueError("Aggregate fit receipt identity/status mismatch")
+        if aggregate.get("fits") != fit_receipts:
+            # The aggregate copy is expected to preserve the original fit rows exactly.
+            if {json.dumps(row, sort_keys=True) for row in aggregate.get("fits", [])} != {
+                    json.dumps(row, sort_keys=True) for row in fit_receipts}:
+                raise ValueError("Aggregate fit receipt differs from per-fit receipts")
     return fit_facts
+
+
+def _verify_training_cross_arm_contract(receipts: list[dict]) -> None:
+    """Check sampler/exposure parity and exact mixed-family draw balance."""
+    arms = {"width96_control", "width192_capacity", "mixed_v1_v2_width96"}
+    groups = {}
+    for row in receipts:
+        groups.setdefault((row["fold"], int(row["seed"])), {})[row["arm"]] = row
+    if len(groups) != 6 or any(set(rows) != arms for rows in groups.values()):
+        raise ValueError("Expected three matched training arms in each of six fold/seed groups")
+    for (fold, seed), rows in groups.items():
+        baseline = rows["width96_control"]
+        for arm in arms - {"width96_control"}:
+            if rows[arm].get("exposures") != baseline.get("exposures"):
+                raise ValueError(f"Training exposure schedule differs across arms: {fold}/{seed}/{arm}")
+            if rows[arm].get("sampler") != baseline.get("sampler"):
+                raise ValueError(f"Original/GAR sampler differs across arms: {fold}/{seed}/{arm}")
+        draws = rows["mixed_v1_v2_width96"].get("input_view_draws", {})
+        grouped: dict[str, dict[str, int]] = {}
+        for key, value in draws.items():
+            if "/" not in key:
+                raise ValueError(f"Malformed mixed-view draw key: {key}")
+            match, family = key.rsplit("/", 1)
+            grouped.setdefault(match, {})[family] = int(value)
+        if not grouped or set(grouped) != set(rows["mixed_v1_v2_width96"].get("training_matches", ())):
+            raise ValueError(f"Mixed-view match inventory differs from fit receipt: {fold}/{seed}")
+        for match, counts in grouped.items():
+            v1 = counts.get("v1")
+            v2 = [counts.get(f"v2r{rep}") for rep in range(4)]
+            if v1 is None or any(value is None for value in v2):
+                raise ValueError(f"Mixed-view family counts missing: {fold}/{seed}/{match}")
+            if abs(v1 - sum(v2)) > 4:
+                raise ValueError(f"Mixed v1/v2 family mass is not balanced: {fold}/{seed}/{match}")
+            if max(v2) - min(v2) > 1:
+                raise ValueError(f"Mixed v2 realization draws are imbalanced: {fold}/{seed}/{match}")
 
 
 def _verify_model_artifact(model: dict, teacher: dict, width: int,

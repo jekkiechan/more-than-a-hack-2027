@@ -3,7 +3,7 @@ import unittest
 
 from scripts.verify_v2_data_capacity import (
     METRICS, VIEWS, evaluate_gates, historical_diagnostics, recompute_aggregates,
-    verify_dead_mask, _verify_model_artifact,
+    verify_dead_mask, _verify_model_artifact, _verify_training_cross_arm_contract,
 )
 
 
@@ -26,6 +26,30 @@ class CapacityVerifierTests(unittest.TestCase):
         # p1: mean((.2+.4)/2, .8) = .55; p2: .6; providers equal.
         self.assertAlmostEqual(aggregate["clean"]["candidate"]["spell_f1"]["providers"]["p1"], .55)
         self.assertAlmostEqual(aggregate["clean"]["candidate"]["spell_f1"]["equal_provider"], .575)
+
+    def test_training_cross_arm_contract_rejects_sampler_or_mixed_draw_drift(self):
+        arms = ("width96_control", "width192_capacity", "mixed_v1_v2_width96")
+        rows = []
+        for arm in arms:
+            draws = {"m1/v2r0": 3, "m1/v2r1": 3, "m1/v2r2": 3, "m1/v2r3": 3}
+            if arm == "mixed_v1_v2_width96":
+                draws = {"m1/v1": 12, "m1/v2r0": 3, "m1/v2r1": 3,
+                         "m1/v2r2": 3, "m1/v2r3": 3}
+            rows.append({"arm": arm, "fold": "leave_out_p", "seed": 2026,
+                         "sampler": {"sampler": "same"}, "exposures": {"old/m1": 10},
+                         "training_matches": ["m1"], "input_view_draws": draws})
+        # The helper requires six fold/seed groups; duplicate this valid group under new IDs.
+        rows = [dict(row, fold=f"leave_out_p{i//2}", seed=2026+i%2)
+                for i in range(6) for row in rows]
+        _verify_training_cross_arm_contract(rows)
+        sampler_drift = [dict(row) for row in rows]
+        sampler_drift[2]["sampler"] = {"sampler": "changed"}
+        with self.assertRaisesRegex(ValueError, "sampler differs"):
+            _verify_training_cross_arm_contract(sampler_drift)
+        draw_drift = [dict(row, input_view_draws=dict(row["input_view_draws"])) for row in rows]
+        draw_drift[2]["input_view_draws"]["m1/v1"] = 20
+        with self.assertRaisesRegex(ValueError, "family mass is not balanced"):
+            _verify_training_cross_arm_contract(draw_drift)
 
     def test_serialized_model_checks_hidden_shapes_count_and_fold_normalization(self):
         import numpy as np
