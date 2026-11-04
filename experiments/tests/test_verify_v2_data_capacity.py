@@ -3,7 +3,7 @@ import unittest
 
 from scripts.verify_v2_data_capacity import (
     METRICS, VIEWS, evaluate_gates, historical_diagnostics, recompute_aggregates,
-    verify_dead_mask,
+    verify_dead_mask, _verify_model_artifact,
 )
 
 
@@ -26,6 +26,34 @@ class CapacityVerifierTests(unittest.TestCase):
         # p1: mean((.2+.4)/2, .8) = .55; p2: .6; providers equal.
         self.assertAlmostEqual(aggregate["clean"]["candidate"]["spell_f1"]["providers"]["p1"], .55)
         self.assertAlmostEqual(aggregate["clean"]["candidate"]["spell_f1"]["equal_provider"], .575)
+
+    def test_serialized_model_checks_hidden_shapes_count_and_fold_normalization(self):
+        import numpy as np
+        width, features = 96, 408
+        state = {
+            "sequence.weight_ih_l0": np.zeros((3*width, features)),
+            "sequence.weight_hh_l0": np.zeros((3*width, width)),
+            "sequence.bias_ih_l0": np.zeros(3*width),
+            "sequence.bias_hh_l0": np.zeros(3*width),
+            "sequence.weight_ih_l0_reverse": np.zeros((3*width, features)),
+            "sequence.weight_hh_l0_reverse": np.zeros((3*width, width)),
+            "sequence.bias_ih_l0_reverse": np.zeros(3*width),
+            "sequence.bias_hh_l0_reverse": np.zeros(3*width),
+            "output.weight": np.zeros((2, 2*width)),
+            "output.bias": np.zeros(2),
+        }
+        teacher = {"state": {"weight": np.asarray([1.])}, "median": np.zeros(features),
+                   "scale": np.ones(features), "feature_names": [f"f{i}" for i in range(features)],
+                   "input_features": features}
+        model = {"kind": "soccernet_capacity", "hidden": width, "state": state,
+                 "d_state": {"weight": np.asarray([2.])}, "median": teacher["median"].copy(),
+                 "scale": teacher["scale"].copy(), "feature_names": list(teacher["feature_names"]),
+                 "input_features": features, "step": 2048,
+                 "training": {"steps": 2048}}
+        _verify_model_artifact(model, teacher, width, "width96_control", "leave_out_x", 2026)
+        model["hidden"] = 192
+        with self.assertRaisesRegex(ValueError, "Serialized hidden width"):
+            _verify_model_artifact(model, teacher, width, "width96_control", "leave_out_x", 2026)
 
     def test_protected_decoder_requires_identical_dead_mask(self):
         import numpy as np

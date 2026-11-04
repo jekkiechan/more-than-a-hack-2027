@@ -17,6 +17,7 @@ TRAIN_DECLARATION = ROOT / "experiments/results/v2_data_capacity_v1_declaration.
 VERIFICATION = ROOT / f"experiments/results/{STUDY}_verification.json"
 REPLAY = ROOT / f"experiments/results/{STUDY}_control_replay.json"
 SEAL = ROOT / f"data/experiments/{STUDY}/evaluation_seal.json"
+EXECUTION_AMENDMENT = ROOT / "experiments/results/v2_data_capacity_eval_execution_amendment.json"
 METRICS = ("spell_f1", "macro_f1", "d_f1", "d_precision", "d_recall",
            "predicted_spell_count", "reference_spell_count",
            "short_spell_recall_iou_0_5_lt3s")
@@ -263,6 +264,88 @@ def _verify_control_aggregates(replay: dict) -> None:
                 raise ValueError(f"Control reference spell count changed: {key}")
 
 
+def _verify_execution_cache(matches: dict, seal: dict) -> int | None:
+    """Audit the additive prepared-tuple cache when the wrapper amendment was used."""
+    if not EXECUTION_AMENDMENT.is_file():
+        return None
+    import joblib
+    from experiments import v2_data_capacity_eval as core
+    from experiments import v2_data_capacity_eval_execution as execution
+
+    amendment = json.loads(EXECUTION_AMENDMENT.read_text())
+    expected_change = (
+        "memoize deterministic _raw_cache tuples and use verified raw-path-only lookup during core freeze; "
+        "no inference, metric, arm, cohort, budget or threshold changes"
+    )
+    if amendment.get("study_id") != execution.STUDY:
+        raise ValueError("Wrong execution amendment identity")
+    if amendment.get("core_declaration_sha256") != sha(DECLARATION):
+        raise ValueError("Execution amendment is not bound to frozen core declaration")
+    if amendment.get("core_source_sha256") != sha(Path(core.__file__)):
+        raise ValueError("Execution amendment core source hash mismatch")
+    if amendment.get("wrapper_source_sha256") != sha(Path(execution.__file__)):
+        raise ValueError("Execution amendment wrapper source hash mismatch")
+    if amendment.get("change") != expected_change:
+        raise ValueError("Execution amendment changed the declared cache-only scope")
+    if amendment.get("organizer_reference_access") is not False:
+        raise ValueError("Execution amendment lacks no-organizer assertion")
+    expected_root = ROOT / "data/experiments/v2_data_capacity_eval_execution/prepared"
+    if ROOT / amendment.get("cache_root", "") != expected_root:
+        raise ValueError("Execution amendment cache root differs from declared location")
+    if sha(Path(core.__file__)) != json.loads(DECLARATION.read_text())["provenance"]["source_sha256"][
+            str(Path(core.__file__).resolve().relative_to(ROOT))]:
+        raise ValueError("Frozen core source changed since evaluation declaration")
+    for fact in seal["control_emissions"].values():
+        identity = fact["identity"]
+        key = f"{identity['provider']}|{identity['match']}|{identity['view']}|{identity['replicate']}"
+        if key not in matches:
+            raise ValueError(f"Unexpected cache cell identity: {key}")
+    if len(matches) != 35:
+        raise ValueError("Expected exactly 35 prepared evaluation cells")
+    for key in matches:
+        provider, match, view, rep = key.split("|")
+        label = "clean" if view == "clean" else f"{view}_r{rep}"
+        cache_path = expected_root / f"{provider}__{match}__{label}.joblib"
+        receipt_path = cache_path.with_suffix(".receipt.json")
+        if not cache_path.is_file() or not receipt_path.is_file():
+            raise ValueError(f"Prepared tuple cache or receipt missing: {key}")
+        receipt = json.loads(receipt_path.read_text())
+        identity = receipt.get("identity", {})
+        filename = core.audit.FILE[match]
+        raw_path = (core.audit.EVAL_INPUTS / f"{filename}_feed_like_corrupt_{rep}.joblib"
+                    if view == "feed_like_v1" else
+                    core.audit.EVAL_INPUTS / f"{filename}_clean_clean.joblib")
+        raw_sha = sha(raw_path)
+        calibration_sha = sha(core.runtime.frozen.CALIBRATION) if view == "feed_like_v2" else "not_applicable"
+        expected_identity = {
+            "provider": provider, "match": match, "view": view, "replicate": int(rep),
+            "raw_path": str(raw_path), "raw_sha256": raw_sha,
+            "v2_calibration_sha256": calibration_sha,
+            "core_source_sha256": sha(Path(core.__file__)),
+            "wrapper_source_sha256": sha(Path(execution.__file__)),
+            "amendment_sha256": sha(EXECUTION_AMENDMENT),
+        }
+        if receipt.get("study_id") != execution.STUDY or identity != expected_identity:
+            raise ValueError(f"Prepared tuple identity mismatch: {key}")
+        if receipt.get("tuple_sha256") != sha(cache_path):
+            raise ValueError(f"Prepared tuple payload hash mismatch: {key}")
+        prepared = joblib.load(cache_path)
+        if not isinstance(prepared, tuple) or len(prepared) != 5:
+            raise ValueError(f"Prepared tuple schema mismatch: {key}")
+        _, native, labels, _phases, model_period = prepared
+        import numpy as np
+        control_identity = seal["control_emissions"][key]["identity"]
+        if control_identity["input_sha256"] != raw_sha:
+            raise ValueError(f"Prepared raw input differs from control emission: {key}")
+        arrays = _load_emission(seal["control_emissions"][key])
+        if (not np.array_equal(np.asarray(labels).astype(str), arrays["labels"].astype(str)) or
+                not np.array_equal(np.asarray(native["timestamps"]), arrays["timestamps"]) or
+                not np.array_equal(np.asarray(native["period"]), arrays["period"]) or
+                not np.array_equal(np.asarray(model_period), arrays["model_period"])):
+            raise ValueError(f"Prepared labels/time grid differ from sealed control cell: {key}")
+    return len(matches)
+
+
 def _verify_native_emissions(result: dict, replay: dict, seal: dict) -> int:
     controls = seal["control_emissions"]
     candidates = result["candidate_emissions"]
@@ -342,6 +425,7 @@ def verify(result: dict, declaration: dict, replay: dict, seal: dict) -> dict:
         raise ValueError("Evaluation seal declaration or replay binding mismatch")
     _verify_source_bindings(declaration)
     _verify_control_aggregates(replay)
+    prepared_cache_cells = _verify_execution_cache(result["matches"], seal)
     fit_facts = _verify_fit_receipts(json.loads(TRAIN_DECLARATION.read_text()))
     if set(seal.get("models", {})) != set(fit_facts):
         raise ValueError("Evaluation seal model inventory differs from fit receipts")
@@ -401,6 +485,7 @@ def verify(result: dict, declaration: dict, replay: dict, seal: dict) -> dict:
         "training_declaration_sha256": sha(TRAIN_DECLARATION),
         "cell_count": len(result["matches"]),
         "official_scalar_cells_replayed": replayed,
+        "prepared_execution_cache_cells_verified": prepared_cache_cells,
         "aggregates_recomputed_from_saved_official_cell_metrics": True,
         "aggregation_order": "realizations within match, matches within provider, providers equally",
         "gates_recomputed_with_zero_tolerance": gates,
@@ -412,6 +497,8 @@ def verify(result: dict, declaration: dict, replay: dict, seal: dict) -> dict:
 
 def _verify_fit_receipts(training_declaration: dict) -> None:
     """Bind all 18 model payloads to their declaration, teacher and held-out fold."""
+    import joblib
+    import numpy as np
     from experiments import v2_data_capacity as training
 
     if training_declaration.get("study_id") != "v2_data_capacity_v1":
@@ -464,11 +551,77 @@ def _verify_fit_receipts(training_declaration: dict) -> None:
                     raise ValueError(f"Held-out provider appears in fit receipt: {arm}/{fold}/{seed}")
                 if receipt.get("organizer_reference_access") is not False:
                     raise ValueError(f"Organizer reference access is not explicitly false: {arm}/{fold}/{seed}")
+                model = joblib.load(model_path)
+                teacher_path = training.recipe.rf.sc.initial_path(fold, seed)
+                teacher = joblib.load(teacher_path)
+                _verify_model_artifact(model, teacher, expected_width, arm, fold, seed)
                 fit_facts[f"{arm}/{fold}/{seed}"] = {
                     "path": str(model_path.relative_to(ROOT)), "sha256": sha(model_path),
                     "receipt": str(receipt_path.relative_to(ROOT)),
                     "receipt_sha256": sha(receipt_path)}
     return fit_facts
+
+
+def _verify_model_artifact(model: dict, teacher: dict, width: int,
+                           arm: str, fold: str, seed: int) -> None:
+    """Inspect the serialized model structure without constructing/running a net."""
+    import numpy as np
+
+    label = f"{arm}/{fold}/{seed}"
+    if not isinstance(model, dict) or model.get("kind") != "soccernet_capacity":
+        raise ValueError(f"Malformed capacity artifact: {label}")
+    if int(model.get("hidden", -1)) != width:
+        raise ValueError(f"Serialized hidden width differs from declared arm: {label}")
+    expected_count = 694274 if width == 192 else 291842
+    state = model.get("state")
+    if not isinstance(state, dict):
+        raise ValueError(f"Missing serialized GRU state: {label}")
+    required = {
+        "sequence.weight_ih_l0": (3 * width, int(model["input_features"])),
+        "sequence.weight_hh_l0": (3 * width, width),
+        "sequence.bias_ih_l0": (3 * width,),
+        "sequence.bias_hh_l0": (3 * width,),
+        "sequence.weight_ih_l0_reverse": (3 * width, int(model["input_features"])),
+        "sequence.weight_hh_l0_reverse": (3 * width, width),
+        "sequence.bias_ih_l0_reverse": (3 * width,),
+        "sequence.bias_hh_l0_reverse": (3 * width,),
+        "output.weight": (2, 2 * width),
+        "output.bias": (2,),
+    }
+    if set(state) != set(required):
+        raise ValueError(f"Serialized GRU state layers differ from the expected bidirectional head: {label}")
+    for name, shape in required.items():
+        value = np.asarray(state[name])
+        if value.shape != shape or not np.issubdtype(value.dtype, np.number) or not np.isfinite(value).all():
+            raise ValueError(f"Serialized state shape/value mismatch for {name}: {label}")
+    parameter_count = sum(np.asarray(value).size for value in state.values())
+    if parameter_count != expected_count:
+        raise ValueError(f"Serialized trainable parameter count {parameter_count} != {expected_count}: {label}")
+    if "d_state" not in model or not isinstance(model["d_state"], dict):
+        raise ValueError(f"Trained D state is absent: {label}")
+    teacher_state = teacher.get("state")
+    d_state = model["d_state"]
+    if not isinstance(teacher_state, dict) or set(d_state) != set(teacher_state):
+        raise ValueError(f"Serialized D state schema differs from fold teacher: {label}")
+    changed = False
+    for name, value in teacher_state.items():
+        current = np.asarray(d_state[name])
+        baseline = np.asarray(value)
+        if current.shape != baseline.shape or not np.isfinite(current).all():
+            raise ValueError(f"Serialized D state shape/value mismatch for {name}: {label}")
+        changed |= not np.array_equal(current, baseline)
+    if not changed:
+        raise ValueError(f"D state is an untouched teacher copy, not a trained D head: {label}")
+    for field in ("median", "scale"):
+        if not np.array_equal(np.asarray(model.get(field)), np.asarray(teacher.get(field))):
+            raise ValueError(f"Model {field} differs from fold teacher: {label}")
+    for field in ("feature_names",):
+        if list(model.get(field, ())) != list(teacher.get(field, ())):
+            raise ValueError(f"Model feature schema differs from fold teacher: {label}")
+    if int(model.get("input_features", -1)) != int(teacher.get("input_features", -2)):
+        raise ValueError(f"Model input width differs from fold teacher: {label}")
+    if int(model.get("step", -1)) != 2048 or int(model.get("training", {}).get("steps", -1)) != 2048:
+        raise ValueError(f"Serialized model does not record the 2048-step budget: {label}")
 
 
 def _verify_source_bindings(declaration: dict) -> None:
