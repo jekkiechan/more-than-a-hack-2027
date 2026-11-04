@@ -37,10 +37,13 @@ class AmendedGarExecutorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=base.ROOT / "data/experiments") as tmp:
             amendment_path = Path(tmp) / "amendment.json"
             amendment_path.write_text("{}")
+            deployment_receipt = Path(tmp) / "deployment.json"
+            deployment_receipt.write_text(json.dumps({"fixture": "synthetic-test-deployment"}))
             with (mock.patch.object(amended, "check_amendment", return_value={}),
                   mock.patch.object(amended, "GAMES", Path(tmp) / "games"),
                   mock.patch.object(amended, "AMENDMENT", amendment_path),
                   mock.patch.object(base, "check_declaration", return_value=declaration),
+                  mock.patch.object(base, "PACKAGE_RECEIPT", deployment_receipt),
                   mock.patch.object(base, "_load_deployment", return_value=(Adapter(), object())),
                   mock.patch.object(base.gar.previous, "load_game_records", return_value=records),
                   mock.patch.object(base.gar.previous, "capture_inputs", return_value={}),
