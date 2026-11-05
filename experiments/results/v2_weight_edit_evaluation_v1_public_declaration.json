@@ -1,0 +1,44 @@
+{
+  "automatic_selection_or_promotion": false,
+  "candidate_count": 1,
+  "candidate_csv": "data/experiments/v2_weight_edit_evaluation_v1_public/candidate.csv",
+  "candidate_csv_sha256": "1ccbf06a7f3d6be4723e71d77853850e518d1accec47d57f3ad90a9519716915",
+  "candidate_receipt_sha256": "e0da9926b42d3a5b9c991ff49e1fb0f5be038da5a51c475824bbcc2bb98d022a",
+  "created_utc": "2026-11-04T09:15:24.882130+00:00",
+  "existing_gates_reset_or_modified": false,
+  "expected": {
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17
+  },
+  "input_sha256": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3",
+  "organizer_reference_labels_read_before_gate": false,
+  "organizer_reference_sha256": "e596a9af9626c623bb94be6fd350e12ee9a75c76a696cfadca3bc01735e92487",
+  "organizer_scored_before_gate": false,
+  "package_receipt_sha256": "be25c4f989b7032ab59eac8c81b121fa13f1ee46d7725e454dcae627d32fe426",
+  "prediction_declaration_sha256": "bcec8def9c41294212a43f8905d0d33e0fd4688beec67a890d52984042718735",
+  "primary_metric": "official spell F1; macro F1 breaks exact ties",
+  "saved_active_baseline": {
+    "macro_f1": 0.8494725958535332,
+    "new_unique_csvs_scored": 0,
+    "source": "experiments/results/feed_like_v2_public_result.json",
+    "source_sha256": "0ed472d0245705dbc0ca89f01b9faeba8286924b9d9fc324264db755a3f0bef5",
+    "spell_f1_mean": 0.611764705882353
+  },
+  "scope": "One candidate diagnostic on the fixed 199,319-row organizer public window; no full-match claim.",
+  "source_sha256": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+    "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+    "experiments/gar_deployment_eval_v2.py": "33b8fc765c6a0cc438c21127e5780a3fd2064f616289eb3706b7da8c9f9de345",
+    "experiments/gar_deployment_eval_v2_execution.py": "f7861584aec90b7859daa956ed9dae3dc97bf39d17332cf342a941cddaac55f8",
+    "experiments/gar_heldout_eval_v1.py": "331cd117807b33afea1930b21a217cb65fb11bad274fd0459fa6f480cd32e4bf",
+    "experiments/results/feed_like_v2_public_result.json": "0ed472d0245705dbc0ca89f01b9faeba8286924b9d9fc324264db755a3f0bef5",
+    "experiments/results/gar_deployment_eval_v2.json": "29a33186115ff11fdef904e2b70ee760ba861ef58c078fda43ec59343c9026a3",
+    "experiments/results/short_quality_public_v1_result.json": "727bec244a659b84bc31d42edc81ba6ea6197a8eac283d29922941c0ca4134f4",
+    "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+    "experiments/v2_weight_edit_deployment.py": "19d9e71dad46ec4322e4c7ca18df93009c90ea6e7cdb72cd8ee337d51d347ce5",
+    "experiments/v2_weight_edit_evaluation_v1.py": "b3914e9ba1d5873fbf25496eed5bb1fa0771271a7644fe816d979d2456e177b6"
+  },
+  "study": "v2_weight_edit_evaluation_v1_public"
+}

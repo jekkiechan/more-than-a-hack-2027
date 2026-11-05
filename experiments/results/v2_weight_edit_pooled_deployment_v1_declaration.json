@@ -1,0 +1,155 @@
+{
+  "alpha": 0.0,
+  "calibrated_blend": {
+    "arithmetic": "For each matched seed and native phase, average edited-new and calibrated-family H/A/D probabilities 50/50; then equal-average the two matched seeds; then equal-average native phases. Apply the one decoder config frozen from dev.",
+    "manifest": "experiments/baselines/joint_gru_sn_dense_calibrated_ensemble_v1.json",
+    "manifest_sha256": "b9f7ade00ae94f4306e7e8966a29a88fc57be2d00f657be58a9b5bc38f89732c",
+    "model_files_sha256": {
+      "data/models/joint_gru_sn_dense_calibrated_ensemble_v1/dense_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+      "data/models/joint_gru_sn_dense_calibrated_ensemble_v1/dense_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+      "data/models/joint_gru_sn_dense_calibrated_ensemble_v1/teacher_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "data/models/joint_gru_sn_dense_calibrated_ensemble_v1/teacher_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+    }
+  },
+  "created_utc": "2026-11-04T09:00:43.020054+00:00",
+  "decoder_config": {
+    "dead": 3,
+    "dt": 4,
+    "family": "calibration",
+    "ha": 1.5,
+    "ht": 1.0
+  },
+  "development_report_sha256": "459a08625d7687fdb9f50d1141766da2575a69f47a10f05f1a63c608e05f382b",
+  "direction": {
+    "eligible_matches": "The thirteen original-provider TRAIN matches only; omit matches lacking either qualifying activation group and record counts/omissions. No GAR TRAIN, GAR VALID/TEST, or organizer labels enter direction derivation.",
+    "method": "weight_space_edit.diagnose_model on clean + fixed first-v2 original-provider TRAIN records, both native and team-swapped orientations; equal-match late/control means"
+  },
+  "edit": {
+    "alpha": null,
+    "delta": 0.25,
+    "direction_path": null,
+    "direction_sha256": null,
+    "kind": "gate_bias",
+    "strength": 0.25
+  },
+  "evaluation": false,
+  "gate_delta": 0.25,
+  "organizer_reference_access": false,
+  "pooled_recipe": {
+    "fit_count": 2,
+    "fit_helper": "v2_weight_edit_reconstruction.fit_pooled_member",
+    "provider_fold_average": false,
+    "reconstruction_declaration_sha256": "e56295ccf937eaab5e6d254142d93810631ca2250bac745f1d780375316984d5",
+    "reconstruction_fit_receipt_sha256": "d9c11d7739211c78bc28946db8e268001ecd6efec2089fcef9c89737d5dd19fe",
+    "seeds": [
+      2026,
+      2027
+    ],
+    "teacher_sha256": {
+      "2026": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "2027": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+    },
+    "training_scope": "all thirteen original TRAIN matches plus all 45 GAR TRAIN games; two pooled fits only"
+  },
+  "promotion": false,
+  "public_scoring": false,
+  "selected_dev_choice": {
+    "blend": {
+      "calibrated_component": 0.5,
+      "new_component": 0.5,
+      "phase_pooling": "mean probabilities before decoder",
+      "seeds": [
+        2026,
+        2027
+      ]
+    },
+    "decoder_config": {
+      "dead": 3,
+      "dt": 4,
+      "family": "calibration",
+      "ha": 1.5,
+      "ht": 1.0
+    },
+    "development_report_path": "experiments/results/v2_weight_edit_development_v1.json",
+    "development_report_sha256": "459a08625d7687fdb9f50d1141766da2575a69f47a10f05f1a63c608e05f382b",
+    "direction_report_sha256": "6f35c73ea74f79837a642d95e6537b938ce5f97ebf60acfa7194e2c99d456c44",
+    "edit": {
+      "alpha": null,
+      "delta": 0.25,
+      "direction_path": null,
+      "direction_sha256": null,
+      "kind": "update_bias",
+      "strength": 0.25
+    },
+    "eligible": true,
+    "frozen_before_v1_gar_public": true,
+    "selected_model_provenance_sha256": "3170361a23ee8c0b442d821a216298c41f96140ee8524d7bacbe6220d02eb0aa",
+    "selection_uses_v1_gar_public": false,
+    "study_id": "v2_weight_edit_development_v1",
+    "training_fit_receipt_sha256": "d9c11d7739211c78bc28946db8e268001ecd6efec2089fcef9c89737d5dd19fe",
+    "training_models": {
+      "leave_out_metrica/2026": {
+        "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_metrica_2026.joblib",
+        "receipt_sha256": "58820c19cc4589b8c2dc2f57e241887af59f8a956aa053a6edef775db5f624bc",
+        "sha256": "a7f3665eff7b646809d886899a843c1fe1e62b2748d3f10fca3421b97ce88df0"
+      },
+      "leave_out_metrica/2027": {
+        "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_metrica_2027.joblib",
+        "receipt_sha256": "d61adcc92bbbfd427145bd747fba21c248dccd23ed66ee044734939d991734a8",
+        "sha256": "6b4b729d562f7136f1f2aa47d51f7f4661608232e6eeb74b7390c77a5b304096"
+      },
+      "leave_out_skillcorner/2026": {
+        "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_skillcorner_2026.joblib",
+        "receipt_sha256": "4ce17d369440624364b742acbfb72b94488874c1df5f6004a85be497bd0bf341",
+        "sha256": "cc52fd9eaecc1514773ff710c5f6db1d5200dc4db0a454b639373157c37fa809"
+      },
+      "leave_out_skillcorner/2027": {
+        "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_skillcorner_2027.joblib",
+        "receipt_sha256": "1582987a57d116c03c477dadb2d5f416da84a8e98a654ec3e8fa9e9f070ba1be",
+        "sha256": "6ae9c0216635dbcfe2c71c1282bd4a7febe32f44f5fbba975cae009c9c799af7"
+      },
+      "leave_out_sportec/2026": {
+        "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_sportec_2026.joblib",
+        "receipt_sha256": "028177e0d6883026df55974ef8b898bd367a01eb97f6b02526c7d1b3e61da918",
+        "sha256": "05d73bfd8c0dd331bd060f29225bcb2a53acf543eec4548b7547631e90afc37c"
+      },
+      "leave_out_sportec/2027": {
+        "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_sportec_2027.joblib",
+        "receipt_sha256": "42f7797197f85aeeef3fdf9188c0e98ca330efa6ed1e3a989a348b1c1fbefde4",
+        "sha256": "ca5a18ea3d3c0fed72f36620f4f799643b6e96f36e3fbec9cf649025d10d2100"
+      }
+    },
+    "winner_id": "update_bias_p025",
+    "winner_receipt_path": "experiments/results/v2_weight_edit_development_v1_winner.json",
+    "winner_receipt_sha256": "f3323e6dfc2445d976c6bf43bb4629b2420bd9e85011383ef14289060b8f5b06"
+  },
+  "selected_dev_choice_path": "data/experiments/v2_weight_edit_selected_choice.json",
+  "selected_dev_choice_sha256": "cc0bec7871b8df2478eef69c4ee53ab575bcc11b3b0f0369803806fe993116ab",
+  "source_sha256": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/calibrated_dense_baseline.py": "b51dd8c5810f6ff75fd801176626669b98d4254eaa3144520af3c8554ae25be3",
+    "experiments/current_baseline.py": "2f8e5725d215fbe5f97bfa46d7544780d7755f1f0d208a02397afa7aac1d5867",
+    "experiments/decoder_refinement.py": "3157ce0ef6a9f2417c0d365e6ac7b759cf99bda6d91b6f62ea343c2cbb28c962",
+    "experiments/decoder_search.py": "a9ce4d61bd21b35a096839df25682f92a8f4f455ea37d59d8cb7075c5fb54294",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+    "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/live_gap_experiment.py": "d4f3c58b561323ec8b0d4948736aa78970dcddb22df88d5d3f7eab509e8fb0ac",
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/sn_dense_baseline.py": "c9d6e5fc24943b4543862969c18b57f67f76daede49c315a0c8af20867ff8c9b",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+    "experiments/soccernet_data.py": "ec2f665f5e0448c41b10e09bf5f5b3bf211bafd7d31bbd16ffa45a117409aca7",
+    "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+    "experiments/soccernet_segments.py": "83ea686a452976f2b4724e6e48c8a94766525e02f2ed6e9af716386b4788363e",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+    "experiments/v2_weight_edit_deployment.py": "19d9e71dad46ec4322e4c7ca18df93009c90ea6e7cdb72cd8ee337d51d347ce5",
+    "experiments/v2_weight_edit_reconstruction.py": "a2082adc6a932eebee1e65d6764b095ac7b02b8abe72d16969efb59ce477ffb1",
+    "experiments/weight_space_edit.py": "b6ce21d19fba8638d3f80c1ea602ebf58a53dc8b7bd877df0f5434ac6eff1443"
+  },
+  "study": "v2_weight_edit_pooled_deployment_v1",
+  "winner_id": "update_bias_p025"
+}

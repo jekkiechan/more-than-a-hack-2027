@@ -1,0 +1,22 @@
+{
+ "arm_list_decoder_cohort_aggregation_and_guardrails_unchanged": true,
+ "declaration_path": "experiments/results/v2_weight_edit_development_v1_declaration.json",
+ "declaration_sha256": "d94dcf3db9dd0af5b73bdca87d6e5139a3baea8afd4522e0ae77a4d36d13bad5",
+ "execution_invocation": {
+  "control": "experiments.v2_weight_edit_development.control_replay(workers=5)",
+  "control_preflight": "experiments.v2_weight_edit_development.control_preflight()",
+  "freeze_winner": "experiments.v2_weight_edit_development.freeze_winner()",
+  "primary": "experiments.v2_weight_edit_development.run_primary(workers=4)",
+  "v1": "experiments.v2_weight_edit_development.score_v1(workers=4)"
+ },
+ "failed_cli_action": "control --workers 5",
+ "failed_cli_outcome": "NameError before declaration validation, inference, or output creation; no score cells were lost.",
+ "frozen_source_unchanged": true,
+ "inference_protocol_unchanged": true,
+ "issue": "CLI dispatch stores parse_args().action but references undefined args.workers; freeze-winner CLI also forwards workers to a no-argument function.",
+ "organizer_reference_access": false,
+ "promotion": false,
+ "public_scoring": false,
+ "status": "execution_only_no_scientific_change",
+ "study_id": "v2_weight_edit_development_v1"
+}
