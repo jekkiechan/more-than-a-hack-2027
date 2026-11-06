@@ -1,11 +1,9 @@
 # Current research state
 
-Reviewed against fork `main` through
-[PR #72](https://github.com/jekkiechan/more-than-a-hack-2027/pull/72), plus the
-completed phase-average comparison and guard audit on PR #73. The
-subsequent explicitly user-authorized phase-average promotion supersedes PR #70.
-Check newer merged/open PRs before current-results advice. Detailed historical
-results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
+Reviewed 6 November 2026 against fork `main` at `8919726` (PR #81) and
+open research PRs #82–85. The user-authorized phase-average promotion remains
+the adopted package. Check newer merged/open PRs before current-results advice.
+Detailed results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
 ## Adopted package
 
@@ -19,13 +17,141 @@ now enabled. No fitting or organizer rescoring is part of promotion.
 Original clean/v1/v2 spell: **.667556/.531576/.583571**. Exact-package GAR TEST
 clean/v2 spell: **.701641/.701289** on ten games. All seven historical active
 guards pass; the +.01 clean screen remains failed with a user-authorized
-exception. Calibrated+phase remains the TEST/original-v2 spell point leader;
+exception. Calibrated+phase leads the earlier exact-package TEST comparison;
 the paired TEST phase-gain interval includes zero. Independent continuous-match
 gold confirmation remains pending.
 
 The evaluation policy now uses clean plus `feed_like_v2` with 4+ realizations
 for original-provider development. Keep GAR TEST separate from selected-on
 VALID and record future reuse. V1 and composite remain historical diagnostics.
+
+## Iterative v2 training — 6 November 2026
+
+The [three-round study](../../experiments/V2_ITERATIVE_DATA.md) uses twelve
+paired continuation fits, the existing 45-game GAR TRAIN corpus and archived
+model combinations. Its best v2 spell F1 is **0.592638** (+0.009067), with
+**0.670707 clean / 0.532096 v1**. Spell and macro F1 improve on all three views,
+and D metrics stay unchanged, but short-spell recall regresses in all three.
+**Zero of twelve pipelines meets >0.60 plus strict retention; adoption stays
+unchanged.** The continuation/adopted blend improves short recall and all three
+spell scores but loses 0.000111 clean macro F1; adding boundary margin performs
+worse than the paired control.
+
+This closes the declared three-round search on the exposed development cohort.
+Prioritize independent continuous-match gold evidence before further selection.
+No organizer scoring, GAR VALID/TEST reuse or pooled deployment fitting occurred.
+Research checkpoints are bundled and hash-verified locally, not newly uploaded.
+All three independent 35-cell replays pass, alongside 752 experiment tests and
+26 root tests.
+Code and aggregate evidence are on [PR #85](https://github.com/jekkiechan/more-than-a-hack-2027/pull/85).
+The restricted research site is published as version 32 with desktop/mobile
+checks and unchanged access revision 2; see the
+[delivery receipt](../../experiments/results/v2_iterative_v1_delivery.json).
+
+## V2 spell target — 3 November 2026
+
+The completed [v2 target studies](../../experiments/V2_SPELL_TARGET.md) reach
+**0.592749 eligible v2 spell F1**, versus adopted **0.583571** (+0.009178).
+Clean spell is **0.665355** versus **0.667556** (-0.002201). The **0.60 target
+remains unmet**. The winner blends the new four-view original-possession model
+and archived calibrated model 50/50, averages native phases, and uses H/A
+transition cost 1.5. Common clean/provider retention checks pass; the historical
+clean-gain screen remains failed and adoption is unchanged.
+
+Six fixed provider-excluded fits use the eligible original TRAIN pool and
+45 GAR TRAIN games. Nine consensus arms, 109 calibration arms, three new-model
+arms, three fixed decoder-transfer arms and a final 20-arm boundary check use
+the same five exposed development matches, clean plus four fixed v2 views.
+All eight archived C0 spell/macro aggregates replay with zero error. Final
+local validation passes 639 experiment tests and 26 root tests. The H/A-cost-2
+numerical maximum is 0.592926 but fails the fixed clean floor; it is not chosen.
+
+New views, research weights and native outputs are locally verified, not newly
+uploaded. No pooled deployment fit, organizer scoring, GAR TEST reuse or
+default change occurs. An exact pooled-package check and independent
+continuous-match gold remain outstanding evidence needs. The report preserves
+failed attempts, mechanical runtime corrections and the disclosed recovery
+receipt preservation exception.
+
+Research code and aggregate evidence are on
+[PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82).
+Research site **version 29** is published with desktop/mobile checks,
+all six chart-control combinations and seven comparison rows. Restricted
+access remains at revision 2 with the same allowlist. The
+[delivery receipt](../../experiments/results/v2_spell_target_delivery.json)
+records the native publication result and local-only artifact availability.
+
+## Direct GRU weight-edit follow-up — 4 November 2026
+
+The [weight-edit study](../../experiments/V2_WEIGHT_EDIT.md) in open [PR #83](https://github.com/jekkiechan/more-than-a-hack-2027/pull/83) reconstructed
+six provider-held-out folds from PR82’s frozen recipe because the prior local
+checkpoints were not available in the reachable archive. Recipe-level parity is
+declared; byte identity is not claimed. A TRAIN-only, match-balanced delayed
+transition direction and bounded update-gate edits were compared against the
+unedited reconstruction on matched clean, v1, and v2 development views. The
+unedited control reproduces the historical .665355 clean / .592749 v2 blend
+(v2 exact to its archived aggregate); the 25-cell full-cohort control
+reproduces all four saved clean/v2 spell and macro aggregates with zero error,
+and independent official replay computes metrics from every new cell artifact. The primary seven-arm comparison selects
+`update_bias_p025` at .664316 clean / .594110 v2 spell, +.001360 v2 and -.001039
+clean versus unedited; all fixed guards pass. The .60 target remains .005890
+away. This is a fixed development selection, not an adoption.
+
+The post-selection v1 diagnostic is .518850 spell / .823766 macro, versus
+.518637 / .823302 unedited and .531576 / .826853 adopted. The edit itself gains
++.000213 spell versus its matched unedited reconstruction; the -.012726 adopted
+gap is a whole-pipeline comparison, not an isolated edit effect. Two pooled fits
+are sealed. The one-use public diagnostic returns .594286 spell / .852078 macro
+versus adopted .611765 / .849473 on the fixed window (199,319 rows; 7,500
+graded; 17 reference spells). No unedited-new-pooled public control was scored,
+so this external difference cannot be attributed specifically to the tensor
+edit; it is diagnostic only and not full-match confirmation. Neither v1 nor
+public results rerank the frozen v2 winner. The ten-game GAR readout is .703713
+clean / .700806 v2 spell versus adopted .701641 / .701289; its v2 paired
+interval crosses zero. All 50 GAR prediction sets and aggregates pass final
+independent replay. This external comparison is whole-pipeline, with no
+unedited-new-pooled control. The study is complete; adoption is unchanged. PR82’s
+historical .592749 v2 / .665355 clean result remains unchanged, the .60 target
+remains unmet, and adoption is unchanged.
+
+## V2 data and capacity follow-up — 4 November 2026
+
+The [data/capacity study](../../experiments/V2_DATA_CAPACITY.md) completed all
+18 provider-held-out fits and 105 scoring jobs across 35 exposed development
+cells. The width-96 PR82-style blend reproduces the eligible v2 spell score
+(.592749), but falls below adopted clean and v1 spell. Width 192 reaches
+.592533 v2 spell (−.000216 versus its matched width-96 blend); the balanced
+v1/v2 width-96 recipe reaches .591496 (−.001253). Across the 12 candidate arms,
+**0 pass all 19 strict checks**. The D-mask arm preserves D metrics but does
+not solve the H/A and all-view retention tradeoffs. The archived controls
+replay all 35 cells and 24 official aggregate checks, with maximum error
+2.22e-16; the independent audit verified the original 35-cell result.
+
+A separately declared final check uniformly averaged the three already-trained
+experts across the same four pipeline types, without new fits or inference. It
+also has **0/4 strict passes**; the best v2 spell is .592585, .000165 below the
+PR82 threshold, and clean/v1 regressions remain. Across the original and final
+checks, **0/16 candidate pipelines qualify**. Verification of this final
+uniform result replayed all 140 arm/cell scalars, recomputed all four means and
+the 19 gates, and confirmed no inference was repeated. Both audits pass; no
+further search is planned.
+
+No package or manifest changed. The .60 stretch target remains unmet. Evidence
+is limited to the five previously exposed matches and synthetic feed-like
+views; there is no GAR TEST, organizer or independent continuous-match gold
+result. New private weights remain local. Automatic review initially rejected both
+publication attempts before any remote mutation; that historical state is
+preserved in the [delivery receipt](../../experiments/results/v2_data_capacity_delivery.json).
+The user has since explicitly authorized both destinations. GitHub branch
+`research/v2-data-capacity-v1` is pushed at `2764bba` and [PR #84](https://github.com/jekkiechan/more-than-a-hack-2027/pull/84)
+is open; no CI checks had started at Site deployment. The Site deployment
+succeeded as version 31 at the [research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/),
+from source commit `c9d66174510a7a2415648caa5b937b6f8fda6d3a`. It retains the
+custom audience, revision 2 and one external viewer. The
+[publication receipt](../../experiments/results/v2_data_capacity_publication_v1.json)
+records deployment and static checks. Browser QA was unavailable; no
+desktop/mobile visual check is claimed. New private weights and frame outputs
+were not published; model adoption is unchanged.
 
 ## New external confidence check — 2 November 2026
 

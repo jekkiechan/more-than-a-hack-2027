@@ -1,0 +1,29 @@
+{
+ "amendment_id": "v2_weight_edit_development_v1_execution_amendment_v5",
+ "control_result_sha256": "681ab5f0faba66c2930d064f30f5a1b8029235e52ba3d1500ccf36889fc45e75",
+ "declaration_sha256": "d94dcf3db9dd0af5b73bdca87d6e5139a3baea8afd4522e0ae77a4d36d13bad5",
+ "fix": "Replacement readout adapter filters and deduplicates editable arms and emits an empty supplemental per-seed diagnostic for pooled deployed_original_full. The official pooled control score is still computed and reported by the frozen scorer.",
+ "frozen_development_sha256": "6fd19be1bddb409dd99faeba119a4c4a5ec3d28e7af47af33b2cafb799830fb1",
+ "full_synthetic_fork_test": "A complete synthetic ten-cell v1 orchestration ran through the ProcessPool fork path with official scoring mocked; verifies the unedited winner, pooled archived control, and empty supplemental control seed rows.",
+ "invocation": "python -m experiments.v2_weight_edit_development_v1_readout_v2 --workers 4",
+ "organizer_reference_access": false,
+ "parent_amendment_path": "experiments/results/v2_weight_edit_development_v1_execution_amendment_v4.json",
+ "parent_amendment_sha256": "8d4f7a7ae33b3f0e13d3442cd784292fed31c44b2d7ad18e4b3326c017d1a2fe",
+ "promotion": false,
+ "public_scoring": false,
+ "replacement_v4_helper_path": "experiments/v2_weight_edit_development_v1_readout_v2.py",
+ "replacement_v4_helper_sha256": "21b8a1188078794909c91dd2ac647e07215db876906f9026caa945839ead415a",
+ "replacement_v4_test_path": "experiments/tests/test_v2_weight_edit_development_v1_readout_v2.py",
+ "replacement_v4_test_sha256": "80e9508c5570ff49838d672740102f99159144e999b6244f9c13480b1e5078ea",
+ "scientific_protocol_changed": false,
+ "study_id": "v2_weight_edit_development_v1",
+ "v1_scoring_started": false,
+ "v3_paths_restored_exactly": {
+  "helper": "experiments/v2_weight_edit_development_v1_readout.py",
+  "helper_sha256": "639ab8dc51ced31be348032320db0a242f930c7f79358c7e3e459414f4c79db5",
+  "test": "experiments/tests/test_v2_weight_edit_development_v1_readout.py",
+  "test_sha256": "9ad0193136f562a71ed878d714dac49c49f2b50b3b5cc7c6da1d4e9555b8b980"
+ },
+ "v4_status": "prospective execution helper superseded before any real v1 scoring; its files were not invoked.",
+ "verification": ".venv/bin/python -m unittest experiments.tests.test_v2_weight_edit_development_v1_readout_v2 -v (5 tests passed)"
+}

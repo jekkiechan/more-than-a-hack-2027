@@ -1,0 +1,45 @@
+{
+ "candidate_scored": false,
+ "labels_scored": false,
+ "passed": true,
+ "real_feature_subset": {
+  "asset": "data/experiments/v2_iterative_v1/eval_inputs/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+  "bitwise_feature_values": true,
+  "feature_count": 137,
+  "optimized_seconds": 0.16985199299983833,
+  "original_seconds": 0.25152169899979526,
+  "rows": 800,
+  "speedup": 1.4808286588667503
+ },
+ "runtime_source_sha256": "199b9cc1f196883ff767121c6a96390234fb9ac30adb79dcea1756caac7c3d5b",
+ "study_id": "v2_iterative_v1_runtime_parity",
+ "synthetic_checks": [
+  {
+   "exact": true,
+   "q": 0.5,
+   "shape": [
+    512,
+    48
+   ]
+  },
+  {
+   "exact": true,
+   "q": 0.9,
+   "shape": [
+    512,
+    48
+   ]
+  },
+  {
+   "case": "extreme_finite",
+   "exact": true,
+   "q": 0.5
+  },
+  {
+   "case": "extreme_finite",
+   "exact": true,
+   "q": 0.9
+  }
+ ],
+ "training_run": false
+}
