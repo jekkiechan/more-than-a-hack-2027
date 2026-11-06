@@ -56,6 +56,14 @@ class VerifierShapeContracts(unittest.TestCase):
         with self.assertRaises(AssertionError):
             verifier._check_reference_count(7, {"reference_spell_count": 8}, "synthetic")
 
+    def test_round_two_conditional_blend_restores_zero_dead_column(self):
+        candidate = np.array([[.6, .3, .1], [.2, .7, .1]])
+        adopted = np.array([[.4, .5, .1], [.6, .3, .1]])
+        blend = verifier._round2_conditional_blend(candidate, adopted)
+        self.assertEqual(blend.shape, (2, 3))
+        np.testing.assert_array_equal(blend[:, 2], np.zeros(2))
+        np.testing.assert_allclose(blend[:, :2].sum(axis=1), np.ones(2))
+
     def test_metric_comparison_checks_nested_spell_iou_values(self):
         expected = {"spell_f1": .5, "spell_by_iou": {"0.3": .7, "0.5": .6}}
         verifier._compare_metrics(expected, expected, "synthetic")
@@ -144,6 +152,30 @@ class RoundThreeContracts(unittest.TestCase):
         aggregate[verifier.round3_eval.ARMS[0]]["clean"]["macro_f1"]["equal_provider"] = .39
         gates = verifier._round3_gates(aggregate, baseline)
         self.assertFalse(gates[verifier.round3_eval.ARMS[0]]["all_passed"])
+
+    def test_round_three_seed_aggregate_compares_seed_view_metric_layout(self):
+        aggregate = {}
+        for arm in verifier.round3_eval.ARMS:
+            aggregate[arm] = {}
+            for seed in ("2026", "2027"):
+                aggregate[arm][seed] = {}
+                for view, _ in verifier.VIEWS:
+                    aggregate[arm][seed][view] = {
+                        metric: {"equal_provider": 0.5, "providers": {
+                            "metrica": 0.4, "skillcorner": 0.5, "sportec": 0.6}}
+                        for metric in verifier.QUALITY
+                    }
+        verifier._round3_compare_seed_aggregate(aggregate, aggregate,
+                                                "round3/seed_aggregate")
+        changed = {arm: {seed: {view: dict(metrics) for view, metrics in views.items()}
+                          for seed, views in seeds.items()}
+                   for arm, seeds in aggregate.items()}
+        changed[verifier.round3_eval.ARMS[0]]["2026"]["clean"]["spell_f1"] = {
+            "equal_provider": 0.49, "providers": {
+                "metrica": 0.4, "skillcorner": 0.5, "sportec": 0.6}}
+        with self.assertRaises(AssertionError):
+            verifier._round3_compare_seed_aggregate(aggregate, changed,
+                                                    "round3/seed_aggregate")
 
 
 if __name__ == "__main__":

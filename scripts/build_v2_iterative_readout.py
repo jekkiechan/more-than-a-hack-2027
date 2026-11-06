@@ -26,6 +26,10 @@ def build():
       'boundary_margin_fixed_d_ha3':'Boundary margin',
       'ce_control_conditional_blend_fixed_d_ha3':'Control + adopted',
       'boundary_margin_conditional_blend_fixed_d_ha3':'Boundary + adopted',
+      'trained_calibrated_mean':'Continuation + calibrated mean',
+      'trained_calibrated_log':'Continuation + calibrated log',
+      'three_expert_mean':'Three-model mean',
+      'three_expert_log':'Three-model log',
     }
     round_results={}
     for number,name in ((1,'v2_iterative_v1_round1'),(2,'v2_iterative_v1_round2'),(3,'v2_iterative_v1_round3')):

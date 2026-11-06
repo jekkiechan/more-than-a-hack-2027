@@ -110,6 +110,11 @@ def _normalize_ha(probability: np.ndarray) -> np.ndarray:
     return p / mass
 
 
+def _round2_conditional_blend(candidate: np.ndarray, adopted: np.ndarray) -> np.ndarray:
+    ha = _normalize_ha((_conditional(candidate) + _conditional(adopted)) * .5)
+    return np.column_stack((ha, np.zeros(len(ha))))
+
+
 def _round1_transforms(adopted: np.ndarray, calibrated: np.ndarray) -> dict[str, np.ndarray]:
     a, c = _normalize(adopted), _normalize(calibrated)
     joint = _normalize((a + c) * 0.5)
@@ -542,7 +547,7 @@ def verify_round2() -> dict:
         predictions = {
             f"{train_arm}_fixed_d_ha3": _score_fixed_d(pooled, control["adopted"], control["model_period"], control["fps"], cost),
             f"{train_arm}_conditional_blend_fixed_d_ha3": _score_fixed_d(
-                _normalize_ha((_conditional(pooled) + _conditional(control["adopted"])) * .5),
+                _round2_conditional_blend(pooled, control["adopted"]),
                 control["adopted"], control["model_period"], control["fps"], cost),
         }
         for arm, pred in predictions.items():
@@ -560,7 +565,7 @@ def verify_round2() -> dict:
             ref_counts[f"{view}/{rep}"] += reference
         for seed in train_run.trainer.SEEDS:
             for suffix, probability in ((str(seed), seeds[seed]), (str(seed)+"_blend",
-                    _normalize_ha((_conditional(seeds[seed]) + _conditional(control["adopted"])) * .5))):
+                    _round2_conditional_blend(seeds[seed], control["adopted"]))):
                 arm = f"{train_arm}_fixed_d_ha3" if suffix.isnumeric() else f"{train_arm}_conditional_blend_fixed_d_ha3"
                 pred = _score_fixed_d(probability, control["adopted"], control["model_period"], control["fps"], 3.0)
                 stored_name = f"pred__seed__{seed}" if suffix.isnumeric() else f"pred__seed__{seed}_blend"
@@ -696,6 +701,19 @@ def _round3_compare_aggregate(actual: dict, expected: dict, label: str,
                 for provider, value in left["providers"].items():
                     _assert_close(value, right["providers"][provider],
                                   f"{label}/{arm}/{view}/{metric}/{provider}")
+
+
+def _round3_compare_seed_aggregate(actual: dict, expected: dict, label: str) -> None:
+    """Compare the extra seed level before each seed's view/metric tree."""
+    if set(actual) != set(expected):
+        raise AssertionError(f"{label}: arm inventory mismatch")
+    for arm in actual:
+        if set(actual[arm]) != set(expected[arm]):
+            raise AssertionError(f"{label}/{arm}: seed inventory mismatch")
+        for seed in actual[arm]:
+            _round3_compare_aggregate({arm: actual[arm][seed]},
+                                      {arm: expected[arm][seed]},
+                                      f"{label}/{arm}/{seed}", metrics=QUALITY)
 
 
 def _read_round3_prediction_artifact(fact: dict, expected_names: set[str],
@@ -854,8 +872,8 @@ def verify_round3() -> dict:
         raise AssertionError("Round-three hard gates differ from the independent recomputation")
 
     seed_aggregate = _round3_seed_aggregate(seed_metrics)
-    _round3_compare_aggregate(seed_aggregate, result["seed_aggregate"],
-                              "round3/seed_aggregate", metrics=QUALITY)
+    _round3_compare_seed_aggregate(seed_aggregate, result["seed_aggregate"],
+                                   "round3/seed_aggregate")
     return {"study_id": "v2_iterative_v1_round3", "round": 3, "passed": True,
             "round3_result_sha256": sha(ROUND3_RESULT),
             "round3_declaration_sha256": sha(ROUND3_DECL), "selected_training_arm": selected,

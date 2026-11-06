@@ -1,11 +1,9 @@
 # Current research state
 
-Reviewed 4 November 2026 against fork `main` through
-[PR #82](https://github.com/jekkiechan/more-than-a-hack-2027/pull/82), plus the
-completed v2 target and weight-edit studies below. The user-authorized phase-average promotion
-remains the adopted package.
-Check newer merged/open PRs before current-results advice. Detailed historical
-results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
+Reviewed 6 November 2026 against fork `main` at `8919726` (PR #81) and
+open research PRs #82–85. The user-authorized phase-average promotion remains
+the adopted package. Check newer merged/open PRs before current-results advice.
+Detailed results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
 ## Adopted package
 
@@ -26,6 +24,26 @@ gold confirmation remains pending.
 The evaluation policy now uses clean plus `feed_like_v2` with 4+ realizations
 for original-provider development. Keep GAR TEST separate from selected-on
 VALID and record future reuse. V1 and composite remain historical diagnostics.
+
+## Iterative v2 training — 6 November 2026
+
+The [three-round study](../../experiments/V2_ITERATIVE_DATA.md) uses twelve
+paired continuation fits, the existing 45-game GAR TRAIN corpus and archived
+model combinations. Its best v2 spell F1 is **0.592638** (+0.009067), with
+**0.670707 clean / 0.532096 v1**. Spell and macro F1 improve on all three views,
+and D metrics stay unchanged, but short-spell recall regresses in all three.
+**Zero of twelve pipelines meets >0.60 plus strict retention; adoption stays
+unchanged.** The continuation/adopted blend improves short recall and all three
+spell scores but loses 0.000111 clean macro F1; adding boundary margin performs
+worse than the paired control.
+
+This closes the declared three-round search on the exposed development cohort.
+Prioritize independent continuous-match gold evidence before further selection.
+No organizer scoring, GAR VALID/TEST reuse or pooled deployment fitting occurred.
+Research checkpoints are bundled and hash-verified locally, not newly uploaded.
+All three independent 35-cell replays pass, alongside 752 experiment tests and
+26 root tests.
+Code and aggregate evidence are on [PR #85](https://github.com/jekkiechan/more-than-a-hack-2027/pull/85).
 
 ## V2 spell target — 3 November 2026
 

@@ -1,0 +1,45 @@
+{
+  "active_verifier_modified": false,
+  "created_utc": "2026-11-06T14:29:15Z",
+  "immutable_snapshots": true,
+  "schema": "v2_iterative_verifier_source_inventory_v1",
+  "snapshots": [
+    {
+      "sha256": "e4eddf0fb842a1cf8e537eabb94e61763bb3cde7d6c11c10f8cb3bbeb817c291",
+      "snapshot": "e4eddf0fb842a1cf8e537eabb94e61763bb3cde7d6c11c10f8cb3bbeb817c291.py.txt",
+      "source": "git show 3921c46:scripts/verify_v2_iterative.py",
+      "verification_receipt": {
+        "passed": true,
+        "path": "experiments/results/v2_iterative_v1_round1_verification.json",
+        "sha256": "21c0ea7814846c6dd6760f7695fff53b858e5779197baa47bc780fc0c70c9864",
+        "verifier_sha256": "e4eddf0fb842a1cf8e537eabb94e61763bb3cde7d6c11c10f8cb3bbeb817c291"
+      },
+      "version": "round1"
+    },
+    {
+      "sha256": "af1dfabb078d919098f0396325b56d1ffcc31f7890b69d66864399f0b9bfb04d",
+      "snapshot": "af1dfabb078d919098f0396325b56d1ffcc31f7890b69d66864399f0b9bfb04d.py.txt",
+      "source": "Current verifier with only _round3_compare_seed_aggregate helper and call reversed in memory; exact SHA matched the saved round-two receipt.",
+      "verification_receipt": {
+        "passed": true,
+        "path": "experiments/results/v2_iterative_v1_round2_verification.json",
+        "sha256": "a662c8723653256c6d7c8249ba70ff61be74d0cd59f3114a9c4c248477d5c0a6",
+        "verifier_sha256": "af1dfabb078d919098f0396325b56d1ffcc31f7890b69d66864399f0b9bfb04d"
+      },
+      "version": "round2"
+    },
+    {
+      "sha256": "b1818693c95ca63c67c497d53a92d64083b0329e93fd48719f612ef6dea07c80",
+      "snapshot": "b1818693c95ca63c67c497d53a92d64083b0329e93fd48719f612ef6dea07c80.py.txt",
+      "source": "Active scripts/verify_v2_iterative.py copied with before/after SHA equality.",
+      "verification_receipt": {
+        "passed": true,
+        "path": "experiments/results/v2_iterative_v1_round3_seed_tail_check.json",
+        "sha256": "1567d0ba526cd417fca256d6ccdf607f6cbca25a351650191c6bb0b9b974b3d8",
+        "verifier_sha256": "b1818693c95ca63c67c497d53a92d64083b0329e93fd48719f612ef6dea07c80"
+      },
+      "verification_scope": "The referenced round-three seed-tail check is a partial check, not a full round-three scoring receipt.",
+      "version": "current_round3"
+    }
+  ]
+}
