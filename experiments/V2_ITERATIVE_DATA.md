@@ -312,3 +312,17 @@ Two fixed seeds are sensitivity diagnostics, not a confidence interval; neither 
 - **Continuation + calibrated mean:** `clean/short_spell_recall_iou_0_5_lt3s_vs_adopted`, `feed_like_v1/short_spell_recall_iou_0_5_lt3s_vs_adopted`, `feed_like_v2/short_spell_recall_iou_0_5_lt3s_vs_adopted`, `feed_like_v2/spell_f1_strictly_above_0_60`.
 
 The [machine-readable readout](results/v2_iterative_v1_readout.json) contains every protected metric; the round result files also retain provider, individual-seed and spell-count diagnostics.
+
+## Published delivery
+
+Code, aggregate results and independent verification are on
+[PR #85](https://github.com/jekkiechan/more-than-a-hack-2027/pull/85).
+The [research dashboard](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#v2-iterative)
+is published as **version 32**. Desktop and mobile checks pass for Overview and
+Experiments, including all 36 view/metric combinations and thirteen comparison
+rows. The existing restricted audience is unchanged at access revision 2.
+The [delivery receipt](results/v2_iterative_v1_delivery.json) records the native
+successful deployment, source commit, artifact metadata and browser checks.
+Input-tar and service-archive hashes are recorded separately; no byte-for-byte
+remote archive restore is claimed. New model weights and native predictions
+remain local-only. The adopted package and decision policy remain unchanged.

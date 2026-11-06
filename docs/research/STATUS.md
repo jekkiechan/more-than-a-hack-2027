@@ -44,6 +44,9 @@ Research checkpoints are bundled and hash-verified locally, not newly uploaded.
 All three independent 35-cell replays pass, alongside 752 experiment tests and
 26 root tests.
 Code and aggregate evidence are on [PR #85](https://github.com/jekkiechan/more-than-a-hack-2027/pull/85).
+The restricted research site is published as version 32 with desktop/mobile
+checks and unchanged access revision 2; see the
+[delivery receipt](../../experiments/results/v2_iterative_v1_delivery.json).
 
 ## V2 spell target — 3 November 2026
 
