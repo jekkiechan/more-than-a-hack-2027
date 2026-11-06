@@ -62,6 +62,9 @@ def model_path(arm, fold, seed):
 
 def sources():
     paths = {Path(__file__), Path(trainer.__file__), PARENT, PRIOR_SEAL,
+             ROOT / 'experiments/v2_iterative_runtime.py',
+             ROOT / 'experiments/v2_iterative_execution.py',
+             ROOT / 'experiments/results/v2_iterative_v1_execution_amendment.json',
              *recipe._source_files(), *recipe._view_pipeline_files()}
     return {str(p.relative_to(ROOT)): sha(p) for p in sorted(paths)}
 

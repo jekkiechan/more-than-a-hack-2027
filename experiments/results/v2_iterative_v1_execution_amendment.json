@@ -1,0 +1,16 @@
+{
+ "bindings": {
+  "experiments/results/v2_iterative_v1_declaration.json": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+  "experiments/results/v2_iterative_v1_plan.json": "7f32d0bfc95e3fbdb9b51ea945986bd280f73e4be4e2edd018fcc13bb27a0bd8",
+  "experiments/results/v2_iterative_v1_runtime_parity.json": "6a0286bd4eea2db3602fe88955d0dea90a7b312c2356d7ba4310d9c51b88723b",
+  "experiments/v2_iterative_execution.py": "44ce702bd13908a667b357669b6bdfc3676221da09557c2f44283ccb8ab6129c",
+  "experiments/v2_iterative_runtime.py": "199b9cc1f196883ff767121c6a96390234fb9ac30adb79dcea1756caac7c3d5b"
+ },
+ "change": "Vectorize float64 2D row-wise linear nanquantiles at q=.5/.9. Preserve every other call through NumPy. Canonically sort aggregation keys during control replay to match saved-cell candidate reduction order and avoid scheduling-dependent roundoff in zero-tolerance comparisons.",
+ "frozen_sources": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+ "model_feature_metric_protocol_changes": false,
+ "organizer_reference_access": false,
+ "original_sources_unchanged": true,
+ "prior_attempt": "Slow preparation/control processes stopped and partial artifacts preserved in ignored attempt1_slow directory. Completed TRAIN feature views retained with their original hashes; no completed score receipt reset.",
+ "study_id": "v2_iterative_v1_execution"
+}

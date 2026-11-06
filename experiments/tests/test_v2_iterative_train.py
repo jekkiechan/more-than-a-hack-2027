@@ -80,6 +80,34 @@ class BoundaryMaskContracts(unittest.TestCase):
 
 
 class TrainingIntegrationSmoke(unittest.TestCase):
+    def test_control_matches_shared_dense_trainer_after_identical_warmstart(self):
+        import torch
+        from unittest.mock import patch
+        from experiments import sn_dense_train as sn
+
+        torch.set_num_threads(1)
+        teacher = factorized_teacher(seed=17)
+        ha = study.cap.network(teacher["input_features"], 96)
+        prior = dict(kind="soccernet_capacity", hidden=96,
+                     feature_names=list(teacher["feature_names"]),
+                     median=teacher["median"].copy(), scale=teacher["scale"].copy(),
+                     state={key: value.detach().cpu().numpy().copy()
+                            for key, value in ha.state_dict().items()},
+                     d_state={key: value.copy() for key, value in teacher["state"].items()})
+        old = [old_record("old-a", 3), old_record("old-b", 4)]
+        gar = [sn_record("game-a", 5), sn_record("game-b", 6)]
+        actual = study._fit_loop(study.warmstart_state(teacher, prior), old, gar,
+                                 seed=2026, arm="ce_control", steps=2, verbose=False)
+        def load_warmstart(_teacher, target):
+            target.load_state_dict({k: torch.as_tensor(v) for k, v in prior["state"].items()})
+        with patch.object(study.cap, "_copy_teacher_function", load_warmstart):
+            expected = sn.train(teacher, old, gar, width=96, lr=study.LR, seed=2026,
+                                steps=2, fraction=.5, batch_size=32, ha_target="dense",
+                                train_d=False, require_full_native=True, verbose=False)
+        for key, value in expected["model"]["state"].items():
+            np.testing.assert_allclose(actual["model"]["state"][key], value,
+                                       rtol=0.0, atol=3e-7)
+
     def test_control_and_treatment_train_and_keep_adopted_d_state(self):
         import torch
         from experiments import sn_dense_train as sn

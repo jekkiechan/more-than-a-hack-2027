@@ -80,6 +80,89 @@ with the adopted model, always retaining the adopted decoded D mask and H/A
 cost 3. Preserving D probabilities alone would not guarantee unchanged decoded
 D labels, which is why these arms explicitly retain the decoded mask.
 
+## Round three: bounded combinations after round two
+
+The stronger standalone continuation recipe on unrounded v2 spell (macro F1
+breaks an exact tie) is selected from round two. Four final pipelines combine
+its saved conditional H/A probabilities with the archived calibrated model,
+with or without the adopted model as a third equally weighted expert. Arithmetic
+and log-probability means are each tested once. All four preserve the adopted
+decoded D mask and H/A cost 3. There are no extra fits, inference passes or tuned
+blend weights. The selection is explicitly post-result development work; it
+is not independent confirmation. Individual-seed diagnostics in rounds two and
+three hold the adopted ensemble D mask fixed.
+
+## Execution and verification
+
+An initial slow attempt was stopped before any baseline cell or candidate score
+was emitted. Its interruption receipt and 34 completed training-view artifacts
+were preserved. The remaining preparation and control inference use a declared
+runtime amendment: vectorized NumPy row quantiles, tested bitwise against the
+original implementation on synthetic edge cases and an 800-frame native feature
+matrix. Metric aggregation sorts cell keys to prevent worker-completion order
+from creating a floating-point difference in strict zero-tolerance checks. The
+model, loss, sampler, features and scoring definitions are unchanged by that
+amendment. See the [runtime parity receipt](results/v2_iterative_v1_runtime_parity.json)
+and [execution amendment](results/v2_iterative_v1_execution_amendment.json).
+
+The [training seal](results/v2_iterative_train_v1_seal.json) records twelve
+completed fits and paired sampling/exposure equality. The
+[control replay](results/v2_iterative_v1_control_replay.json) passes all 24
+saved adopted aggregate comparisons. Every clean or individual corruption
+realization contains 1,963 reference spells across the five matches. Independent
+verification reconstructs the combinations from sealed emissions, replays the
+official scorer, recomputes provider and seed summaries, and checks every strict
+gate. Weights, emissions and native predictions remain in ignored local data;
+aggregate JSON and hashes are committed for review.
+
+A new two-step synthetic trainer-parity test initially failed bitwise equality.
+The independent CE implementation reuses the logits slice for both CE and the
+transition term; the shared trainer creates a separate slice node. A temporary
+in-memory probe matching the latter restored exact weight parity. The actual
+runs preserve their frozen implementation. Their paired control and treatment
+share that implementation, and the observed difference from the shared trainer
+is below 3e-7 in state values after two synthetic updates. The test uses that
+numerical tolerance; evaluation retention remains exactly zero-tolerance. See
+[the original diagnostic](results/v2_iterative_v1_training_numerics.json) and
+[the isolating slice probe](results/v2_iterative_v1_training_numerics_slice_probe.json).
+This short smoke check does not establish byte-identical long training runs.
+
+### Reproduction
+
+Restore the exact private inputs and adopted/calibrated folds listed by the
+[baseline declaration](results/v2_iterative_v1_declaration.json) and the
+[training declaration](results/v2_iterative_train_v1_declaration.json). Use the
+pinned experiment environment. Set `MTAH_DATA_DIR` and `MTAH_DT_DIR` to the
+dense archive, `MTAH_SQD_DIR` to the short-quality archive, and
+`MTAH_RF_ARCHIVE_DIR` to the restored feed-robustness artifacts. Run with
+`OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1`.
+
+The completed execution sequence is listed below; the preserved interrupted
+attempt is described above. Completed scoring stages are one-shot:
+
+```sh
+.venv/bin/python -m experiments.v2_iterative_eval freeze
+.venv/bin/python -m experiments.v2_iterative_execution freeze
+.venv/bin/python -m experiments.v2_iterative_execution prepare
+.venv/bin/python -m experiments.v2_iterative_execution controls
+.venv/bin/python -m experiments.v2_iterative_train_run freeze
+.venv/bin/python -m experiments.v2_iterative_train_run fit --workers 2
+.venv/bin/python -m experiments.v2_iterative_eval freeze-round1
+.venv/bin/python -m experiments.v2_iterative_eval run-round1
+.venv/bin/python -m experiments.v2_iterative_followup freeze
+.venv/bin/python -m experiments.v2_iterative_followup run
+.venv/bin/python -m experiments.v2_iterative_round3 freeze
+.venv/bin/python -m experiments.v2_iterative_round3 run
+```
+
+The declaration and scoring stages refuse reuse of completed IDs. Do not delete
+receipts to rerun them. After restoring their sealed artifacts, the read-only
+verification command is:
+
+```sh
+.venv/bin/python -m scripts.verify_v2_iterative --round all
+```
+
 ## Limitations and delivery
 
 These are further development experiments on selected-on matches. The v2
