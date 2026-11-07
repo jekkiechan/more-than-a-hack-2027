@@ -1,7 +1,78 @@
 # Spell-balanced continuation
 
-Date: 7 November 2026. Status: implementation and preflight.
+Date: 7 November 2026. Status: development complete; final validation in progress.
 The adopted package remains `joint_gru_sn_dense_original_diversity_phase_ensemble_v1`.
+
+## Development results
+
+**The qualifying v2 leader reaches 0.591174; the >0.60 target remains unmet.**
+The two rounds produce 39 pipeline comparisons: 10 of 36 initial mixtures and
+2 of 3 longer-continuation mixtures meet the new incremental rule. The leader
+uses 50% continuation, 25% calibrated and 25% adopted conditional H/A probabilities,
+arithmetic pooling and H/A cost 3, after 1,024 continuation updates.
+
+| Pipeline | Clean spell | V1 spell | V2 spell | V2 macro |
+| --- | ---: | ---: | ---: | ---: |
+| Adopted | 0.667556 | 0.531576 | 0.583571 | 0.849975 |
+| Starting promising blend | 0.668249 | 0.534925 | 0.585615 | 0.850181 |
+| 50/25/25 mean · 512 updates | 0.669461 | 0.537144 | 0.590454 | 0.851303 |
+| 50/25/25 mean · 1,024 updates | 0.668533 | 0.533876 | 0.591174 | 0.851496 |
+
+The longer continuation gains 0.000720 v2 spell over the matched 512-update
+mixture, while losing 0.000928 clean and 0.003268 v1 spell. Against the original
+promising arm, its clean/v1/v2 spell changes are +0.000284 / -0.001049 / +0.005559.
+The shorter mixture improves all three spell scores relative to that starting
+arm and all six protected aggregate metrics relative to adopted. The declared
+ranking prefers the eligible higher-v2 continuation; it does not claim dominance
+over the shorter mixture.
+
+Compared with adopted, the longer mixture retains every spell and short-recall
+aggregate. V1 macro loses 0.000104, within the 0.001 allowance. All D metrics
+remain exactly equal to adopted.
+
+| View | Δ spell | Δ macro | Δ short recall | D F1 | D precision | D recall | 70/30 auxiliary |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Clean | +0.000978 | +0.000355 | +0.002246 | 0.870926 | 0.884844 | 0.861920 | 0.729461 |
+| V1 | +0.002301 | -0.000104 | +0.002500 | 0.860563 | 0.843006 | 0.881217 | 0.621738 |
+| V2 | +0.007603 | +0.001522 | +0.003216 | 0.866138 | 0.873034 | 0.862980 | 0.669271 |
+
+The longer original 50/50 anchor fails v1 spell retention and exceeds the
+macro-loss allowance; it is not selected. Every qualifying mixture retains
+H/A cost 3. Full [round-one](results/v2_spell_balanced_v1_round1.json) and
+[round-two](results/v2_spell_balanced_v1_round2.json) results preserve all failures.
+The previous numerical leader, 0.592638, remains higher but regressed short-spell
+recall in all three views; this new result satisfies the declared retention rule.
+
+### Provider spread and seed diagnostics
+
+The aggregate gains do not hold for every provider. In particular, SkillCorner
+v2 spell falls 0.002437 and short recall falls 0.001935; v1 spell falls for both
+SkillCorner and Sportec. The rule protects equal-provider view means, not every
+provider separately. These regressions limit a claim of general robustness.
+
+| View / provider | Spell | Δ spell | Macro | Δ macro | Short recall | Δ short recall |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Clean / Metrica | 0.846768 | +0.000550 | 0.936363 | +0.000288 | 0.611111 | +0.000000 |
+| Clean / SkillCorner | 0.479557 | +0.002589 | 0.790701 | +0.000689 | 0.284731 | +0.006738 |
+| Clean / Sportec | 0.679275 | -0.000206 | 0.887816 | +0.000089 | 0.329949 | +0.000000 |
+| V1 / Metrica | 0.645818 | +0.016535 | 0.882415 | +0.004183 | 0.297619 | +0.015873 |
+| V1 / SkillCorner | 0.447586 | -0.003414 | 0.774029 | -0.000347 | 0.233692 | -0.003297 |
+| V1 / Sportec | 0.508224 | -0.006219 | 0.823802 | -0.004149 | 0.137056 | -0.005076 |
+| V2 / Metrica | 0.697573 | +0.016666 | 0.900839 | +0.002573 | 0.353175 | +0.003968 |
+| V2 / SkillCorner | 0.481702 | -0.002437 | 0.797575 | -0.000103 | 0.275430 | -0.001935 |
+| V2 / Sportec | 0.594248 | +0.008579 | 0.856075 | +0.002096 | 0.233503 | +0.007614 |
+
+Seed diagnostics keep the pooled adopted D mask fixed and vary H/A seed
+probabilities. They are not a second selection pass or a mean-of-scores ensemble.
+
+| View | Seed 2026 spell | Seed 2027 spell | Probability ensemble spell |
+| --- | ---: | ---: | ---: |
+| Clean | 0.667475 | 0.666814 | 0.668533 |
+| V1 | 0.529742 | 0.528382 | 0.533876 |
+| V2 | 0.590608 | 0.586303 | 0.591174 |
+
+Reference spell counts are unchanged in all 35 cells. Predicted/reference counts
+and all provider/seed D diagnostics remain in the complete aggregate files.
 
 ## Question and decision rule
 
