@@ -37,13 +37,14 @@ def build():
             label=f'{study.removeprefix("v2_spell_").removesuffix("_v1")} · {arm} · '+label
             anchor=stage==512 and rid==balanced.recipe_key(balanced.ANCHOR)
             parent=study=='v2_spell_balanced_v1' and stage==1024 and rid==frontier.LEADER_IDS[0]
+            shorter=study=='v2_spell_balanced_v1' and stage==512 and rid==frontier.LEADER_IDS[0]
             if anchor:label='Original promising blend'
             if winner:label='Final selection · '+label
             failures=[k for k,c in gate['checks'].items() if not c['passed']]
             failures += [k for k in ('d_metrics_unchanged','reference_spell_counts_invariant') if not gate[k]]
             val=values(r['aggregate'][key])
             rows.append(dict(id=f'{study}/r{round_number}/{key}',label=label,stage=stage,training_arm=arm,recipe=recipe,
-                selected=winner,highlight=winner or anchor or parent,eligible=gate['eligible'],failed=failures,
+                selected=winner,highlight=winner or anchor or parent or shorter,eligible=gate['eligible'],failed=failures,
                 values=val,providers=r['aggregate'][key],seeds=r.get('seed_diagnostics',{}).get(key),
                 delta_vs_adopted={v:{m:x-baseline[v][m] for m,x in row.items()} for v,row in val.items()}))
         counts[f'{study}/r{round_number}']={'eligible':count,'total':len(pipelines)}

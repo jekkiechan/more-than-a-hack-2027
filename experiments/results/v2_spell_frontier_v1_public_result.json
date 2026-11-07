@@ -1,0 +1,161 @@
+{
+  "candidate": {
+    "auxiliary_70_30": 0.6836207971661865,
+    "bootstrap_draws": 1000,
+    "d_f1": 0.862869869551384,
+    "d_precision": 0.8100358422939068,
+    "d_recall": 0.9230769230769231,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "headline_iou": 0.5,
+    "macro_f1": 0.851285010161798,
+    "macro_f1_bootstrap_5_95": [
+      0.7029964649937565,
+      0.8866308285747659
+    ],
+    "predicted_spells": 17,
+    "primary_metric": "spell_f1_mean",
+    "spell_by_iou": {
+      "0.3": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.4": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.5": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.6": {
+        "f1": 0.5882352941176471,
+        "n_matched": 10,
+        "n_missed": 7,
+        "n_spurious": 7,
+        "precision": 0.5882352941176471,
+        "recall": 0.5882352941176471
+      },
+      "0.7": {
+        "f1": 0.35294117647058826,
+        "n_matched": 6,
+        "n_missed": 11,
+        "n_spurious": 11,
+        "precision": 0.35294117647058826,
+        "recall": 0.35294117647058826
+      }
+    },
+    "spell_f1_at_headline": 0.7058823529411765,
+    "spell_f1_bootstrap_5_95": [
+      0.4470588235294118,
+      0.7647058823529412
+    ],
+    "spell_f1_mean": 0.611764705882353
+  },
+  "candidate_recipe": {
+    "adopted_weight": 0.125,
+    "calibrated_weight": 0.375,
+    "ce_weight": 0.5,
+    "ha_cost": 3.0,
+    "id": "ce0.5_cal0.375_ad0.125_arithmetic_ha3",
+    "pooling": "arithmetic",
+    "recipe_id": "ce0.5_cal0.375_ad0.125_arithmetic_ha3",
+    "training_stage": 1024
+  },
+  "delta_vs_saved_baseline": {
+    "d_f1": 0.0,
+    "macro_f1": 0.0018124143082648425,
+    "spell_f1_mean": 0.0
+  },
+  "graded_frames": 7500,
+  "independent_confirmation": false,
+  "organizer_reference_labels_read": true,
+  "prediction_seal_sha256": "9f35ef18d8c892c86b68db5edc8909356f1f18f51990fbf1263dbae4c2fffc77",
+  "promotion": false,
+  "public_gate_claim_sha256": "6e38e4bb52d6dbb470a8cc8f7c6f19c3a9356151b83c9a8385ffb5460bbb852e",
+  "public_used_for_selection": false,
+  "reference_spells": 17,
+  "reused_public_baseline": {
+    "auxiliary_70_30": 0.683077072873707,
+    "bootstrap_draws": 1000,
+    "d_f1": 0.862869869551384,
+    "d_precision": 0.8100358422939068,
+    "d_recall": 0.9230769230769231,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "headline_iou": 0.5,
+    "macro_f1": 0.8494725958535332,
+    "macro_f1_bootstrap_5_95": [
+      0.6996015850364905,
+      0.8850591096238479
+    ],
+    "predicted_spells": 17,
+    "primary_metric": "spell_f1_mean",
+    "spell_by_iou": {
+      "0.3": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.4": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.5": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.6": {
+        "f1": 0.5882352941176471,
+        "n_matched": 10,
+        "n_missed": 7,
+        "n_spurious": 7,
+        "precision": 0.5882352941176471,
+        "recall": 0.5882352941176471
+      },
+      "0.7": {
+        "f1": 0.35294117647058826,
+        "n_matched": 6,
+        "n_missed": 11,
+        "n_spurious": 11,
+        "precision": 0.35294117647058826,
+        "recall": 0.35294117647058826
+      }
+    },
+    "spell_f1_at_headline": 0.7058823529411765,
+    "spell_f1_bootstrap_5_95": [
+      0.4470588235294118,
+      0.7647058823529412
+    ],
+    "spell_f1_mean": 0.611764705882353
+  },
+  "saved_public_baseline_sha256": "0ed472d0245705dbc0ca89f01b9faeba8286924b9d9fc324264db755a3f0bef5",
+  "study_id": "v2_spell_frontier_v1",
+  "training_arm": "base",
+  "training_stage": 1024
+}

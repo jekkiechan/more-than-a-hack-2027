@@ -211,3 +211,7 @@ versus fresh TRAIN windows. This study’s frozen selection and full public CSV
 remain preserved; its public gate is unused. The final diagnostic will occur
 only after frontier development and selection, with at most one scored candidate
 across the two studies.
+
+The follow-up is now complete: see the [frontier results](V2_SPELL_FRONTIER.md#results-and-decision)
+and [one final public diagnostic](results/v2_spell_frontier_v1_public_result.json).
+This study’s own public gate remains unused.

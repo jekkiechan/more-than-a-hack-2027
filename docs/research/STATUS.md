@@ -1,7 +1,7 @@
 # Current research state
 
-Reviewed 6 November 2026 against fork `main` at `8919726` (PR #81) and
-open research PRs #82–85. The user-authorized phase-average promotion remains
+Reviewed 7 November 2026 against fork `main` at `8919726` (PR #81) and
+open research PRs #82–86. The user-authorized phase-average promotion remains
 the adopted package. Check newer merged/open PRs before current-results advice.
 Detailed results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
 
@@ -24,6 +24,38 @@ gold confirmation remains pending.
 The evaluation policy now uses clean plus `feed_like_v2` with 4+ realizations
 for original-provider development. Keep GAR TEST separate from selected-on
 VALID and record future reuse. V1 and composite remain historical diagnostics.
+
+## Spell frontier and balanced follow-up — 7 November 2026
+
+Four follow-up rounds with Luna test **73 pipelines and 18 new provider-excluded
+continuation fits**, using the eligible original TRAIN pool and 45 GAR TRAIN games.
+The final [frontier candidate](../../experiments/V2_SPELL_FRONTIER.md) gives
+**0.670137 clean / 0.532128 v1 / 0.593619 v2 spell F1**,
+with v2 **+0.010048 versus adopted**. **The >0.60 target remains unmet.**
+The selected pipeline uses `base` sampling and 1024 continuation
+updates. All three spell and short-recall view means exceed or retain adopted;
+D predictions are identical. V1 macro changes by -0.000699, within the
+predeclared 0.001 allowance for the user’s accepted small macro tradeoff.
+Provider regressions and seed spread remain disclosed in the report.
+
+The [first follow-up](../../experiments/V2_SPELL_BALANCED.md) reaches 0.591174 v2
+from the starting promising blend’s 0.585615. The second widens calibrated
+mixture weights and compares repeated versus fresh TRAIN-window draws.
+Actual window receipts verify the extra exposure, and repeat receipts reproduce
+the prior sampling schedule. **18/73 pipelines qualify** under the incremental
+rule; the historical stricter failures are preserved. All four independent
+saved-output audits pass. These are exposed five-match development results
+and model-conditioned synthetic stress, not new independent gold confirmation.
+
+One final requested public check gives **0.611765 spell F1**
+(+0.000000 versus saved adopted), macro **0.851285**
+(+0.001812). The 199,319-row prediction was sealed before reference
+access, and the adopted full-CSV hash replayed exactly. The reused public
+window has 7,500 graded frames and 17 possessions. No post-public tuning,
+reselection, GAR TEST reuse or automatic promotion follows; the earlier balanced
+gate remains unused. Research checkpoints and outputs are verified locally;
+new remote weight availability is not claimed. See [PR #86](https://github.com/jekkiechan/more-than-a-hack-2027/pull/86)
+and the [combined readout](../../experiments/results/v2_spell_frontier_v1_readout.json).
 
 ## Iterative v2 training — 6 November 2026
 

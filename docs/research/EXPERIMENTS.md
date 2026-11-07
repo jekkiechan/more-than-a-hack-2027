@@ -1,6 +1,6 @@
 # Experiment index
 
-Reviewed 2026-11-06 against fork main through PR #81 and open research PRs #82–85. Find evidence here; adoption and next work live in
+Reviewed 2026-11-07 against fork main through PR #81 and open research PRs #82–86. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
@@ -32,6 +32,8 @@ historical study verdicts below remain unchanged.
 
 | ID / state | Scope / outcome | Evidence |
 | --- | --- | --- |
+| `v2_spell_frontier_v1` — complete, experimental | Wider 30-mixture grid and 12 paired repeat/fresh TRAIN continuations; 4 trained pipelines. Final clean/v1/v2 spell 0.670137/0.532128/0.593619; 6/34 eligible, >.60 unmet. All spell/short-recall view means retain adopted; v1 macro -0.000699; D fixed. Final public spell 0.611765, 17 reused possessions, no reselection or promotion. Both audits pass. | [Report](../../experiments/V2_SPELL_FRONTIER.md), [readout](../../experiments/results/v2_spell_frontier_v1_readout.json), [PR #86](https://github.com/jekkiechan/more-than-a-hack-2027/pull/86) |
+| `v2_spell_balanced_v1` — development complete, public gate unused | 36 mixtures plus three longer-training pipelines; six provider-fold fits and four pooled TRAIN stages. 12/39 eligible; frozen clean/v1/v2 spell .668533/.533876/.591174. V1 macro -.000104; short recall retained, D fixed. Shorter blend has stronger clean/v1. Both audits pass; full reference-free public CSV sealed but scoring deferred to frontier. | [Report](../../experiments/V2_SPELL_BALANCED.md), [selection](../../experiments/results/v2_spell_balanced_v1_selection.json), [PR #86](https://github.com/jekkiechan/more-than-a-hack-2027/pull/86) |
 | `v2_iterative_v1` — completed and independently verified, retain adopted | Three rounds, twelve paired continuation fits and twelve candidate pipelines. Best clean/v1/v2 spell .670707/.532096/.592638; all spell/macro means improve and D is fixed, but short recall regresses. 0/12 pass strict >.60 plus all-metric retention. Same 45 GAR TRAIN games and exposed five-match development cohort; no organizer or GAR evaluation. | [Iterative report](../../experiments/V2_ITERATIVE_DATA.md), [readout](../../experiments/results/v2_iterative_v1_readout.json), [PR #85](https://github.com/jekkiechan/more-than-a-hack-2027/pull/85) |
 | `v2_spell_target_runtime` — completed | Nine fixed consensus/blend arms; exact eight-aggregate C0 replay. Numerical v2 leader .589139 loses .010501 clean versus adopted; post-hoc common-floor eligible blend .587677. Same exposed five matches, four v2 realizations; no promotion. | [V2 target report](../../experiments/V2_SPELL_TARGET.md), [result](../../experiments/results/v2_spell_target_runtime.json) |
 | `v2_calibration_target` — completed | 109 fixed decoder arms on archived emissions. Calibrated H/A cost 1.5 leads at .589658 v2 / .666601 clean, with retention checks passing. Selected-seed diagnostics and independent reduction complete; .60 unmet. | [Calibration readout](../../experiments/V2_SPELL_TARGET.md#results-and-decision), [result](../../experiments/results/v2_calibration_target.json) |
