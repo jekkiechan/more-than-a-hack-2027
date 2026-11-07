@@ -63,6 +63,7 @@ def freeze_selection() -> dict:
     recipe['id'] = recipe['recipe_id']
     result = dict(study_id=STUDY, final_selection=True,
                   training_stage=winner['training_stage'], recipe=recipe,
+                  public_input_sha256=evaluation.sha(ROOT / 'data/challenge/inputs.npz'),
                   aggregate=winner['aggregate'], eligibility=winner['eligibility'],
                   development_result_bindings=bindings,
                   ranking=[{'training_stage': r['training_stage'],

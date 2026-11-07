@@ -1,0 +1,607 @@
+{
+ "aggregation": "mean paired seeds within native phase, then mean native phases; seed diagnostics average phases within seed",
+ "cohort": {
+  "cells": 35,
+  "provider_weighting": "equal provider",
+  "seeds": [
+   2026,
+   2027
+  ],
+  "views": [
+   "clean",
+   "feed_like_v1",
+   "feed_like_v2"
+  ]
+ },
+ "controls": {
+  "Metrica|metrica_3|clean|0": {
+   "identity": {
+    "cell": "Metrica|metrica_3|clean|0",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__clean__0.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Metrica__metrica_3__clean__0.joblib",
+   "prepared_sha256": "413679b5a77d66ca805fd388e60847a4336c0ea3a55b8fa634cf397fa768f429",
+   "sha256": "0529617c99ffa6b147a120e84e7df41666544d66708fdc84e4b720b85c7bb5fb"
+  },
+  "Metrica|metrica_3|feed_like_v1|1": {
+   "identity": {
+    "cell": "Metrica|metrica_3|feed_like_v1|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v1__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Metrica__metrica_3__feed_like_v1__1.joblib",
+   "prepared_sha256": "7f4390bde4434e3fa73be6844fb70e814676ac03e86688ea0ac448eed8f31078",
+   "sha256": "4e3f1a457df8764a949d25ec3577b4cc9cce4f32372ab7d2cca570ff83513baa"
+  },
+  "Metrica|metrica_3|feed_like_v1|2": {
+   "identity": {
+    "cell": "Metrica|metrica_3|feed_like_v1|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v1__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Metrica__metrica_3__feed_like_v1__2.joblib",
+   "prepared_sha256": "672eb5c1e3eabbe6ffd9e755318f9feab45699293f528a367ddff4fa59de5343",
+   "sha256": "b2cc61bcd8d6f24a875035516bec8bbaf9a6ea3cff45baf446637250aea008c4"
+  },
+  "Metrica|metrica_3|feed_like_v2|1": {
+   "identity": {
+    "cell": "Metrica|metrica_3|feed_like_v2|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v2__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Metrica__metrica_3__feed_like_v2__1.joblib",
+   "prepared_sha256": "f4aa182822d555ddf468151653d7dd6f4c700e8fc8bd36386dc8ea6153f2fbc2",
+   "sha256": "600aa73226db4491cdcfd35594842c777db683014a257a7f8f96f2e882a3c39d"
+  },
+  "Metrica|metrica_3|feed_like_v2|2": {
+   "identity": {
+    "cell": "Metrica|metrica_3|feed_like_v2|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v2__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Metrica__metrica_3__feed_like_v2__2.joblib",
+   "prepared_sha256": "7e58c6a1ed57c9f6be98e5ea54c45a6f7763ca89c3e06f17929f9fe59f882dc2",
+   "sha256": "989fb072d7e7b684a8e39cfc0554eefce01dac734a69fed6e85956307bcfe592"
+  },
+  "Metrica|metrica_3|feed_like_v2|3": {
+   "identity": {
+    "cell": "Metrica|metrica_3|feed_like_v2|3",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v2__3.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Metrica__metrica_3__feed_like_v2__3.joblib",
+   "prepared_sha256": "098845e71ee3cdb16b6b98fae448ba95633a2553efb442505e26e161d9446dda",
+   "sha256": "143c28f1f1b758e162adb48c0f068a39b6738b3b487f640ef4daa98b5459abac"
+  },
+  "Metrica|metrica_3|feed_like_v2|4": {
+   "identity": {
+    "cell": "Metrica|metrica_3|feed_like_v2|4",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v2__4.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Metrica__metrica_3__feed_like_v2__4.joblib",
+   "prepared_sha256": "a98990ca0be30de7675c9f753b8913e54a8437364050b7ee10ac5d03cb2d9c21",
+   "sha256": "3270a34d1b4c8d0ba425159caf59ce0fa22472ceb4812ef64521ced1ba2bdb23"
+  },
+  "SkillCorner|1996435|clean|0": {
+   "identity": {
+    "cell": "SkillCorner|1996435|clean|0",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__clean__0.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996435__clean__0.joblib",
+   "prepared_sha256": "cead25d6711cfc367d6e53036e902503843a4524afc0251755951cf1c4e416af",
+   "sha256": "f0ac2f3eb01907792c2752228f334c3a991b87418ff844a085507e562587b6de"
+  },
+  "SkillCorner|1996435|feed_like_v1|1": {
+   "identity": {
+    "cell": "SkillCorner|1996435|feed_like_v1|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v1__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996435__feed_like_v1__1.joblib",
+   "prepared_sha256": "fb54ef97893efe805b988d9975aa73e5044c6746244a5f428f671e4aab4beeac",
+   "sha256": "128cc0d72c213a036f5bb4e55743d6340b9ae8f0d1aa8287d5be3784f228744e"
+  },
+  "SkillCorner|1996435|feed_like_v1|2": {
+   "identity": {
+    "cell": "SkillCorner|1996435|feed_like_v1|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v1__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996435__feed_like_v1__2.joblib",
+   "prepared_sha256": "0ccdbd09302c20658c2678f1adbccf935394002dff8fc80425dc289203ec3d23",
+   "sha256": "627d3148235ab4d19d8d4615afc0a676adc98e504e252b7aa2c4648835bd1a76"
+  },
+  "SkillCorner|1996435|feed_like_v2|1": {
+   "identity": {
+    "cell": "SkillCorner|1996435|feed_like_v2|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v2__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996435__feed_like_v2__1.joblib",
+   "prepared_sha256": "09fda67a8fa6e1272af0657285a0747a56d3747d228e85d3bdcd5516d3e2d85a",
+   "sha256": "099126fba238a7e8ce9b2742fb60714de4c70ec7571835379ef953ef85ba032d"
+  },
+  "SkillCorner|1996435|feed_like_v2|2": {
+   "identity": {
+    "cell": "SkillCorner|1996435|feed_like_v2|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v2__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996435__feed_like_v2__2.joblib",
+   "prepared_sha256": "9ef0e4a96bcb292b7984d0b648ee27444698b3d87311aff901e19016e7d66e98",
+   "sha256": "dbbbba65408f8df3d88e529c682c78d02e488a4a184a088ce2986668cd53ec72"
+  },
+  "SkillCorner|1996435|feed_like_v2|3": {
+   "identity": {
+    "cell": "SkillCorner|1996435|feed_like_v2|3",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v2__3.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996435__feed_like_v2__3.joblib",
+   "prepared_sha256": "99bd868190ee265987910381b455651662d4e865d5bc09f3edf8697ad1c32b12",
+   "sha256": "db135cac5a30aa9943bbf8a4cd37f3d92e6cbdc1a890acd3b5431db9d7d4b666"
+  },
+  "SkillCorner|1996435|feed_like_v2|4": {
+   "identity": {
+    "cell": "SkillCorner|1996435|feed_like_v2|4",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v2__4.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996435__feed_like_v2__4.joblib",
+   "prepared_sha256": "d04f3f1e1d39b6c76f801a6529bc8a71f05b317b9a7049dd17d94d97950a2876",
+   "sha256": "c7ef654b8001b7a654bbe623c696a91c3afeaae4ab6515dea59951b669e783d6"
+  },
+  "SkillCorner|1996436|clean|0": {
+   "identity": {
+    "cell": "SkillCorner|1996436|clean|0",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__clean__0.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996436__clean__0.joblib",
+   "prepared_sha256": "2c33c538d2d092c658c2c45ff283fa0dcd412735d0ea9f6fb42c1cacf2812bfe",
+   "sha256": "2d7046b85802fd343a091856d80ac7e5f86d798654482a0354dcf35e38ce5b34"
+  },
+  "SkillCorner|1996436|feed_like_v1|1": {
+   "identity": {
+    "cell": "SkillCorner|1996436|feed_like_v1|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v1__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996436__feed_like_v1__1.joblib",
+   "prepared_sha256": "59e1d4cbf1bcce2450acab6cd91782c3a49c662b77bf0525926c658cdc09e70a",
+   "sha256": "413571c2981c4640df2a86f5734d332e2304372303c2f8bac08c75ae94ab0eb9"
+  },
+  "SkillCorner|1996436|feed_like_v1|2": {
+   "identity": {
+    "cell": "SkillCorner|1996436|feed_like_v1|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v1__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996436__feed_like_v1__2.joblib",
+   "prepared_sha256": "c6ddd69e3c6223a956d02e03bc0fc00531bd2da4fdf4aa8b137ef8f0a508ed5e",
+   "sha256": "1d793482b36a1dfe08ab9c72f008bb059bef653a3ed04a999a927169231b7432"
+  },
+  "SkillCorner|1996436|feed_like_v2|1": {
+   "identity": {
+    "cell": "SkillCorner|1996436|feed_like_v2|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v2__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996436__feed_like_v2__1.joblib",
+   "prepared_sha256": "9b36e636f4643eedb8c5fb6967527abc8dd76cdb0807eb6e531223baec512171",
+   "sha256": "251d03a6e3a842f25ec7ea6666042caf130273b7e95a05a141191c8bfa440e2c"
+  },
+  "SkillCorner|1996436|feed_like_v2|2": {
+   "identity": {
+    "cell": "SkillCorner|1996436|feed_like_v2|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v2__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996436__feed_like_v2__2.joblib",
+   "prepared_sha256": "3e69ba9924936c089b6fb3b126867310609618169d3401e93cd510c28ef14c75",
+   "sha256": "f2a2b5fb1d58599b5e7f420a6b2d9c9329b63bdc76db43572888aaff69d598ac"
+  },
+  "SkillCorner|1996436|feed_like_v2|3": {
+   "identity": {
+    "cell": "SkillCorner|1996436|feed_like_v2|3",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v2__3.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996436__feed_like_v2__3.joblib",
+   "prepared_sha256": "14afabe4c71a049017ffe7ba3eb36463f3b1b23bf684de2ed83b407161aa9936",
+   "sha256": "b4bc7dfdabf4718711477c6796511fd26d66cbcff7d64ace0e4c82660b6ad8e7"
+  },
+  "SkillCorner|1996436|feed_like_v2|4": {
+   "identity": {
+    "cell": "SkillCorner|1996436|feed_like_v2|4",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v2__4.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__1996436__feed_like_v2__4.joblib",
+   "prepared_sha256": "aec9421a9a155daa9933ec665632ce1efe31508c7f604918daa02289fff3de4b",
+   "sha256": "81e40ca11735683e51051cd8ab77510d6e190a18b7793d5ca0e4c69365a790ac"
+  },
+  "SkillCorner|2006229|clean|0": {
+   "identity": {
+    "cell": "SkillCorner|2006229|clean|0",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__clean__0.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__2006229__clean__0.joblib",
+   "prepared_sha256": "227656f8d4c5bc112ffc80e87866c792d6dc2ae263c81ecc3366316f8b624020",
+   "sha256": "c6561bbc01e296d7239ffa5b8fd83c804434ef2da9e976b29356aae4d05347d2"
+  },
+  "SkillCorner|2006229|feed_like_v1|1": {
+   "identity": {
+    "cell": "SkillCorner|2006229|feed_like_v1|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v1__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__2006229__feed_like_v1__1.joblib",
+   "prepared_sha256": "b85398356e44308c1454f537dd4e0db2e0169761a4343c2f8cbf91ce9d4187f7",
+   "sha256": "288201ea42d18fe664930b06d9c802dcbe4b20d3f537a0da54bec569f9a48655"
+  },
+  "SkillCorner|2006229|feed_like_v1|2": {
+   "identity": {
+    "cell": "SkillCorner|2006229|feed_like_v1|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v1__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__2006229__feed_like_v1__2.joblib",
+   "prepared_sha256": "8d300ad0a8172307236f6d8d04a164428da6579f0072215a4801cb24a79463fd",
+   "sha256": "eab79fea43705ef3d3b1c50ce1da9c5288b7dd9872b119e2283e6248284e937a"
+  },
+  "SkillCorner|2006229|feed_like_v2|1": {
+   "identity": {
+    "cell": "SkillCorner|2006229|feed_like_v2|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v2__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__2006229__feed_like_v2__1.joblib",
+   "prepared_sha256": "838b2f86eacfd0a8571f8799893aa7b6f70276be5c22a15f505e296a8aa7fd6e",
+   "sha256": "72df4ef1a6b831912d0599732d97b6b77d9ccd6e9b5fac0bb953d540968baec4"
+  },
+  "SkillCorner|2006229|feed_like_v2|2": {
+   "identity": {
+    "cell": "SkillCorner|2006229|feed_like_v2|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v2__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__2006229__feed_like_v2__2.joblib",
+   "prepared_sha256": "500e30e0ae6238c72a6a25811ed9495986b587e2793061f395054b69cf6ce753",
+   "sha256": "899f2f8adcd1d29d1d12d0270da5ed3c5cc46c1aaf65f5ce5ebac28059f7c628"
+  },
+  "SkillCorner|2006229|feed_like_v2|3": {
+   "identity": {
+    "cell": "SkillCorner|2006229|feed_like_v2|3",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v2__3.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__2006229__feed_like_v2__3.joblib",
+   "prepared_sha256": "d95f82961edc6ec9ca4d22a1bd6276573e28b5d412cf79f80323b12bfabacb14",
+   "sha256": "7c544164ce8586d3154d47c43e2683426cf4a87ead760c02ef5b17db20c5ab18"
+  },
+  "SkillCorner|2006229|feed_like_v2|4": {
+   "identity": {
+    "cell": "SkillCorner|2006229|feed_like_v2|4",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+    "phase_count": 2,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v2__4.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/SkillCorner__2006229__feed_like_v2__4.joblib",
+   "prepared_sha256": "901e534aff5b8a86a5237e5c9d76b2a281b0f064ff718d371fe678d6d9fa2e21",
+   "sha256": "9ceb48c1c53e3ffc41bf00390b57bfd94f2a81a7bb3a26407196c1055bab683e"
+  },
+  "Sportec|J03WOY|clean|0": {
+   "identity": {
+    "cell": "Sportec|J03WOY|clean|0",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__clean__0.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Sportec__J03WOY__clean__0.joblib",
+   "prepared_sha256": "91c000a46f0449b5110d66903b109ecf557f7244adaccf02090ccf7b2de4e5d0",
+   "sha256": "b5214d15d3a863f304333f1eacf34ec692945418f57a852a8ee937f1bff86163"
+  },
+  "Sportec|J03WOY|feed_like_v1|1": {
+   "identity": {
+    "cell": "Sportec|J03WOY|feed_like_v1|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v1__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Sportec__J03WOY__feed_like_v1__1.joblib",
+   "prepared_sha256": "8735df0c3f82ccc08122e98001b6c53a221094c59d72ee737c80b15ff660a496",
+   "sha256": "38107919aa424c5c5bfaba9584ac0ddd38c7b198e4453ee2146272152e3c5ac5"
+  },
+  "Sportec|J03WOY|feed_like_v1|2": {
+   "identity": {
+    "cell": "Sportec|J03WOY|feed_like_v1|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v1__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Sportec__J03WOY__feed_like_v1__2.joblib",
+   "prepared_sha256": "c283487408027aa4ee3b0b3a333db40acd92a619cad71976652a923d95c1bcfe",
+   "sha256": "8b878f2c8d6b092eefa54a691074602237fdad03555e0977e523815e59a5d446"
+  },
+  "Sportec|J03WOY|feed_like_v2|1": {
+   "identity": {
+    "cell": "Sportec|J03WOY|feed_like_v2|1",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v2__1.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Sportec__J03WOY__feed_like_v2__1.joblib",
+   "prepared_sha256": "48377b216088b19ddd6c1d762193d17cec855ffa60062dc734827e97e4e19b63",
+   "sha256": "d3d54e0229381c3a91abcaaa4768b1c8f24ab18ea87d37eb9dcdb07e1dce031c"
+  },
+  "Sportec|J03WOY|feed_like_v2|2": {
+   "identity": {
+    "cell": "Sportec|J03WOY|feed_like_v2|2",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v2__2.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Sportec__J03WOY__feed_like_v2__2.joblib",
+   "prepared_sha256": "331d7f05ba25dd358cc70d6571085c752f1d01bd96bdd1ac42810402d9fdfcc5",
+   "sha256": "9382454b00050fd1991bc99bdd41ee0e1d012f957f44b75aa7cea9d82a491d1b"
+  },
+  "Sportec|J03WOY|feed_like_v2|3": {
+   "identity": {
+    "cell": "Sportec|J03WOY|feed_like_v2|3",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v2__3.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Sportec__J03WOY__feed_like_v2__3.joblib",
+   "prepared_sha256": "9ca23f4abc09c421458e3971a1df9c8792758eeb0894bb2ca99c6f6202e52e12",
+   "sha256": "b669dc7363963837a6e26f50896260c0035548ff5a6e7d456cd41926294ff0b4"
+  },
+  "Sportec|J03WOY|feed_like_v2|4": {
+   "identity": {
+    "cell": "Sportec|J03WOY|feed_like_v2|4",
+    "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+    "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+    "phase_count": 5,
+    "study_id": "v2_iterative_v1"
+   },
+   "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v2__4.npz",
+   "prepared_path": "data/experiments/v2_iterative_v1/prepared/Sportec__J03WOY__feed_like_v2__4.joblib",
+   "prepared_sha256": "ee31cfb0f2012178d84436e74a757ab67c11e43d6ffab81d9cb2b061ddeca5ef",
+   "sha256": "fb467f053e244cc1dd84251f9c9e66d52d30dcde5d2888f7d479f6d5bcc92f35"
+  }
+ },
+ "d_policy": "use predecoded adopted original_full D mask, unchanged for every recipe",
+ "organizer_reference_access": false,
+ "parent": {
+  "control_replay_sha256": "d4cf580c7e4fffb01af1f4f253aa3008cba363c36309b9952d0cb697f7f8e92f",
+  "round1_declaration_sha256": "5d3597475ed6d9bc7146e62f58b34651c48abac1de967bb41462632fb7c26347",
+  "round1_result_sha256": "242979139e95cbbe4dfbc5a3c5aa92544d4f6f2fec7a4106c52317ec00a51bfe"
+ },
+ "promotion": false,
+ "public_or_GAR_scoring": false,
+ "recipe_ids": [
+  "ce0.5_cal0.25_ad0.25_arithmetic_ha3",
+  "ce0.5_cal0.25_ad0.25_log_ha3",
+  "ce0.5_cal0_ad0.5_arithmetic_ha3"
+ ],
+ "recipes": [
+  {
+   "adopted_weight": 0.25,
+   "calibrated_weight": 0.25,
+   "ce_weight": 0.5,
+   "ha_cost": 3.0,
+   "pooling": "arithmetic",
+   "recipe_id": "ce0.5_cal0.25_ad0.25_arithmetic_ha3",
+   "training_stage": 1024
+  },
+  {
+   "adopted_weight": 0.25,
+   "calibrated_weight": 0.25,
+   "ce_weight": 0.5,
+   "ha_cost": 3.0,
+   "pooling": "log",
+   "recipe_id": "ce0.5_cal0.25_ad0.25_log_ha3",
+   "training_stage": 1024
+  },
+  {
+   "adopted_weight": 0.5,
+   "calibrated_weight": 0.0,
+   "ce_weight": 0.5,
+   "ha_cost": 3.0,
+   "pooling": "arithmetic",
+   "recipe_id": "ce0.5_cal0_ad0.5_arithmetic_ha3",
+   "training_stage": 1024
+  }
+ ],
+ "round": 2,
+ "source_sha256": {
+  "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+  "experiments/baseline_manifest.json": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+  "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+  "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+  "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+  "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+  "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+  "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+  "experiments/model_decision_policy.json": "f987ffcad31c283bba5e26fa8402adbf55fc1764876423854a4fe41be47c2a13",
+  "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+  "experiments/results/v2_spell_balanced_v1_control_replay.json": "d4cf580c7e4fffb01af1f4f253aa3008cba363c36309b9952d0cb697f7f8e92f",
+  "experiments/results/v2_spell_balanced_v1_plan.json": "4e48a8e342dcac6ea8d22197e93a97e794e72ea773f5ffd03fe2cae9199be1b2",
+  "experiments/results/v2_spell_balanced_v1_round1.json": "242979139e95cbbe4dfbc5a3c5aa92544d4f6f2fec7a4106c52317ec00a51bfe",
+  "experiments/results/v2_spell_balanced_v1_round1_declaration.json": "5d3597475ed6d9bc7146e62f58b34651c48abac1de967bb41462632fb7c26347",
+  "experiments/results/v2_spell_balanced_v1_training_declaration.json": "4982f1b6f3f65e0bdaeddaf2949e42fe66bb3fd00ab9c73116b0a23b9bc304e9",
+  "experiments/results/v2_spell_balanced_v1_training_seal.json": "0b01021067f7b686380a233cb85dca309269a1097e071eee9845e93b722e905c",
+  "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+  "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+  "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+  "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+  "experiments/tests/test_v2_spell_balanced_eval.py": "937ac640b965d7caaec8528700d7a60118f71209c4e07faac5f1cfa5096cc578",
+  "experiments/tests/test_v2_spell_balanced_round2.py": "136f8bf7eff651fd3f644bc5e2982ee45f430b0f14cee80c73eee82b0bd30e77",
+  "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+  "experiments/v2_iterative_train.py": "5559f9880c5f96e10750387f4413cdd2fd9c1ba9c294e6cab84a6c85bbacb831",
+  "experiments/v2_iterative_train_run.py": "87d09163517229b9c12ebb561a9005c62fbec3f5f4f4cd13e55cc6cdd7eb56b6",
+  "experiments/v2_spell_balanced_eval.py": "ba57176cd16ff7535b98acd3d78acd3aefcc002c723101f6f2dc816b892b2514",
+  "experiments/v2_spell_balanced_round2.py": "1df32d30f4f22fbe7768c402b1b5523fd1955128ce54f3dfd9e848cc37f04b2a",
+  "experiments/v2_spell_balanced_train.py": "c7a9d54ddd8dc2196de3c7c20b357f08be22dedd62e2402a02ff5c10b908493a",
+  "experiments/v2_spell_target.py": "527f97bb31710119b3fabf171c44a50b0a8403128b145c97af44fba3cb4c51d1"
+ },
+ "status": "frozen_before_stage1024_candidate_scoring",
+ "study_id": "v2_spell_balanced_v1",
+ "training": {
+  "declaration": "experiments/results/v2_spell_balanced_v1_training_declaration.json",
+  "declaration_sha256": "4982f1b6f3f65e0bdaeddaf2949e42fe66bb3fd00ab9c73116b0a23b9bc304e9",
+  "fits": {
+   "leave_out_metrica/2026": {
+    "fold": "leave_out_metrica",
+    "path": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_metrica_2026.joblib",
+    "receipt": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_metrica_2026.joblib.json",
+    "receipt_sha256": "ea79d2d46d101105fd9df05f97f98f531c66cd9f8bd934380d4d4bc47ba286a2",
+    "seed": 2026,
+    "sha256": "1dbeb57942166667f74c454841c1f0766a43abb20eedd2d6174580cffcf3f907"
+   },
+   "leave_out_metrica/2027": {
+    "fold": "leave_out_metrica",
+    "path": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_metrica_2027.joblib",
+    "receipt": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_metrica_2027.joblib.json",
+    "receipt_sha256": "3a943ba6acf45d60b1f2155f1578cf2b57d70647f85ac0889143c1dafae21540",
+    "seed": 2027,
+    "sha256": "74cb9bf45550d2ac099bf2dcf3d4cd7c7a105a450dfc62048040cbab1dc6483e"
+   },
+   "leave_out_skillcorner/2026": {
+    "fold": "leave_out_skillcorner",
+    "path": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_skillcorner_2026.joblib",
+    "receipt": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_skillcorner_2026.joblib.json",
+    "receipt_sha256": "5d65e63cc02a8cc9301a7dd9e457e6482f29c1657592ba1d6688cf3bfae84001",
+    "seed": 2026,
+    "sha256": "7887461dcc52ce3b7ac1479b802fe02cf7243d694847cd8770426cceab6c3dfd"
+   },
+   "leave_out_skillcorner/2027": {
+    "fold": "leave_out_skillcorner",
+    "path": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_skillcorner_2027.joblib",
+    "receipt": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_skillcorner_2027.joblib.json",
+    "receipt_sha256": "b55cf8ace52899951aa6b19871b387457297860d1b35a39a3a95684c4df83754",
+    "seed": 2027,
+    "sha256": "076a53af8a31ceeef686688e77f38c3b8a6f9a2deb7567b5abc7e8570266398c"
+   },
+   "leave_out_sportec/2026": {
+    "fold": "leave_out_sportec",
+    "path": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_sportec_2026.joblib",
+    "receipt": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_sportec_2026.joblib.json",
+    "receipt_sha256": "6d6976616b81e96721cfb26797302bcaf9b410709d55027bb09b705e07638d67",
+    "seed": 2026,
+    "sha256": "f6876e38c5b033d6562b4ada9c495036c2481328344fc81902fc03b096299607"
+   },
+   "leave_out_sportec/2027": {
+    "fold": "leave_out_sportec",
+    "path": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_sportec_2027.joblib",
+    "receipt": "data/experiments/v2_spell_balanced_v1/train/models/leave_out_sportec_2027.joblib.json",
+    "receipt_sha256": "585325e65652346ea79884ebbc819a587ade1a4d4e827fd92049e832bec57732",
+    "seed": 2027,
+    "sha256": "d9d45c95b44941dc3806a9062c7c8c457969baea224abd97790c12f61cfaf1d5"
+   }
+  },
+  "seal": "experiments/results/v2_spell_balanced_v1_training_seal.json",
+  "seal_sha256": "0b01021067f7b686380a233cb85dca309269a1097e071eee9845e93b722e905c"
+ },
+ "training_stage": 1024
+}
