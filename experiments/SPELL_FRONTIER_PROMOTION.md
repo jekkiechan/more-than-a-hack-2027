@@ -45,3 +45,39 @@ The predecessor manifest and policy are archived without changing their bytes.
 Historical declarations keep their original hashes; replay a historical study
 with its recorded source revision. The active manifest, policy and default CLI
 are changed only after the staged replay and deployment check complete.
+
+## Exact deployment diagnostic and execution record
+
+The fixed package is checked on GAR TEST10 and selected-on VALID9 separately,
+using clean inputs and four exact predecessor v2 realizations. These are reused
+silver segments, not new independent gold confirmation. The normal 29.97 Hz
+GAR input requires six native phases. All models and the mixture were fixed
+before this diagnostic; the results do not select the extra-data arms.
+
+The frozen execution records preserve the following corrections:
+
+- An early one-game probe was stopped before a declaration; no game output or
+  metrics were retained. The [aborted-attempt receipt](results/spell_frontier_gar_v1_aborted_predeclaration.json)
+  records the deviation. The original plan and receipt were restored to their
+  exact bytes after an accidental edit; the separate
+  [source-guard amendment](results/spell_frontier_gar_v1_sourceguard_amendment.json)
+  adds the native grading-population check.
+- The declaration's seed description omitted the heldout helper prefix. The
+  executable path already uses the exact predecessor seed; the
+  [prose erratum](results/spell_frontier_gar_v1_seed_description_erratum.json)
+  records the full expression and expected seeds without changing execution.
+- The first declared game failed before decoding/scoring because the reused
+  public pooling helper accepts only two/five phases. The
+  [six-phase amendment](results/spell_frontier_gar_v1_sixphase_amendment.json)
+  preserves the traceback and adds six-phase support with identical float64
+  seed-then-phase averaging. Two/five-phase deployment behavior is unchanged.
+- The [capture runtime amendment](results/spell_frontier_gar_v1_capture_runtime.json)
+  applies the existing, exactly tested quantile acceleration during native
+  input capture as well as feature preparation. Phase-0 feature equality and
+  all per-game predecessor score guards remain unchanged at 1e-12 tolerance.
+
+The original frozen runner, package adapter, public helper, declarations and
+failed attempts remain intact. Separate wrappers apply the bounded execution
+corrections. The [audit plan](results/spell_frontier_gar_v1_audit_plan.json)
+requires independent official rescoring of all 95 paired game/view cells and
+equal-game reductions, with descriptive paired bootstrap intervals.

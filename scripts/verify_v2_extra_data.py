@@ -222,14 +222,14 @@ def verify():
                 strict = view == "feed_like_v2" and metric == "spell_f1"
                 passed = actual > target if strict else actual >= target
                 checks_arm[f"{view}/{metric}"] = {"actual": actual, "minimum": target,
-                    "comparison": "strictly_greater" if strict else "greater_or_equal", "passed": passed}
+                    "passed": passed}
         d_same = all(aggregates[arm][v][m]["equal_provider"] == baseline[v][m]["equal_provider"]
                      for v, _ in study.VIEWS for m in ("d_f1", "d_precision", "d_recall"))
         refs_same = all(cell_rows[k][arm]["reference_spell_count"] == result["cohort"]["reference_spell_counts"][k]
                         for k in cells)
         gates[arm] = {"checks": checks_arm, "d_metrics_unchanged": d_same,
                       "reference_spell_counts_invariant": refs_same,
-                      "eligible": all(checks_arm.values()) and d_same and refs_same}
+                      "eligible": all(c["passed"] for c in checks_arm.values()) and d_same and refs_same}
         if gates[arm] != result["eligibility"][arm]:
             raise AssertionError(f"Eligibility mismatch: {arm}")
     ranking = sorted(arms, key=lambda arm: (-aggregates[arm]["feed_like_v2"]["spell_f1"]["equal_provider"],

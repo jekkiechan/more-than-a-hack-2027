@@ -1,0 +1,10 @@
+{
+  "study_id": "v2_extra_data_v1",
+  "reason": "Independent audit passed cell/seed score and aggregate checks, then rejected its own eligibility schema: it added comparison metadata and tested truthy dictionaries instead of their passed values. Correct only the verifier to compare the actual frozen schema and booleans.",
+  "old_source_sha256": "0dcb42480c3e03a71290724b86a53918f0ac7347250d2322747b2dd6fc3f1da1",
+  "new_source_sha256": "3a5c960446256e51504a1b4d44160c4c1a37b117a4bfb28beb39a65ba077a865",
+  "failed_log": "Traceback (most recent call last):\n  File \"/workspace/more-than-a-hack-2027/scripts/verify_v2_extra_data.py\", line 252, in <module>\n    print(json.dumps(verify(), indent=2))\n                     ^^^^^^^^\n  File \"/workspace/more-than-a-hack-2027/scripts/verify_v2_extra_data.py\", line 234, in verify\n    raise AssertionError(f\"Eligibility mismatch: {arm}\")\nAssertionError: Eligibility mismatch: fresh_control\n",
+  "evaluator_or_results_changed": false,
+  "tolerance_changed": false,
+  "candidate_reselection": false
+}

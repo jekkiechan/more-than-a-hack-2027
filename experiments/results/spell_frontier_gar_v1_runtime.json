@@ -1,0 +1,28 @@
+{
+  "allowed_workers": [
+    1,
+    2,
+    4
+  ],
+  "created_utc": "2026-11-07T05:33:41.477320+00:00",
+  "data_change": false,
+  "first_complete_game": "test/3850; require passing paired-control checks before scheduling the rest",
+  "fitting": false,
+  "max_workers": 4,
+  "metric_or_tolerance_change": false,
+  "organizer_reference_access": false,
+  "public_scoring": false,
+  "reason": "Use at most four independent single-thread inference processes after training finishes; retain the exact frozen 95-cell comparison and output paths.",
+  "recipe_change": false,
+  "source_sha256": {
+    "experiments/results/spell_frontier_gar_v1_aborted_predeclaration.json": "1933013e63941870890a93260866c7aec47b51515155f4de9aa540bdf6d63a8e",
+    "experiments/results/spell_frontier_gar_v1_plan.json": "6db8fbb39d608015acfb30efb89fe3191777a6293112aec9ec2c23b377dc6cc0",
+    "experiments/results/spell_frontier_gar_v1_sourceguard_amendment.json": "d5781d851b6b8a3964522fecd643730b88444a1380d745c17f606fda687cfcb2",
+    "experiments/spell_frontier_gar.py": "f7b5ef7dfdf0b3f7c5c182bf0958d3cfcf424c18d91d05624b9902ed3c0fc3a7",
+    "experiments/spell_frontier_gar_execution.py": "7862eff649cabb960161e4afbb1426cf255e282bbc28658685a0ff78b61fb06d"
+  },
+  "study": "spell_frontier_gar_v1",
+  "threads_per_worker": 1,
+  "view_or_seed_change": false,
+  "weights_change": false
+}
