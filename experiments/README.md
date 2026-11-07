@@ -20,7 +20,7 @@ reference for the task. Repo editing rules live in [root AGENTS](../AGENTS.md).
 | **Pooled** | Trained on all providers. Used for deployment fits. |
 | **D-only provider holdout** | The D head excludes the provider, but H/A is pooled. Older studies (≤ PR #19) used this. **Not** a full-pipeline transfer claim. |
 | **Full provider holdout** | Every learned H/A, D and normalization component excludes the provider. The active selection evidence uses full provider holdouts; see the current policy for guards. |
-| Views | `clean`/native, `legacy` (old coarse augmentation), `composite` stress (frozen [tracking_corruption](tracking_corruption.py)), `feed_like` (composite minus per-frame sampling loss and regional blanking; **the current stress guardrail**), `ball_gaps`, `no_sampling`, `no_regional`. See [stress_components](stress_components.py). |
+| Views | `clean`/native, `legacy` (old coarse augmentation), `composite` stress (frozen [tracking_corruption](tracking_corruption.py)), `feed_like` (historical v1 diagnostic), **`feed_like_v2`** (current model-conditioned stress guardrail with at least four fixed realizations), `ball_gaps`, `no_sampling`, `no_regional`. See [stress_components](stress_components.py). |
 | Guardrails | The active rules are in [`model_decision_policy.json`](model_decision_policy.json). Frozen studies retain their original thresholds and references. Explicit promotion exceptions do not rewrite a failed screen. |
 | Gate | A one-time exclusive marker for organizer public scoring. Once claimed it stays closed, even after an error. Read saved results; never re-score. |
 | Shortcuts | Sportec freezes the ball during D. Metrica blanks the ball during D. SkillCorner's ≥12-visible filter drops most D frames. This is why ball-based D heads do not transfer and why the D head is player-only. |
@@ -38,7 +38,7 @@ reference for the task. Repo editing rules live in [root AGENTS](../AGENTS.md).
 | `metrics.py` (`evaluate_tracking`), `eval_set/protocol.py` | Official scorer without joining halves; cohort and fold protocol, `sha256`, paired bootstrap, D-boundary summary |
 | `supervised.py`, `refine_features.py`, `refine_domain.py` | Frame features (geometry/motion, physical, player-only D features) and the HGB+Viterbi decoder |
 | `robust.py`, `stress.py`, `tracking_corruption.py`, `stress_components.py` | Ball masks, composite corruption, component-gated corruption |
-| `learned_temporal.py` (`lt`), `had_gru.py`, `factorized_had.py`, `soccernet_capacity_model.py` | Sequence windows, masks, GRU/TCN and factorized H/A/D components. See `sn_dense_baseline.py` for the adopted dense H/A and fine-tuned D paths. |
+| `learned_temporal.py` (`lt`), `had_gru.py`, `factorized_had.py`, `soccernet_capacity_model.py` | Sequence windows, masks, GRU/TCN and factorized H/A/D components. See `sn_dense_baseline.py` for the original dense H/A and fine-tuned D paths. |
 | `live_gap_experiment.py` | `feature_view(...)` builds the joint-GRU input record. Also used at inference. |
 | `joint_lgbm.py`, `temporal_lgbm.py`, `possession_geometry.py` | Full H/A/D LightGBM features, ordered temporal features, control geometry and anchors |
 | `datasets.py`, `metrica_open.py`, `skillcorner_had.py`, `audit_dataset.py` | Source download and normalization into the shared NPZ contract |
@@ -46,7 +46,13 @@ reference for the task. Repo editing rules live in [root AGENTS](../AGENTS.md).
 | `soccernet_segments.py`, `soccernet_dense_labels.py`, `soccernet_dense_qa.py` | SoccerNet clip assembly, dense touch-stream silver labels and label QA |
 | `challenge.py` | Organizer tracking prep. Never loads ground truth. |
 | `sn_dense_train.py`, `sn_dense_run.py`, `sn_dense_baseline.py` | Dense silver-label training harness, bounded study runner and dense-package inference |
+| `spell_frontier_baseline.py` | Frozen conditional H/A expert mixture with the exact predecessor decoded D mask; paired-seed/native-phase pooling |
 | `current_baseline.py` | `predict` with the active manifest; dispatches on `architecture.kind` |
+
+**Current extra-data study:** `v2_extra_data_train.py`, `v2_extra_data_eval.py`
+and the separate `v2_extra_data_mix_eval.py`; exact deployment verification uses
+`spell_frontier_gar.py` with separately recorded execution wrappers.
+See [extra-data results](V2_EXTRA_DATA.md) and [promotion provenance](SPELL_FRONTIER_PROMOTION.md).
 
 **Study runners** (one per study, frozen): `*_experiment.py`,
 `confidence_abstention.py`, `stress_component_ablation.py`,

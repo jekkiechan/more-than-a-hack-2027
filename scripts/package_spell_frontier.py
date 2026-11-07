@@ -5,8 +5,10 @@ import hashlib
 import gzip
 import io
 import json
+import os
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import tarfile
 
@@ -59,6 +61,16 @@ def _files():
     for rel, digest in manifest["source_sha256"].items():
         if sha((ROOT / rel).read_bytes()) != digest:
             raise ValueError("Promoted source changed: " + rel)
+    for path, expected in (
+            (SELECTION, manifest['evidence']['selection_sha256']),
+            (PUBLIC_RESULT, manifest['organizer_public_diagnostic']['report_sha256']),
+            (GAR_RESULT, promotion['gar_report_sha256']),
+            (ROOT / 'experiments/current_baseline.py', promotion['dispatcher_sha256'])):
+        if sha(path.read_bytes()) != expected:
+            raise ValueError('Package provenance changed: ' + str(path))
+    gar_audit = json.loads((ROOT / 'experiments/results/spell_frontier_gar_v1_verification.json').read_text())
+    if not gar_audit['passed'] or gar_audit['result_sha256'] != sha(GAR_RESULT.read_bytes()):
+        raise ValueError('GAR audit does not bind the packaged result')
     files = {MANIFEST: "data/models/" + PACKAGE + "/baseline_manifest.json",
              POLICY: "data/models/" + PACKAGE + "/model_decision_policy.json",
              PROMOTION: "data/models/" + PACKAGE + "/promotion_receipt.json",
@@ -108,14 +120,15 @@ def package():
         "members": entries, "local_only": True, "uploaded": False,
         "organizer_inputs_or_outputs_included": False,
         "fresh_empty_directory_extraction_verified": True,
+        "isolated_restore_import_and_ten_model_load_verified": True,
         "source_sha256": sha(Path(__file__).read_bytes())}
-    verify(ARCHIVE, receipt, extract=True)
+    verify(ARCHIVE, receipt, extract=True, deployment_smoke=True)
     with RECEIPT.open("x") as stream:
         stream.write(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
     return receipt
 
 
-def verify(archive=ARCHIVE, receipt=None, *, extract=False):
+def verify(archive=ARCHIVE, receipt=None, *, extract=False, deployment_smoke=False):
     if receipt is None:
         receipt = json.loads(RECEIPT.read_text())
     if sha(Path(archive).read_bytes()) != receipt["archive_sha256"]:
@@ -138,6 +151,18 @@ def verify(archive=ARCHIVE, receipt=None, *, extract=False):
                     data = extracted.read_bytes()
                     if len(data) != row["size"] or sha(data) != row["sha256"]:
                         raise ValueError(f"Fresh extraction mismatch: {name}")
+                if deployment_smoke:
+                    env = dict(os.environ, PYTHONPATH=str(target),
+                               MTAH_DATA_DIR=str(target / 'unused-data-cache'),
+                               MTAH_DT_DIR=str(target / 'unused-dt-cache'),
+                               MTAH_SQD_DIR=str(target / 'unused-sqd-cache'),
+                               MTAH_RF_ARCHIVE_DIR=str(target / 'unused-rf-cache'))
+                    subprocess.run([sys.executable, '-c',
+                        "import json; from pathlib import Path; "
+                        "from experiments.current_baseline import load_models; "
+                        "from experiments.spell_frontier_baseline import validate; "
+                        "validate(load_models(),json.loads(Path('experiments/baseline_manifest.json').read_text()))"],
+                        cwd=target, env=env, check=True, capture_output=True, text=True)
     return True
 
 

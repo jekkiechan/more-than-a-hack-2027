@@ -99,7 +99,7 @@ quality/weight-arm blend. It combines cached CE probabilities before the
 unchanged outer H/A mixture. No new fitting, inference or decoder search is
 allowed. This follows complementary development failures, not a public or
 GAR result. Official decoded metrics are nonlinear, so score interpolation
-does not establish a feasible blend. Results and audit follow below when complete.
+does not establish a feasible blend. The completed results and audit are below.
 
 The independent verifier's first pass reproduced all cell/seed scores and
 aggregates, then failed its own eligibility-schema comparison. The
@@ -169,3 +169,79 @@ GAR silver segments and the reused 17-possession public window do not establish
 independent continuous-match gold performance. The exact previously approved
 package's GAR TEST check is a separate deployment diagnostic, not a source of
 training choices for this study.
+
+## Round 2: four cached mixtures
+
+**None of the four blends passes every retention check. Retain the approved frontier package.**
+
+| CE blend | Clean spell | V1 spell | V2 spell | V2 macro | V1 short recall | Failed checks |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| fresh_q25 | 0.670678 | 0.530879 | 0.594898 | 0.852386 | 0.218434 | feed_like_v1/short_spell_recall_iou_0_5_lt3s; feed_like_v1/spell_f1 |
+| weight_q50 | 0.670715 | 0.531351 | 0.594892 | 0.852324 | 0.219756 | feed_like_v1/short_spell_recall_iou_0_5_lt3s; feed_like_v1/spell_f1 |
+| fresh_q50 | 0.670550 | 0.531156 | 0.594615 | 0.852258 | 0.220115 | feed_like_v1/short_spell_recall_iou_0_5_lt3s; feed_like_v1/spell_f1 |
+| fresh_q75 | 0.670102 | 0.531351 | 0.593937 | 0.852158 | 0.221190 | clean/spell_f1; feed_like_v1/spell_f1 |
+
+Quality fractions 0.25/0.50/0.75 are mixed with fresh continuation; `weight_q50` mixes equal quality and higher-GAR-weight probabilities. The outer CE/calibrated/predecessor weights remain 0.5/0.375/0.125, with H/A cost 3. No new fitting, neural inference, data, calibration or decoder settings are introduced.
+
+All 105 endpoint/cell controls reproduce their official metrics with zero scalar difference and their ensemble/seed predictions exactly. Independent verification reconstructs and officially scores all 420 candidate/seed scorecards across 35 cells. D masks and reference counts remain exact.
+
+### Seed and provider diagnostics
+
+| Blend / view | Seed 2026 spell | Seed 2027 spell | Inference ensemble spell |
+| --- | ---: | ---: | ---: |
+| fresh_q25 / clean | 0.670284 | 0.666608 | 0.670678 |
+| fresh_q25 / feed_like_v1 | 0.532526 | 0.523740 | 0.530879 |
+| fresh_q25 / feed_like_v2 | 0.590699 | 0.588782 | 0.594898 |
+| weight_q50 / clean | 0.669708 | 0.666753 | 0.670715 |
+| weight_q50 / feed_like_v1 | 0.533351 | 0.524255 | 0.531351 |
+| weight_q50 / feed_like_v2 | 0.591415 | 0.588941 | 0.594892 |
+| fresh_q50 / clean | 0.669752 | 0.667114 | 0.670550 |
+| fresh_q50 / feed_like_v1 | 0.533151 | 0.524299 | 0.531156 |
+| fresh_q50 / feed_like_v2 | 0.591303 | 0.589114 | 0.594615 |
+| fresh_q75 / clean | 0.671015 | 0.667143 | 0.670102 |
+| fresh_q75 / feed_like_v1 | 0.533140 | 0.523830 | 0.531351 |
+| fresh_q75 / feed_like_v2 | 0.591124 | 0.588270 | 0.593937 |
+
+| Blend / view / provider | Δ spell vs approved | Δ macro vs approved | Δ short recall vs approved |
+| --- | ---: | ---: | ---: |
+| fresh_q25 / clean / Metrica | +0.000000 | +0.000045 | +0.000000 |
+| fresh_q25 / clean / SkillCorner | +0.000584 | -0.000143 | +0.000072 |
+| fresh_q25 / clean / Sportec | +0.001039 | +0.000369 | +0.000000 |
+| fresh_q25 / feed_like_v1 / Metrica | -0.000890 | +0.000183 | +0.000000 |
+| fresh_q25 / feed_like_v1 / SkillCorner | -0.000889 | +0.000407 | -0.003262 |
+| fresh_q25 / feed_like_v1 / Sportec | -0.001970 | +0.000242 | -0.002538 |
+| fresh_q25 / feed_like_v2 / Metrica | +0.003651 | +0.000795 | +0.003968 |
+| fresh_q25 / feed_like_v2 / SkillCorner | -0.001058 | -0.000247 | -0.001559 |
+| fresh_q25 / feed_like_v2 / Sportec | +0.001244 | -0.000001 | +0.002538 |
+| weight_q50 / clean / Metrica | +0.000000 | +0.000057 | +0.000000 |
+| weight_q50 / clean / SkillCorner | +0.000178 | +0.000174 | +0.002222 |
+| weight_q50 / clean / Sportec | +0.001558 | +0.000414 | +0.000000 |
+| weight_q50 / feed_like_v1 / Metrica | +0.000485 | -0.000011 | +0.003968 |
+| weight_q50 / feed_like_v1 / SkillCorner | -0.001187 | +0.000454 | -0.003262 |
+| weight_q50 / feed_like_v1 / Sportec | -0.001629 | +0.000406 | -0.002538 |
+| weight_q50 / feed_like_v2 / Metrica | +0.002878 | +0.000507 | +0.003968 |
+| weight_q50 / feed_like_v2 / SkillCorner | -0.000558 | -0.000211 | -0.001022 |
+| weight_q50 / feed_like_v2 / Sportec | +0.001501 | +0.000065 | +0.002538 |
+| fresh_q50 / clean / Metrica | +0.000550 | +0.000051 | +0.000000 |
+| fresh_q50 / clean / SkillCorner | -0.000350 | -0.000568 | +0.002222 |
+| fresh_q50 / clean / Sportec | +0.001039 | +0.000405 | +0.000000 |
+| fresh_q50 / feed_like_v1 / Metrica | -0.000116 | -0.000031 | +0.003968 |
+| fresh_q50 / feed_like_v1 / SkillCorner | -0.001106 | +0.000244 | -0.002186 |
+| fresh_q50 / feed_like_v1 / Sportec | -0.001695 | +0.000246 | -0.002538 |
+| fresh_q50 / feed_like_v2 / Metrica | +0.002864 | +0.000530 | +0.003968 |
+| fresh_q50 / feed_like_v2 / SkillCorner | -0.000774 | -0.000291 | -0.001022 |
+| fresh_q50 / feed_like_v2 / Sportec | +0.000898 | -0.000075 | +0.002538 |
+| fresh_q75 / clean / Metrica | +0.000550 | +0.000072 | +0.000000 |
+| fresh_q75 / clean / SkillCorner | -0.001692 | -0.000629 | +0.002222 |
+| fresh_q75 / clean / Sportec | +0.001039 | +0.000476 | +0.000000 |
+| fresh_q75 / feed_like_v1 / Metrica | +0.000438 | +0.000060 | +0.003968 |
+| fresh_q75 / feed_like_v1 / SkillCorner | -0.001074 | +0.000159 | +0.001039 |
+| fresh_q75 / feed_like_v1 / Sportec | -0.001695 | +0.000180 | -0.002538 |
+| fresh_q75 / feed_like_v2 / Metrica | +0.000703 | +0.000274 | +0.000000 |
+| fresh_q75 / feed_like_v2 / SkillCorner | -0.001063 | -0.000276 | -0.001039 |
+| fresh_q75 / feed_like_v2 / Sportec | +0.001314 | -0.000134 | +0.002538 |
+
+The fixed four-candidate follow-up is complete. This is repeated development on five exposed matches, not a claim of independent generalization or a hard performance ceiling. More independent continuous-match gold data and more varied, corroborated short possessions are stronger next evidence than finer mixture searches.
+
+- [Plan](results/v2_extra_data_mix_v1_plan.json), [declaration](results/v2_extra_data_mix_v1_declaration.json), [exact controls](results/v2_extra_data_mix_v1_control_replay.json).
+- [Complete results](results/v2_extra_data_mix_v1.json), [independent verification](results/v2_extra_data_mix_v1_verification.json), [readout](results/v2_extra_data_mix_v1_readout.json).
