@@ -1,6 +1,7 @@
 """Bind GAR runtime amendments, actual seeds and final audit to the staged package."""
 from pathlib import Path
 import sys
+import numpy as np
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from experiments import spell_frontier_gar_capture_runtime as runtime
@@ -27,6 +28,14 @@ def verify():
             if row['corruption_seeds']!=erratum['expected_seeds'][f'{split}/{game}']:
                 raise ValueError('Actual corruption seed changed')
             if row['declaration_sha256']!=study.digest(study.DECLARATION):raise ValueError('Game declaration changed')
+            prior=declaration['prior_game_artifacts'][f'{split}/{game}']
+            for prior_view,views in (('clean',('clean',)),('v2',study.VIEWS[1:])):
+                for metric in study.MATRIX_KEYS:
+                    actual=float(np.mean([row['views'][v]['original_full_phase_avg'][metric] for v in views]))
+                    if abs(actual-prior[prior_view][metric])>1e-12:
+                        raise ValueError(f'Prior control metric differs: {split}/{game}/{prior_view}/{metric}')
+                if row['graded_frames']!=prior[prior_view]['graded_frames']:
+                    raise ValueError('Prior control grading population changed')
             game_hashes[f'{split}/{game}']=study.digest(path)
             cells+=len(row['views'])
     if cells!=95 or len(game_hashes)!=19:raise ValueError('Incomplete GAR cohort')
@@ -34,6 +43,7 @@ def verify():
               runtime.fix.AMENDMENT,runtime.execution.AMENDMENT,runtime.execution.BINDING,
               study.MANIFEST,Path(__file__)]
     receipt=dict(study=study.STUDY,passed=True,game_view_cells=cells,exact_seed_pairs=76,
+        all_eight_control_metrics_match_prior_per_game=True,prior_graded_frame_counts_equal=True,
         package_version=study.read(study.MANIFEST)['package_version'],
         bindings_sha256={str(p.relative_to(ROOT)):study.digest(p) for p in bindings},
         game_sidecar_sha256=game_hashes,organizer_reference_access=False,public_scoring=False)
