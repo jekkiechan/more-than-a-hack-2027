@@ -1,0 +1,23 @@
+{
+ "study_id": "v2_iterative_train_v1",
+ "status": "synthetic_control_parity_diagnostic",
+ "shared_frozen_trainer_edited": false,
+ "original_assertion": "bitwise equality of every H/A state tensor after two CE-control updates",
+ "original_assertion_outcome": "failed",
+ "original_failure_max_abs_state_delta": 2.7567148208618164e-7,
+ "largest_delta_tensor": "sequence.weight_hh_l0_reverse",
+ "nonidentical_state_tensor_count": 9,
+ "diagnostics": {
+  "prepared_window_count_per_path": 32,
+  "prepared_window_features_and_targets_bitwise_equal": true,
+  "first_step_scalar_loss_both_paths": 0.7255799770355225,
+  "first_step_scalar_loss_bitwise_equal": true,
+  "max_abs_gradient_delta_before_adamw_step": 1.4901161193847656e-8,
+  "max_abs_state_delta_after_one_update": 2.7567148208618164e-7,
+  "max_abs_state_delta_after_two_updates": 2.7567148208618164e-7
+ },
+ "interpretation": "No sampling, target, scalar-objective, or substantive training divergence was found. The independent but mathematically equivalent PyTorch autograd graphs accumulate a few float32 gradient entries in different orders (maximum observed gradient delta 1.49e-8). AdamW's normalized update turns those tiny gradient differences into sub-micro state differences. The one-step scalar loss was exactly equal, and all 32 prepared feature/target windows matched bitwise.",
+ "replacement_contract": "The new synthetic parity test uses rtol=0 and atol=3e-7 for H/A tensors after two updates, just above the observed maximum 2.7567148e-7. This is a trainer implementation smoke tolerance only; it does not change evaluation metrics, model selection, or any historical guard.",
+ "organizer_labels_scored": false,
+ "candidate_scored": false
+}

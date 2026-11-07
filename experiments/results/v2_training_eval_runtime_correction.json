@@ -1,0 +1,71 @@
+{
+ "arm_list": [
+  "new_full_phase_tta",
+  "new_conditional_HA_x_archived_calibrated_D",
+  "equal_50_50_new_full_plus_archived_calibrated"
+ ],
+ "correction": "Map audit fold aliases sportec/metrica/skillcorner to the exact sealed trainer paths leave_out_{provider}_{seed}.joblib.",
+ "failed_attempt": {
+  "candidate_emission_cache_files": 0,
+  "candidate_result_written": false,
+  "occurred_before_candidate_inference": true
+ },
+ "new_decoder_settings": 0,
+ "new_fits": 0,
+ "observed_failure": "FileNotFoundError before candidate inference/scoring: the first evaluation cell resolved data/experiments/v2_short_original_diversity/models/sportec_2026.joblib; the frozen training runner stores the sealed model at leave_out_sportec_2026.joblib",
+ "organizer_reference_access": false,
+ "original_study": {
+  "declaration_path": "experiments/results/v2_training_eval_declaration.json",
+  "declaration_sha256": "d9f6a63dd5c68c5d31bbf0494a86646cdc2c23cd38d54c5863d486eeca6a0689",
+  "runner_path": "experiments/v2_training_eval.py",
+  "runner_sha256": "c853a1599046cdeae927b79022b8c85676ded58f15dc2e64d882289ab818dd9b",
+  "seal_path": "data/experiments/v2_training_eval/evaluation_seal.json",
+  "seal_sha256": "a0da655e3b09a9570ab4a699cb59d4dca71fef222a99b69ef5d6608a5fb8ad27",
+  "training_declaration_sha256": "cf7d60363a17932abcf6db1096184818c12083ebe2353d7665876187a63440e4",
+  "upstream_preflight_sha256": "fdbaae330dcd76cfea0fa6fab62fd00d560b6a5ed8254c860286f75a2e11ef1e"
+ },
+ "provider_aliases": {
+  "Metrica": {
+   "runtime_alias": "metrica",
+   "trainer_fold": "leave_out_metrica"
+  },
+  "SkillCorner": {
+   "runtime_alias": "skillcorner",
+   "trainer_fold": "leave_out_skillcorner"
+  },
+  "Sportec": {
+   "runtime_alias": "sportec",
+   "trainer_fold": "leave_out_sportec"
+  }
+ },
+ "public_scoring": false,
+ "scope": "Path lookup only. Frozen training declaration, evaluation declaration, model seal, three arms, cohort, f062 decoding, aggregation and scorer remain bound unchanged.",
+ "sealed_model_paths": {
+  "leave_out_metrica/2026": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_metrica_2026.joblib",
+   "sha256": "54917c2319c2fa9f47e1774169f91bcb10b0ff47be840244bca4743d18017955"
+  },
+  "leave_out_metrica/2027": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_metrica_2027.joblib",
+   "sha256": "6f176680313ae33a105467491ad517f36a4455290c9b159e2db008610b67bf55"
+  },
+  "leave_out_skillcorner/2026": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_skillcorner_2026.joblib",
+   "sha256": "2647869641a01db1c5e93bc4d48885b4328f32792604bba32e41db26b7ada334"
+  },
+  "leave_out_skillcorner/2027": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_skillcorner_2027.joblib",
+   "sha256": "2a1a30ed66c79f15181b4aa9ec9a209d8a11dfb25d9ed76acf9bdd7bcbef2503"
+  },
+  "leave_out_sportec/2026": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_sportec_2026.joblib",
+   "sha256": "698b52ce7799ab82a430475104580fd9cd6ec3f0018b32ddf973fda8925aa45d"
+  },
+  "leave_out_sportec/2027": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_sportec_2027.joblib",
+   "sha256": "09b24af86b90a64b7489dd1956ccd332d701ff51449397efe7e37826b9ca6529"
+  }
+ },
+ "status": "frozen_before_candidate_inference_or_scoring",
+ "study_id": "v2_training_eval_runtime_correction"
+}

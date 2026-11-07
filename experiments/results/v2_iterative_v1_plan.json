@@ -1,0 +1,32 @@
+{
+  "study_id": "v2_iterative_v1",
+  "date": "2026-11-06",
+  "status": "parent_plan_before_new_candidate_scoring",
+  "request": "Iterate with Luna, use the additional training data and prior experiments, seek feed_like_v2 spell F1 strictly above 0.60 without other metric regressions.",
+  "source_base": "30ddcbcffe6d28b275f6bbf3cff7c6713af7eaed",
+  "prior_experiments": [82, 83, 84],
+  "adopted_package": "joint_gru_sn_dense_original_diversity_phase_ensemble_v1",
+  "development": {
+    "matches": ["J03WOY", "metrica_3", "1996435", "1996436", "2006229"],
+    "views": {"clean": 1, "feed_like_v1": 2, "feed_like_v2": 4},
+    "aggregation": "realizations within match, matches within provider, equal provider means",
+    "seeds": [2026, 2027],
+    "exposure": "Previously selected-on development matches; synthetic v2 uses state-conditioned corruption calibrated from historical model predictions. No independent confirmation claim."
+  },
+  "success": {
+    "v2_spell_f1": "> 0.60",
+    "retention": "Each aggregate quality metric on clean, v1 and v2 must be >= matched adopted control, with zero tolerance. Report all failures and provider diagnostics.",
+    "quality_metrics": ["spell_f1", "macro_f1", "d_f1", "d_precision", "d_recall", "short_spell_recall_iou_0_5_lt3s"],
+    "ranking": "v2 spell F1 descending; macro F1 for exact ties",
+    "auxiliary_summary": "0.7 spell F1 + 0.3 macro F1; not used for selection"
+  },
+  "rounds": [
+    {"round": 1, "mechanism": "Four fixed adopted/calibrated model combinations, including conditional team combination with adopted dead-play decisions preserved", "new_fits": 0, "candidate_arms": 4},
+    {"round": 2, "mechanism": "Matched H/A-only continuation from adopted provider-fold checkpoints, existing objective versus additional boundary-local signed log-odds margin loss", "recipes": 2, "provider_folds": 3, "seeds": 2, "new_fits": 12, "updates_per_fit": 512, "maximum_evaluation_pipelines": 4},
+    {"round": 3, "mechanism": "One separately declared combination follow-up informed by completed rounds; freeze exact arms and artifacts before scoring", "maximum_candidate_arms": 4, "new_fits": 0}
+  ],
+  "data": "Use verified original-provider TRAIN sources and the archived 45-game SoccerNet-GAR TRAIN dense silver-label corpus. Reuse of this additional corpus does not create new independent labels or matches. Preserve every held-out provider in teachers, checkpoints, normalization and training inputs.",
+  "guards": ["Replay adopted controls before candidate scoring", "Freeze sources, input hashes, arms and budgets separately before each round", "Keep failed outcomes and declarations immutable", "No tuning on organizer labels, GAR VALID or GAR TEST", "No automatic model promotion"],
+  "delivery": "Commit code, aggregate evidence, limitations and verification; publish a PR and update the existing restricted research site. Native arrays and model weights stay ignored/local unless separately authorized for upload.",
+  "luna_roles": ["artifact restoration and experiment analysis", "paired training implementation", "matched evaluation and ensemble experiments"]
+}

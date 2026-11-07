@@ -1,0 +1,221 @@
+{
+ "GAR_TEST_scoring": false,
+ "arms": {
+  "blend_unedited_ha15": [
+   "none",
+   0.0
+  ],
+  "projection_a025": [
+   "projection",
+   0.25
+  ],
+  "projection_a050": [
+   "projection",
+   0.5
+  ],
+  "projection_a100": [
+   "projection",
+   1.0
+  ],
+  "update_bias_m025": [
+   "update_bias",
+   -0.25
+  ],
+  "update_bias_m050": [
+   "update_bias",
+   -0.5
+  ],
+  "update_bias_p025": [
+   "update_bias",
+   0.25
+  ]
+ },
+ "budget": {
+  "candidate_arms": [
+   "blend_unedited_ha15",
+   "projection_a025",
+   "projection_a050",
+   "projection_a100",
+   "update_bias_m025",
+   "update_bias_m050",
+   "update_bias_p025"
+  ],
+  "primary_cells": 25,
+  "reconstructed_provider_fold_fits": 6,
+  "v1_cells_after_selection": 10
+ },
+ "candidate_pipeline": "Each edited new four-view full model is blended 50/50 per seed and native phase with the corresponding archived calibrated model; equal seed mean, equal phase mean, then the saved dt=4/dead=3/HA=1.5/HT=1 calibration decoder.",
+ "cohort": {
+  "aggregation": "replicates within match, matches within provider, providers equally",
+  "feed_realizations": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "full_provider_exclusion": "all fitted components and normalizations omit the evaluated provider",
+  "matches": [
+   {
+    "match": "J03WOY",
+    "provider": "Sportec"
+   },
+   {
+    "match": "metrica_3",
+    "provider": "Metrica"
+   },
+   {
+    "match": "1996435",
+    "provider": "SkillCorner"
+   },
+   {
+    "match": "1996436",
+    "provider": "SkillCorner"
+   },
+   {
+    "match": "2006229",
+    "provider": "SkillCorner"
+   }
+  ],
+  "primary_views": [
+   "clean",
+   "feed_like_v2"
+  ],
+  "v1": "scored only after the primary winner is frozen; two historical replicas retained as a regression diagnostic",
+  "v2_seed_rule": "feed_like_v2_benchmark/{rep}/{match} SHA-256-derived seed, unchanged from the frozen target protocol"
+ },
+ "controls": {
+  "blend_unedited_ha15": "Reconstructed new four-view full model + archived calibrated model at equal probability weights and the fixed HA=1.5 decoder; matched control for all edits.",
+  "deployed_original_full": "Archived original_full two-seed probability pool + five native phases, decoded with unchanged f062 (HA=3).",
+  "historical_reference": {
+   "clean": 0.667555533,
+   "eligible_blend_clean": 0.665355,
+   "eligible_blend_v2": 0.5927491913246999,
+   "v2": 0.583571208
+  }
+ },
+ "decoder": {
+  "blend": {
+   "dead": 3,
+   "dt": 4,
+   "family": "calibration",
+   "ha": 1.5,
+   "ht": 1.0,
+   "id": "f062"
+  },
+  "deployed_original_full": "f062"
+ },
+ "edit_definition": {
+  "direction_artifact": {
+   "available_for_all_six": true,
+   "diagnostic_path": "data/experiments/v2_weight_edit_development_v1/diagnostics/direction_fit_status.json",
+   "diagnostic_sha256": "6f35c73ea74f79837a642d95e6537b938ce5f97ebf60acfa7194e2c99d456c44",
+   "path": "data/experiments/v2_weight_edit_development_v1/diagnostics/direction_vectors.npz",
+   "sha256": "c120c6056dd580770dc2c177400de08b7a60cbb0766aa03dfda743b0ebbe9117",
+   "uniform_skip_rule": "if any fold/seed lacks delayed/correct groups or a common contributing match, omit all projection arms and all direction arrays; retain gate edits"
+  },
+  "no_optimizer_or_backprop_for_edits": true,
+  "projection": "For each provider-fold/seed, W' = W - alpha*(P_contrast Wv)*v.T on the conditional H/A final output matrix only. v is the normalized equal-match mean contrast between one-sample-late and correctly-timed stable known H/A boundaries from original-provider TRAIN clean and first fixed v2 views, native+swapped orientations. D state, all other tensors, normalization and teacher are unchanged.",
+  "update_bias": "Add the fixed delta to the GRU update-gate input-bias slices [H:2H] in forward/reverse directions, both conditional H/A provider-fold states only. D state/output, recurrent bias and all other tensors are unchanged."
+ },
+ "guards": {
+  "clean_provider_macro_and_d_floor": "each provider no worse than original_full baseline - 0.02",
+  "clean_spell_floor": 0.662555533,
+  "no_guard_relaxation": true,
+  "ranking": "highest unrounded v2 spell among arms passing every fixed guard; macro breaks exact ties",
+  "v2_spell_floor": 0.573571208
+ },
+ "limitations": "Five exposed development matches and synthetic model-conditioned feed_like_v2 views; reconstructed checkpoints are new fits, not byte-exact restored PR82 artifacts.",
+ "organizer_reference_access": false,
+ "promotion": false,
+ "provenance": {
+  "active_arms": {
+   "blend_unedited_ha15": [
+    "none",
+    0.0
+   ],
+   "projection_a025": [
+    "projection",
+    0.25
+   ],
+   "projection_a050": [
+    "projection",
+    0.5
+   ],
+   "projection_a100": [
+    "projection",
+    1.0
+   ],
+   "update_bias_m025": [
+    "update_bias",
+    -0.25
+   ],
+   "update_bias_m050": [
+    "update_bias",
+    -0.5
+   ],
+   "update_bias_p025": [
+    "update_bias",
+    0.25
+   ]
+  },
+  "direction_artifact_sha256": "c120c6056dd580770dc2c177400de08b7a60cbb0766aa03dfda743b0ebbe9117",
+  "direction_report_sha256": "6f35c73ea74f79837a642d95e6537b938ce5f97ebf60acfa7194e2c99d456c44",
+  "model_facts": {
+   "leave_out_metrica/2026": {
+    "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_metrica_2026.joblib",
+    "receipt_sha256": "58820c19cc4589b8c2dc2f57e241887af59f8a956aa053a6edef775db5f624bc",
+    "sha256": "a7f3665eff7b646809d886899a843c1fe1e62b2748d3f10fca3421b97ce88df0"
+   },
+   "leave_out_metrica/2027": {
+    "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_metrica_2027.joblib",
+    "receipt_sha256": "d61adcc92bbbfd427145bd747fba21c248dccd23ed66ee044734939d991734a8",
+    "sha256": "6b4b729d562f7136f1f2aa47d51f7f4661608232e6eeb74b7390c77a5b304096"
+   },
+   "leave_out_skillcorner/2026": {
+    "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_skillcorner_2026.joblib",
+    "receipt_sha256": "4ce17d369440624364b742acbfb72b94488874c1df5f6004a85be497bd0bf341",
+    "sha256": "cc52fd9eaecc1514773ff710c5f6db1d5200dc4db0a454b639373157c37fa809"
+   },
+   "leave_out_skillcorner/2027": {
+    "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_skillcorner_2027.joblib",
+    "receipt_sha256": "1582987a57d116c03c477dadb2d5f416da84a8e98a654ec3e8fa9e9f070ba1be",
+    "sha256": "6ae9c0216635dbcfe2c71c1282bd4a7febe32f44f5fbba975cae009c9c799af7"
+   },
+   "leave_out_sportec/2026": {
+    "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_sportec_2026.joblib",
+    "receipt_sha256": "028177e0d6883026df55974ef8b898bd367a01eb97f6b02526c7d1b3e61da918",
+    "sha256": "05d73bfd8c0dd331bd060f29225bcb2a53acf543eec4548b7547631e90afc37c"
+   },
+   "leave_out_sportec/2027": {
+    "path": "data/experiments/v2_weight_edit_reconstruction_v1/models/leave_out_sportec_2027.joblib",
+    "receipt_sha256": "42f7797197f85aeeef3fdf9188c0e98ca330efa6ed1e3a989a348b1c1fbefde4",
+    "sha256": "ca5a18ea3d3c0fed72f36620f4f799643b6e96f36e3fbec9cf649025d10d2100"
+   }
+  },
+  "reconstruction_declaration_sha256": "e56295ccf937eaab5e6d254142d93810631ca2250bac745f1d780375316984d5",
+  "reconstruction_fit_receipt_sha256": "d9c11d7739211c78bc28946db8e268001ecd6efec2089fcef9c89737d5dd19fe",
+  "source_sha256": {
+   "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+   "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+   "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+   "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+   "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+   "experiments/original_full_phase_baseline.py": "4ce3381464c01fe57ce1e1a260d3de517b946664d0bc50b02362064b0da5257d",
+   "experiments/results/original_full_phase_average_scorecard_v2.json": "cf5ae7ce85b1c68af5097cd21134a447a8e64afc71625a734caaaef229bad25b",
+   "experiments/results/phase_average_guard_v1.json": "c2bbfbb129d23f45aafec9a1066c3cbdc26b66dff5a2583fa3d8ef52a055febf",
+   "experiments/results/v2_calibration_transfer.json": "846bd5d0f56d2929ff2b7263e56c9a31c5be44dd7ae72c7088e149fda5e8924a",
+   "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+   "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+   "experiments/v2_spell_target.py": "527f97bb31710119b3fabf171c44a50b0a8403128b145c97af44fba3cb4c51d1",
+   "experiments/v2_spell_target_runtime.py": "57b9184ac092674b08fd8b532e40895e64a3841d8747ebb76457abf3304fde91",
+   "experiments/v2_training_eval.py": "c853a1599046cdeae927b79022b8c85676ded58f15dc2e64d882289ab818dd9b",
+   "experiments/v2_weight_edit_development.py": "6fd19be1bddb409dd99faeba119a4c4a5ec3d28e7af47af33b2cafb799830fb1",
+   "experiments/v2_weight_edit_reconstruction.py": "a2082adc6a932eebee1e65d6764b095ac7b02b8abe72d16969efb59ce477ffb1",
+   "experiments/weight_space_edit.py": "b6ce21d19fba8638d3f80c1ea602ebf58a53dc8b7bd877df0f5434ac6eff1443"
+  }
+ },
+ "public_scoring": false,
+ "question": "Does a train-diagnosed direct edit of the four-view model's H/A representation improve official spell F1 beyond the fixed 50/50 new/calibrated v2-development winner while passing the existing clean/provider guardrails?",
+ "status": "fixed_edits_frozen_before_development_scores",
+ "study_id": "v2_weight_edit_development_v1"
+}

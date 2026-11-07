@@ -1,0 +1,31 @@
+{
+ "audit_progress": {
+  "all_per_cell_official_metric_comparisons_passed": true,
+  "all_per_cell_probability_checks_passed": true,
+  "all_saved_prediction_replays_passed": true,
+  "cell_and_seed_inventories_passed": true,
+  "control_and_candidate_emission_hashes_passed": true,
+  "independent_output_written": false,
+  "parent_round2_and_replay_hashes_passed": true,
+  "pooled_aggregate_comparison_passed": true,
+  "reference_spell_counts_passed": true,
+  "round3_declaration_result_identity_passed": true,
+  "seed_aggregate_comparison_reached": true,
+  "selected_arm_and_retention_passed": true,
+  "source_hashes_passed": true,
+  "strict_gate_comparison_passed": true
+ },
+ "candidate_rescored": false,
+ "expected_shape": "arm -> seed -> view -> metric -> {equal_provider, providers}",
+ "failure": "KeyError: spell_f1 in _round3_compare_aggregate at scripts/verify_v2_iterative.py:696 when comparing round3 seed aggregate",
+ "helper_assumption": "_round3_compare_aggregate assumes arm -> view -> metric -> {equal_provider, providers}",
+ "issue": "Verifier seed aggregate layout mismatch after all cell-level replay checks",
+ "organizer_labels_scored": false,
+ "schema": "v2_iterative_round3_verifier_amendment_v1",
+ "sha256": {
+  "round3_declaration": "897b9e2f2c03bc98142b132603e36dc04b54cd40213847bb22772e6cf88c1973",
+  "round3_result": "8b3c29f35a8e7be3bde19beb1610782a93276f409d76e2866cca2286b6ae3839",
+  "round3_runner": "15ffd94c434eb7d276a79bd2a31d456c8942e3aa4bbb990a73f59b67322ddca6",
+  "verifier_before_amendment": "af1dfabb078d919098f0396325b56d1ffcc31f7890b69d66864399f0b9bfb04d"
+ }
+}
