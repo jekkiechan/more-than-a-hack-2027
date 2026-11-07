@@ -57,6 +57,10 @@ gate remains unused. Research checkpoints and outputs are verified locally;
 new remote weight availability is not claimed. See [PR #86](https://github.com/jekkiechan/more-than-a-hack-2027/pull/86)
 and the [combined readout](../../experiments/results/v2_spell_frontier_v1_readout.json).
 
+The restricted research site is published as version 33, with desktop/mobile
+checks and access revision 2 unchanged. See the
+[delivery receipt](../../experiments/results/v2_spell_frontier_v1_delivery.json).
+
 ## Iterative v2 training — 6 November 2026
 
 The [three-round study](../../experiments/V2_ITERATIVE_DATA.md) uses twelve

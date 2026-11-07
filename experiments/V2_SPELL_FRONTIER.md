@@ -163,3 +163,14 @@ evidence or new gold labels. The public window has only 7,500 graded frames and
 - [Frozen parent plan](results/v2_spell_frontier_v1_plan.json)
 - [Previous development selection](results/v2_spell_balanced_v1_selection.json)
 - [PR #86](https://github.com/jekkiechan/more-than-a-hack-2027/pull/86)
+
+## Delivery
+
+All 816 experiment tests and 26 repository tests pass, alongside the file-backed
+fit contract, CSV-format checks and documentation checks. The
+[delivery receipt](results/v2_spell_frontier_v1_delivery.json) records research-site
+version 33, desktop/mobile control checks and unchanged restricted access.
+The new model bundle is local at
+`data/experiments/v2_spell_frontier_v1/research_models.tar.gz` (29,185,924 bytes);
+the final CSV is `data/experiments/v2_spell_frontier_v1/public_candidate.csv`.
+No further fitting, selection or organizer scoring follows this diagnostic.
