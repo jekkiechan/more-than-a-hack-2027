@@ -1,0 +1,212 @@
+{
+ "candidate_configurations": 20,
+ "candidate_grid_or_selection_changes": false,
+ "candidate_rows_path": "data/experiments/v2_calibration_ha_boundary_v1/candidate_rows_recovery.json",
+ "candidate_scores": 500,
+ "cell_jobs": [
+  [
+   "Sportec",
+   "J03WOY",
+   "clean",
+   0
+  ],
+  [
+   "Sportec",
+   "J03WOY",
+   "feed_like_v2",
+   1
+  ],
+  [
+   "Sportec",
+   "J03WOY",
+   "feed_like_v2",
+   2
+  ],
+  [
+   "Sportec",
+   "J03WOY",
+   "feed_like_v2",
+   3
+  ],
+  [
+   "Sportec",
+   "J03WOY",
+   "feed_like_v2",
+   4
+  ],
+  [
+   "Metrica",
+   "metrica_3",
+   "clean",
+   0
+  ],
+  [
+   "Metrica",
+   "metrica_3",
+   "feed_like_v2",
+   1
+  ],
+  [
+   "Metrica",
+   "metrica_3",
+   "feed_like_v2",
+   2
+  ],
+  [
+   "Metrica",
+   "metrica_3",
+   "feed_like_v2",
+   3
+  ],
+  [
+   "Metrica",
+   "metrica_3",
+   "feed_like_v2",
+   4
+  ],
+  [
+   "SkillCorner",
+   "1996435",
+   "clean",
+   0
+  ],
+  [
+   "SkillCorner",
+   "1996435",
+   "feed_like_v2",
+   1
+  ],
+  [
+   "SkillCorner",
+   "1996435",
+   "feed_like_v2",
+   2
+  ],
+  [
+   "SkillCorner",
+   "1996435",
+   "feed_like_v2",
+   3
+  ],
+  [
+   "SkillCorner",
+   "1996435",
+   "feed_like_v2",
+   4
+  ],
+  [
+   "SkillCorner",
+   "1996436",
+   "clean",
+   0
+  ],
+  [
+   "SkillCorner",
+   "1996436",
+   "feed_like_v2",
+   1
+  ],
+  [
+   "SkillCorner",
+   "1996436",
+   "feed_like_v2",
+   2
+  ],
+  [
+   "SkillCorner",
+   "1996436",
+   "feed_like_v2",
+   3
+  ],
+  [
+   "SkillCorner",
+   "1996436",
+   "feed_like_v2",
+   4
+  ],
+  [
+   "SkillCorner",
+   "2006229",
+   "clean",
+   0
+  ],
+  [
+   "SkillCorner",
+   "2006229",
+   "feed_like_v2",
+   1
+  ],
+  [
+   "SkillCorner",
+   "2006229",
+   "feed_like_v2",
+   2
+  ],
+  [
+   "SkillCorner",
+   "2006229",
+   "feed_like_v2",
+   3
+  ],
+  [
+   "SkillCorner",
+   "2006229",
+   "feed_like_v2",
+   4
+  ]
+ ],
+ "fits": 0,
+ "frozen_preflight_sha256": "295e04353632c75eb4e25ac64c8f1bb88111c7fa214c367e55911b9e9d0afe7c",
+ "frozen_study_declaration_sha256": "11f6e50306946f2339245d0c7cc3050d88ccf3924d58b9b3578cf57ee5c6f8af",
+ "orchestration_source_sha256": "f5c9df543da4e550f533f219b8b5e0cb015f28e1dd96500f9fb681f615895922",
+ "re_inference": false,
+ "reason": "first exact grid scoring completed but result write was blocked by a two-tuple selected-seed adapter error; this does not add configurations or change selection",
+ "smoke_test": {
+  "cases": [
+   {
+    "match": "J03WOY",
+    "metrics_or_scores_called": false,
+    "native_phases": 5,
+    "normalization_passed": true,
+    "provider": "Sportec",
+    "recipes": [
+     "archived_calibrated_phase",
+     "new_full_phase_tta",
+     "new_conditional_ha_x_archived_calibrated_d",
+     "equal_50_50_new_full_plus_archived_calibrated"
+    ],
+    "rep": 0,
+    "seeds": [
+     2026,
+     2027
+    ],
+    "view": "clean"
+   },
+   {
+    "match": "1996435",
+    "metrics_or_scores_called": false,
+    "native_phases": 2,
+    "normalization_passed": true,
+    "provider": "SkillCorner",
+    "recipes": [
+     "archived_calibrated_phase",
+     "new_full_phase_tta",
+     "new_conditional_ha_x_archived_calibrated_d",
+     "equal_50_50_new_full_plus_archived_calibrated"
+    ],
+    "rep": 0,
+    "seeds": [
+     2026,
+     2027
+    ],
+    "view": "clean"
+   }
+  ]
+ },
+ "status": "frozen_fixed_grid_parallel_execution_recovery_before_replay_scores",
+ "status_note": "repeat exact same 500 fixed candidate scores after discarded process-local scores; then reducer uses persisted-in-memory parallel results without a second candidate scoring pass",
+ "study_id": "v2_calibration_ha_boundary_v1",
+ "tuple_adapter_receipt_sha256": "107d7fe7053d9b74231230259f42fff2bd10d9ba8a4062f8d6604e3ec24509ea",
+ "tuple_adapter_source_sha256": "d9d965912415ea2b5bea24fca8a36e6a537c4d0b552e71c881916967530b8d9b",
+ "worker_count": 3
+}

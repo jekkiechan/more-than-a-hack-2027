@@ -1,0 +1,135 @@
+{
+ "before_transfer_result_sha256": {
+  "experiments/baseline_manifest.json": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+  "experiments/model_decision_policy.json": "f987ffcad31c283bba5e26fa8402adbf55fc1764876423854a4fe41be47c2a13",
+  "experiments/results/v2_calibration_seed_readout_v2.json": "3819484fe3deb7901500455d52d9727f91094c1a5cb1378162134452ea39906b",
+  "experiments/results/v2_calibration_seed_readout_v2_declaration.json": "41f6c0fe1061bfb5f5d411acdd8b3b7244f3ac7d1521128fedf37e8cc134d086",
+  "experiments/results/v2_calibration_target.json": "b1faf27eaa3245ca37391eed3b60e068b884b87ce9402876aee8cf3502cd1ab5",
+  "experiments/results/v2_calibration_target_declaration.json": "e333507534b4f3e8094210046dabccf8e07053f865e9a60e96a0df38f084e003",
+  "experiments/results/v2_calibration_transfer_declaration.json": "1753ab4716c7b1653e34851639ab88f124a149fb618c22ba4bdca896d041ce40",
+  "experiments/results/v2_calibration_transfer_execution_amendment.json": "b72dabc6161cb33754087894aee40d7f4c2b12b12372d4419bf9ec960eb82500",
+  "experiments/results/v2_spell_target_runtime_declaration.json": "4da243d7f3fbe3fa4c53686c5f272aff7742895a430589808e2da75a0dc1e8cc",
+  "experiments/results/v2_spell_target_runtime_preflight.json": "fdbaae330dcd76cfea0fa6fab62fd00d560b6a5ed8254c860286f75a2e11ef1e",
+  "experiments/results/v2_training_eval.json": "2291b629977f5398893a2edbe153ad4dd4613932ed1b4191334f191a160de56a",
+  "experiments/results/v2_training_eval_declaration.json": "d9f6a63dd5c68c5d31bbf0494a86646cdc2c23cd38d54c5863d486eeca6a0689",
+  "experiments/results/v2_training_eval_runtime_v3_declaration.json": "e7e48bfce991c6ab720dd40abfd4dc424b20dfd1d904f855ef63ca103bf64896"
+ },
+ "budget": {
+  "arms": 20,
+  "cells_per_arm": 25,
+  "ensemble_score_cells": 500,
+  "fits": 0,
+  "ha_values": 5,
+  "new_decoder_axes_after_this": false,
+  "new_emissions": 0,
+  "recipes": 4,
+  "selected_arm_seed_diagnostic_max_cells": 50
+ },
+ "cohort": {
+  "held_out": "full-provider fold for all learned components",
+  "inference": "read only main v2 training evaluation v3 typed cache; no missing-cache inference",
+  "matches": [
+   {
+    "match": "J03WOY",
+    "provider": "Sportec"
+   },
+   {
+    "match": "metrica_3",
+    "provider": "Metrica"
+   },
+   {
+    "match": "1996435",
+    "provider": "SkillCorner"
+   },
+   {
+    "match": "1996436",
+    "provider": "SkillCorner"
+   },
+   {
+    "match": "2006229",
+    "provider": "SkillCorner"
+   }
+  ],
+  "native_phases": "five at 25 Hz; two at 10 Hz",
+  "views": "5 clean cells plus 4 fixed feed_like_v2 realizations per match (25 total)"
+ },
+ "decision": "Run only after transfer result passes trigger and source/cache/model bindings are frozen. No grid expansion or selection using per-seed diagnostics.",
+ "ensemble": "Average the two component seeds within each native phase, then average native phases equally; use the same score cache for all five HA costs.",
+ "fixed_decoder": {
+  "dead": 3,
+  "dt": 4,
+  "family": "calibration",
+  "ht": 1.0,
+  "id": "f062 base; H/A cost replaced by grid value"
+ },
+ "guards": {
+  "baseline": "current adopted original_full phase-TTA C0 from runtime preflight",
+  "clean_equal_provider_spell_delta_min": -0.005,
+  "each_provider_clean_d_f1_delta_min": -0.02,
+  "each_provider_clean_macro_delta_min": -0.02,
+  "feed_like_v2_equal_provider_spell_delta_min": -0.01
+ },
+ "organizer_reference_access": false,
+ "parameter_grid": {
+  "only_varied_field": "ha",
+  "values": [
+   0.5,
+   0.75,
+   1.0,
+   1.5,
+   2.0
+  ]
+ },
+ "preflight_controls": [
+  {
+   "arm": "adop_dt4_dead3_ha1.5_ht1",
+   "expected_feed_like_v2_spell": 0.5896580922453691,
+   "id": "archived_calibrated_at_ha_1.5",
+   "reference_result": "experiments/results/v2_calibration_target.json"
+  },
+  {
+   "arm": "equal_50_50_new_full_plus_archived_calibrated",
+   "decoder": {
+    "dead": 3,
+    "dt": 4,
+    "ha": 3,
+    "ht": 1
+   },
+   "expected_feed_like_v2_spell": 0.5913931524970455,
+   "id": "new_blend_at_f062_ha_3",
+   "reference_result": "experiments/results/v2_training_eval.json"
+  }
+ ],
+ "preflight_tolerance": 1e-12,
+ "promotion": false,
+ "public_scoring": false,
+ "question": "Does lowering/raising only H/A transition cost around the selected point improve feed_like_v2 spell F1 for the archived calibrated family or the three fixed v2-trained probability recipes?",
+ "ranking": "Equal-provider official spell F1 on feed_like_v2; macro F1 breaks exact ties. 0.7/0.3 spell/macro is descriptive only.",
+ "recipes": [
+  {
+   "id": "archived_calibrated_phase",
+   "probability": "archived calibrated model probabilities"
+  },
+  {
+   "id": "new_full_phase_tta",
+   "probability": "new v2-trained model full H/A/D probabilities"
+  },
+  {
+   "id": "new_conditional_ha_x_archived_calibrated_d",
+   "probability": "new conditional H/A crossed with same seed/fold archived calibrated D"
+  },
+  {
+   "id": "equal_50_50_new_full_plus_archived_calibrated",
+   "probability": "per-seed/phase arithmetic mean of new full and archived calibrated probabilities"
+  }
+ ],
+ "status": "fixed_single_axis_plan_before_transfer_result",
+ "study_id": "v2_calibration_ha_boundary_v1",
+ "trigger": {
+  "condition": "Run the frozen refinement only if every fixed transfer arm remains below 0.60 equal-provider feed_like_v2 spell F1.",
+  "if_target_reached": "Do not score this refinement; preserve the plan as not run.",
+  "target": 0.6,
+  "transfer_result_path": "experiments/results/v2_calibration_transfer.json",
+  "transfer_result_present_at_plan_freeze": false
+ }
+}

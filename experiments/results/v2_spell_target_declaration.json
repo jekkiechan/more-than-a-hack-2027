@@ -1,0 +1,299 @@
+{
+ "arms": [
+  "adop_mean_decode",
+  "adop_phase_vote",
+  "adop_confidence_vote",
+  "adop_consensus_gate",
+  "cand_mean_decode",
+  "cand_phase_vote",
+  "cand_confidence_vote",
+  "cand_consensus_gate",
+  "blend_mean_decode"
+ ],
+ "budget": {
+  "candidate_arm_cells": 225,
+  "component_seeds": [
+   2026,
+   2027
+  ],
+  "extra_decoder_settings": 0,
+  "extra_fits": 0,
+  "phase_emissions_per_cell": "8 for 10 Hz; 20 for 25 Hz",
+  "phases": {
+   "10_hz": 2,
+   "25_hz": 5
+  },
+  "scored_cells": 25
+ },
+ "cohort": {
+  "aggregation": "realizations within match, matches within provider, then providers equally",
+  "excluded_providers": "each archived model family uses its existing full-provider holdout fold",
+  "feed_realizations": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "matches": [
+   {
+    "match": "J03WOY",
+    "provider": "Sportec"
+   },
+   {
+    "match": "metrica_3",
+    "provider": "Metrica"
+   },
+   {
+    "match": "1996435",
+    "provider": "SkillCorner"
+   },
+   {
+    "match": "1996436",
+    "provider": "SkillCorner"
+   },
+   {
+    "match": "2006229",
+    "provider": "SkillCorner"
+   }
+  ],
+  "v2_seed_rule": "exact feed_like_v2_benchmark/{rep}/{match} SHA-256-derived seed",
+  "views": [
+   "clean",
+   "feed_like_v2"
+  ]
+ },
+ "families": {
+  "adop": "calibrated dense D2",
+  "cand": "original_full"
+ },
+ "mechanism": {
+  "C0": "equal arithmetic emission mean over the native 5 Hz phases, then one f062 decode (5 phases at 25 Hz; 2 phases at 10 Hz)",
+  "C1": "per-phase f062 decoded-state plurality; exact ties use C0",
+  "C2": "per-phase f062 decoded-state vote weighted by 1-normalized three-class entropy; exact ties use C0",
+  "C3": "use plurality result only where at least ceil(0.8*P) native phases agree; otherwise C0 (4/5 at 25 Hz, 2/2 at 10 Hz)",
+  "blend": "equal arithmetic mean of calibrated and original_full phase-mean emissions, then one f062 decode",
+  "decoder": "frozen feed_spell_push f062 on each 5 Hz phase and on fixed phase-mean emissions",
+  "learned_parameters": 0
+ },
+ "metrics": {
+  "auxiliary_70_30": "0.7*spell_f1 + 0.3*macro_f1; not ranking metric",
+  "diagnostics": [
+   "d_f1",
+   "d_precision",
+   "d_recall",
+   "predicted_spell_count",
+   "reference_spell_count",
+   "short_spell_recall_iou_0_5_lt3s"
+  ],
+  "guards": "record clean provider macro/D-F1 deviations and v2 provider spell deltas against matched C0; no adoption decision in runner",
+  "primary": "official possession spell F1; macro F1 breaks exact ties"
+ },
+ "preflight": {
+  "reference_benchmark_sha256": "9150fbc449e4877757229c46ad860e04abfa86ab6c0eb425ea98a3d6a0c1df9f",
+  "reference_scorecard_sha256": "4c91f4da392a5779bafb4ef8cb6f59f0d199e349dd296d70fcc6a9aefced5d85",
+  "required_before_candidate_scoring": true,
+  "rule": "C0 pooled clean and v2 official spell/macro reproduce archived per-family aggregates within 1e-8; seal controls before any C1-C3 result is written"
+ },
+ "provenance": {
+  "active_manifest": {
+   "path": "experiments/baseline_manifest.json",
+   "sha256": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b"
+  },
+  "active_policy": {
+   "path": "experiments/model_decision_policy.json",
+   "sha256": "f987ffcad31c283bba5e26fa8402adbf55fc1764876423854a4fe41be47c2a13"
+  },
+  "calibration": {
+   "path": "experiments/results/feed_like_v2_calibration.json",
+   "sha256": "ac42d0e7697b9d3a5c6684a903e7ea8c27d34a99091597432ab2d32e21faf684"
+  },
+  "organizer_reference_access": false,
+  "private_artifact_facts": {
+   "adop/Metrica/2026": {
+    "bytes": 1436623,
+    "manifest": "/workspace/mtah-dt/dense_targeted_followups_cache_manifest_v1.json",
+    "manifest_sha256": "8c70d19c3cc5c86f6ebaaf8cf3743ef8140ae7ee8c1c276a0dbdd12162014eef",
+    "path": "/workspace/mtah-dt/experiments/dense_targeted_followups_v1/artifacts/control_D2/models/control_D2__metrica__s2026.joblib",
+    "sha256": "4161e51c45c54806771b9e1e995137a5b5270cc6c3befa755c26591372551fca"
+   },
+   "adop/Metrica/2027": {
+    "bytes": 1436623,
+    "manifest": "/workspace/mtah-dt/dense_targeted_followups_cache_manifest_v1.json",
+    "manifest_sha256": "8c70d19c3cc5c86f6ebaaf8cf3743ef8140ae7ee8c1c276a0dbdd12162014eef",
+    "path": "/workspace/mtah-dt/experiments/dense_targeted_followups_v1/artifacts/control_D2/models/control_D2__metrica__s2027.joblib",
+    "sha256": "3b61e5fa57255e83e59f8144b62fddd648e093d235eecf8c37c53d4df47e3eb7"
+   },
+   "adop/SkillCorner/2026": {
+    "bytes": 1436317,
+    "manifest": "/workspace/mtah-dt/dense_targeted_followups_cache_manifest_v1.json",
+    "manifest_sha256": "8c70d19c3cc5c86f6ebaaf8cf3743ef8140ae7ee8c1c276a0dbdd12162014eef",
+    "path": "/workspace/mtah-dt/experiments/dense_targeted_followups_v1/artifacts/control_D2/models/control_D2__skillcorner__s2026.joblib",
+    "sha256": "e7eca636e1ac4a74a32efbfac869bea4b01e030ebe92204ca031236d44e32b14"
+   },
+   "adop/SkillCorner/2027": {
+    "bytes": 1436317,
+    "manifest": "/workspace/mtah-dt/dense_targeted_followups_cache_manifest_v1.json",
+    "manifest_sha256": "8c70d19c3cc5c86f6ebaaf8cf3743ef8140ae7ee8c1c276a0dbdd12162014eef",
+    "path": "/workspace/mtah-dt/experiments/dense_targeted_followups_v1/artifacts/control_D2/models/control_D2__skillcorner__s2027.joblib",
+    "sha256": "2c1d983f23430232c39bd2a9b99cdde28b8bb870e5c0a85a1278469762643f44"
+   },
+   "adop/Sportec/2026": {
+    "bytes": 1436605,
+    "manifest": "/workspace/mtah-dt/dense_targeted_followups_cache_manifest_v1.json",
+    "manifest_sha256": "8c70d19c3cc5c86f6ebaaf8cf3743ef8140ae7ee8c1c276a0dbdd12162014eef",
+    "path": "/workspace/mtah-dt/experiments/dense_targeted_followups_v1/artifacts/control_D2/models/control_D2__sportec__s2026.joblib",
+    "sha256": "f5ec355f3122bf95a2ba0313d677b1475c629dd1f2affe31165fec735d9c301c"
+   },
+   "adop/Sportec/2027": {
+    "bytes": 1436605,
+    "manifest": "/workspace/mtah-dt/dense_targeted_followups_cache_manifest_v1.json",
+    "manifest_sha256": "8c70d19c3cc5c86f6ebaaf8cf3743ef8140ae7ee8c1c276a0dbdd12162014eef",
+    "path": "/workspace/mtah-dt/experiments/dense_targeted_followups_v1/artifacts/control_D2/models/control_D2__sportec__s2027.joblib",
+    "sha256": "0dfbda3f3c1a927c7911e69ab8085febdf42416c2633ad5f69990f6e944e5f2d"
+   },
+   "cand/Metrica/2026": {
+    "bytes": 1436623,
+    "manifest": "/workspace/mtah-sqd/short_quality_diversity_v1_cache_manifest.json",
+    "manifest_sha256": "2b92e7627bef89d5a167bdbd7ac4a110f3fdbb9f1b8957e89c9ba574cf38b246",
+    "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2026.joblib",
+    "sha256": "0fee9b2a65a7c00e5cc2ec3a6c81f2f0adf8868e3154064b3334b3d53131cccb"
+   },
+   "cand/Metrica/2027": {
+    "bytes": 1436623,
+    "manifest": "/workspace/mtah-sqd/short_quality_diversity_v1_cache_manifest.json",
+    "manifest_sha256": "2b92e7627bef89d5a167bdbd7ac4a110f3fdbb9f1b8957e89c9ba574cf38b246",
+    "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2027.joblib",
+    "sha256": "a656a2f2fe1c4a8e95fe17d4cd757dab9730a7625ed5935a9ccf222f2aef3eb1"
+   },
+   "cand/SkillCorner/2026": {
+    "bytes": 1436317,
+    "manifest": "/workspace/mtah-sqd/short_quality_diversity_v1_cache_manifest.json",
+    "manifest_sha256": "2b92e7627bef89d5a167bdbd7ac4a110f3fdbb9f1b8957e89c9ba574cf38b246",
+    "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2026.joblib",
+    "sha256": "c00483d0b2645a1683e05b214e7fcf46f0563d148ad39cdefaa908a5ee09c58e"
+   },
+   "cand/SkillCorner/2027": {
+    "bytes": 1436317,
+    "manifest": "/workspace/mtah-sqd/short_quality_diversity_v1_cache_manifest.json",
+    "manifest_sha256": "2b92e7627bef89d5a167bdbd7ac4a110f3fdbb9f1b8957e89c9ba574cf38b246",
+    "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2027.joblib",
+    "sha256": "a08289a747b590b322cf70799dc843b81251263f3507798d8000dc3795661107"
+   },
+   "cand/Sportec/2026": {
+    "bytes": 1436605,
+    "manifest": "/workspace/mtah-sqd/short_quality_diversity_v1_cache_manifest.json",
+    "manifest_sha256": "2b92e7627bef89d5a167bdbd7ac4a110f3fdbb9f1b8957e89c9ba574cf38b246",
+    "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2026.joblib",
+    "sha256": "61280c37f12cafcc512d5368aaf3bbdb742242368650e6375907fa4ede679e85"
+   },
+   "cand/Sportec/2027": {
+    "bytes": 1436605,
+    "manifest": "/workspace/mtah-sqd/short_quality_diversity_v1_cache_manifest.json",
+    "manifest_sha256": "2b92e7627bef89d5a167bdbd7ac4a110f3fdbb9f1b8957e89c9ba574cf38b246",
+    "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2027.joblib",
+    "sha256": "f717d50a53cbd3f3c7aa9af28c084deefa770f29ec15096d018727f93a0821cc"
+   },
+   "input/Metrica/metrica_3": {
+    "bytes": 41630166,
+    "manifest": "/workspace/mtah-data/seed_gap_context_cache_manifest.json",
+    "manifest_sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59",
+    "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib",
+    "sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087"
+   },
+   "input/SkillCorner/1996435": {
+    "bytes": 17156906,
+    "manifest": "/workspace/mtah-data/seed_gap_context_cache_manifest.json",
+    "manifest_sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59",
+    "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib",
+    "sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5"
+   },
+   "input/SkillCorner/1996436": {
+    "bytes": 15868178,
+    "manifest": "/workspace/mtah-data/seed_gap_context_cache_manifest.json",
+    "manifest_sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59",
+    "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib",
+    "sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b"
+   },
+   "input/SkillCorner/2006229": {
+    "bytes": 17231158,
+    "manifest": "/workspace/mtah-data/seed_gap_context_cache_manifest.json",
+    "manifest_sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59",
+    "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+    "sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2"
+   },
+   "input/Sportec/J03WOY": {
+    "bytes": 37595123,
+    "manifest": "/workspace/mtah-data/seed_gap_context_cache_manifest.json",
+    "manifest_sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59",
+    "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+    "sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a"
+   },
+   "teacher/Metrica/2026": {
+    "bytes": 263111,
+    "manifest": "/workspace/mtah-data/objective_alignment_cache_manifest.json",
+    "manifest_sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0",
+    "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+    "sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91"
+   },
+   "teacher/Metrica/2027": {
+    "bytes": 263111,
+    "manifest": "/workspace/mtah-data/objective_alignment_cache_manifest.json",
+    "manifest_sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0",
+    "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+    "sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3"
+   },
+   "teacher/SkillCorner/2026": {
+    "bytes": 263111,
+    "manifest": "/workspace/mtah-data/objective_alignment_cache_manifest.json",
+    "manifest_sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0",
+    "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+    "sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56"
+   },
+   "teacher/SkillCorner/2027": {
+    "bytes": 263111,
+    "manifest": "/workspace/mtah-data/objective_alignment_cache_manifest.json",
+    "manifest_sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0",
+    "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+    "sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933"
+   },
+   "teacher/Sportec/2026": {
+    "bytes": 263111,
+    "manifest": "/workspace/mtah-data/objective_alignment_cache_manifest.json",
+    "manifest_sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0",
+    "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+    "sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676"
+   },
+   "teacher/Sportec/2027": {
+    "bytes": 263111,
+    "manifest": "/workspace/mtah-data/objective_alignment_cache_manifest.json",
+    "manifest_sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0",
+    "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+    "sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4"
+   }
+  },
+  "public_scoring": false,
+  "source_sha256": {
+   "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+   "experiments/decoder_refinement.py": "3157ce0ef6a9f2417c0d365e6ac7b759cf99bda6d91b6f62ea343c2cbb28c962",
+   "experiments/decoder_search.py": "a9ce4d61bd21b35a096839df25682f92a8f4f455ea37d59d8cb7075c5fb54294",
+   "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+   "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+   "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+   "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+   "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+   "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+   "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+   "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+   "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+   "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+   "experiments/spell_mbr_run.py": "c7518e3a7a8d88776cd659d406585df4f36f1c753749afad0748adf23e51f9f4",
+   "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+   "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+   "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+   "experiments/v2_spell_target.py": "527f97bb31710119b3fabf171c44a50b0a8403128b145c97af44fba3cb4c51d1"
+  }
+ },
+ "question": "Does fixed per-phase decoded-state consensus improve spell F1 over the archived five-phase mean-emission f062 decode under feed_like_v2?",
+ "status": "frozen_bounded_phase_decoder_consensus_before_preflight_or_candidate_scoring",
+ "study_id": "v2_spell_target"
+}

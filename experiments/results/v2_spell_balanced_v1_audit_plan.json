@@ -1,0 +1,19 @@
+{
+  "study_id": "v2_spell_balanced_v1",
+  "status": "declared_while_round1_is_running_before_selection",
+  "purpose": "Independent verification of every development scorecard and full deployment recipe replay for the fixed shortlist",
+  "round1": {
+    "all_saved_predictions": "Verify hashes and identities; recompute official per-cell metrics for all 36 recipes on all 35 cells; independently reduce provider means and eligibility/ranking",
+    "mixture_and_decoder_replay": "The exact frozen R1 shortlist: top two eligible recipes plus anchor, deduplicated to at most three; replay ensemble and both seeds on every cell",
+    "all_saved_seed_predictions": "Verify and rescore every declared shortlist/seed/cell"
+  },
+  "round2": {
+    "all_saved_predictions": "Verify, independently decode and score every shortlisted recipe, both seeds and ensemble on all 35 cells",
+    "phase_pooling": "Independently recompute paired-seed-then-native-phase and per-seed means from every stored native phase probability array"
+  },
+  "comparison": "Predictions bitwise equal; scalar metrics absolute tolerance 1e-12 with zero relative tolerance; reference counts exact",
+  "tests_before_full_audit": "Tiny full 35-cell fixture exercising saved-file identities, nested official metrics, recipe/seed/view aggregation and final audit receipt",
+  "maximum_workers": 2,
+  "public": "No public reference read or score by the independent development verifier; final public result uses its distinct one-time gate",
+  "source": "Complete both round implementations and tests before first audit; record verifier source SHA in each receipt and preserve source thereafter"
+}

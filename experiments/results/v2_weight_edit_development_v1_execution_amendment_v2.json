@@ -1,0 +1,30 @@
+{
+ "actions": {
+  "control": "python -m experiments.v2_weight_edit_development_execution control --workers 5",
+  "control_preflight": "python -m experiments.v2_weight_edit_development_execution control-preflight",
+  "freeze": "python -m experiments.v2_weight_edit_development_execution freeze",
+  "freeze_winner": "python -m experiments.v2_weight_edit_development_execution freeze-winner",
+  "primary": "python -m experiments.v2_weight_edit_development_execution score-primary --workers 4",
+  "v1": "python -m experiments.v2_weight_edit_development_execution score-v1 --workers 4"
+ },
+ "amendment_id": "v2_weight_edit_development_v1_execution_amendment_v2",
+ "candidate_selection_and_guardrails_unchanged": true,
+ "declaration_path": "experiments/results/v2_weight_edit_development_v1_declaration.json",
+ "declaration_sha256": "d94dcf3db9dd0af5b73bdca87d6e5139a3baea8afd4522e0ae77a4d36d13bad5",
+ "dispatch_tests_path": "experiments/tests/test_v2_weight_edit_development_execution.py",
+ "dispatch_tests_sha256": "6c4aae4345301480df107e9533b3b43f8859d0c87fe738ea6a0b29b45c4a745e",
+ "execution_already_started_using_direct_calls": true,
+ "execution_wrapper_path": "experiments/v2_weight_edit_development_execution.py",
+ "execution_wrapper_sha256": "c74faedc304b9b7be5b69264cb4d5ad3235dc9f18b4c6b587069d3960e71daf0",
+ "frozen_runner_path": "experiments/v2_weight_edit_development.py",
+ "frozen_runner_sha256": "6fd19be1bddb409dd99faeba119a4c4a5ec3d28e7af47af33b2cafb799830fb1",
+ "inference_protocol_unchanged": true,
+ "organizer_reference_access": false,
+ "parent_amendment_path": "experiments/results/v2_weight_edit_development_v1_execution_amendment.json",
+ "parent_amendment_sha256": "f1df662469a06e6b7496390140bad911e3154373517fa65700a7821928f55c04",
+ "promotion": false,
+ "public_scoring": false,
+ "runtime_fix": "New separate CLI wrapper validates the frozen source/declaration hashes and forwards parsed workers only to scoring functions; no change to any scientific function or frozen runner.",
+ "study_id": "v2_weight_edit_development_v1",
+ "verification": ".venv/bin/python -m unittest experiments.tests.test_v2_weight_edit_development_execution -v (4 tests passed)"
+}

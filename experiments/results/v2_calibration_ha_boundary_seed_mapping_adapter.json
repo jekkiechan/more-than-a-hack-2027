@@ -1,0 +1,56 @@
+{
+ "adapter_source_sha256": "068ee6a54cac63a62d9b8753efbe18ce2d0d924ea89fe2daba3264b6bd8d3555",
+ "candidate_rows_path": "data/experiments/v2_calibration_ha_boundary_v1/candidate_rows_recovery.json",
+ "candidate_rows_sha256": "95b24470538839499d4ee5cacf71e9ba54a6fc0e06c273d70014332ceb8278bd",
+ "candidate_score_count": 500,
+ "candidate_scores_reused_verbatim": true,
+ "fits": 0,
+ "fix": "select members[requested_seed], map (phase, probability) to unchanged helper's (phase, seed, probability); preserve phase averaging",
+ "frozen_declaration_sha256": "11f6e50306946f2339245d0c7cc3050d88ccf3924d58b9b3578cf57ee5c6f8af",
+ "frozen_preflight_sha256": "295e04353632c75eb4e25ac64c8f1bb88111c7fa214c367e55911b9e9d0afe7c",
+ "grid_or_selection_changed": false,
+ "new_inference": false,
+ "parallel_recovery_receipt_sha256": "e5b21939084d402900ecfde11544d1e1f8fef661a601e6a1ac9f1c977c7d4915",
+ "prior_tuple_adapter_receipt_sha256": "107d7fe7053d9b74231230259f42fff2bd10d9ba8a4062f8d6604e3ec24509ea",
+ "reason": "frozen runner passed a seed-keyed mapping instead of one seed's phase-pair list to its phase reducer",
+ "smoke_test": {
+  "actual_cache_shape_checks": [
+   {
+    "match": "J03WOY",
+    "native_phases": 5,
+    "normalized": true,
+    "provider": "Sportec",
+    "recipes": [
+     "archived_calibrated_phase",
+     "new_full_phase_tta",
+     "new_conditional_ha_x_archived_calibrated_d",
+     "equal_50_50_new_full_plus_archived_calibrated"
+    ],
+    "scoring": false,
+    "seeds": [
+     2026,
+     2027
+    ]
+   },
+   {
+    "match": "1996435",
+    "native_phases": 2,
+    "normalized": true,
+    "provider": "SkillCorner",
+    "recipes": [
+     "archived_calibrated_phase",
+     "new_full_phase_tta",
+     "new_conditional_ha_x_archived_calibrated_d",
+     "equal_50_50_new_full_plus_archived_calibrated"
+    ],
+    "scoring": false,
+    "seeds": [
+     2026,
+     2027
+    ]
+   }
+  ]
+ },
+ "status": "frozen_selected_seed_mapping_readout_recovery_before_readout_only",
+ "study_id": "v2_calibration_ha_boundary_v1"
+}

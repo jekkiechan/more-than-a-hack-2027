@@ -1,0 +1,21 @@
+{
+ "amendment_id": "v2_weight_edit_development_v1_execution_amendment_v3",
+ "cli_wrapper_sha256": "c74faedc304b9b7be5b69264cb4d5ad3235dc9f18b4c6b587069d3960e71daf0",
+ "declaration_sha256": "d94dcf3db9dd0af5b73bdca87d6e5139a3baea8afd4522e0ae77a4d36d13bad5",
+ "execution_fix": "A separate v1 readout wrapper removes deployed_original_full from the editable arm list and deduplicates names before calling the unchanged frozen scorer; the scorer still computes the archived control internally. No model/decoder/cohort/metric/selection logic changes.",
+ "frozen_runner_sha256": "6fd19be1bddb409dd99faeba119a4c4a5ec3d28e7af47af33b2cafb799830fb1",
+ "invocation": "python -m experiments.v2_weight_edit_development_v1_readout --workers 4",
+ "issue": "The frozen score_v1 action lists deployed_original_full alongside editable arms, but frozen _score_cell already adds that archived control automatically; passing it to _edited_model would raise KeyError. If winner equals blend_unedited_ha15, the list also duplicates that arm.",
+ "organizer_reference_access": false,
+ "parent_amendment_path": "experiments/results/v2_weight_edit_development_v1_execution_amendment_v2.json",
+ "parent_amendment_sha256": "bff8c81fe91455fc7b532bbd6dccb4c4e311594ee0d667017845854157256521",
+ "promotion": false,
+ "public_scoring": false,
+ "study_id": "v2_weight_edit_development_v1",
+ "v1_readout_helper_path": "experiments/v2_weight_edit_development_v1_readout.py",
+ "v1_readout_helper_sha256": "639ab8dc51ced31be348032320db0a242f930c7f79358c7e3e459414f4c79db5",
+ "v1_readout_tests_path": "experiments/tests/test_v2_weight_edit_development_v1_readout.py",
+ "v1_readout_tests_sha256": "9ad0193136f562a71ed878d714dac49c49f2b50b3b5cc7c6da1d4e9555b8b980",
+ "v1_scoring_started": false,
+ "verification": ".venv/bin/python -m unittest experiments.tests.test_v2_weight_edit_development_v1_readout -v (4 tests passed)"
+}

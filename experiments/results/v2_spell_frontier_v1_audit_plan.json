@@ -1,0 +1,25 @@
+{
+  "comparison": "Prediction arrays exact; metric scalars absolute tolerance 1e-12 and zero relative tolerance; counts and identities exact.",
+  "gar_valid_test_access": false,
+  "maximum_workers": 1,
+  "organizer_reference_access": false,
+  "parent_plan_sha256": "6a41f33a71d500a8c05019f82ec39e96cdebf54cd541b59461111400a5096b8a",
+  "promotion": false,
+  "public_scoring": false,
+  "round1_declaration_sha256": "8b88eeaf50ee39f3a0d16d19be2f07d495d68b484c1147da908b0d7371fbadb4",
+  "round1_scope": "Recompute official scores for all30 saved R1 predictions on all35 cells; replay probabilities/decoder only for the frozen shortlist and both seeds; independently reduce aggregates, gates and ranking; verify current-leader replay.",
+  "round2_declaration_sha256": "39d5d6c69be934e124d83622e131c0e47ab1b835eaea90527a8adc6cd0f308ba",
+  "round2_scope": "Recompute native phase pooling and replay every selected pipeline, both seeds and pooled ensemble on all35 cells; independently reduce all scorecards, gates and selection diagnostics.",
+  "status": "frozen_before_independent_audits",
+  "study_id": "v2_spell_frontier_v1",
+  "verifier_and_test_sha256": {
+    "experiments/results/v2_spell_frontier_v1_plan.json": "6a41f33a71d500a8c05019f82ec39e96cdebf54cd541b59461111400a5096b8a",
+    "experiments/results/v2_spell_frontier_v1_round1_declaration.json": "8b88eeaf50ee39f3a0d16d19be2f07d495d68b484c1147da908b0d7371fbadb4",
+    "experiments/results/v2_spell_frontier_v1_round2_declaration.json": "39d5d6c69be934e124d83622e131c0e47ab1b835eaea90527a8adc6cd0f308ba",
+    "experiments/tests/test_v2_spell_frontier_eval.py": "4d81ba3c9d65e6d1fcc6a18ab6248d8b8841df671b10251bbfb1af384033b952",
+    "experiments/tests/test_v2_spell_frontier_public.py": "bf30d80a9d3c53cb49be54d879be990e79eb7c3252d8b6a48170c0a8be697f7c",
+    "experiments/tests/test_v2_spell_frontier_round2.py": "da12c65f5704d8889ff1da6cb7aafed444f4311c1c82eb669f3844f05e9b2767",
+    "experiments/tests/test_verify_v2_spell_frontier.py": "548331865105403bdf3e97dcb9dca72062bc39095dd94c00798c076171499e4b",
+    "scripts/verify_v2_spell_frontier.py": "66181d178bc59969b89e095c2af81bb8e0f78ffdc03db4af8cdf5ba909906218"
+  }
+}
