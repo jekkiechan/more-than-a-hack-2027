@@ -1,0 +1,3062 @@
+{
+ "all_authorized_stages_complete": true,
+ "fits": [
+  {
+   "adopted_d_state_unchanged": true,
+   "config": {
+    "arm": "pooled_ce_control",
+    "batch_size": 32,
+    "boundary_coefficient": 0.0,
+    "boundary_margin": 1.0,
+    "boundary_radius_samples": 1,
+    "continuation_schedule": "same seed reset as stage 512; repeated sample schedule, no fresh-window claim",
+    "cumulative_updates": 512,
+    "fraction_gar": 0.5,
+    "gradient_clip": 1.0,
+    "input_dropout": 0.1,
+    "live_transition_coefficient": 0.05,
+    "lr": 0.0003,
+    "require_full_native": true,
+    "seed": 2026,
+    "spell_coefficient": 1.0,
+    "stage": 512,
+    "stage_updates": 512,
+    "steps": 512,
+    "study": "v2_spell_balanced_v1",
+    "teacher_sha256": "3714edbf543e256e7b0a87c457233c9ef80154e8c9c2a0c6ea159db67744c244",
+    "train_d": false,
+    "warm_start": "short_original_diversity_v1 fold/seed checkpoint",
+    "warm_start_file_sha256": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+    "warm_start_path": "/workspace/more-than-a-hack-2027/data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1/dense_2026.joblib",
+    "warm_start_sha256": "b785da69d78fc51cf822065f948ff24a0533325dbb66261eec887ca0b37d3743",
+    "weight_decay": 0.0001,
+    "width": 96
+   },
+   "cumulative_updates": 512,
+   "exposures": {
+    "new/soccernet_10502": 182,
+    "new/soccernet_10503": 194,
+    "new/soccernet_10504": 186,
+    "new/soccernet_10505": 190,
+    "new/soccernet_10506": 190,
+    "new/soccernet_10507": 200,
+    "new/soccernet_10508": 176,
+    "new/soccernet_10509": 200,
+    "new/soccernet_10510": 168,
+    "new/soccernet_10511": 177,
+    "new/soccernet_10512": 179,
+    "new/soccernet_10513": 188,
+    "new/soccernet_10514": 200,
+    "new/soccernet_10515": 192,
+    "new/soccernet_10516": 191,
+    "new/soccernet_10517": 177,
+    "new/soccernet_3812": 185,
+    "new/soccernet_3813": 160,
+    "new/soccernet_3814": 172,
+    "new/soccernet_3815": 169,
+    "new/soccernet_3816": 179,
+    "new/soccernet_3817": 182,
+    "new/soccernet_3818": 162,
+    "new/soccernet_3819": 187,
+    "new/soccernet_3820": 175,
+    "new/soccernet_3821": 182,
+    "new/soccernet_3822": 183,
+    "new/soccernet_3823": 188,
+    "new/soccernet_3824": 207,
+    "new/soccernet_3825": 177,
+    "new/soccernet_3826": 188,
+    "new/soccernet_3827": 188,
+    "new/soccernet_3828": 183,
+    "new/soccernet_3829": 172,
+    "new/soccernet_3830": 165,
+    "new/soccernet_3831": 186,
+    "new/soccernet_3832": 179,
+    "new/soccernet_3833": 189,
+    "new/soccernet_3834": 195,
+    "new/soccernet_3835": 153,
+    "new/soccernet_3836": 185,
+    "new/soccernet_3837": 191,
+    "new/soccernet_3838": 163,
+    "new/soccernet_3839": 166,
+    "new/soccernet_3840": 191,
+    "old/metrica/metrica_1": 1360,
+    "old/metrica/metrica_2": 1371,
+    "old/skillcorner/skillcorner_had_1874553": 355,
+    "old/skillcorner/skillcorner_had_1886347": 361,
+    "old/skillcorner/skillcorner_had_1899585": 323,
+    "old/skillcorner/skillcorner_had_1925299": 351,
+    "old/skillcorner/skillcorner_had_1927964": 371,
+    "old/skillcorner/skillcorner_had_1953632": 329,
+    "old/skillcorner/skillcorner_had_1959846": 364,
+    "old/skillcorner/skillcorner_had_1986691": 337,
+    "old/sportec/J03WMX": 924,
+    "old/sportec/J03WN1": 902,
+    "old/sportec/J03WOH": 844
+   },
+   "gar_games": [
+    "soccernet_10502",
+    "soccernet_10503",
+    "soccernet_10504",
+    "soccernet_10505",
+    "soccernet_10506",
+    "soccernet_10507",
+    "soccernet_10508",
+    "soccernet_10509",
+    "soccernet_10510",
+    "soccernet_10511",
+    "soccernet_10512",
+    "soccernet_10513",
+    "soccernet_10514",
+    "soccernet_10515",
+    "soccernet_10516",
+    "soccernet_10517",
+    "soccernet_3812",
+    "soccernet_3813",
+    "soccernet_3814",
+    "soccernet_3815",
+    "soccernet_3816",
+    "soccernet_3817",
+    "soccernet_3818",
+    "soccernet_3819",
+    "soccernet_3820",
+    "soccernet_3821",
+    "soccernet_3822",
+    "soccernet_3823",
+    "soccernet_3824",
+    "soccernet_3825",
+    "soccernet_3826",
+    "soccernet_3827",
+    "soccernet_3828",
+    "soccernet_3829",
+    "soccernet_3830",
+    "soccernet_3831",
+    "soccernet_3832",
+    "soccernet_3833",
+    "soccernet_3834",
+    "soccernet_3835",
+    "soccernet_3836",
+    "soccernet_3837",
+    "soccernet_3838",
+    "soccernet_3839",
+    "soccernet_3840"
+   ],
+   "gar_valid_test_access": false,
+   "loss_intervals": [
+    {
+     "mean_loss": 0.3858649800531566,
+     "step": 32
+    },
+    {
+     "mean_loss": 0.3795162062160671,
+     "step": 64
+    },
+    {
+     "mean_loss": 0.3953411038964987,
+     "step": 96
+    },
+    {
+     "mean_loss": 0.38798355869948864,
+     "step": 128
+    },
+    {
+     "mean_loss": 0.38599914591759443,
+     "step": 160
+    },
+    {
+     "mean_loss": 0.3842332875356078,
+     "step": 192
+    },
+    {
+     "mean_loss": 0.38582212291657925,
+     "step": 224
+    },
+    {
+     "mean_loss": 0.3955140244215727,
+     "step": 256
+    },
+    {
+     "mean_loss": 0.37526348512619734,
+     "step": 288
+    },
+    {
+     "mean_loss": 0.39539534971117973,
+     "step": 320
+    },
+    {
+     "mean_loss": 0.38276694901287556,
+     "step": 352
+    },
+    {
+     "mean_loss": 0.37871401803568006,
+     "step": 384
+    },
+    {
+     "mean_loss": 0.38334669452160597,
+     "step": 416
+    },
+    {
+     "mean_loss": 0.3526945901103318,
+     "step": 448
+    },
+    {
+     "mean_loss": 0.3879760382696986,
+     "step": 480
+    },
+    {
+     "mean_loss": 0.3804112710058689,
+     "step": 512
+    }
+   ],
+   "old_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "metrica_1",
+    "metrica_2",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "organizer_reference_access": false,
+   "path": "data/experiments/v2_spell_balanced_v1/train/models/pooled/stage512_2026.joblib",
+   "pooled_declaration_sha256": "8c8dae45c86dab4f4458cd816880191fbb10d2934a86596a6e090793c488d8d4",
+   "sampling": {
+    "counts": {
+     "new": {
+      "draws": 8192,
+      "known_ha_rows": 285024,
+      "possession_cycles_started": 272,
+      "replacement_draws": 1948,
+      "requested_replacement": 1948,
+      "short_containing_draws": 2388,
+      "short_ha_rows": 23977
+     },
+     "old": {
+      "draws": 8192,
+      "known_ha_rows": 306518,
+      "possession_cycles_started": 52,
+      "replacement_draws": 2048,
+      "requested_replacement": 2048,
+      "short_containing_draws": 3484,
+      "short_ha_rows": 38018
+     }
+    },
+    "diverse": true,
+    "eligible_quality_games": 45,
+    "eligible_records": {
+     "new": 1089,
+     "old": 52
+    },
+    "eligible_windows": {
+     "new": 1386,
+     "old": 3688
+    },
+    "exposures": {
+     "new/soccernet_10502": 182,
+     "new/soccernet_10503": 194,
+     "new/soccernet_10504": 186,
+     "new/soccernet_10505": 190,
+     "new/soccernet_10506": 190,
+     "new/soccernet_10507": 200,
+     "new/soccernet_10508": 176,
+     "new/soccernet_10509": 200,
+     "new/soccernet_10510": 168,
+     "new/soccernet_10511": 177,
+     "new/soccernet_10512": 179,
+     "new/soccernet_10513": 188,
+     "new/soccernet_10514": 200,
+     "new/soccernet_10515": 192,
+     "new/soccernet_10516": 191,
+     "new/soccernet_10517": 177,
+     "new/soccernet_3812": 185,
+     "new/soccernet_3813": 160,
+     "new/soccernet_3814": 172,
+     "new/soccernet_3815": 169,
+     "new/soccernet_3816": 179,
+     "new/soccernet_3817": 182,
+     "new/soccernet_3818": 162,
+     "new/soccernet_3819": 187,
+     "new/soccernet_3820": 175,
+     "new/soccernet_3821": 182,
+     "new/soccernet_3822": 183,
+     "new/soccernet_3823": 188,
+     "new/soccernet_3824": 207,
+     "new/soccernet_3825": 177,
+     "new/soccernet_3826": 188,
+     "new/soccernet_3827": 188,
+     "new/soccernet_3828": 183,
+     "new/soccernet_3829": 172,
+     "new/soccernet_3830": 165,
+     "new/soccernet_3831": 186,
+     "new/soccernet_3832": 179,
+     "new/soccernet_3833": 189,
+     "new/soccernet_3834": 195,
+     "new/soccernet_3835": 153,
+     "new/soccernet_3836": 185,
+     "new/soccernet_3837": 191,
+     "new/soccernet_3838": 163,
+     "new/soccernet_3839": 166,
+     "new/soccernet_3840": 191,
+     "old/metrica/metrica_1": 1360,
+     "old/metrica/metrica_2": 1371,
+     "old/skillcorner/skillcorner_had_1874553": 355,
+     "old/skillcorner/skillcorner_had_1886347": 361,
+     "old/skillcorner/skillcorner_had_1899585": 323,
+     "old/skillcorner/skillcorner_had_1925299": 351,
+     "old/skillcorner/skillcorner_had_1927964": 371,
+     "old/skillcorner/skillcorner_had_1953632": 329,
+     "old/skillcorner/skillcorner_had_1959846": 364,
+     "old/skillcorner/skillcorner_had_1986691": 337,
+     "old/sportec/J03WMX": 924,
+     "old/sportec/J03WN1": 902,
+     "old/sportec/J03WOH": 844
+    },
+    "nominated_distinct_possessions": 403,
+    "original_eligible_possessions_including_paired_records": 4632,
+    "original_nominated_possessions_including_paired_records": 2048,
+    "original_sampling": "distinct complete <=3s native possession bags within selected record",
+    "quality_counts": {
+     "anchor_conflict": 72,
+     "complete_short_spans": 1427,
+     "controlled_proof": 1427,
+     "held": 110,
+     "no_observed_ball": 583,
+     "no_sampled_rows": 10,
+     "quality": 403
+    },
+    "quality_per_game": {
+     "soccernet_10502": {
+      "all": 43,
+      "quality": 13
+     },
+     "soccernet_10503": {
+      "all": 39,
+      "quality": 12
+     },
+     "soccernet_10504": {
+      "all": 35,
+      "quality": 9
+     },
+     "soccernet_10505": {
+      "all": 27,
+      "quality": 9
+     },
+     "soccernet_10506": {
+      "all": 51,
+      "quality": 13
+     },
+     "soccernet_10507": {
+      "all": 24,
+      "quality": 5
+     },
+     "soccernet_10508": {
+      "all": 25,
+      "quality": 7
+     },
+     "soccernet_10509": {
+      "all": 20,
+      "quality": 4
+     },
+     "soccernet_10510": {
+      "all": 16,
+      "quality": 7
+     },
+     "soccernet_10511": {
+      "all": 22,
+      "quality": 6
+     },
+     "soccernet_10512": {
+      "all": 25,
+      "quality": 8
+     },
+     "soccernet_10513": {
+      "all": 21,
+      "quality": 8
+     },
+     "soccernet_10514": {
+      "all": 23,
+      "quality": 7
+     },
+     "soccernet_10515": {
+      "all": 33,
+      "quality": 7
+     },
+     "soccernet_10516": {
+      "all": 26,
+      "quality": 14
+     },
+     "soccernet_10517": {
+      "all": 60,
+      "quality": 18
+     },
+     "soccernet_3812": {
+      "all": 43,
+      "quality": 9
+     },
+     "soccernet_3813": {
+      "all": 41,
+      "quality": 14
+     },
+     "soccernet_3814": {
+      "all": 35,
+      "quality": 13
+     },
+     "soccernet_3815": {
+      "all": 36,
+      "quality": 11
+     },
+     "soccernet_3816": {
+      "all": 41,
+      "quality": 13
+     },
+     "soccernet_3817": {
+      "all": 32,
+      "quality": 6
+     },
+     "soccernet_3818": {
+      "all": 32,
+      "quality": 8
+     },
+     "soccernet_3819": {
+      "all": 26,
+      "quality": 6
+     },
+     "soccernet_3820": {
+      "all": 32,
+      "quality": 12
+     },
+     "soccernet_3821": {
+      "all": 33,
+      "quality": 5
+     },
+     "soccernet_3822": {
+      "all": 22,
+      "quality": 9
+     },
+     "soccernet_3823": {
+      "all": 29,
+      "quality": 4
+     },
+     "soccernet_3824": {
+      "all": 24,
+      "quality": 6
+     },
+     "soccernet_3825": {
+      "all": 34,
+      "quality": 6
+     },
+     "soccernet_3826": {
+      "all": 27,
+      "quality": 6
+     },
+     "soccernet_3827": {
+      "all": 27,
+      "quality": 8
+     },
+     "soccernet_3828": {
+      "all": 40,
+      "quality": 12
+     },
+     "soccernet_3829": {
+      "all": 22,
+      "quality": 6
+     },
+     "soccernet_3830": {
+      "all": 37,
+      "quality": 7
+     },
+     "soccernet_3831": {
+      "all": 26,
+      "quality": 10
+     },
+     "soccernet_3832": {
+      "all": 48,
+      "quality": 15
+     },
+     "soccernet_3833": {
+      "all": 36,
+      "quality": 6
+     },
+     "soccernet_3834": {
+      "all": 30,
+      "quality": 7
+     },
+     "soccernet_3835": {
+      "all": 39,
+      "quality": 10
+     },
+     "soccernet_3836": {
+      "all": 33,
+      "quality": 9
+     },
+     "soccernet_3837": {
+      "all": 21,
+      "quality": 8
+     },
+     "soccernet_3838": {
+      "all": 22,
+      "quality": 4
+     },
+     "soccernet_3839": {
+      "all": 22,
+      "quality": 8
+     },
+     "soccernet_3840": {
+      "all": 47,
+      "quality": 18
+     }
+    },
+    "rate": 0.25,
+    "replacement_distinct_possessions": 403,
+    "replacement_distinct_windows": 450,
+    "replacement_effective_possessions": 333.93584379358435,
+    "replacement_repeat_range_per_game": {
+     "soccernet_10502": [
+      2,
+      3
+     ],
+     "soccernet_10503": [
+      3,
+      4
+     ],
+     "soccernet_10504": [
+      4,
+      5
+     ],
+     "soccernet_10505": [
+      5,
+      6
+     ],
+     "soccernet_10506": [
+      3,
+      4
+     ],
+     "soccernet_10507": [
+      10,
+      10
+     ],
+     "soccernet_10508": [
+      6,
+      12
+     ],
+     "soccernet_10509": [
+      13,
+      14
+     ],
+     "soccernet_10510": [
+      5,
+      6
+     ],
+     "soccernet_10511": [
+      7,
+      8
+     ],
+     "soccernet_10512": [
+      4,
+      5
+     ],
+     "soccernet_10513": [
+      5,
+      12
+     ],
+     "soccernet_10514": [
+      6,
+      6
+     ],
+     "soccernet_10515": [
+      6,
+      6
+     ],
+     "soccernet_10516": [
+      3,
+      4
+     ],
+     "soccernet_10517": [
+      2,
+      5
+     ],
+     "soccernet_3812": [
+      5,
+      5
+     ],
+     "soccernet_3813": [
+      2,
+      3
+     ],
+     "soccernet_3814": [
+      2,
+      6
+     ],
+     "soccernet_3815": [
+      3,
+      8
+     ],
+     "soccernet_3816": [
+      4,
+      8
+     ],
+     "soccernet_3817": [
+      6,
+      7
+     ],
+     "soccernet_3818": [
+      5,
+      6
+     ],
+     "soccernet_3819": [
+      8,
+      9
+     ],
+     "soccernet_3820": [
+      3,
+      4
+     ],
+     "soccernet_3821": [
+      9,
+      10
+     ],
+     "soccernet_3822": [
+      5,
+      5
+     ],
+     "soccernet_3823": [
+      10,
+      11
+     ],
+     "soccernet_3824": [
+      7,
+      8
+     ],
+     "soccernet_3825": [
+      7,
+      7
+     ],
+     "soccernet_3826": [
+      6,
+      12
+     ],
+     "soccernet_3827": [
+      5,
+      15
+     ],
+     "soccernet_3828": [
+      4,
+      5
+     ],
+     "soccernet_3829": [
+      7,
+      8
+     ],
+     "soccernet_3830": [
+      4,
+      5
+     ],
+     "soccernet_3831": [
+      4,
+      5
+     ],
+     "soccernet_3832": [
+      2,
+      6
+     ],
+     "soccernet_3833": [
+      7,
+      8
+     ],
+     "soccernet_3834": [
+      7,
+      7
+     ],
+     "soccernet_3835": [
+      3,
+      4
+     ],
+     "soccernet_3836": [
+      5,
+      11
+     ],
+     "soccernet_3837": [
+      6,
+      7
+     ],
+     "soccernet_3838": [
+      8,
+      8
+     ],
+     "soccernet_3839": [
+      5,
+      11
+     ],
+     "soccernet_3840": [
+      2,
+      8
+     ]
+    },
+    "seconds": 3.0
+   },
+   "seed": 2026,
+   "sha256": "d95bb9e08e76690b09632481cfda5f9c422272305b0d5d5eb699c3b2a2dd6071",
+   "stage": 512,
+   "stage_updates": 512,
+   "study_id": "v2_spell_balanced_v1",
+   "teacher_path": "/workspace/more-than-a-hack-2027/data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1/teacher_2026.joblib",
+   "teacher_sha256": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+   "view_draws": {
+    "J03WMX/r0": 111,
+    "J03WMX/r1": 111,
+    "J03WMX/r2": 110,
+    "J03WMX/r3": 110,
+    "J03WN1/r0": 113,
+    "J03WN1/r1": 112,
+    "J03WN1/r2": 112,
+    "J03WN1/r3": 112,
+    "J03WOH/r0": 109,
+    "J03WOH/r1": 109,
+    "J03WOH/r2": 109,
+    "J03WOH/r3": 109,
+    "metrica_1/r0": 170,
+    "metrica_1/r1": 170,
+    "metrica_1/r2": 170,
+    "metrica_1/r3": 169,
+    "metrica_2/r0": 169,
+    "metrica_2/r1": 169,
+    "metrica_2/r2": 168,
+    "metrica_2/r3": 168,
+    "skillcorner_had_1874553/r0": 45,
+    "skillcorner_had_1874553/r1": 45,
+    "skillcorner_had_1874553/r2": 45,
+    "skillcorner_had_1874553/r3": 44,
+    "skillcorner_had_1886347/r0": 44,
+    "skillcorner_had_1886347/r1": 44,
+    "skillcorner_had_1886347/r2": 44,
+    "skillcorner_had_1886347/r3": 44,
+    "skillcorner_had_1899585/r0": 40,
+    "skillcorner_had_1899585/r1": 39,
+    "skillcorner_had_1899585/r2": 39,
+    "skillcorner_had_1899585/r3": 39,
+    "skillcorner_had_1925299/r0": 38,
+    "skillcorner_had_1925299/r1": 38,
+    "skillcorner_had_1925299/r2": 38,
+    "skillcorner_had_1925299/r3": 38,
+    "skillcorner_had_1927964/r0": 46,
+    "skillcorner_had_1927964/r1": 45,
+    "skillcorner_had_1927964/r2": 45,
+    "skillcorner_had_1927964/r3": 45,
+    "skillcorner_had_1953632/r0": 40,
+    "skillcorner_had_1953632/r1": 39,
+    "skillcorner_had_1953632/r2": 39,
+    "skillcorner_had_1953632/r3": 39,
+    "skillcorner_had_1959846/r0": 46,
+    "skillcorner_had_1959846/r1": 46,
+    "skillcorner_had_1959846/r2": 46,
+    "skillcorner_had_1959846/r3": 45,
+    "skillcorner_had_1986691/r0": 41,
+    "skillcorner_had_1986691/r1": 41,
+    "skillcorner_had_1986691/r2": 41,
+    "skillcorner_had_1986691/r3": 41
+   },
+   "wall_seconds": 83.45640702500077,
+   "warmstart_path": "/workspace/more-than-a-hack-2027/data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1/dense_2026.joblib",
+   "warmstart_sha256": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4"
+  },
+  {
+   "adopted_d_state_unchanged": true,
+   "config": {
+    "arm": "pooled_ce_control",
+    "batch_size": 32,
+    "boundary_coefficient": 0.0,
+    "boundary_margin": 1.0,
+    "boundary_radius_samples": 1,
+    "continuation_schedule": "same seed reset as stage 512; repeated sample schedule, no fresh-window claim",
+    "cumulative_updates": 1024,
+    "fraction_gar": 0.5,
+    "gradient_clip": 1.0,
+    "input_dropout": 0.1,
+    "live_transition_coefficient": 0.05,
+    "lr": 0.0001,
+    "require_full_native": true,
+    "seed": 2026,
+    "spell_coefficient": 1.0,
+    "stage": 1024,
+    "stage_updates": 512,
+    "steps": 512,
+    "study": "v2_spell_balanced_v1",
+    "teacher_sha256": "3714edbf543e256e7b0a87c457233c9ef80154e8c9c2a0c6ea159db67744c244",
+    "train_d": false,
+    "warm_start": "short_original_diversity_v1 fold/seed checkpoint",
+    "warm_start_file_sha256": "d95bb9e08e76690b09632481cfda5f9c422272305b0d5d5eb699c3b2a2dd6071",
+    "warm_start_path": "/workspace/more-than-a-hack-2027/data/experiments/v2_spell_balanced_v1/train/models/pooled/stage512_2026.joblib",
+    "warm_start_sha256": "1a37f45bd0341c8f498cf4ac92585f3c28f1a2491f90cb92cc81efdb837ca3de",
+    "weight_decay": 0.0001,
+    "width": 96
+   },
+   "cumulative_updates": 1024,
+   "exposures": {
+    "new/soccernet_10502": 182,
+    "new/soccernet_10503": 194,
+    "new/soccernet_10504": 186,
+    "new/soccernet_10505": 190,
+    "new/soccernet_10506": 190,
+    "new/soccernet_10507": 200,
+    "new/soccernet_10508": 176,
+    "new/soccernet_10509": 200,
+    "new/soccernet_10510": 168,
+    "new/soccernet_10511": 177,
+    "new/soccernet_10512": 179,
+    "new/soccernet_10513": 188,
+    "new/soccernet_10514": 200,
+    "new/soccernet_10515": 192,
+    "new/soccernet_10516": 191,
+    "new/soccernet_10517": 177,
+    "new/soccernet_3812": 185,
+    "new/soccernet_3813": 160,
+    "new/soccernet_3814": 172,
+    "new/soccernet_3815": 169,
+    "new/soccernet_3816": 179,
+    "new/soccernet_3817": 182,
+    "new/soccernet_3818": 162,
+    "new/soccernet_3819": 187,
+    "new/soccernet_3820": 175,
+    "new/soccernet_3821": 182,
+    "new/soccernet_3822": 183,
+    "new/soccernet_3823": 188,
+    "new/soccernet_3824": 207,
+    "new/soccernet_3825": 177,
+    "new/soccernet_3826": 188,
+    "new/soccernet_3827": 188,
+    "new/soccernet_3828": 183,
+    "new/soccernet_3829": 172,
+    "new/soccernet_3830": 165,
+    "new/soccernet_3831": 186,
+    "new/soccernet_3832": 179,
+    "new/soccernet_3833": 189,
+    "new/soccernet_3834": 195,
+    "new/soccernet_3835": 153,
+    "new/soccernet_3836": 185,
+    "new/soccernet_3837": 191,
+    "new/soccernet_3838": 163,
+    "new/soccernet_3839": 166,
+    "new/soccernet_3840": 191,
+    "old/metrica/metrica_1": 1360,
+    "old/metrica/metrica_2": 1371,
+    "old/skillcorner/skillcorner_had_1874553": 355,
+    "old/skillcorner/skillcorner_had_1886347": 361,
+    "old/skillcorner/skillcorner_had_1899585": 323,
+    "old/skillcorner/skillcorner_had_1925299": 351,
+    "old/skillcorner/skillcorner_had_1927964": 371,
+    "old/skillcorner/skillcorner_had_1953632": 329,
+    "old/skillcorner/skillcorner_had_1959846": 364,
+    "old/skillcorner/skillcorner_had_1986691": 337,
+    "old/sportec/J03WMX": 924,
+    "old/sportec/J03WN1": 902,
+    "old/sportec/J03WOH": 844
+   },
+   "gar_games": [
+    "soccernet_10502",
+    "soccernet_10503",
+    "soccernet_10504",
+    "soccernet_10505",
+    "soccernet_10506",
+    "soccernet_10507",
+    "soccernet_10508",
+    "soccernet_10509",
+    "soccernet_10510",
+    "soccernet_10511",
+    "soccernet_10512",
+    "soccernet_10513",
+    "soccernet_10514",
+    "soccernet_10515",
+    "soccernet_10516",
+    "soccernet_10517",
+    "soccernet_3812",
+    "soccernet_3813",
+    "soccernet_3814",
+    "soccernet_3815",
+    "soccernet_3816",
+    "soccernet_3817",
+    "soccernet_3818",
+    "soccernet_3819",
+    "soccernet_3820",
+    "soccernet_3821",
+    "soccernet_3822",
+    "soccernet_3823",
+    "soccernet_3824",
+    "soccernet_3825",
+    "soccernet_3826",
+    "soccernet_3827",
+    "soccernet_3828",
+    "soccernet_3829",
+    "soccernet_3830",
+    "soccernet_3831",
+    "soccernet_3832",
+    "soccernet_3833",
+    "soccernet_3834",
+    "soccernet_3835",
+    "soccernet_3836",
+    "soccernet_3837",
+    "soccernet_3838",
+    "soccernet_3839",
+    "soccernet_3840"
+   ],
+   "gar_valid_test_access": false,
+   "loss_intervals": [
+    {
+     "mean_loss": 0.3610480986535549,
+     "step": 32
+    },
+    {
+     "mean_loss": 0.3527203402481973,
+     "step": 64
+    },
+    {
+     "mean_loss": 0.3674758546985686,
+     "step": 96
+    },
+    {
+     "mean_loss": 0.3627547142095864,
+     "step": 128
+    },
+    {
+     "mean_loss": 0.3579442519694567,
+     "step": 160
+    },
+    {
+     "mean_loss": 0.35631440579891205,
+     "step": 192
+    },
+    {
+     "mean_loss": 0.3594768550246954,
+     "step": 224
+    },
+    {
+     "mean_loss": 0.36603043135255575,
+     "step": 256
+    },
+    {
+     "mean_loss": 0.3534898227080703,
+     "step": 288
+    },
+    {
+     "mean_loss": 0.36835120990872383,
+     "step": 320
+    },
+    {
+     "mean_loss": 0.3553983960300684,
+     "step": 352
+    },
+    {
+     "mean_loss": 0.3538871272467077,
+     "step": 384
+    },
+    {
+     "mean_loss": 0.35628256667405367,
+     "step": 416
+    },
+    {
+     "mean_loss": 0.3267547292634845,
+     "step": 448
+    },
+    {
+     "mean_loss": 0.36234539095312357,
+     "step": 480
+    },
+    {
+     "mean_loss": 0.358015026897192,
+     "step": 512
+    }
+   ],
+   "old_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "metrica_1",
+    "metrica_2",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "organizer_reference_access": false,
+   "path": "data/experiments/v2_spell_balanced_v1/train/models/pooled/stage1024_2026.joblib",
+   "pooled_declaration_sha256": "8c8dae45c86dab4f4458cd816880191fbb10d2934a86596a6e090793c488d8d4",
+   "sampling": {
+    "counts": {
+     "new": {
+      "draws": 8192,
+      "known_ha_rows": 285024,
+      "possession_cycles_started": 272,
+      "replacement_draws": 1948,
+      "requested_replacement": 1948,
+      "short_containing_draws": 2388,
+      "short_ha_rows": 23977
+     },
+     "old": {
+      "draws": 8192,
+      "known_ha_rows": 306518,
+      "possession_cycles_started": 52,
+      "replacement_draws": 2048,
+      "requested_replacement": 2048,
+      "short_containing_draws": 3484,
+      "short_ha_rows": 38018
+     }
+    },
+    "diverse": true,
+    "eligible_quality_games": 45,
+    "eligible_records": {
+     "new": 1089,
+     "old": 52
+    },
+    "eligible_windows": {
+     "new": 1386,
+     "old": 3688
+    },
+    "exposures": {
+     "new/soccernet_10502": 182,
+     "new/soccernet_10503": 194,
+     "new/soccernet_10504": 186,
+     "new/soccernet_10505": 190,
+     "new/soccernet_10506": 190,
+     "new/soccernet_10507": 200,
+     "new/soccernet_10508": 176,
+     "new/soccernet_10509": 200,
+     "new/soccernet_10510": 168,
+     "new/soccernet_10511": 177,
+     "new/soccernet_10512": 179,
+     "new/soccernet_10513": 188,
+     "new/soccernet_10514": 200,
+     "new/soccernet_10515": 192,
+     "new/soccernet_10516": 191,
+     "new/soccernet_10517": 177,
+     "new/soccernet_3812": 185,
+     "new/soccernet_3813": 160,
+     "new/soccernet_3814": 172,
+     "new/soccernet_3815": 169,
+     "new/soccernet_3816": 179,
+     "new/soccernet_3817": 182,
+     "new/soccernet_3818": 162,
+     "new/soccernet_3819": 187,
+     "new/soccernet_3820": 175,
+     "new/soccernet_3821": 182,
+     "new/soccernet_3822": 183,
+     "new/soccernet_3823": 188,
+     "new/soccernet_3824": 207,
+     "new/soccernet_3825": 177,
+     "new/soccernet_3826": 188,
+     "new/soccernet_3827": 188,
+     "new/soccernet_3828": 183,
+     "new/soccernet_3829": 172,
+     "new/soccernet_3830": 165,
+     "new/soccernet_3831": 186,
+     "new/soccernet_3832": 179,
+     "new/soccernet_3833": 189,
+     "new/soccernet_3834": 195,
+     "new/soccernet_3835": 153,
+     "new/soccernet_3836": 185,
+     "new/soccernet_3837": 191,
+     "new/soccernet_3838": 163,
+     "new/soccernet_3839": 166,
+     "new/soccernet_3840": 191,
+     "old/metrica/metrica_1": 1360,
+     "old/metrica/metrica_2": 1371,
+     "old/skillcorner/skillcorner_had_1874553": 355,
+     "old/skillcorner/skillcorner_had_1886347": 361,
+     "old/skillcorner/skillcorner_had_1899585": 323,
+     "old/skillcorner/skillcorner_had_1925299": 351,
+     "old/skillcorner/skillcorner_had_1927964": 371,
+     "old/skillcorner/skillcorner_had_1953632": 329,
+     "old/skillcorner/skillcorner_had_1959846": 364,
+     "old/skillcorner/skillcorner_had_1986691": 337,
+     "old/sportec/J03WMX": 924,
+     "old/sportec/J03WN1": 902,
+     "old/sportec/J03WOH": 844
+    },
+    "nominated_distinct_possessions": 403,
+    "original_eligible_possessions_including_paired_records": 4632,
+    "original_nominated_possessions_including_paired_records": 2048,
+    "original_sampling": "distinct complete <=3s native possession bags within selected record",
+    "quality_counts": {
+     "anchor_conflict": 72,
+     "complete_short_spans": 1427,
+     "controlled_proof": 1427,
+     "held": 110,
+     "no_observed_ball": 583,
+     "no_sampled_rows": 10,
+     "quality": 403
+    },
+    "quality_per_game": {
+     "soccernet_10502": {
+      "all": 43,
+      "quality": 13
+     },
+     "soccernet_10503": {
+      "all": 39,
+      "quality": 12
+     },
+     "soccernet_10504": {
+      "all": 35,
+      "quality": 9
+     },
+     "soccernet_10505": {
+      "all": 27,
+      "quality": 9
+     },
+     "soccernet_10506": {
+      "all": 51,
+      "quality": 13
+     },
+     "soccernet_10507": {
+      "all": 24,
+      "quality": 5
+     },
+     "soccernet_10508": {
+      "all": 25,
+      "quality": 7
+     },
+     "soccernet_10509": {
+      "all": 20,
+      "quality": 4
+     },
+     "soccernet_10510": {
+      "all": 16,
+      "quality": 7
+     },
+     "soccernet_10511": {
+      "all": 22,
+      "quality": 6
+     },
+     "soccernet_10512": {
+      "all": 25,
+      "quality": 8
+     },
+     "soccernet_10513": {
+      "all": 21,
+      "quality": 8
+     },
+     "soccernet_10514": {
+      "all": 23,
+      "quality": 7
+     },
+     "soccernet_10515": {
+      "all": 33,
+      "quality": 7
+     },
+     "soccernet_10516": {
+      "all": 26,
+      "quality": 14
+     },
+     "soccernet_10517": {
+      "all": 60,
+      "quality": 18
+     },
+     "soccernet_3812": {
+      "all": 43,
+      "quality": 9
+     },
+     "soccernet_3813": {
+      "all": 41,
+      "quality": 14
+     },
+     "soccernet_3814": {
+      "all": 35,
+      "quality": 13
+     },
+     "soccernet_3815": {
+      "all": 36,
+      "quality": 11
+     },
+     "soccernet_3816": {
+      "all": 41,
+      "quality": 13
+     },
+     "soccernet_3817": {
+      "all": 32,
+      "quality": 6
+     },
+     "soccernet_3818": {
+      "all": 32,
+      "quality": 8
+     },
+     "soccernet_3819": {
+      "all": 26,
+      "quality": 6
+     },
+     "soccernet_3820": {
+      "all": 32,
+      "quality": 12
+     },
+     "soccernet_3821": {
+      "all": 33,
+      "quality": 5
+     },
+     "soccernet_3822": {
+      "all": 22,
+      "quality": 9
+     },
+     "soccernet_3823": {
+      "all": 29,
+      "quality": 4
+     },
+     "soccernet_3824": {
+      "all": 24,
+      "quality": 6
+     },
+     "soccernet_3825": {
+      "all": 34,
+      "quality": 6
+     },
+     "soccernet_3826": {
+      "all": 27,
+      "quality": 6
+     },
+     "soccernet_3827": {
+      "all": 27,
+      "quality": 8
+     },
+     "soccernet_3828": {
+      "all": 40,
+      "quality": 12
+     },
+     "soccernet_3829": {
+      "all": 22,
+      "quality": 6
+     },
+     "soccernet_3830": {
+      "all": 37,
+      "quality": 7
+     },
+     "soccernet_3831": {
+      "all": 26,
+      "quality": 10
+     },
+     "soccernet_3832": {
+      "all": 48,
+      "quality": 15
+     },
+     "soccernet_3833": {
+      "all": 36,
+      "quality": 6
+     },
+     "soccernet_3834": {
+      "all": 30,
+      "quality": 7
+     },
+     "soccernet_3835": {
+      "all": 39,
+      "quality": 10
+     },
+     "soccernet_3836": {
+      "all": 33,
+      "quality": 9
+     },
+     "soccernet_3837": {
+      "all": 21,
+      "quality": 8
+     },
+     "soccernet_3838": {
+      "all": 22,
+      "quality": 4
+     },
+     "soccernet_3839": {
+      "all": 22,
+      "quality": 8
+     },
+     "soccernet_3840": {
+      "all": 47,
+      "quality": 18
+     }
+    },
+    "rate": 0.25,
+    "replacement_distinct_possessions": 403,
+    "replacement_distinct_windows": 450,
+    "replacement_effective_possessions": 333.93584379358435,
+    "replacement_repeat_range_per_game": {
+     "soccernet_10502": [
+      2,
+      3
+     ],
+     "soccernet_10503": [
+      3,
+      4
+     ],
+     "soccernet_10504": [
+      4,
+      5
+     ],
+     "soccernet_10505": [
+      5,
+      6
+     ],
+     "soccernet_10506": [
+      3,
+      4
+     ],
+     "soccernet_10507": [
+      10,
+      10
+     ],
+     "soccernet_10508": [
+      6,
+      12
+     ],
+     "soccernet_10509": [
+      13,
+      14
+     ],
+     "soccernet_10510": [
+      5,
+      6
+     ],
+     "soccernet_10511": [
+      7,
+      8
+     ],
+     "soccernet_10512": [
+      4,
+      5
+     ],
+     "soccernet_10513": [
+      5,
+      12
+     ],
+     "soccernet_10514": [
+      6,
+      6
+     ],
+     "soccernet_10515": [
+      6,
+      6
+     ],
+     "soccernet_10516": [
+      3,
+      4
+     ],
+     "soccernet_10517": [
+      2,
+      5
+     ],
+     "soccernet_3812": [
+      5,
+      5
+     ],
+     "soccernet_3813": [
+      2,
+      3
+     ],
+     "soccernet_3814": [
+      2,
+      6
+     ],
+     "soccernet_3815": [
+      3,
+      8
+     ],
+     "soccernet_3816": [
+      4,
+      8
+     ],
+     "soccernet_3817": [
+      6,
+      7
+     ],
+     "soccernet_3818": [
+      5,
+      6
+     ],
+     "soccernet_3819": [
+      8,
+      9
+     ],
+     "soccernet_3820": [
+      3,
+      4
+     ],
+     "soccernet_3821": [
+      9,
+      10
+     ],
+     "soccernet_3822": [
+      5,
+      5
+     ],
+     "soccernet_3823": [
+      10,
+      11
+     ],
+     "soccernet_3824": [
+      7,
+      8
+     ],
+     "soccernet_3825": [
+      7,
+      7
+     ],
+     "soccernet_3826": [
+      6,
+      12
+     ],
+     "soccernet_3827": [
+      5,
+      15
+     ],
+     "soccernet_3828": [
+      4,
+      5
+     ],
+     "soccernet_3829": [
+      7,
+      8
+     ],
+     "soccernet_3830": [
+      4,
+      5
+     ],
+     "soccernet_3831": [
+      4,
+      5
+     ],
+     "soccernet_3832": [
+      2,
+      6
+     ],
+     "soccernet_3833": [
+      7,
+      8
+     ],
+     "soccernet_3834": [
+      7,
+      7
+     ],
+     "soccernet_3835": [
+      3,
+      4
+     ],
+     "soccernet_3836": [
+      5,
+      11
+     ],
+     "soccernet_3837": [
+      6,
+      7
+     ],
+     "soccernet_3838": [
+      8,
+      8
+     ],
+     "soccernet_3839": [
+      5,
+      11
+     ],
+     "soccernet_3840": [
+      2,
+      8
+     ]
+    },
+    "seconds": 3.0
+   },
+   "seed": 2026,
+   "sha256": "d9691336672b13191bf2ce47715fc904f3bc6c14b8477b2f6ff2425d9f78d9c2",
+   "stage": 1024,
+   "stage_updates": 512,
+   "study_id": "v2_spell_balanced_v1",
+   "teacher_path": "/workspace/more-than-a-hack-2027/data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1/teacher_2026.joblib",
+   "teacher_sha256": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+   "view_draws": {
+    "J03WMX/r0": 111,
+    "J03WMX/r1": 111,
+    "J03WMX/r2": 110,
+    "J03WMX/r3": 110,
+    "J03WN1/r0": 113,
+    "J03WN1/r1": 112,
+    "J03WN1/r2": 112,
+    "J03WN1/r3": 112,
+    "J03WOH/r0": 109,
+    "J03WOH/r1": 109,
+    "J03WOH/r2": 109,
+    "J03WOH/r3": 109,
+    "metrica_1/r0": 170,
+    "metrica_1/r1": 170,
+    "metrica_1/r2": 170,
+    "metrica_1/r3": 169,
+    "metrica_2/r0": 169,
+    "metrica_2/r1": 169,
+    "metrica_2/r2": 168,
+    "metrica_2/r3": 168,
+    "skillcorner_had_1874553/r0": 45,
+    "skillcorner_had_1874553/r1": 45,
+    "skillcorner_had_1874553/r2": 45,
+    "skillcorner_had_1874553/r3": 44,
+    "skillcorner_had_1886347/r0": 44,
+    "skillcorner_had_1886347/r1": 44,
+    "skillcorner_had_1886347/r2": 44,
+    "skillcorner_had_1886347/r3": 44,
+    "skillcorner_had_1899585/r0": 40,
+    "skillcorner_had_1899585/r1": 39,
+    "skillcorner_had_1899585/r2": 39,
+    "skillcorner_had_1899585/r3": 39,
+    "skillcorner_had_1925299/r0": 38,
+    "skillcorner_had_1925299/r1": 38,
+    "skillcorner_had_1925299/r2": 38,
+    "skillcorner_had_1925299/r3": 38,
+    "skillcorner_had_1927964/r0": 46,
+    "skillcorner_had_1927964/r1": 45,
+    "skillcorner_had_1927964/r2": 45,
+    "skillcorner_had_1927964/r3": 45,
+    "skillcorner_had_1953632/r0": 40,
+    "skillcorner_had_1953632/r1": 39,
+    "skillcorner_had_1953632/r2": 39,
+    "skillcorner_had_1953632/r3": 39,
+    "skillcorner_had_1959846/r0": 46,
+    "skillcorner_had_1959846/r1": 46,
+    "skillcorner_had_1959846/r2": 46,
+    "skillcorner_had_1959846/r3": 45,
+    "skillcorner_had_1986691/r0": 41,
+    "skillcorner_had_1986691/r1": 41,
+    "skillcorner_had_1986691/r2": 41,
+    "skillcorner_had_1986691/r3": 41
+   },
+   "wall_seconds": 74.12622384399947,
+   "warmstart_path": "/workspace/more-than-a-hack-2027/data/experiments/v2_spell_balanced_v1/train/models/pooled/stage512_2026.joblib",
+   "warmstart_sha256": "d95bb9e08e76690b09632481cfda5f9c422272305b0d5d5eb699c3b2a2dd6071"
+  },
+  {
+   "adopted_d_state_unchanged": true,
+   "config": {
+    "arm": "pooled_ce_control",
+    "batch_size": 32,
+    "boundary_coefficient": 0.0,
+    "boundary_margin": 1.0,
+    "boundary_radius_samples": 1,
+    "continuation_schedule": "same seed reset as stage 512; repeated sample schedule, no fresh-window claim",
+    "cumulative_updates": 512,
+    "fraction_gar": 0.5,
+    "gradient_clip": 1.0,
+    "input_dropout": 0.1,
+    "live_transition_coefficient": 0.05,
+    "lr": 0.0003,
+    "require_full_native": true,
+    "seed": 2027,
+    "spell_coefficient": 1.0,
+    "stage": 512,
+    "stage_updates": 512,
+    "steps": 512,
+    "study": "v2_spell_balanced_v1",
+    "teacher_sha256": "a2a1099bb48e765649f0df4bd3b5b974a61b1fbe73fae5a613fc1cc3c4b727b0",
+    "train_d": false,
+    "warm_start": "short_original_diversity_v1 fold/seed checkpoint",
+    "warm_start_file_sha256": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+    "warm_start_path": "/workspace/more-than-a-hack-2027/data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1/dense_2027.joblib",
+    "warm_start_sha256": "d6b59c46bbd64e178408683c8c3e9cdd41c7d78eb55cbf99f1e2d6642d76a5f1",
+    "weight_decay": 0.0001,
+    "width": 96
+   },
+   "cumulative_updates": 512,
+   "exposures": {
+    "new/soccernet_10502": 187,
+    "new/soccernet_10503": 168,
+    "new/soccernet_10504": 178,
+    "new/soccernet_10505": 164,
+    "new/soccernet_10506": 174,
+    "new/soccernet_10507": 186,
+    "new/soccernet_10508": 188,
+    "new/soccernet_10509": 187,
+    "new/soccernet_10510": 189,
+    "new/soccernet_10511": 172,
+    "new/soccernet_10512": 192,
+    "new/soccernet_10513": 190,
+    "new/soccernet_10514": 162,
+    "new/soccernet_10515": 184,
+    "new/soccernet_10516": 189,
+    "new/soccernet_10517": 177,
+    "new/soccernet_3812": 184,
+    "new/soccernet_3813": 187,
+    "new/soccernet_3814": 193,
+    "new/soccernet_3815": 174,
+    "new/soccernet_3816": 202,
+    "new/soccernet_3817": 175,
+    "new/soccernet_3818": 168,
+    "new/soccernet_3819": 207,
+    "new/soccernet_3820": 174,
+    "new/soccernet_3821": 178,
+    "new/soccernet_3822": 183,
+    "new/soccernet_3823": 213,
+    "new/soccernet_3824": 198,
+    "new/soccernet_3825": 197,
+    "new/soccernet_3826": 176,
+    "new/soccernet_3827": 179,
+    "new/soccernet_3828": 192,
+    "new/soccernet_3829": 179,
+    "new/soccernet_3830": 196,
+    "new/soccernet_3831": 173,
+    "new/soccernet_3832": 180,
+    "new/soccernet_3833": 192,
+    "new/soccernet_3834": 193,
+    "new/soccernet_3835": 176,
+    "new/soccernet_3836": 186,
+    "new/soccernet_3837": 162,
+    "new/soccernet_3838": 158,
+    "new/soccernet_3839": 182,
+    "new/soccernet_3840": 148,
+    "old/metrica/metrica_1": 1416,
+    "old/metrica/metrica_2": 1423,
+    "old/skillcorner/skillcorner_had_1874553": 307,
+    "old/skillcorner/skillcorner_had_1886347": 345,
+    "old/skillcorner/skillcorner_had_1899585": 330,
+    "old/skillcorner/skillcorner_had_1925299": 326,
+    "old/skillcorner/skillcorner_had_1927964": 319,
+    "old/skillcorner/skillcorner_had_1953632": 329,
+    "old/skillcorner/skillcorner_had_1959846": 354,
+    "old/skillcorner/skillcorner_had_1986691": 335,
+    "old/sportec/J03WMX": 910,
+    "old/sportec/J03WN1": 905,
+    "old/sportec/J03WOH": 893
+   },
+   "gar_games": [
+    "soccernet_10502",
+    "soccernet_10503",
+    "soccernet_10504",
+    "soccernet_10505",
+    "soccernet_10506",
+    "soccernet_10507",
+    "soccernet_10508",
+    "soccernet_10509",
+    "soccernet_10510",
+    "soccernet_10511",
+    "soccernet_10512",
+    "soccernet_10513",
+    "soccernet_10514",
+    "soccernet_10515",
+    "soccernet_10516",
+    "soccernet_10517",
+    "soccernet_3812",
+    "soccernet_3813",
+    "soccernet_3814",
+    "soccernet_3815",
+    "soccernet_3816",
+    "soccernet_3817",
+    "soccernet_3818",
+    "soccernet_3819",
+    "soccernet_3820",
+    "soccernet_3821",
+    "soccernet_3822",
+    "soccernet_3823",
+    "soccernet_3824",
+    "soccernet_3825",
+    "soccernet_3826",
+    "soccernet_3827",
+    "soccernet_3828",
+    "soccernet_3829",
+    "soccernet_3830",
+    "soccernet_3831",
+    "soccernet_3832",
+    "soccernet_3833",
+    "soccernet_3834",
+    "soccernet_3835",
+    "soccernet_3836",
+    "soccernet_3837",
+    "soccernet_3838",
+    "soccernet_3839",
+    "soccernet_3840"
+   ],
+   "gar_valid_test_access": false,
+   "loss_intervals": [
+    {
+     "mean_loss": 0.3732659164816141,
+     "step": 32
+    },
+    {
+     "mean_loss": 0.37315057311207056,
+     "step": 64
+    },
+    {
+     "mean_loss": 0.3915815930813551,
+     "step": 96
+    },
+    {
+     "mean_loss": 0.3869600724428892,
+     "step": 128
+    },
+    {
+     "mean_loss": 0.3708216459490359,
+     "step": 160
+    },
+    {
+     "mean_loss": 0.38455142825841904,
+     "step": 192
+    },
+    {
+     "mean_loss": 0.3710081181488931,
+     "step": 224
+    },
+    {
+     "mean_loss": 0.376264879014343,
+     "step": 256
+    },
+    {
+     "mean_loss": 0.3672588700428605,
+     "step": 288
+    },
+    {
+     "mean_loss": 0.38988354755565524,
+     "step": 320
+    },
+    {
+     "mean_loss": 0.35605105105787516,
+     "step": 352
+    },
+    {
+     "mean_loss": 0.3847661381587386,
+     "step": 384
+    },
+    {
+     "mean_loss": 0.37983009638264775,
+     "step": 416
+    },
+    {
+     "mean_loss": 0.37929132394492626,
+     "step": 448
+    },
+    {
+     "mean_loss": 0.39680363424122334,
+     "step": 480
+    },
+    {
+     "mean_loss": 0.3674686336889863,
+     "step": 512
+    }
+   ],
+   "old_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "metrica_1",
+    "metrica_2",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "organizer_reference_access": false,
+   "path": "data/experiments/v2_spell_balanced_v1/train/models/pooled/stage512_2027.joblib",
+   "pooled_declaration_sha256": "8c8dae45c86dab4f4458cd816880191fbb10d2934a86596a6e090793c488d8d4",
+   "sampling": {
+    "counts": {
+     "new": {
+      "draws": 8192,
+      "known_ha_rows": 283932,
+      "possession_cycles_started": 288,
+      "replacement_draws": 2063,
+      "requested_replacement": 2063,
+      "short_containing_draws": 2486,
+      "short_ha_rows": 25344
+     },
+     "old": {
+      "draws": 8192,
+      "known_ha_rows": 307704,
+      "possession_cycles_started": 52,
+      "replacement_draws": 2053,
+      "requested_replacement": 2053,
+      "short_containing_draws": 3440,
+      "short_ha_rows": 38713
+     }
+    },
+    "diverse": true,
+    "eligible_quality_games": 45,
+    "eligible_records": {
+     "new": 1089,
+     "old": 52
+    },
+    "eligible_windows": {
+     "new": 1386,
+     "old": 3688
+    },
+    "exposures": {
+     "new/soccernet_10502": 187,
+     "new/soccernet_10503": 168,
+     "new/soccernet_10504": 178,
+     "new/soccernet_10505": 164,
+     "new/soccernet_10506": 174,
+     "new/soccernet_10507": 186,
+     "new/soccernet_10508": 188,
+     "new/soccernet_10509": 187,
+     "new/soccernet_10510": 189,
+     "new/soccernet_10511": 172,
+     "new/soccernet_10512": 192,
+     "new/soccernet_10513": 190,
+     "new/soccernet_10514": 162,
+     "new/soccernet_10515": 184,
+     "new/soccernet_10516": 189,
+     "new/soccernet_10517": 177,
+     "new/soccernet_3812": 184,
+     "new/soccernet_3813": 187,
+     "new/soccernet_3814": 193,
+     "new/soccernet_3815": 174,
+     "new/soccernet_3816": 202,
+     "new/soccernet_3817": 175,
+     "new/soccernet_3818": 168,
+     "new/soccernet_3819": 207,
+     "new/soccernet_3820": 174,
+     "new/soccernet_3821": 178,
+     "new/soccernet_3822": 183,
+     "new/soccernet_3823": 213,
+     "new/soccernet_3824": 198,
+     "new/soccernet_3825": 197,
+     "new/soccernet_3826": 176,
+     "new/soccernet_3827": 179,
+     "new/soccernet_3828": 192,
+     "new/soccernet_3829": 179,
+     "new/soccernet_3830": 196,
+     "new/soccernet_3831": 173,
+     "new/soccernet_3832": 180,
+     "new/soccernet_3833": 192,
+     "new/soccernet_3834": 193,
+     "new/soccernet_3835": 176,
+     "new/soccernet_3836": 186,
+     "new/soccernet_3837": 162,
+     "new/soccernet_3838": 158,
+     "new/soccernet_3839": 182,
+     "new/soccernet_3840": 148,
+     "old/metrica/metrica_1": 1416,
+     "old/metrica/metrica_2": 1423,
+     "old/skillcorner/skillcorner_had_1874553": 307,
+     "old/skillcorner/skillcorner_had_1886347": 345,
+     "old/skillcorner/skillcorner_had_1899585": 330,
+     "old/skillcorner/skillcorner_had_1925299": 326,
+     "old/skillcorner/skillcorner_had_1927964": 319,
+     "old/skillcorner/skillcorner_had_1953632": 329,
+     "old/skillcorner/skillcorner_had_1959846": 354,
+     "old/skillcorner/skillcorner_had_1986691": 335,
+     "old/sportec/J03WMX": 910,
+     "old/sportec/J03WN1": 905,
+     "old/sportec/J03WOH": 893
+    },
+    "nominated_distinct_possessions": 403,
+    "original_eligible_possessions_including_paired_records": 4632,
+    "original_nominated_possessions_including_paired_records": 2053,
+    "original_sampling": "distinct complete <=3s native possession bags within selected record",
+    "quality_counts": {
+     "anchor_conflict": 72,
+     "complete_short_spans": 1427,
+     "controlled_proof": 1427,
+     "held": 110,
+     "no_observed_ball": 583,
+     "no_sampled_rows": 10,
+     "quality": 403
+    },
+    "quality_per_game": {
+     "soccernet_10502": {
+      "all": 43,
+      "quality": 13
+     },
+     "soccernet_10503": {
+      "all": 39,
+      "quality": 12
+     },
+     "soccernet_10504": {
+      "all": 35,
+      "quality": 9
+     },
+     "soccernet_10505": {
+      "all": 27,
+      "quality": 9
+     },
+     "soccernet_10506": {
+      "all": 51,
+      "quality": 13
+     },
+     "soccernet_10507": {
+      "all": 24,
+      "quality": 5
+     },
+     "soccernet_10508": {
+      "all": 25,
+      "quality": 7
+     },
+     "soccernet_10509": {
+      "all": 20,
+      "quality": 4
+     },
+     "soccernet_10510": {
+      "all": 16,
+      "quality": 7
+     },
+     "soccernet_10511": {
+      "all": 22,
+      "quality": 6
+     },
+     "soccernet_10512": {
+      "all": 25,
+      "quality": 8
+     },
+     "soccernet_10513": {
+      "all": 21,
+      "quality": 8
+     },
+     "soccernet_10514": {
+      "all": 23,
+      "quality": 7
+     },
+     "soccernet_10515": {
+      "all": 33,
+      "quality": 7
+     },
+     "soccernet_10516": {
+      "all": 26,
+      "quality": 14
+     },
+     "soccernet_10517": {
+      "all": 60,
+      "quality": 18
+     },
+     "soccernet_3812": {
+      "all": 43,
+      "quality": 9
+     },
+     "soccernet_3813": {
+      "all": 41,
+      "quality": 14
+     },
+     "soccernet_3814": {
+      "all": 35,
+      "quality": 13
+     },
+     "soccernet_3815": {
+      "all": 36,
+      "quality": 11
+     },
+     "soccernet_3816": {
+      "all": 41,
+      "quality": 13
+     },
+     "soccernet_3817": {
+      "all": 32,
+      "quality": 6
+     },
+     "soccernet_3818": {
+      "all": 32,
+      "quality": 8
+     },
+     "soccernet_3819": {
+      "all": 26,
+      "quality": 6
+     },
+     "soccernet_3820": {
+      "all": 32,
+      "quality": 12
+     },
+     "soccernet_3821": {
+      "all": 33,
+      "quality": 5
+     },
+     "soccernet_3822": {
+      "all": 22,
+      "quality": 9
+     },
+     "soccernet_3823": {
+      "all": 29,
+      "quality": 4
+     },
+     "soccernet_3824": {
+      "all": 24,
+      "quality": 6
+     },
+     "soccernet_3825": {
+      "all": 34,
+      "quality": 6
+     },
+     "soccernet_3826": {
+      "all": 27,
+      "quality": 6
+     },
+     "soccernet_3827": {
+      "all": 27,
+      "quality": 8
+     },
+     "soccernet_3828": {
+      "all": 40,
+      "quality": 12
+     },
+     "soccernet_3829": {
+      "all": 22,
+      "quality": 6
+     },
+     "soccernet_3830": {
+      "all": 37,
+      "quality": 7
+     },
+     "soccernet_3831": {
+      "all": 26,
+      "quality": 10
+     },
+     "soccernet_3832": {
+      "all": 48,
+      "quality": 15
+     },
+     "soccernet_3833": {
+      "all": 36,
+      "quality": 6
+     },
+     "soccernet_3834": {
+      "all": 30,
+      "quality": 7
+     },
+     "soccernet_3835": {
+      "all": 39,
+      "quality": 10
+     },
+     "soccernet_3836": {
+      "all": 33,
+      "quality": 9
+     },
+     "soccernet_3837": {
+      "all": 21,
+      "quality": 8
+     },
+     "soccernet_3838": {
+      "all": 22,
+      "quality": 4
+     },
+     "soccernet_3839": {
+      "all": 22,
+      "quality": 8
+     },
+     "soccernet_3840": {
+      "all": 47,
+      "quality": 18
+     }
+    },
+    "rate": 0.25,
+    "replacement_distinct_possessions": 403,
+    "replacement_distinct_windows": 449,
+    "replacement_effective_possessions": 325.90650950977766,
+    "replacement_repeat_range_per_game": {
+     "soccernet_10502": [
+      3,
+      4
+     ],
+     "soccernet_10503": [
+      3,
+      4
+     ],
+     "soccernet_10504": [
+      5,
+      6
+     ],
+     "soccernet_10505": [
+      4,
+      5
+     ],
+     "soccernet_10506": [
+      3,
+      4
+     ],
+     "soccernet_10507": [
+      8,
+      9
+     ],
+     "soccernet_10508": [
+      7,
+      15
+     ],
+     "soccernet_10509": [
+      11,
+      11
+     ],
+     "soccernet_10510": [
+      6,
+      7
+     ],
+     "soccernet_10511": [
+      7,
+      8
+     ],
+     "soccernet_10512": [
+      6,
+      7
+     ],
+     "soccernet_10513": [
+      7,
+      16
+     ],
+     "soccernet_10514": [
+      5,
+      6
+     ],
+     "soccernet_10515": [
+      7,
+      7
+     ],
+     "soccernet_10516": [
+      3,
+      4
+     ],
+     "soccernet_10517": [
+      2,
+      6
+     ],
+     "soccernet_3812": [
+      5,
+      5
+     ],
+     "soccernet_3813": [
+      3,
+      4
+     ],
+     "soccernet_3814": [
+      3,
+      8
+     ],
+     "soccernet_3815": [
+      4,
+      8
+     ],
+     "soccernet_3816": [
+      3,
+      6
+     ],
+     "soccernet_3817": [
+      6,
+      7
+     ],
+     "soccernet_3818": [
+      5,
+      6
+     ],
+     "soccernet_3819": [
+      9,
+      10
+     ],
+     "soccernet_3820": [
+      3,
+      4
+     ],
+     "soccernet_3821": [
+      8,
+      8
+     ],
+     "soccernet_3822": [
+      5,
+      6
+     ],
+     "soccernet_3823": [
+      15,
+      16
+     ],
+     "soccernet_3824": [
+      8,
+      9
+     ],
+     "soccernet_3825": [
+      8,
+      8
+     ],
+     "soccernet_3826": [
+      6,
+      13
+     ],
+     "soccernet_3827": [
+      5,
+      16
+     ],
+     "soccernet_3828": [
+      4,
+      5
+     ],
+     "soccernet_3829": [
+      8,
+      8
+     ],
+     "soccernet_3830": [
+      7,
+      8
+     ],
+     "soccernet_3831": [
+      4,
+      5
+     ],
+     "soccernet_3832": [
+      2,
+      6
+     ],
+     "soccernet_3833": [
+      7,
+      8
+     ],
+     "soccernet_3834": [
+      5,
+      6
+     ],
+     "soccernet_3835": [
+      4,
+      5
+     ],
+     "soccernet_3836": [
+      5,
+      12
+     ],
+     "soccernet_3837": [
+      4,
+      5
+     ],
+     "soccernet_3838": [
+      11,
+      11
+     ],
+     "soccernet_3839": [
+      5,
+      11
+     ],
+     "soccernet_3840": [
+      2,
+      8
+     ]
+    },
+    "seconds": 3.0
+   },
+   "seed": 2027,
+   "sha256": "b302362bdfd9c8395285bdce32e70e260136c51608d4e52d0030ecb5e449a7f7",
+   "stage": 512,
+   "stage_updates": 512,
+   "study_id": "v2_spell_balanced_v1",
+   "teacher_path": "/workspace/more-than-a-hack-2027/data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1/teacher_2027.joblib",
+   "teacher_sha256": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13",
+   "view_draws": {
+    "J03WMX/r0": 111,
+    "J03WMX/r1": 111,
+    "J03WMX/r2": 111,
+    "J03WMX/r3": 111,
+    "J03WN1/r0": 117,
+    "J03WN1/r1": 116,
+    "J03WN1/r2": 116,
+    "J03WN1/r3": 116,
+    "J03WOH/r0": 115,
+    "J03WOH/r1": 114,
+    "J03WOH/r2": 114,
+    "J03WOH/r3": 114,
+    "metrica_1/r0": 176,
+    "metrica_1/r1": 175,
+    "metrica_1/r2": 175,
+    "metrica_1/r3": 175,
+    "metrica_2/r0": 182,
+    "metrica_2/r1": 182,
+    "metrica_2/r2": 182,
+    "metrica_2/r3": 182,
+    "skillcorner_had_1874553/r0": 41,
+    "skillcorner_had_1874553/r1": 40,
+    "skillcorner_had_1874553/r2": 40,
+    "skillcorner_had_1874553/r3": 40,
+    "skillcorner_had_1886347/r0": 42,
+    "skillcorner_had_1886347/r1": 42,
+    "skillcorner_had_1886347/r2": 42,
+    "skillcorner_had_1886347/r3": 42,
+    "skillcorner_had_1899585/r0": 40,
+    "skillcorner_had_1899585/r1": 40,
+    "skillcorner_had_1899585/r2": 40,
+    "skillcorner_had_1899585/r3": 40,
+    "skillcorner_had_1925299/r0": 39,
+    "skillcorner_had_1925299/r1": 39,
+    "skillcorner_had_1925299/r2": 38,
+    "skillcorner_had_1925299/r3": 38,
+    "skillcorner_had_1927964/r0": 40,
+    "skillcorner_had_1927964/r1": 40,
+    "skillcorner_had_1927964/r2": 40,
+    "skillcorner_had_1927964/r3": 39,
+    "skillcorner_had_1953632/r0": 43,
+    "skillcorner_had_1953632/r1": 43,
+    "skillcorner_had_1953632/r2": 43,
+    "skillcorner_had_1953632/r3": 43,
+    "skillcorner_had_1959846/r0": 45,
+    "skillcorner_had_1959846/r1": 45,
+    "skillcorner_had_1959846/r2": 45,
+    "skillcorner_had_1959846/r3": 45,
+    "skillcorner_had_1986691/r0": 41,
+    "skillcorner_had_1986691/r1": 41,
+    "skillcorner_had_1986691/r2": 41,
+    "skillcorner_had_1986691/r3": 40
+   },
+   "wall_seconds": 80.76644460500029,
+   "warmstart_path": "/workspace/more-than-a-hack-2027/data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1/dense_2027.joblib",
+   "warmstart_sha256": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21"
+  },
+  {
+   "adopted_d_state_unchanged": true,
+   "config": {
+    "arm": "pooled_ce_control",
+    "batch_size": 32,
+    "boundary_coefficient": 0.0,
+    "boundary_margin": 1.0,
+    "boundary_radius_samples": 1,
+    "continuation_schedule": "same seed reset as stage 512; repeated sample schedule, no fresh-window claim",
+    "cumulative_updates": 1024,
+    "fraction_gar": 0.5,
+    "gradient_clip": 1.0,
+    "input_dropout": 0.1,
+    "live_transition_coefficient": 0.05,
+    "lr": 0.0001,
+    "require_full_native": true,
+    "seed": 2027,
+    "spell_coefficient": 1.0,
+    "stage": 1024,
+    "stage_updates": 512,
+    "steps": 512,
+    "study": "v2_spell_balanced_v1",
+    "teacher_sha256": "a2a1099bb48e765649f0df4bd3b5b974a61b1fbe73fae5a613fc1cc3c4b727b0",
+    "train_d": false,
+    "warm_start": "short_original_diversity_v1 fold/seed checkpoint",
+    "warm_start_file_sha256": "b302362bdfd9c8395285bdce32e70e260136c51608d4e52d0030ecb5e449a7f7",
+    "warm_start_path": "/workspace/more-than-a-hack-2027/data/experiments/v2_spell_balanced_v1/train/models/pooled/stage512_2027.joblib",
+    "warm_start_sha256": "5af75efe938706664486678a819b5026ed5bb08283108d97d4912d537563b106",
+    "weight_decay": 0.0001,
+    "width": 96
+   },
+   "cumulative_updates": 1024,
+   "exposures": {
+    "new/soccernet_10502": 187,
+    "new/soccernet_10503": 168,
+    "new/soccernet_10504": 178,
+    "new/soccernet_10505": 164,
+    "new/soccernet_10506": 174,
+    "new/soccernet_10507": 186,
+    "new/soccernet_10508": 188,
+    "new/soccernet_10509": 187,
+    "new/soccernet_10510": 189,
+    "new/soccernet_10511": 172,
+    "new/soccernet_10512": 192,
+    "new/soccernet_10513": 190,
+    "new/soccernet_10514": 162,
+    "new/soccernet_10515": 184,
+    "new/soccernet_10516": 189,
+    "new/soccernet_10517": 177,
+    "new/soccernet_3812": 184,
+    "new/soccernet_3813": 187,
+    "new/soccernet_3814": 193,
+    "new/soccernet_3815": 174,
+    "new/soccernet_3816": 202,
+    "new/soccernet_3817": 175,
+    "new/soccernet_3818": 168,
+    "new/soccernet_3819": 207,
+    "new/soccernet_3820": 174,
+    "new/soccernet_3821": 178,
+    "new/soccernet_3822": 183,
+    "new/soccernet_3823": 213,
+    "new/soccernet_3824": 198,
+    "new/soccernet_3825": 197,
+    "new/soccernet_3826": 176,
+    "new/soccernet_3827": 179,
+    "new/soccernet_3828": 192,
+    "new/soccernet_3829": 179,
+    "new/soccernet_3830": 196,
+    "new/soccernet_3831": 173,
+    "new/soccernet_3832": 180,
+    "new/soccernet_3833": 192,
+    "new/soccernet_3834": 193,
+    "new/soccernet_3835": 176,
+    "new/soccernet_3836": 186,
+    "new/soccernet_3837": 162,
+    "new/soccernet_3838": 158,
+    "new/soccernet_3839": 182,
+    "new/soccernet_3840": 148,
+    "old/metrica/metrica_1": 1416,
+    "old/metrica/metrica_2": 1423,
+    "old/skillcorner/skillcorner_had_1874553": 307,
+    "old/skillcorner/skillcorner_had_1886347": 345,
+    "old/skillcorner/skillcorner_had_1899585": 330,
+    "old/skillcorner/skillcorner_had_1925299": 326,
+    "old/skillcorner/skillcorner_had_1927964": 319,
+    "old/skillcorner/skillcorner_had_1953632": 329,
+    "old/skillcorner/skillcorner_had_1959846": 354,
+    "old/skillcorner/skillcorner_had_1986691": 335,
+    "old/sportec/J03WMX": 910,
+    "old/sportec/J03WN1": 905,
+    "old/sportec/J03WOH": 893
+   },
+   "gar_games": [
+    "soccernet_10502",
+    "soccernet_10503",
+    "soccernet_10504",
+    "soccernet_10505",
+    "soccernet_10506",
+    "soccernet_10507",
+    "soccernet_10508",
+    "soccernet_10509",
+    "soccernet_10510",
+    "soccernet_10511",
+    "soccernet_10512",
+    "soccernet_10513",
+    "soccernet_10514",
+    "soccernet_10515",
+    "soccernet_10516",
+    "soccernet_10517",
+    "soccernet_3812",
+    "soccernet_3813",
+    "soccernet_3814",
+    "soccernet_3815",
+    "soccernet_3816",
+    "soccernet_3817",
+    "soccernet_3818",
+    "soccernet_3819",
+    "soccernet_3820",
+    "soccernet_3821",
+    "soccernet_3822",
+    "soccernet_3823",
+    "soccernet_3824",
+    "soccernet_3825",
+    "soccernet_3826",
+    "soccernet_3827",
+    "soccernet_3828",
+    "soccernet_3829",
+    "soccernet_3830",
+    "soccernet_3831",
+    "soccernet_3832",
+    "soccernet_3833",
+    "soccernet_3834",
+    "soccernet_3835",
+    "soccernet_3836",
+    "soccernet_3837",
+    "soccernet_3838",
+    "soccernet_3839",
+    "soccernet_3840"
+   ],
+   "gar_valid_test_access": false,
+   "loss_intervals": [
+    {
+     "mean_loss": 0.3501818706281483,
+     "step": 32
+    },
+    {
+     "mean_loss": 0.3483868381008506,
+     "step": 64
+    },
+    {
+     "mean_loss": 0.37077593337744474,
+     "step": 96
+    },
+    {
+     "mean_loss": 0.36208590352907777,
+     "step": 128
+    },
+    {
+     "mean_loss": 0.34654580196365714,
+     "step": 160
+    },
+    {
+     "mean_loss": 0.35186808044090867,
+     "step": 192
+    },
+    {
+     "mean_loss": 0.34496521344408393,
+     "step": 224
+    },
+    {
+     "mean_loss": 0.3484798865392804,
+     "step": 256
+    },
+    {
+     "mean_loss": 0.3401112025603652,
+     "step": 288
+    },
+    {
+     "mean_loss": 0.36311420099809766,
+     "step": 320
+    },
+    {
+     "mean_loss": 0.33047542441636324,
+     "step": 352
+    },
+    {
+     "mean_loss": 0.358116352930665,
+     "step": 384
+    },
+    {
+     "mean_loss": 0.3504484216682613,
+     "step": 416
+    },
+    {
+     "mean_loss": 0.35141970170661807,
+     "step": 448
+    },
+    {
+     "mean_loss": 0.3684353418648243,
+     "step": 480
+    },
+    {
+     "mean_loss": 0.3439486990682781,
+     "step": 512
+    }
+   ],
+   "old_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "metrica_1",
+    "metrica_2",
+    "skillcorner_had_1874553",
+    "skillcorner_had_1886347",
+    "skillcorner_had_1899585",
+    "skillcorner_had_1925299",
+    "skillcorner_had_1927964",
+    "skillcorner_had_1953632",
+    "skillcorner_had_1959846",
+    "skillcorner_had_1986691"
+   ],
+   "organizer_reference_access": false,
+   "path": "data/experiments/v2_spell_balanced_v1/train/models/pooled/stage1024_2027.joblib",
+   "pooled_declaration_sha256": "8c8dae45c86dab4f4458cd816880191fbb10d2934a86596a6e090793c488d8d4",
+   "sampling": {
+    "counts": {
+     "new": {
+      "draws": 8192,
+      "known_ha_rows": 283932,
+      "possession_cycles_started": 288,
+      "replacement_draws": 2063,
+      "requested_replacement": 2063,
+      "short_containing_draws": 2486,
+      "short_ha_rows": 25344
+     },
+     "old": {
+      "draws": 8192,
+      "known_ha_rows": 307704,
+      "possession_cycles_started": 52,
+      "replacement_draws": 2053,
+      "requested_replacement": 2053,
+      "short_containing_draws": 3440,
+      "short_ha_rows": 38713
+     }
+    },
+    "diverse": true,
+    "eligible_quality_games": 45,
+    "eligible_records": {
+     "new": 1089,
+     "old": 52
+    },
+    "eligible_windows": {
+     "new": 1386,
+     "old": 3688
+    },
+    "exposures": {
+     "new/soccernet_10502": 187,
+     "new/soccernet_10503": 168,
+     "new/soccernet_10504": 178,
+     "new/soccernet_10505": 164,
+     "new/soccernet_10506": 174,
+     "new/soccernet_10507": 186,
+     "new/soccernet_10508": 188,
+     "new/soccernet_10509": 187,
+     "new/soccernet_10510": 189,
+     "new/soccernet_10511": 172,
+     "new/soccernet_10512": 192,
+     "new/soccernet_10513": 190,
+     "new/soccernet_10514": 162,
+     "new/soccernet_10515": 184,
+     "new/soccernet_10516": 189,
+     "new/soccernet_10517": 177,
+     "new/soccernet_3812": 184,
+     "new/soccernet_3813": 187,
+     "new/soccernet_3814": 193,
+     "new/soccernet_3815": 174,
+     "new/soccernet_3816": 202,
+     "new/soccernet_3817": 175,
+     "new/soccernet_3818": 168,
+     "new/soccernet_3819": 207,
+     "new/soccernet_3820": 174,
+     "new/soccernet_3821": 178,
+     "new/soccernet_3822": 183,
+     "new/soccernet_3823": 213,
+     "new/soccernet_3824": 198,
+     "new/soccernet_3825": 197,
+     "new/soccernet_3826": 176,
+     "new/soccernet_3827": 179,
+     "new/soccernet_3828": 192,
+     "new/soccernet_3829": 179,
+     "new/soccernet_3830": 196,
+     "new/soccernet_3831": 173,
+     "new/soccernet_3832": 180,
+     "new/soccernet_3833": 192,
+     "new/soccernet_3834": 193,
+     "new/soccernet_3835": 176,
+     "new/soccernet_3836": 186,
+     "new/soccernet_3837": 162,
+     "new/soccernet_3838": 158,
+     "new/soccernet_3839": 182,
+     "new/soccernet_3840": 148,
+     "old/metrica/metrica_1": 1416,
+     "old/metrica/metrica_2": 1423,
+     "old/skillcorner/skillcorner_had_1874553": 307,
+     "old/skillcorner/skillcorner_had_1886347": 345,
+     "old/skillcorner/skillcorner_had_1899585": 330,
+     "old/skillcorner/skillcorner_had_1925299": 326,
+     "old/skillcorner/skillcorner_had_1927964": 319,
+     "old/skillcorner/skillcorner_had_1953632": 329,
+     "old/skillcorner/skillcorner_had_1959846": 354,
+     "old/skillcorner/skillcorner_had_1986691": 335,
+     "old/sportec/J03WMX": 910,
+     "old/sportec/J03WN1": 905,
+     "old/sportec/J03WOH": 893
+    },
+    "nominated_distinct_possessions": 403,
+    "original_eligible_possessions_including_paired_records": 4632,
+    "original_nominated_possessions_including_paired_records": 2053,
+    "original_sampling": "distinct complete <=3s native possession bags within selected record",
+    "quality_counts": {
+     "anchor_conflict": 72,
+     "complete_short_spans": 1427,
+     "controlled_proof": 1427,
+     "held": 110,
+     "no_observed_ball": 583,
+     "no_sampled_rows": 10,
+     "quality": 403
+    },
+    "quality_per_game": {
+     "soccernet_10502": {
+      "all": 43,
+      "quality": 13
+     },
+     "soccernet_10503": {
+      "all": 39,
+      "quality": 12
+     },
+     "soccernet_10504": {
+      "all": 35,
+      "quality": 9
+     },
+     "soccernet_10505": {
+      "all": 27,
+      "quality": 9
+     },
+     "soccernet_10506": {
+      "all": 51,
+      "quality": 13
+     },
+     "soccernet_10507": {
+      "all": 24,
+      "quality": 5
+     },
+     "soccernet_10508": {
+      "all": 25,
+      "quality": 7
+     },
+     "soccernet_10509": {
+      "all": 20,
+      "quality": 4
+     },
+     "soccernet_10510": {
+      "all": 16,
+      "quality": 7
+     },
+     "soccernet_10511": {
+      "all": 22,
+      "quality": 6
+     },
+     "soccernet_10512": {
+      "all": 25,
+      "quality": 8
+     },
+     "soccernet_10513": {
+      "all": 21,
+      "quality": 8
+     },
+     "soccernet_10514": {
+      "all": 23,
+      "quality": 7
+     },
+     "soccernet_10515": {
+      "all": 33,
+      "quality": 7
+     },
+     "soccernet_10516": {
+      "all": 26,
+      "quality": 14
+     },
+     "soccernet_10517": {
+      "all": 60,
+      "quality": 18
+     },
+     "soccernet_3812": {
+      "all": 43,
+      "quality": 9
+     },
+     "soccernet_3813": {
+      "all": 41,
+      "quality": 14
+     },
+     "soccernet_3814": {
+      "all": 35,
+      "quality": 13
+     },
+     "soccernet_3815": {
+      "all": 36,
+      "quality": 11
+     },
+     "soccernet_3816": {
+      "all": 41,
+      "quality": 13
+     },
+     "soccernet_3817": {
+      "all": 32,
+      "quality": 6
+     },
+     "soccernet_3818": {
+      "all": 32,
+      "quality": 8
+     },
+     "soccernet_3819": {
+      "all": 26,
+      "quality": 6
+     },
+     "soccernet_3820": {
+      "all": 32,
+      "quality": 12
+     },
+     "soccernet_3821": {
+      "all": 33,
+      "quality": 5
+     },
+     "soccernet_3822": {
+      "all": 22,
+      "quality": 9
+     },
+     "soccernet_3823": {
+      "all": 29,
+      "quality": 4
+     },
+     "soccernet_3824": {
+      "all": 24,
+      "quality": 6
+     },
+     "soccernet_3825": {
+      "all": 34,
+      "quality": 6
+     },
+     "soccernet_3826": {
+      "all": 27,
+      "quality": 6
+     },
+     "soccernet_3827": {
+      "all": 27,
+      "quality": 8
+     },
+     "soccernet_3828": {
+      "all": 40,
+      "quality": 12
+     },
+     "soccernet_3829": {
+      "all": 22,
+      "quality": 6
+     },
+     "soccernet_3830": {
+      "all": 37,
+      "quality": 7
+     },
+     "soccernet_3831": {
+      "all": 26,
+      "quality": 10
+     },
+     "soccernet_3832": {
+      "all": 48,
+      "quality": 15
+     },
+     "soccernet_3833": {
+      "all": 36,
+      "quality": 6
+     },
+     "soccernet_3834": {
+      "all": 30,
+      "quality": 7
+     },
+     "soccernet_3835": {
+      "all": 39,
+      "quality": 10
+     },
+     "soccernet_3836": {
+      "all": 33,
+      "quality": 9
+     },
+     "soccernet_3837": {
+      "all": 21,
+      "quality": 8
+     },
+     "soccernet_3838": {
+      "all": 22,
+      "quality": 4
+     },
+     "soccernet_3839": {
+      "all": 22,
+      "quality": 8
+     },
+     "soccernet_3840": {
+      "all": 47,
+      "quality": 18
+     }
+    },
+    "rate": 0.25,
+    "replacement_distinct_possessions": 403,
+    "replacement_distinct_windows": 449,
+    "replacement_effective_possessions": 325.90650950977766,
+    "replacement_repeat_range_per_game": {
+     "soccernet_10502": [
+      3,
+      4
+     ],
+     "soccernet_10503": [
+      3,
+      4
+     ],
+     "soccernet_10504": [
+      5,
+      6
+     ],
+     "soccernet_10505": [
+      4,
+      5
+     ],
+     "soccernet_10506": [
+      3,
+      4
+     ],
+     "soccernet_10507": [
+      8,
+      9
+     ],
+     "soccernet_10508": [
+      7,
+      15
+     ],
+     "soccernet_10509": [
+      11,
+      11
+     ],
+     "soccernet_10510": [
+      6,
+      7
+     ],
+     "soccernet_10511": [
+      7,
+      8
+     ],
+     "soccernet_10512": [
+      6,
+      7
+     ],
+     "soccernet_10513": [
+      7,
+      16
+     ],
+     "soccernet_10514": [
+      5,
+      6
+     ],
+     "soccernet_10515": [
+      7,
+      7
+     ],
+     "soccernet_10516": [
+      3,
+      4
+     ],
+     "soccernet_10517": [
+      2,
+      6
+     ],
+     "soccernet_3812": [
+      5,
+      5
+     ],
+     "soccernet_3813": [
+      3,
+      4
+     ],
+     "soccernet_3814": [
+      3,
+      8
+     ],
+     "soccernet_3815": [
+      4,
+      8
+     ],
+     "soccernet_3816": [
+      3,
+      6
+     ],
+     "soccernet_3817": [
+      6,
+      7
+     ],
+     "soccernet_3818": [
+      5,
+      6
+     ],
+     "soccernet_3819": [
+      9,
+      10
+     ],
+     "soccernet_3820": [
+      3,
+      4
+     ],
+     "soccernet_3821": [
+      8,
+      8
+     ],
+     "soccernet_3822": [
+      5,
+      6
+     ],
+     "soccernet_3823": [
+      15,
+      16
+     ],
+     "soccernet_3824": [
+      8,
+      9
+     ],
+     "soccernet_3825": [
+      8,
+      8
+     ],
+     "soccernet_3826": [
+      6,
+      13
+     ],
+     "soccernet_3827": [
+      5,
+      16
+     ],
+     "soccernet_3828": [
+      4,
+      5
+     ],
+     "soccernet_3829": [
+      8,
+      8
+     ],
+     "soccernet_3830": [
+      7,
+      8
+     ],
+     "soccernet_3831": [
+      4,
+      5
+     ],
+     "soccernet_3832": [
+      2,
+      6
+     ],
+     "soccernet_3833": [
+      7,
+      8
+     ],
+     "soccernet_3834": [
+      5,
+      6
+     ],
+     "soccernet_3835": [
+      4,
+      5
+     ],
+     "soccernet_3836": [
+      5,
+      12
+     ],
+     "soccernet_3837": [
+      4,
+      5
+     ],
+     "soccernet_3838": [
+      11,
+      11
+     ],
+     "soccernet_3839": [
+      5,
+      11
+     ],
+     "soccernet_3840": [
+      2,
+      8
+     ]
+    },
+    "seconds": 3.0
+   },
+   "seed": 2027,
+   "sha256": "4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa",
+   "stage": 1024,
+   "stage_updates": 512,
+   "study_id": "v2_spell_balanced_v1",
+   "teacher_path": "/workspace/more-than-a-hack-2027/data/models/joint_gru_sn_dense_original_diversity_phase_ensemble_v1/teacher_2027.joblib",
+   "teacher_sha256": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13",
+   "view_draws": {
+    "J03WMX/r0": 111,
+    "J03WMX/r1": 111,
+    "J03WMX/r2": 111,
+    "J03WMX/r3": 111,
+    "J03WN1/r0": 117,
+    "J03WN1/r1": 116,
+    "J03WN1/r2": 116,
+    "J03WN1/r3": 116,
+    "J03WOH/r0": 115,
+    "J03WOH/r1": 114,
+    "J03WOH/r2": 114,
+    "J03WOH/r3": 114,
+    "metrica_1/r0": 176,
+    "metrica_1/r1": 175,
+    "metrica_1/r2": 175,
+    "metrica_1/r3": 175,
+    "metrica_2/r0": 182,
+    "metrica_2/r1": 182,
+    "metrica_2/r2": 182,
+    "metrica_2/r3": 182,
+    "skillcorner_had_1874553/r0": 41,
+    "skillcorner_had_1874553/r1": 40,
+    "skillcorner_had_1874553/r2": 40,
+    "skillcorner_had_1874553/r3": 40,
+    "skillcorner_had_1886347/r0": 42,
+    "skillcorner_had_1886347/r1": 42,
+    "skillcorner_had_1886347/r2": 42,
+    "skillcorner_had_1886347/r3": 42,
+    "skillcorner_had_1899585/r0": 40,
+    "skillcorner_had_1899585/r1": 40,
+    "skillcorner_had_1899585/r2": 40,
+    "skillcorner_had_1899585/r3": 40,
+    "skillcorner_had_1925299/r0": 39,
+    "skillcorner_had_1925299/r1": 39,
+    "skillcorner_had_1925299/r2": 38,
+    "skillcorner_had_1925299/r3": 38,
+    "skillcorner_had_1927964/r0": 40,
+    "skillcorner_had_1927964/r1": 40,
+    "skillcorner_had_1927964/r2": 40,
+    "skillcorner_had_1927964/r3": 39,
+    "skillcorner_had_1953632/r0": 43,
+    "skillcorner_had_1953632/r1": 43,
+    "skillcorner_had_1953632/r2": 43,
+    "skillcorner_had_1953632/r3": 43,
+    "skillcorner_had_1959846/r0": 45,
+    "skillcorner_had_1959846/r1": 45,
+    "skillcorner_had_1959846/r2": 45,
+    "skillcorner_had_1959846/r3": 45,
+    "skillcorner_had_1986691/r0": 41,
+    "skillcorner_had_1986691/r1": 41,
+    "skillcorner_had_1986691/r2": 41,
+    "skillcorner_had_1986691/r3": 40
+   },
+   "wall_seconds": 81.79068438400009,
+   "warmstart_path": "/workspace/more-than-a-hack-2027/data/experiments/v2_spell_balanced_v1/train/models/pooled/stage512_2027.joblib",
+   "warmstart_sha256": "b302362bdfd9c8395285bdce32e70e260136c51608d4e52d0030ecb5e449a7f7"
+  }
+ ],
+ "organizer_reference_access": false,
+ "pooled_declaration_sha256": "8c8dae45c86dab4f4458cd816880191fbb10d2934a86596a6e090793c488d8d4",
+ "promotion": false,
+ "repeated_seed_schedule": true,
+ "study_id": "v2_spell_balanced_v1"
+}

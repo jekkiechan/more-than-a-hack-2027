@@ -1,6 +1,6 @@
 # Spell-balanced continuation
 
-Date: 7 November 2026. Status: development complete; final validation in progress.
+Date: 7 November 2026. Status: development complete; public scoring deferred to the frontier follow-up.
 The adopted package remains `joint_gru_sn_dense_original_diversity_phase_ensemble_v1`.
 
 ## Development results
@@ -171,3 +171,43 @@ The new experiment will preserve frozen declarations, input/model/prediction
 hashes, matched control replay, every failed check and independent verification.
 Research arrays and weights stay in ignored local storage. Aggregate evidence,
 tests, a PR and the existing restricted research dashboard complete delivery.
+
+## Preserved execution and audit corrections
+
+The six fold continuations complete with exactly the same sampling and four-view
+schedule receipts as their earlier stage-512 counterparts. The trainer's first
+freeze preflight encountered a local pooled-model path mismatch; it was corrected
+before any training declaration was created. No prior artifacts were modified.
+
+The frozen R2 validator then rejected its own stage metadata before inference:
+the declaration said 1024 while the R1 shortlist said 512. The
+[execution amendment](results/v2_spell_balanced_v1_round2_execution_amendment.json)
+binds an additive adapter that normalizes only this stage label. The original
+runner and declaration are preserved, as is the
+[completed execution receipt](results/v2_spell_balanced_v1_round2_execution_receipt.json).
+
+The first independent R1 audit stopped on the first cell because cache recipe
+identities follow grid order while the selected shortlist follows ranking order.
+The [audit correction](results/v2_spell_balanced_v1_audit_execution_amendment.json)
+first verifies the exact grid-order identity and then normalizes its representation
+for the preserved auditor comparison. It changes no cache, prediction, score,
+recipe, gate or ranking. Development period-zero margins remain excluded by the
+shared official grading path; the organizer's explicit X-output policy is separate.
+
+Both completed independent audits pass:
+[round one](results/v2_spell_balanced_v1_independent_round1.json) recomputes all
+1,260 ensemble scorecards plus 210 seed scorecards and replays all three
+shortlisted mixtures and seeds; [round two](results/v2_spell_balanced_v1_independent_round2.json)
+replays all 105 ensemble and 210 seed outputs and the native 2/5-phase pooling.
+Per-cell, provider and seed aggregates agree within the declared 1e-12 tolerance;
+replayed predictions are bitwise equal. These are verification of exposed
+experimental evidence, not new independent test matches.
+
+## Further iteration before public scoring
+
+The user requested more development before the final public check. The separate
+[frontier study](V2_SPELL_FRONTIER.md) tests a wider mixture grid and repeated
+versus fresh TRAIN windows. This study’s frozen selection and full public CSV
+remain preserved; its public gate is unused. The final diagnostic will occur
+only after frontier development and selection, with at most one scored candidate
+across the two studies.
