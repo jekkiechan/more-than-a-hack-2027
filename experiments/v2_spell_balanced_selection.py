@@ -38,8 +38,9 @@ def rank_candidates(rounds: list[tuple[int, dict]]) -> list[dict]:
 
 def freeze_selection() -> dict:
     from experiments import v2_spell_balanced_round2 as round2
+    from experiments import v2_spell_balanced_execution as execution
     evaluation.require_declaration()
-    round2.require_declaration()
+    execution.require_round2_declaration()
     if SELECTION.exists():
         raise FileExistsError('Final selection already exists')
     for path in (ROOT / f'experiments/results/{STUDY}_public_result.json',
@@ -48,6 +49,11 @@ def freeze_selection() -> dict:
             raise RuntimeError('Development selection cannot follow public scoring')
     first = json.loads(evaluation.RESULT.read_text())
     second = json.loads(ROUND2.read_text())
+    receipt = json.loads(execution.RECEIPT.read_text())
+    if (receipt.get('result_sha256') != evaluation.sha(ROUND2) or
+            receipt.get('amendment_sha256') != evaluation.sha(execution.AMENDMENT) or
+            receipt.get('completed') is not True):
+        raise ValueError('Round-two execution receipt does not bind the completed corrected run')
     if (first['declaration_sha256'] != evaluation.sha(evaluation.DECLARATION) or
             second['declaration_sha256'] != evaluation.sha(round2.DECLARATION)):
         raise ValueError('Development results do not bind their frozen declarations')
@@ -58,6 +64,7 @@ def freeze_selection() -> dict:
     bindings = {str(path.relative_to(ROOT)): evaluation.sha(path) for path in (
         evaluation.PLAN, evaluation.DECLARATION, evaluation.CONTROL_REPLAY,
         evaluation.RESULT, round2.DECLARATION, ROUND2,
+        Path(execution.__file__), execution.AMENDMENT, execution.RECEIPT,
         Path(__file__))}
     recipe = dict(winner['recipe'])
     recipe['id'] = recipe['recipe_id']
