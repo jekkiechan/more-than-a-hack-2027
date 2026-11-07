@@ -97,3 +97,13 @@ Four v2 realizations are averaged within each game before equal-game aggregation
 
 - [Complete GAR result](results/spell_frontier_gar_v1.json), [independent score audit](results/spell_frontier_gar_v1_verification.json), [runtime and seed verification](results/spell_frontier_gar_v1_execution_verification.json).
 - [Pre-activation provenance checks](results/baseline_spell_frontier_pre_activation.json), [completed promotion receipt](results/baseline_spell_frontier_promotion.json), [local archive verification](results/baseline_spell_frontier_local_artifacts.json).
+
+## Delivery
+
+[PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) includes the
+completed promotion and follow-up studies. All 841 experiment and 26 root tests
+pass, alongside the exact file-backed fit contract, CSV format and documentation
+checks. The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
+is published as version 34 with its existing audience unchanged.
+[Validation](results/baseline_spell_frontier_validation.json) and
+[delivery receipt](results/v2_extra_data_v1_delivery.json).

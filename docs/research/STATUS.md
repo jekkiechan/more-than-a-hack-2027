@@ -1,7 +1,7 @@
 # Current research state
 
 Reviewed 7 November 2026 against fork `main` at `8919726` and open research
-PRs #82–86, plus the current `research/v2-extra-data-v1` work. The active manifest
+PRs #82–86, plus [PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87). The active manifest
 now records the user-authorized spell-frontier promotion. Check newer merged/open
 PRs before current-results advice. Historical study evidence is indexed in
 [EXPERIMENTS](EXPERIMENTS.md); package restore/inference lives in
@@ -88,4 +88,8 @@ runners, declarations, decisions and scoring gates remain intact. Use the
 recorded pre-activation revision to replay historical hash-bound studies.
 
 The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
-update and final PR publication are recorded in the delivery receipt when complete.
+is published as version 34 with the same restricted audience. Desktop/mobile
+checks pass across all six pages and all 12 new chart combinations.
+[PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) carries the
+completed experiments and promotion; merging follows the existing CI policy.
+[Delivery receipt](../../experiments/results/v2_extra_data_v1_delivery.json).
