@@ -54,6 +54,13 @@ def freeze_selection() -> dict:
             receipt.get('amendment_sha256') != evaluation.sha(execution.AMENDMENT) or
             receipt.get('completed') is not True):
         raise ValueError('Round-two execution receipt does not bind the completed corrected run')
+    audit_paths = [ROOT / f'experiments/results/{STUDY}_independent_round{number}.json'
+                   for number in (1, 2)]
+    for number, path, result_path in zip((1, 2), audit_paths, (evaluation.RESULT, ROUND2)):
+        audit = json.loads(path.read_text())
+        if (audit.get('passed') is not True or audit.get('cell_count') != 35 or
+                audit.get(f'round{number}_result_sha256') != evaluation.sha(result_path)):
+            raise ValueError('Final selection requires both complete, bound independent audits')
     if (first['declaration_sha256'] != evaluation.sha(evaluation.DECLARATION) or
             second['declaration_sha256'] != evaluation.sha(round2.DECLARATION)):
         raise ValueError('Development results do not bind their frozen declarations')
@@ -65,6 +72,11 @@ def freeze_selection() -> dict:
         evaluation.PLAN, evaluation.DECLARATION, evaluation.CONTROL_REPLAY,
         evaluation.RESULT, round2.DECLARATION, ROUND2,
         Path(execution.__file__), execution.AMENDMENT, execution.RECEIPT,
+        *audit_paths,
+        ROOT / f'experiments/results/{STUDY}_audit_plan.json',
+        ROOT / f'experiments/results/{STUDY}_audit_execution_amendment.json',
+        ROOT / 'scripts/verify_v2_spell_balanced.py',
+        ROOT / 'scripts/verify_v2_spell_balanced_execution.py',
         Path(__file__))}
     recipe = dict(winner['recipe'])
     recipe['id'] = recipe['recipe_id']
