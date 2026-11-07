@@ -1,47 +1,51 @@
-# Current adopted baseline: original-full with phase averaging
+# Current adopted baseline: spell-frontier blend
 
-The user authorized `joint_gru_sn_dense_original_diversity_phase_ensemble_v1`
-on 1 November 2026. It enables uniform sampling-phase averaging for the exact
-previous original_full two-seed pooled models. The [promotion report](ORIGINAL_FULL_PHASE_PROMOTION.md),
+The user authorized `joint_gru_sn_dense_spell_frontier_ensemble_v1` after the
+frozen frontier diagnostic. The [promotion report](SPELL_FRONTIER_PROMOTION.md),
 [active manifest](baseline_manifest.json), [policy](model_decision_policy.json)
-and [receipt](results/baseline_original_full_phase_promotion.json) identify the package.
+and [receipt](results/baseline_spell_frontier_promotion.json) identify the package.
+The separate [extra-data follow-up](V2_EXTRA_DATA.md) does not replace this choice.
 
-At 25 Hz, evaluate all five 5 Hz sampling offsets. Average the native two-seed
-probabilities within each phase, then average phases, then apply the unchanged
-f062 D-logit temperature 4 and cost-3 decoder. The four checkpoint hashes,
-paired teacher normalization, widths 96/24 and five-second context are unchanged.
-There is no fitting or organizer rescoring during promotion.
+Conditional H/A combines the stage-1024 CE model (0.5), calibrated model (0.375)
+and predecessor (0.125), with arithmetic pooling and H/A transition cost 3.
+Average paired seeds within each native phase, then phases. The predecessor's
+decoded D mask stays exact. All ten checkpoint roles, including paired teachers,
+are packaged. Promotion performs no fitting or organizer rescoring.
 
-Original exposed development clean/v1/v2 spell F1 is **.667556/.531576/.583571**.
-GAR TEST (ten games, separate from nine selected-on VALID games) clean/v2 spell
-is **.701641/.701289**. All seven historical active guards pass; the +.01 clean
-screen remains failed with an explicit user adoption exception. Calibrated plus
-phases remains the TEST/v2 spell point leader. The TEST phase gain interval
-includes zero; silver segments do not establish independent continuous-match
-accuracy. The saved public diagnostic is .611765 spell / .849473 macro on 17
-possessions, diagnostic only.
+Original exposed development clean/v1/v2 spell F1 is
+**.670137/.532128/.593619**. All three spell means improve over the predecessor;
+v1 macro declines .000699 within the accepted .001 allowance. The >.60 v2 goal
+and historical +.01 clean screen remain failed under an explicit adoption
+exception. Provider regressions remain disclosed. The exact GAR TEST check improves spell
+and macro but reduces short-spell recall by .008267 clean and .005504 v2; see
+the promotion report for the complete separate cohorts and paired intervals.
+Independent continuous-match
+gold confirmation is pending. The saved public diagnostic is **.611765 spell /
+.851285 macro** on 17 possessions, with public spell unchanged.
 
-## Private cache restore
+## Inference and local restore
 
-The code promotion is merged in [PR #74](https://github.com/jekkiechan/more-than-a-hack-2027/pull/74).
-Private [delivery PR #18](https://github.com/jekkiechan/mtah-data/pull/18) is
-merged after explicit upload approval on 2 November 2026. All 399 package/source
-entries (7,978,448 bytes) pass fresh remote download and empty-directory restore
-checks with an independent LFS store. Generic and versioned cache defaults agree.
-The [remote verification receipt](results/baseline_original_full_phase_remote_verification.json)
-records the observed delivery state. The matching source snapshot preserves
-inference code; the phase0 package stays separately restorable.
+The complete package is verified locally; no new private-cache upload is claimed.
+The old private-cache default still identifies the historical phase-average
+package. Use the [local archive receipt](results/baseline_spell_frontier_local_artifacts.json)
+for exact model/source hashes and the archive location. It contains all ten
+models, matching source, active manifest/policy and aggregate provenance, with
+repository-relative paths verified through fresh empty-directory extraction.
+Restore organizer tracking inputs separately; they are not included.
 
 ```sh
-python ../mtah-data/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json --data-dir data
-python -m experiments.current_baseline predict --output data/experiments/current_baseline/phase_restored.csv
-python evaluation/validate_submission.py data/experiments/current_baseline/phase_restored.csv
+# Extract the local archive into an empty work directory or matching checkout.
+tar -xzf data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1_local.tar.gz -C /path/to/restored-workspace
+# Install the pinned requirements and restore tracking inputs separately.
+python -m experiments.current_baseline predict --output data/experiments/current_baseline/frontier_restored.csv
+python evaluation/validate_submission.py data/experiments/current_baseline/frontier_restored.csv
 ```
 
-Restore organizer tracking inputs separately if missing. The default CLI checks
-all checkpoint hashes and refuses to overwrite an output. Expected sealed output:
-199,319 rows, SHA-256 `eb011268af14b4de77b4b1c823916631442ae2090efbb9526314007ddf27ceea`.
-See the [restore reference](../.agents/skills/possession-research/references/restore.md).
+The CLI checks all checkpoint hashes and refuses to overwrite an output.
+Expected full prediction: 199,319 rows, SHA-256
+`26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc`.
+The normal CLI reproduces the previously sealed candidate exactly without
+reading public labels. See the [restore reference](../.agents/skills/possession-research/references/restore.md).
 
 ## Historical packages
 
@@ -52,6 +56,7 @@ original session; restore an older model with its versioned manifest.
 
 | Archived version | Evidence / promotion | Manifest |
 | --- | --- | --- |
+| `joint_gru_sn_dense_original_diversity_phase_ensemble_v1` | [Phase-average promotion](ORIGINAL_FULL_PHASE_PROMOTION.md), [verified historical remote restore](results/baseline_original_full_phase_remote_verification.json) | [Package](baselines/joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json) |
 | `joint_gru_sn_dense_original_diversity_ensemble_v1` | [Phase0 promotion](ORIGINAL_FULL_PROMOTION.md) | [Package](baselines/joint_gru_sn_dense_original_diversity_ensemble_v1.json) |
 | `joint_gru_sn_dense_calibrated_ensemble_v1` | [Calibrated promotion](CALIBRATED_DENSE_PROMOTION.md), [successor adoption](ORIGINAL_FULL_PROMOTION.md) | [Package](baselines/joint_gru_sn_dense_calibrated_ensemble_v1.json) |
 | `joint_gru_sn_dense_ensemble_v1` | [Dense training](SOCCERNET_DENSE.md), [original promotion](results/baseline_sn_dense_promotion.json), [decoder successor](CALIBRATED_DENSE_PROMOTION.md) | [Package](baselines/joint_gru_sn_dense_ensemble_v1.json) |
@@ -62,7 +67,9 @@ original session; restore an older model with its versioned manifest.
 | `gru_hgb_ballgap25_v1` | [Light corruption](LIGHT_CORRUPTION.md), [promotion](results/baseline_ballgap25_promotion.json) | [Package](baselines/gru_hgb_ballgap25_v1.json) |
 | `gru_hgb_v1` | [Temporal ensemble](TEMPORAL_ENSEMBLE.md), [historical selection](MODEL_SELECTION.md) | [Package](baselines/gru_hgb_v1.json) |
 
-For `<version>`, use private `baseline_cache_manifest_<version>.json` and its
+## Private-cache restore
+
+For archived `<version>` packages, use private `baseline_cache_manifest_<version>.json` and its
 matching public `experiments/baselines/<version>.json`. Archived policies are
 `experiments/baselines/model_decision_policy_<version>.json`. For example:
 

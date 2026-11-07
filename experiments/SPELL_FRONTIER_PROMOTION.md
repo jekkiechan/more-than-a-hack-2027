@@ -2,8 +2,8 @@
 
 The user explicitly requested promotion of the frozen
 `base__ce0.5_cal0.375_ad0.125_arithmetic_ha3` blend after its final diagnostic.
-The package is staged as `joint_gru_sn_dense_spell_frontier_ensemble_v1`.
-Activation follows the exact deployment check and normal-CLI replay.
+The package is now adopted as `joint_gru_sn_dense_spell_frontier_ensemble_v1`.
+Activation completed after the exact deployment check and normal-CLI replay.
 The separate [extra-data study](V2_EXTRA_DATA.md) does not change this choice.
 
 ## Approved behavior
@@ -43,8 +43,8 @@ local storage. No new private-cache upload is claimed.
 
 The predecessor manifest and policy are archived without changing their bytes.
 Historical declarations keep their original hashes; replay a historical study
-with its recorded source revision. The active manifest, policy and default CLI
-are changed only after the staged replay and deployment check complete.
+with its recorded source revision. The active manifest, policy and default CLI now route to the approved package.
+The normal CLI reproduces the exact sealed CSV; the full format check passes.
 
 ## Exact deployment diagnostic and execution record
 
@@ -81,3 +81,19 @@ failed attempts remain intact. Separate wrappers apply the bounded execution
 corrections. The [audit plan](results/spell_frontier_gar_v1_audit_plan.json)
 requires independent official rescoring of all 95 paired game/view cells and
 equal-game reductions, with descriptive paired bootstrap intervals.
+
+## Completed GAR deployment results
+
+| Split / view | Frontier spell | Predecessor spell | Paired Δ spell | 90% paired game interval | Δ macro | Δ short recall | Games improving spell |
+| --- | ---: | ---: | ---: | --- | ---: | ---: | ---: |
+| TEST / clean | 0.708496 | 0.701641 | +0.006855 | [+0.003107, +0.010824] | +0.001507 | -0.008267 | 8/10 |
+| TEST / v2_mean_over_four_reps | 0.708619 | 0.701289 | +0.007330 | [+0.004671, +0.009839] | +0.001678 | -0.005504 | 9/10 |
+| VALID / clean | 0.705900 | 0.700777 | +0.005123 | [+0.001150, +0.009515] | +0.001263 | +0.004292 | 6/9 |
+| VALID / v2_mean_over_four_reps | 0.700924 | 0.697917 | +0.003007 | [+0.000529, +0.005494] | +0.000860 | -0.006289 | 7/9 |
+
+GAR TEST short-spell recall declines despite improved spell and macro F1: -0.008267 clean and -0.005504 v2. Thus the approved package is not an all-metric improvement on this silver cohort. Original-provider short-recall retention and this separate deployment tradeoff must not be conflated.
+
+Four v2 realizations are averaged within each game before equal-game aggregation. TEST10 and previously selected-on VALID9 stay separate. Intervals resample whole paired games (2,000 draws, fixed seed), are descriptive 90% intervals, and do not supply fresh independent confirmation. All 95 paired cells pass independent official rescoring, for 190 scorecards; D masks, grading populations and reference spell counts are exact. All actual corruption seeds match the predecessor contract.
+
+- [Complete GAR result](results/spell_frontier_gar_v1.json), [independent score audit](results/spell_frontier_gar_v1_verification.json), [runtime and seed verification](results/spell_frontier_gar_v1_execution_verification.json).
+- [Pre-activation provenance checks](results/baseline_spell_frontier_pre_activation.json), [completed promotion receipt](results/baseline_spell_frontier_promotion.json), [local archive verification](results/baseline_spell_frontier_local_artifacts.json).
