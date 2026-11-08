@@ -1,6 +1,7 @@
 # Experiment index
 
-Reviewed 2026-11-07 against fork main through PR #81 and open research PRs #82–86. Find evidence here; adoption and next work live in
+Reviewed 2026-11-08 against fork main at `8919726`, open research PRs #87–89,
+and Claude's `fervent-curie-fcqsta` at `61f8182`. Find evidence here; adoption and next work live in
 [STATUS](STATUS.md). Rows are study families, not a cross-protocol leaderboard.
 Detailed reports own their original selection rules and aggregate JSON paths.
 
@@ -32,6 +33,7 @@ Historical study verdicts below retain their original comparators and decisions.
 
 | ID / state | Scope / outcome | Evidence |
 | --- | --- | --- |
+| `turnover_supervision_v1` — training comparison complete, readout/follow-up pending | 18 matched fits; original stable-turnover window exposure 38.72% → 54.11%. Hard-event clean/v1 spell .672138/.533505 and all short-recall means improve, but v2 .593466 fails; uniform also loses v2 short recall. Fresh v2 .594751 loses v1 short recall. No training arm retained; three cached hard/fresh mixtures declared separately. | [Report](../../experiments/TURNOVER_SUPERVISION_V1.md), [plan](../../experiments/TURNOVER_SUPERVISION_V1_PLAN.md), [evaluation](../../experiments/results/turnover_supervision_eval.json) |
 | `frontier_postprocess_v1` — complete, no retained candidate | Reconstructed current frontier exactly replays all 35 saved per-cell metrics and .593619 v2. Nine seed-weight, boundary, H/A-cost and disagreement arms; all 350 predictions independently verified. Best v2 .593689 loses v1/v2 short recall. Equal seed weighting beats .25/.75 on v2. No organizer/GAR scoring or promotion. | [Report](../../experiments/FRONTIER_POSTPROCESS_V1.md), [readout](../../experiments/results/frontier_postprocess_v1_readout.json) |
 | `frontier_postprocess_round2` — complete, not retained | One fixed composition: disagreement strength 1 then boundary cap .8 s. Clean/v1/v2 spell .670527/.532656/.593532; v2 spell and short recall fail. All 35 new predictions plus 105 controls independently replay, with D/X and grading/reference counts exact. Stop this local postprocessing search; current frontier retained. | [Report](../../experiments/FRONTIER_POSTPROCESS_V1.md#second-round-one-fixed-composition), [readout](../../experiments/results/frontier_postprocess_round2_readout.json) |
 | `complementary_spell_v1` / `seed_mix_v1` — completed historical pilot | Exact predecessor fold replay; 35 cells × 8 arms, no fits. Equal seed weights lead the five tested ratios on v2 (.583571); provider-selected ratios fall to .581506. Posterior-median boundary relocation at .8s gives .667798/.531789/.583778 clean/v1/v2, all pilot guards pass, but v2 gain is only .000207 and concentrated in SkillCorner. All 280 outputs independently verified. Current frontier unchanged; its 70 required research caches are unavailable here. | [Report](../../experiments/COMPLEMENTARY_SPELL_V1.md), [verification](../../experiments/results/complementary_spell_v1_verification.json), [missing caches](../../experiments/results/complementary_spell_v1_frontier_missing.json) |

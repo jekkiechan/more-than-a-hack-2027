@@ -38,6 +38,23 @@ The unchanged saved public diagnostic is **.611765 spell / .851285 macro** on
 the earlier balanced gate remains unused. The historical public score is not
 validation of the new extra-data experimental arms.
 
+## Turnover supervision
+
+[The turnover study](../../experiments/TURNOVER_SUPERVISION_V1.md) continues
+from the approved frontier with 18 matched provider-excluded fits. Stable
+turnover sampling raises original-window event exposure from 38.72% to 54.11%.
+Hard-event sampling improves clean/v1 spell to .672138/.533505 and retains
+all three short-recall means, but v2 .593466 fails the strict improvement
+check. Uniform sampling also loses v2 short recall. Fresh continuation reaches
+.594751 v2 but loses v1 short recall. No training arm is retained.
+
+The baseline audit finds weak/reversed team probabilities on at least one
+side of 90.6% of missed eligible turnovers. This motivates supervision work,
+but the sampling comparison shows that greater exposure alone does not
+improve the primary stress metric. A separately declared three-mixture
+hard/fresh follow-up is in progress; no new fits, organizer labels or GAR
+VALID/TEST selection are involved. The adopted package remains unchanged.
+
 ## Extra-data continuation — complete
 
 [The two-round follow-up](../../experiments/V2_EXTRA_DATA.md) uses Luna to test
