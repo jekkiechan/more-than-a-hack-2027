@@ -1,0 +1,151 @@
+{
+  "data": {
+    "gar_labels": "Existing generated dense silver labels and segmented records; no new independent gold",
+    "gar_train_games": 45,
+    "holdouts": "Exclude the entire development provider from every learned component, normalizer and TRAIN source",
+    "original_train_pool_matches": 13,
+    "train_views": "Reuse four frozen round-robin v2 TRAIN realizations and distinct-possession sampling"
+  },
+  "date": "2026-11-07",
+  "delivery": "Fullresults, failures, provenance, independentverification, localresearchartifacts, PR andexistingrestrictedresearchsite; noautomaticpromotion",
+  "development": {
+    "cells": 35,
+    "exposure": "Same previously selected-on matches; synthetic v2 retains its model-conditioned calibration limitation",
+    "matches": [
+      "J03WOY",
+      "metrica_3",
+      "1996435",
+      "1996436",
+      "2006229"
+    ],
+    "pooling": "Mean paired seeds within each native phase, then phases; mix conditional H/A experts; fixed adopted decoded D",
+    "provider_weighting": "Replicas within match, matches within provider, providers equally",
+    "seeds": [
+      2026,
+      2027
+    ],
+    "views": {
+      "clean": 1,
+      "feed_like_v1": 2,
+      "feed_like_v2": 4
+    }
+  },
+  "gar_valid_test_scoring": false,
+  "luna_roles": [
+    "development evaluation and blending",
+    "training continuation andpooled reproduction",
+    "public diagnostic and independentverification"
+  ],
+  "policy_change": {
+    "automatic_promotion": false,
+    "dead_play": "Retain exact adopted decoded D mask, hence D metrics",
+    "macro_max_absolute_regression": 0.001,
+    "macro_threshold_interpretation": "Conservative predeclared interpretation of slight; 0.1 percentage point per view",
+    "ranking": "Eligible v2 spell F1 descending, macro F1 for ties, deterministic recipe id last",
+    "reference_spell_counts": "Invariant",
+    "scope": "This new study only; historical gates and the active adoption policy remain unchanged",
+    "short_spell_recall": "Retain adopted equal-provider value in each view",
+    "spell": "Every clean/v1/v2 equal-provider spell F1 must strictly exceed the adopted baseline",
+    "target": ">0.60 v2 remains the goal; incremental eligible candidates may be selected below target"
+  },
+  "pooled_training": {
+    "deployment": "Same selected expert weights, conditional pooling, native-phase averaging, fixed adopted D and HA cost as development",
+    "maximum_fit_stages": 4,
+    "seeds": [
+      2026,
+      2027
+    ],
+    "sources": "All13 original TRAIN and45GARTRAIN only; never target labels",
+    "stage1024": "Only if selected; another512updates atLR1e-4",
+    "stage512": "Warmstart corresponding adopted pooled H/A checkpoint,512updates atLR3e-4"
+  },
+  "prior_study": "v2_iterative_v1",
+  "public_validation": {
+    "authorization": "User explicitly requests public spell F1 at end in this turn",
+    "authorized": true,
+    "baseline": "Reuse saved adopted public result; do notrescorebaseline",
+    "exposure": "Reused7500-frame17-possession organizerpublic diagnostic, not independent confirmation",
+    "maximum_scored_candidates": 1,
+    "no_post_public_tuning_or_reselection": true,
+    "no_reset_prior_gates": true,
+    "order": "Finish all development experiments and selection, fit pooled TRAIN models, generate andformatvalidate full199319-rowCSV reference-free, seal all hashes, atomically claim distinct newgate, score exactlyonce"
+  },
+  "round1": {
+    "adopted_weight": "1-ce-calibrated",
+    "calibrated_weights": [
+      0.0,
+      0.125,
+      0.25
+    ],
+    "ce_weights": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "control_replay": "All35adopted and prior CE/adopted anchor cells; all24aggregates percontrol within1e-10 before anynewarm scoring",
+    "ha_costs": [
+      1.5,
+      3.0
+    ],
+    "individual_seed_diagnostics": "Top2 eligible recipes plus anchor, deduplicated <=3; diagnostic only, no reranking",
+    "new_fits": 0,
+    "pipeline_count": 36,
+    "pooling": [
+      "arithmetic",
+      "log"
+    ]
+  },
+  "round2": {
+    "additional_updates": 512,
+    "batch_size": 32,
+    "d_weights": "Unchanged",
+    "evaluation": "At most3 fixed round1shortlist recipes, with complete seed diagnostics; no newblend search",
+    "folds": [
+      "leave_out_metrica",
+      "leave_out_skillcorner",
+      "leave_out_sportec"
+    ],
+    "fraction_gar": 0.5,
+    "learning_rate": 0.0001,
+    "new_fits": 6,
+    "objective": "Unchanged existing dense duration-weighted H/A CE and live-transition objective",
+    "schedule": "Fixed stage seed reset repeats the declared first-stage draw schedule; no fresh-window exposure claim",
+    "seeds": [
+      2026,
+      2027
+    ],
+    "warmstart": "Prior CE continuation fold after512updates"
+  },
+  "selection": "Choose highest eligible v2 spell across declared rounds, macro tie. Anchor is retained as an eligible fallback. Freeze finalrecipe, trainingstage and sources before pooled fitting or target inference.",
+  "source_base": "d45695e1bc6c2a4bc43f0855a718f1e5725eebb3",
+  "starting_arm": "ce_control_conditional_blend_fixed_d_ha3",
+  "starting_values": {
+    "clean": {
+      "d_f1": 0.8709262129113644,
+      "d_precision": 0.8848440256124785,
+      "d_recall": 0.8619197297485038,
+      "macro_f1": 0.8711606189812723,
+      "short_spell_recall_iou_0_5_lt3s": 0.40950069440654024,
+      "spell_f1": 0.6682491489330583
+    },
+    "feed_like_v1": {
+      "d_f1": 0.8605626025749847,
+      "d_precision": 0.8430064926949227,
+      "d_recall": 0.8812172287856351,
+      "macro_f1": 0.827002127253245,
+      "short_spell_recall_iou_0_5_lt3s": 0.23231458738909205,
+      "spell_f1": 0.534924813001576
+    },
+    "feed_like_v2": {
+      "d_f1": 0.8661375939080541,
+      "d_precision": 0.8730340318137279,
+      "d_recall": 0.8629801459021867,
+      "macro_f1": 0.8501806873948873,
+      "short_spell_recall_iou_0_5_lt3s": 0.2899761354608252,
+      "spell_f1": 0.5856153135957448
+    }
+  },
+  "status": "parent_plan_before_new_fits_or_candidate_scoring",
+  "study_id": "v2_spell_balanced_v1",
+  "user_request": "Continue the arm improving clean/v1/v2 spell F1; small macro F1 regression is acceptable; validate public spell F1 at the end."
+}

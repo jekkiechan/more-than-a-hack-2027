@@ -1,0 +1,18 @@
+{
+  "compatibility_amendment_sha256": "39ef5878e65ee0c6e877254c6fb53ba2972ea8fd89f710020ba8c817b31bb66e",
+  "data_or_features_changed": false,
+  "declaration_sha256": "a4492e73a7424c490d7e827b8cb236cc6b06a0c0d27c353f783271a96b7b66d9",
+  "exact_all_game_predecessor_score_guards_retained": true,
+  "exact_clean_phase0_feature_guard_retained": true,
+  "fitting": false,
+  "max_workers": 4,
+  "metric_or_tolerance_changed": false,
+  "public_scoring": false,
+  "reason": "Input capture repeats dense feature assembly before the already-patched phase feature path. Apply the same exact quantile acceleration used for record preparation and phase features during capture too.",
+  "source_sha256": {
+    "experiments/spell_frontier_gar_capture_runtime.py": "8fb68b5cead885a6ca81ccc30b87a308446e8eb2960b0d19cfab4b685d128198",
+    "experiments/spell_frontier_gar_sixphase.py": "f4be5fbd5d1cd761f121ce609c9d58f84a2e6ce3cd8077b0b51c5249e3515494",
+    "experiments/v2_iterative_runtime.py": "199b9cc1f196883ff767121c6a96390234fb9ac30adb79dcea1756caac7c3d5b"
+  },
+  "study": "spell_frontier_gar_v1"
+}

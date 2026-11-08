@@ -1,0 +1,1166 @@
+{
+  "limitations": [
+    "These 70 files provide native probabilities for the original five development matches and four feed_like_v2 realizations as declared.",
+    "The ten pooled deployment checkpoints in the local frontier archive do not replace the per-cell, provider-held-out stage1024 probabilities required to evaluate the current provider-fold test.",
+    "No files were copied or uploaded; no raw frames or labels were included; no scoring or metric recomputation was performed."
+  ],
+  "lineage": {
+    "baseline_family": "adopted + calibrated emissions from v2_iterative_v1 upstream controls",
+    "cells": [
+      "Metrica|metrica_3|clean|0",
+      "Metrica|metrica_3|feed_like_v1|1",
+      "Metrica|metrica_3|feed_like_v1|2",
+      "Metrica|metrica_3|feed_like_v2|1",
+      "Metrica|metrica_3|feed_like_v2|2",
+      "Metrica|metrica_3|feed_like_v2|3",
+      "Metrica|metrica_3|feed_like_v2|4",
+      "SkillCorner|1996435|clean|0",
+      "SkillCorner|1996435|feed_like_v1|1",
+      "SkillCorner|1996435|feed_like_v1|2",
+      "SkillCorner|1996435|feed_like_v2|1",
+      "SkillCorner|1996435|feed_like_v2|2",
+      "SkillCorner|1996435|feed_like_v2|3",
+      "SkillCorner|1996435|feed_like_v2|4",
+      "SkillCorner|1996436|clean|0",
+      "SkillCorner|1996436|feed_like_v1|1",
+      "SkillCorner|1996436|feed_like_v1|2",
+      "SkillCorner|1996436|feed_like_v2|1",
+      "SkillCorner|1996436|feed_like_v2|2",
+      "SkillCorner|1996436|feed_like_v2|3",
+      "SkillCorner|1996436|feed_like_v2|4",
+      "SkillCorner|2006229|clean|0",
+      "SkillCorner|2006229|feed_like_v1|1",
+      "SkillCorner|2006229|feed_like_v1|2",
+      "SkillCorner|2006229|feed_like_v2|1",
+      "SkillCorner|2006229|feed_like_v2|2",
+      "SkillCorner|2006229|feed_like_v2|3",
+      "SkillCorner|2006229|feed_like_v2|4",
+      "Sportec|J03WOY|clean|0",
+      "Sportec|J03WOY|feed_like_v1|1",
+      "Sportec|J03WOY|feed_like_v1|2",
+      "Sportec|J03WOY|feed_like_v2|1",
+      "Sportec|J03WOY|feed_like_v2|2",
+      "Sportec|J03WOY|feed_like_v2|3",
+      "Sportec|J03WOY|feed_like_v2|4"
+    ],
+    "cells_per_inventory": 35,
+    "expected_complete_cells": 35,
+    "frontier_family": "v2_spell_balanced_v1 round2, stage1024 seed probabilities",
+    "phase_count": 5,
+    "preserved_study_ids": {
+      "baseline": "v2_iterative_v1",
+      "frontier": "v2_spell_balanced_v1"
+    }
+  },
+  "restore_requirements": {
+    "adopted_calibrated_baseline_files": 35,
+    "all_available": false,
+    "files": [
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|clean|0",
+        "exists": false,
+        "expected_sha256": "8f495886bceaece893625e01ef726abaea1c328a2805544e2a7c228851996d43",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|clean|0",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Metrica__metrica_3__clean__0.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "cc9d7e226494dbf0058f57f799806914b6523253bc0ed9ca494228a9eb51ea5c",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v1|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Metrica__metrica_3__feed_like_v1__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "3a76be6d4e40066c6b8c3e30d93dc1374fe3202bf944b16a43f89503f251ac19",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v1|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Metrica__metrica_3__feed_like_v1__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "168636f7c7496d2b6ba7f350e8e4119ee394279670de63d5e552ea5ae00a4fbf",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v2|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Metrica__metrica_3__feed_like_v2__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "704b8610d6f542e981bcb8426240b62043178c4e0df799b13faed34d3704c8ea",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v2|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Metrica__metrica_3__feed_like_v2__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "ebe074668dee0138bd9c895e07d6bfc9a58376b45b7c7b3ab582d15700de642d",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v2|3",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Metrica__metrica_3__feed_like_v2__3.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "f1d1cb70aba28cd50344a2046ca0929aed9cdb615b50f4b6e77403432598805d",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v2|4",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Metrica__metrica_3__feed_like_v2__4.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|clean|0",
+        "exists": false,
+        "expected_sha256": "375df01bcd4cc9ec0ec4c1f938e5e7a9ffd9268b32e50305e20ef3859c17e08f",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|clean|0",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996435__clean__0.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "daeaaf22a920343bf5444add71f417608ce190e2c4299e3f9f9bb80351a6eca5",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v1|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996435__feed_like_v1__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "a6654ab0f499cdf44b1457d1c3a6d565f32b2dbdb8e01a27ba57250e964c53ef",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v1|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996435__feed_like_v1__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "b943a25798d59532e130fae7e1a9a759cef5d93da98fb8f838f489abe66dc3b5",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v2|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996435__feed_like_v2__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "28e32e09553740cddad7cc75f20d879f1b8682195f737da5eceff440f8a07cfb",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v2|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996435__feed_like_v2__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "27ced2836cfb9596eae93e83569f07bebd242b06b06de87520d4b64f5517da3e",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v2|3",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996435__feed_like_v2__3.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "34fbf8bfe44b2bb9f96194fa24ba4583087cd8ec5de9d3c1cc881d5d47b36162",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v2|4",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996435__feed_like_v2__4.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|clean|0",
+        "exists": false,
+        "expected_sha256": "ee5cc7510c7f4d1a46c5361b7bc1813eeeaedc35bc4994e2b9da189559ad47b2",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|clean|0",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996436__clean__0.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "8113f147b4a7e903ddd77c2cc99b3382edf6f28b36ae896078dfeb5718b6cef8",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v1|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996436__feed_like_v1__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "31c52f0d487511593a0bc74a9ee612d703c4afd4bf68567f60f79679c64cc4a9",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v1|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996436__feed_like_v1__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "60baeca7ef7b5233b1cc294d4e73e74d4d34c60c4189787526a6533fed20707a",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v2|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996436__feed_like_v2__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "1c33ca6a678c4bd120070e9068d6239195cf8acc7ae9793770e747441356c969",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v2|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996436__feed_like_v2__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "11009fd582cda4dedf55adddaa243e9bd9e06b86c4248e17491d347322dbb751",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v2|3",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996436__feed_like_v2__3.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "81ac9d78fff21de2cfbe87837b24ef29a8f811e405f2237a9686a19c91d21513",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v2|4",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__1996436__feed_like_v2__4.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|clean|0",
+        "exists": false,
+        "expected_sha256": "1b8d9d647a9d68000d76a9319dbe48071db88ed06ed677f11a7c5163b21f157a",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|clean|0",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__2006229__clean__0.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "ecc20b8eeecc545d4622b862a99e5cfe588df101045ae7ce2ba0e4411880e685",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v1|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__2006229__feed_like_v1__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "7eb9f19e866a079e519a9fe9ef1d8e51c58b19c43e6fd320df88eab52b497159",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v1|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__2006229__feed_like_v1__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "54233971714cffb8de4d3e9917a9e164ff5f17c2a007990801b8b38a59d53bcc",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v2|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__2006229__feed_like_v2__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "215adb9ffa4b0349414ce23563ebb6af6537fa59a57551e4eac9ae6f5426290b",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v2|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__2006229__feed_like_v2__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "9637bef7873a28c1dc48e6ee7572d241fd9ca444d2570e3261497fd6255a310c",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v2|3",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__2006229__feed_like_v2__3.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "cce6298e0841af7887c0902a91413fafbdfd250c55a2a3faa43880005e10ace5",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v2|4",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 2,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/SkillCorner__2006229__feed_like_v2__4.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|clean|0",
+        "exists": false,
+        "expected_sha256": "0d8b5b1fdbfa429170dfc9d93d2d40cb3ef5933240da2756d5f7efc4917da7e0",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|clean|0",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Sportec__J03WOY__clean__0.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "ad782cf323f6025b76033518a743f4623ed94bb5d4d4542f9323937cd96b4a62",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v1|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Sportec__J03WOY__feed_like_v1__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "f33d6abda86d9b2d789369602a577ed80bfe44eabc3321391c5b2d076597515f",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v1|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Sportec__J03WOY__feed_like_v1__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "c35c30fd1ec2227ede773c6fa504759d74e05bf7835eef6b6a671e2557b75474",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v2|1",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Sportec__J03WOY__feed_like_v2__1.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "afc5615d863df13f1d328bc824dc6477f21522035f11f4706e9b5089200caf4c",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v2|2",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Sportec__J03WOY__feed_like_v2__2.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "2c3b0ef3a76b9e99e505406037efeb12bac44dc5163c745074c0463a60f2f165",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v2|3",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Sportec__J03WOY__feed_like_v2__3.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "399e234293e4d17f2d9a447d27abec7c7a584708986d9d5d56c536565f0059a8",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v2|4",
+          "declaration_sha256": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+          "phase_count": 5,
+          "study_id": "v2_spell_balanced_v1"
+        },
+        "path": "data/experiments/v2_spell_balanced_v1/round2/predictions/Sportec__J03WOY__feed_like_v2__4.npz",
+        "role": "stage1024_frontier_seed_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|clean|0",
+        "exists": false,
+        "expected_sha256": "0529617c99ffa6b147a120e84e7df41666544d66708fdc84e4b720b85c7bb5fb",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|clean|0",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__clean__0.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "4e3f1a457df8764a949d25ec3577b4cc9cce4f32372ab7d2cca570ff83513baa",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v1|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v1__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "b2cc61bcd8d6f24a875035516bec8bbaf9a6ea3cff45baf446637250aea008c4",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v1|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v1__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "600aa73226db4491cdcfd35594842c777db683014a257a7f8f96f2e882a3c39d",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v2|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v2__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "989fb072d7e7b684a8e39cfc0554eefce01dac734a69fed6e85956307bcfe592",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v2|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v2__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "143c28f1f1b758e162adb48c0f068a39b6738b3b487f640ef4daa98b5459abac",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v2|3",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v2__3.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Metrica|metrica_3|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "3270a34d1b4c8d0ba425159caf59ce0fa22472ceb4812ef64521ced1ba2bdb23",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Metrica|metrica_3|feed_like_v2|4",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Metrica__metrica_3__feed_like_v2__4.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|clean|0",
+        "exists": false,
+        "expected_sha256": "f0ac2f3eb01907792c2752228f334c3a991b87418ff844a085507e562587b6de",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|clean|0",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__clean__0.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "128cc0d72c213a036f5bb4e55743d6340b9ae8f0d1aa8287d5be3784f228744e",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v1|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v1__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "627d3148235ab4d19d8d4615afc0a676adc98e504e252b7aa2c4648835bd1a76",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v1|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v1__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "099126fba238a7e8ce9b2742fb60714de4c70ec7571835379ef953ef85ba032d",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v2|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v2__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "dbbbba65408f8df3d88e529c682c78d02e488a4a184a088ce2986668cd53ec72",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v2|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v2__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "db135cac5a30aa9943bbf8a4cd37f3d92e6cbdc1a890acd3b5431db9d7d4b666",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v2|3",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v2__3.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996435|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "c7ef654b8001b7a654bbe623c696a91c3afeaae4ab6515dea59951b669e783d6",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996435|feed_like_v2|4",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996435__feed_like_v2__4.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|clean|0",
+        "exists": false,
+        "expected_sha256": "2d7046b85802fd343a091856d80ac7e5f86d798654482a0354dcf35e38ce5b34",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|clean|0",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__clean__0.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "413571c2981c4640df2a86f5734d332e2304372303c2f8bac08c75ae94ab0eb9",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v1|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v1__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "1d793482b36a1dfe08ab9c72f008bb059bef653a3ed04a999a927169231b7432",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v1|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v1__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "251d03a6e3a842f25ec7ea6666042caf130273b7e95a05a141191c8bfa440e2c",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v2|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v2__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "f2a2b5fb1d58599b5e7f420a6b2d9c9329b63bdc76db43572888aaff69d598ac",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v2|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v2__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "b4bc7dfdabf4718711477c6796511fd26d66cbcff7d64ace0e4c82660b6ad8e7",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v2|3",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v2__3.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|1996436|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "81e40ca11735683e51051cd8ab77510d6e190a18b7793d5ca0e4c69365a790ac",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|1996436|feed_like_v2|4",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__1996436__feed_like_v2__4.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|clean|0",
+        "exists": false,
+        "expected_sha256": "c6561bbc01e296d7239ffa5b8fd83c804434ef2da9e976b29356aae4d05347d2",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|clean|0",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__clean__0.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "288201ea42d18fe664930b06d9c802dcbe4b20d3f537a0da54bec569f9a48655",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v1|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v1__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "eab79fea43705ef3d3b1c50ce1da9c5288b7dd9872b119e2283e6248284e937a",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v1|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v1__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "72df4ef1a6b831912d0599732d97b6b77d9ccd6e9b5fac0bb953d540968baec4",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v2|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v2__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "899f2f8adcd1d29d1d12d0270da5ed3c5cc46c1aaf65f5ce5ebac28059f7c628",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v2|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v2__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "7c544164ce8586d3154d47c43e2683426cf4a87ead760c02ef5b17db20c5ab18",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v2|3",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v2__3.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "SkillCorner|2006229|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "9ceb48c1c53e3ffc41bf00390b57bfd94f2a81a7bb3a26407196c1055bab683e",
+        "hash_matches": false,
+        "identity": {
+          "cell": "SkillCorner|2006229|feed_like_v2|4",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2",
+          "phase_count": 2,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/SkillCorner__2006229__feed_like_v2__4.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|clean|0",
+        "exists": false,
+        "expected_sha256": "b5214d15d3a863f304333f1eacf34ec692945418f57a852a8ee937f1bff86163",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|clean|0",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__clean__0.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v1|1",
+        "exists": false,
+        "expected_sha256": "38107919aa424c5c5bfaba9584ac0ddd38c7b198e4453ee2146272152e3c5ac5",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v1|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v1__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v1|2",
+        "exists": false,
+        "expected_sha256": "8b878f2c8d6b092eefa54a691074602237fdad03555e0977e523815e59a5d446",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v1|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v1__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v2|1",
+        "exists": false,
+        "expected_sha256": "d3d54e0229381c3a91abcaaa4768b1c8f24ab18ea87d37eb9dcdb07e1dce031c",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v2|1",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v2__1.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v2|2",
+        "exists": false,
+        "expected_sha256": "9382454b00050fd1991bc99bdd41ee0e1d012f957f44b75aa7cea9d82a491d1b",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v2|2",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v2__2.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v2|3",
+        "exists": false,
+        "expected_sha256": "b669dc7363963837a6e26f50896260c0035548ff5a6e7d456cd41926294ff0b4",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v2|3",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v2__3.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      },
+      {
+        "actual_sha256": null,
+        "cell": "Sportec|J03WOY|feed_like_v2|4",
+        "exists": false,
+        "expected_sha256": "fb467f053e244cc1dd84251f9c9e66d52d30dcde5d2888f7d479f6d5bcc92f35",
+        "hash_matches": false,
+        "identity": {
+          "cell": "Sportec|J03WOY|feed_like_v2|4",
+          "declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+          "input_sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a",
+          "phase_count": 5,
+          "study_id": "v2_iterative_v1"
+        },
+        "path": "data/experiments/v2_iterative_v1/controls/Sportec__J03WOY__feed_like_v2__4.npz",
+        "role": "adopted_calibrated_frontier_baseline_probability"
+      }
+    ],
+    "files_missing": 70,
+    "files_present": 0,
+    "frontier_stage1024_files": 35,
+    "hash_matches_for_present": 0,
+    "unique_files": 70
+  },
+  "schema_version": 1,
+  "source_reports": [
+    {
+      "path": "experiments/results/v2_spell_balanced_v1_round2.json",
+      "role": "stage1024 prediction_cache",
+      "sha256": "87a1c5b73df7278f5be07f925a62778b17c01f8fc0a5387926590acf1c1ea395"
+    },
+    {
+      "path": "experiments/results/v2_spell_balanced_v1_round1_declaration.json",
+      "role": "upstream adopted_calibrated_emissions",
+      "sha256": "5d3597475ed6d9bc7146e62f58b34651c48abac1de967bb41462632fb7c26347"
+    }
+  ],
+  "status": "frontier probability restore inventory only; no scoring performed",
+  "study": "complementary_spell_v1"
+}

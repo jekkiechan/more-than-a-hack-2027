@@ -1,0 +1,19 @@
+{
+  "study_id": "v2_spell_target_runtime",
+  "status": "aborted_before_C0_completion_or_candidate_scoring",
+  "declaration": "experiments/results/v2_spell_target_runtime_declaration.json",
+  "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 python - <<'PY' ... runtime.preflight() PY",
+  "failure": {
+    "exception": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "cause": "The system Python interpreter was used instead of the repository .venv, whose pinned CPU PyTorch is required."
+  },
+  "recovery": "A direct one-seed, one-phase `predict_seed` replay on the same prepared Sportec clean cell passed using .venv/bin/python and returned shape (142536, 3).",
+  "preflight_receipt_written": false,
+  "candidate_scores_written": false,
+  "emission_cache_files_written_by_attempt": 0,
+  "prepared_cache_files_written": 4,
+  "prepared_cache_declaration_bound": true,
+  "organizer_reference_access": false,
+  "public_scoring": false
+}

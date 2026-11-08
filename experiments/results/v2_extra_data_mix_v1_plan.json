@@ -1,0 +1,53 @@
+{
+  "study_id": "v2_extra_data_mix_v1",
+  "created_utc": "2026-11-07T05:52:30.419546+00:00",
+  "post_result_rationale": "R1 fresh continuation improves all spell means but reduces v1 short recall; quality50 preserves short recall but loses clean/v2 spell. Test coarse probability mixtures for complementary errors. Official decoded metrics are nonlinear; no interpolation of score values is assumed.",
+  "parent_result_sha256": "374d89f2bcf127768c54e946125208245f948f49a78375c4ae0cc0ad69548ddf",
+  "recipes": {
+    "fresh_q25": {
+      "fresh_control": 0.75,
+      "gar_quality50": 0.25
+    },
+    "fresh_q50": {
+      "fresh_control": 0.5,
+      "gar_quality50": 0.5
+    },
+    "fresh_q75": {
+      "fresh_control": 0.25,
+      "gar_quality50": 0.75
+    },
+    "weight_q50": {
+      "gar_weight625": 0.5,
+      "gar_quality50": 0.5
+    }
+  },
+  "pooling": "Arithmetic mixture of cached raw CE H/A/D probabilities before the unchanged conditional H/A expert mixture. Per-seed diagnostics use matching cached phase means.",
+  "outer_recipe": {
+    "ce_weight": 0.5,
+    "calibrated_weight": 0.375,
+    "adopted_weight": 0.125,
+    "pooling": "arithmetic",
+    "ha_cost": 3
+  },
+  "fixed_D": "Exact predecessor decoded mask",
+  "control_replay": "All three R1 arms, all35 cells, official metrics and saved prediction equality before candidate scoring",
+  "cohort": "Same five exposed original-provider development matches; 5 clean,10v1,20v2 cells. Equal realizations within match, equal matches within provider, equal providers.",
+  "guards": "Each view spell >= approved frontier, v2 strictly >; each view short recall >= frontier; each view macro >= frontier minus .001; exact D and reference counts.",
+  "ranking": "Unrounded v2 spell descending, macro for exact ties, ID",
+  "target": "v2 spell > .60",
+  "budget": {
+    "candidate_recipes": 4,
+    "new_fits": 0,
+    "new_neural_inference": 0,
+    "cells_per_recipe": 35,
+    "seeds": [
+      2026,
+      2027
+    ]
+  },
+  "stop_rule": "Complete exactly these four candidates and independent audit; no extra weight, decoder or stage search under this ID. If none retains all guards, retain the approved frontier. No automatic promotion if one passes.",
+  "public_scoring": false,
+  "organizer_reference_access": false,
+  "gar_scoring": false,
+  "independent_confirmation": false
+}

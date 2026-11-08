@@ -1,0 +1,38 @@
+{
+ "arms": [
+  "joint_probability_blend_ha3",
+  "fixed_d_conditional_ha3",
+  "fixed_d_conditional_ha1_5",
+  "fixed_d_logit_ha3"
+ ],
+ "baseline_policy": {
+  "counts_invariant": true,
+  "hard_metrics": [
+   "spell_f1",
+   "macro_f1",
+   "d_f1",
+   "d_precision",
+   "d_recall",
+   "short_spell_recall_iou_0_5_lt3s"
+  ],
+  "ranking": "spell_f1, exact ties broken by macro_f1",
+  "strict_v2_spell_floor": 0.6,
+  "weighted_70_30": "diagnostic only",
+  "zero_tolerance_vs_adopted": true
+ },
+ "candidate_scoring_started": false,
+ "control_replay_sha256": "605f16d15135f57a5f2a4d11e2feb75ddbe8f10d045c60f0b95bd192437ecb97",
+ "methods": {
+  "fixed_d_conditional_ha1_5": "same conditional blend and fixed adopted D mask, HA=1.5",
+  "fixed_d_conditional_ha3": "equal conditional H/A probability blend under frozen adopted D mask, HA=3",
+  "fixed_d_logit_ha3": "equal conditional H/A logit blend under frozen adopted D mask, HA=3",
+  "joint_probability_blend_ha3": "equal categorical probability blend of candidate and adopted original_full, then f062 HA=3 decode"
+ },
+ "organizer_reference_access": false,
+ "parent_declaration_sha256": "d9e853b57586278d6a05eceb1bc45c39cf71f70c751561805aa93c760fd1255f",
+ "promotion": false,
+ "public_or_GAR_scoring": false,
+ "round": 1,
+ "status": "frozen_before_candidate_scoring",
+ "study_id": "v2_iterative_v1"
+}

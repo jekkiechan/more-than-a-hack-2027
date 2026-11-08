@@ -1,0 +1,146 @@
+{
+ "arms": [
+  "new_full_phase_tta",
+  "new_conditional_HA_x_archived_calibrated_D",
+  "equal_50_50_new_full_plus_archived_calibrated"
+ ],
+ "auxiliary_metric": "0.7*spell_f1 + 0.3*macro_f1, descriptive only and never a ranking metric",
+ "budget": {
+  "candidate_scored_cells": 75,
+  "cells_per_arm": 25,
+  "component_seeds": [
+   2026,
+   2027
+  ],
+  "new_decoder_settings": 0,
+  "new_fits": 0,
+  "phases": {
+   "10_hz": 2,
+   "25_hz": 5
+  }
+ },
+ "candidate_methods": {
+  "equal_50_50_new_full_plus_archived_calibrated": "For each seed and phase, average new full-model and archived calibrated-model probabilities 50/50; then ensemble seeds, equal-mean phases and decode with frozen f062.",
+  "new_conditional_HA_x_archived_calibrated_D": "For each seed and phase, retain the new model's conditional H/A ratio and replace its D probability with that seed/fold's archived calibrated-D probability; then ensemble seeds, equal-mean phases and decode with frozen f062.",
+  "new_full_phase_tta": "For each held-out-provider fold, ensemble the two new full H/A/D fits within each fixed native sampling phase; equal-mean phases (five at 25 Hz, two at 10 Hz); decode once with frozen f062."
+ },
+ "cohort": {
+  "aggregation": "four v2 realizations within match; matches equally within provider; three provider means equally",
+  "feed_realizations": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "heldout_rule": "each candidate fit and both archived controls omit the evaluated provider from all learned components and normalization",
+  "matches": [
+   {
+    "match": "J03WOY",
+    "provider": "Sportec"
+   },
+   {
+    "match": "metrica_3",
+    "provider": "Metrica"
+   },
+   {
+    "match": "1996435",
+    "provider": "SkillCorner"
+   },
+   {
+    "match": "1996436",
+    "provider": "SkillCorner"
+   },
+   {
+    "match": "2006229",
+    "provider": "SkillCorner"
+   }
+  ],
+  "v2_seed_rule": "feed_like_v2_benchmark/{rep}/{match} SHA-256-derived seed, exactly as upstream prepared-cell runtime",
+  "views": [
+   "clean",
+   "feed_like_v2"
+  ]
+ },
+ "controls": {
+  "calibrated_phase_tta": "Reused upstream v2_spell_target_runtime controls-only C0 for adop/calibrated D2: equal mean across native phases then f062.",
+  "original_full_phase_tta": "Reused upstream v2_spell_target_runtime controls-only C0 for cand/original_full: equal mean across native phases then f062.",
+  "reuse_only": true
+ },
+ "gates": {
+  "freeze_before_fit": true,
+  "organizer_reference_access": false,
+  "public_scoring": false,
+  "require_all_six_fit_receipts_and_model_hashes_before_scoring": true,
+  "require_upstream_C0_controls_are_reused_and_not_rescored": true,
+  "require_upstream_controls_only_C0_preflight_pass": true
+ },
+ "guardrails": {
+  "baseline": "reused calibrated_phase_tta C0 (adop) from the upstream controls-only preflight",
+  "clean_equal_provider": "for spell_f1, macro_f1 and d_f1, each candidate arm must be at least baseline - 0.005",
+  "clean_provider": "for each provider, macro_f1 and d_f1 must be at least baseline - 0.02",
+  "feed_like_v2_equal_provider": "spell_f1 must be at least baseline - 0.01",
+  "interpretation": "report each guard; no promotion or adoption decision"
+ },
+ "limitations": "Five exposed development matches and synthetic feed_like_v2 views; this cannot establish independent continuous-match generalization.",
+ "metrics": {
+  "component_seed_diagnostics": {
+   "aggregation": "save each seed's score in every cell; average realizations within match, matches within provider, then providers equally; report provider values separately",
+   "all_arms": [
+    "new_full_phase_tta",
+    "new_conditional_HA_x_archived_calibrated_D",
+    "equal_50_50_new_full_plus_archived_calibrated"
+   ],
+   "metrics": [
+    "spell_f1",
+    "macro_f1"
+   ],
+   "selection_use": "descriptive only; no seed selection or reselection"
+  },
+  "diagnostics": [
+   "spell_f1",
+   "macro_f1",
+   "d_f1",
+   "d_precision",
+   "d_recall",
+   "predicted_spell_count",
+   "reference_spell_count",
+   "short_spell_recall_iou_0_5_lt3s"
+  ],
+  "primary": "official possession spell F1; macro F1 breaks exact ties",
+  "provider_reporting": "retain provider-level clean and feed_like_v2 spell/macro/D metrics; no adoption decision in runner",
+  "target": 0.6,
+  "target_is_exploratory": true
+ },
+ "promotion": false,
+ "provenance": {
+  "baseline_manifest_sha256": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+  "decision_policy_sha256": "f987ffcad31c283bba5e26fa8402adbf55fc1764876423854a4fe41be47c2a13",
+  "source_sha256": {
+   "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+   "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+   "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+   "experiments/results/feed_like_v2_benchmark.json": "9150fbc449e4877757229c46ad860e04abfa86ab6c0eb425ea98a3d6a0c1df9f",
+   "experiments/results/feed_like_v2_calibration.json": "ac42d0e7697b9d3a5c6684a903e7ea8c27d34a99091597432ab2d32e21faf684",
+   "experiments/results/feed_like_v2_scorecard.json": "4c91f4da392a5779bafb4ef8cb6f59f0d199e349dd296d70fcc6a9aefced5d85",
+   "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+   "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+   "experiments/v2_short_original_diversity.py": "080f702833c85f43d701d912a51c33cb360277303afa666004adcd0ccaa1f036",
+   "experiments/v2_spell_target.py": "527f97bb31710119b3fabf171c44a50b0a8403128b145c97af44fba3cb4c51d1",
+   "experiments/v2_spell_target_runtime.py": "57b9184ac092674b08fd8b532e40895e64a3841d8747ebb76457abf3304fde91",
+   "experiments/v2_training_eval.py": "c853a1599046cdeae927b79022b8c85676ded58f15dc2e64d882289ab818dd9b"
+  },
+  "training_declaration": {
+   "path": "experiments/results/v2_short_original_diversity_declaration.json",
+   "sha256": "cf7d60363a17932abcf6db1096184818c12083ebe2353d7665876187a63440e4"
+  },
+  "upstream_runtime": {
+   "declaration_path": "experiments/results/v2_spell_target_runtime_declaration.json",
+   "declaration_sha256": "4da243d7f3fbe3fa4c53686c5f272aff7742895a430589808e2da75a0dc1e8cc",
+   "prepared_cache_root": "data/experiments/v2_spell_target_runtime",
+   "study_id": "v2_spell_target_runtime"
+  }
+ },
+ "question": "Do four-view v2-trained full H/A/D fits reach or exceed 0.60 equal-provider official spell F1 on fixed feed_like_v2 development views, and how do conditional-HA transfer and a calibrated-model blend compare?",
+ "status": "frozen_arms_before_fit_scoring",
+ "study_id": "v2_training_eval"
+}

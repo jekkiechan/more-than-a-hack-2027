@@ -66,7 +66,23 @@ class BaselinePromotionContracts(unittest.TestCase):
         self.assertEqual(policy['working_candidate']['model'], manifest['model'])
         self.assertEqual(policy['working_candidate']['baseline_manifest_sha256'],
                          sha256(root/'baseline_manifest.json'))
-        if manifest['architecture']['kind']=='sn_dense_original_diversity_phase_ensemble':
+        if manifest['architecture']['kind']=='sn_dense_spell_frontier_ensemble':
+            from experiments import spell_frontier_baseline
+            self.assertEqual(manifest['architecture']['recipe'], spell_frontier_baseline.RECIPE)
+            self.assertEqual(manifest['architecture']['phase_order'], 'seeds_then_phases')
+            self.assertEqual(len(manifest['models_sha256']), 10)
+            self.assertFalse(manifest['evidence']['historical_clean_screen_passes'])
+            self.assertFalse(policy['clean_improvement_screen']['current_screen_passes'])
+            self.assertTrue(policy['clean_improvement_screen']['current_adoption_exception'])
+            self.assertFalse(manifest['promotion']['fitting_during_promotion'])
+            self.assertFalse(manifest['promotion']['organizer_rescoring_performed'])
+            previous_manifest = json.loads((root.parent/manifest['previous_manifest']).read_text())
+            for seed in (2026, 2027):
+                self.assertEqual(manifest['models_sha256'][f'adopted_{seed}.joblib'],
+                                 previous_manifest['models_sha256'][f'dense_{seed}.joblib'])
+                self.assertEqual(manifest['models_sha256'][f'teacher_adopted_{seed}.joblib'],
+                                 previous_manifest['models_sha256'][f'teacher_{seed}.joblib'])
+        elif manifest['architecture']['kind']=='sn_dense_original_diversity_phase_ensemble':
             self.assertTrue(manifest['architecture']['phase_tta'])
             self.assertEqual(manifest['architecture']['phase_averaging']['phases'], 5)
             self.assertEqual(manifest['architecture']['postprocessing']['temperature'], 4)
