@@ -58,6 +58,18 @@ pairs. No additional organizer or GAR scoring is used to choose these arms.
 
 ## Next work
 
+The [8 November complementary pilot](../../experiments/COMPLEMENTARY_SPELL_V1.md)
+is complete on the exact historical original-full phase fold models. Equal
+seed weighting remains best among five tested ratios on v2. A count-preserving
+posterior-median boundary rule gains only .000207 v2 spell (with clean/v1 gains
+and all pilot checks passing), mainly in SkillCorner; 280 saved outputs replay
+independently. This is a small exposed-development signal, not a verified
+upgrade to the current frontier package. Its exact 70 research caches are
+absent from this workspace and the available private remote. Restore the
+[listed caches](../../experiments/results/complementary_spell_v1_frontier_missing.json)
+before testing this fixed rule on the current model. The requested
+`claude/fervent-*` branch was not visible on the remote at either check.
+
 Stop the declared local rate/weight/blend comparisons. Their results do not
 establish a hard performance ceiling, but further fine searches on the same five
 exposed matches are weaker evidence than new data. Prioritize independent,

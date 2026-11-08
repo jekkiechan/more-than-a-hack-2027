@@ -1,0 +1,139 @@
+{
+  "candidate_scoring_performed": false,
+  "current_frontier_available": false,
+  "declared_cohort": {
+    "cells": 35,
+    "matches": 5,
+    "preparation_completion_at_review": "in progress; completion not independently asserted",
+    "provider_folds": "Metrica, SkillCorner, Sportec",
+    "views": {
+      "clean": 1,
+      "feed_like_v1": 2,
+      "feed_like_v2": 4
+    }
+  },
+  "historical_control_reference": {
+    "evidence": [
+      {
+        "clean": {
+          "macro_f1": 0.8712713689886137,
+          "spell_f1": 0.6675555328266306
+        },
+        "entry": "arms.cand_phase_tta",
+        "path": "experiments/results/feed_like_v2_scorecard.json",
+        "v1": {
+          "macro_f1": 0.826852823195384,
+          "spell_f1": 0.5315755112553304
+        },
+        "v2": {
+          "macro_f1": 0.8499746497420088,
+          "spell_f1": 0.5835712076382747
+        }
+      },
+      {
+        "entry": "arms.cand_phase_tta",
+        "path": "experiments/results/feed_like_v2_benchmark.json",
+        "v2_macro_f1": 0.8499746497420088,
+        "v2_spell_f1": 0.5835712076382747
+      },
+      {
+        "all_abs_error": 0.0,
+        "candidate_checks": [
+          "cand/spell_f1/clean",
+          "cand/spell_f1/feed_like_v2",
+          "cand/macro_f1/clean",
+          "cand/macro_f1/feed_like_v2"
+        ],
+        "candidate_scoring_written": false,
+        "path": "experiments/results/v2_spell_target_runtime_preflight.json"
+      }
+    ],
+    "interpretation": "The exact aggregate controls are provider-excluded cand_phase_tta results, not pooled-model-on-development results.",
+    "verified": true
+  },
+  "independent_verification": {
+    "boundary_contract_tests": {
+      "command": ".venv/bin/python -m unittest experiments.tests.test_boundary_relocation_v1 -v",
+      "passed": 6
+    },
+    "boundary_independent_median_enumeration": {
+      "cases": 1000,
+      "fps": [
+        10,
+        25
+      ],
+      "result": "every selected edge matched independent enumeration of declared posterior median and corridor"
+    },
+    "boundary_randomized_invariants": {
+      "checks": "D/X frame preservation, label/run/boundary invariants under periods, timestamp gaps and resets",
+      "fps": [
+        10,
+        25
+      ],
+      "sequences": 2000
+    },
+    "preparation_contract_tests": {
+      "command": ".venv/bin/python -m unittest experiments.tests.test_complementary_pilot_prepare -v",
+      "passed": 2
+    },
+    "seed_mix_contract_tests": {
+      "command": ".venv/bin/python -m unittest experiments.tests.test_seed_mix_v1 -v",
+      "passed": 8,
+      "synthetic_only": true
+    },
+    "x_mask_regression": "minimal prior shared decode_fixed_d mutation was reproduced before local X-preserving wrapper; current wrapper synthetic contract passes"
+  },
+  "official_result_replay_performed": false,
+  "review_findings": [
+    {
+      "finding": "Initial runner used pooled model path and forced five 5Hz phases; current preparation resolves provider-specific held-out candidate/teacher artifacts, verifies archive-manifest hashes, derives phase count from returned phase records and preserves native float64 arrays.",
+      "status": "corrected_in_reviewed_code"
+    },
+    {
+      "finding": "The shared fixed-D decoder treats X as non-D live input; current seed_mix wrapper substitutes X during decoding and restores X, with an invariant test.",
+      "status": "corrected_in_reviewed_code"
+    },
+    {
+      "finding": "Boundary relocation now computes all edge choices from original labels and applies them together inside noncrossing corridors; exhaustive randomized invariant and independent median checks passed.",
+      "status": "corrected_in_reviewed_code"
+    },
+    {
+      "finding": "Preparation receipt source_hashes currently lists seven top-level modules, not all transitive feature/inference modules. The seed-mix freeze captures and verifies a broader current transitive source inventory, but that inventory is generated after preparation rather than proving all transitive source bytes were unchanged throughout cache generation. Preparation was kept source-stable during the active run by task coordination; the receipt itself is weaker than a start/end source seal.",
+      "status": "remaining_provenance_limitation"
+    },
+    {
+      "finding": "Per-cell model_sha256 identifies provider-excluded fold weights and D teachers. historical_package/model_manifest_sha256 refers to the pooled phase package manifest as a recipe/reference anchor; final report must state that provider-fold model files produced these caches, not that the pooled manifest weights did.",
+      "status": "reporting_requirement"
+    }
+  ],
+  "review_status": "final_code_review_before_freeze",
+  "scope": "Independent code, provenance, contract and historical-control audit; no real-cache candidate scoring or official result replay.",
+  "source_sha256": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/V2_SPELL_TARGET.md": "a33a3b1e7a00433be43a7f1a0cd533ec08f74d829e49c39fdc386c45cf44a01a",
+    "experiments/boundary_relocation_v1.py": "faa562fc6dd02c41eff99f91a3226ab6870b8e1492f84c09ace1dacd98e6e7ea",
+    "experiments/complementary_pilot_prepare.py": "687132cf97d2a9cbd5dbb91d080829791ebe05f921c959f366cffaf2ef4f5eb5",
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+    "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+    "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/results/feed_like_v2_benchmark.json": "9150fbc449e4877757229c46ad860e04abfa86ab6c0eb425ea98a3d6a0c1df9f",
+    "experiments/results/feed_like_v2_scorecard.json": "4c91f4da392a5779bafb4ef8cb6f59f0d199e349dd296d70fcc6a9aefced5d85",
+    "experiments/results/v2_spell_target_runtime_preflight.json": "fdbaae330dcd76cfea0fa6fab62fd00d560b6a5ed8254c860286f75a2e11ef1e",
+    "experiments/seed_mix_v1.py": "586ab92f3558ec1bf89ed8bb12d4f01e7fb0f14f4af78d6f01f3f974f7174a71",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+    "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/tests/test_boundary_relocation_v1.py": "990b0ccf625ab4ef195fe2068660cd5993d18bef46d80eeafa4ed6dd60a53af8",
+    "experiments/tests/test_complementary_pilot_prepare.py": "5fad805aa0521040b0981ab0c4943d6de781484623543a540ec73092c7fa7b6c",
+    "experiments/tests/test_seed_mix_v1.py": "5c521b46c382741e957927057eea1d1f2996a756e4cb069481ce31d2efb39ac8",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+    "experiments/v2_spell_balanced_eval.py": "ba57176cd16ff7535b98acd3d78acd3aefcc002c723101f6f2dc816b892b2514",
+    "experiments/v2_spell_target.py": "527f97bb31710119b3fabf171c44a50b0a8403128b145c97af44fba3cb4c51d1"
+  },
+  "study_id": "complementary_spell_v1 / seed_mix_v1"
+}
