@@ -1,0 +1,42 @@
+{
+  "archive_bytes": 2506037599,
+  "archive_path": "turnover_supervision_v1.tar.gz",
+  "archive_sha256": "d3a02cc46e8d48218f6ffe56f7dfa30c1dc9317a880b6a6a54adbb12bb074c6d",
+  "delivery_format": "two ordered Git LFS parts; whole archive exceeds GitHub per-object limit",
+  "member_bytes": 2572525086,
+  "member_count": 159,
+  "parts": [
+    {
+      "bytes": 1500000000,
+      "index": 1,
+      "path": "turnover_supervision_v1.tar.gz.part01",
+      "sha256": "894727ef90657785dcdb59ad5e26e71ce0d7430d809da0ba86c22781368e4c46"
+    },
+    {
+      "bytes": 1006037599,
+      "index": 2,
+      "path": "turnover_supervision_v1.tar.gz.part02",
+      "sha256": "95d2d683023b06533259cc455788166228c504736f842e4ed52632a2b44b109c"
+    }
+  ],
+  "private_branch": "research/turnover-supervision-v1-parts",
+  "private_commit": "f1de19888c811af28d3a616a5ff493dc79edb134",
+  "private_member_receipt": "turnover_supervision_v1_receipt.json",
+  "private_parts_directory": "turnover_supervision_v1_parts",
+  "private_parts_receipt": "turnover_supervision_v1_parts/turnover_supervision_v1.tar.gz.parts.json",
+  "private_repository": "jekkiechan/mtah-data",
+  "public_source_commit": "ab54188fd215c0fa40a44923f8644c457faeb688",
+  "schema": "turnover_supervision_private_delivery_v1",
+  "status": "uploaded_and_fresh_remote_lfs_verified",
+  "supersedes": "turnover_supervision_private_delivery_pending.json",
+  "user_authorized_private_upload": true,
+  "verification": {
+    "all_member_paths_sizes_sha256_match_receipt": true,
+    "all_part_sizes_sha256_match_receipt": true,
+    "concatenated_stream_size_sha256_match_original_archive": true,
+    "fresh_remote_lfs_fetch": true,
+    "isolated_lfs_store": true,
+    "method": "fresh shallow clone; verify ordered parts and concatenated stream, then stream all tar members without extraction",
+    "verified_member_count": 159
+  }
+}

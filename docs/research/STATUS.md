@@ -130,6 +130,14 @@ historical diagnostics. Do not reopen closed public gates or use the reused
 
 ## Artifacts and delivery
 
+The [turnover archive](../../experiments/results/turnover_supervision_private_delivery.json)
+is uploaded to private `mtah-data:research/turnover-supervision-v1-parts`
+at `f1de198`. A fresh isolated LFS download verifies both byte-preserving
+parts, the combined archive hash and all 159 members, including 18 checkpoints
+and 70 saved evaluation cells. Parts avoid GitHub's per-object size limit.
+The [site publication](../../experiments/results/turnover_supervision_site_publication.json)
+is complete as version 37, with its restricted audience preserved.
+
 The prior promotion recorded all ten deployment checkpoint roles, matching
 source, manifests/policy and aggregate provenance in a verified local archive,
 including fresh extraction and an isolated ten-model load. That historical

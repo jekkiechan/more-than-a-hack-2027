@@ -267,3 +267,21 @@ Private artifact availability and research-site publication are recorded in
 the delivery receipts added after this source/result snapshot. Weights,
 event-level details and per-frame outputs remain private; the public report
 contains aggregate evidence only.
+
+The [final private delivery receipt](results/turnover_supervision_private_delivery.json)
+records 159 verified members (18 checkpoints, both rounds' 70 cell caches,
+catalogs, receipts and logs) in a 2,506,037,599-byte archive. Delivery uses two
+byte-preserving Git LFS parts because the whole archive exceeds GitHub's
+per-object limit. The authorized private branch is
+`jekkiechan/mtah-data:research/turnover-supervision-v1-parts` at `f1de198`.
+A fresh shallow clone with isolated LFS storage verifies each downloaded part,
+the complete concatenated archive hash, and every member's path, size and
+SHA-256 without extraction. This supersedes the preserved initial local-only
+receipt. The existing frontier-recovery archive remains a separate dependency.
+
+The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#turnover-supervision)
+is published as version 37 from source `26d6f0d`; see the
+[publication receipt](results/turnover_supervision_site_publication.json).
+All nine metric/view combinations pass desktop/mobile interaction checks,
+and all 63 chart values exactly match the published aggregate evidence.
+The custom audience, access revision 2 and one external visitor are preserved.
