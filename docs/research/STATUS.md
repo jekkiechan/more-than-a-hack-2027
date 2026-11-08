@@ -1,7 +1,9 @@
 # Current research state
 
-Reviewed 7 November 2026 against fork `main` at `8919726` and open research
-PRs #82–86, plus [PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87). The active manifest
+Reviewed 8 November 2026 against fork `main` at `8919726`,
+[PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) at `b12eab3`,
+[draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88), and
+Claude's `fervent-curie-fcqsta` at `61f8182`. The active manifest
 now records the user-authorized spell-frontier promotion. Check newer merged/open
 PRs before current-results advice. Historical study evidence is indexed in
 [EXPERIMENTS](EXPERIMENTS.md); package restore/inference lives in
@@ -64,11 +66,26 @@ seed weighting remains best among five tested ratios on v2. A count-preserving
 posterior-median boundary rule gains only .000207 v2 spell (with clean/v1 gains
 and all pilot checks passing), mainly in SkillCorner; 280 saved outputs replay
 independently. This is a small exposed-development signal, not a verified
-upgrade to the current frontier package. Its exact 70 research caches are
-absent from this workspace and the available private remote. Restore the
-[listed caches](../../experiments/results/complementary_spell_v1_frontier_missing.json)
-before testing this fixed rule on the current model. The requested
-`claude/fervent-*` branch was not visible on the remote at either check.
+upgrade to the current frontier package. The original research caches were
+unavailable; the [current-frontier follow-up](../../experiments/FRONTIER_POSTPROCESS_V1.md)
+restores source inputs, reconstructs twelve CE fold fits and reproduces every
+saved selected-frontier metric across 35 development cells, including exact
+.5936187198896373 v2 spell. Checkpoint files are reconstructed, not byte-identical
+to the missing originals.
+
+The first round tests nine seed-weight, boundary, H/A-cost and disagreement
+changes against this verified control. All 350 saved predictions pass independent
+replay; none passes every retention guard. Disagreement strength 1 reaches
+.593689 v2 but loses v1/v2 short recall; boundary .8 s improves short recall but
+loses .000025 v2 spell. The separately declared composition reaches .593532 v2
+and loses v2 short recall; all 35 new predictions and 105 controls replay
+independently. No candidate is retained. The adopted package remains unchanged.
+
+Claude's requested branch became visible during this work. Its pinned
+[197-arm study](https://github.com/jekkiechan/more-than-a-hack-2027/blob/61f8182f86f2faca7873edd4db4c060a93285ec2/experiments/V2_POSTPROC_V1.md)
+also reports no retained candidate; its .594992 v2 leader loses clean spell and
+short recall. We inspected its saved report without independently replaying its
+197 predictions or modifying that branch.
 
 Stop the declared local rate/weight/blend comparisons. Their results do not
 establish a hard performance ceiling, but further fine searches on the same five
