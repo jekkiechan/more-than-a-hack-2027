@@ -3,6 +3,13 @@
 Status: complete; all 280 saved predictions independently verified.
 Date: 8 November 2026.
 
+Review: [draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88),
+stacked on PR #87. Interactive aggregate results are on the
+[research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/experiments.html#complementary-spell-v1).
+Site version 35 is published with its existing restricted audience; the
+[delivery receipt](results/complementary_spell_v1_delivery.json) records the
+source commit, deployment and validation outcomes.
+
 This study asks whether unequal seed weighting or posterior-median boundary
 placement improves spell F1 under the same frozen probability model. It uses
 Luna implementation agents and an independently reviewed execution path.
