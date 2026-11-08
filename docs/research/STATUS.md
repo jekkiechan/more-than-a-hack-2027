@@ -2,7 +2,8 @@
 
 Reviewed 8 November 2026 against fork `main` at `8919726`,
 [PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) at `b12eab3`,
-[draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88), and
+[draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88),
+[turnover PR #90](https://github.com/jekkiechan/more-than-a-hack-2027/pull/90), and
 Claude's `fervent-curie-fcqsta` at `61f8182`. The active manifest
 now records the user-authorized spell-frontier promotion. Check newer merged/open
 PRs before current-results advice. Historical study evidence is indexed in
@@ -38,7 +39,7 @@ The unchanged saved public diagnostic is **.611765 spell / .851285 macro** on
 the earlier balanced gate remains unused. The historical public score is not
 validation of the new extra-data experimental arms.
 
-## Turnover supervision
+## Turnover supervision — one retained development candidate
 
 [The turnover study](../../experiments/TURNOVER_SUPERVISION_V1.md) continues
 from the approved frontier with 18 matched provider-excluded fits. Stable
@@ -52,8 +53,19 @@ The baseline audit finds weak/reversed team probabilities on at least one
 side of 90.6% of missed eligible turnovers. This motivates supervision work,
 but the sampling comparison shows that greater exposure alone does not
 improve the primary stress metric. A separately declared three-mixture
-hard/fresh follow-up is in progress; no new fits, organizer labels or GAR
-VALID/TEST selection are involved. The adopted package remains unchanged.
+hard/fresh follow-up retains **75% hard / 25% fresh CE**: clean/v1/v2 spell
+**.670848/.533247/.594002**, with all short-recall means improving and all
+retention checks passing. V2 macro falls .000093 within the .001 allowance;
+SkillCorner v2 spell falls .000246. The gain is small on exposed development
+matches, and CE-seed diagnostics show sensitivity to pooling.
+
+Both rounds independently replay all saved scores and probabilities; turnover
+recovery itself improves only six repeated cell-events versus approved
+(2,550 vs 2,544 of 6,552). Retain the blend as an experimental candidate;
+the adopted/deployed package remains unchanged. No pooled counterpart,
+organizer scoring or GAR VALID/TEST evaluation is allocated here. Stop the
+declared weight search; next validate the exact pooled candidate separately
+without retuning, then seek independent continuous-match gold evidence.
 
 ## Extra-data continuation — complete
 

@@ -2,14 +2,18 @@
 
 ## Status
 
-The 8 November 2026 comparison starts from the approved
-**.5936187198896373 v2 spell F1** package. None of the three training arms
-passes every retention check. Hard-turnover sampling improves clean/v1 spell
-and retains short recall in all three views, but loses .000153 v2 spell.
-Ordinary continuation improves v2 but loses v1 short recall. A separately
-declared cached-mixture follow-up tests their complementary results. All first-round
-scores pass independent verification; follow-up and delivery are in progress.
-The adopted package is unchanged.
+The 8 November 2026 comparison finds one eligible development candidate:
+**75% hard-turnover / 25% fresh-continuation CE reaches .594002443007756 v2
+spell F1**, versus the approved **.5936187198896373**. Clean/v1 spell and
+short recall in all three views improve, and every declared retention check
+passes. Independent mixture replay verifies all saved outputs.
+
+None of the three training arms alone passes every check. Hard-turnover
+sampling improves clean/v1 spell and retains all short-recall means but loses
+.000153 v2 spell; ordinary continuation improves v2 but loses v1 short recall.
+The separately declared blend combines these complementary results.
+The adopted/deployed package remains unchanged: this study produces provider
+holdout research candidates, not fitted pooled deployment weights.
 The [frozen plan](TURNOVER_SUPERVISION_V1_PLAN.md) owns the original hypothesis,
 budget and retention checks.
 
@@ -179,6 +183,54 @@ stay at 342 in SkillCorner and rise from 509 to 513 in Sportec. The intended
 mechanism moves only slightly and unevenly; more event exposure has not
 resolved the main pool of weak/reversed H/A errors.
 
+## Cached-mixture follow-up
+
+After inspecting the training results, we separately declare
+[three fixed mixtures](TURNOVER_SUPERVISION_MIX_V1_PLAN.md): 25%, 50% and 75%
+hard-turnover CE, with the remaining CE weight from fresh continuation.
+The approved .5/.375/.125 family weights and all decoder/retention settings
+stay fixed. This is a post-result complementarity test, not new independent
+evidence. It adds no fitting or inference, omits the weaker uniform arm, and
+does not allocate a finer search, provider-specific weights or seed selection.
+
+All three original training endpoints must replay before evaluating mixtures.
+The [endpoint replay](results/turnover_supervision_mix_v1_endpoint_replay.json)
+passes all 105 original-arm scorecards before mixture scoring.
+The [saved mixture results](results/turnover_supervision_mix_v1.json) are:
+
+| Hard CE fraction | Clean spell | V1 spell | V2 spell | Retention |
+| --- | ---: | ---: | ---: | --- |
+| .25 | .670851 | .531568 | .594679 | Fails v1 spell and short recall |
+| .50 | .670678 | .533007 | .594342 | Fails v1 short recall |
+| .75 | .670848 | .533247 | .594002 | Passes every check |
+
+The .75 mixture improves spell by **.000712/.001119/.000384** and short
+recall by **.000741/.000606/.000506**, in clean/v1/v2 order, versus approved.
+Its macro F1 is .871997/.827122/.852111; v2 macro declines .000093,
+within the frozen .001 allowance. Its auxiliary 70/30 summaries are
+.731193/.621410/.671435. D metrics, D/X masks and grading/reference counts
+remain unchanged. Predicted spell counts are 346.111/300.611/329.972.
+
+The candidate's v2 provider spell deltas are +.000237 Metrica, -.000246
+SkillCorner and +.001160 Sportec. Clean spell is unchanged in Metrica and
+improves in the other two providers; v1 spell improves in all three.
+The CE-seed v2 diagnostics are .593255 and .590136, both below the approved
+two-seed ensemble. They are not comparable independent estimates of that
+ensemble's uncertainty; they do show that its small gain depends on pooling.
+
+Retain `.75` as an experimental development candidate. The
+[independent mixture readout](results/turnover_supervision_mix_v1_readout.json)
+verifies all 105 pooled and 210 CE-seed outputs, including reconstructed
+probabilities, decoding, official scores, counts and guards.
+The numerical v2 leaders `.25` and `.50` remain
+rejected under their failed guards; this report does not relax those checks.
+Stop this declared weight search. The gain is small on repeatedly exposed
+data, and further fractions would provide little new evidence. The concrete
+next validation is to construct the exact pooled counterpart and evaluate it
+without retuning on the separate GAR protocol, followed by independently
+annotated continuous-match gold data. Neither step is performed by this study,
+and there is no automatic promotion or organizer rescore.
+
 ## Evidence limits
 
 The same five development matches have been examined repeatedly. Feed-like v2
@@ -192,8 +244,8 @@ and no pooled deployment candidate is produced by this comparison.
 
 ## Validation and delivery
 
-All 27 focused turnover tests pass. The required experiment suite runs 919
-tests: 913 pass, one skips, and five inherited public-contract tests error
+All 32 focused turnover and mixture tests pass. The final required experiment
+suite runs 925 tests: 919 pass, one skips, and five inherited public-contract tests error
 because the historical `v2_spell_balanced_v1/public_prediction_seal.json`
 and associated candidate artifact are absent. The frozen tests are preserved;
 no organizer scoring is used to recreate their fixture. The 26 root tests,
@@ -206,5 +258,12 @@ exact D/X masks and grading/reference counts, and reproduces aggregate scores,
 guards and training exposure receipts. The turnover-specific readout separately
 verifies its 35 baseline and 105 candidate audit rows.
 
-Final replay, documentation checks, PR, private artifact availability and
-research-site publication will be recorded after the evaluation completes.
+The [draft PR #90](https://github.com/jekkiechan/more-than-a-hack-2027/pull/90)
+targets the fork's `main` and includes the prior recovery/postprocessing work
+from PR #88. It stays draft because of the inherited missing-fixture test
+errors. Documentation links and frozen-source preservation pass.
+
+Private artifact availability and research-site publication are recorded in
+the delivery receipts added after this source/result snapshot. Weights,
+event-level details and per-frame outputs remain private; the public report
+contains aggregate evidence only.
