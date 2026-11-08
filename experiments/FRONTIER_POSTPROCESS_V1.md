@@ -233,9 +233,33 @@ These checks do not score organizer labels.
 
 ## Delivery
 
-Code and aggregate evidence are being delivered in
+Code and aggregate evidence are delivered in
 [draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88), which
 includes the still-open PR #87 ancestry. No model promotion or closed public
-gate change is part of this work. The research checkpoint and native-probability
-archive will use a new branch in the existing private cache repository; the
-delivery receipt will distinguish remote availability from these local results.
+gate change is part of this work.
+
+The research checkpoint and prediction archive is uploaded to private
+`jekkiechan/mtah-data`, branch `research/frontier-recovery-v1`, commit
+`ff3d8a12801d9d4bb3fa064d698ce0b3b2f4f78c`. Its `frontier_recovery_v1.tar.gz`
+contains 160 files (1,083,917,042 compressed bytes): all twelve reconstructed
+CE fold checkpoints and sidecars, 35 native probability caches, 35 first-round
+and 35 composition prediction files, and the required provenance receipts/logs.
+A fresh clone with an isolated LFS store fetched the remote archive and verified
+every member's path, size and SHA-256. See the
+[remote delivery receipt](results/frontier_postprocess_private_delivery.json).
+
+Restore against public source commit
+`c2f876161c4826bdc7879dc57316f93827b56aec`, following the private branch's
+`FRONTIER_RECOVERY_V1_README.md`; the archive paths are relative to that checkout.
+It supports replay of the saved research predictions. Raw datasets, regenerated
+TRAIN/input-feature caches and pooled deployment weights are deliberately not
+duplicated in this research archive. Existing private source archives remain
+the inputs for a full training reconstruction.
+
+The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site)
+is published as **version 36**, source `9590810`, with its restricted audience
+unchanged. Overview and Experiments pass desktop/mobile layout checks and all
+36 first-round chart combinations; the composition's failed guards are visible
+separately. No application JavaScript errors were observed; existing external
+resource certificate warnings and the missing favicon remain noted in the
+[publication receipt](results/frontier_postprocess_site_publication.json).

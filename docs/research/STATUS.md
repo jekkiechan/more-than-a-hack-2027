@@ -101,15 +101,22 @@ historical diagnostics. Do not reopen closed public gates or use the reused
 
 ## Artifacts and delivery
 
-All ten deployment checkpoint roles, matching source, manifests/policy and
-aggregate provenance are verified in a local archive, including fresh
-empty-directory extraction and an isolated ten-model load. No new private-cache
-upload is claimed; the old remote default still describes the historical
-phase-average package. [Current package instructions](../../experiments/BASELINE.md)
+The prior promotion recorded all ten deployment checkpoint roles, matching
+source, manifests/policy and aggregate provenance in a verified local archive,
+including fresh extraction and an isolated ten-model load. That historical
+receipt does not establish availability in every later workspace. The remote
+default still describes the historical phase-average package.
+[Current package instructions](../../experiments/BASELINE.md)
 and [local archive receipt](../../experiments/results/baseline_spell_frontier_local_artifacts.json)
-own exact availability. New research weights, sampling sequences and frame
-outputs remain local; the full training seal stays unchanged at its ignored
-frozen path and its public aggregate inventory binds its hash.
+own that package's availability. The current-frontier postprocessing report
+separately records reconstructed research fold checkpoints, exact control replay,
+and native prediction-cache delivery. These are research holdout artifacts,
+not a replacement pooled deployment package. Frozen training seals remain intact.
+
+The 160-file research archive is now uploaded to private `mtah-data` branch
+`research/frontier-recovery-v1` at `ff3d8a1`, bound to public source `c2f8761`.
+A fresh isolated LFS download verifies the archive and all member hashes.
+[Remote availability receipt](../../experiments/results/frontier_postprocess_private_delivery.json).
 
 The promotion report preserves aborted GAR attempts, the seed-description
 erratum, six-phase compatibility correction and exact runtime guards. Old
@@ -117,8 +124,12 @@ runners, declarations, decisions and scoring gates remain intact. Use the
 recorded pre-activation revision to replay historical hash-bound studies.
 
 The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
-is published as version 34 with the same restricted audience. Desktop/mobile
-checks pass across all six pages and all 12 new chart combinations.
+is published as version 36 with the same restricted audience. The current update
+passes desktop/mobile checks for Overview and Experiments and all 36 first-round
+chart combinations; the second-round failure is shown separately.
 [PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) carries the
 completed experiments and promotion; merging follows the existing CI policy.
-[Delivery receipt](../../experiments/results/v2_extra_data_v1_delivery.json).
+[Draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88) carries
+the subsequent matched postprocessing results and remains stacked on #87.
+[Current publication receipt](../../experiments/results/frontier_postprocess_site_publication.json);
+[prior delivery receipt](../../experiments/results/v2_extra_data_v1_delivery.json).
