@@ -1,0 +1,20 @@
+{
+ "amendment_id": "v2_weight_edit_development_v1_execution_amendment_v6",
+ "declaration_sha256": "d94dcf3db9dd0af5b73bdca87d6e5139a3baea8afd4522e0ae77a4d36d13bad5",
+ "development_winner_and_selection_unchanged": true,
+ "execution_fix": "Set MTAH_SQD_DIR explicitly and call the existing frozen upstream.frozen._roots() once in the same parent process before invoking the already-bound readout adapter. Fork workers inherit those corrected archive roots. No edit to frozen runner or v2 adapter.",
+ "failure_receipt": "experiments/results/v2_weight_edit_development_v1_readout_attempt1_failure.json",
+ "frozen_runner_sha256": "6fd19be1bddb409dd99faeba119a4c4a5ec3d28e7af47af33b2cafb799830fb1",
+ "invocation": "MTAH_DATA_DIR=/workspace/mtah-data MTAH_SQD_DIR=/workspace/mtah-sqd MTAH_DT_DIR=/workspace/mtah-dt MTAH_RF_ARCHIVE_DIR=/workspace/mtah-rf/experiments/feed_robustness_v1/artifacts SOCCERNET_GAR_TRAIN_RECORDS=/workspace/more-than-a-hack-2027/data/experiments/v2_weight_edit_reconstruction_v1/gar_records_archived_pr8; python -c \"from experiments import v2_weight_edit_development as d; from experiments import v2_weight_edit_development_v1_readout_v2 as r; d.upstream.frozen._roots(); r.run_v1(workers=3)\"",
+ "issue": "First real v1 invocation failed before writing any cells: frozen v1 setup did not call runtime _roots(), so archived cand model lookup used the wrong default MTAH_DATA_DIR path rather than the restored MTAH_SQD_DIR path.",
+ "no_v1_cell_artifacts_or_scores_written": true,
+ "organizer_reference_access": false,
+ "parent_amendment_path": "experiments/results/v2_weight_edit_development_v1_execution_amendment_v5.json",
+ "parent_amendment_sha256": "be72df13eb4f7948d601460e66192881f09f1cb83b0d0ebab5d8266682563849",
+ "promotion": false,
+ "public_scoring": false,
+ "study_id": "v2_weight_edit_development_v1",
+ "v1_adapter_path": "experiments/v2_weight_edit_development_v1_readout_v2.py",
+ "v1_adapter_sha256": "21b8a1188078794909c91dd2ac647e07215db876906f9026caa945839ead415a",
+ "v1_adapter_test_sha256": "80e9508c5570ff49838d672740102f99159144e999b6244f9c13480b1e5078ea"
+}

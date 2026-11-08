@@ -1,0 +1,316 @@
+{
+  "version": 11,
+  "model": "joint_gru_sn_dense_spell_frontier_ensemble",
+  "package_version": "joint_gru_sn_dense_spell_frontier_ensemble_v1",
+  "status": "User-authorized provisional working baseline; independent gold confirmation pending",
+  "promoted_utc": "2026-11-07T05:00:04.551166+00:00",
+  "replaced_baseline": "joint_gru_sn_dense_original_diversity_phase_ensemble",
+  "previous_manifest": "experiments/baselines/joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json",
+  "previous_manifest_sha256": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+  "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json",
+  "previous_policy_sha256": "f987ffcad31c283bba5e26fa8402adbf55fc1764876423854a4fe41be47c2a13",
+  "model_directory": "data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1",
+  "models_sha256": {
+    "adopted_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+    "adopted_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+    "calibrated_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+    "calibrated_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+    "ce_2026.joblib": "d9691336672b13191bf2ce47715fc904f3bc6c14b8477b2f6ff2425d9f78d9c2",
+    "ce_2027.joblib": "4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa",
+    "teacher_adopted_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "teacher_adopted_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13",
+    "teacher_calibrated_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+    "teacher_calibrated_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+  },
+  "default_output": "data/experiments/current_baseline/joint_gru_sn_dense_spell_frontier_ensemble.csv",
+  "architecture": {
+    "kind": "sn_dense_spell_frontier_ensemble",
+    "recipe": {
+      "ce_weight": 0.5,
+      "calibrated_weight": 0.375,
+      "adopted_weight": 0.125,
+      "pooling": "arithmetic",
+      "ha_cost": 3.0
+    },
+    "seeds": [
+      2026,
+      2027
+    ],
+    "phase_order": "seeds_then_phases",
+    "D": "Exact predecessor decoded D mask",
+    "roles": [
+      "ce",
+      "adopted",
+      "calibrated",
+      "teacher_adopted",
+      "teacher_calibrated"
+    ]
+  },
+  "training": {
+    "ce_stage": 1024,
+    "seeds": [
+      2026,
+      2027
+    ],
+    "original_train_matches": 13,
+    "gar_train_games": 45,
+    "fitting_during_promotion": false,
+    "pooled_seal": "experiments/results/v2_spell_balanced_v1_pooled_seal.json"
+  },
+  "evidence": {
+    "report": "experiments/V2_SPELL_FRONTIER.md",
+    "selection_sha256": "946a13b463fa3505554b39ce1cd88ddaa7432f5de2250819c3479260f601864a",
+    "original_development": {
+      "clean": {
+        "d_f1": {
+          "cells": 5,
+          "equal_provider": 0.8709262129113644,
+          "providers": {
+            "Metrica": 0.9161000219346348,
+            "SkillCorner": 0.7742689994671235,
+            "Sportec": 0.9224096173323352
+          }
+        },
+        "d_precision": {
+          "cells": 5,
+          "equal_provider": 0.8848440256124785,
+          "providers": {
+            "Metrica": 0.9052387454754318,
+            "SkillCorner": 0.8516160557777513,
+            "Sportec": 0.8976772755842524
+          }
+        },
+        "d_recall": {
+          "cells": 5,
+          "equal_provider": 0.8619197297485038,
+          "providers": {
+            "Metrica": 0.9272250960193593,
+            "SkillCorner": 0.709990696999737,
+            "Sportec": 0.9485433962264151
+          }
+        },
+        "macro_f1": {
+          "cells": 5,
+          "equal_provider": 0.8718643812171453,
+          "providers": {
+            "Metrica": 0.9364244131294465,
+            "SkillCorner": 0.7917022524788363,
+            "Sportec": 0.8874664780431528
+          }
+        },
+        "predicted_spell_count": {
+          "cells": 5,
+          "equal_provider": 346.3333333333333,
+          "providers": {
+            "Metrica": 345.0,
+            "SkillCorner": 380.0,
+            "Sportec": 314.0
+          }
+        },
+        "reference_spell_count": {
+          "cells": 5,
+          "equal_provider": 404.3333333333333,
+          "providers": {
+            "Metrica": 382.0,
+            "SkillCorner": 375.0,
+            "Sportec": 456.0
+          }
+        },
+        "short_spell_recall_iou_0_5_lt3s": {
+          "cells": 5,
+          "equal_provider": 0.4085971774951634,
+          "providers": {
+            "Metrica": 0.6111111111111112,
+            "SkillCorner": 0.2847311827956989,
+            "Sportec": 0.3299492385786802
+          }
+        },
+        "spell_f1": {
+          "cells": 5,
+          "equal_provider": 0.6701365499557103,
+          "providers": {
+            "Metrica": 0.8484181568088033,
+            "SkillCorner": 0.48406941513624974,
+            "Sportec": 0.677922077922078
+          }
+        }
+      },
+      "feed_like_v1": {
+        "d_f1": {
+          "cells": 10,
+          "equal_provider": 0.8605626025749847,
+          "providers": {
+            "Metrica": 0.8963399047114152,
+            "SkillCorner": 0.7798024717989795,
+            "Sportec": 0.905545431214559
+          }
+        },
+        "d_precision": {
+          "cells": 10,
+          "equal_provider": 0.8430064926949227,
+          "providers": {
+            "Metrica": 0.859444226957766,
+            "SkillCorner": 0.8055395516185856,
+            "Sportec": 0.8640356995084166
+          }
+        },
+        "d_recall": {
+          "cells": 10,
+          "equal_provider": 0.8812172287856351,
+          "providers": {
+            "Metrica": 0.9365828208600671,
+            "SkillCorner": 0.7558235824779703,
+            "Sportec": 0.951245283018868
+          }
+        },
+        "macro_f1": {
+          "cells": 10,
+          "equal_provider": 0.8261543004095224,
+          "providers": {
+            "Metrica": 0.8819734535926398,
+            "SkillCorner": 0.774150164145525,
+            "Sportec": 0.8223392834904025
+          }
+        },
+        "predicted_spell_count": {
+          "cells": 10,
+          "equal_provider": 299.5,
+          "providers": {
+            "Metrica": 282.0,
+            "SkillCorner": 347.5,
+            "Sportec": 269.0
+          }
+        },
+        "reference_spell_count": {
+          "cells": 10,
+          "equal_provider": 404.3333333333333,
+          "providers": {
+            "Metrica": 382.0,
+            "SkillCorner": 375.0,
+            "Sportec": 456.0
+          }
+        },
+        "short_spell_recall_iou_0_5_lt3s": {
+          "cells": 10,
+          "equal_provider": 0.22036696548240675,
+          "providers": {
+            "Metrica": 0.2936507936507936,
+            "SkillCorner": 0.2303942652329749,
+            "Sportec": 0.13705583756345177
+          }
+        },
+        "spell_f1": {
+          "cells": 10,
+          "equal_provider": 0.532128306931943,
+          "providers": {
+            "Metrica": 0.6443071479603988,
+            "SkillCorner": 0.4486553448882975,
+            "Sportec": 0.5034224279471329
+          }
+        }
+      },
+      "feed_like_v2": {
+        "d_f1": {
+          "cells": 20,
+          "equal_provider": 0.8661375939080541,
+          "providers": {
+            "Metrica": 0.8969038565127386,
+            "SkillCorner": 0.7919389799598809,
+            "Sportec": 0.9095699452515431
+          }
+        },
+        "d_precision": {
+          "cells": 20,
+          "equal_provider": 0.8730340318137279,
+          "providers": {
+            "Metrica": 0.881885931781764,
+            "SkillCorner": 0.8550162217549152,
+            "Sportec": 0.8821999419045046
+          }
+        },
+        "d_recall": {
+          "cells": 20,
+          "equal_provider": 0.8629801459021867,
+          "providers": {
+            "Metrica": 0.9124447749927846,
+            "SkillCorner": 0.7377069834684926,
+            "Sportec": 0.9387886792452831
+          }
+        },
+        "macro_f1": {
+          "cells": 20,
+          "equal_provider": 0.8522037287846299,
+          "providers": {
+            "Metrica": 0.9021264275736434,
+            "SkillCorner": 0.7983754573236482,
+            "Sportec": 0.8561093014565986
+          }
+        },
+        "predicted_spell_count": {
+          "cells": 20,
+          "equal_provider": 329.3333333333333,
+          "providers": {
+            "Metrica": 325.0,
+            "SkillCorner": 370.5,
+            "Sportec": 292.5
+          }
+        },
+        "reference_spell_count": {
+          "cells": 20,
+          "equal_provider": 404.3333333333333,
+          "providers": {
+            "Metrica": 382.0,
+            "SkillCorner": 375.0,
+            "Sportec": 456.0
+          }
+        },
+        "short_spell_recall_iou_0_5_lt3s": {
+          "cells": 20,
+          "equal_provider": 0.2886038876369644,
+          "providers": {
+            "Metrica": 0.35912698412698413,
+            "SkillCorner": 0.27698924731182795,
+            "Sportec": 0.2296954314720812
+          }
+        },
+        "spell_f1": {
+          "cells": 20,
+          "equal_provider": 0.5936187198896373,
+          "providers": {
+            "Metrica": 0.7057834536923884,
+            "SkillCorner": 0.48397213093339525,
+            "Sportec": 0.5911005750431282
+          }
+        }
+      }
+    },
+    "prediction_csv_sha256": "26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc",
+    "historical_clean_screen_passes": false,
+    "independent_continuous_gold_confirmation": false
+  },
+  "promotion": {
+    "type": "explicit_user_authorized_spell_frontier_upgrade",
+    "user_request": "this is great. let's promote it",
+    "exception": "Explicit user promotion of the frozen 0.593619 v2 spell blend. The >0.60 target and historical +.01 clean screen remain unmet. All three spell means improve over the predecessor; slight v1 macro regression is accepted. Provider regressions and repeated development/public exposure remain disclosed; independent continuous-match gold confirmation is pending.",
+    "automatic_promotion": false,
+    "fitting_during_promotion": false,
+    "organizer_rescoring_performed": false,
+    "public_diagnostic_known_before_authorization": true
+  },
+  "organizer_public_diagnostic": {
+    "report": "experiments/results/v2_spell_frontier_v1_public_result.json",
+    "report_sha256": "1c3aba84338a921277473a836724a1058bd8e066811e90e3646a402d39b7a21b",
+    "diagnostic_only": true,
+    "used_for_model_or_hyperparameter_selection": false,
+    "independent_confirmation": false
+  },
+  "source_sha256": {
+    "experiments/spell_frontier_baseline.py": "c42d74154b48714836f704dfa623fe38c164a6e7c10de6aaa80e17edcd5c8610",
+    "experiments/promote_spell_frontier.py": "5883c99ee2e0f1d91ec8207380bbb30a4ac1d92eaf62963702db7942c72d5884",
+    "experiments/v2_spell_balanced_eval.py": "ba57176cd16ff7535b98acd3d78acd3aefcc002c723101f6f2dc816b892b2514",
+    "experiments/v2_spell_balanced_public.py": "fd3504f710259220ef118bcdc2be301dfb7c68d728d802e0ee8bc0c78726026a",
+    "experiments/v2_iterative_runtime.py": "199b9cc1f196883ff767121c6a96390234fb9ac30adb79dcea1756caac7c3d5b"
+  },
+  "organizer_reference_labels_used_for_training": false,
+  "historical_selection_records_preserved": true
+}

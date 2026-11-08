@@ -1,0 +1,116 @@
+{
+  "aggregation": "Within each game: one score per view; equal mean over v2_1..v2_4; then equal mean over games. TEST and VALID remain separate.",
+  "cells_by_split": {
+    "test": 50,
+    "valid": 45
+  },
+  "cohorts": {
+    "test": 10,
+    "valid": 9
+  },
+  "control": "Reconstruct adopted original_full phase_avg from the sealed two-seed adopted expert on the identical clean/v2 views. Require exact D mask equality; match clean per-game metrics and four-view mean per-game metrics to the frozen prior report at absolute tolerance 1e-12.",
+  "control_absolute_tolerance": 1e-12,
+  "corruption_repetitions": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "created_utc": "2026-11-07T05:20:25.754628+00:00",
+  "decoder": "Fixed adopted D mask; H/A recipe uses ha_cost=3.0.",
+  "expected_score_cells": 95,
+  "fitting": false,
+  "game_ids": {
+    "test": [
+      "3850",
+      "3851",
+      "3852",
+      "3853",
+      "3854",
+      "3855",
+      "3856",
+      "3857",
+      "3858",
+      "3859"
+    ],
+    "valid": [
+      "3841",
+      "3842",
+      "3843",
+      "3844",
+      "3845",
+      "3846",
+      "3847",
+      "3848",
+      "3849"
+    ]
+  },
+  "known_limit": "Historical per-game NPZ payloads are absent locally; only the verified inventory and prior report exist. The adopted control is reconstructed and bound to the prior per-game report before paired comparison. TEST has prior exposure; VALID is development-only.",
+  "models": {
+    "manifest_path": "data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1/baseline_manifest.json",
+    "manifest_sha256": "909a9c50f66ffd598ef40fc79b8cf7565e2c8f60d439facb770a8338d2166012",
+    "models_sha256": {
+      "adopted_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+      "adopted_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+      "calibrated_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+      "calibrated_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+      "ce_2026.joblib": "d9691336672b13191bf2ce47715fc904f3bc6c14b8477b2f6ff2425d9f78d9c2",
+      "ce_2027.joblib": "4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa",
+      "teacher_adopted_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "teacher_adopted_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13",
+      "teacher_calibrated_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "teacher_calibrated_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+    },
+    "roles": [
+      "ce",
+      "adopted",
+      "calibrated",
+      "teacher_adopted",
+      "teacher_calibrated"
+    ],
+    "seeds": [
+      2026,
+      2027
+    ],
+    "training": {
+      "ce_stage": 1024,
+      "fitting_during_promotion": false,
+      "gar_train_games": 45,
+      "original_train_matches": 13,
+      "pooled_seal": "experiments/results/v2_spell_balanced_v1_pooled_seal.json",
+      "seeds": [
+        2026,
+        2027
+      ]
+    }
+  },
+  "organizer_reference_access": false,
+  "parent_artifact_inventory_sha256": "0742dc76726d5b1ef98436bb307799928259bd0e32691c036588eb5b3e66dcf0",
+  "parent_declaration_sha256": "35ec557c4b5ad65ed210d937d38ba868c82fdbf5c043b01820afa4dc8ec23905",
+  "parent_result_sha256": "29a33186115ff11fdef904e2b70ee760ba861ef58c078fda43ec59343c9026a3",
+  "phase_count": "round(native_fps / 5), six phases at 29.97Hz.",
+  "phase_order": "seeds_then_phases",
+  "promotion": false,
+  "public_scoring": false,
+  "question": "Paired descriptive comparison of the frozen spell-frontier pooled blend against the adopted original_full phase-averaged control on previously used GAR TEST and VALID data.",
+  "recipe": {
+    "adopted_weight": 0.125,
+    "calibrated_weight": 0.375,
+    "ce_weight": 0.5,
+    "ha_cost": 3.0,
+    "pooling": "arithmetic"
+  },
+  "runner_sha256": "f7b5ef7dfdf0b3f7c5c182bf0958d3cfcf424c18d91d05624b9902ed3c0fc3a7",
+  "seed_source": "Reuse heldout.feed_view(inputs, labels, calibration, f\"gar_deployment_eval_v2/{game_id}\", rep), identical to prior frozen GAR deployment.",
+  "selection_or_tuning": false,
+  "status": "frozen_evaluation_protocol",
+  "study": "spell_frontier_gar_v1",
+  "test_sha256": "b2102c5a1042ec1d0e400b97ee921a4f81a3cac84a4cc292b361959252db6cb6",
+  "views": [
+    "clean",
+    "v2_1",
+    "v2_2",
+    "v2_3",
+    "v2_4"
+  ]
+}

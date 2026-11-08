@@ -1,0 +1,321 @@
+{
+  "accessed_validation_test_or_organizer_labels": false,
+  "audit_code_sha256": "269702b812665e31d1f741ab78390a096163ae1d1465605f82f490bbd2d70acd",
+  "definition": {
+    "context": "Immediately preceding and following 1s/2s must be uninterrupted H/A rows, all equal to their respective edge-side team; D, unknown, another turnover, period or record break invalidates context. This is a label-continuity inventory, not independent annotation.",
+    "edge": "Adjacent native H/A rows with different teams in same record and period. Stable context does not establish a fully observed possession spell.",
+    "sampling": "The shared trainer uses nonoverlapping 50-sample cores and 25-sample context; these correspond to about 10s on original features and 12s on GAR sampled features. Counts separately show stable edges with >=1s native context inside the actual 50-sample core. Short sampler uses these existing core windows and changes access frequency. For future within-record sampling, deduplicate by (source, match, native start, native stop, team); map native span endpoints through each paired record indices array to existing windows. Keep all paired records in the unchanged sampler, or define identity on native coordinates so they cannot masquerade as new events.",
+    "short_span": "Maximal constant-team H/A run <=3s with known boundaries; period/record ends and unknown-boundary spans are censored."
+  },
+  "existing_original_short_sampler": {
+    "interpretation": "Historical distinct <=3s possession sampler: approximately 25% of old draws are replacement requests; distinct possession/window bag counts repeat each event across paired views. Use native event identity for any turnover sampler.",
+    "receipt_sha256": "77b3e5e4c220beed96fd1f9206975d5fd5e287a9f5105f6ed620862317c86013",
+    "schedule_rows": [
+      {
+        "eligible_windows_with_short_ha": 1940,
+        "fold": "leave_out_sportec",
+        "paired_record_nominated_possessions": 2060,
+        "paired_record_possession_candidates": 2060,
+        "replacement_draws": 8223,
+        "seed": 2026,
+        "short_containing_draws": 12170,
+        "total_draws": 32768
+      },
+      {
+        "eligible_windows_with_short_ha": 1940,
+        "fold": "leave_out_sportec",
+        "paired_record_nominated_possessions": 2060,
+        "paired_record_possession_candidates": 2060,
+        "replacement_draws": 8227,
+        "seed": 2027,
+        "short_containing_draws": 12168,
+        "total_draws": 32768
+      },
+      {
+        "eligible_windows_with_short_ha": 2912,
+        "fold": "leave_out_metrica",
+        "paired_record_nominated_possessions": 3792,
+        "paired_record_possession_candidates": 3792,
+        "replacement_draws": 8308,
+        "seed": 2026,
+        "short_containing_draws": 14066,
+        "total_draws": 32768
+      },
+      {
+        "eligible_windows_with_short_ha": 2912,
+        "fold": "leave_out_metrica",
+        "paired_record_nominated_possessions": 3792,
+        "paired_record_possession_candidates": 3792,
+        "replacement_draws": 8246,
+        "seed": 2027,
+        "short_containing_draws": 13999,
+        "total_draws": 32768
+      },
+      {
+        "eligible_windows_with_short_ha": 2524,
+        "fold": "leave_out_skillcorner",
+        "paired_record_nominated_possessions": 3412,
+        "paired_record_possession_candidates": 3412,
+        "replacement_draws": 8279,
+        "seed": 2026,
+        "short_containing_draws": 15617,
+        "total_draws": 32768
+      },
+      {
+        "eligible_windows_with_short_ha": 2524,
+        "fold": "leave_out_skillcorner",
+        "paired_record_nominated_possessions": 3412,
+        "paired_record_possession_candidates": 3412,
+        "replacement_draws": 8208,
+        "seed": 2027,
+        "short_containing_draws": 15456,
+        "total_draws": 32768
+      }
+    ]
+  },
+  "fit_or_candidate_score_run": false,
+  "gar": {
+    "adjacent_ha_turnovers": 5911,
+    "central_core_edge_position_counts": {
+      "first_quarter": 411,
+      "last_quarter": 934,
+      "middle_half": 2892
+    },
+    "complete_constant_ha_spans_le_3s": 1427,
+    "constant_ha_runs": 17218,
+    "dead_native_rows": 316883,
+    "native_rows_in_complete_spans_le_3s": 74889,
+    "records": 11249,
+    "turnovers_with_1s_stable_context_inside_50_sample_core": 4237,
+    "turnovers_with_stable_same_team_context_both_sides": {
+      "1": 5083,
+      "2": 3609
+    },
+    "unknown_native_rows": 635981,
+    "valid_ha_native_rows": 4110475
+  },
+  "input_hashes": {
+    "gar_train_game_sha256": {
+      "10502.joblib": "3ead8cc44ef79b7d924dbf454b2390645f0309b44aa59159189dccadfb170d1a",
+      "10503.joblib": "b15439d140d0bf38c241ee29d974be178d8f7a366c87dc8981dae8a0d1dabdc1",
+      "10504.joblib": "446b32d6189b1596ad3f61c032cdca5fd66e9f8f081444ef75769333a79fba86",
+      "10505.joblib": "bc7a9098d96706bf421ac2d0f59bc20b17184c1dc83365968881d8b98a4d57d8",
+      "10506.joblib": "2dfde999b12459eb709032b2d6754df84ad1ea6405180b29275e95675cfa727c",
+      "10507.joblib": "ac9db28ebc151e7ec3af8a64ccd76396d5201e72520e8b7fcd2a688f2a4468a2",
+      "10508.joblib": "d95d7c1272fd228a07842e759f543c11e3103cf52e2341f230cfb29ba0331d39",
+      "10509.joblib": "56a7a7dc511b22992b179f89a3d0d97facab41fb870e69200863167789e50b94",
+      "10510.joblib": "48f8cae77eb5f09a9810c0bae3e65cba4278a6b75b2c6ad1dbb85e342afa0241",
+      "10511.joblib": "44590325b7b64483acfb26fbb4f8c110778a996de0aa4199edc2be6c48fa1046",
+      "10512.joblib": "58f200f20ed57d36a92340831ce44e7ec2e3fcd2f35389239274dbd10c81dac7",
+      "10513.joblib": "7ba6959db8f506372f498fca9fc861806d6717b0d3ffc44284ebb3d958749669",
+      "10514.joblib": "17f6c8b4541968120df5dd2003f2e24281227c24fbc0b764820b13996f439fd4",
+      "10515.joblib": "68930d92400d6ece870fd172dbac3dffc031b60d2c1b9236fa67e35b861ed076",
+      "10516.joblib": "dd174d72eb5d23a9835f6b85790446b58415f090b6be7c43d9fed3d22fc0ae0f",
+      "10517.joblib": "a79ae25a808334f9afcf29585f408b40b726a60b731bd4a7010dbd460e08bc4a",
+      "3812.joblib": "333a6982b378f76b42f94e64ce181e8ca4879323df44921cbc17c14002c0beeb",
+      "3813.joblib": "8a9f73b3b9aadd4f63489fd67b7e2af5617d428eada3be82f5099c4eae73756c",
+      "3814.joblib": "42b44adf809714f1aca01ee817850355cf1e6ede07b5ef41a9f91a8577aa1470",
+      "3815.joblib": "4aae64dbf1312c2f3908c0c68fdc5a3669cf6de0a0a3ddf370a582ee0e1807ca",
+      "3816.joblib": "6aa94c1ab6bcc0bc8bebd9c6a92870e8e4653592a40140dca94aa20dd00429bc",
+      "3817.joblib": "25882a4238ee2831f9b84ba1a634b5e36d06bc6513d4ef425bea8e7cacee4b33",
+      "3818.joblib": "78ff608885cdd41eca3f9611d0aeba11c7f57827f1f83e59616d8f8d7b1ab482",
+      "3819.joblib": "fe95faa6ff0d083e967e1c98c9c64159a4451c5b9ddaad3093c4c0e37cdb96af",
+      "3820.joblib": "90508029f1dc2e519f89cf7afee0b2fcc3fcfafd9b55685235ee7b80871345b2",
+      "3821.joblib": "10295bbdd6df8763be16280369a6f7caa76a78de6772fc1bdb5fb4eec13fc899",
+      "3822.joblib": "dde6944807d9cbd40b9a67c0e1d92a4b7e04cc4842b194488d0dab18c7524019",
+      "3823.joblib": "9263e89e4844eb9d56196a337733fc2332f1d003a612f45a073b686a88b6c769",
+      "3824.joblib": "31bb07b3147e42c5a2e1a095ca7bf1b6fb9b4180f97786b1b7ea4ddb4a45a396",
+      "3825.joblib": "416e2331a3b668b985adb512b97e746ad898611b27c9611b784a1e212d7d688e",
+      "3826.joblib": "efafea09799cb949d6addff773fb7a7a0b8d7442df8654a25d1a8740cba487b9",
+      "3827.joblib": "b2e70e2c45e2333a7f7b1dc370caa75f1e68e3690aa9c71cf2cb28da517db5bb",
+      "3828.joblib": "eb6fc31665121c4a19170a848ba2842b683cd600da9c636fe3d4f039485fff7e",
+      "3829.joblib": "a4e895391eca463efac5a4dc74eb533f8a9d981dc780366240ec0bd81d0d9486",
+      "3830.joblib": "8075440c4884bdd3cecd452c94915475d842ff05e270f7abcea350e884bfb1fa",
+      "3831.joblib": "74c07a4694dcf013dc5909a37871501fb7b7d84acb61be16978d54f8f2bd4cb5",
+      "3832.joblib": "419b1750309ae677699124956494c9d7fb3af943ac3ed7f3edc502fa3bf318e1",
+      "3833.joblib": "4d2ec75253e176551d1899b5d69429c8e19ca66d7ebeeade70b3c37effe49acb",
+      "3834.joblib": "94d61fe833d43f19f65a3526c638e9280e3be0f065fadd68f99608f4c39cb1d9",
+      "3835.joblib": "c980cb6e53e337238e654c4fded30154586ce32b0471d0788590430d08eb43cc",
+      "3836.joblib": "3570b195e9d69331dcae7e51fab84e583cad6525059956d17bbe9cb73599e16e",
+      "3837.joblib": "04fe6f592d769eaf7d0c1b85f68a56819daecb607b429db2eb142fe4a8a62c85",
+      "3838.joblib": "04d0b8c863b3fbfc4f6255e38eee7467f9460bda6eb9303700514ca1fbbeed42",
+      "3839.joblib": "75d8b57144a6ae8df907de2c0d16717a6a508e2a4758887ba0aa9c03f0a26858",
+      "3840.joblib": "2ce6fcef6906bd77c6a06a44c03a3b580f0e73cc107d9495cbd7c7e4ce269e86"
+    },
+    "gar_train_manifest_sha256": "1f905524123f63c60bd12bd42150c1d111dc779c1760f8d9b4a725077f3706d5",
+    "original_cache_manifest_sha256": "1f53e94696d62e6988b4c4dea40d4de58f7deede4809f2fbfcd157e2ab53739d",
+    "original_train_cache_sha256": {
+      "J03WMX": "ab75cb7199d52eab7fd60fdd34ce29ded919bb77b6bf1c301fd90d4b6368dd23",
+      "J03WN1": "a6494dd9753f19e3e4a2cea45bde0081b2586ed8d1657bd7e3732de3e5722a5b",
+      "J03WOH": "3d2fb5068e459905c82e2319415de7181e614f84b7f11e5fea50bea0c7275946",
+      "metrica_1": "2445e56b7704d2669080552aac0415803c8393e3b901fe7c0696446ecbfb01ba",
+      "metrica_2": "e5189a5ffdcc6142aced86d47612f9f4aad29399052cf8eddeb172b75c98e0bb",
+      "skillcorner_had_1874553": "929fda060548385596ee47db27346e315759870ca21ed8648460fc92e09280fa",
+      "skillcorner_had_1886347": "baff2f2feabd1c43b7c82a6d93ef25d7fe1d4d1049ac7603c3e05efc3f542249",
+      "skillcorner_had_1899585": "ace42e94689a4d9ebcae21a0ecb40358d33cc831151766aaf4f9fe24b09d5c6b",
+      "skillcorner_had_1925299": "d10c99821d9944170e0587a50a26770326994c7e9465465eaa0bf30e3c979f7a",
+      "skillcorner_had_1927964": "6a884b98a613351e0eefd1935a5704401a26f18892be7598943159c2ace44bbf",
+      "skillcorner_had_1953632": "7c104dee9fdbb57bc4dc4a23c1783f7bd0455a1101b70681bd0ad9cb39817cc7",
+      "skillcorner_had_1959846": "0bece376878c1b0aadc98cfd24a2e08c140aea2b287ea912b2181a4db48965a4",
+      "skillcorner_had_1986691": "6be26d49dd20bc5e69f7c033954c7e22de98e2cc2c2e5b398f176ba786ba4ae8"
+    },
+    "warmstart_paths_present": true
+  },
+  "label_encoding": {
+    "A": 1,
+    "D": 2,
+    "H": 0,
+    "unknown": -1
+  },
+  "limitations": [
+    "Stable edge context is based on label continuity and does not prove the whole possession was observed or independently annotated.",
+    "Original prepared full-native caches expose labels, period IDs and FPS but no native timestamp array; adjacency follows the preserved cache row order and period blocks. GAR records were already segmented at native frame and timestamp discontinuities.",
+    "Core-center counts are geometry diagnostics for the existing 50-sample core sampler; they do not imply a turnover-specific sampler was previously used."
+  ],
+  "original": {
+    "adjacent_ha_turnovers": 2906,
+    "central_core_edge_position_counts": {
+      "first_quarter": 312,
+      "last_quarter": 345,
+      "middle_half": 1044
+    },
+    "complete_constant_ha_spans_le_3s": 1173,
+    "constant_ha_runs": 5158,
+    "dead_native_rows": 362502,
+    "native_rows_in_complete_spans_le_3s": 36965,
+    "records": 13,
+    "turnovers_with_1s_stable_context_inside_50_sample_core": 1701,
+    "turnovers_with_stable_same_team_context_both_sides": {
+      "1": 2139,
+      "2": 1397
+    },
+    "unknown_native_rows": 235057,
+    "valid_ha_native_rows": 590489
+  },
+  "original_by_leave_out_fold": {
+    "leave_out_metrica": {
+      "adjacent_ha_turnovers": 2434,
+      "central_core_edge_position_counts": {
+        "first_quarter": 250,
+        "last_quarter": 287,
+        "middle_half": 850
+      },
+      "complete_constant_ha_spans_le_3s": 961,
+      "constant_ha_runs": 4483,
+      "dead_native_rows": 248328,
+      "native_rows_in_complete_spans_le_3s": 28373,
+      "records": 11,
+      "turnovers_with_1s_stable_context_inside_50_sample_core": 1387,
+      "turnovers_with_stable_same_team_context_both_sides": {
+        "1": 1724,
+        "2": 1095
+      },
+      "unknown_native_rows": 231083,
+      "valid_ha_native_rows": 422475
+    },
+    "leave_out_skillcorner": {
+      "adjacent_ha_turnovers": 1575,
+      "central_core_edge_position_counts": {
+        "first_quarter": 169,
+        "last_quarter": 191,
+        "middle_half": 604
+      },
+      "complete_constant_ha_spans_le_3s": 868,
+      "constant_ha_runs": 2088,
+      "dead_native_rows": 313225,
+      "native_rows_in_complete_spans_le_3s": 32616,
+      "records": 5,
+      "turnovers_with_1s_stable_context_inside_50_sample_core": 964,
+      "turnovers_with_stable_same_team_context_both_sides": {
+        "1": 1220,
+        "2": 796
+      },
+      "unknown_native_rows": 3974,
+      "valid_ha_native_rows": 393705
+    },
+    "leave_out_sportec": {
+      "adjacent_ha_turnovers": 1803,
+      "central_core_edge_position_counts": {
+        "first_quarter": 205,
+        "last_quarter": 212,
+        "middle_half": 634
+      },
+      "complete_constant_ha_spans_le_3s": 517,
+      "constant_ha_runs": 3745,
+      "dead_native_rows": 163451,
+      "native_rows_in_complete_spans_le_3s": 12941,
+      "records": 10,
+      "turnovers_with_1s_stable_context_inside_50_sample_core": 1051,
+      "turnovers_with_stable_same_team_context_both_sides": {
+        "1": 1334,
+        "2": 903
+      },
+      "unknown_native_rows": 235057,
+      "valid_ha_native_rows": 364798
+    }
+  },
+  "original_by_provider": {
+    "metrica": {
+      "adjacent_ha_turnovers": 472,
+      "central_core_edge_position_counts": {
+        "first_quarter": 62,
+        "last_quarter": 58,
+        "middle_half": 194
+      },
+      "complete_constant_ha_spans_le_3s": 212,
+      "constant_ha_runs": 675,
+      "dead_native_rows": 114174,
+      "native_rows_in_complete_spans_le_3s": 8592,
+      "records": 2,
+      "turnovers_with_1s_stable_context_inside_50_sample_core": 314,
+      "turnovers_with_stable_same_team_context_both_sides": {
+        "1": 415,
+        "2": 302
+      },
+      "unknown_native_rows": 3974,
+      "valid_ha_native_rows": 168014
+    },
+    "skillcorner": {
+      "adjacent_ha_turnovers": 1331,
+      "central_core_edge_position_counts": {
+        "first_quarter": 143,
+        "last_quarter": 154,
+        "middle_half": 440
+      },
+      "complete_constant_ha_spans_le_3s": 305,
+      "constant_ha_runs": 3070,
+      "dead_native_rows": 49277,
+      "native_rows_in_complete_spans_le_3s": 4349,
+      "records": 8,
+      "turnovers_with_1s_stable_context_inside_50_sample_core": 737,
+      "turnovers_with_stable_same_team_context_both_sides": {
+        "1": 919,
+        "2": 601
+      },
+      "unknown_native_rows": 231083,
+      "valid_ha_native_rows": 196784
+    },
+    "sportec": {
+      "adjacent_ha_turnovers": 1103,
+      "central_core_edge_position_counts": {
+        "first_quarter": 107,
+        "last_quarter": 133,
+        "middle_half": 410
+      },
+      "complete_constant_ha_spans_le_3s": 656,
+      "constant_ha_runs": 1413,
+      "dead_native_rows": 199051,
+      "native_rows_in_complete_spans_le_3s": 24024,
+      "records": 3,
+      "turnovers_with_1s_stable_context_inside_50_sample_core": 650,
+      "turnovers_with_stable_same_team_context_both_sides": {
+        "1": 805,
+        "2": 494
+      },
+      "unknown_native_rows": 0,
+      "valid_ha_native_rows": 225691
+    }
+  },
+  "scope": "TRAIN only: 13 original-provider matches and 45 GAR games",
+  "study": "turnover_supervision_audit"
+}

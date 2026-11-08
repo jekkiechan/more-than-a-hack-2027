@@ -1,365 +1,172 @@
 # Current research state
 
-Reviewed against fork `main` through
-[PR #72](https://github.com/jekkiechan/more-than-a-hack-2027/pull/72), plus the
-completed phase-average comparison and guard audit on PR #73. The
-subsequent explicitly user-authorized phase-average promotion supersedes PR #70.
-Check newer merged/open PRs before current-results advice. Detailed historical
-results belong in [EXPERIMENTS](EXPERIMENTS.md) and the linked reports.
+Reviewed 8 November 2026 against fork `main` at `8919726`,
+[PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) at `b12eab3`,
+[draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88),
+[turnover PR #90](https://github.com/jekkiechan/more-than-a-hack-2027/pull/90), and
+Claude's `fervent-curie-fcqsta` at `61f8182`. The active manifest
+now records the user-authorized spell-frontier promotion. Check newer merged/open
+PRs before current-results advice. Historical study evidence is indexed in
+[EXPERIMENTS](EXPERIMENTS.md); package restore/inference lives in
+[BASELINE](../../experiments/BASELINE.md).
 
 ## Adopted package
 
-The user authorized **original_full with phase averaging** on 1 November 2026:
-`joint_gru_sn_dense_original_diversity_phase_ensemble_v1`. This supersedes the
-phase0 promotion on PR #70. The [promotion report](../../experiments/ORIGINAL_FULL_PHASE_PROMOTION.md)
-and [active manifest](../../experiments/baseline_manifest.json) own delivery and
-inference. All four checkpoint hashes are unchanged; five-phase averaging is
-now enabled. No fitting or organizer rescoring is part of promotion.
+`joint_gru_sn_dense_spell_frontier_ensemble_v1` is the provisional working
+baseline, explicitly approved by the user after the frozen frontier diagnostic.
+It combines CE/calibrated/predecessor conditional H/A probabilities at
+0.5/0.375/0.125, averages seeds within phases then phases, and keeps the exact
+predecessor decoded D mask. Promotion adds no fitting or organizer scoring.
 
-Original clean/v1/v2 spell: **.667556/.531576/.583571**. Exact-package GAR TEST
-clean/v2 spell: **.701641/.701289** on ten games. All seven historical active
-guards pass; the +.01 clean screen remains failed with a user-authorized
-exception. Calibrated+phase remains the TEST/original-v2 spell point leader;
-the paired TEST phase-gain interval includes zero. Independent continuous-match
-gold confirmation remains pending.
+Original exposed development clean/v1/v2 spell is **.670137/.532128/.593619**,
+with v2 +.010048 versus the previous phase-average package. All three spell
+means improve; v1 macro declines .000699 within the accepted .001 allowance.
+**The >.60 v2 target and historical +.01 clean screen remain unmet.** Provider
+regressions remain disclosed; user approval changes adoption, not those outcomes.
 
-The evaluation policy now uses clean plus `feed_like_v2` with 4+ realizations
-for original-provider development. Keep GAR TEST separate from selected-on
-VALID and record future reuse. V1 and composite remain historical diagnostics.
+The exact deployment GAR TEST10 clean/v2 spell is
+**0.708496/0.708619**.
+TEST short-spell recall declines by .008267 clean and .005504 v2 despite better
+spell and macro means; the deployment is not an all-metric improvement on GAR.
+Selected-on VALID9 stays separate. All 95 paired cells pass independent official
+replay; all predecessor per-game controls, D masks and grading populations agree.
+This is reused silver-segment evidence, not independent continuous-match gold
+confirmation. See [promotion and GAR results](../../experiments/SPELL_FRONTIER_PROMOTION.md).
 
-## New external confidence check — 2 November 2026
+The unchanged saved public diagnostic is **.611765 spell / .851285 macro** on
+7,500 graded frames and 17 possessions. The normal CLI reproduces the exact
+199,319-row sealed CSV without reference access. The public gate remains closed;
+the earlier balanced gate remains unused. The historical public score is not
+validation of the new extra-data experimental arms.
 
-[PCBAS validation](../../experiments/PCBAS_CONFIDENCE_V1.md) acquired and audited
-three broadcast validation matches (six halves), then evaluated the frozen
-adopted package with all ball input missing. Primary Drive team agreement is
-**71.66% equal-game** (1,616/2,239 pooled correct), above each game's majority
-direction-alias reference. Pass/Cross/Shot agreement is 70.96%/60.98%/56.84%.
-Predicted dead play at live cross/shot anchors is 35.35%/40.00% pooled, a material
-failure pattern in this severe missing-ball regime. No fitting or adoption change.
+## Turnover supervision — one retained development candidate
 
-These are sparse action anchors, not continuous possession gold or spell F1.
-Coordinates use a declared 105×68 m standardization; imputed off-screen tracks
-are masked, replay events excluded, and full fixture identities remain unknown.
-The three VAL matches are now exposed. New independent continuous labels and
-observed-ball inputs remain the priority; no top-20 probability is established.
-Raw assets/predictions are locally verified only, with no new remote upload.
+[The turnover study](../../experiments/TURNOVER_SUPERVISION_V1.md) continues
+from the approved frontier with 18 matched provider-excluded fits. Stable
+turnover sampling raises original-window event exposure from 38.72% to 54.11%.
+Hard-event sampling improves clean/v1 spell to .672138/.533505 and retains
+all three short-recall means, but v2 .593466 fails the strict improvement
+check. Uniform sampling also loses v2 short recall. Fresh continuation reaches
+.594751 v2 but loses v1 short recall. No training arm is retained.
 
-## Expanded PCBAS evaluation — 2 November 2026
+The baseline audit finds weak/reversed team probabilities on at least one
+side of 90.6% of missed eligible turnovers. This motivates supervision work,
+but the sampling comparison shows that greater exposure alone does not
+improve the primary stress metric. A separately declared three-mixture
+hard/fresh follow-up retains **75% hard / 25% fresh CE**: clean/v1/v2 spell
+**.670848/.533247/.594002**, with all short-recall means improving and all
+retention checks passing. V2 macro falls .000093 within the .001 allowance;
+SkillCorner v2 spell falls .000246. The gain is small on exposed development
+matches, and CE-seed diagnostics show sensitivity to pooling.
 
-The [twelve-game continuation](../../experiments/PCBAS_EXPANDED_ANCHOR_V2.md)
-is complete on twelve deterministic additional TRAIN games, with 36 games kept
-unscored. The unchanged submission package reaches **71.57% equal-game Drive
-agreement**, 95% whole-game bootstrap interval **68.95–74.10%**, across 8,071
-primary anchors. All 96 class/half cells and 23,039 source-event joins independently
-verify. No fitting, parameter search, organizer scoring or promotion occurred.
+Both rounds independently replay all saved scores and probabilities; turnover
+recovery itself improves only six repeated cell-events versus approved
+(2,550 vs 2,544 of 6,552). Retain the blend as an experimental candidate;
+the adopted/deployed package remains unchanged. No pooled counterpart,
+organizer scoring or GAR VALID/TEST evaluation is allocated here. Stop the
+declared weight search; next validate the exact pooled candidate separately
+without retuning, then seek independent continuous-match gold evidence.
 
-This corroborates the earlier three-game diagnostic on more matches; it does
-not establish continuous possession spell accuracy. Cross/shot live-anchor
-predicted-D rates remain 29.60%/33.45%; pooled low-visibility performance is weak
-and class mixtures differ. Independent continuous H/A/D/X labels and measured
-ball inputs remain the priority. The twelve games are now exposed diagnostics,
-not a fresh source for future selection claims. Source anonymity limits exhaustive
-fixture deduplication and intervals describe this source only.
+## Extra-data continuation — complete
 
-Code and aggregate evidence are published in
-[PR #78](https://github.com/jekkiechan/more-than-a-hack-2027/pull/78).
-Research site **version 28** is published after explicit user approval, with all
-12 desktop/mobile page checks and 16 chart-control combinations passing. Access
-revision 2 and the same two external viewers are unchanged. Native scoped Git
-source access and Sites deployment resolve the earlier missing-helper blocker.
-The [final publication receipt](../../experiments/results/pcbas_expanded_anchor_v2_publication_v2.json)
-records the observed state. Raw data and native predictions remain locally
-verified only; no raw-data upload is claimed.
+[The two-round follow-up](../../experiments/V2_EXTRA_DATA.md) uses Luna to test
+18 provider-excluded continuation fits and four cached probability blends.
+The training arms isolate GAR objective weight and corroborated short-possession
+sampling against a paired fresh-draw control, retaining the same 13 eligible
+original TRAIN matches and 45 GAR TRAIN games.
 
-## Bridge and package check on new PCBAS/GAR evidence — 2 November 2026
+Fresh continuation raises clean/v1/v2 spell to **.670446/.532146/.594751** but
+loses v1 short-spell recall. Higher GAR weight reaches **.595084 v2** but loses
+v1 spell and short recall. Quality sampling preserves short recall but loses
+clean and v2 spell. All macro retention checks pass and D remains exact.
+**None of the three training arms or four cached blends retains every check. Keep the approved frontier package.**
 
-Two frozen, fit-free studies close the main questions the PCBAS results raised.
-
-- [GAR no-ball bridge](../../experiments/GAR_NOBALL_BRIDGE_V1.md): removing the
-  ball on the ten GAR TEST games drops adopted pass-anchor agreement to **67.5%**
-  versus PCBAS **68.8%**, consistent by the declared rule (within 5 points). The
-  PCBAS cross/shot dead-play pattern reproduces on GAR without ball (shot predicted
-  D 20%→38%). Conclusion: PCBAS measures player-only inference, not a 2023–24
-  cohort transfer penalty. The ball is worth **+.211 spell F1 (95% CI +.180 to
-  +.238)** on GAR. Clean parity with `gar_deployment_eval_v2` is exact. Per the
-  declared rule, PCBAS H/A training is not prioritized.
-- [PCBAS package comparison](../../experiments/PCBAS_PACKAGE_COMPARISON_V1.md):
-  on 18 never-scored reserve games, adopted Drive agreement is **71.97%**
-  (69.40–74.43%), replicating the 3- and 12-game results. Calibrated+phase minus
-  adopted is **−0.45 points (−0.86, −0.02)**; the adopted package wins in 12 of 18
-  games. No case for switching packages. The last 18 PCBAS TRAIN games stay sealed.
-
-## Latest delivery
-
-The phase-average promotion and eval-policy update are merged in
-[PR #74](https://github.com/jekkiechan/more-than-a-hack-2027/pull/74) with passing
-CI. Research site **version 25** is published; all 12 desktop/mobile page checks
-and 18 chart-control combinations pass. The audience remains restricted at
-revision 2. Following explicit user upload approval on 2 November, private
-[PR #18](https://github.com/jekkiechan/mtah-data/pull/18) is merged. All 399 entries /
-7,978,448 bytes pass independent remote download and empty-directory restore;
-generic and versioned defaults select the promoted phase-average package. The
-[baseline guide](../../experiments/BASELINE.md#private-cache-restore) gives direct
-restore/inference commands without the previous directory override.
-The [promotion report](../../experiments/ORIGINAL_FULL_PHASE_PROMOTION.md#delivery-state)
-owns the latest delivery state; earlier version receipts below remain historical.
-
-The exact-package GAR comparison and original-provider phase guard audit are
-complete on PR #73: 19 match evaluations, 470 official scalar replays with zero
-error, all seven active guards passing and both component seeds improving.
-The [complete scorecard](../../experiments/ORIGINAL_FULL_PHASE_AVERAGE.md) records
-Astra's provisional phase-upgrade recommendation and the still-failed historical
-clean screen. Research site **version 24** is published with desktop/mobile
-interaction checks and unchanged restricted access revision 2. New native
-prediction artifacts are locally verified; no new remote-native upload is
-claimed. No model, default or adoption policy changes.
-
-The original-full default CLI replays the already-sealed candidate exactly, with
-199,319 valid rows. Private delivery PR #17 is merged; all **213 entries /
-6,417,817 bytes** pass independent remote fetch and empty restore. Research site
-**version 22** is published with desktop/mobile interaction checks and unchanged
-restricted access revision 2. The [promotion report](../../experiments/ORIGINAL_FULL_PROMOTION.md)
-links the separate verification and publication receipts.
-
-The [stacking study](../../experiments/SMART_STACKING_V1.md) is merged on
-[PR #68](https://github.com/jekkiechan/more-than-a-hack-2027/pull/68) with passing
-CI. All 495 independent replays pass; its combined suite has 568 tests. Research
-site version **21** was published with desktop/mobile checks and restricted
-access revision 2 unchanged. The stack improves its historical adopted control,
-but original diversity is now selected for adoption. No pooled stack is installed.
-The [publication receipt](../../experiments/results/smart_stacking_v1_publication.json)
-supersedes the preserved blocked snapshot. New stack native artifacts remain locally
-verified; no new remote stack-native upload or organizer scoring occurred.
-
-The fixed public diagnostic is published on [PR #66](https://github.com/jekkiechan/more-than-a-hack-2027/pull/66)
-and research site version **20**, with desktop/mobile checks and restricted
-access revision 2 unchanged. The two pooled models, full CSVs and sealed native
-outputs are preserved in a locally verified 22-file archive (14,774,217 bytes).
-The user subsequently authorized private upload. All 22 entries pass an
-independent remote fetch and empty-directory restore with exact hashes and a
-separate LFS store. The
-[remote verification receipt](../../experiments/results/short_quality_public_v1_remote_verification.json)
-supersedes the earlier
-[local-only delivery snapshot](../../experiments/results/short_quality_public_v1_delivery.json),
-which is preserved unchanged.
-The previous research archive below remains remotely verified.
-
-
-Research code and aggregate evidence are on [PR #65](https://github.com/jekkiechan/more-than-a-hack-2027/pull/65).
-All **559 new archive/source entries / 1,714,557,333 bytes** pass an independent
-remote fetch and empty-directory restore with exact hashes and a separate LFS
-store. Research site version **19** is published; desktop/mobile chart, data,
-navigation and download checks pass, with restricted access revision 2 unchanged.
-The [delivery receipt](../../experiments/results/short_quality_diversity_v1_delivery.json)
-and [publication receipt](../../experiments/results/short_quality_diversity_v1_site_publication.json)
-record the observed states. Archive identifiers and exact restore instructions
-remain private. No model promotion or organizer scoring occurred.
+The quality control already nominates 402–403 of 403 qualified short spans;
+increasing the rate mainly repeats existing supervision. Training lineage,
+paired exposure and all saved candidate/seed predictions are independently
+audited. The four-mixture control replay has zero error across 105 cell/arm
+pairs. No additional organizer or GAR scoring is used to choose these arms.
 
 ## Next work
 
-The user-requested [phase-average readout](../../experiments/ORIGINAL_FULL_PHASE_AVERAGE.md)
-contains the completed exact-package comparison and original-provider guard
-audit. Astra now supports provisional phase averaging as an incremental upgrade
-to original_full; all seven active guards pass and both component seeds improve.
-TEST clean/v2 spell is .701641/.701289 versus .698836/.699133 phase0; v2 gain is
-positive in 8/10 games, but its paired 95% interval includes zero. Calibrated+phase
-still leads TEST spell (.704846/.704118). VALID's nine selected-on games stay
-separate. All 380 GAR and 90 guard cells replay officially with zero scalar
-error. No additional experiment is required before the adoption decision.
-The historical +.01 clean screen failed. The subsequent user-authorized promotion
-records the new exception and enables phase averaging; no new public scoring.
-Research site version 24 publishes the completed scorecard, TEST/VALID results,
-guard/seed checks and final Astra review. Desktop/mobile controls and layouts pass.
-Restricted access revision 2 and the same two external viewers are preserved.
-The user explicitly approved the scoped-credential fallback after the initial
-automatic-review rejection. The [publication receipt](../../experiments/results/original_full_phase_average_publication_v2.json)
-records the resolved delivery state.
+The [8 November complementary pilot](../../experiments/COMPLEMENTARY_SPELL_V1.md)
+is complete on the exact historical original-full phase fold models. Equal
+seed weighting remains best among five tested ratios on v2. A count-preserving
+posterior-median boundary rule gains only .000207 v2 spell (with clean/v1 gains
+and all pilot checks passing), mainly in SkillCorner; 280 saved outputs replay
+independently. This is a small exposed-development signal, not a verified
+upgrade to the current frontier package. The original research caches were
+unavailable; the [current-frontier follow-up](../../experiments/FRONTIER_POSTPROCESS_V1.md)
+restores source inputs, reconstructs twelve CE fold fits and reproduces every
+saved selected-frontier metric across 35 development cells, including exact
+.5936187198896373 v2 spell. Checkpoint files are reconstructed, not byte-identical
+to the missing originals.
 
-The [challenge-calibrated feed study](../../experiments/FEED_LIKE_V2.md) replaces the
-state-blind feed-like view with `feed_like_v2` (fidelity error .72 → .09 on full-pitch
-providers). Under v2 the previous calibrated-dense baseline scores .5836 (.5880 with
-5 Hz phase TTA) versus .5785 for the now-adopted `original_full` recipe; raw-feed
-training (.5784) also does not transfer. The v1-feed advantage behind the promotion
-does not hold on v2. Use v2 with 4+ realizations as the stress guardrail.
+The first round tests nine seed-weight, boundary, H/A-cost and disagreement
+changes against this verified control. All 350 saved predictions pass independent
+replay; none passes every retention guard. Disagreement strength 1 reaches
+.593689 v2 but loses v1/v2 short recall; boundary .8 s improves short recall but
+loses .000025 v2 spell. The separately declared composition reaches .593532 v2
+and loses v2 short recall; all 35 new predictions and 105 controls replay
+independently. No candidate is retained. The adopted package remains unchanged.
 
-Prioritize independent continuous-match gold labels and corroborated short-possession
-supervision. Phase TTA's fixed follow-up is complete and the user has authorized its
-versioned promotion; prioritize new independent gold evidence next.
-The numerical comparisons below retain each completed study's historical
-baseline. The adopted recipe is now original diversity; PR #68's stack remains
-an archived comparator, with no pooled deployment package.
+Claude's requested branch became visible during this work. Its pinned
+[197-arm study](https://github.com/jekkiechan/more-than-a-hack-2027/blob/61f8182f86f2faca7873edd4db4c060a93285ec2/experiments/V2_POSTPROC_V1.md)
+also reports no retained candidate; its .594992 v2 leader loses clean spell and
+short recall. We inspected its saved report without independently replaying its
+197 predictions or modifying that branch.
 
+Stop the declared local rate/weight/blend comparisons. Their results do not
+establish a hard performance ceiling, but further fine searches on the same five
+exposed matches are weaker evidence than new data. Prioritize independent,
+continuous-match H/A/D/X annotation and more varied corroborated short
+possessions. GAR silver clips, sparse PCBAS action anchors and model-conditioned
+synthetic views do not replace that evaluation.
 
-The [stacking comparison](../../experiments/SMART_STACKING_V1.md) completes
-24 meta-models, zero base refits and 495 paired original score cells.
-Best guard-passing learned stack: **.661814/.525872 clean/feed-like spell**,
-versus adopted .658625/.518527 and original-diversity .662590/.528180.
-It retains raw-feed D; learning the D combination instead reduces clean/feed
-spell to .638640/.513886 and fails guards. Uniform averaging reaches .523795
-feed. No stack beats the strongest single recipe, so the predeclared new-view
-and expert-fallback checks are skipped. It remains a credible replacement
-candidate for adopted: higher clean/feed spell, both seeds improve feed, and
-feed-first guards pass. Original diversity is now adopted instead; failing the stricter study-win rule
-does not negate the stack's measured gains against the historical baseline.
-No adoption or organizer scoring.
-All base, teacher, normalization and meta-label components exclude the target
-provider; other-provider OOF arrays are deliberately not reused for training.
-Stop this bounded weight/context comparison. Stronger error-complementarity
-evidence and independent match evaluation are more informative than another
-sweep on these five exposed matches.
+Keep development clean plus four or more v2 realizations, equal-provider means,
+all spell views, short recall and fixed D/count checks. V1/composite remain
+historical diagnostics. Do not reopen closed public gates or use the reused
+17-possession window for tuning.
 
-The [feed-like benchmark audit](../../experiments/FEED_BENCHMARK_AUDIT_V1.md) finds
-small decoder/arm-combination ceilings (+.005/+.0076 per-cell oracles) and shows that
-synthetic feed-like gaps ignore game state, unlike the real feed. Under
-challenge-matched gaps the `original_full` candidate beats the adopted model in 12/12
-realizations (SkillCorner trails); 5 Hz phase TTA is a small, consistent gain. Prefer a
-pre-declared multi-realization benchmark over the two original replicas for selection.
+## Artifacts and delivery
 
-The separately requested [fixed public diagnostic](../../experiments/SHORT_QUALITY_PUBLIC_V1.md)
-is complete after two pooled fits. Public spell is **.611765** versus adopted
-.630303; macro **.851742** versus .864181. The full CSV replays/validation and
-reference-free artifact checks pass. The one-use gate is closed, with no
-public-driven tuning, repairs or model promotion. External selection results
-below remain unchanged; this is a 17-reference diagnostic, not new independent
-or full-match confirmation.
+The [turnover archive](../../experiments/results/turnover_supervision_private_delivery.json)
+is uploaded to private `mtah-data:research/turnover-supervision-v1-parts`
+at `f1de198`. A fresh isolated LFS download verifies both byte-preserving
+parts, the combined archive hash and all 159 members, including 18 checkpoints
+and 70 saved evaluation cells. Parts avoid GitHub's per-object size limit.
+The [site publication](../../experiments/results/turnover_supervision_site_publication.json)
+is complete as version 37, with its restricted audience preserved.
 
+The prior promotion recorded all ten deployment checkpoint roles, matching
+source, manifests/policy and aggregate provenance in a verified local archive,
+including fresh extraction and an isolated ten-model load. That historical
+receipt does not establish availability in every later workspace. The remote
+default still describes the historical phase-average package.
+[Current package instructions](../../experiments/BASELINE.md)
+and [local archive receipt](../../experiments/results/baseline_spell_frontier_local_artifacts.json)
+own that package's availability. The current-frontier postprocessing report
+separately records reconstructed research fold checkpoints, exact control replay,
+and native prediction-cache delivery. These are research holdout artifacts,
+not a replacement pooled deployment package. Frozen training seals remain intact.
 
-The [short-label quality and diversity comparison](../../experiments/SHORT_QUALITY_DIVERSITY_V1.md)
-is complete: **18 fixed fits** and eight fixed arms. Best eligible original
-feed-like spell is **.528180**, clean **.662590**, versus the previous numerical
-leader .527396/.657215. All guards pass; the historical +.01 clean screen fails.
-The aggregate feed gain comes from Sportec; Metrica and SkillCorner decline.
-The fixed new-corruption check reaches .547221 versus matched leader .546583;
-these are different realizations, not a replacement for the original benchmark
-or independent matches. All 420 new score cells pass separate official/algebra
-replay. The .55 original-benchmark target remains unmet; adoption is unchanged.
+The 160-file research archive is now uploaded to private `mtah-data` branch
+`research/frontier-recovery-v1` at `ff3d8a1`, bound to public source `c2f8761`.
+A fresh isolated LFS download verifies the archive and all member hashes.
+[Remote availability receipt](../../experiments/results/frontier_postprocess_private_delivery.json).
 
-The TRAIN audit finds only **38 corroborated subsecond GAR spans out of 198**,
-and 403 complete <=3s spans across all 45 games. Original pools contain 515–948
-physical short spans per fold; paired views do not add examples. Prioritize more
-varied, externally corroborated short supervision and independent dense
-evaluation. Stop the declared sampling comparisons without new rate, duration,
-blend-weight or decoder settings. The earlier
-[short-window sampling and calibration study](../../experiments/FEED_SHORT_SAMPLING_V1.md)
-remains the .527396 comparator.
+The promotion report preserves aborted GAR attempts, the seed-description
+erratum, six-phase compatibility correction and exact runtime guards. Old
+runners, declarations, decisions and scoring gates remain intact. Use the
+recorded pre-activation revision to replay historical hash-bound studies.
 
-The completed [raw-feed training study](../../experiments/FEED_ROBUSTNESS_V1.md) reaches **0.525240** original feed-like spell F1 versus .518527 promoted. Twelve fits, fixed blends/component checks and fresh corruption checks are complete; 0.55 remains unmet and adoption is unchanged. The two-seed fresh score is .533871 versus matched baseline .524936. Prioritize short-possession supervision/exposure and independent dense evaluation; fresh synthetic views are not new matches.
-
-1. The [feed-first calibration and pooling study](../../experiments/FEED_SPELL_PUSH.md)
-   is complete: five rounds, 522 declared configurations (including controls).
-   D-logit temperature 4 with the original cost-3 decoder (`f062` / `g001`)
-   leads feed-like spell F1 at **.518527**, with clean **.658625**, versus adopted
-   .505811/.647215. Every provider and both seeds improve spell in both views;
-   all guards and the historical +.01 clean screen pass. Two-provider selection
-   reaches .513611 feed-like in the broad round. Pooling alternatives, filtering,
-   uncertainty transforms and the local refinement do not beat the simple rule.
-   This is tuned evidence from the same exposed matches and synthetic stress.
-   After selection, the user-requested fixed public diagnostic ties adopted spell
-   at .630303 and raises macro .851387 → .864181, D-F1 .843424 → .873502
-   on 17 references. The user subsequently authorized promotion; f062 is now
-   the default package under a versioned manifest. Promotion replays the fixed
-   candidate without public-driven tuning or rescoring. Fresh dense evaluation or new
-   corruption realizations are more informative than another local temperature sweep.
-   The [earlier refinement](../../experiments/DECODER_REFINEMENT_V3.md) and its
-   separately frozen public diagnostic remain historical evidence for those candidates.
-2. The [subsecond-team follow-up](../../experiments/DENSE_SHORT_TEAM_V1.md)
-   is complete: six fixed 2× H/A-weighted fits and a fixed 50/50 ensemble blend
-   both reduce clean/feed-like spell F1. Short-team errors improve marginally
-   clean but worsen under stress. Exact sampler replay shows only 0.09–0.10%
-   of sampled GAR H/A rows qualify. Stop duration/blend-weight sweeps on these
-   exposed matches; prioritize targeted external supervision and independent
-   dense evaluation. This follows the negative
-   [targeted dense comparisons](../../experiments/DENSE_TARGETED_FOLLOWUPS.md).
-   The adopted model and closed organizer gates remain unchanged.
-3. The source-specific head comparison on open PR #47 is completed and negative:
-   retain the shared dense heads. Its provider-definition audit supports holding
-   possession through contested touches; it does not justify rebuilding GAR
-   labels. Whole-stoppage model comparison remains blocked on continuous aligned
-   tracking. See the [PR #47 report](https://github.com/jekkiechan/more-than-a-hack-2027/blob/6e93eb2218a533b8017ff50f284f655021eec9e6/experiments/SOURCE_CONDITIONED_HEADS_REPORT.md).
-4. Fresh external dense possession evidence remains optional stronger
-   confirmation. The [independent-data search](../../experiments/INDEPENDENT_DATA_SEARCH.md)
-   acquired a SoccerTrack panorama sample; the
-   [blind annotation proposal](../../experiments/SHORT_SPELL_NEXT.md) still needs
-   independent H/A/D/X labels. Event-interpolated ball paths are not measured
-   observations. Sample acquisition and GAR silver labels do not supply
-   independent confirmation.
-
-Before another local sweep, consult the index's
-[settled directions](EXPERIMENTS.md#settled-directions).
-
-## Artifacts and open work
-
-- **Historical calibrated dense promotion:** its manifest/policy were version 8; the four checkpoint hashes are unchanged. The baseline CLI matches the sealed candidate byte for byte and format validation passes. Public promotion PR #60 and private cache PR #14 are merged; all 191 package/source entries pass a fresh remote restore. Site version 16 is published with the new adoption timeline, pipeline and desktop/mobile QA. The [promotion report](../../experiments/CALIBRATED_DENSE_PROMOTION.md) owns current delivery and restore state.
-
-
-- **Feed-first iteration:** five rounds / 522 declared configurations, 7,830 ensemble cells
-  and 360 seed cells complete. The fixed public diagnostic scores one unique CSV
-  once and ties adopted spell F1 at .630303, with higher macro and D-F1. Separate scalar replays pass. The refinement's
-  unsupported aggregate-field lookup failed before candidate scoring; its
-  frozen runner/lock are preserved with a bounded execution amendment.
-  Code/results are merged in public PR #58; private PR #13 has 1,176 entries
-  verified by fresh remote download and empty-directory restore. Research site
-  version 15 is published with unchanged restricted access and desktop/mobile QA.
-  [Report, checks and artifact state](../../experiments/FEED_SPELL_PUSH.md).
-
-
-- **Decoder refinement:** 118 arms and the fixed public diagnostic are complete;
-  `r069` was its strongest external candidate, superseded by the adopted temperature-4 rule. Private PR #12 has 432
-  fresh-restore hash-verified entries. Site version 14 is published with external-first
-  interpretation and desktop/mobile QA. The user authorized this publication and
-  future experiment-report updates to the same existing restricted audience.
-  [Report and receipts](../../experiments/DECODER_REFINEMENT_V3.md#delivery-and-reproduction-state).
-
-- **Decoder search delivery:** code/results merged in PR #54; private PR #11
-  has 295 remotely restored, hash-verified entries. The experimental full CSV
-  passes format validation. Research site version 12 was published after explicit
-  user approval; the previous approval blocker is resolved. [Report and receipts](../../experiments/DECODER_SEARCH_V2.md#artifact-and-site-delivery).
-
-- **Spell-F1 postprocessing (2026-11-01):** fixed posterior expected-spell-F1
-  decoding completed all 45 paired cells. Ensemble clean/feed-like changes
-  −.004235/−.002601; both individual seeds also decline. Retain cost-3 Viterbi;
-  no sample-budget or seed sweep follows. The result is included in published research site version 12. [Report](../../experiments/SPELL_MBR_V1.md).
-
-- **Postprocessing runtime (2026-11-01):** optional decoder reduces synthetic
-  199,319-frame decoding time by 16%, with independent numerical parity tests.
-  Not integrated or promoted; real-input parity and end-to-end timing remain.
-  Included in published research site version 12.
-  [Report](../../experiments/POSTPROCESSING_RUNTIME_V1.md).
-
-- **Subsecond team attribution:** six fits and the fixed blend are complete;
-  neither improves the adopted ensemble. Code/results are merged in PR #50.
-  Private [mtah-data PR #9](https://github.com/jekkiechan/mtah-data/pull/9)
-  delivers 122 verified archive entries and 118 successfully restored mapped
-  files. The restricted research site is published as version 11.
-  [Report and delivery receipts](../../experiments/DENSE_SHORT_TEAM_V1.md#reproduction-and-artifact-state).
-
-- **Targeted dense follow-ups:** all 12 fits and three comparisons are complete;
-  reconstructed controls reproduce saved clean/feed-like scores within 3 × 10⁻¹¹.
-  Input byte-hash differences remain documented. Private archive delivery is complete: all 338 entries verified remotely and
-  235 unique original-path files restored without mismatches.
-  [mtah-data PR #8](https://github.com/jekkiechan/mtah-data/pull/8);
-  [coordinated report](../../experiments/DENSE_TARGETED_FOLLOWUPS.md).
-
-- **Previous dense deployment:** private [mtah-data PR #7](https://github.com/jekkiechan/mtah-data/pull/7)
-  is merged at `19ee280`. This session restored and verified all four versioned
-  checkpoint hashes and reproduced the sealed full CSV from raw ATD inputs.
-  [Submission receipt](../../experiments/dense_submission_audit_v1/report.json).
-  The deployment package does not include the original dense research fold
-  checkpoints or their probability arrays.
-- **Previous capacity deployment:** verified remote recovery is complete;
-  [receipt](../../experiments/results/baseline_soccernet_capacity_remote_artifacts.json).
-  This does not establish remote availability of every research fold checkpoint.
-- **Matched training follow-up:** completed, no upgrade;
-  [report](../../experiments/SOCCERNET_FOLLOWUP.md) owns replay and artifact state.
-  Its reconstructed reference is distinct from the later exact deployment restore.
-- **Open evidence:** [PR #35](https://github.com/jekkiechan/more-than-a-hack-2027/pull/35)
-  contains completed label-free gap, possession-rate and adaptation comparisons,
-  all reported no go against the former combined-objective baseline. It is
-  unmerged (head `143d010`), not evidence against the new dense recipe.
-- Draft PRs #8, #11, #13, #16, #18 and #25 remain open at review. Find pinned
-  evidence in the index and inspect live heads before resuming. A draft's
-  presence does not imply its code is absent from later merged dependencies.
-
-Update this file when adoption, priorities or blockers change. Put scorecards,
-per-study receipts and historical decisions in their reports/index, rather than
-appending another completed-study handoff here.
+The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
+is published as version 36 with the same restricted audience. The current update
+passes desktop/mobile checks for Overview and Experiments and all 36 first-round
+chart combinations; the second-round failure is shown separately.
+[PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) carries the
+completed experiments and promotion; merging follows the existing CI policy.
+[Draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88) carries
+the subsequent matched postprocessing results and remains stacked on #87.
+[Current publication receipt](../../experiments/results/frontier_postprocess_site_publication.json);
+[prior delivery receipt](../../experiments/results/v2_extra_data_v1_delivery.json).
