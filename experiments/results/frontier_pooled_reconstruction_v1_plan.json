@@ -1,0 +1,85 @@
+{
+  "study": "frontier_pooled_reconstruction_v1",
+  "date": "2026-11-11",
+  "authorization": "User: agent cannot find weights; reproduce with Luna so we can use it instead",
+  "question": "Reconstruct the fixed pooled stage-1024 CE recipe from exact original pooled initialization and test prediction parity before fixed Fable deployment checks.",
+  "status": "declared_before_new_preparation_fits_or_scoring",
+  "source_status": "reconstructed_not_original_checkpoint_restore",
+  "source_recipe": {
+    "declaration": "experiments/results/v2_spell_balanced_v1_pooled_declaration.json",
+    "declaration_sha256": "8c8dae45c86dab4f4458cd816880191fbb10d2934a86596a6e090793c488d8d4",
+    "seal": "experiments/results/v2_spell_balanced_v1_pooled_seal.json",
+    "seal_sha256": "209bc3859318483cd4489136017e672aa22ba4a47db5cbd380f32af97ddb3578",
+    "numerical_source_comparison": "All original pooled-declaration numerical source files unchanged; only historical active manifest and policy differ."
+  },
+  "training": {
+    "seeds": [
+      2026,
+      2027
+    ],
+    "stages": [
+      512,
+      1024
+    ],
+    "updates_per_stage": 512,
+    "learning_rates": {
+      "512": 0.0003,
+      "1024": 0.0001
+    },
+    "maximum_fits": 4,
+    "execution": "Serial fresh process per seed-stage; CPU torch single thread",
+    "initialization": "Exact original pooled adopted H/A checkpoint and paired teacher; original normalizers and D state frozen",
+    "stage1024_initialization": "Same seed reconstructed stage512 output",
+    "batch_size": 32,
+    "fraction_gar": 0.5,
+    "original_train_matches": 13,
+    "gar_train_games": 45,
+    "v2_realizations": 4,
+    "view_schedule": "Frozen round-robin v2 windows with repeated same-seed 512-draw schedule",
+    "sampler": "Frozen OriginalDiversitySampler",
+    "architecture_and_loss": "Unchanged v2_iterative_train ce_control; no new hyperparameters, seeds, fitting stages or selection",
+    "excluded_data": [
+      "GAR VALID",
+      "GAR TEST",
+      "organizer public labels",
+      "original development/test matches"
+    ]
+  },
+  "reconstruction_verification": {
+    "training_inputs": "Verify exact original raw/prepared/v1 hashes; regenerate fixed v2 feature arrays and compare original sealed feature bytes where available",
+    "frozen_D_and_normalization": "Exact array equality to original pooled initializer",
+    "sampler_exposures_and_view_draws": "Exact dictionary equality with original pooled fit receipts",
+    "training_loss_trace_absolute_tolerance": 1e-07,
+    "loss_trace_use": "Reconstruction diagnostic, no tuning or rerun selection; disclose any difference",
+    "checkpoint_file_identity": "Record new and old SHA256; metadata differences do not certify identical parameters",
+    "full_prediction_parity": "Reference-free original frontier 199319-row CSV SHA256 must equal saved26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc before claiming prediction-equivalent reconstruction"
+  },
+  "fixed_candidate": {
+    "rule": "snap_m0.0",
+    "margin_m": 0,
+    "delay_window_s": 5,
+    "advance_window_s": 3,
+    "ce_weight": 0.5,
+    "calibrated_weight": 0.375,
+    "adopted_weight": 0.125,
+    "ha_cost": 3,
+    "pooling": "arithmetic; paired seeds within native phase, then phases",
+    "additional_candidate_search": false,
+    "complementary_turnover_blend": false
+  },
+  "deployment_verification": {
+    "study": "ball_exit_reconstructed_v1",
+    "gar": "Exact reconstructed pooled package; TEST10 clean + same4fixedv2; equal realization mean within game then equal games; VALID separate",
+    "historical_control_tolerance": 1e-12,
+    "historical_control_failure": "Preserve failed attempt and report; no silent tolerance relaxation or alternate candidate selection",
+    "public": "One exclusive diagnostic gate for fixed reconstructed Fable after source/model/input/fullCSV seal; saved frontier baseline reused; no public tuning",
+    "promotion": "Only after bound verified package reports and normal CLI replay; any regression disclosed before final adoption; no rewrite of historical receipts"
+  },
+  "preservation": {
+    "historical_runners_declarations_seals_gates": "unchanged",
+    "new_training_output": "data/experiments/frontier_pooled_reconstruction_v1",
+    "new_deployment_output": "data/experiments/ball_exit_reconstructed_v1",
+    "weights_distribution": "Authorized private model storage only; public reports aggregate results and reproducibility metadata",
+    "archive_before_final_promotion": true
+  }
+}
