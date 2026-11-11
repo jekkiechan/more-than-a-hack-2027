@@ -104,14 +104,15 @@ post-promotion suite passed 978 tests (977 passed, one skipped), alongside the
 reconstruction audit. The consolidated [deployment verification receipt](results/ball_exit_reconstructed_v1_verification.json)
 binds the archive check, default CLI parity and post-promotion test results.
 
-To restore the complete deployment package from an authorized `mtah-data`
-checkout, fetch and verify its versioned cache manifest, then restore it into
-the competition repository's `data` directory:
+To restore the complete package, run these commands from the competition repo
+on `research/ball-exit-promotion-v2`. The private clone skips automatic LFS
+materialization, then the versioned manifest fetches only the required package.
+The pinned commit is the one verified from an empty LFS store:
 
 ```sh
-python scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1.json
-python scripts/competition_cache.py verify --manifest baseline_cache_manifest_joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1.json
-python scripts/competition_cache.py restore --manifest baseline_cache_manifest_joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1.json --data-dir ../more-than-a-hack-2027/data
+GIT_LFS_SKIP_SMUDGE=1 git clone --single-branch --branch research/frontier-pooled-reconstruction-v1 https://github.com/jekkiechan/mtah-data.git ../mtah-reconstructed
+git -C ../mtah-reconstructed checkout d5d93aaef28fbc1bedd4d33beb14e1cf3906de3d
+python ../mtah-reconstructed/scripts/competition_cache.py fetch --manifest baseline_cache_manifest_joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1.json --data-dir data
 ```
 
 The training CLI below records how this bounded fit was executed. It expects
@@ -121,9 +122,9 @@ environment. The deployment cache contains models, not those training inputs.
 For a replay, set the data and archive roots before `prepare`:
 
 ```sh
-export MTAH_DATA_DIR=data/experiments/frontier_pooled_reconstruction_v1/inputs/original
-export MTAH_RF_ARCHIVE_DIR=data/experiments/frontier_pooled_reconstruction_v1/inputs/rf/experiments/feed_robustness_v1/artifacts
-export V2_ITERATIVE_GAR_ARCHIVE=data/experiments/frontier_pooled_reconstruction_v1/inputs/gar/gar/train
+export MTAH_DATA_DIR="$PWD/data/experiments/frontier_pooled_reconstruction_v1/inputs/original"
+export MTAH_RF_ARCHIVE_DIR="$PWD/data/experiments/frontier_pooled_reconstruction_v1/inputs/rf/experiments/feed_robustness_v1/artifacts"
+export V2_ITERATIVE_GAR_ARCHIVE="$PWD/data/experiments/frontier_pooled_reconstruction_v1/inputs/gar/gar/train"
 export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
 ```
 

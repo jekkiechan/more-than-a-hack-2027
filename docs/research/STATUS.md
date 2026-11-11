@@ -43,6 +43,11 @@ binds those records; the [final verification](../../experiments/results/ball_exi
 records the default CLI replay and post-promotion checks. PR #92 is not merged;
 this is the working default on the research branch, not a change to main.
 
+The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
+is published as version 41 with the same restricted audience. Its
+[publication receipt](../../experiments/results/ball_exit_reconstructed_v1_site_publication.json)
+records the source, deployment and desktop/mobile checks.
+
 ## Earlier software and source verification — 11 November 2026
 
 The user requested verification before final promotion, with Luna subagents.
@@ -74,7 +79,7 @@ as research evidence and stop the bounded composition search. Fable was provisio
 and final research-branch promotion are recorded above.
 The user approved delivery. [PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
 publishes the implementation and aggregate evidence. The restricted research site
-is updated to version 40; the [verification publication receipt](../../experiments/results/ball_exit_verification_v2_site_publication.json)
+was previously updated to version 40; the [verification publication receipt](../../experiments/results/ball_exit_verification_v2_site_publication.json)
 records that earlier publication separately from the later reconstruction checks.
 
 ## Ball-exit reconstructed promotion — 11 November 2026
