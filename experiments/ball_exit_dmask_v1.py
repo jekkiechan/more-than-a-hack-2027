@@ -31,10 +31,14 @@ from experiments import frontier_postprocess_v1 as fp
 STUDY = "ball_exit_dmask_v1"
 WINDOW_S = 5.0
 HOLD_S = 3.0
-RULES = ("delay", "force", "both")
+RULES = ("delay", "force", "both", "advance", "snap")
+ROUND2 = {"advance_m0.0": ("advance", 0.0), "advance_m0.5": ("advance", 0.5),
+          "snap_m0.0": ("snap", 0.0), "snap_m0.5": ("snap", 0.5)}
 MARGINS = (0.0, 0.5)
-DECLARATION = C.ROOT / "experiments/results/ball_exit_dmask_v1_declaration.json"
-RESULT = C.ROOT / "experiments/results/ball_exit_dmask_v1.json"
+ROUND = os.environ.get("BALL_EXIT_ROUND", "1")
+DECLARATION = C.ROOT / ("experiments/results/ball_exit_dmask_v1_declaration.json" if ROUND == "1"
+                        else "experiments/results/ball_exit_dmask_v1_round2_declaration.json")
+RESULT = C.ROOT / ("experiments/results/ball_exit_dmask_v1.json" if ROUND == "1" else "experiments/results/ball_exit_dmask_v1_round2.json")
 CONTROL = {"clean": 0.6701365499557103, "feed_like_v1": 0.532128306931943, "feed_like_v2": 0.5936187198896373}
 
 
@@ -61,7 +65,7 @@ def edit_mask(dead, inside, outside, period, fps, rule):
     out = dead.copy()
     window, hold = int(round(WINDOW_S * fps)), int(round(HOLD_S * fps))
     for start, stop in fp.balanced.runtime.frozen.supervised.blocks(np.asarray(period)):
-        if rule in ("delay", "both"):
+        if rule in ("delay", "both", "snap"):
             for a, b in _runs(dead[start:stop]):
                 a, b = a + start, b + start
                 if a == start:
@@ -69,6 +73,19 @@ def edit_mask(dead, inside, outside, period, fps, rule):
                 seen_out = np.flatnonzero(outside[a:min(b, a + window)])
                 if len(seen_out) and inside[a:a + seen_out[0]].any():
                     out[a:a + seen_out[0]] = False
+        if rule in ("advance", "snap"):
+            # Round 2: a D run also starts earlier when the ball was observed outside within HOLD_S
+            # before it and not observed inside again. `snap` applies the delay edit first.
+            for a, b in _runs(out[start:stop]):
+                a = a + start
+                if a == start:
+                    continue
+                low = max(start, a - hold)
+                seen_in = np.flatnonzero(inside[low:a])
+                after = low + seen_in[-1] + 1 if len(seen_in) else low
+                seen_out = np.flatnonzero(outside[after:a])
+                if len(seen_out) and not out[after + seen_out[0]:a].any():
+                    out[after + seen_out[0]:a] = True
         if rule in ("force", "both"):
             i = start
             while i < stop:
@@ -84,7 +101,9 @@ def edit_mask(dead, inside, outside, period, fps, rule):
 
 
 def arms():
-    return {f"{rule}_m{margin}": (rule, margin) for rule in RULES for margin in MARGINS}
+    if os.environ.get("BALL_EXIT_ROUND", "1") == "2":
+        return dict(ROUND2)
+    return {f"{rule}_m{margin}": (rule, margin) for rule in ("delay", "force", "both") for margin in MARGINS}
 
 
 def _job(key):

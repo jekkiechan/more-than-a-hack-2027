@@ -47,6 +47,22 @@ class EditContracts(unittest.TestCase):
         capped = study.edit_mask(np.zeros(100, dtype=bool), self.inside, self.outside, self.period, self.fps, "force")
         self.assertEqual(capped.sum(), int(study.HOLD_S * self.fps))
 
+    def test_advance_starts_at_observed_exit_only_without_a_later_inside_observation(self):
+        self.inside[30:40] = False; self.outside[32:35] = True           # exit at 32, unseen until D at 40
+        edited = study.edit_mask(self.dead, self.inside, self.outside, self.period, self.fps, "advance")
+        self.assertTrue(edited[32:70].all()); self.assertFalse(edited[:32].any())
+        self.inside[37] = True                                           # seen inside again: no advance
+        np.testing.assert_array_equal(
+            study.edit_mask(self.dead, self.inside, self.outside, self.period, self.fps, "advance"), self.dead)
+        self.inside[:] = False; self.outside[:] = False; self.outside[5] = True   # exit older than HOLD_S
+        np.testing.assert_array_equal(
+            study.edit_mask(self.dead, self.inside, self.outside, self.period, self.fps, "advance"), self.dead)
+
+    def test_snap_delays_or_advances_but_never_adds_isolated_dead_runs(self):
+        self.inside[52:70] = False; self.outside[52:60] = True; self.outside[10:12] = True; self.inside[10:12] = False
+        edited = study.edit_mask(self.dead, self.inside, self.outside, self.period, self.fps, "snap")
+        self.assertFalse(edited[:52].any()); self.assertTrue(edited[52:70].all())
+
     def test_edits_never_cross_period_blocks_and_only_use_declared_rules(self):
         period = np.r_[np.zeros(50, dtype=np.int64), np.ones(50, dtype=np.int64)]
         inside = np.zeros(100, dtype=bool); outside = np.zeros(100, dtype=bool); outside[45] = True
