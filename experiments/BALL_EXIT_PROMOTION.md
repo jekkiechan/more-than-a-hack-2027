@@ -135,17 +135,18 @@ public-contract tests require absent historical local-only seal/CSV fixtures.
 The 26 root tests, documentation check, file-backed fit contract and bundled
 submission format check pass.
 
-The research site was readable at version 37 with its custom restricted
-audience. The packaged Sites source helper is absent from this environment.
-Automatic approval review rejected an ordinary Git clone using the site's
-scoped credential, including after the repository's explicit delivery instruction
-was cited: it required direct authorization for the separate private site.
-No site source was accessed or edited, and the audience is unchanged.
+The user explicitly approved promotion and the prepared delivery. The implementation
+and aggregate evidence are published in [draft PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92).
+The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
+is published as version 38 with its existing restricted audience. Experiments,
+Progress and the model timeline now distinguish the approved Fable target,
+the small complementary research candidate, and pending GAR/public checks.
 
-The pending site update is this report's and the [complement report's](BALL_EXIT_COMPLEMENT.md)
-result tables and interpretation on
-Experiments, plus a Progress note: “Fable's .598690 v2 result reproduced; two
-crossing-time extensions did not improve it. Promotion and GAR/public regression
-checks await the exact pooled CE weights. A separate complementary H/A composition
-adds a small eligible .000090 v2 development gain; it is not deployed.” It must not mark the model adopted
-or display unmeasured GAR/public gains. Publication remains blocked on approval.
+The packaged Sites source helper was absent, so ordinary Git with an ephemeral
+scoped credential and a matching static deployment archive was used. Desktop
+(1440 px) and mobile (390 px) browser checks pass on both changed pages: no page
+overflow or script errors, links/IDs valid, and method disclosure works.
+The [publication receipt](results/ball_exit_delivery_publication_v1.json) records
+the source, version and successful deployment. Earlier automatic-review blockers
+were resolved by the explicit user approval. Activation and GAR/public regression
+checks remain blocked solely by the exact pooled checkpoint requirements above.

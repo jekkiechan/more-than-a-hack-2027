@@ -12,9 +12,10 @@ higher .599644 but fails clean/short-recall checks. Both rounds are independentl
 verified; neither is a pooled deployment or GAR/public evaluation. Retain this
 as research evidence and stop the bounded composition search. The unchanged
 Fable promotion remains blocked as described below.
-The new work is committed locally; automatic approval review requires explicit
-approval before publishing its code/aggregate results to the public fork or
-accessing and updating the separate restricted research site.
+The user approved delivery. [Draft PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
+publishes the implementation and aggregate evidence. The restricted research site
+is updated to version 38; the [delivery receipt](../../experiments/results/ball_exit_delivery_publication_v1.json)
+records publication separately from model activation.
 
 ## Ball-exit follow-up and requested promotion — 11 November 2026
 
@@ -31,8 +32,9 @@ and those diagnostics are blocked on the exact pooled `ce_2026.joblib` and
 `ce_2027.joblib`. Eight other checkpoint roles are restored and hash-verified.
 The new SkillCorner fold-model upload is a different experiment. **The active
 frontier manifest/default remains unchanged.** The report identifies the missing
-hashes and continuation commands. Automatic approval review also blocked access
-to the separate private progress-site source; its update remains pending.
+hashes and continuation commands. The user’s explicit approval resolved the
+earlier publication-review blockers; model activation still requires the exact
+checkpoints and completed regression checks.
 
 Reviewed 8 November 2026 against fork `main` at `8919726`,
 [PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) at `b12eab3`,
