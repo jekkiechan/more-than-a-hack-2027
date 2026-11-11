@@ -12,10 +12,10 @@ higher .599644 but fails clean/short-recall checks. Both rounds are independentl
 verified; neither is a pooled deployment or GAR/public evaluation. Retain this
 as research evidence and stop the bounded composition search. The unchanged
 Fable package is now provisionally adopted as described below.
-The user approved delivery. [Draft PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
+The user approved delivery. [PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
 publishes the implementation and aggregate evidence. The restricted research site
-is updated to version 38; the [delivery receipt](../../experiments/results/ball_exit_delivery_publication_v1.json)
-records publication separately from model activation.
+is updated to version 39; the [adoption publication receipt](../../experiments/results/ball_exit_adoption_v1_site_publication.json)
+records publication separately from pending exact deployment verification.
 
 ## Ball-exit provisional adoption — 11 November 2026
 

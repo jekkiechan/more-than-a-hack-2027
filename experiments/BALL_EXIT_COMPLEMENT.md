@@ -124,7 +124,7 @@ bundled submission format check pass. The required research-site update is publi
 ## Publication status
 
 The user approved the prepared delivery. The implementation and aggregate reports
-are published in [draft PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
+are published in [PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
 on `research/ball-exit-promotion-v2`, stacked on Fable’s PR #91 and targeting the
 fork’s main. No weights, raw inputs or frame predictions were published.
 The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
@@ -132,3 +132,7 @@ now includes both complementary rounds, the negative crossing extensions and
 the approved Fable promotion status. Version 38 preserves its restricted audience.
 The [publication receipt](results/ball_exit_delivery_publication_v1.json) records
 this delivery; it does not constitute deployment verification or model activation.
+
+The later [version-39 site update](results/ball_exit_adoption_v1_site_publication.json)
+records the user-delegated Fable adoption and preserves this composition as a
+research candidate.

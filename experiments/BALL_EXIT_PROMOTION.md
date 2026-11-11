@@ -157,7 +157,7 @@ and archives their predecessors; it preserves the frozen deployment gates.
 Its separate `stage` action still requires all exact weights.
 
 The user explicitly approved the prepared delivery. The implementation
-and aggregate evidence are published in [draft PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92).
+and aggregate evidence are published in [PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92).
 The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
 is published as version 38 with its existing restricted audience. Experiments,
 Progress and the model timeline now distinguish the approved Fable target,
@@ -177,3 +177,8 @@ The post-adoption [check receipt](results/ball_exit_adoption_v1_checks.json) rec
 961 experiment tests: 955 pass, one skips and the same five historical public
 fixture errors remain. All 26 root tests, file-backed fit parity, bundled CSV
 format, documentation links and adopted source/predecessor hashes pass.
+
+The subsequent [site publication](results/ball_exit_adoption_v1_site_publication.json)
+is version 39, covering the provisional default and historical architecture
+labels. The restricted audience is unchanged. PR #92 is ready for review; it
+has not been merged, and no required CI checks were bypassed.
