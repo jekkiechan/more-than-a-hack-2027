@@ -36,7 +36,7 @@ BATCH = 32
 LR = 1e-4
 SNAPSHOTS = (256, 512)
 SEED_OFFSET = 7919          # fresh Torch/sampler/draw schedule relative to stage 1024
-ARMS = {"ctrl": 0, "sc4": 4, "sc8": 8}   # SkillCorner 2020 windows per 16 external windows
+ARMS = {"ctrl": 0, "sc4": 4, "sc8": 8, "rb8": 8}   # SkillCorner 2020 windows per 16 external windows
 
 
 def sc_records():
@@ -95,6 +95,9 @@ def fit_loop(initial, old_records, gar_records, extra_records, *, seed, extra_co
     config = dict(study=C.STUDY, seed=int(seed), lr=lr, batch_size=BATCH, extra_source=SOURCE,
                   windows_per_batch=dict(original=half, gar=half - extra_count, extra=extra_count),
                   loss_weights={str(k): v for k, v in group_weight.items()}, train_d=False,
+                  width=96, input_dropout=cap.INPUT_DROPOUT, weight_decay=cap.WEIGHT_DECAY,
+                  gradient_clip=cap.GRADIENT_CLIP, spell_coefficient=cap.SPELL_COEFFICIENT,
+                  live_transition_coefficient=cap.LIVE_TRANSITION_COEFFICIENT,
                   warm_start_sha256=cap._checkpoint_sha(initial),
                   teacher_sha256=initial["_original_teacher_sha256"])
     exposures, losses, accum, exported = defaultdict(int), [], [], {}
@@ -215,9 +218,47 @@ def fit_one(arm, fold, seed):
     print("FIT", arm, fold, seed, round(time.monotonic() - start, 1), flush=True)
 
 
+REBUILD_ARM, REBUILD_STAGES = "rb8", ((512, 3e-4), (1024, 1e-4))
+
+
+def rebuild_one(fold, seed):
+    """Round 2: the frontier's own two-stage CE recipe from the original-full warm start, with
+    eight SkillCorner 2020 windows per batch. The matched control is the approved frontier CE."""
+    C.configure()
+    if fold == "leave_out_skillcorner":
+        raise ValueError("SkillCorner 2020 is excluded from the SkillCorner-held-out fold")
+    path = model_path(REBUILD_ARM, fold, seed, 1024)
+    if path.is_file():
+        return
+    teacher = joblib.load(recipe.rf.sc.initial_path(fold, seed))
+    checkpoint = joblib.load(Path(os.environ["MTAH_SQD_DIR"]) / "experiments/short_quality_diversity_delivery_v1/"
+                             "artifacts/short_original_diversity_v1/models" / f"{fold}_{seed}.joblib")
+    d_state = {k: np.array(v, copy=True) for k, v in checkpoint["d_state"].items()}
+    old = recipe.training(fold)
+    gar = recipe.rf.dl.load_dense_records("train", output=recipe.TRAIN_RECORDS)
+    extra = sc_records()
+    start, receipts = time.monotonic(), []
+    for stage, lr in REBUILD_STAGES:          # each stage resets the seed and sampler schedule, as the frontier did
+        sampler = recipe.short.OriginalDiversitySampler(old, gar, list(teacher["feature_names"]), seed)
+        with recipe._round_robin_v2_windows(old):
+            with recipe.short.parent.base.installed(sampler):
+                checkpoint = fit_loop(iterative.warmstart_state(teacher, checkpoint), old, gar, extra, seed=seed,
+                                      extra_count=ARMS[REBUILD_ARM], lr=lr, snapshots=(512,), verbose=True)[512]
+        receipts.append(dict(stage=stage, lr=lr, exposures=checkpoint["metadata"]["exposures"],
+                             loss_intervals=checkpoint["metadata"]["loss_intervals"]))
+    for key, value in d_state.items():
+        np.testing.assert_array_equal(checkpoint["d_state"][key], value)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump(checkpoint, path)
+    Path(str(path) + ".json").write_text(json.dumps(dict(
+        study_id=C.STUDY, arm=REBUILD_ARM, fold=fold, seed=seed, stages=receipts,
+        wall_seconds=time.monotonic() - start, organizer_reference_access=False), indent=1, default=float) + "\n")
+    print("FIT", REBUILD_ARM, fold, seed, round(time.monotonic() - start, 1), flush=True)
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=("records", "fit", "one"))
+    parser.add_argument("action", choices=("records", "fit", "one", "rebuild"))
     parser.add_argument("--arms", default=",".join(ARMS))
     parser.add_argument("--job", default="")
     args = parser.parse_args()
@@ -226,6 +267,10 @@ def main():
         for r in sc_records():
             y = np.asarray(r["y"])
             print(r["match"], len(y), "known H/A rows", int(np.isin(y, (0, 1)).sum()))
+        return
+    if args.action == "rebuild":
+        fold, seed = args.job.split(":")
+        rebuild_one(fold, int(seed))
         return
     if args.action == "one":
         arm, fold, seed = args.job.split(":")

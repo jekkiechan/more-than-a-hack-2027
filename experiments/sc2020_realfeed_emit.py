@@ -28,6 +28,15 @@ def emit(job):
         return str(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     fold = f"leave_out_{C.base.audit.FOLD[provider]}"
+    if arm == T.REBUILD_ARM and fold == "leave_out_skillcorner":
+        # The rebuild's SkillCorner fold is the approved frontier CE itself.
+        cell = C.frontier_cell(key)
+        count = sum(1 for k in cell if k.startswith("prob__ce__seed2026__phase"))
+        np.savez_compressed(path.with_suffix(".tmp.npz"), **{
+            f"seed{seed}": np.stack([cell[f"prob__ce__seed{seed}__phase{ph}"] for ph in range(count)])
+            for seed in C.SEEDS})
+        path.with_suffix(".tmp.npz").rename(path)
+        return str(path)
     if T.ARMS[arm] and fold == "leave_out_skillcorner":
         source = S.emission_path(f"ctrl_{step}", key)
         if not source.is_file():

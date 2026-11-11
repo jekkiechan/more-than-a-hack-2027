@@ -1,0 +1,26 @@
+{
+  "schema": "sc2020_realfeed_v1_round2_declaration",
+  "study_id": "sc2020_realfeed_v1",
+  "round": 2,
+  "date": "2026-11-11",
+  "status": "frozen_after_round1_results_before_any_round2_fit",
+  "round1_result_sha256": "c36e08850a3adc84936e1cbc4257e23f294835bd2be387bd07ef4c562ad3b61b",
+  "motivation": "Round 1 found no SkillCorner-2020 data effect beyond draw noise (arm minus matched ctrl v2 spell -0.0014 to +0.0008). A 256-512 update continuation at 1e-4 moves a converged model little, so it is a weak dose. Round 2 tests the frontier CE recipe itself with the new data.",
+  "arm": {
+    "rb8": "original-full fold warm start; 512 updates at 3e-4 then 512 at 1e-4 with per-stage seed/sampler reset (the frontier CE recipe); 16 original / 8 GAR / 8 SkillCorner-2020 windows per batch; seeds 2026/2027; four fits (Sportec and Metrica folds)"
+  },
+  "matched_control": "approved frontier CE (same recipe, 16 original / 16 GAR), which is also the SkillCorner-fold component of rb8",
+  "candidates": [
+    "rb8_1024/replace",
+    "rb8_1024/half"
+  ],
+  "fixed": "frontier mixture weights, H/A cost 3, exact predecessor D mask",
+  "retention_rule": "unchanged from round 1",
+  "success": "a retained candidate with feed_like_v2 spell_f1 > 0.60",
+  "stop": "No further SkillCorner-2020 share, budget or mixture arms after this round.",
+  "source_sha256": {
+    "experiments/sc2020_realfeed_train.py": "7ea770921d315dbc2d8c6a7e6edf71add84f0b4752a721ef9d3ac5d4376a78a8",
+    "experiments/sc2020_realfeed_emit.py": "2f50a4575782a1d2cf2a6bbd46c1f5d8c3dc06c2124ae0dd73a65a3219db497b",
+    "experiments/sc2020_realfeed_score.py": "c981d76279c6892281e241b0b08840d1706e03a6b16336f3d166bccb319e0762"
+  }
+}
