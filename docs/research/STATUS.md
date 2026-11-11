@@ -67,6 +67,25 @@ organizer scoring or GAR VALID/TEST evaluation is allocated here. Stop the
 declared weight search; next validate the exact pooled candidate separately
 without retuning, then seek independent continuous-match gold evidence.
 
+## Ball-exit dead-ball correction — one retained development candidate
+
+[The 11 November study](../../experiments/BALL_EXIT_DMASK_V1.md) edits only the
+frozen D mask: a predicted dead-ball run starts where the ball is observed
+leaving the pitch. `snap_m0.0` reaches clean/v1/v2 spell
+**.681508/.534731/.598690** (+.011371/+.002602/+.005071) with short recall up
+in every view and all retention checks passing. Sportec and Metrica improve in
+every v2 cell; SkillCorner declines because its silver D starts before the ball
+leaves. **The >.60 v2 target remains unmet by .0013 and the adopted package is
+unchanged.** Next: one unchanged GAR TEST check with the exact deployment.
+
+## SkillCorner 2019/20 real-feed windows — complete, negative
+
+[The 11 November study](../../experiments/SC2020_REALFEED_V1.md) adds six unused
+SkillCorner 2019/20 broadcast-tracking TRAIN matches to the frontier CE
+continuation. Across 18 fits and 14 declared candidates v2 spell stays at
+.591410–.594575 versus .593619; none passes retention and the data effect is
+within draw noise. The adopted package and the unmet >.60 target are unchanged.
+
 ## Extra-data continuation — complete
 
 [The two-round follow-up](../../experiments/V2_EXTRA_DATA.md) uses Luna to test

@@ -1,0 +1,108 @@
+{
+  "schema": "sc2020_realfeed_v1_declaration",
+  "study_id": "sc2020_realfeed_v1",
+  "date": "2026-11-11",
+  "status": "frozen_before_any_fit_or_candidate_score",
+  "question": "Does adding real broadcast-tracking windows from the six unused SkillCorner 2019/20 TRAIN matches to the frontier CE continuation raise exposed-development feed_like_v2 spell F1 above 0.60 without regressing clean/v1 spell or any short-recall mean?",
+  "new_data": {
+    "source": "SkillCorner opendata 2019/20 broadcast tracking",
+    "source_commit": "1b99d401ddc82e366c5c20d6860878668fd5858f",
+    "train_matches": [
+      "skillcorner2020_2068",
+      "skillcorner2020_2269",
+      "skillcorner2020_2417",
+      "skillcorner2020_2440",
+      "skillcorner2020_2841",
+      "skillcorner2020_3442"
+    ],
+    "never_loaded_evaluation_matches": [
+      "skillcorner2020_3518",
+      "skillcorner2020_3749",
+      "skillcorner2020_4039"
+    ],
+    "labels": "provider possession group H/A silver labels; null=X; no D",
+    "grading_rule": "shared multisource_eval.view: unobserved positions masked, <12 visible players -> X",
+    "provider_exclusion": "treated as SkillCorner; the SkillCorner-held-out fold reuses the control fit",
+    "prior_use": "processed 2026-10-25 in mtah-data; referenced by no training or evaluation code before this study"
+  },
+  "control": "approved frontier joint_gru_sn_dense_spell_frontier_ensemble_v1 development replay: clean/v1/v2 spell 0.6701365499557103/0.532128306931943/0.5936187198896373 (reproduced exactly from the frontier_recovery_v1 archive before this freeze)",
+  "training": {
+    "warm_start": "reconstructed frontier CE stage-1024 provider-excluded checkpoints (frontier_recovery_v1)",
+    "learning_rate": 0.0001,
+    "snapshots": [
+      256,
+      512
+    ],
+    "batch": {
+      "original": 16,
+      "external": 16
+    },
+    "seed_offset": 7919,
+    "seeds": [
+      2026,
+      2027
+    ],
+    "arms": {
+      "ctrl": "16 GAR / 0 SkillCorner-2020 external windows (matched fresh continuation)",
+      "sc4": "12 GAR / 4 SkillCorner-2020",
+      "sc8": "8 GAR / 8 SkillCorner-2020"
+    },
+    "loss": "shared v2_iterative_train CE+spell+transition objective; external loss mass 0.5 split in proportion to window counts",
+    "d_state": "unchanged",
+    "fits": "ctrl 6, sc4 4, sc8 4"
+  },
+  "candidates": {
+    "pipelines": [
+      "replace: arm CE replaces the frontier CE component",
+      "half: equal seed-wise probability mix of approved CE and arm CE"
+    ],
+    "arms_x_snapshots": [
+      "ctrl_256",
+      "ctrl_512",
+      "sc4_256",
+      "sc4_512",
+      "sc8_256",
+      "sc8_512"
+    ],
+    "count": 12,
+    "fixed": "CE/calibrated/predecessor 0.5/0.375/0.125 arithmetic, seeds within phase then phases, H/A cost 3, exact predecessor decoded D mask"
+  },
+  "evaluation": {
+    "cells": 35,
+    "matches": "five exposed development matches",
+    "views": {
+      "clean": 1,
+      "feed_like_v1": 2,
+      "feed_like_v2": 4
+    },
+    "aggregation": "realizations within match, matches within provider, providers equally"
+  },
+  "retention_rule": {
+    "vs": "approved frontier",
+    "spell_f1": {
+      "clean": ">=",
+      "feed_like_v1": ">=",
+      "feed_like_v2": ">"
+    },
+    "short_spell_recall_iou_0_5_lt3s": "all three views >=",
+    "macro_f1": "all three views >= control - 0.001",
+    "provider_clean_macro_f1": ">= control - 0.02",
+    "d_mask": "exact"
+  },
+  "success": "a retained candidate with feed_like_v2 spell_f1 > 0.60",
+  "ranking": "retained candidates by feed_like_v2 spell_f1; data effect reported as arm minus ctrl at the same snapshot and pipeline",
+  "not_allowed": [
+    "organizer labels or public scoring",
+    "GAR VALID/TEST",
+    "SkillCorner 2020 evaluation matches",
+    "additional arms, weights, costs or seeds chosen after seeing these results without a new declaration"
+  ],
+  "limits": "five exposed matches reused by every prior v2 study; SkillCorner 2020 cannot affect the SkillCorner fold, so any gain must come from Sportec and Metrica",
+  "source_sha256": {
+    "experiments/sc2020_realfeed_common.py": "e7ae86a23e3b0d0cca4766c06d02fe49196a6afb7a65d89f91bf68180e173e9d",
+    "experiments/sc2020_realfeed_train.py": "19707b50d0c111b6290bca6d1962904009f28e83ef76c2130f81cfb77b9df59c",
+    "experiments/sc2020_realfeed_emit.py": "d7f0fd83c79960d712b6f34874e65e127971b62bcc95e584344a7e48b0c288a7",
+    "experiments/sc2020_realfeed_score.py": "c981d76279c6892281e241b0b08840d1706e03a6b16336f3d166bccb319e0762",
+    "experiments/sc2020_realfeed_prepare.py": "a71fbec3f613f8d0205bcd071cffe84c9a60af8e34785aeb8acf84e18904658e"
+  }
+}
