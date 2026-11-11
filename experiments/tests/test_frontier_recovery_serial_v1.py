@@ -105,6 +105,8 @@ class SerialRecoveryContracts(unittest.TestCase):
             declaration.write_text("frozen declaration")
             amendment = root / "serial_amendment.json"
             amendment.write_text("frozen amendment")
+            supplement = root / "source_supplement.json"
+            supplement.write_text("frozen source supplement")
             log = root / "prior-parallel.log"
             log.write_text("failed parallel run\n")
             serial_log = root / "serial.log"
@@ -141,6 +143,7 @@ class SerialRecoveryContracts(unittest.TestCase):
                 patch.object(training, "OUT", output),
                 patch.object(training, "TRAIN_DECL", declaration),
                 patch.object(training, "FIT_SEAL", fit_seal),
+                patch.object(parallel, "SUPPLEMENT", supplement),
                 patch.object(parallel, "EXECUTION", execution_receipt),
                 patch.object(training, "_check_training_binding", lambda: {}),
                 patch.object(parallel, "check_sources", lambda: {}),
@@ -163,6 +166,7 @@ class SerialRecoveryContracts(unittest.TestCase):
             result = serial._run()
             self.assertEqual(calls, serial._jobs()[2:])
             self.assertEqual(result["fit_count"], 12)
+            self.assertEqual(result["source_supplement_sha256"], file_sha(supplement))
             self.assertTrue(result["all_provider_folds_complete"])
             self.assertEqual(len(json.loads(fit_seal.read_text())["fits"]), 12)
             for job, digest in previous_hashes.items():
