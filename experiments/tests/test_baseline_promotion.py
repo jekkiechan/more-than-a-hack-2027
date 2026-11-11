@@ -71,9 +71,31 @@ class BaselinePromotionContracts(unittest.TestCase):
             self.assertEqual(manifest['architecture']['recipe'], spell_frontier_baseline.RECIPE)
             self.assertEqual(manifest['architecture']['ball_exit'], ball_exit_runtime.CORRECTION)
             previous_manifest = json.loads((root.parent/manifest['previous_manifest']).read_text())
-            self.assertEqual(manifest['models_sha256'], previous_manifest['models_sha256'])
+            if manifest['promotion'].get('source_status') == 'reconstructed_not_original_checkpoint_restore':
+                self.assertEqual(set(manifest['models_sha256']), set(previous_manifest['models_sha256']))
+                changed = {name for name, digest in manifest['models_sha256'].items()
+                           if digest != previous_manifest['models_sha256'][name]}
+                self.assertEqual(changed, {'ce_2026.joblib', 'ce_2027.joblib'})
+                reconstruction = manifest['reconstruction']
+                seal_path = root.parent/reconstruction['training_seal']
+                self.assertEqual(sha256(seal_path), reconstruction['training_seal_sha256'])
+                seal = json.loads(seal_path.read_text())
+                for name in changed:
+                    output = reconstruction['training_outputs'][name]
+                    self.assertEqual(output['sha256'], manifest['models_sha256'][name])
+                    self.assertEqual(seal['models_sha256'][output['path']], output['sha256'])
+                verification_path = root.parent/reconstruction['verification']
+                self.assertEqual(sha256(verification_path), reconstruction['verification_sha256'])
+                self.assertTrue(json.loads(verification_path.read_text())['all_passed'])
+                self.assertTrue(manifest['promotion']['deployment_verified'])
+                self.assertTrue(manifest['promotion']['reconstruction_prediction_parity'])
+                self.assertTrue(manifest['promotion']['regression_reports_verified'])
+                self.assertTrue(manifest['promotion']['organizer_rescoring_performed'])
+                self.assertFalse(manifest['promotion']['public_used_for_selection'])
+            else:
+                self.assertEqual(manifest['models_sha256'], previous_manifest['models_sha256'])
+                self.assertFalse(manifest['promotion']['organizer_rescoring_performed'])
             self.assertFalse(manifest['promotion']['fitting_during_promotion'])
-            self.assertFalse(manifest['promotion']['organizer_rescoring_performed'])
             self.assertNotIn('prediction_csv_sha256', manifest['evidence'])
             self.assertNotIn('organizer_public_diagnostic', manifest)
             self.assertTrue(policy['clean_improvement_screen']['current_screen_passes'])

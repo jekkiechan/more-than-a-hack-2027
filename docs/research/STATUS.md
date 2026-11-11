@@ -1,6 +1,49 @@
 # Current research state
 
-## Verification before final promotion — 11 November 2026
+## Reconstructed deployment verification — 11 November 2026
+
+The originally missing pooled CE checkpoints were not recovered. Instead, the
+frozen pooled recipe was rerun as a separately declared four-fit reconstruction.
+Sampler/exposure/view checks and D/normalization state match exactly; maximum
+loss-interval difference is `1.816079021e-08` against the frozen `1e-7` bound.
+The independent receipt checks 220 input entries and 48 source entries with no
+mismatches. All 52 regenerated v2 feature files and 52 sidecars match historical
+bytes. Its preparation receipt records one worker rather than two; normalizing
+only that metadata field reproduces the historical receipt hash, while the
+actual receipt remains unchanged. The reconstructed weights are not byte-
+identical to the originals. See the
+[pooled reconstruction report](../../experiments/FRONTIER_POOLED_RECONSTRUCTION.md).
+
+The reference-free 199,319-row control CSV matches byte-for-byte. On the fixed
+public diagnostic, Fable changes spell/macro/D-F1 from
+`.611765/.851285/.862870` to `.623529/.864234/.889372`; this reused
+7,500-frame/17-possession window was not used for tuning. The fixed GAR TEST10
+replay covers 50 paired cells, 100 arrays and 800 metric comparisons. Clean
+spell/macro/D-F1/short recall are `.709186/.784717/.593243/.264521` versus
+`.708496/.780580/.583474/.263398` control; v2 is
+`.709176/.784865/.596512/.263570` versus
+`.708619/.782179/.589851/.262769`. All aggregate means improve, but per-game
+spell means include two declines in each view. This is repeated TEST exposure
+with silver labels, not independent gold confirmation or a uniform per-game
+guarantee. VALID remains separate; no tuning followed.
+
+The guarded default CLI replay also matches the sealed Fable CSV byte-for-byte
+(SHA-256 `56425990299fcdda15bf799cfc7384d53f444885e8141ebdd600965f64c5274f`).
+Post-promotion checks pass: 978 experiment tests, 977 passed and one skipped;
+all 26 root tests, file-backed fit parity, submission format and the independent
+reconstruction audit pass.
+
+All ten deployment roles in the reconstructed package were hash-verified from a
+fresh private remote clone with empty LFS; only the two pooled CE files differ
+from the earlier package. After the fit, CSV, public, GAR and archive guards
+passed, the guarded promotion runner installed the reconstructed Fable manifest
+and policy on this research branch. The
+[promotion receipt](../../experiments/results/ball_exit_reconstructed_v1.json)
+binds those records; the [final verification](../../experiments/results/ball_exit_reconstructed_v1_verification.json)
+records the default CLI replay and post-promotion checks. PR #92 is not merged;
+this is the working default on the research branch, not a change to main.
+
+## Earlier software and source verification — 11 November 2026
 
 The user requested verification before final promotion, with Luna subagents.
 [The new verification receipt](../../experiments/results/ball_exit_verification_v2.json)
@@ -11,12 +54,11 @@ file-backed parity and CSV format pass. Luna independently replays 140 saved
 development outputs / 840 metrics with zero error and verifies all source hashes.
 All four pinned GAR TEST raw files are restored and hash-verified.
 
-Exact inference and GAR/public checks still need the original pooled stage1024
-CE checkpoints. The exact required filenames and identities are documented in
-the public pooled training seal; neither required file is restored yet. The originating agent is
-locating them. [Exact paths and hashes](../../experiments/BALL_EXIT_PROMOTION.md#verification-before-final-promotion--luna-review)
-are recorded for handoff. PR #92 is draft pending those checks; the prior
-provisional default is preserved, with no completed deployment promotion or merge.
+At the time of this earlier receipt, exact inference and GAR/public checks were
+blocked on the original pooled stage-1024 CE checkpoints. Their identities
+remain in the historical handoff below. The subsequent reconstruction and
+fixed-check results above resolve the executable-package blocker without
+restoring those original bytes.
 
 ## Complementary live-team improvement — 11 November 2026
 
@@ -28,14 +70,14 @@ v2 gain over Fable is **+.000090**. All declared retention checks pass, with the
 small v2 mean gain concentrated in SkillCorner. Direct composition reaches a
 higher .599644 but fails clean/short-recall checks. Both rounds are independently
 verified; neither is a pooled deployment or GAR/public evaluation. Retain this
-as research evidence and stop the bounded composition search. The unchanged
-Fable package is now provisionally adopted as described below.
+as research evidence and stop the bounded composition search. Fable was provisionally adopted at that point; its reconstructed pooled package
+and final research-branch promotion are recorded above.
 The user approved delivery. [PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
 publishes the implementation and aggregate evidence. The restricted research site
 is updated to version 40; the [verification publication receipt](../../experiments/results/ball_exit_verification_v2_site_publication.json)
-records publication separately from pending exact deployment verification.
+records that earlier publication separately from the later reconstruction checks.
 
-## Ball-exit provisional adoption — 11 November 2026
+## Ball-exit reconstructed promotion — 11 November 2026
 
 [The ball-exit follow-up](../../experiments/BALL_EXIT_PROMOTION.md) independently
 reproduces Fable's snap result: clean/v1/v2 spell **.681508/.534731/.598690**.
@@ -45,17 +87,17 @@ with zero error. This remains exposed development evidence, not GAR/public
 validation.
 
 The user delegated the choice: “promote the version you think is best.”
-**The active manifest and policy now select unchanged Fable snap_m0.0.**
+**The active manifest and policy now select reconstructed Fable snap_m0.0.**
 The [adoption receipt](../../experiments/results/ball_exit_adoption_v1.json)
 records an explicit simplicity/deployment-cost tradeoff against the complementary
 candidate’s tiny +.000090 exposed-development gain and extra pooled-model needs.
 
-The exact pooled `ce_2026.joblib` and `ce_2027.joblib` remain missing after a fresh
-private-ref check. Eight other roles verify. The new SkillCorner fold upload is
-a different experiment. **Exact deployment and GAR TEST10/public regression
-checks are pending.** Adoption changes the default recipe; it does not certify
-an executable local package or imply a measured non-regression. Inference still
-requires all original hashes. No fitting, organizer scoring or closed-gate reset.
+At the time of adoption, the exact pooled `ce_2026.joblib` and `ce_2027.joblib`
+were missing; the reconstruction now supplies a separately identified package.
+The new SkillCorner fold upload is a different experiment. The guarded runner
+installed the reconstructed model package and its manifest/policy on the
+research branch after fixed checks passed. No fitting on TEST/public labels or
+closed-gate reset occurred.
 
 Reviewed 11 November against main `8919726`, Fable PR #91 at `9a4e7f0`, and
 [PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92).
@@ -63,8 +105,9 @@ The predecessor manifest/policy and all frozen reports remain archived.
 
 ## Adopted package
 
-`joint_gru_sn_dense_spell_frontier_ball_exit_ensemble_v1` is the provisional
-default. It retains CE/calibrated/predecessor H/A at 0.5/0.375/0.125, paired-seed
+`joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1` is the
+working default on the research branch. It retains CE/calibrated/predecessor H/A
+at 0.5/0.375/0.125, paired-seed
 native-phase pooling and H/A cost 3. Fable corrects D starts toward observed
 pitch exits using the unchanged zero-margin snap rule. Exposed development
 clean/v1/v2 spell is **.681508/.534731/.598690**; macro is
@@ -72,8 +115,10 @@ clean/v1/v2 spell is **.681508/.534731/.598690**; macro is
 +.01 screen. The >.60 v2 target remains unmet; SkillCorner regresses, and no
 independent continuous-match gold confirmation is claimed.
 
-The predecessor’s GAR TEST10 .708496/.708619 clean/v2 spell and public
-.611765 spell/.851285 macro are **historical**, not Fable regression results.
+The predecessor’s GAR TEST10 `.708496/.708619` clean/v2 spell and public
+`.611765` spell/`.851285` macro are controls. Reconstructed GAR means are
+`.709186/.709176` clean/v2 spell and the public diagnostic is `.623529` spell /
+`.864234` macro; see the verification above for full metrics and limitations.
 The predecessor’s TEST short-recall declines remain disclosed in its
 [promotion report](../../experiments/SPELL_FRONTIER_PROMOTION.md).
 Restore and continuation commands are in [BASELINE](../../experiments/BASELINE.md)
@@ -101,11 +146,10 @@ matches, and CE-seed diagnostics show sensitivity to pooling.
 
 Both rounds independently replay all saved scores and probabilities; turnover
 recovery itself improves only six repeated cell-events versus approved
-(2,550 vs 2,544 of 6,552). Retain the blend as an experimental candidate;
-the adopted/deployed package remains unchanged. No pooled counterpart,
-organizer scoring or GAR VALID/TEST evaluation is allocated here. Stop the
-declared weight search; next validate the exact pooled candidate separately
-without retuning, then seek independent continuous-match gold evidence.
+(2,550 vs 2,544 of 6,552). Retain the blend as an experimental candidate; it is
+not part of the adopted package. This earlier turnover study had no pooled
+counterpart or GAR VALID/TEST allocation. Stop the declared weight search and
+seek independent continuous-match gold evidence.
 
 ## Ball-exit dead-ball correction — one retained development candidate
 
@@ -115,8 +159,9 @@ leaving the pitch. `snap_m0.0` reaches clean/v1/v2 spell
 **.681508/.534731/.598690** (+.011371/+.002602/+.005071) with short recall up
 in every view and all retention checks passing. Sportec and Metrica improve in
 every v2 cell; SkillCorner declines because its silver D starts before the ball
-leaves. **The >.60 v2 target remains unmet by .0013 and the adopted package is
-unchanged.** Next: one unchanged GAR TEST check with the exact deployment.
+leaves. **The >.60 v2 target remains unmet by .0013.** Its fixed GAR/public
+checks are now reported in the reconstructed-promotion evidence above; seek
+independent continuous-match gold confirmation.
 
 ## SkillCorner 2019/20 real-feed windows — complete, negative
 

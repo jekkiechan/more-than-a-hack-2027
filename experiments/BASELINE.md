@@ -1,22 +1,27 @@
-# Current adopted baseline: Fable ball-exit correction
+# Current baseline: Fable ball-exit correction
 
-The user delegated the choice and requested promotion. The active default is now
-`joint_gru_sn_dense_spell_frontier_ball_exit_ensemble_v1`: Fable’s unchanged
-`snap_m0.0` correction on top of the previous spell-frontier H/A blend.
-[Manifest](baseline_manifest.json), [policy](model_decision_policy.json),
+The selected recipe is `joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1`:
+Fable’s unchanged `snap_m0.0` correction on the previous spell-frontier H/A
+blend. The [manifest](baseline_manifest.json), [policy](model_decision_policy.json),
 [adoption receipt](results/ball_exit_adoption_v1.json) and
-[promotion report](BALL_EXIT_PROMOTION.md) identify the exact recipe.
-
-**This is provisional adoption, not verified deployment.** Exact full-match
-inference and GAR TEST10/public regression checks remain pending because
-`ce_2026.joblib` and `ce_2027.joblib` are absent. The eight other checkpoint roles
-verify. The ordinary CLI requires every original SHA-256 and fails on missing
-or changed weights; it does not substitute research-fold models.
+[promotion report](BALL_EXIT_PROMOTION.md) identify the recipe. The exact
+historical pooled CE files remain unavailable; an independently verified
+four-fit reconstruction supplies the complete package. It is a new checkpoint
+lineage, not byte restoration of the missing files. The reconstruction passed
+reference-free full-CSV parity, the fixed public diagnostic and GAR TEST10
+replay. The guarded promotion runner installed the reconstructed manifest and
+policy as the working default on this research branch. Its
+[promotion receipt](results/ball_exit_reconstructed_v1.json) binds the active
+package. PR #92 is open and unmerged; the default has not reached main.
+See the [reconstruction report](FRONTIER_POOLED_RECONSTRUCTION.md) for evidence.
 
 Fable adjusts dead-ball starts toward observed pitch exits, using its frozen
-zero-margin, five-second delay and three-second advance rule. Conditional H/A
+zero-margin, five-second delay and three-second advance rule. The ball-exit rule
+adds no learned component; the two pooled CE weights were reconstructed as
+documented below. Conditional H/A
 still combines CE/calibrated/predecessor at 0.5/0.375/0.125, pools seeds within
-native phases then phases, and uses H/A cost 3. No fitting occurred.
+native phases then phases, and uses H/A cost 3. The ball-exit rule itself adds
+no learned component; pooled weight reconstruction is documented below.
 
 Matched exposed development clean/v1/v2 spell is **.681508/.534731/.598690**,
 with **+.011371/+.002602/+.005071** versus the previous frontier. Macro F1 is
@@ -31,22 +36,35 @@ and shows a tiny gain on the same exposed data. It remains research-only.
 
 ## Inference and local restore
 
-Use the original frontier’s ten exact checkpoint files in
-`data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1/`; the new package
-reuses all their hashes. The [missing-artifact identities](BALL_EXIT_PROMOTION.md#exact-deployment-artifact-blocker)
-and [historical local archive receipt](results/baseline_spell_frontier_local_artifacts.json)
-identify the two missing files. That receipt records a previous local archive,
-not a currently available remote restore. Restore tracking inputs separately.
+Restore the reconstructed ten-role package from its versioned private cache
+manifest, following the commands in the
+[reconstruction report](FRONTIER_POOLED_RECONSTRUCTION.md).
+The package is independently verified in a fresh remote clone with empty LFS;
+the separate fit artifacts and deployment roles have recorded hashes. Restore
+tracking inputs separately. The two historical original CE identities remain
+documented in the [promotion report](BALL_EXIT_PROMOTION.md#exact-deployment-artifact-blocker)
+for provenance and must not be attributed to reconstructed files.
+
+The active default CLI reproduces the sealed Fable CSV byte-for-byte at SHA-256
+`56425990299fcdda15bf799cfc7384d53f444885e8141ebdd600965f64c5274f`. The
+post-promotion experiment suite passes 977 tests with one skip; the default
+package is installed on the research branch, while PR #92 remains unmerged.
 
 ```sh
-# After all exact checkpoint files and tracking inputs have been restored:
+# After the reconstructed model package and tracking inputs have been restored:
 python -m experiments.current_baseline predict --output data/experiments/current_baseline/fable_restored.csv
 python evaluation/validate_submission.py data/experiments/current_baseline/fable_restored.csv
 ```
 
-No full-match CSV hash or public score is claimed for Fable. The predecessor’s
-saved .611765 public spell and .851285 macro are historical diagnostics only.
-To use that archived recipe explicitly, pass
+The reconstructed deployment run matches the saved 199,319-row reference-free
+frontier CSV byte-for-byte. On the already-closed 7,500-frame/17-possession
+public diagnostic, Fable reaches .623529 spell, .864234 macro and .889372 D-F1,
+up from .611765/.851285/.862870. GAR TEST10 equal-game spell means are .709186
+clean and .709176 v2, versus .708496/.708619 control; all aggregate macro, D-F1
+and short-recall means also improve. This is repeated TEST exposure with silver
+labels, and two games decline in each view, so it is not independent gold
+confirmation or a uniform per-game guarantee. The predecessor’s saved public
+numbers remain historical comparators. To use that archived recipe explicitly, pass
 `--manifest experiments/baselines/joint_gru_sn_dense_spell_frontier_ensemble_v1.json`.
 It needs the same two missing CE files. The
 [promotion report](BALL_EXIT_PROMOTION.md#implementation-and-continuation)

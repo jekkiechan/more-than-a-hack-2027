@@ -1,0 +1,152 @@
+{
+  "archive": {
+    "deployment_roles": 10,
+    "receipt_sha256": "73fafcf4e1fd8a04f84f06c25f49abb6ea1f2c215f6f737d24d08a74b24c3d8a",
+    "remote_restore_verified": true,
+    "verified_files": 23
+  },
+  "default_cli": {
+    "candidate_sha256": "56425990299fcdda15bf799cfc7384d53f444885e8141ebdd600965f64c5274f",
+    "equals_sealed_candidate": true,
+    "reference_access": false,
+    "uses_active_manifest": true
+  },
+  "gar": {
+    "aggregate": {
+      "clean": {
+        "control": {
+          "d_f1": 0.5834742518755276,
+          "d_precision": 0.5044213240453386,
+          "d_recall": 0.6957529950020896,
+          "macro_f1": 0.7805797527362035,
+          "predicted_spell_count": 302.8,
+          "reference_spell_count": 374.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.2633975455505891,
+          "spell_f1": 0.7084963439067715
+        },
+        "delta": {
+          "d_f1": 0.009768313658248151,
+          "d_precision": 0.014751041506915863,
+          "d_recall": 0.0009315179348053926,
+          "macro_f1": 0.004137522306214558,
+          "predicted_spell_count": 1.6999999999999886,
+          "reference_spell_count": 0.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.0011235955056179692,
+          "spell_f1": 0.0006900154906051004
+        },
+        "snap": {
+          "d_f1": 0.5932425655337757,
+          "d_precision": 0.5191723655522544,
+          "d_recall": 0.696684512936895,
+          "macro_f1": 0.7847172750424181,
+          "predicted_spell_count": 304.5,
+          "reference_spell_count": 374.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.26452114105620705,
+          "spell_f1": 0.7091863593973766
+        }
+      },
+      "v2": {
+        "control": {
+          "d_f1": 0.5898505801620598,
+          "d_precision": 0.5059747420280682,
+          "d_recall": 0.710660991261264,
+          "macro_f1": 0.7821791685152121,
+          "predicted_spell_count": 301.75,
+          "reference_spell_count": 374.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.2627694485874397,
+          "spell_f1": 0.7086189869334547
+        },
+        "delta": {
+          "d_f1": 0.006660991096098079,
+          "d_precision": 0.009781599341826208,
+          "d_recall": 0.0006815047559359799,
+          "macro_f1": 0.002686015611546133,
+          "predicted_spell_count": 0.8999999999999773,
+          "reference_spell_count": 0.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.0008009399266884487,
+          "spell_f1": 0.0005574881394516673
+        },
+        "snap": {
+          "d_f1": 0.5965115712581579,
+          "d_precision": 0.5157563413698945,
+          "d_recall": 0.7113424960172,
+          "macro_f1": 0.7848651841267582,
+          "predicted_spell_count": 302.65,
+          "reference_spell_count": 374.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.2635703885141282,
+          "spell_f1": 0.7091764750729064
+        }
+      }
+    },
+    "control_tolerance": 1e-12,
+    "games": 10,
+    "metric_comparisons": 800,
+    "paired_cells": 50,
+    "per_game_spell_direction": {
+      "clean": {
+        "decline": 2,
+        "improve": 7,
+        "tie": 1
+      },
+      "v2": {
+        "decline": 2,
+        "improve": 8,
+        "tie": 0
+      }
+    },
+    "prediction_arrays_replayed": 100,
+    "repeated_silver_label_test": true,
+    "spell_regression": false,
+    "valid_pooled_into_test": false,
+    "views": 5
+  },
+  "independent_continuous_gold_confirmation": false,
+  "independent_final_audit_sha256": "cef270c40239509b4eb85bc524dbed1d90f7b4927d4db12019c382307f32ad84",
+  "manifest_sha256": "e0c5e988f16f71b8ad7df4fdaabec7c4923ade8ddccb7874f9649d280a4de5dd",
+  "model_tuning_after_diagnostics": false,
+  "original_frontier_control": {
+    "checkpoint_file_identity": false,
+    "csv_sha256": "26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc",
+    "historical_csv_parity": true
+  },
+  "policy_sha256": "1f97b86fe7d50257da8a2c87fcaf52baa88ed8ef3ce5eee4404ae5f81d96b851",
+  "promotion_receipt_sha256": "1391486bd52f8c7223becfff34bf2de9595dbb40937747b20002104c8f81d805",
+  "public": {
+    "delta": {
+      "d_f1": 0.026502411368442114,
+      "macro_f1": 0.01294941655207893,
+      "spell_f1_mean": 0.0117647058823529
+    },
+    "gate_closed": true,
+    "graded_frames": 7500,
+    "possessions": 17,
+    "single_fixed_diagnostic": true,
+    "spell": 0.6235294117647059,
+    "used_for_selection": false
+  },
+  "reconstruction": {
+    "d_state_and_normalizers_exact": true,
+    "fits": 4,
+    "historical_sampling_exposure_and_view_draws_exact": true,
+    "max_loss_interval_absolute_delta": 1.816079020500183e-08,
+    "v2_training_views_and_sidecars_byte_exact": 104
+  },
+  "report_hashes": {
+    "gar": "1e42e20d1b60c408fcf8ea8bebbbbc028c2cd11e2d6fcd4f952233e62b3bd47b",
+    "public": "3436bbdf317c3f935a19acb85f509e606bf73cf35f25eeb3835a6d0d244d40d3"
+  },
+  "software": {
+    "current_manifest_test_sha256": "2bb815d1a3eb7abb12a71ab6ba03986bce4b428e53d3e572859fee12837d7411",
+    "errors": 0,
+    "experiment_tests": 978,
+    "failures": 0,
+    "file_backed_fit_parity": true,
+    "format_checks": true,
+    "full_suite_log_sha256": "e96923f6c6a672993881563166fe71735dc90e3a4897860bf45f3690523d5c8b",
+    "passed": 977,
+    "post_promotion_test_fix": "Current manifest contract now verifies exactly two reconstructed CE replacements and their sealed evidence; previous package checks retained",
+    "root_tests_passed": 26,
+    "skipped": 1
+  },
+  "study": "ball_exit_reconstructed_v1"
+}

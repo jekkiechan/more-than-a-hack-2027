@@ -16,6 +16,8 @@
       "ha_cost": 3.0,
       "pooling": "arithmetic"
     },
+    "reconstructed_frontier_control_csv_parity": true,
+    "reconstruction": "Pooled CE stage-1024 weights reconstructed from the predeclared original recipe",
     "roles": [
       "ce",
       "adopted",
@@ -26,12 +28,36 @@
     "seeds": [
       2026,
       2027
-    ]
+    ],
+    "verified_control_csv_sha256": "26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc",
+    "verified_control_input_sha256": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3"
   },
-  "default_output": "data/experiments/current_baseline/joint_gru_sn_dense_spell_frontier_ball_exit_ensemble.csv",
+  "archive_verification": {
+    "control_csv_sha256": "26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc",
+    "input_sha256": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3",
+    "models_sha256": {
+      "adopted_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+      "adopted_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+      "calibrated_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+      "calibrated_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+      "ce_2026.joblib": "da1f62e8d309397a7280fa12e1a79a88a8c9f25012eaea5b8333a400299ef066",
+      "ce_2027.joblib": "fdc3b02dc997abc0b164ff8991c5a32b80ff52b1078efe1072e2e862985b065b",
+      "teacher_adopted_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "teacher_adopted_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13",
+      "teacher_calibrated_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "teacher_calibrated_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+    },
+    "receipt": "experiments/results/ball_exit_reconstructed_v1_archive_verification.json",
+    "receipt_sha256": "73fafcf4e1fd8a04f84f06c25f49abb6ea1f2c215f6f737d24d08a74b24c3d8a",
+    "remote_restore_verified": true,
+    "verified_staged_manifest_sha256": "0411b692546651b409b5bc8416d5bc643aebfa0ceeb7526f83865d7691b32b24"
+  },
+  "default_output": "data/experiments/ball_exit_reconstructed_v1/candidate.csv",
   "evidence": {
     "historical_clean_screen_passes": true,
     "independent_continuous_gold_confirmation": false,
+    "organizer_public_diagnostic_performed": true,
+    "original_checkpoint_byte_identity": false,
     "original_development": {
       "clean": {
         "d_f1": 0.8755577749698086,
@@ -148,50 +174,94 @@
         }
       }
     },
+    "reconstructed_frontier": true,
+    "reconstructed_frontier_control_csv_parity": true,
+    "reconstruction_plan_sha256": "e8a0108103def82c378737098ad0046c1881590ce69d05b27a406e28e8b3abc2",
     "report": "experiments/BALL_EXIT_PROMOTION.md",
     "source_result_sha256": "2fbb910539f0c22ac042bf226902f880b0c08f34157d5968854c53a20ce69656",
-    "verification_sha256": "487bcd686b91ff8ba3dab4b7410c08863f7403efcdc978e56ca9baf96d0f2cee"
+    "training_seal_sha256": "95ec02d1d7c85712af0bfaf1fa47209f03aa837f6852268d4571f5f3adb33e86",
+    "verification_sha256": "487bcd686b91ff8ba3dab4b7410c08863f7403efcdc978e56ca9baf96d0f2cee",
+    "verified_control_csv_sha256": "26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc",
+    "verified_control_input_sha256": "7c8763e926c933efa0d4324fa4dad3cf9f4416192db56cccf507250ff77698a3"
   },
   "historical_selection_records_preserved": true,
-  "model": "joint_gru_sn_dense_spell_frontier_ball_exit_ensemble",
-  "model_directory": "data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1",
+  "model": "joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble",
+  "model_directory": "data/models/joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1",
   "models_sha256": {
     "adopted_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
     "adopted_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
     "calibrated_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
     "calibrated_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
-    "ce_2026.joblib": "d9691336672b13191bf2ce47715fc904f3bc6c14b8477b2f6ff2425d9f78d9c2",
-    "ce_2027.joblib": "4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa",
+    "ce_2026.joblib": "da1f62e8d309397a7280fa12e1a79a88a8c9f25012eaea5b8333a400299ef066",
+    "ce_2027.joblib": "fdc3b02dc997abc0b164ff8991c5a32b80ff52b1078efe1072e2e862985b065b",
     "teacher_adopted_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
     "teacher_adopted_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13",
     "teacher_calibrated_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
     "teacher_calibrated_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
   },
   "organizer_reference_labels_used_for_training": false,
-  "package_version": "joint_gru_sn_dense_spell_frontier_ball_exit_ensemble_v1",
-  "previous_manifest": "experiments/baselines/joint_gru_sn_dense_spell_frontier_ensemble_v1.json",
-  "previous_manifest_sha256": "909a9c50f66ffd598ef40fc79b8cf7565e2c8f60d439facb770a8338d2166012",
+  "package_version": "joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1",
+  "previous_manifest": "experiments/baselines/joint_gru_sn_dense_spell_frontier_ball_exit_ensemble_v1.json",
+  "previous_manifest_sha256": "cc340e47e3e76bed44809168dfb6761bd128ad424135f2242ef78eba8bdadf5b",
   "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_spell_frontier_ensemble_v1.json",
   "previous_policy_sha256": "e84c8616fd40506b0a8b1e8f754d6993317cd43aa57785117e23f9150d0021eb",
-  "promoted_utc": "2026-11-11T10:33:53.781588+00:00",
+  "promoted_utc": "2026-11-11T13:05:22.582053+00:00",
   "promotion": {
     "automatic_promotion": false,
-    "deployment_verified": false,
+    "deployment_verified": true,
     "fitting_during_promotion": false,
-    "model_checkpoints_unchanged": true,
-    "organizer_rescoring_performed": false,
+    "model_checkpoints_unchanged": false,
+    "organizer_rescoring_performed": true,
     "public_used_for_selection": false,
-    "reason": "User delegated the choice and requested promotion after the missing exact weights and unmeasured GAR/public regressions were disclosed. Adopt unchanged Fable snap_m0.0 as the provisional default: +.005071 v2 spell over the frontier. The complementary candidate adds only .000090 on exposed development and requires additional pooled models; choose the simpler package as an explicit deployment tradeoff. Exact deployment verification remains pending; no regression pass is implied.",
-    "type": "explicit_user_authorized_provisional_adoption",
-    "user_request": "promote the version you think is best"
+    "reason": "The original pooled CE checkpoint bytes were unavailable. The reconstructed fixed recipe matched the historical frontier CSV exactly, then passed fixed Fable GAR/public checks; CE checkpoint artifact identity remains reconstructed.",
+    "reconstructed_model_roles": [
+      "ce_2026",
+      "ce_2027"
+    ],
+    "reconstruction_prediction_parity": true,
+    "regression_reports_verified": true,
+    "source_status": "reconstructed_not_original_checkpoint_restore",
+    "type": "explicit_user_authorized_reconstruction_promotion",
+    "unchanged_predecessor_model_roles": [
+      "adopted_2026",
+      "adopted_2027",
+      "calibrated_2026",
+      "calibrated_2027",
+      "teacher_adopted_2026",
+      "teacher_adopted_2027",
+      "teacher_calibrated_2026",
+      "teacher_calibrated_2027"
+    ],
+    "user_authorized": true
+  },
+  "reconstruction": {
+    "historical_frontier_csv_sha256": "26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc",
+    "independent_continuous_gold_confirmation": false,
+    "plan": "experiments/results/frontier_pooled_reconstruction_v1_plan.json",
+    "plan_sha256": "e8a0108103def82c378737098ad0046c1881590ce69d05b27a406e28e8b3abc2",
+    "source_frontier_manifest_sha256": "909a9c50f66ffd598ef40fc79b8cf7565e2c8f60d439facb770a8338d2166012",
+    "training_outputs": {
+      "ce_2026.joblib": {
+        "path": "data/experiments/frontier_pooled_reconstruction_v1/models/stage1024_2026.joblib",
+        "sha256": "da1f62e8d309397a7280fa12e1a79a88a8c9f25012eaea5b8333a400299ef066"
+      },
+      "ce_2027.joblib": {
+        "path": "data/experiments/frontier_pooled_reconstruction_v1/models/stage1024_2027.joblib",
+        "sha256": "fdc3b02dc997abc0b164ff8991c5a32b80ff52b1078efe1072e2e862985b065b"
+      }
+    },
+    "training_seal": "experiments/results/frontier_pooled_reconstruction_v1_seal.json",
+    "training_seal_sha256": "95ec02d1d7c85712af0bfaf1fa47209f03aa837f6852268d4571f5f3adb33e86",
+    "verification": "experiments/results/frontier_pooled_reconstruction_v1_verification.json",
+    "verification_sha256": "1b8566d1391c4d947f1ffdb96b31aefb7d3abeb44e0137b144a21889257720f1"
   },
   "regression_checks": {
-    "gar_test10": "pending",
-    "organizer_public": "pending"
+    "gar_test10": "1e42e20d1b60c408fcf8ea8bebbbbc028c2cd11e2d6fcd4f952233e62b3bd47b",
+    "organizer_public": "3436bbdf317c3f935a19acb85f509e606bf73cf35f25eeb3835a6d0d244d40d3",
+    "prediction_seal": "42450f6ae3a5ffd050b1856234b46220daa4f2aadc3059d43e7253ac0caafc94"
   },
-  "replaced_baseline": "joint_gru_sn_dense_spell_frontier_ensemble",
+  "replaced_baseline": "joint_gru_sn_dense_spell_frontier_ball_exit_ensemble",
   "source_sha256": {
-    "experiments/ball_exit_adoption.py": "c0fa1fdba1540cb314fd90dc78983b0e3ed1e3069e82f16f342eda062393a46f",
     "experiments/ball_exit_delivery.py": "38602f1f92b59f7dafbccf09f35a427176ad82fb25d58a5a9eada4b27ae5bbd5",
     "experiments/ball_exit_dmask_v1.py": "573013001ffe9420e7b95758fd0c7053a6b668f00288a424359a834190399019",
     "experiments/ball_exit_gar.py": "50b263cd9dc3651bb081746b251196257e280856a62513ac493f539bc2361243",
@@ -199,6 +269,8 @@
     "experiments/current_baseline.py": "5e158ce7f81581371a4ce101e8fdf6d775afac0f9a823814699c4be2a7520ebc",
     "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
     "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+    "experiments/frontier_pooled_reconstruction.py": "3f8bda13746910b9abc87bc6f8d70f9b2cbc2dd79410ac248a996cb4be957e63",
+    "experiments/frontier_reconstructed_delivery.py": "e4372d259ac444bf5596705a36f43cb27ee6deb4e1e504b62b51da4bd29b7b8e",
     "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
     "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
     "experiments/spell_frontier_baseline.py": "c42d74154b48714836f704dfa623fe38c164a6e7c10de6aaa80e17edcd5c8610",
@@ -208,17 +280,27 @@
     "experiments/v2_spell_balanced_eval.py": "ba57176cd16ff7535b98acd3d78acd3aefcc002c723101f6f2dc816b892b2514",
     "experiments/v2_spell_balanced_public.py": "fd3504f710259220ef118bcdc2be301dfb7c68d728d802e0ee8bc0c78726026a"
   },
-  "status": "User-authorized provisional default; exact deployment and GAR/public checks pending",
+  "status": "User-authorized reconstructed provisional working baseline; independent continuous-gold confirmation pending",
   "training": {
     "ce_stage": 1024,
     "fitting_during_promotion": false,
     "gar_train_games": 45,
+    "original_checkpoint_byte_identity": false,
     "original_train_matches": 13,
-    "pooled_seal": "experiments/results/v2_spell_balanced_v1_pooled_seal.json",
+    "pooled_seal": "experiments/results/frontier_pooled_reconstruction_v1_seal.json",
+    "reconstructed_roles": [
+      "ce_2026",
+      "ce_2027"
+    ],
+    "reconstruction_declaration": "experiments/results/frontier_pooled_reconstruction_v1_declaration.json",
+    "reconstruction_declaration_sha256": "18a16732f13e09ad8197c470bb6f26c3f0e7bc435e21c09d5bae344d11bad0d7",
+    "reconstruction_verification": "experiments/results/frontier_pooled_reconstruction_v1_verification.json",
+    "reconstruction_verification_sha256": "1b8566d1391c4d947f1ffdb96b31aefb7d3abeb44e0137b144a21889257720f1",
     "seeds": [
       2026,
       2027
-    ]
+    ],
+    "source_pooled_seal": "experiments/results/v2_spell_balanced_v1_pooled_seal.json"
   },
-  "version": 12
+  "version": 13
 }

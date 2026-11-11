@@ -2,15 +2,33 @@
 
 11 November 2026. Fable's `snap_m0.0` remains the selected candidate. Its
 development improvement reproduces exactly; two fixed extensions do not improve
-v2 spell. **Fable is now the user-authorized provisional default. Exact deployment
-verification and GAR/public regression results remain blocked on two missing
-pooled checkpoints.**
+v2 spell. The frozen pooled recipe has now been reconstructed in four fits, and
+the guarded runner installed the reconstructed ten-role package as the working
+default on this research branch. The original pooled files remain unavailable
+and the reconstructed weights are not byte-identical to them. The
+[promotion receipt](results/ball_exit_reconstructed_v1.json) binds the active
+manifest/policy and completed control-CSV, public and GAR checks. PR #92 is open and unmerged; this branch's active package has not reached main.
+The normal default CLI reproduces the sealed Fable CSV byte-for-byte
+(`56425990299fcdda15bf799cfc7384d53f444885e8141ebdd600965f64c5274f`), and
+post-promotion checks pass 977 tests with one skip, plus all 26 root tests,
+file-backed parity, submission format and the independent fit audit.
+
+The GAR TEST10 result is a repeated descriptive check, not fresh confirmation:
+all four aggregate measures improve in clean and v2, with spell/macro/D-F1/short
+recall `.709186/.784717/.593243/.264521` clean and
+`.709176/.784865/.596512/.263570` v2, against `.708496/.780580/.583474/.263398`
+and `.708619/.782179/.589851/.262769` controls. Two games decline in each view.
+The reused public diagnostic moves spell/macro/D-F1 from
+`.611765/.851285/.862870` to `.623529/.864234/.889372` on 7,500 frames and 17
+possessions. No tuning followed either result; TEST labels are silver and this
+is not independent continuous-match gold evidence. Full detail is in the
+[reconstruction report](FRONTIER_POOLED_RECONSTRUCTION.md).
 
 The user explicitly requested promotion, further development, and GAR TEST/public
 regression checks. This work builds on [Fable's report](BALL_EXIT_DMASK_V1.md)
 at public PR #91, commit `9a4e7f0f2e5c347b679322a9483a44b5db3490a1`.
-The new study is `ball_exit_crossing_v1`; the pending delivery is
-`ball_exit_promotion_v1`.
+The development study is `ball_exit_crossing_v1`; deployment continuation was
+recorded later in `ball_exit_reconstructed_v1`.
 
 After the user requested complementary improvements instead, the separate
 [turnover composition study](BALL_EXIT_COMPLEMENT.md) retained a small research
@@ -20,11 +38,12 @@ simplicity and deployment-cost tradeoff: the complement adds only .000090 on
 exposed data and requires additional pooled models. See the
 [adoption receipt](results/ball_exit_adoption_v1.json).
 
-The active manifest and policy now select Fable, while the predecessor manifest
-and policy remain archived. This explicitly separates the adoption decision from
-exact deployment readiness. No GAR/public pass, new full-match CSV hash, or
-restored missing weight is implied. The earlier delivery/publication receipts
-remain unchanged as records of their original states.
+The earlier adoption receipt selected the Fable rule while keeping the
+predecessor manifest and policy archived. The later guarded promotion installed
+the reconstructed pooled package; it did not recover the original CE weights.
+The reconstruction and current active manifest are recorded in the receipt linked
+at the top. Earlier delivery/publication receipts remain unchanged as historical
+records of their original states.
 
 ## Matched development result
 
@@ -71,9 +90,10 @@ remain limitations; these are not independent continuous-match gold results.
 
 ## Exact deployment artifact blocker
 
-The [asset audit](results/ball_exit_promotion_v1_asset_audit.json) restores and
-verifies eight of the ten checkpoint roles against the active frontier manifest.
-The two missing files are:
+Historical record: the [asset audit](results/ball_exit_promotion_v1_asset_audit.json)
+restored eight of the ten roles against the archived frontier manifest. These
+two original files remained unavailable; the current package uses separately
+identified reconstructed replacements:
 
 | Role | Required SHA-256 |
 | --- | --- |
@@ -95,14 +115,15 @@ They cannot substitute for the deployment package. The separate 1.08 GB frontier
 recovery archive and all 160 members were restored and verified; it contains
 the development folds and predictions, explicitly excluding pooled weights.
 
-Before adoption, `python -m experiments.ball_exit_delivery stage` failed at the
-missing `ce_2026.joblib`. After adoption, use `python -m experiments.ball_exit_adoption stage`;
-it preserves the same exact-weight requirement before writing a diagnostic
-manifest or accessing organizer labels.
-No public gate has been claimed, no GAR TEST was scored, and no new weights or
-frame outputs were uploaded. Historical reports, declarations, runner code,
-predecessor manifest and predecessor policy are preserved; the active pointers
-were explicitly advanced by the later user-authorized provisional adoption.
+Earlier exact-weight staging attempts failed because the original
+`ce_2026.joblib` was missing. The reconstructed models were then fitted in the
+separate bounded study, evaluated under the already-closed public gate and on
+the fixed GAR TEST10 cohort, and activated only after their receipts passed.
+The staged private manifest remains unchanged. The historical original hashes
+above remain useful provenance; they are not claimed for reconstructed files.
+No closed gate was reset, and no public/GAR result informed fitting or candidate
+selection. The fresh private-branch package excludes raw inputs and frame
+predictions; see the reconstruction report for its restore instructions.
 
 ## Implementation and continuation
 
@@ -112,34 +133,14 @@ It applies observation masks and time discontinuities, then uses the unchanged
 frontier H/A mixture. The normal baseline dispatcher supports the new versioned
 architecture. The crossing variants are experimental only.
 
-[The delivery runner](ball_exit_delivery.py) requires exact checkpoint hashes,
-replays the old full CSV before sealing a new one, and provides a separate
-exclusive public gate. [The GAR runner](ball_exit_gar.py) checks the exact ten
-TEST games using clean plus the same four corruption realizations; it replays
-the saved frontier metrics before candidate scoring and verifies saved native
-predictions before reporting. VALID is not pooled into the result. These
-deployment paths are implemented and contract-tested where possible, but their
-end-to-end numerical behavior is unverified until the missing files are restored.
-
-After restoring the exact two files and the declaration-pinned GAR TEST raw
-files from the [authorized source](SOCCERNET_DATA_ACCESS.md), run:
-
-```sh
-python -m experiments.ball_exit_adoption stage
-python -m experiments.ball_exit_gar prepare
-python -m experiments.ball_exit_gar run
-python -m experiments.ball_exit_delivery predict
-python -m experiments.ball_exit_delivery public
-```
-
-The adopted manifest is staged byte-for-byte only after its exact sources and
-weights verify. The existing prediction, exclusive public gate and GAR runners
-remain unchanged. Do not call the older `activate` action: adoption has already
-changed the default. Record a separate deployment-verification receipt after
-reviewing the bound reports. Any regression must be disclosed and reviewed; it
-never triggers tuning on those labels or a silent change of candidate.
-The public baseline is the saved .611765 spell / .851285 macro score on 17
-possessions. No conclusion about regression is available yet.
+The fixed full-control prediction CSV matches its saved reference byte for byte.
+The separate [reconstruction study](FRONTIER_POOLED_RECONSTRUCTION.md) records
+all four fit identities, the complete fixed public diagnostic and GAR TEST10
+replay. Its promotion receipt records installation on this research branch.
+The public baseline remains the saved `.611765` spell / `.851285` macro score on
+17 possessions; the observed Fable result is reported above. Any future
+evaluation remains descriptive unless supported by distinct gold data, and
+must not trigger tuning on these reused labels.
 
 ## Delivery checks and site update
 
@@ -163,15 +164,15 @@ is published as version 38 with its existing restricted audience. Experiments,
 Progress and the model timeline now distinguish the approved Fable target,
 the small complementary research candidate, and pending GAR/public checks.
 
-The packaged Sites source helper was absent, so ordinary Git with an ephemeral
-scoped credential and a matching static deployment archive was used. Desktop
+At that time, the packaged Sites source helper was absent, so ordinary Git with
+an ephemeral scoped credential and a matching static deployment archive was used. Desktop
 (1440 px) and mobile (390 px) browser checks pass on both changed pages: no page
 overflow or script errors, links/IDs valid, and method disclosure works.
 The [publication receipt](results/ball_exit_delivery_publication_v1.json) records
 the source, version and successful deployment. Earlier automatic-review blockers
 were resolved by the explicit user approval. That version-38 publication predates
-the later provisional adoption; the adoption site receipt records the subsequent
-update. Exact deployment and GAR/public regression checks remain pending.
+the later provisional adoption; the adoption site receipt records that subsequent
+update. The later reconstructed deployment checks are documented above.
 
 The post-adoption [check receipt](results/ball_exit_adoption_v1_checks.json) records
 961 experiment tests: 955 pass, one skips and the same five historical public
@@ -179,11 +180,11 @@ fixture errors remain. All 26 root tests, file-backed fit parity, bundled CSV
 format, documentation links and adopted source/predecessor hashes pass.
 
 The subsequent [site publication](results/ball_exit_adoption_v1_site_publication.json)
-is version 39, covering the provisional default and historical architecture
-labels. The restricted audience is unchanged. PR #92 is ready for review; it
-has not been merged, and no required CI checks were bypassed.
+was version 39, covering the then-provisional default and historical architecture
+labels. The restricted audience is unchanged. PR #92 remains unmerged; its current
+branch state is summarized at the top of this report.
 
-## Verification before final promotion — Luna review
+## Historical verification before pooled reconstruction — Luna review
 
 The user requested verification before final promotion, using Luna subagents.
 The [new verification receipt](results/ball_exit_verification_v2.json) supersedes
@@ -198,13 +199,15 @@ scalar metrics, zero error**, including aggregates, guards and snap selection.
 The active/versioned manifests match and all 16 declared source hashes verify.
 The separate GAR restore recovered all four declaration-pinned TEST files
 (1,093,146,606 bytes) at revision `32c840210b7d08d06976e7f9457dfff79fb2da99`.
-Every raw SHA-256 was checked again by the parent agent. No GAR/public scoring.
+Every raw SHA-256 was checked again by the parent agent. At that stage there had
+been no GAR/public scoring; the later fixed results are reported above.
 
 Luna refreshed every private branch and PR ref and searched both tree paths
 and LFS identities. Neither original CE checkpoint nor the original deployment
 archive was found. The user confirmed that PR #19 uploaded the wrong experiment:
 `rb8_1024` belongs to the non-retained SkillCorner study; Fable fitted no new
-weights. An originating agent is now locating the correct frontier files.
+weights. The original files were never found; the separately trained replacements are
+identified in the reconstruction report.
 The original pooled training seal identifies these exact source paths:
 
 - `data/experiments/v2_spell_balanced_v1/train/models/pooled/stage1024_2026.joblib`
@@ -213,14 +216,13 @@ The original pooled training seal identifies these exact source paths:
   → deployment `ce_2027.joblib`, SHA-256 `4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa`.
 
 Each file is 1,432,445 bytes. Preserve the unrelated rb8 archive as its own
-experiment; it cannot satisfy these identities. PR #92 is held as a draft until
-exact-package verification completes. The existing provisional default remains
-recorded, but no merge or completed deployment promotion is claimed. The exact
-next step is restore these two files, then run the adopted staging, GAR and
-public workflow above, review its results and record final promotion separately.
+experiment; it cannot satisfy these identities. This was the pre-reconstruction
+handoff state: PR #92 was held as a draft while exact-package checks remained
+blocked. The later reconstruction completed the fixed checks and was promoted on
+the research branch, without changing these historical identities.
 
 The [verification site update](results/ball_exit_verification_v2_site_publication.json)
 is published as version 40 with the same restricted audience. It reports the
 passing software/development checks and restored GAR inputs, and explicitly
-leaves exact-package checks and final promotion pending. Desktop/mobile checks
+left exact-package checks and final promotion pending at that time. Desktop/mobile checks
 pass on Overview, Experiments and Architecture.
