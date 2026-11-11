@@ -218,3 +218,9 @@ exact-package verification completes. The existing provisional default remains
 recorded, but no merge or completed deployment promotion is claimed. The exact
 next step is restore these two files, then run the adopted staging, GAR and
 public workflow above, review its results and record final promotion separately.
+
+The [verification site update](results/ball_exit_verification_v2_site_publication.json)
+is published as version 40 with the same restricted audience. It reports the
+passing software/development checks and restored GAR inputs, and explicitly
+leaves exact-package checks and final promotion pending. Desktop/mobile checks
+pass on Overview, Experiments and Architecture.

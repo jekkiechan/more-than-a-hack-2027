@@ -12,7 +12,8 @@ development outputs / 840 metrics with zero error and verifies all source hashes
 All four pinned GAR TEST raw files are restored and hash-verified.
 
 Exact inference and GAR/public checks still need the original pooled stage1024
-CE checkpoints, not PR #19’s unrelated rb8 folds. The originating agent is
+CE checkpoints. The exact required filenames and identities are documented in
+the public pooled training seal; neither required file is restored yet. The originating agent is
 locating them. [Exact paths and hashes](../../experiments/BALL_EXIT_PROMOTION.md#verification-before-final-promotion--luna-review)
 are recorded for handoff. PR #92 is draft pending those checks; the prior
 provisional default is preserved, with no completed deployment promotion or merge.
@@ -31,7 +32,7 @@ as research evidence and stop the bounded composition search. The unchanged
 Fable package is now provisionally adopted as described below.
 The user approved delivery. [PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
 publishes the implementation and aggregate evidence. The restricted research site
-is updated to version 39; the [adoption publication receipt](../../experiments/results/ball_exit_adoption_v1_site_publication.json)
+is updated to version 40; the [verification publication receipt](../../experiments/results/ball_exit_verification_v2_site_publication.json)
 records publication separately from pending exact deployment verification.
 
 ## Ball-exit provisional adoption — 11 November 2026
