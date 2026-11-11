@@ -1,0 +1,68 @@
+{
+  "schema": "ball_exit_dmask_v1_declaration",
+  "study_id": "ball_exit_dmask_v1",
+  "date": "2026-11-11",
+  "status": "frozen_before_any_candidate_score",
+  "question": "Does a label-free ball-out-of-play correction of the frozen dead-ball mask raise exposed-development feed_like_v2 spell F1 above 0.60 without regressing clean/v1 spell or short recall?",
+  "motivation": {
+    "diagnostics_on_exposed_development_cells": [
+      "An oracle dead-ball mask with unchanged H/A adds 0.07-0.09 spell F1 per inspected cell.",
+      "On Sportec, 17-21% of reference possessions are lost because the frozen mask predicts D over them; most are short spells just before a stoppage.",
+      "When the ball is observed outside the pitch the reference D starts within about 0.1-0.2 s (Sportec, Metrica); the ball is outside on 0.5-1% of observed live frames and 59-76% of observed dead frames.",
+      "Uniform D edge shifts (42 settings) and P(D)-thresholded edge trims (24 settings) were explored first and none improved the three spell means; they are not candidates."
+    ],
+    "disclosure": "These diagnostics read development labels to locate the failure. The rule itself and its two constants were written before any ball-exit candidate was scored.",
+    "challenge_feed_applicability": "Label-free check: the challenge ball is outside the pitch on 4.4% of observed frames in 104 episodes."
+  },
+  "rule": {
+    "delay": "a predicted D run that starts while the ball is observed inside the pitch, followed within 5 s by an outside observation, starts at that first outside observation",
+    "force": "frames with the ball observed outside are dead, held until the ball is next observed inside or an existing D run begins, at most 3 s",
+    "constants": {
+      "window_s": 5.0,
+      "hold_s": 3.0
+    },
+    "inputs": "ball position and pitch size only; no speed or stillness; no labels; no fitting"
+  },
+  "candidates": {
+    "rules": [
+      "delay",
+      "force",
+      "both"
+    ],
+    "outside_margin_m": [
+      0.0,
+      0.5
+    ],
+    "count": 6,
+    "fixed": "approved frontier H/A mixture 0.5/0.375/0.125, H/A cost 3, decoded inside the edited live spans"
+  },
+  "control": "approved frontier, exact replay 0.6701365499557103/0.532128306931943/0.5936187198896373",
+  "evaluation": "35 cells; five exposed development matches; clean 1, feed_like_v1 2, feed_like_v2 4 realizations; realizations within match, matches within provider, providers equally",
+  "retention_rule": {
+    "spell_f1": {
+      "clean": ">=",
+      "feed_like_v1": ">=",
+      "feed_like_v2": ">"
+    },
+    "short_spell_recall_iou_0_5_lt3s": "all views >=",
+    "macro_f1": "all views >= control - 0.001",
+    "provider_clean_macro_f1_and_d_f1": ">= control - 0.02"
+  },
+  "success": "a retained candidate with feed_like_v2 spell_f1 > 0.60",
+  "ranking": "retained candidates by feed_like_v2 spell_f1",
+  "known_limits": [
+    "five exposed matches",
+    "Sportec keeps stoppage ball coordinates, so outside observations persist through its dead periods; the rule reads position only, but the force edit can benefit from that persistence and is reported separately from delay",
+    "feed_like_v2 removes ball observations with state-dependent rates placed using development labels",
+    "no GAR, organizer or public scoring"
+  ],
+  "not_allowed": [
+    "changing constants, margins or rules after seeing results without a new declaration",
+    "organizer labels"
+  ],
+  "source_sha256": {
+    "experiments/ball_exit_dmask_v1.py": "7290e7c7d088e191e34dd2d089d3613ee8163f900cd2d2684bace76cd16931a0",
+    "experiments/sc2020_realfeed_score.py": "c981d76279c6892281e241b0b08840d1706e03a6b16336f3d166bccb319e0762",
+    "experiments/sc2020_realfeed_common.py": "e7ae86a23e3b0d0cca4766c06d02fe49196a6afb7a65d89f91bf68180e173e9d"
+  }
+}
