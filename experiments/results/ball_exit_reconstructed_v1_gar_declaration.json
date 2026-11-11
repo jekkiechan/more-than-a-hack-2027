@@ -1,0 +1,97 @@
+{
+  "aggregation": "Realizations within game, then equal games",
+  "baseline_result_sha256": "2490ae4b1c6d024ff3af4877d66fdfdabfeb6c689bcec4cedcaa597c9b502cfc",
+  "calibration_sha256": "ac42d0e7697b9d3a5c6684a903e7ea8c27d34a99091597432ab2d32e21faf684",
+  "control_tolerance": 1e-12,
+  "corruption": "Identical gar_deployment_eval_v2 seeds, four realizations per game",
+  "games": [
+    "3850",
+    "3851",
+    "3852",
+    "3853",
+    "3854",
+    "3855",
+    "3856",
+    "3857",
+    "3858",
+    "3859"
+  ],
+  "manifest_sha256": "0411b692546651b409b5bc8416d5bc643aebfa0ceeb7526f83865d7691b32b24",
+  "raw_files": [
+    {
+      "bytes": 1671596,
+      "hf_lfs_sha256": "d2c570bcc7cd508eaceab3bef72579b5882b825295ddcfb5e69ddc70df750359",
+      "path": "test/metadata.parquet",
+      "sha256": "d2c570bcc7cd508eaceab3bef72579b5882b825295ddcfb5e69ddc70df750359",
+      "verified": true
+    },
+    {
+      "bytes": 126530,
+      "hf_lfs_sha256": "5b8b68b9c5232448f0235f423de1c6cfcfa5dc092cd7dad00e8ec449e7b93ebf",
+      "path": "test/shard_manifest.parquet",
+      "sha256": "5b8b68b9c5232448f0235f423de1c6cfcfa5dc092cd7dad00e8ec449e7b93ebf",
+      "verified": true
+    },
+    {
+      "bytes": 1012981760,
+      "hf_lfs_sha256": "ba9ca8f305236dc2c20a732c399821ee16af11a5d19c4c68d426442ed5928e7d",
+      "path": "test/shards/shard-000000.tar",
+      "sha256": "ba9ca8f305236dc2c20a732c399821ee16af11a5d19c4c68d426442ed5928e7d",
+      "verified": true
+    },
+    {
+      "bytes": 78366720,
+      "hf_lfs_sha256": "88e93a7b28141dcbfb3654e27d75e79af1a970478dcdf5694a4b577cf31e35fd",
+      "path": "test/shards/shard-000001.tar",
+      "sha256": "88e93a7b28141dcbfb3654e27d75e79af1a970478dcdf5694a4b577cf31e35fd",
+      "verified": true
+    }
+  ],
+  "record_files": {
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3850.joblib": "af79df9a865d3febbcd2dfbe96c24e74b4224b7bf0e73faa866caffbbc036a12",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3851.joblib": "e76e40eb0709182af1339aa4110d9671af1914af83741723981c0737fa784bdd",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3852.joblib": "61237b892ec1d52a03ebb2bfcc39138441570de9274f420a2e0ce8550f1a3c7c",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3853.joblib": "5927e880e98322f581493a178ef11817ac9a6a8ece0f007da14f837d5a9ea550",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3854.joblib": "37ced78c9c3552137914f32caefdf2acc8bfb833a930322fad608a60cdef1b80",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3855.joblib": "15ce3f236b7d6b5ed54405db04248fbe116d605d3c9b4b2666efaeaa98b1c51a",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3856.joblib": "893a2d29d8f3d1381a0c208d20cc8e44b4d8d03b4c9d3fb989ab4ab4e5f8f1f0",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3857.joblib": "f30f533fbfd909059f2d4da770625a2736f777a68b85752c61046d99ab021f77",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3858.joblib": "3dd251113626c67e483d6a249944838fa4e66942487d5a8d93d7ed35e8c7108a",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/games/3859.joblib": "c69ea964ed2d362e52ec9559db0a75c987aed39c8d476952263348f4fd328055",
+    "data/experiments/ball_exit_reconstructed_v1/gar/records/test/manifest.json": "08f352f8684cb6132af49c3f41e5c5712d641b0df6f3682c37f3fe23f5619c62"
+  },
+  "repeated_test_exposure": true,
+  "scope": "Ten silver-label TEST games only; VALID remains separate; no continuous-gold claim",
+  "selection_or_tuning": false,
+  "sources": {
+    "experiments/ball_exit_delivery.py": "38602f1f92b59f7dafbccf09f35a427176ad82fb25d58a5a9eada4b27ae5bbd5",
+    "experiments/ball_exit_dmask_v1.py": "573013001ffe9420e7b95758fd0c7053a6b668f00288a424359a834190399019",
+    "experiments/ball_exit_gar.py": "50b263cd9dc3651bb081746b251196257e280856a62513ac493f539bc2361243",
+    "experiments/ball_exit_runtime.py": "6afa72ae1cc8fdf83116dac7bc8f0bfde8eb1a63a1c5353d4c3f1ef22e88798b",
+    "experiments/current_baseline.py": "5e158ce7f81581371a4ce101e8fdf6d775afac0f9a823814699c4be2a7520ebc",
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+    "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+    "experiments/frontier_pooled_reconstruction.py": "3f8bda13746910b9abc87bc6f8d70f9b2cbc2dd79410ac248a996cb4be957e63",
+    "experiments/frontier_reconstructed_delivery.py": "e4372d259ac444bf5596705a36f43cb27ee6deb4e1e504b62b51da4bd29b7b8e",
+    "experiments/gar_heldout_eval_v1.py": "331cd117807b33afea1930b21a217cb65fb11bad274fd0459fa6f480cd32e4bf",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+    "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+    "experiments/spell_frontier_baseline.py": "c42d74154b48714836f704dfa623fe38c164a6e7c10de6aaa80e17edcd5c8610",
+    "experiments/spell_frontier_gar.py": "f7b5ef7dfdf0b3f7c5c182bf0958d3cfcf424c18d91d05624b9902ed3c0fc3a7",
+    "experiments/spell_frontier_gar_sixphase.py": "f4be5fbd5d1cd761f121ce609c9d58f84a2e6ce3cd8077b0b51c5249e3515494",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+    "experiments/v2_iterative_runtime.py": "199b9cc1f196883ff767121c6a96390234fb9ac30adb79dcea1756caac7c3d5b",
+    "experiments/v2_spell_balanced_eval.py": "ba57176cd16ff7535b98acd3d78acd3aefcc002c723101f6f2dc816b892b2514",
+    "experiments/v2_spell_balanced_public.py": "fd3504f710259220ef118bcdc2be301dfb7c68d728d802e0ee8bc0c78726026a"
+  },
+  "study": "ball_exit_reconstructed_v1",
+  "views": [
+    "clean",
+    "v2_1",
+    "v2_2",
+    "v2_3",
+    "v2_4"
+  ]
+}
