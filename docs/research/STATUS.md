@@ -1,5 +1,23 @@
 # Current research state
 
+## Ball-exit follow-up and requested promotion — 11 November 2026
+
+[The ball-exit follow-up](../../experiments/BALL_EXIT_PROMOTION.md) independently
+reproduces Fable's snap result: clean/v1/v2 spell **.681508/.534731/.598690**.
+Two predeclared crossing-time extensions fail v2 spell and short-recall retention;
+retain unchanged snap. All 140 saved prediction sets and 840 metrics replay
+with zero error. This remains exposed development evidence, not GAR/public
+validation.
+
+The user authorized promotion and requested GAR TEST/public regression checks.
+The adapter, delivery path and fixed TEST10 runner are prepared, but activation
+and those diagnostics are blocked on the exact pooled `ce_2026.joblib` and
+`ce_2027.joblib`. Eight other checkpoint roles are restored and hash-verified.
+The new SkillCorner fold-model upload is a different experiment. **The active
+frontier manifest/default remains unchanged.** The report identifies the missing
+hashes and continuation commands. Automatic approval review also blocked access
+to the separate private progress-site source; its update remains pending.
+
 Reviewed 8 November 2026 against fork `main` at `8919726`,
 [PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) at `b12eab3`,
 [draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88),
