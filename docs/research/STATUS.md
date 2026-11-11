@@ -67,6 +67,14 @@ organizer scoring or GAR VALID/TEST evaluation is allocated here. Stop the
 declared weight search; next validate the exact pooled candidate separately
 without retuning, then seek independent continuous-match gold evidence.
 
+## SkillCorner 2019/20 real-feed windows — complete, negative
+
+[The 11 November study](../../experiments/SC2020_REALFEED_V1.md) adds six unused
+SkillCorner 2019/20 broadcast-tracking TRAIN matches to the frontier CE
+continuation. Across 18 fits and 14 declared candidates v2 spell stays at
+.591410–.594575 versus .593619; none passes retention and the data effect is
+within draw noise. The adopted package and the unmet >.60 target are unchanged.
+
 ## Extra-data continuation — complete
 
 [The two-round follow-up](../../experiments/V2_EXTRA_DATA.md) uses Luna to test
