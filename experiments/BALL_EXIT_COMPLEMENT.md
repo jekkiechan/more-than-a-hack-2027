@@ -118,3 +118,16 @@ one skips, and five inherited public-contract tests lack historical local-only
 seal/CSV fixtures. Root tests, documentation, file-backed fit parity, and the
 bundled submission format check pass. The required research-site update remains
 [blocked by automatic approval review](BALL_EXIT_PROMOTION.md#delivery-checks-and-site-update).
+
+## Publication status
+
+The implementation and reports are committed locally on
+`research/ball-exit-promotion-v2`; no new branch or PR was published. Automatic
+approval review rejected the Git push. A read-only audit verified the target
+as the existing public fork and showed that all large inherited history already
+exists remotely through `9a4e7f0`. The new payload was 32 text files / 521,411
+bytes before this delivery note, containing code, reports and aggregate metrics,
+with no binary weights, raw inputs or frame predictions. Review still required
+explicit user approval for public disclosure of that new payload. The site
+source checkout was separately rejected for lack of direct site authorization.
+Public PR publication and the existing restricted-site update await approval.

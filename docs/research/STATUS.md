@@ -12,6 +12,9 @@ higher .599644 but fails clean/short-recall checks. Both rounds are independentl
 verified; neither is a pooled deployment or GAR/public evaluation. Retain this
 as research evidence and stop the bounded composition search. The unchanged
 Fable promotion remains blocked as described below.
+The new work is committed locally; automatic approval review requires explicit
+approval before publishing its code/aggregate results to the public fork or
+accessing and updating the separate restricted research site.
 
 ## Ball-exit follow-up and requested promotion — 11 November 2026
 
