@@ -9,6 +9,29 @@ from experiments import v2_spell_frontier_public as public
 
 
 class FrontierPublicContractTests(unittest.TestCase):
+    def setUp(self):
+        # Exercise file/hash contracts with synthetic bytes, independent of the
+        # historical local-only organizer prediction and its frozen seal.
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        root = Path(temp.name)
+        recipe = {"recipe_id": "synthetic-contract-recipe", "ce_weight": .5,
+                  "calibrated_weight": .25, "adopted_weight": .25,
+                  "pooling": "arithmetic", "ha_cost": 3.0}
+        csv, seal, plan = root / "old.csv", root / "seal.json", root / "plan.json"
+        csv.write_bytes(b"frame,label\n0,H\n1,D\n2,A\n")
+        seal.write_text(json.dumps({"selected_recipe": recipe}))
+        csv_sha, seal_sha = public.sha(csv), public.sha(seal)
+        plan.write_text(json.dumps({"previous_study": {
+            "old_public_gate_claimed": False, "old_public_score_exists": False,
+            "old_reference_free_csv_sha256": csv_sha,
+            "old_prediction_seal_sha256": seal_sha}}))
+        patcher = patch.multiple(public, BALANCED_CSV=csv, BALANCED_SEAL=seal,
+            BALANCED_GATE=root / "gate.json", BALANCED_RESULT=root / "result.json",
+            PLAN=plan, OLD_CSV_SHA256=csv_sha, OLD_SEAL_SHA256=seal_sha)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def selection(self, arm="base", stage=1024, recipe=None):
         if recipe is None:
             recipe = {**public._json(public.BALANCED_SEAL)["selected_recipe"]}
@@ -50,6 +73,33 @@ class FrontierPublicContractTests(unittest.TestCase):
             self.assertEqual(public.sha(target), old_csv_sha)
         self.assertEqual(public.sha(public.BALANCED_CSV), old_csv_sha)
         self.assertEqual(public.sha(public.BALANCED_SEAL), old_seal_sha)
+
+    def test_copy_reuse_refuses_to_overwrite_existing_prediction(self):
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp) / "existing.csv"
+            target.write_bytes(b"keep-existing-prediction")
+            with patch.object(public, "CSV", target), self.assertRaises(FileExistsError):
+                public._copy_balanced_prediction()
+            self.assertEqual(target.read_bytes(), b"keep-existing-prediction")
+
+    def test_prior_facts_reject_changed_csv_or_seal(self):
+        facts = public._prior_public_facts()
+        self.assertEqual(facts["csv_sha256"], public.sha(public.BALANCED_CSV))
+        for path in (public.BALANCED_CSV, public.BALANCED_SEAL):
+            original = path.read_bytes()
+            with self.subTest(path=path.name):
+                path.write_bytes(original + b"tampered")
+                with self.assertRaises(ValueError):
+                    public._prior_public_facts()
+                path.write_bytes(original)
+
+    def test_prior_facts_reject_a_claimed_gate_or_existing_result(self):
+        for path in (public.BALANCED_GATE, public.BALANCED_RESULT):
+            with self.subTest(path=path.name):
+                path.write_text('{}')
+                with self.assertRaises(FileExistsError):
+                    public._prior_public_facts()
+                path.unlink()
 
     def test_frontier_pooled_seal_uses_trainer_model_and_receipt_schema(self):
         with tempfile.TemporaryDirectory(dir=public.ROOT) as temp:

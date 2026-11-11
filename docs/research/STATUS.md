@@ -1,5 +1,22 @@
 # Current research state
 
+## Verification before final promotion — 11 November 2026
+
+The user requested verification before final promotion, with Luna subagents.
+[The new verification receipt](../../experiments/results/ball_exit_verification_v2.json)
+records 964 experiment tests: 963 pass and one skips, with no failures/errors.
+The former five errors are fixed by isolated synthetic contract fixtures;
+frozen production artifacts and public gates remain intact. All 26 root tests,
+file-backed parity and CSV format pass. Luna independently replays 140 saved
+development outputs / 840 metrics with zero error and verifies all source hashes.
+All four pinned GAR TEST raw files are restored and hash-verified.
+
+Exact inference and GAR/public checks still need the original pooled stage1024
+CE checkpoints, not PR #19’s unrelated rb8 folds. The originating agent is
+locating them. [Exact paths and hashes](../../experiments/BALL_EXIT_PROMOTION.md#verification-before-final-promotion--luna-review)
+are recorded for handoff. PR #92 is draft pending those checks; the prior
+provisional default is preserved, with no completed deployment promotion or merge.
+
 ## Complementary live-team improvement — 11 November 2026
 
 [The complementary comparison](../../experiments/BALL_EXIT_COMPLEMENT.md)

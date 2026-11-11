@@ -182,3 +182,39 @@ The subsequent [site publication](results/ball_exit_adoption_v1_site_publication
 is version 39, covering the provisional default and historical architecture
 labels. The restricted audience is unchanged. PR #92 is ready for review; it
 has not been merged, and no required CI checks were bypassed.
+
+## Verification before final promotion — Luna review
+
+The user requested verification before final promotion, using Luna subagents.
+The [new verification receipt](results/ball_exit_verification_v2.json) supersedes
+the earlier software-test blocker: **964 tests run, 963 pass, one skip, zero
+errors**. The historical public contract tests now use isolated synthetic CSV,
+seal and recipe fixtures, with additional tamper/closed-gate/overwrite checks.
+Production runners, hard-coded historical hashes and saved public artifacts
+are unchanged. All 26 root tests, file-backed fit parity and format checks pass.
+
+A fresh Luna replay independently verifies **140 saved prediction sets and 840
+scalar metrics, zero error**, including aggregates, guards and snap selection.
+The active/versioned manifests match and all 16 declared source hashes verify.
+The separate GAR restore recovered all four declaration-pinned TEST files
+(1,093,146,606 bytes) at revision `32c840210b7d08d06976e7f9457dfff79fb2da99`.
+Every raw SHA-256 was checked again by the parent agent. No GAR/public scoring.
+
+Luna refreshed every private branch and PR ref and searched both tree paths
+and LFS identities. Neither original CE checkpoint nor the original deployment
+archive was found. The user confirmed that PR #19 uploaded the wrong experiment:
+`rb8_1024` belongs to the non-retained SkillCorner study; Fable fitted no new
+weights. An originating agent is now locating the correct frontier files.
+The original pooled training seal identifies these exact source paths:
+
+- `data/experiments/v2_spell_balanced_v1/train/models/pooled/stage1024_2026.joblib`
+  → deployment `ce_2026.joblib`, SHA-256 `d9691336672b13191bf2ce47715fc904f3bc6c14b8477b2f6ff2425d9f78d9c2`.
+- `data/experiments/v2_spell_balanced_v1/train/models/pooled/stage1024_2027.joblib`
+  → deployment `ce_2027.joblib`, SHA-256 `4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa`.
+
+Each file is 1,432,445 bytes. Preserve the unrelated rb8 archive as its own
+experiment; it cannot satisfy these identities. PR #92 is held as a draft until
+exact-package verification completes. The existing provisional default remains
+recorded, but no merge or completed deployment promotion is claimed. The exact
+next step is restore these two files, then run the adopted staging, GAR and
+public workflow above, review its results and record final promotion separately.
