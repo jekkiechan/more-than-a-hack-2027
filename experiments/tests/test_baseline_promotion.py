@@ -66,7 +66,18 @@ class BaselinePromotionContracts(unittest.TestCase):
         self.assertEqual(policy['working_candidate']['model'], manifest['model'])
         self.assertEqual(policy['working_candidate']['baseline_manifest_sha256'],
                          sha256(root/'baseline_manifest.json'))
-        if manifest['architecture']['kind']=='sn_dense_spell_frontier_ensemble':
+        if manifest['architecture']['kind']=='sn_dense_spell_frontier_ball_exit_ensemble':
+            from experiments import ball_exit_runtime, spell_frontier_baseline
+            self.assertEqual(manifest['architecture']['recipe'], spell_frontier_baseline.RECIPE)
+            self.assertEqual(manifest['architecture']['ball_exit'], ball_exit_runtime.CORRECTION)
+            previous_manifest = json.loads((root.parent/manifest['previous_manifest']).read_text())
+            self.assertEqual(manifest['models_sha256'], previous_manifest['models_sha256'])
+            self.assertFalse(manifest['promotion']['fitting_during_promotion'])
+            self.assertFalse(manifest['promotion']['organizer_rescoring_performed'])
+            self.assertNotIn('prediction_csv_sha256', manifest['evidence'])
+            self.assertNotIn('organizer_public_diagnostic', manifest)
+            self.assertTrue(policy['clean_improvement_screen']['current_screen_passes'])
+        elif manifest['architecture']['kind']=='sn_dense_spell_frontier_ensemble':
             from experiments import spell_frontier_baseline
             self.assertEqual(manifest['architecture']['recipe'], spell_frontier_baseline.RECIPE)
             self.assertEqual(manifest['architecture']['phase_order'], 'seeds_then_phases')

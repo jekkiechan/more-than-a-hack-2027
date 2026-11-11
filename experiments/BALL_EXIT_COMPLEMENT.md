@@ -12,7 +12,7 @@ The user requested a complementary approach instead of further extensions to
 the exit rule. The [earlier crossing-time extensions](BALL_EXIT_PROMOTION.md)
 remain failed. Both studies below keep Fable's `snap_m0.0` mask exactly fixed;
 only H/A labels within live play can change. Fable's unchanged implementation
-remains the user-authorized promotion target, with its
+is now the user-authorized provisional default, with its
 [exact deployment artifact blocker](BALL_EXIT_PROMOTION.md#exact-deployment-artifact-blocker).
 
 ## First comparison: direct composition
@@ -99,8 +99,10 @@ Retain the eligible composition as a research candidate, and stop this bounded
 composition comparison without finer gates or blend ratios. The measured gain
 is too small to establish that additional deployment complexity is worthwhile.
 It would require the pooled fresh/hard counterparts, plus the frontier fallback;
-no such package was fitted or timed here. First complete the requested unchanged
-Fable promotion/regression check once its two missing pooled CE files are restored.
+no such package was fitted or timed here. The user subsequently delegated the choice; Fable is now the provisional default
+as an explicit simplicity/cost tradeoff, preserving this composition as the
+eligible numerical leader. Complete Fable’s exact deployment/regression checks
+once its two missing pooled CE files are restored.
 No GAR TEST or organizer scoring occurred in either complementary study.
 
 Run from the repository root after restoring the declared private archives:

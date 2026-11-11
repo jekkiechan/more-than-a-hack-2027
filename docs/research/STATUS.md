@@ -11,13 +11,13 @@ small v2 mean gain concentrated in SkillCorner. Direct composition reaches a
 higher .599644 but fails clean/short-recall checks. Both rounds are independently
 verified; neither is a pooled deployment or GAR/public evaluation. Retain this
 as research evidence and stop the bounded composition search. The unchanged
-Fable promotion remains blocked as described below.
+Fable package is now provisionally adopted as described below.
 The user approved delivery. [Draft PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92)
 publishes the implementation and aggregate evidence. The restricted research site
 is updated to version 38; the [delivery receipt](../../experiments/results/ball_exit_delivery_publication_v1.json)
 records publication separately from model activation.
 
-## Ball-exit follow-up and requested promotion — 11 November 2026
+## Ball-exit provisional adoption — 11 November 2026
 
 [The ball-exit follow-up](../../experiments/BALL_EXIT_PROMOTION.md) independently
 reproduces Fable's snap result: clean/v1/v2 spell **.681508/.534731/.598690**.
@@ -26,54 +26,40 @@ retain unchanged snap. All 140 saved prediction sets and 840 metrics replay
 with zero error. This remains exposed development evidence, not GAR/public
 validation.
 
-The user authorized promotion and requested GAR TEST/public regression checks.
-The adapter, delivery path and fixed TEST10 runner are prepared, but activation
-and those diagnostics are blocked on the exact pooled `ce_2026.joblib` and
-`ce_2027.joblib`. Eight other checkpoint roles are restored and hash-verified.
-The new SkillCorner fold-model upload is a different experiment. **The active
-frontier manifest/default remains unchanged.** The report identifies the missing
-hashes and continuation commands. The user’s explicit approval resolved the
-earlier publication-review blockers; model activation still requires the exact
-checkpoints and completed regression checks.
+The user delegated the choice: “promote the version you think is best.”
+**The active manifest and policy now select unchanged Fable snap_m0.0.**
+The [adoption receipt](../../experiments/results/ball_exit_adoption_v1.json)
+records an explicit simplicity/deployment-cost tradeoff against the complementary
+candidate’s tiny +.000090 exposed-development gain and extra pooled-model needs.
 
-Reviewed 8 November 2026 against fork `main` at `8919726`,
-[PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) at `b12eab3`,
-[draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88),
-[turnover PR #90](https://github.com/jekkiechan/more-than-a-hack-2027/pull/90), and
-Claude's `fervent-curie-fcqsta` at `61f8182`. The active manifest
-now records the user-authorized spell-frontier promotion. Check newer merged/open
-PRs before current-results advice. Historical study evidence is indexed in
-[EXPERIMENTS](EXPERIMENTS.md); package restore/inference lives in
-[BASELINE](../../experiments/BASELINE.md).
+The exact pooled `ce_2026.joblib` and `ce_2027.joblib` remain missing after a fresh
+private-ref check. Eight other roles verify. The new SkillCorner fold upload is
+a different experiment. **Exact deployment and GAR TEST10/public regression
+checks are pending.** Adoption changes the default recipe; it does not certify
+an executable local package or imply a measured non-regression. Inference still
+requires all original hashes. No fitting, organizer scoring or closed-gate reset.
+
+Reviewed 11 November against main `8919726`, Fable PR #91 at `9a4e7f0`, and
+[PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92).
+The predecessor manifest/policy and all frozen reports remain archived.
 
 ## Adopted package
 
-`joint_gru_sn_dense_spell_frontier_ensemble_v1` is the provisional working
-baseline, explicitly approved by the user after the frozen frontier diagnostic.
-It combines CE/calibrated/predecessor conditional H/A probabilities at
-0.5/0.375/0.125, averages seeds within phases then phases, and keeps the exact
-predecessor decoded D mask. Promotion adds no fitting or organizer scoring.
+`joint_gru_sn_dense_spell_frontier_ball_exit_ensemble_v1` is the provisional
+default. It retains CE/calibrated/predecessor H/A at 0.5/0.375/0.125, paired-seed
+native-phase pooling and H/A cost 3. Fable corrects D starts toward observed
+pitch exits using the unchanged zero-margin snap rule. Exposed development
+clean/v1/v2 spell is **.681508/.534731/.598690**; macro is
+**.876204/.827310/.854915**. Clean gains +.011371 over frontier and passes the
++.01 screen. The >.60 v2 target remains unmet; SkillCorner regresses, and no
+independent continuous-match gold confirmation is claimed.
 
-Original exposed development clean/v1/v2 spell is **.670137/.532128/.593619**,
-with v2 +.010048 versus the previous phase-average package. All three spell
-means improve; v1 macro declines .000699 within the accepted .001 allowance.
-**The >.60 v2 target and historical +.01 clean screen remain unmet.** Provider
-regressions remain disclosed; user approval changes adoption, not those outcomes.
-
-The exact deployment GAR TEST10 clean/v2 spell is
-**0.708496/0.708619**.
-TEST short-spell recall declines by .008267 clean and .005504 v2 despite better
-spell and macro means; the deployment is not an all-metric improvement on GAR.
-Selected-on VALID9 stays separate. All 95 paired cells pass independent official
-replay; all predecessor per-game controls, D masks and grading populations agree.
-This is reused silver-segment evidence, not independent continuous-match gold
-confirmation. See [promotion and GAR results](../../experiments/SPELL_FRONTIER_PROMOTION.md).
-
-The unchanged saved public diagnostic is **.611765 spell / .851285 macro** on
-7,500 graded frames and 17 possessions. The normal CLI reproduces the exact
-199,319-row sealed CSV without reference access. The public gate remains closed;
-the earlier balanced gate remains unused. The historical public score is not
-validation of the new extra-data experimental arms.
+The predecessor’s GAR TEST10 .708496/.708619 clean/v2 spell and public
+.611765 spell/.851285 macro are **historical**, not Fable regression results.
+The predecessor’s TEST short-recall declines remain disclosed in its
+[promotion report](../../experiments/SPELL_FRONTIER_PROMOTION.md).
+Restore and continuation commands are in [BASELINE](../../experiments/BASELINE.md)
+and the [Fable report](../../experiments/BALL_EXIT_PROMOTION.md).
 
 ## Turnover supervision — one retained development candidate
 
@@ -216,12 +202,12 @@ runners, declarations, decisions and scoring gates remain intact. Use the
 recorded pre-activation revision to replay historical hash-bound studies.
 
 The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
-is published as version 36 with the same restricted audience. The current update
+was published as version 36 with the same restricted audience. That historical update
 passes desktop/mobile checks for Overview and Experiments and all 36 first-round
 chart combinations; the second-round failure is shown separately.
 [PR #87](https://github.com/jekkiechan/more-than-a-hack-2027/pull/87) carries the
 completed experiments and promotion; merging follows the existing CI policy.
 [Draft PR #88](https://github.com/jekkiechan/more-than-a-hack-2027/pull/88) carries
 the subsequent matched postprocessing results and remains stacked on #87.
-[Current publication receipt](../../experiments/results/frontier_postprocess_site_publication.json);
+[Historical publication receipt](../../experiments/results/frontier_postprocess_site_publication.json);
 [prior delivery receipt](../../experiments/results/v2_extra_data_v1_delivery.json).

@@ -1,51 +1,56 @@
-# Current adopted baseline: spell-frontier blend
+# Current adopted baseline: Fable ball-exit correction
 
-The user authorized `joint_gru_sn_dense_spell_frontier_ensemble_v1` after the
-frozen frontier diagnostic. The [promotion report](SPELL_FRONTIER_PROMOTION.md),
-[active manifest](baseline_manifest.json), [policy](model_decision_policy.json)
-and [receipt](results/baseline_spell_frontier_promotion.json) identify the package.
-The separate [extra-data follow-up](V2_EXTRA_DATA.md) does not replace this choice.
+The user delegated the choice and requested promotion. The active default is now
+`joint_gru_sn_dense_spell_frontier_ball_exit_ensemble_v1`: Fable’s unchanged
+`snap_m0.0` correction on top of the previous spell-frontier H/A blend.
+[Manifest](baseline_manifest.json), [policy](model_decision_policy.json),
+[adoption receipt](results/ball_exit_adoption_v1.json) and
+[promotion report](BALL_EXIT_PROMOTION.md) identify the exact recipe.
 
-Conditional H/A combines the stage-1024 CE model (0.5), calibrated model (0.375)
-and predecessor (0.125), with arithmetic pooling and H/A transition cost 3.
-Average paired seeds within each native phase, then phases. The predecessor's
-decoded D mask stays exact. All ten checkpoint roles, including paired teachers,
-are packaged. Promotion performs no fitting or organizer rescoring.
+**This is provisional adoption, not verified deployment.** Exact full-match
+inference and GAR TEST10/public regression checks remain pending because
+`ce_2026.joblib` and `ce_2027.joblib` are absent. The eight other checkpoint roles
+verify. The ordinary CLI requires every original SHA-256 and fails on missing
+or changed weights; it does not substitute research-fold models.
 
-Original exposed development clean/v1/v2 spell F1 is
-**.670137/.532128/.593619**. All three spell means improve over the predecessor;
-v1 macro declines .000699 within the accepted .001 allowance. The >.60 v2 goal
-and historical +.01 clean screen remain failed under an explicit adoption
-exception. Provider regressions remain disclosed. The exact GAR TEST check improves spell
-and macro but reduces short-spell recall by .008267 clean and .005504 v2; see
-the promotion report for the complete separate cohorts and paired intervals.
-Independent continuous-match
-gold confirmation is pending. The saved public diagnostic is **.611765 spell /
-.851285 macro** on 17 possessions, with public spell unchanged.
+Fable adjusts dead-ball starts toward observed pitch exits, using its frozen
+zero-margin, five-second delay and three-second advance rule. Conditional H/A
+still combines CE/calibrated/predecessor at 0.5/0.375/0.125, pools seeds within
+native phases then phases, and uses H/A cost 3. No fitting occurred.
+
+Matched exposed development clean/v1/v2 spell is **.681508/.534731/.598690**,
+with **+.011371/+.002602/+.005071** versus the previous frontier. Macro F1 is
+.876204/.827310/.854915. Short recall improves in each view; SkillCorner regresses
+under its earlier silver dead-ball convention. The >.60 v2 target remains unmet;
+independent continuous-match gold confirmation remains pending.
+
+The complementary disjoint turnover mixture leads eligible development at
+.598780 v2, only +.000090 over Fable. Choosing Fable is an explicit simplicity
+and deployment-cost tradeoff: the complement requires additional pooled models
+and shows a tiny gain on the same exposed data. It remains research-only.
 
 ## Inference and local restore
 
-The complete package is verified locally; no new private-cache upload is claimed.
-The old private-cache default still identifies the historical phase-average
-package. Use the [local archive receipt](results/baseline_spell_frontier_local_artifacts.json)
-for exact model/source hashes and the archive location. It contains all ten
-models, matching source, active manifest/policy and aggregate provenance, with
-repository-relative paths verified through fresh empty-directory extraction.
-Restore organizer tracking inputs separately; they are not included.
+Use the original frontier’s ten exact checkpoint files in
+`data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1/`; the new package
+reuses all their hashes. The [missing-artifact identities](BALL_EXIT_PROMOTION.md#exact-deployment-artifact-blocker)
+and [historical local archive receipt](results/baseline_spell_frontier_local_artifacts.json)
+identify the two missing files. That receipt records a previous local archive,
+not a currently available remote restore. Restore tracking inputs separately.
 
 ```sh
-# Extract the local archive into an empty work directory or matching checkout.
-tar -xzf data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1_local.tar.gz -C /path/to/restored-workspace
-# Install the pinned requirements and restore tracking inputs separately.
-python -m experiments.current_baseline predict --output data/experiments/current_baseline/frontier_restored.csv
-python evaluation/validate_submission.py data/experiments/current_baseline/frontier_restored.csv
+# After all exact checkpoint files and tracking inputs have been restored:
+python -m experiments.current_baseline predict --output data/experiments/current_baseline/fable_restored.csv
+python evaluation/validate_submission.py data/experiments/current_baseline/fable_restored.csv
 ```
 
-The CLI checks all checkpoint hashes and refuses to overwrite an output.
-Expected full prediction: 199,319 rows, SHA-256
-`26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc`.
-The normal CLI reproduces the previously sealed candidate exactly without
-reading public labels. See the [restore reference](../.agents/skills/possession-research/references/restore.md).
+No full-match CSV hash or public score is claimed for Fable. The predecessor’s
+saved .611765 public spell and .851285 macro are historical diagnostics only.
+To use that archived recipe explicitly, pass
+`--manifest experiments/baselines/joint_gru_sn_dense_spell_frontier_ensemble_v1.json`.
+It needs the same two missing CE files. The
+[promotion report](BALL_EXIT_PROMOTION.md#implementation-and-continuation)
+provides the separate exact-package regression workflow.
 
 ## Historical packages
 
@@ -56,6 +61,7 @@ original session; restore an older model with its versioned manifest.
 
 | Archived version | Evidence / promotion | Manifest |
 | --- | --- | --- |
+| `joint_gru_sn_dense_spell_frontier_ensemble_v1` | [Frontier promotion](SPELL_FRONTIER_PROMOTION.md), [local archive](results/baseline_spell_frontier_local_artifacts.json) | [Package](baselines/joint_gru_sn_dense_spell_frontier_ensemble_v1.json) |
 | `joint_gru_sn_dense_original_diversity_phase_ensemble_v1` | [Phase-average promotion](ORIGINAL_FULL_PHASE_PROMOTION.md), [verified historical remote restore](results/baseline_original_full_phase_remote_verification.json) | [Package](baselines/joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json) |
 | `joint_gru_sn_dense_original_diversity_ensemble_v1` | [Phase0 promotion](ORIGINAL_FULL_PROMOTION.md) | [Package](baselines/joint_gru_sn_dense_original_diversity_ensemble_v1.json) |
 | `joint_gru_sn_dense_calibrated_ensemble_v1` | [Calibrated promotion](CALIBRATED_DENSE_PROMOTION.md), [successor adoption](ORIGINAL_FULL_PROMOTION.md) | [Package](baselines/joint_gru_sn_dense_calibrated_ensemble_v1.json) |

@@ -2,8 +2,9 @@
 
 11 November 2026. Fable's `snap_m0.0` remains the selected candidate. Its
 development improvement reproduces exactly; two fixed extensions do not improve
-v2 spell. **Promotion and GAR/public regression results are blocked on two
-missing pooled deployment checkpoints. The active default has not changed.**
+v2 spell. **Fable is now the user-authorized provisional default. Exact deployment
+verification and GAR/public regression results remain blocked on two missing
+pooled checkpoints.**
 
 The user explicitly requested promotion, further development, and GAR TEST/public
 regression checks. This work builds on [Fable's report](BALL_EXIT_DMASK_V1.md)
@@ -13,8 +14,17 @@ The new study is `ball_exit_crossing_v1`; the pending delivery is
 
 After the user requested complementary improvements instead, the separate
 [turnover composition study](BALL_EXIT_COMPLEMENT.md) retained a small research
-gain to .598780 v2. It does not change the unchanged-Fable promotion target or
-resolve the missing pooled weights.
+gain to .598780 v2. It remains research-only. The user then delegated the choice
+with “promote the version you think is best.” We adopted unchanged Fable as a
+simplicity and deployment-cost tradeoff: the complement adds only .000090 on
+exposed data and requires additional pooled models. See the
+[adoption receipt](results/ball_exit_adoption_v1.json).
+
+The active manifest and policy now select Fable, while the predecessor manifest
+and policy remain archived. This explicitly separates the adoption decision from
+exact deployment readiness. No GAR/public pass, new full-match CSV hash, or
+restored missing weight is implied. The earlier delivery/publication receipts
+remain unchanged as records of their original states.
 
 ## Matched development result
 
@@ -85,11 +95,14 @@ They cannot substitute for the deployment package. The separate 1.08 GB frontier
 recovery archive and all 160 members were restored and verified; it contains
 the development folds and predictions, explicitly excluding pooled weights.
 
-Running `python -m experiments.ball_exit_delivery stage` fails at the missing
-`ce_2026.joblib` before writing a staged manifest or accessing organizer labels.
+Before adoption, `python -m experiments.ball_exit_delivery stage` failed at the
+missing `ce_2026.joblib`. After adoption, use `python -m experiments.ball_exit_adoption stage`;
+it preserves the same exact-weight requirement before writing a diagnostic
+manifest or accessing organizer labels.
 No public gate has been claimed, no GAR TEST was scored, and no new weights or
 frame outputs were uploaded. Historical reports, declarations, runner code,
-active manifest and active policy are preserved.
+predecessor manifest and predecessor policy are preserved; the active pointers
+were explicitly advanced by the later user-authorized provisional adoption.
 
 ## Implementation and continuation
 
@@ -112,16 +125,19 @@ After restoring the exact two files and the declaration-pinned GAR TEST raw
 files from the [authorized source](SOCCERNET_DATA_ACCESS.md), run:
 
 ```sh
-python -m experiments.ball_exit_delivery stage
+python -m experiments.ball_exit_adoption stage
 python -m experiments.ball_exit_gar prepare
 python -m experiments.ball_exit_gar run
 python -m experiments.ball_exit_delivery predict
 python -m experiments.ball_exit_delivery public
-python -m experiments.ball_exit_delivery activate
 ```
 
-Activation requires the bound GAR/public reports. A spell regression stops
-activation for a disclosed decision; it never triggers tuning on those labels.
+The adopted manifest is staged byte-for-byte only after its exact sources and
+weights verify. The existing prediction, exclusive public gate and GAR runners
+remain unchanged. Do not call the older `activate` action: adoption has already
+changed the default. Record a separate deployment-verification receipt after
+reviewing the bound reports. Any regression must be disclosed and reviewed; it
+never triggers tuning on those labels or a silent change of candidate.
 The public baseline is the saved .611765 spell / .851285 macro score on 17
 possessions. No conclusion about regression is available yet.
 
@@ -135,7 +151,12 @@ public-contract tests require absent historical local-only seal/CSV fixtures.
 The 26 root tests, documentation check, file-backed fit contract and bundled
 submission format check pass.
 
-The user explicitly approved promotion and the prepared delivery. The implementation
+The user explicitly approved promotion, then delegated the final version choice.
+[The adoption tool](ball_exit_adoption.py) changes only the default manifest/policy
+and archives their predecessors; it preserves the frozen deployment gates.
+Its separate `stage` action still requires all exact weights.
+
+The user explicitly approved the prepared delivery. The implementation
 and aggregate evidence are published in [draft PR #92](https://github.com/jekkiechan/more-than-a-hack-2027/pull/92).
 The [research site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site/)
 is published as version 38 with its existing restricted audience. Experiments,
@@ -148,5 +169,11 @@ scoped credential and a matching static deployment archive was used. Desktop
 overflow or script errors, links/IDs valid, and method disclosure works.
 The [publication receipt](results/ball_exit_delivery_publication_v1.json) records
 the source, version and successful deployment. Earlier automatic-review blockers
-were resolved by the explicit user approval. Activation and GAR/public regression
-checks remain blocked solely by the exact pooled checkpoint requirements above.
+were resolved by the explicit user approval. That version-38 publication predates
+the later provisional adoption; the adoption site receipt records the subsequent
+update. Exact deployment and GAR/public regression checks remain pending.
+
+The post-adoption [check receipt](results/ball_exit_adoption_v1_checks.json) records
+961 experiment tests: 955 pass, one skips and the same five historical public
+fixture errors remain. All 26 root tests, file-backed fit parity, bundled CSV
+format, documentation links and adopted source/predecessor hashes pass.

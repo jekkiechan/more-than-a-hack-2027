@@ -1,6 +1,6 @@
 {
-  "version": 11,
-  "confirmed_utc_date": "2026-11-07",
+  "version": 12,
+  "confirmed_utc_date": "2026-11-11",
   "primary_order": [
     "spell_f1",
     "macro_f1"
@@ -16,15 +16,15 @@
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
   "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "Three-expert conditional H/A with frozen predecessor D",
-    "model": "joint_gru_sn_dense_spell_frontier_ensemble",
-    "status": "User-authorized provisional working baseline; independent gold confirmation pending",
+    "family": "Spell frontier with physical ball-exit D starts",
+    "model": "joint_gru_sn_dense_spell_frontier_ball_exit_ensemble",
+    "status": "User-authorized provisional default; exact deployment and GAR/public checks pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
-    "baseline_manifest_sha256": "909a9c50f66ffd598ef40fc79b8cf7565e2c8f60d439facb770a8338d2166012",
+    "baseline_manifest_sha256": "cc340e47e3e76bed44809168dfb6761bd128ad424135f2242ef78eba8bdadf5b",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "reason": "Explicit user promotion of the frozen 0.593619 v2 spell blend. The >0.60 target and historical +.01 clean screen remain unmet. All three spell means improve over the predecessor; slight v1 macro regression is accepted. Provider regressions and repeated development/public exposure remain disclosed; independent continuous-match gold confirmation is pending.",
-    "promotion_record": "experiments/results/baseline_spell_frontier_promotion.json",
-    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json"
+    "reason": "User delegated the choice and requested promotion after the missing exact weights and unmeasured GAR/public regressions were disclosed. Adopt unchanged Fable snap_m0.0 as the provisional default: +.005071 v2 spell over the frontier. The complementary candidate adds only .000090 on exposed development and requires additional pooled models; choose the simpler package as an explicit deployment tradeoff. Exact deployment verification remains pending; no regression pass is implied.",
+    "promotion_record": "experiments/results/ball_exit_adoption_v1.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_spell_frontier_ensemble_v1.json"
   },
   "pathcrf_component": {
     "default_enabled": false,
@@ -41,7 +41,7 @@
   ],
   "stress_guardrail": {
     "view": "feed_like_v2",
-    "reference_recipe": "joint_gru_sn_dense_spell_frontier_ensemble",
+    "reference_recipe": "joint_gru_sn_dense_spell_frontier_ball_exit_ensemble",
     "minimum_realizations": 4,
     "rule": "Matched full-provider candidate v2 spell >= adopted -.01; protect each provider clean macro/D-F1 within .02; report component seeds separately",
     "changed_from": "feed_like",
@@ -68,8 +68,8 @@
   "clean_improvement_screen": {
     "default_delta": 0.01,
     "historical_failures_preserved": true,
-    "current_screen_passes": false,
-    "current_adoption_exception": "Explicit user promotion of the frozen 0.593619 v2 spell blend. The >0.60 target and historical +.01 clean screen remain unmet. All three spell means improve over the predecessor; slight v1 macro regression is accepted. Provider regressions and repeated development/public exposure remain disclosed; independent continuous-match gold confirmation is pending."
+    "current_screen_passes": true,
+    "current_adoption_exception": "Clean +.011371 passes; provisional adoption precedes exact deployment/GAR/public checks. Historical failures are preserved."
   },
   "primary_evaluation_view": "feed_like_v2",
   "evaluation_roles": {
