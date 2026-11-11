@@ -1,0 +1,214 @@
+{
+ "arms_and_protocol": {
+  "aggregation": "four v2 realizations within match; matches equally within provider; three provider means equally",
+  "arms": [
+   "new_full_phase_tta",
+   "new_conditional_HA_x_archived_calibrated_D",
+   "equal_50_50_new_full_plus_archived_calibrated"
+  ],
+  "cohort": {
+   "aggregation": "four v2 realizations within match; matches equally within provider; three provider means equally",
+   "feed_realizations": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "heldout_rule": "each candidate fit and both archived controls omit the evaluated provider from all learned components and normalization",
+   "matches": [
+    {
+     "match": "J03WOY",
+     "provider": "Sportec"
+    },
+    {
+     "match": "metrica_3",
+     "provider": "Metrica"
+    },
+    {
+     "match": "1996435",
+     "provider": "SkillCorner"
+    },
+    {
+     "match": "1996436",
+     "provider": "SkillCorner"
+    },
+    {
+     "match": "2006229",
+     "provider": "SkillCorner"
+    }
+   ],
+   "v2_seed_rule": "feed_like_v2_benchmark/{rep}/{match} SHA-256-derived seed, exactly as upstream prepared-cell runtime",
+   "views": [
+    "clean",
+    "feed_like_v2"
+   ]
+  },
+  "controls": {
+   "calibrated_phase_tta": "Reused upstream v2_spell_target_runtime controls-only C0 for adop/calibrated D2: equal mean across native phases then f062.",
+   "original_full_phase_tta": "Reused upstream v2_spell_target_runtime controls-only C0 for cand/original_full: equal mean across native phases then f062.",
+   "reuse_only": true
+  },
+  "decoder": "f062"
+ },
+ "correction": "Normalize short audit fold aliases to the existing exact leave_out_* model paths; leave an already-prefixed leave_out_* fold unchanged.",
+ "execution_timing": "after all six fits and their hashes were sealed; before any candidate inference, emission caching or scoring",
+ "failed_attempt": {
+  "candidate_emission_cache_files": 0,
+  "candidate_result_written": false,
+  "stopped_before_candidate_inference": true
+ },
+ "new_decoder_settings": 0,
+ "new_fits": 0,
+ "observed_failure": "First run stopped before candidate inference/scoring at the first phase: evaluation resolved data/experiments/v2_short_original_diversity/models/sportec_2026.joblib, while the sealed fit is named leave_out_sportec_2026.joblib",
+ "organizer_reference_access": false,
+ "original_declaration_sha256": "d9f6a63dd5c68c5d31bbf0494a86646cdc2c23cd38d54c5863d486eeca6a0689",
+ "original_pre_fit_plan": {
+  "arms": [
+   "new_full_phase_tta",
+   "new_conditional_HA_x_archived_calibrated_D",
+   "equal_50_50_new_full_plus_archived_calibrated"
+  ],
+  "budget": {
+   "candidate_scored_cells": 75,
+   "cells_per_arm": 25,
+   "component_seeds": [
+    2026,
+    2027
+   ],
+   "new_decoder_settings": 0,
+   "new_fits": 0,
+   "phases": {
+    "10_hz": 2,
+    "25_hz": 5
+   }
+  },
+  "cohort": {
+   "aggregation": "four v2 realizations within match; matches equally within provider; three provider means equally",
+   "feed_realizations": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "heldout_rule": "each candidate fit and both archived controls omit the evaluated provider from all learned components and normalization",
+   "matches": [
+    {
+     "match": "J03WOY",
+     "provider": "Sportec"
+    },
+    {
+     "match": "metrica_3",
+     "provider": "Metrica"
+    },
+    {
+     "match": "1996435",
+     "provider": "SkillCorner"
+    },
+    {
+     "match": "1996436",
+     "provider": "SkillCorner"
+    },
+    {
+     "match": "2006229",
+     "provider": "SkillCorner"
+    }
+   ],
+   "v2_seed_rule": "feed_like_v2_benchmark/{rep}/{match} SHA-256-derived seed, exactly as upstream prepared-cell runtime",
+   "views": [
+    "clean",
+    "feed_like_v2"
+   ]
+  },
+  "evaluation_declaration_sha256": "d9f6a63dd5c68c5d31bbf0494a86646cdc2c23cd38d54c5863d486eeca6a0689",
+  "original_question": "Do four-view v2-trained full H/A/D fits reach or exceed 0.60 equal-provider official spell F1 on fixed feed_like_v2 development views, and how do conditional-HA transfer and a calibrated-model blend compare?",
+  "training_declaration_sha256": "cf7d60363a17932abcf6db1096184818c12083ebe2353d7665876187a63440e4",
+  "training_plan_sha256": "1cf21f5e5a07592ba2f00249d2667afced77631b9aa3bb65d3b5d5fb0f0fa2cb",
+  "training_source_sha256": {
+   "experiments/baseline_manifest.json": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+   "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+   "experiments/datasets.py": "f0d3a4eeda1d0b970fe7677a24ad752952d44a403be0ccd7bcd7469a05e4e958",
+   "experiments/dense_short_team_v1.py": "fce2939c83c5c50d72dbad67a27b3a3ca713f18549ebebf49eaad918658fee5d",
+   "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+   "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+   "experiments/feed_robustness_v1.py": "fd2d512a7e1752a4b545946c532a1e658593d49c14508b169bde0ad0fcac2087",
+   "experiments/feed_short_sampler.py": "138f0efd17b5bae018d4fe15b93686379fd4682853a354c016bb8789ed1fd703",
+   "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+   "experiments/model_decision_policy.json": "f987ffcad31c283bba5e26fa8402adbf55fc1764876423854a4fe41be47c2a13",
+   "experiments/multisource_eval.py": "1e166cf7169c81ca1393a8cd503f8fd99891ce7693156c73133f8002c847f592",
+   "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+   "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+   "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+   "experiments/results/feed_like_v2_calibration.json": "ac42d0e7697b9d3a5c6684a903e7ea8c27d34a99091597432ab2d32e21faf684",
+   "experiments/results/feed_like_v2_train.json": "1f5cc22f8d8f940dd8c040a9e6b286f11c79ab4229c6294fae985be6c2f7115b",
+   "experiments/results/short_original_diversity_v1_declaration.json": "9455eea0794b091fbca6dd68c8e4f1011117455662d712d92a7148ea8921a8db",
+   "experiments/results/short_original_diversity_v1_training_audit.json": "77b3e5e4c220beed96fd1f9206975d5fd5e287a9f5105f6ed620862317c86013",
+   "experiments/short_label_quality.py": "96a4fca8a8e7feee02cf197ab5ea7faefcb1ef50da7aa75f18592e299b0ab5e4",
+   "experiments/short_original_diversity.py": "edd868fb349855cb73e87fd791d4709b7fed1d99aef2caaa287a63b3a2fce7b3",
+   "experiments/short_original_diversity_v1.py": "f423614e6f1ab06416365e45877ff537b33c1a2bf1855468da18060911dbb666",
+   "experiments/short_quality_diversity_v1.py": "89087a27a1f4687b8d0b031254c9ca3bf0b1b6cb199fe46b42948702a842b1c9",
+   "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+   "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+   "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+   "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+   "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+   "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+   "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+   "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+   "experiments/v2_short_original_diversity.py": "080f702833c85f43d701d912a51c33cb360277303afa666004adcd0ccaa1f036"
+  }
+ },
+ "original_seal_sha256": "a0da655e3b09a9570ab4a699cb59d4dca71fef222a99b69ef5d6608a5fb8ad27",
+ "preserved_prior_correction_receipt": {
+  "path": "experiments/results/v2_training_eval_runtime_correction.json",
+  "sha256": "46e9d4335a91b4e2b679ad73abfba9dcb20917efcbed402eaf080d8f793d5236"
+ },
+ "promotion": false,
+ "provider_aliases": {
+  "Metrica": {
+   "runtime_alias": "metrica",
+   "trainer_fold": "leave_out_metrica"
+  },
+  "SkillCorner": {
+   "runtime_alias": "skillcorner",
+   "trainer_fold": "leave_out_skillcorner"
+  },
+  "Sportec": {
+   "runtime_alias": "sportec",
+   "trainer_fold": "leave_out_sportec"
+  }
+ },
+ "public_scoring": false,
+ "runtime_source_sha256": {
+  "experiments/v2_training_eval.py": "c853a1599046cdeae927b79022b8c85676ded58f15dc2e64d882289ab818dd9b",
+  "experiments/v2_training_eval_runtime_v2.py": "421c9998209baa72cfba3eefdad5ff1bef37ddb75aec784d8ac88e514c095f83"
+ },
+ "sealed_model_paths": {
+  "leave_out_metrica/2026": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_metrica_2026.joblib",
+   "sha256": "54917c2319c2fa9f47e1774169f91bcb10b0ff47be840244bca4743d18017955"
+  },
+  "leave_out_metrica/2027": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_metrica_2027.joblib",
+   "sha256": "6f176680313ae33a105467491ad517f36a4455290c9b159e2db008610b67bf55"
+  },
+  "leave_out_skillcorner/2026": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_skillcorner_2026.joblib",
+   "sha256": "2647869641a01db1c5e93bc4d48885b4328f32792604bba32e41db26b7ada334"
+  },
+  "leave_out_skillcorner/2027": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_skillcorner_2027.joblib",
+   "sha256": "2a1a30ed66c79f15181b4aa9ec9a209d8a11dfb25d9ed76acf9bdd7bcbef2503"
+  },
+  "leave_out_sportec/2026": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_sportec_2026.joblib",
+   "sha256": "698b52ce7799ab82a430475104580fd9cd6ec3f0018b32ddf973fda8925aa45d"
+  },
+  "leave_out_sportec/2027": {
+   "path": "data/experiments/v2_short_original_diversity/models/leave_out_sportec_2027.joblib",
+   "sha256": "09b24af86b90a64b7489dd1956ccd332d701ff51449397efe7e37826b9ca6529"
+  }
+ },
+ "status": "runtime_correction_frozen_after_six_fits_before_any_candidate_scoring",
+ "study_id": "v2_training_eval_runtime_v2",
+ "upstream_preflight_sha256": "fdbaae330dcd76cfea0fa6fab62fd00d560b6a5ed8254c860286f75a2e11ef1e"
+}

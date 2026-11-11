@@ -1,0 +1,154 @@
+{
+  "aggregate_recomposition": {
+    "method": "Recomputed from saved report metrics: mean four fixed v2 views within each game, then equal mean across ten games; no evaluator or label scoring called.",
+    "results": {
+      "clean": {
+        "control": {
+          "d_f1": 0.5834742518755277,
+          "d_precision": 0.5044213240453386,
+          "d_recall": 0.6957529950020896,
+          "macro_f1": 0.7805797527362035,
+          "predicted_spell_count": 302.8,
+          "reference_spell_count": 374.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.2633975455505891,
+          "spell_f1": 0.7084963439067715
+        },
+        "delta": {
+          "d_f1": 0.009768313658247929,
+          "d_precision": 0.014751041506915863,
+          "d_recall": 0.0009315179348053926,
+          "macro_f1": 0.004137522306214558,
+          "predicted_spell_count": 1.6999999999999886,
+          "reference_spell_count": 0.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.0011235955056179692,
+          "spell_f1": 0.0006900154906051004
+        },
+        "snap": {
+          "d_f1": 0.5932425655337756,
+          "d_precision": 0.5191723655522544,
+          "d_recall": 0.696684512936895,
+          "macro_f1": 0.7847172750424181,
+          "predicted_spell_count": 304.5,
+          "reference_spell_count": 374.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.26452114105620705,
+          "spell_f1": 0.7091863593973766
+        }
+      },
+      "v2": {
+        "control": {
+          "d_f1": 0.5898505801620598,
+          "d_precision": 0.5059747420280682,
+          "d_recall": 0.710660991261264,
+          "macro_f1": 0.782179168515212,
+          "predicted_spell_count": 301.75,
+          "reference_spell_count": 374.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.26276944858743967,
+          "spell_f1": 0.7086189869334548
+        },
+        "delta": {
+          "d_f1": 0.006660991096098079,
+          "d_precision": 0.00978159934182632,
+          "d_recall": 0.0006815047559358689,
+          "macro_f1": 0.002686015611546022,
+          "predicted_spell_count": 0.8999999999999773,
+          "reference_spell_count": 0.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.0008009399266885042,
+          "spell_f1": 0.0005574881394515563
+        },
+        "snap": {
+          "d_f1": 0.5965115712581579,
+          "d_precision": 0.5157563413698946,
+          "d_recall": 0.7113424960171999,
+          "macro_f1": 0.784865184126758,
+          "predicted_spell_count": 302.65,
+          "reference_spell_count": 374.0,
+          "short_spell_recall_iou_0_5_lt3s": 0.2635703885141282,
+          "spell_f1": 0.7091764750729064
+        }
+      }
+    }
+  },
+  "all_passed": true,
+  "archive_binding": {
+    "fresh_remote_clone": true,
+    "manifest_sha256": "0411b692546651b409b5bc8416d5bc643aebfa0ceeb7526f83865d7691b32b24",
+    "model_role_count": 10,
+    "receipt_sha256": "73fafcf4e1fd8a04f84f06c25f49abb6ea1f2c215f6f737d24d08a74b24c3d8a",
+    "remote_restore_verified": true,
+    "verified_file_count": 23
+  },
+  "arms_per_view": 2,
+  "full_report_independent_replay_flag": true,
+  "full_report_scalar_replay_count": 800,
+  "game_count": 10,
+  "gar_metric_rescoring_performed": false,
+  "gar_summary": {
+    "clean_spell_control": 0.7084963439067715,
+    "clean_spell_snap": 0.7091863593973766,
+    "spell_regression": false,
+    "v2_spell_control": 0.7086189869334548,
+    "v2_spell_snap": 0.7091764750729064
+  },
+  "historical_frontier_control_csv_sha256": "26af7348940626da1cbe05a0c73b2a9db41ad9cedcb3ae6adc5de2771b6ce5dc",
+  "historical_frontier_control_parity": true,
+  "metric_rows": 100,
+  "organizer_rescoring_performed": false,
+  "paired_cells": 50,
+  "partition_count": 4,
+  "partition_prediction_hash_bindings_passed": true,
+  "partition_receipts": [
+    {
+      "games": [
+        "3850",
+        "3854",
+        "3858"
+      ],
+      "partition": 0,
+      "receipt_sha256": "690b597ca0161e2aac83557557c9f352dc1494c7796761502744cfb94e4dfbdf"
+    },
+    {
+      "games": [
+        "3851",
+        "3855",
+        "3859"
+      ],
+      "partition": 1,
+      "receipt_sha256": "4052cc37a18e6d873b689e154fa81ff2d4ff0a6b4c87f5e9c2f80f9030031934"
+    },
+    {
+      "games": [
+        "3852",
+        "3856"
+      ],
+      "partition": 2,
+      "receipt_sha256": "4c3acc232a3fb1781b92609037bcdb7e6d5cbd62e1ef4f0e022be266e0f5e466"
+    },
+    {
+      "games": [
+        "3853",
+        "3857"
+      ],
+      "partition": 3,
+      "receipt_sha256": "a98f72a87999b0b256b7fc181185027946bfe9a1baeea4b5814a8aff536e2814"
+    }
+  ],
+  "prediction_arrays": 100,
+  "public_binding": {
+    "delta": {
+      "d_f1": 0.026502411368442114,
+      "macro_f1": 0.01294941655207893,
+      "spell_f1_mean": 0.0117647058823529
+    },
+    "gate_sha256": "615c23dff3f919e8a70e49eb881e5c58f855275ae1284c4d18114a46bfdddd98",
+    "result_sha256": "3436bbdf317c3f935a19acb85f509e606bf73cf35f25eeb3835a6d0d244d40d3",
+    "seal_sha256": "42450f6ae3a5ffd050b1856234b46220daa4f2aadc3059d43e7253ac0caafc94"
+  },
+  "raw_inputs_checked": 4,
+  "record_entries_checked": 11,
+  "scalar_metric_rows": 800,
+  "schema": "frontier_reconstructed_final_audit_v1",
+  "source_entries_checked": 21,
+  "study": "ball_exit_reconstructed_v1",
+  "verified_utc": "2026-11-11",
+  "views_per_game": 5
+}

@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-11",
+  "verification_status": "software_and_existing_development_verified; exact_deployment_blocked_missing_weights",
+  "agents": {
+    "model": "gpt-6-luna",
+    "tasks": [
+      "checkpoint_recovery",
+      "verification_audit",
+      "gar_inputs"
+    ]
+  },
+  "manifest_sha256": "cc340e47e3e76bed44809168dfb6761bd128ad424135f2242ef78eba8bdadf5b",
+  "declared_source_hashes_verified": {
+    "experiments/ball_exit_adoption.py": true,
+    "experiments/ball_exit_delivery.py": true,
+    "experiments/ball_exit_dmask_v1.py": true,
+    "experiments/ball_exit_gar.py": true,
+    "experiments/ball_exit_runtime.py": true,
+    "experiments/current_baseline.py": true,
+    "experiments/feed_benchmark_audit_v1.py": true,
+    "experiments/feed_spell_push.py": true,
+    "experiments/sn_dense_train.py": true,
+    "experiments/soccernet_extension.py": true,
+    "experiments/spell_frontier_baseline.py": true,
+    "experiments/supervised.py": true,
+    "experiments/tracking_corruption.py": true,
+    "experiments/v2_iterative_runtime.py": true,
+    "experiments/v2_spell_balanced_eval.py": true,
+    "experiments/v2_spell_balanced_public.py": true
+  },
+  "software_tests": {
+    "run": 964,
+    "passed": 963,
+    "skipped": 1,
+    "errors": 0,
+    "failures": 0,
+    "log_sha256": "7611ed367285a1e4053170ee45db1591d37fbbc594d5a0343b82e7fcdab26e9c",
+    "change": "Historical public contract tests now use isolated synthetic CSV/seal fixtures; no production artifact or frozen gate changed."
+  },
+  "root_tests": {
+    "run": 26,
+    "passed": 26,
+    "log_sha256": "28179fdc8709fbb3f7867c5772c0532f145fb33ec59cc35a1c25c4444c962165"
+  },
+  "file_backed_fit_contract": {
+    "passed": true,
+    "log_sha256": "75ab9e76fa9e8c33dd8e52412d92b28784c553391779bf62e12b7f753c18f2a0"
+  },
+  "bundled_format_check": {
+    "passed": true,
+    "log_sha256": "dbbcfc54d69d5c0af8d6d64bc571601d210dfd57208eb8670548e08aca1a3685"
+  },
+  "independent_development_replay": {
+    "D_masks_verified": false,
+    "aggregates_guards_selection_verified": true,
+    "all_passed": true,
+    "maximum_scalar_error": 0.0,
+    "organizer_reference_access": false,
+    "prediction_sets": 140,
+    "result_sha256": "2fbb910539f0c22ac042bf226902f880b0c08f34157d5968854c53a20ce69656",
+    "scalar_comparisons": 840,
+    "selected": "snap",
+    "verifier_sha256": "1c0da5aed9a4fd8bfce209f3c83cf0f00829ded3f63234d0e92fefbe2e470c8d"
+  },
+  "d_mask_flag_note": "D_masks_verified applies only to complementary study verification; false here is not a failed crossing-study check.",
+  "gar_raw_restore": {
+    "repository": "OpenSportsLab/SoccerNet-GAR",
+    "revision": "32c840210b7d08d06976e7f9457dfff79fb2da99",
+    "file_count": 4,
+    "total_bytes": 1093146606,
+    "files": [
+      {
+        "path": "data/independent/soccernet_gar/tracking-full/test/metadata.parquet",
+        "bytes": 1671596,
+        "sha256": "d2c570bcc7cd508eaceab3bef72579b5882b825295ddcfb5e69ddc70df750359"
+      },
+      {
+        "path": "data/independent/soccernet_gar/tracking-full/test/shard_manifest.parquet",
+        "bytes": 126530,
+        "sha256": "5b8b68b9c5232448f0235f423de1c6cfcfa5dc092cd7dad00e8ec449e7b93ebf"
+      },
+      {
+        "path": "data/independent/soccernet_gar/tracking-full/test/shards/shard-000000.tar",
+        "bytes": 1012981760,
+        "sha256": "ba9ca8f305236dc2c20a732c399821ee16af11a5d19c4c68d426442ed5928e7d"
+      },
+      {
+        "path": "data/independent/soccernet_gar/tracking-full/test/shards/shard-000001.tar",
+        "bytes": 78366720,
+        "sha256": "88e93a7b28141dcbfb3654e27d75e79af1a970478dcdf5694a4b577cf31e35fd"
+      }
+    ]
+  },
+  "missing_exact_weights": [
+    {
+      "original_path": "data/experiments/v2_spell_balanced_v1/train/models/pooled/stage1024_2026.joblib",
+      "deployment_name": "ce_2026.joblib",
+      "sha256": "d9691336672b13191bf2ce47715fc904f3bc6c14b8477b2f6ff2425d9f78d9c2",
+      "bytes": 1432445
+    },
+    {
+      "original_path": "data/experiments/v2_spell_balanced_v1/train/models/pooled/stage1024_2027.joblib",
+      "deployment_name": "ce_2027.joblib",
+      "sha256": "4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa",
+      "bytes": 1432445
+    }
+  ],
+  "remote_archive_search": {
+    "all_private_heads_and_pr_refs_refreshed": true,
+    "exact_filenames_or_lfs_digests_found": false,
+    "private_main": "56191d01512bfc4febfc27bda1e44ee5ccd2b82e",
+    "pr19_head": "1c722275098c4c13e14d4783cdf90a0faaa0e34e",
+    "pr19_scope": "sc2020_realfeed_v1 rb8_1024 provider-fold models; different experiment"
+  },
+  "promotion": {
+    "user_requested_order": "verify then promote then update site",
+    "full_verification_complete": false,
+    "pr": 92,
+    "pr_draft": true,
+    "merged": false,
+    "provisional_default_preserved": true
+  },
+  "gar_scored": false,
+  "public_scored": false
+}

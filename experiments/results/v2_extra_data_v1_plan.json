@@ -1,0 +1,311 @@
+{
+  "study_id": "v2_extra_data_v1",
+  "created_utc": "2026-11-07T04:58:53.932153+00:00",
+  "question": "Can targeted use of the existing GAR TRAIN data improve the frozen frontier blend without losing any clean/v1/v2 spell performance?",
+  "authorization": "yeah let's continue the test to push our metrics even further.",
+  "arms": {
+    "fresh_control": {
+      "gar_loss_weight": 0.5,
+      "gar_quality_replacement_rate": 0.25
+    },
+    "gar_weight625": {
+      "gar_loss_weight": 0.625,
+      "gar_quality_replacement_rate": 0.25
+    },
+    "gar_quality50": {
+      "gar_loss_weight": 0.5,
+      "gar_quality_replacement_rate": 0.5
+    }
+  },
+  "budget": {
+    "folds": [
+      "leave_out_metrica",
+      "leave_out_skillcorner",
+      "leave_out_sportec"
+    ],
+    "seeds": [
+      2026,
+      2027
+    ],
+    "fits": 18,
+    "updates_per_fit": 256,
+    "learning_rate": 0.0001,
+    "batch_size": 32,
+    "old_windows_per_batch": 16,
+    "gar_windows_per_batch": 16,
+    "fresh_rng_offset": 104729,
+    "original_short_replacement_rate": 0.25,
+    "workers_max": 2
+  },
+  "initialization": "Exact provider-excluded balanced stage1024; cumulative stage1280; paired fixed teachers, normalization and D. Same four v2 TRAIN views, clean mass and generated GAR targets; no new annotations.",
+  "recipe": {
+    "ce_weight": 0.5,
+    "calibrated_weight": 0.375,
+    "adopted_weight": 0.125,
+    "pooling": "arithmetic",
+    "ha_cost": 3
+  },
+  "control": {
+    "pipeline_id": "base__ce0.5_cal0.375_ad0.125_arithmetic_ha3",
+    "aggregate": {
+      "clean": {
+        "d_f1": {
+          "cells": 5,
+          "equal_provider": 0.8709262129113644,
+          "providers": {
+            "Metrica": 0.9161000219346348,
+            "SkillCorner": 0.7742689994671235,
+            "Sportec": 0.9224096173323352
+          }
+        },
+        "d_precision": {
+          "cells": 5,
+          "equal_provider": 0.8848440256124785,
+          "providers": {
+            "Metrica": 0.9052387454754318,
+            "SkillCorner": 0.8516160557777513,
+            "Sportec": 0.8976772755842524
+          }
+        },
+        "d_recall": {
+          "cells": 5,
+          "equal_provider": 0.8619197297485038,
+          "providers": {
+            "Metrica": 0.9272250960193593,
+            "SkillCorner": 0.709990696999737,
+            "Sportec": 0.9485433962264151
+          }
+        },
+        "macro_f1": {
+          "cells": 5,
+          "equal_provider": 0.8718643812171453,
+          "providers": {
+            "Metrica": 0.9364244131294465,
+            "SkillCorner": 0.7917022524788363,
+            "Sportec": 0.8874664780431528
+          }
+        },
+        "predicted_spell_count": {
+          "cells": 5,
+          "equal_provider": 346.3333333333333,
+          "providers": {
+            "Metrica": 345.0,
+            "SkillCorner": 380.0,
+            "Sportec": 314.0
+          }
+        },
+        "reference_spell_count": {
+          "cells": 5,
+          "equal_provider": 404.3333333333333,
+          "providers": {
+            "Metrica": 382.0,
+            "SkillCorner": 375.0,
+            "Sportec": 456.0
+          }
+        },
+        "short_spell_recall_iou_0_5_lt3s": {
+          "cells": 5,
+          "equal_provider": 0.4085971774951634,
+          "providers": {
+            "Metrica": 0.6111111111111112,
+            "SkillCorner": 0.2847311827956989,
+            "Sportec": 0.3299492385786802
+          }
+        },
+        "spell_f1": {
+          "cells": 5,
+          "equal_provider": 0.6701365499557103,
+          "providers": {
+            "Metrica": 0.8484181568088033,
+            "SkillCorner": 0.48406941513624974,
+            "Sportec": 0.677922077922078
+          }
+        }
+      },
+      "feed_like_v1": {
+        "d_f1": {
+          "cells": 10,
+          "equal_provider": 0.8605626025749847,
+          "providers": {
+            "Metrica": 0.8963399047114152,
+            "SkillCorner": 0.7798024717989795,
+            "Sportec": 0.905545431214559
+          }
+        },
+        "d_precision": {
+          "cells": 10,
+          "equal_provider": 0.8430064926949227,
+          "providers": {
+            "Metrica": 0.859444226957766,
+            "SkillCorner": 0.8055395516185856,
+            "Sportec": 0.8640356995084166
+          }
+        },
+        "d_recall": {
+          "cells": 10,
+          "equal_provider": 0.8812172287856351,
+          "providers": {
+            "Metrica": 0.9365828208600671,
+            "SkillCorner": 0.7558235824779703,
+            "Sportec": 0.951245283018868
+          }
+        },
+        "macro_f1": {
+          "cells": 10,
+          "equal_provider": 0.8261543004095224,
+          "providers": {
+            "Metrica": 0.8819734535926398,
+            "SkillCorner": 0.774150164145525,
+            "Sportec": 0.8223392834904025
+          }
+        },
+        "predicted_spell_count": {
+          "cells": 10,
+          "equal_provider": 299.5,
+          "providers": {
+            "Metrica": 282.0,
+            "SkillCorner": 347.5,
+            "Sportec": 269.0
+          }
+        },
+        "reference_spell_count": {
+          "cells": 10,
+          "equal_provider": 404.3333333333333,
+          "providers": {
+            "Metrica": 382.0,
+            "SkillCorner": 375.0,
+            "Sportec": 456.0
+          }
+        },
+        "short_spell_recall_iou_0_5_lt3s": {
+          "cells": 10,
+          "equal_provider": 0.22036696548240675,
+          "providers": {
+            "Metrica": 0.2936507936507936,
+            "SkillCorner": 0.2303942652329749,
+            "Sportec": 0.13705583756345177
+          }
+        },
+        "spell_f1": {
+          "cells": 10,
+          "equal_provider": 0.532128306931943,
+          "providers": {
+            "Metrica": 0.6443071479603988,
+            "SkillCorner": 0.4486553448882975,
+            "Sportec": 0.5034224279471329
+          }
+        }
+      },
+      "feed_like_v2": {
+        "d_f1": {
+          "cells": 20,
+          "equal_provider": 0.8661375939080541,
+          "providers": {
+            "Metrica": 0.8969038565127386,
+            "SkillCorner": 0.7919389799598809,
+            "Sportec": 0.9095699452515431
+          }
+        },
+        "d_precision": {
+          "cells": 20,
+          "equal_provider": 0.8730340318137279,
+          "providers": {
+            "Metrica": 0.881885931781764,
+            "SkillCorner": 0.8550162217549152,
+            "Sportec": 0.8821999419045046
+          }
+        },
+        "d_recall": {
+          "cells": 20,
+          "equal_provider": 0.8629801459021867,
+          "providers": {
+            "Metrica": 0.9124447749927846,
+            "SkillCorner": 0.7377069834684926,
+            "Sportec": 0.9387886792452831
+          }
+        },
+        "macro_f1": {
+          "cells": 20,
+          "equal_provider": 0.8522037287846299,
+          "providers": {
+            "Metrica": 0.9021264275736434,
+            "SkillCorner": 0.7983754573236482,
+            "Sportec": 0.8561093014565986
+          }
+        },
+        "predicted_spell_count": {
+          "cells": 20,
+          "equal_provider": 329.3333333333333,
+          "providers": {
+            "Metrica": 325.0,
+            "SkillCorner": 370.5,
+            "Sportec": 292.5
+          }
+        },
+        "reference_spell_count": {
+          "cells": 20,
+          "equal_provider": 404.3333333333333,
+          "providers": {
+            "Metrica": 382.0,
+            "SkillCorner": 375.0,
+            "Sportec": 456.0
+          }
+        },
+        "short_spell_recall_iou_0_5_lt3s": {
+          "cells": 20,
+          "equal_provider": 0.2886038876369644,
+          "providers": {
+            "Metrica": 0.35912698412698413,
+            "SkillCorner": 0.27698924731182795,
+            "Sportec": 0.2296954314720812
+          }
+        },
+        "spell_f1": {
+          "cells": 20,
+          "equal_provider": 0.5936187198896373,
+          "providers": {
+            "Metrica": 0.7057834536923884,
+            "SkillCorner": 0.48397213093339525,
+            "Sportec": 0.5911005750431282
+          }
+        }
+      }
+    }
+  },
+  "eligibility": {
+    "clean_v1_v2_spell": "at least final frontier control; v2 strictly greater",
+    "macro_per_view_delta_min": -0.001,
+    "short_recall_per_view": "at least final frontier control",
+    "D": "exact same predecessor mask",
+    "reference_counts": "invariant",
+    "ranking": "unrounded v2 spell descending, macro exact tie, pipeline id",
+    "goal": "v2 spell >0.60"
+  },
+  "evaluation": {
+    "cells": 35,
+    "views": {
+      "clean": 1,
+      "feed_like_v1": 2,
+      "feed_like_v2": 4
+    },
+    "aggregation": "realizations within match, matches within provider, equal providers",
+    "phases": "seed mean within native phase, phase mean before decoding",
+    "control_replay_tolerance": 1e-12,
+    "exposure": "Five repeatedly exposed development matches; v2 model-conditioned synthetic views"
+  },
+  "prior_outcomes": "Longer +512 fresh/repeat continuations did not beat retained frontier; previous GAR scaling, wider networks, mixed v1/v2, quality sampling and short-weight studies remain preserved. This tests targeted incremental changes with a new paired +256 control.",
+  "quality_sampling": "Existing generated TRAIN labels and geometric corroboration determine sampling only. Original rate .25; changed GAR quality rate affects only eligible replacement, no labels or inference transforms.",
+  "parent_sha256": {
+    "experiments/results/v2_spell_frontier_v1_selection.json": "946a13b463fa3505554b39ce1cd88ddaa7432f5de2250819c3479260f601864a",
+    "experiments/results/v2_spell_frontier_v1_public_result.json": "1c3aba84338a921277473a836724a1058bd8e066811e90e3646a402d39b7a21b",
+    "data/experiments/v2_spell_frontier_v1/public_gate_claimed.json": "6e38e4bb52d6dbb470a8cc8f7c6f19c3a9356151b83c9a8385ffb5460bbb852e",
+    "experiments/baseline_manifest.json": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+    "experiments/model_decision_policy.json": "f987ffcad31c283bba5e26fa8402adbf55fc1764876423854a4fe41be47c2a13"
+  },
+  "public_scoring": false,
+  "organizer_reference_access": false,
+  "gar_valid_test_training": false,
+  "automatic_promotion": false,
+  "promotion_scope": "The earlier user-approved frozen frontier package is promoted separately; new arms do not inherit approval.",
+  "round2": "No additional arms under this ID after results; any follow-up requires a separately frozen declaration."
+}

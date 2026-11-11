@@ -1,0 +1,35 @@
+{
+  "schema": "ball_exit_dmask_v1_round2_declaration",
+  "study_id": "ball_exit_dmask_v1",
+  "round": 2,
+  "date": "2026-11-11",
+  "status": "frozen_after_round1_results_before_any_round2_score",
+  "round1_result_sha256": "4d96fecdf9cefd7f3967a0be2ca20a90f8a74b1c64953e6e54e70e1ffbe016f8",
+  "round1_summary": "delay_m0.0 retained: clean/v1/v2 spell 0.679156/0.534334/0.596884 (+0.009019/+0.002206/+0.003266), short recall up in every view; 0.60 unmet. force and both fail spell retention.",
+  "post_result_diagnostics": {
+    "disclosure": "These used development labels after round 1 and motivate the round-2 rule.",
+    "delay_precision_live": "Sportec and Metrica 0.97-1.00 of re-opened graded frames are live; SkillCorner 0.22-0.32, whose event-derived silver D starts before the ball leaves",
+    "force_precision_dead": {
+      "before_a_predicted_D_start": "0.75-0.88 on all three providers",
+      "isolated": "Metrica 0.54-0.55",
+      "after_a_predicted_D_end": "Metrica 0.00"
+    }
+  },
+  "rule": {
+    "advance": "a predicted D run starts at the earliest outside observation within 3 s before it when the ball is not observed inside again in between",
+    "snap": "delay (round 1, unchanged) then advance; isolated outside sightings and restarts are left alone",
+    "constants": "window 5 s and hold 3 s unchanged from round 1"
+  },
+  "candidates": [
+    "advance_m0.0",
+    "advance_m0.5",
+    "snap_m0.0",
+    "snap_m0.5"
+  ],
+  "control_and_retention": "unchanged from round 1",
+  "success": "a retained candidate with feed_like_v2 spell_f1 > 0.60",
+  "stop": "No further ball-exit rules, margins or constants after this round without new independent evidence.",
+  "source_sha256": {
+    "experiments/ball_exit_dmask_v1.py": "573013001ffe9420e7b95758fd0c7053a6b668f00288a424359a834190399019"
+  }
+}

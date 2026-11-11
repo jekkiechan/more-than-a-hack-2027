@@ -1,0 +1,17 @@
+{
+ "candidate_scores_before_correction": false,
+ "correction": "During R2 validation/execution only, normalize the already-validated shortlist training_stage metadata to1024. Keep every recipe parameter, weight, cell, model, objective, metric and gate unchanged.",
+ "observed_error": "RuntimeError: Round-two recipes differ from the frozen round-one shortlist",
+ "organizer_reference_access": false,
+ "original_runner_and_declaration_preserved": true,
+ "reason": "Frozen R2 declaration correctly labels recipes stage1024, but require_declaration compares them with the R1 stage512 metadata returned by _shortlist. It fails before jobs or inference.",
+ "source_and_input_sha256": {
+  "experiments/results/v2_spell_balanced_v1_round1.json": "242979139e95cbbe4dfbc5a3c5aa92544d4f6f2fec7a4106c52317ec00a51bfe",
+  "experiments/results/v2_spell_balanced_v1_round2_declaration.json": "dbf8641d6b68f59c68bd7c43be2d23378052673cdc4bddb6aa9d55110c2807e3",
+  "experiments/results/v2_spell_balanced_v1_training_seal.json": "0b01021067f7b686380a233cb85dca309269a1097e071eee9845e93b722e905c",
+  "experiments/tests/test_v2_spell_balanced_execution.py": "5362bcb849d8a3f74e0218a3b0eacf8714ec5e1178603a9f4044dd3228d00491",
+  "experiments/v2_spell_balanced_execution.py": "a7f32fe73d045fe980828016ffed71e53b14187d180fa24570ab0ebc7b635be6",
+  "experiments/v2_spell_balanced_round2.py": "1df32d30f4f22fbe7768c402b1b5523fd1955128ce54f3dfd9e848cc37f04b2a"
+ },
+ "study_id": "v2_spell_balanced_v1"
+}

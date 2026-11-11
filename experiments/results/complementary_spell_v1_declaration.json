@@ -1,0 +1,187 @@
+{
+  "arms": [
+    {
+      "weight_seed2026": 0.0,
+      "weight_seed2027": 1.0
+    },
+    {
+      "weight_seed2026": 0.25,
+      "weight_seed2027": 0.75
+    },
+    {
+      "weight_seed2026": 0.5,
+      "weight_seed2027": 0.5
+    },
+    {
+      "weight_seed2026": 0.75,
+      "weight_seed2027": 0.25
+    },
+    {
+      "weight_seed2026": 1.0,
+      "weight_seed2027": 0.0
+    }
+  ],
+  "boundary_arms": [
+    "shift_0.2",
+    "shift_0.4",
+    "shift_0.8"
+  ],
+  "boundary_input": "only the equal-seed .50 prediction; independent fixed diagnostic arms",
+  "cohort": {
+    "matches": [
+      [
+        "Metrica",
+        "metrica_3"
+      ],
+      [
+        "SkillCorner",
+        "1996435"
+      ],
+      [
+        "SkillCorner",
+        "1996436"
+      ],
+      [
+        "SkillCorner",
+        "2006229"
+      ],
+      [
+        "Sportec",
+        "J03WOY"
+      ]
+    ],
+    "view_groups": {
+      "clean": [
+        "clean"
+      ],
+      "feed_like_v1": [
+        "feed_like_v1"
+      ],
+      "feed_like_v2": [
+        "feed_like_v2"
+      ]
+    },
+    "view_replicates": {
+      "clean": [
+        0
+      ],
+      "feed_like_v1": [
+        1,
+        2
+      ],
+      "feed_like_v2": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "evidence_status": "historical predecessor pilot only; no efficacy claim about the current frontier model",
+  "expected_control_macro_f1": {
+    "clean": 0.8712713689886137,
+    "feed_like_v1": 0.826852823195384,
+    "feed_like_v2": 0.8499746497420088
+  },
+  "expected_control_spell_f1": {
+    "clean": 0.6675555328266306,
+    "feed_like_v1": 0.5315755112553304,
+    "feed_like_v2": 0.5835712076382747
+  },
+  "fixed_decoder": {
+    "decoded_d_mask_and_x_rows": "preserved exactly",
+    "ha_cost": 3.0,
+    "historical_predecessor": "f062"
+  },
+  "gates": {
+    "clean_v1_v2_spell": "at least historical control; v2 must strictly improve",
+    "macro_f1": "no worse than control - .001 in clean/v1/v2",
+    "provider_clean_macro_d_f1": "no worse than control - .02",
+    "short_spell_recall": "at least historical control in clean/v1/v2"
+  },
+  "manifest_sha256": "14bf7ca41e023ad83d01fdd4cb0c4663bf8f6a2e4825b0dfc72a50c8d73af622",
+  "metrics": [
+    "spell_f1",
+    "macro_f1",
+    "d_f1",
+    "d_precision",
+    "d_recall",
+    "predicted_spell_count",
+    "reference_spell_count",
+    "short_spell_recall_iou_0_5_lt3s"
+  ],
+  "organizer_reference_access": false,
+  "preparation_receipt": {
+    "path": "data/experiments/complementary_spell_v1/native_probability/preparation_manifest.json",
+    "sha256": "31a5b5db9377d6d766da93a92dd4b5aef0c7eda713ed3736ab1cd3883667d068"
+  },
+  "promotion": false,
+  "question": "Does fixed complementary weighting of original_full seeds 2026/2027 improve official spell F1 on the historical phase baseline?",
+  "source_hashes": {
+    "evaluation/possession_metrics.py": "341bad48904b489d6e875397b27687f5d6a4d22a397f3dc8af3a00d48f16874d",
+    "experiments/baseline_manifest.json": "909a9c50f66ffd598ef40fc79b8cf7565e2c8f60d439facb770a8338d2166012",
+    "experiments/baselines/joint_gru_sn_dense_original_diversity_phase_ensemble_v1.json": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+    "experiments/boundary_relocation_v1.py": "faa562fc6dd02c41eff99f91a3226ab6870b8e1492f84c09ace1dacd98e6e7ea",
+    "experiments/challenge.py": "204ac7ff7a8e530facd9e19fc7d264f2eb35698df1cda60bf32c7f6a720abba1",
+    "experiments/combined_objective_deployment.py": "eb66106a6281b3cbc13b0c35498f10865f5f897d106ada024850c51e18df8ca6",
+    "experiments/complementary_pilot_prepare.py": "687132cf97d2a9cbd5dbb91d080829791ebe05f921c959f366cffaf2ef4f5eb5",
+    "experiments/corruption_experiment.py": "07b357b7f9f99af444f110d576eaba8e791134c07b1dfc28d229fc242a6c22e7",
+    "experiments/current_baseline.py": "44c1e983f64286a153f8a082a0a6b0ff7fd5c879689c95200117824fcd801b24",
+    "experiments/dead_transfer.py": "f38aa33ddf8b7619973cadbe99b9c16c99e37cfa466aa8a5e2a05bb456ad3186",
+    "experiments/decoder_refinement.py": "3157ce0ef6a9f2417c0d365e6ac7b759cf99bda6d91b6f62ea343c2cbb28c962",
+    "experiments/decoder_search.py": "a9ce4d61bd21b35a096839df25682f92a8f4f455ea37d59d8cb7075c5fb54294",
+    "experiments/decoder_search_run.py": "a5d200d3bbd004dfb6ffa0cfd0c33207f9dbb60f9d01d3a8f5dfb413954838fc",
+    "experiments/dense_boundary_v1.py": "bc531d74e071040aaee415e8db8d8c10e8ac23c607290d46470a2fa7a1d6548c",
+    "experiments/dense_short_team_v1.py": "fce2939c83c5c50d72dbad67a27b3a3ca713f18549ebebf49eaad918658fee5d",
+    "experiments/factorized_had.py": "2c7c08e61bd85a0b25deaca4fa50dacc21791f06643829205beadcd3f5bc26fa",
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+    "experiments/feed_head_transfer_v1.py": "801e221f41ff219e631c72128aa7a410f509e5cdf138973a6a02bf7de396f905",
+    "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+    "experiments/feed_robustness_confirmation_v1.py": "ad5561bda2d96c8c97def257eb3204c0e7427acb42e7c231f39cd8156005c88f",
+    "experiments/feed_robustness_v1.py": "fd2d512a7e1752a4b545946c532a1e658593d49c14508b169bde0ad0fcac2087",
+    "experiments/feed_short_head_v1.py": "c4c2acea2dc5d7a9d61bc481ab5ecb63583b5197647dbf82cee32d0c50590bba",
+    "experiments/feed_short_sampler.py": "138f0efd17b5bae018d4fe15b93686379fd4682853a354c016bb8789ed1fd703",
+    "experiments/feed_short_sampling_v1.py": "e67620679b7609e759ab2a2e569a1e2ca094e8e73dbf35e10c059914351cb098",
+    "experiments/feed_spell_push.py": "8318f3b224a033212e07051d58316f581a0bcf4d3b722449693c1dd8ee6d28bc",
+    "experiments/feed_spell_push_run.py": "fa7ef979c8be5e9698bc5562b8cc704e087e05d271e84184cb828b0bd40c2cd4",
+    "experiments/learned_temporal.py": "4a4d7f67033b8d1fbe71014773d1935b11b2a6a595bafe8a737ecfbb00101dad",
+    "experiments/light_corruption.py": "29f1a5759112172af99d30c59e2e39fef3798b03ec9ee32640e7d7e81fbc0ac4",
+    "experiments/metrics.py": "e29f7b5ac5f88e02e990c6363571d22d9cddb7dadfb42257e602569eda8cb846",
+    "experiments/model_decision_policy.json": "e84c8616fd40506b0a8b1e8f754d6993317cd43aa57785117e23f9150d0021eb",
+    "experiments/multisource_eval.py": "1e166cf7169c81ca1393a8cd503f8fd99891ce7693156c73133f8002c847f592",
+    "experiments/objective_ensemble.py": "702e77491ce59cdc3ca4cf4319ec44e4bb4457954a2e012b06468e865752d278",
+    "experiments/objective_losses.py": "73cdbd25a841da81eb3b0d4f71e80eef1d75247bdcfb465d6b112c6d636a9570",
+    "experiments/preparation.py": "659efac9550b61b9f1fe08b8ad29e5be860a75c04a97450e0e0aeeb3cac8f1ad",
+    "experiments/refine_domain.py": "23122e26190eb68a210a00dd2fbfddd9456d85247296025510dc751ee41535da",
+    "experiments/refine_features.py": "35de10d8db26097930d8368cacdf6b291b43ff1db719454095668ca394d06e28",
+    "experiments/robust.py": "2a9a8b8deb2212a097fce76641d91e9f7e9fefdd6e75e62e7d3d961ba9b05dde",
+    "experiments/seed_mix_v1.py": "586ab92f3558ec1bf89ed8bb12d4f01e7fb0f14f4af78d6f01f3f974f7174a71",
+    "experiments/short_label_quality.py": "96a4fca8a8e7feee02cf197ab5ea7faefcb1ef50da7aa75f18592e299b0ab5e4",
+    "experiments/short_original_diversity.py": "edd868fb349855cb73e87fd791d4709b7fed1d99aef2caaa287a63b3a2fce7b3",
+    "experiments/short_original_diversity_v1.py": "f423614e6f1ab06416365e45877ff537b33c1a2bf1855468da18060911dbb666",
+    "experiments/short_quality_diversity_v1.py": "89087a27a1f4687b8d0b031254c9ca3bf0b1b6cb199fe46b42948702a842b1c9",
+    "experiments/sn_dense_train.py": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+    "experiments/soccernet_capacity.py": "2e9cd1a11ec03cc8a253f915dfbf7a6aa0fb35b2acb5eb39ca2ed34cb8392ce8",
+    "experiments/soccernet_capacity_model.py": "ae92f042244092dfca1be3d96cce2c6539777214e6f004f47132433f2a2a4416",
+    "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+    "experiments/soccernet_extension.py": "ef0e2a4b1b846ef972a4d0f36fb02e35f705fd633d09afb87c988341ddacc382",
+    "experiments/soccernet_segments.py": "83ea686a452976f2b4724e6e48c8a94766525e02f2ed6e9af716386b4788363e",
+    "experiments/spell_diagnostics.py": "9d23be40438c112362bddd76cc5442640744ff977e95f3569ef075030a18f0d0",
+    "experiments/spell_mbr.py": "3121148ae4c0614be8240544ab683fe737e783b1b975a87e37b52bb243b36f83",
+    "experiments/spell_mbr_run.py": "c7518e3a7a8d88776cd659d406585df4f36f1c753749afad0748adf23e51f9f4",
+    "experiments/stress_components.py": "d055f4a0922614ae3e8c631add6438bd8edbe590b4017a2970996a9f93e9beb1",
+    "experiments/supervised.py": "b9ae95c3826a60417971961231d7bf5cf3c16897ec48010bf02cbf016bcdddee",
+    "experiments/tracking_corruption.py": "80be0de67ceac4a0924fc1c1dffd2e3ae63f14810c0e2360ed85e6ff910af2b5",
+    "experiments/v2_data_capacity.py": "7067733b150f0e4adf19b7c497efbb32b2ef89f834efbd65222c8bff0317b95d",
+    "experiments/v2_data_capacity_eval.py": "26e35cfa9e3df04ad8784e6cacbeeae6886e857cbbb9a95c537f3e5756d0e7db",
+    "experiments/v2_iterative_eval.py": "ff4ad7fa4f3557b93f1e13a58ffcca396813467ab98a8312b833525f1c217352",
+    "experiments/v2_iterative_followup.py": "6474d10ffb75bd608e8525a28f20054c2f010af13dab16c724ae070d8791c7f7",
+    "experiments/v2_iterative_train.py": "5559f9880c5f96e10750387f4413cdd2fd9c1ba9c294e6cab84a6c85bbacb831",
+    "experiments/v2_iterative_train_run.py": "87d09163517229b9c12ebb561a9005c62fbec3f5f4f4cd13e55cc6cdd7eb56b6",
+    "experiments/v2_short_original_diversity.py": "080f702833c85f43d701d912a51c33cb360277303afa666004adcd0ccaa1f036",
+    "experiments/v2_spell_balanced_eval.py": "ba57176cd16ff7535b98acd3d78acd3aefcc002c723101f6f2dc816b892b2514",
+    "experiments/v2_spell_target.py": "527f97bb31710119b3fabf171c44a50b0a8403128b145c97af44fba3cb4c51d1",
+    "experiments/v2_spell_target_runtime.py": "57b9184ac092674b08fd8b532e40895e64a3841d8747ebb76457abf3304fde91"
+  },
+  "study_id": "seed_mix_v1"
+}

@@ -1,0 +1,48 @@
+{
+ "checks": [
+  {
+   "command": ".venv/bin/python -m unittest discover -s experiments/tests -v",
+   "log_path": "data/experiments/v2_iterative_v1/validation_logs/v2_iterative_tests_final_auditor.log",
+   "log_sha256": "71aeb35e794b1201b6ba62d1c44309089e8eb3faa59acd667fd5dd4c3b7db42f",
+   "passed": true,
+   "test_count": 752
+  },
+  {
+   "command": ".venv/bin/python -m unittest discover -s tests -v",
+   "log_path": "data/experiments/v2_iterative_v1/validation_logs/v2_iterative_root_tests.log",
+   "log_sha256": "110a448efd5ec1e474f015e12867ecd09ff9520d1e88c3ff8a433622aa270170",
+   "passed": true,
+   "test_count": 26
+  },
+  {
+   "command": ".venv/bin/python scripts/fit_context_filebacked.py --contract",
+   "log_path": "data/experiments/v2_iterative_v1/validation_logs/v2_iterative_contract.log",
+   "log_sha256": "75ab9e76fa9e8c33dd8e52412d92b28784c553391779bf62e12b7f753c18f2a0",
+   "passed": true,
+   "test_count": null
+  },
+  {
+   "command": ".venv/bin/python evaluation/validate_submission.py evaluation/results/baseline_smooth50.csv",
+   "csv_sha256": "6d4e04b80b9016cc16ada99697bf219d3a74b58750dd6d5ec5a4cd5fc32ab4b9",
+   "first_frame": 0,
+   "format_only": true,
+   "last_frame": 199318,
+   "passed": true,
+   "rows": 199319
+  }
+ ],
+ "new_synthetic_contract_tests_only": true,
+ "organizer_labels_scored": false,
+ "passed": true,
+ "source_sha256": {
+  "experiments/v2_iterative_eval.py": "ff4ad7fa4f3557b93f1e13a58ffcca396813467ab98a8312b833525f1c217352",
+  "experiments/v2_iterative_execution.py": "44ce702bd13908a667b357669b6bdfc3676221da09557c2f44283ccb8ab6129c",
+  "experiments/v2_iterative_followup.py": "6474d10ffb75bd608e8525a28f20054c2f010af13dab16c724ae070d8791c7f7",
+  "experiments/v2_iterative_round3.py": "15ffd94c434eb7d276a79bd2a31d456c8942e3aa4bbb990a73f59b67322ddca6",
+  "experiments/v2_iterative_runtime.py": "199b9cc1f196883ff767121c6a96390234fb9ac30adb79dcea1756caac7c3d5b",
+  "experiments/v2_iterative_train.py": "5559f9880c5f96e10750387f4413cdd2fd9c1ba9c294e6cab84a6c85bbacb831",
+  "experiments/v2_iterative_train_run.py": "87d09163517229b9c12ebb561a9005c62fbec3f5f4f4cd13e55cc6cdd7eb56b6",
+  "scripts/build_v2_iterative_readout.py": "9fcc013e79a4b7655574c46e14ea2bbf8c32c7f442a2bb3488e50f59cdfa9bf8",
+  "scripts/verify_v2_iterative.py": "b1818693c95ca63c67c497d53a92d64083b0329e93fd48719f612ef6dea07c80"
+ }
+}

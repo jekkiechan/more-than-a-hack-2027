@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-11-07T05:20:25.757311+00:00",
+  "game_scope": "test/3850 only",
+  "input_scope": "Pinned GAR TEST tracking raw data and prepared test/3850 record; no organizer reference.",
+  "metrics_retained_or_used": false,
+  "model_scope": {
+    "manifest_path": "data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1/baseline_manifest.json",
+    "manifest_sha256": "909a9c50f66ffd598ef40fc79b8cf7565e2c8f60d439facb770a8338d2166012",
+    "models_sha256": {
+      "adopted_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+      "adopted_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+      "calibrated_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+      "calibrated_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+      "ce_2026.joblib": "d9691336672b13191bf2ce47715fc904f3bc6c14b8477b2f6ff2425d9f78d9c2",
+      "ce_2027.joblib": "4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa",
+      "teacher_adopted_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "teacher_adopted_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13",
+      "teacher_calibrated_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "teacher_calibrated_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+    }
+  },
+  "organizer_reference_accessed": false,
+  "output_paths_checked": [
+    "data/experiments/spell_frontier_gar_v1/preflight_games/test__3850.json",
+    "data/experiments/spell_frontier_gar_v1/preflight_games/test__3850.npz"
+  ],
+  "outputs_written": false,
+  "public_scoring": false,
+  "reason": "Stopped on root instruction that candidate scoring must wait for a frozen declaration. The run had entered _run_game and may have computed candidate/adopted predictions or metrics in memory; any transient values are discarded and excluded from evidence.",
+  "reselection_or_tuning": false,
+  "runner_sha256": "f7b5ef7dfdf0b3f7c5c182bf0958d3cfcf424c18d91d05624b9902ed3c0fc3a7",
+  "status": "aborted_before_persisting_prediction_or_score_artifacts",
+  "study": "spell_frontier_gar_v1",
+  "temporary_script_path": "data/experiments/spell_frontier_gar_v1/aborted_predeclaration/gar_onegame_preflight.py",
+  "temporary_script_sha256": "1697e4818067fee62ecbb1ce25e0f9765b0ef4164b7b4e762ee5e95f0740845d",
+  "view_scope": {
+    "attempted_order": [
+      "clean",
+      "v2_1",
+      "v2_2",
+      "v2_3",
+      "v2_4"
+    ],
+    "known": "Clean was first; process ran 2m17s and was terminated during inference.",
+    "unknown": "Which view completed and whether an audit.score call occurred before termination."
+  }
+}

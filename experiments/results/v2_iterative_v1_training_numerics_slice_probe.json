@@ -1,0 +1,24 @@
+{
+ "candidate_scored": false,
+ "conclusion": "The specific source of the prior numerical mismatch is autograd accumulation order: reusing the CE logits view for q_left shares one slice node in the study-local graph, while sn.train creates q_left from a separate slice of all_logits. The scalar forward loss remains identical, but the backward graph sums contributions in a different order; AdamW amplifies the tiny gradient rounding delta. With the shared trainer slice construction, two-update H/A state is bitwise identical.",
+ "initial_state_seeded": true,
+ "method": "Loaded the study-local _fit_loop source with inspect.getsource into a temporary namespace; changed only q_left construction from softmax(logits) to softmax(all_logits[:, CONTEXT:CONTEXT+CORE]); did not write either source file. Compared both two-update CE runs against sn.train after loading the exact same warm-start H/A state through a temporary in-memory _copy_teacher_function override.",
+ "organizer_labels_scored": false,
+ "results": {
+  "reused_logits_slice": {
+   "different_state_tensor_count": 9,
+   "exact": false,
+   "max_abs_state_delta": 2.7567148208618164e-07
+  },
+  "separate_slice_node": {
+   "different_state_tensor_count": 0,
+   "exact": true,
+   "max_abs_state_delta": 0.0
+  }
+ },
+ "shared_frozen_trainer_edited": false,
+ "shared_sn_dense_train_sha256": "994e7847ad175135f505020e8688ff81b95ffbc46be83fb034c6075d823c67ab",
+ "status": "read_only_in_memory_slice_autograd_probe",
+ "study_id": "v2_iterative_train_v1",
+ "trainer_source_sha256": "5559f9880c5f96e10750387f4413cdd2fd9c1ba9c294e6cab84a6c85bbacb831"
+}

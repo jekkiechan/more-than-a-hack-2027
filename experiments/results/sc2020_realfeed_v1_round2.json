@@ -1,0 +1,1311 @@
+{
+ "schema": "sc2020_realfeed_v1_round2_result",
+ "study_id": "sc2020_realfeed_v1",
+ "declaration_sha256": "42cf176f786d9792820f5319cc6e264f15f0222e440ea8436a4324b0f50018b5",
+ "control_replay_exact": true,
+ "organizer_reference_access": false,
+ "candidates": {
+  "control": {
+   "aggregate": {
+    "clean": {
+     "spell_f1": 0.6701365499557103,
+     "spell_f1/providers": {
+      "Sportec": 0.677922077922078,
+      "Metrica": 0.8484181568088033,
+      "SkillCorner": 0.48406941513624974
+     },
+     "macro_f1": 0.8718643812171453,
+     "macro_f1/providers": {
+      "Sportec": 0.8874664780431528,
+      "Metrica": 0.9364244131294465,
+      "SkillCorner": 0.7917022524788363
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.4085971774951634,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.3299492385786802,
+      "Metrica": 0.6111111111111112,
+      "SkillCorner": 0.2847311827956989
+     },
+     "d_f1": 0.8709262129113645,
+     "d_f1/providers": {
+      "Sportec": 0.9224096173323352,
+      "Metrica": 0.9161000219346348,
+      "SkillCorner": 0.7742689994671235
+     },
+     "predicted_spell_count": 346.3333333333333,
+     "predicted_spell_count/providers": {
+      "Sportec": 314.0,
+      "Metrica": 345.0,
+      "SkillCorner": 380.0
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    },
+    "feed_like_v1": {
+     "spell_f1": 0.532128306931943,
+     "spell_f1/providers": {
+      "Sportec": 0.5034224279471329,
+      "Metrica": 0.6443071479603988,
+      "SkillCorner": 0.4486553448882975
+     },
+     "macro_f1": 0.8261543004095224,
+     "macro_f1/providers": {
+      "Sportec": 0.8223392834904025,
+      "Metrica": 0.8819734535926398,
+      "SkillCorner": 0.774150164145525
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.22036696548240675,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.13705583756345177,
+      "Metrica": 0.2936507936507936,
+      "SkillCorner": 0.2303942652329749
+     },
+     "d_f1": 0.8605626025749845,
+     "d_f1/providers": {
+      "Sportec": 0.905545431214559,
+      "Metrica": 0.8963399047114152,
+      "SkillCorner": 0.7798024717989795
+     },
+     "predicted_spell_count": 299.5,
+     "predicted_spell_count/providers": {
+      "Sportec": 269.0,
+      "Metrica": 282.0,
+      "SkillCorner": 347.5
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    },
+    "feed_like_v2": {
+     "spell_f1": 0.5936187198896373,
+     "spell_f1/providers": {
+      "Sportec": 0.5911005750431282,
+      "Metrica": 0.7057834536923884,
+      "SkillCorner": 0.48397213093339525
+     },
+     "macro_f1": 0.8522037287846301,
+     "macro_f1/providers": {
+      "Sportec": 0.8561093014565986,
+      "Metrica": 0.9021264275736434,
+      "SkillCorner": 0.7983754573236482
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.28860388763696443,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.2296954314720812,
+      "Metrica": 0.35912698412698413,
+      "SkillCorner": 0.27698924731182795
+     },
+     "d_f1": 0.8661375939080541,
+     "d_f1/providers": {
+      "Sportec": 0.9095699452515431,
+      "Metrica": 0.8969038565127386,
+      "SkillCorner": 0.7919389799598809
+     },
+     "predicted_spell_count": 329.3333333333333,
+     "predicted_spell_count/providers": {
+      "Sportec": 292.5,
+      "Metrica": 325.0,
+      "SkillCorner": 370.5
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    }
+   },
+   "failed_retention_checks": [],
+   "retained": false,
+   "meets_0_60": false,
+   "spell_delta_vs_control": {
+    "clean": 0.0,
+    "feed_like_v1": 0.0,
+    "feed_like_v2": 0.0
+   }
+  },
+  "rb8_1024/replace": {
+   "aggregate": {
+    "clean": {
+     "spell_f1": 0.6698569684261287,
+     "spell_f1/providers": {
+      "Sportec": 0.6770833333333333,
+      "Metrica": 0.8484181568088033,
+      "SkillCorner": 0.48406941513624974
+     },
+     "macro_f1": 0.8719181598572819,
+     "macro_f1/providers": {
+      "Sportec": 0.8875437682432472,
+      "Metrica": 0.9365084588497622,
+      "SkillCorner": 0.7917022524788363
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.40521308274051027,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.3197969543147208,
+      "Metrica": 0.6111111111111112,
+      "SkillCorner": 0.2847311827956989
+     },
+     "d_f1": 0.8709262129113645,
+     "d_f1/providers": {
+      "Sportec": 0.9224096173323352,
+      "Metrica": 0.9161000219346348,
+      "SkillCorner": 0.7742689994671235
+     },
+     "predicted_spell_count": 345.6666666666667,
+     "predicted_spell_count/providers": {
+      "Sportec": 312.0,
+      "Metrica": 345.0,
+      "SkillCorner": 380.0
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    },
+    "feed_like_v1": {
+     "spell_f1": 0.5286585167025613,
+     "spell_f1/providers": {
+      "Sportec": 0.5028270130862547,
+      "Metrica": 0.6344931921331316,
+      "SkillCorner": 0.4486553448882975
+     },
+     "macro_f1": 0.8260746733914123,
+     "macro_f1/providers": {
+      "Sportec": 0.8230834134415332,
+      "Metrica": 0.8809904425871788,
+      "SkillCorner": 0.774150164145525
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.21422993650273822,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.13451776649746194,
+      "Metrica": 0.2777777777777778,
+      "SkillCorner": 0.2303942652329749
+     },
+     "d_f1": 0.8605626025749845,
+     "d_f1/providers": {
+      "Sportec": 0.905545431214559,
+      "Metrica": 0.8963399047114152,
+      "SkillCorner": 0.7798024717989795
+     },
+     "predicted_spell_count": 298.0,
+     "predicted_spell_count/providers": {
+      "Sportec": 267.5,
+      "Metrica": 279.0,
+      "SkillCorner": 347.5
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    },
+    "feed_like_v2": {
+     "spell_f1": 0.5914097367592089,
+     "spell_f1/providers": {
+      "Sportec": 0.5922494545255392,
+      "Metrica": 0.6980076248186924,
+      "SkillCorner": 0.48397213093339525
+     },
+     "macro_f1": 0.8518277438663246,
+     "macro_f1/providers": {
+      "Sportec": 0.8558511060600529,
+      "Metrica": 0.901256668215273,
+      "SkillCorner": 0.7983754573236482
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.2859583849914618,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.22969543147208124,
+      "Metrica": 0.35119047619047616,
+      "SkillCorner": 0.27698924731182795
+     },
+     "d_f1": 0.8661375939080541,
+     "d_f1/providers": {
+      "Sportec": 0.9095699452515431,
+      "Metrica": 0.8969038565127386,
+      "SkillCorner": 0.7919389799598809
+     },
+     "predicted_spell_count": 330.1666666666667,
+     "predicted_spell_count/providers": {
+      "Sportec": 293.25,
+      "Metrica": 326.75,
+      "SkillCorner": 370.5
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    }
+   },
+   "failed_retention_checks": [
+    "clean/spell_f1",
+    "clean/short_spell_recall_iou_0_5_lt3s",
+    "feed_like_v1/spell_f1",
+    "feed_like_v1/short_spell_recall_iou_0_5_lt3s",
+    "feed_like_v2/spell_f1",
+    "feed_like_v2/short_spell_recall_iou_0_5_lt3s"
+   ],
+   "retained": false,
+   "meets_0_60": false,
+   "spell_delta_vs_control": {
+    "clean": -0.0002795815295815185,
+    "feed_like_v1": -0.003469790229381764,
+    "feed_like_v2": -0.002208983130428388
+   }
+  },
+  "rb8_1024/half": {
+   "aggregate": {
+    "clean": {
+     "spell_f1": 0.6706457885392267,
+     "spell_f1/providers": {
+      "Sportec": 0.6799999999999999,
+      "Metrica": 0.8478679504814306,
+      "SkillCorner": 0.48406941513624974
+     },
+     "macro_f1": 0.872063898560972,
+     "macro_f1/providers": {
+      "Sportec": 0.8880060395917062,
+      "Metrica": 0.9364834036123734,
+      "SkillCorner": 0.7917022524788363
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.4085971774951634,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.3299492385786802,
+      "Metrica": 0.6111111111111112,
+      "SkillCorner": 0.2847311827956989
+     },
+     "d_f1": 0.8709262129113645,
+     "d_f1/providers": {
+      "Sportec": 0.9224096173323352,
+      "Metrica": 0.9161000219346348,
+      "SkillCorner": 0.7742689994671235
+     },
+     "predicted_spell_count": 346.3333333333333,
+     "predicted_spell_count/providers": {
+      "Sportec": 314.0,
+      "Metrica": 345.0,
+      "SkillCorner": 380.0
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    },
+    "feed_like_v1": {
+     "spell_f1": 0.5320175842890014,
+     "spell_f1/providers": {
+      "Sportec": 0.5029636121165937,
+      "Metrica": 0.644433795862113,
+      "SkillCorner": 0.4486553448882975
+     },
+     "macro_f1": 0.8264429581295553,
+     "macro_f1/providers": {
+      "Sportec": 0.8224088376842924,
+      "Metrica": 0.8827698725588484,
+      "SkillCorner": 0.774150164145525
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.21904421415965544,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.1370558375634518,
+      "Metrica": 0.28968253968253965,
+      "SkillCorner": 0.2303942652329749
+     },
+     "d_f1": 0.8605626025749845,
+     "d_f1/providers": {
+      "Sportec": 0.905545431214559,
+      "Metrica": 0.8963399047114152,
+      "SkillCorner": 0.7798024717989795
+     },
+     "predicted_spell_count": 298.6666666666667,
+     "predicted_spell_count/providers": {
+      "Sportec": 268.5,
+      "Metrica": 280.0,
+      "SkillCorner": 347.5
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    },
+    "feed_like_v2": {
+     "spell_f1": 0.5938059184911654,
+     "spell_f1/providers": {
+      "Sportec": 0.5923858794510521,
+      "Metrica": 0.7050597450890488,
+      "SkillCorner": 0.48397213093339525
+     },
+     "macro_f1": 0.8521060111668836,
+     "macro_f1/providers": {
+      "Sportec": 0.8560510022276717,
+      "Metrica": 0.9018915739493308,
+      "SkillCorner": 0.7983754573236482
+     },
+     "short_spell_recall_iou_0_5_lt3s": 0.28944991132562775,
+     "short_spell_recall_iou_0_5_lt3s/providers": {
+      "Sportec": 0.23223350253807107,
+      "Metrica": 0.35912698412698413,
+      "SkillCorner": 0.27698924731182795
+     },
+     "d_f1": 0.8661375939080541,
+     "d_f1/providers": {
+      "Sportec": 0.9095699452515431,
+      "Metrica": 0.8969038565127386,
+      "SkillCorner": 0.7919389799598809
+     },
+     "predicted_spell_count": 329.25,
+     "predicted_spell_count/providers": {
+      "Sportec": 293.25,
+      "Metrica": 324.0,
+      "SkillCorner": 370.5
+     },
+     "reference_spell_count": 404.3333333333333,
+     "reference_spell_count/providers": {
+      "Sportec": 456.0,
+      "Metrica": 382.0,
+      "SkillCorner": 375.0
+     }
+    }
+   },
+   "failed_retention_checks": [
+    "feed_like_v1/spell_f1",
+    "feed_like_v1/short_spell_recall_iou_0_5_lt3s"
+   ],
+   "retained": false,
+   "meets_0_60": false,
+   "spell_delta_vs_control": {
+    "clean": 0.0005092385835164803,
+    "feed_like_v1": -0.0001107226429416519,
+    "feed_like_v2": 0.00018719860152804912
+   }
+  }
+ },
+ "cells": {
+  "Sportec__J03WOY__clean__0": {
+   "control": {
+    "spell_f1": 0.677922077922078,
+    "macro_f1": 0.8874664780431528,
+    "short_spell_recall_iou_0_5_lt3s": 0.3299492385786802,
+    "d_f1": 0.9224096173323352,
+    "predicted_spell_count": 314.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.6770833333333333,
+    "macro_f1": 0.8875437682432472,
+    "short_spell_recall_iou_0_5_lt3s": 0.3197969543147208,
+    "d_f1": 0.9224096173323352,
+    "predicted_spell_count": 312.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.6799999999999999,
+    "macro_f1": 0.8880060395917062,
+    "short_spell_recall_iou_0_5_lt3s": 0.3299492385786802,
+    "d_f1": 0.9224096173323352,
+    "predicted_spell_count": 314.0,
+    "reference_spell_count": 456.0
+   }
+  },
+  "Sportec__J03WOY__feed_like_v1__1": {
+   "control": {
+    "spell_f1": 0.5127922971114167,
+    "macro_f1": 0.8236938967733646,
+    "short_spell_recall_iou_0_5_lt3s": 0.14720812182741116,
+    "d_f1": 0.9033434825070374,
+    "predicted_spell_count": 271.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.5059310344827586,
+    "macro_f1": 0.822153511359582,
+    "short_spell_recall_iou_0_5_lt3s": 0.14213197969543148,
+    "d_f1": 0.9033434825070374,
+    "predicted_spell_count": 269.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.5086896551724138,
+    "macro_f1": 0.8239847772700912,
+    "short_spell_recall_iou_0_5_lt3s": 0.14213197969543148,
+    "d_f1": 0.9033434825070374,
+    "predicted_spell_count": 269.0,
+    "reference_spell_count": 456.0
+   }
+  },
+  "Sportec__J03WOY__feed_like_v1__2": {
+   "control": {
+    "spell_f1": 0.49405255878284915,
+    "macro_f1": 0.8209846702074405,
+    "short_spell_recall_iou_0_5_lt3s": 0.12690355329949238,
+    "d_f1": 0.9077473799220805,
+    "predicted_spell_count": 267.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4997229916897507,
+    "macro_f1": 0.8240133155234846,
+    "short_spell_recall_iou_0_5_lt3s": 0.12690355329949238,
+    "d_f1": 0.9077473799220805,
+    "predicted_spell_count": 266.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4972375690607735,
+    "macro_f1": 0.8208328980984936,
+    "short_spell_recall_iou_0_5_lt3s": 0.1319796954314721,
+    "d_f1": 0.9077473799220805,
+    "predicted_spell_count": 268.0,
+    "reference_spell_count": 456.0
+   }
+  },
+  "Sportec__J03WOY__feed_like_v2__1": {
+   "control": {
+    "spell_f1": 0.6090425531914894,
+    "macro_f1": 0.853799775926705,
+    "short_spell_recall_iou_0_5_lt3s": 0.25888324873096447,
+    "d_f1": 0.904444412094391,
+    "predicted_spell_count": 296.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.6074074074074074,
+    "macro_f1": 0.8535933982332774,
+    "short_spell_recall_iou_0_5_lt3s": 0.25888324873096447,
+    "d_f1": 0.904444412094391,
+    "predicted_spell_count": 300.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.606896551724138,
+    "macro_f1": 0.8536112151845687,
+    "short_spell_recall_iou_0_5_lt3s": 0.25888324873096447,
+    "d_f1": 0.904444412094391,
+    "predicted_spell_count": 298.0,
+    "reference_spell_count": 456.0
+   }
+  },
+  "Sportec__J03WOY__feed_like_v2__2": {
+   "control": {
+    "spell_f1": 0.5904,
+    "macro_f1": 0.8598113920270398,
+    "short_spell_recall_iou_0_5_lt3s": 0.233502538071066,
+    "d_f1": 0.9152010096340809,
+    "predicted_spell_count": 294.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.5909090909090909,
+    "macro_f1": 0.8593279620740327,
+    "short_spell_recall_iou_0_5_lt3s": 0.233502538071066,
+    "d_f1": 0.9152010096340809,
+    "predicted_spell_count": 292.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.5903743315508022,
+    "macro_f1": 0.8591692772748445,
+    "short_spell_recall_iou_0_5_lt3s": 0.233502538071066,
+    "d_f1": 0.9152010096340809,
+    "predicted_spell_count": 292.0,
+    "reference_spell_count": 456.0
+   }
+  },
+  "Sportec__J03WOY__feed_like_v2__3": {
+   "control": {
+    "spell_f1": 0.5708108108108109,
+    "macro_f1": 0.8543596417385956,
+    "short_spell_recall_iou_0_5_lt3s": 0.18781725888324874,
+    "d_f1": 0.9057966732649867,
+    "predicted_spell_count": 284.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.5757412398921833,
+    "macro_f1": 0.8541115750579831,
+    "short_spell_recall_iou_0_5_lt3s": 0.19289340101522842,
+    "d_f1": 0.9057966732649867,
+    "predicted_spell_count": 286.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.5746630727762803,
+    "macro_f1": 0.8545345749604089,
+    "short_spell_recall_iou_0_5_lt3s": 0.19289340101522842,
+    "d_f1": 0.9057966732649867,
+    "predicted_spell_count": 286.0,
+    "reference_spell_count": 456.0
+   }
+  },
+  "Sportec__J03WOY__feed_like_v2__4": {
+   "control": {
+    "spell_f1": 0.5941489361702127,
+    "macro_f1": 0.8564663961340537,
+    "short_spell_recall_iou_0_5_lt3s": 0.23857868020304568,
+    "d_f1": 0.9128376860127138,
+    "predicted_spell_count": 296.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.5949400798934754,
+    "macro_f1": 0.8563714888749184,
+    "short_spell_recall_iou_0_5_lt3s": 0.233502538071066,
+    "d_f1": 0.9128376860127138,
+    "predicted_spell_count": 295.0,
+    "reference_spell_count": 456.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.5976095617529881,
+    "macro_f1": 0.856888941490865,
+    "short_spell_recall_iou_0_5_lt3s": 0.2436548223350254,
+    "d_f1": 0.9128376860127138,
+    "predicted_spell_count": 297.0,
+    "reference_spell_count": 456.0
+   }
+  },
+  "Metrica__metrica_3__clean__0": {
+   "control": {
+    "spell_f1": 0.8484181568088033,
+    "macro_f1": 0.9364244131294465,
+    "short_spell_recall_iou_0_5_lt3s": 0.6111111111111112,
+    "d_f1": 0.9161000219346348,
+    "predicted_spell_count": 345.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.8484181568088033,
+    "macro_f1": 0.9365084588497622,
+    "short_spell_recall_iou_0_5_lt3s": 0.6111111111111112,
+    "d_f1": 0.9161000219346348,
+    "predicted_spell_count": 345.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.8478679504814306,
+    "macro_f1": 0.9364834036123734,
+    "short_spell_recall_iou_0_5_lt3s": 0.6111111111111112,
+    "d_f1": 0.9161000219346348,
+    "predicted_spell_count": 345.0,
+    "reference_spell_count": 382.0
+   }
+  },
+  "Metrica__metrica_3__feed_like_v1__1": {
+   "control": {
+    "spell_f1": 0.6642533936651585,
+    "macro_f1": 0.8856553850948266,
+    "short_spell_recall_iou_0_5_lt3s": 0.31746031746031744,
+    "d_f1": 0.8954737732656514,
+    "predicted_spell_count": 281.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.6505295007564296,
+    "macro_f1": 0.88332667265925,
+    "short_spell_recall_iou_0_5_lt3s": 0.29365079365079366,
+    "d_f1": 0.8954737732656514,
+    "predicted_spell_count": 279.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.659606656580938,
+    "macro_f1": 0.8852608440152201,
+    "short_spell_recall_iou_0_5_lt3s": 0.30952380952380953,
+    "d_f1": 0.8954737732656514,
+    "predicted_spell_count": 279.0,
+    "reference_spell_count": 382.0
+   }
+  },
+  "Metrica__metrica_3__feed_like_v1__2": {
+   "control": {
+    "spell_f1": 0.6243609022556391,
+    "macro_f1": 0.878291522090453,
+    "short_spell_recall_iou_0_5_lt3s": 0.2698412698412698,
+    "d_f1": 0.8972060361571791,
+    "predicted_spell_count": 283.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.6184568835098335,
+    "macro_f1": 0.8786542125151077,
+    "short_spell_recall_iou_0_5_lt3s": 0.2619047619047619,
+    "d_f1": 0.8972060361571791,
+    "predicted_spell_count": 279.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.6292609351432881,
+    "macro_f1": 0.8802789011024769,
+    "short_spell_recall_iou_0_5_lt3s": 0.2698412698412698,
+    "d_f1": 0.8972060361571791,
+    "predicted_spell_count": 281.0,
+    "reference_spell_count": 382.0
+   }
+  },
+  "Metrica__metrica_3__feed_like_v2__1": {
+   "control": {
+    "spell_f1": 0.6988700564971752,
+    "macro_f1": 0.8983731280668508,
+    "short_spell_recall_iou_0_5_lt3s": 0.3333333333333333,
+    "d_f1": 0.8932579971803587,
+    "predicted_spell_count": 326.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.6861971830985916,
+    "macro_f1": 0.8971060518168775,
+    "short_spell_recall_iou_0_5_lt3s": 0.3333333333333333,
+    "d_f1": 0.8932579971803587,
+    "predicted_spell_count": 328.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.6991501416430596,
+    "macro_f1": 0.8981680784911285,
+    "short_spell_recall_iou_0_5_lt3s": 0.3412698412698413,
+    "d_f1": 0.8932579971803587,
+    "predicted_spell_count": 324.0,
+    "reference_spell_count": 382.0
+   }
+  },
+  "Metrica__metrica_3__feed_like_v2__2": {
+   "control": {
+    "spell_f1": 0.7229885057471265,
+    "macro_f1": 0.9080792572186632,
+    "short_spell_recall_iou_0_5_lt3s": 0.36507936507936506,
+    "d_f1": 0.9063736551227967,
+    "predicted_spell_count": 314.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.7031161473087819,
+    "macro_f1": 0.9065278891794161,
+    "short_spell_recall_iou_0_5_lt3s": 0.35714285714285715,
+    "d_f1": 0.9063736551227967,
+    "predicted_spell_count": 324.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.7229885057471265,
+    "macro_f1": 0.9080864064311384,
+    "short_spell_recall_iou_0_5_lt3s": 0.36507936507936506,
+    "d_f1": 0.9063736551227967,
+    "predicted_spell_count": 314.0,
+    "reference_spell_count": 382.0
+   }
+  },
+  "Metrica__metrica_3__feed_like_v2__3": {
+   "control": {
+    "spell_f1": 0.6938888888888888,
+    "macro_f1": 0.9018045412929535,
+    "short_spell_recall_iou_0_5_lt3s": 0.36507936507936506,
+    "d_f1": 0.89667824149905,
+    "predicted_spell_count": 338.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.6997214484679666,
+    "macro_f1": 0.9020599517670039,
+    "short_spell_recall_iou_0_5_lt3s": 0.36507936507936506,
+    "d_f1": 0.89667824149905,
+    "predicted_spell_count": 336.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.6959666203059806,
+    "macro_f1": 0.9019949377953451,
+    "short_spell_recall_iou_0_5_lt3s": 0.373015873015873,
+    "d_f1": 0.89667824149905,
+    "predicted_spell_count": 337.0,
+    "reference_spell_count": 382.0
+   }
+  },
+  "Metrica__metrica_3__feed_like_v2__4": {
+   "control": {
+    "spell_f1": 0.7073863636363635,
+    "macro_f1": 0.9002487837161063,
+    "short_spell_recall_iou_0_5_lt3s": 0.373015873015873,
+    "d_f1": 0.8913055322487495,
+    "predicted_spell_count": 322.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.7029957203994295,
+    "macro_f1": 0.8993327800977942,
+    "short_spell_recall_iou_0_5_lt3s": 0.3492063492063492,
+    "d_f1": 0.8913055322487495,
+    "predicted_spell_count": 319.0,
+    "reference_spell_count": 382.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.7021337126600284,
+    "macro_f1": 0.8993168730797113,
+    "short_spell_recall_iou_0_5_lt3s": 0.35714285714285715,
+    "d_f1": 0.8913055322487495,
+    "predicted_spell_count": 321.0,
+    "reference_spell_count": 382.0
+   }
+  },
+  "SkillCorner__1996435__clean__0": {
+   "control": {
+    "spell_f1": 0.4776119402985074,
+    "macro_f1": 0.7995599871876583,
+    "short_spell_recall_iou_0_5_lt3s": 0.22580645161290322,
+    "d_f1": 0.7799046466946559,
+    "predicted_spell_count": 353.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4776119402985074,
+    "macro_f1": 0.7995599871876583,
+    "short_spell_recall_iou_0_5_lt3s": 0.22580645161290322,
+    "d_f1": 0.7799046466946559,
+    "predicted_spell_count": 353.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4776119402985074,
+    "macro_f1": 0.7995599871876583,
+    "short_spell_recall_iou_0_5_lt3s": 0.22580645161290322,
+    "d_f1": 0.7799046466946559,
+    "predicted_spell_count": 353.0,
+    "reference_spell_count": 384.0
+   }
+  },
+  "SkillCorner__1996435__feed_like_v1__1": {
+   "control": {
+    "spell_f1": 0.44804469273743014,
+    "macro_f1": 0.789499869558215,
+    "short_spell_recall_iou_0_5_lt3s": 0.1935483870967742,
+    "d_f1": 0.7906349099251063,
+    "predicted_spell_count": 332.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.44804469273743014,
+    "macro_f1": 0.789499869558215,
+    "short_spell_recall_iou_0_5_lt3s": 0.1935483870967742,
+    "d_f1": 0.7906349099251063,
+    "predicted_spell_count": 332.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.44804469273743014,
+    "macro_f1": 0.789499869558215,
+    "short_spell_recall_iou_0_5_lt3s": 0.1935483870967742,
+    "d_f1": 0.7906349099251063,
+    "predicted_spell_count": 332.0,
+    "reference_spell_count": 384.0
+   }
+  },
+  "SkillCorner__1996435__feed_like_v1__2": {
+   "control": {
+    "spell_f1": 0.44122562674094706,
+    "macro_f1": 0.7731971140239269,
+    "short_spell_recall_iou_0_5_lt3s": 0.2,
+    "d_f1": 0.7635938681515089,
+    "predicted_spell_count": 334.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.44122562674094706,
+    "macro_f1": 0.7731971140239269,
+    "short_spell_recall_iou_0_5_lt3s": 0.2,
+    "d_f1": 0.7635938681515089,
+    "predicted_spell_count": 334.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.44122562674094706,
+    "macro_f1": 0.7731971140239269,
+    "short_spell_recall_iou_0_5_lt3s": 0.2,
+    "d_f1": 0.7635938681515089,
+    "predicted_spell_count": 334.0,
+    "reference_spell_count": 384.0
+   }
+  },
+  "SkillCorner__1996435__feed_like_v2__1": {
+   "control": {
+    "spell_f1": 0.4723404255319149,
+    "macro_f1": 0.7978932613435882,
+    "short_spell_recall_iou_0_5_lt3s": 0.25161290322580643,
+    "d_f1": 0.7814607547711293,
+    "predicted_spell_count": 368.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4723404255319149,
+    "macro_f1": 0.7978932613435882,
+    "short_spell_recall_iou_0_5_lt3s": 0.25161290322580643,
+    "d_f1": 0.7814607547711293,
+    "predicted_spell_count": 368.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4723404255319149,
+    "macro_f1": 0.7978932613435882,
+    "short_spell_recall_iou_0_5_lt3s": 0.25161290322580643,
+    "d_f1": 0.7814607547711293,
+    "predicted_spell_count": 368.0,
+    "reference_spell_count": 384.0
+   }
+  },
+  "SkillCorner__1996435__feed_like_v2__2": {
+   "control": {
+    "spell_f1": 0.4870748299319728,
+    "macro_f1": 0.8072185110083115,
+    "short_spell_recall_iou_0_5_lt3s": 0.25161290322580643,
+    "d_f1": 0.7891455292617259,
+    "predicted_spell_count": 351.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4870748299319728,
+    "macro_f1": 0.8072185110083115,
+    "short_spell_recall_iou_0_5_lt3s": 0.25161290322580643,
+    "d_f1": 0.7891455292617259,
+    "predicted_spell_count": 351.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4870748299319728,
+    "macro_f1": 0.8072185110083115,
+    "short_spell_recall_iou_0_5_lt3s": 0.25161290322580643,
+    "d_f1": 0.7891455292617259,
+    "predicted_spell_count": 351.0,
+    "reference_spell_count": 384.0
+   }
+  },
+  "SkillCorner__1996435__feed_like_v2__3": {
+   "control": {
+    "spell_f1": 0.45229110512129383,
+    "macro_f1": 0.7946010023750167,
+    "short_spell_recall_iou_0_5_lt3s": 0.1870967741935484,
+    "d_f1": 0.780574013855507,
+    "predicted_spell_count": 358.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.45229110512129383,
+    "macro_f1": 0.7946010023750167,
+    "short_spell_recall_iou_0_5_lt3s": 0.1870967741935484,
+    "d_f1": 0.780574013855507,
+    "predicted_spell_count": 358.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.45229110512129383,
+    "macro_f1": 0.7946010023750167,
+    "short_spell_recall_iou_0_5_lt3s": 0.1870967741935484,
+    "d_f1": 0.780574013855507,
+    "predicted_spell_count": 358.0,
+    "reference_spell_count": 384.0
+   }
+  },
+  "SkillCorner__1996435__feed_like_v2__4": {
+   "control": {
+    "spell_f1": 0.4626180836707152,
+    "macro_f1": 0.8048526012831559,
+    "short_spell_recall_iou_0_5_lt3s": 0.22580645161290322,
+    "d_f1": 0.7982357882945954,
+    "predicted_spell_count": 357.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4626180836707152,
+    "macro_f1": 0.8048526012831559,
+    "short_spell_recall_iou_0_5_lt3s": 0.22580645161290322,
+    "d_f1": 0.7982357882945954,
+    "predicted_spell_count": 357.0,
+    "reference_spell_count": 384.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4626180836707152,
+    "macro_f1": 0.8048526012831559,
+    "short_spell_recall_iou_0_5_lt3s": 0.22580645161290322,
+    "d_f1": 0.7982357882945954,
+    "predicted_spell_count": 357.0,
+    "reference_spell_count": 384.0
+   }
+  },
+  "SkillCorner__1996436__clean__0": {
+   "control": {
+    "spell_f1": 0.46814044213263983,
+    "macro_f1": 0.7663551089212701,
+    "short_spell_recall_iou_0_5_lt3s": 0.34838709677419355,
+    "d_f1": 0.7767656950672646,
+    "predicted_spell_count": 408.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.46814044213263983,
+    "macro_f1": 0.7663551089212701,
+    "short_spell_recall_iou_0_5_lt3s": 0.34838709677419355,
+    "d_f1": 0.7767656950672646,
+    "predicted_spell_count": 408.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.46814044213263983,
+    "macro_f1": 0.7663551089212701,
+    "short_spell_recall_iou_0_5_lt3s": 0.34838709677419355,
+    "d_f1": 0.7767656950672646,
+    "predicted_spell_count": 408.0,
+    "reference_spell_count": 361.0
+   }
+  },
+  "SkillCorner__1996436__feed_like_v1__1": {
+   "control": {
+    "spell_f1": 0.4331034482758621,
+    "macro_f1": 0.7461060612848555,
+    "short_spell_recall_iou_0_5_lt3s": 0.2645161290322581,
+    "d_f1": 0.789919327955197,
+    "predicted_spell_count": 364.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4331034482758621,
+    "macro_f1": 0.7461060612848555,
+    "short_spell_recall_iou_0_5_lt3s": 0.2645161290322581,
+    "d_f1": 0.789919327955197,
+    "predicted_spell_count": 364.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4331034482758621,
+    "macro_f1": 0.7461060612848555,
+    "short_spell_recall_iou_0_5_lt3s": 0.2645161290322581,
+    "d_f1": 0.789919327955197,
+    "predicted_spell_count": 364.0,
+    "reference_spell_count": 361.0
+   }
+  },
+  "SkillCorner__1996436__feed_like_v1__2": {
+   "control": {
+    "spell_f1": 0.44886363636363635,
+    "macro_f1": 0.7605164273912397,
+    "short_spell_recall_iou_0_5_lt3s": 0.2709677419354839,
+    "d_f1": 0.7978821972203838,
+    "predicted_spell_count": 343.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.44886363636363635,
+    "macro_f1": 0.7605164273912397,
+    "short_spell_recall_iou_0_5_lt3s": 0.2709677419354839,
+    "d_f1": 0.7978821972203838,
+    "predicted_spell_count": 343.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.44886363636363635,
+    "macro_f1": 0.7605164273912397,
+    "short_spell_recall_iou_0_5_lt3s": 0.2709677419354839,
+    "d_f1": 0.7978821972203838,
+    "predicted_spell_count": 343.0,
+    "reference_spell_count": 361.0
+   }
+  },
+  "SkillCorner__1996436__feed_like_v2__1": {
+   "control": {
+    "spell_f1": 0.49103078982597054,
+    "macro_f1": 0.7781048725084707,
+    "short_spell_recall_iou_0_5_lt3s": 0.36129032258064514,
+    "d_f1": 0.7977999312478515,
+    "predicted_spell_count": 386.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.49103078982597054,
+    "macro_f1": 0.7781048725084707,
+    "short_spell_recall_iou_0_5_lt3s": 0.36129032258064514,
+    "d_f1": 0.7977999312478515,
+    "predicted_spell_count": 386.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.49103078982597054,
+    "macro_f1": 0.7781048725084707,
+    "short_spell_recall_iou_0_5_lt3s": 0.36129032258064514,
+    "d_f1": 0.7977999312478515,
+    "predicted_spell_count": 386.0,
+    "reference_spell_count": 361.0
+   }
+  },
+  "SkillCorner__1996436__feed_like_v2__2": {
+   "control": {
+    "spell_f1": 0.47999999999999987,
+    "macro_f1": 0.7693636283082147,
+    "short_spell_recall_iou_0_5_lt3s": 0.32903225806451614,
+    "d_f1": 0.7938668866886688,
+    "predicted_spell_count": 384.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.47999999999999987,
+    "macro_f1": 0.7693636283082147,
+    "short_spell_recall_iou_0_5_lt3s": 0.32903225806451614,
+    "d_f1": 0.7938668866886688,
+    "predicted_spell_count": 384.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.47999999999999987,
+    "macro_f1": 0.7693636283082147,
+    "short_spell_recall_iou_0_5_lt3s": 0.32903225806451614,
+    "d_f1": 0.7938668866886688,
+    "predicted_spell_count": 384.0,
+    "reference_spell_count": 361.0
+   }
+  },
+  "SkillCorner__1996436__feed_like_v2__3": {
+   "control": {
+    "spell_f1": 0.4827956989247312,
+    "macro_f1": 0.7782940476796149,
+    "short_spell_recall_iou_0_5_lt3s": 0.3419354838709677,
+    "d_f1": 0.8000545181954478,
+    "predicted_spell_count": 383.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4827956989247312,
+    "macro_f1": 0.7782940476796149,
+    "short_spell_recall_iou_0_5_lt3s": 0.3419354838709677,
+    "d_f1": 0.8000545181954478,
+    "predicted_spell_count": 383.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4827956989247312,
+    "macro_f1": 0.7782940476796149,
+    "short_spell_recall_iou_0_5_lt3s": 0.3419354838709677,
+    "d_f1": 0.8000545181954478,
+    "predicted_spell_count": 383.0,
+    "reference_spell_count": 361.0
+   }
+  },
+  "SkillCorner__1996436__feed_like_v2__4": {
+   "control": {
+    "spell_f1": 0.47688172043010757,
+    "macro_f1": 0.7715673359313074,
+    "short_spell_recall_iou_0_5_lt3s": 0.33548387096774196,
+    "d_f1": 0.7892078865444482,
+    "predicted_spell_count": 383.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.47688172043010757,
+    "macro_f1": 0.7715673359313074,
+    "short_spell_recall_iou_0_5_lt3s": 0.33548387096774196,
+    "d_f1": 0.7892078865444482,
+    "predicted_spell_count": 383.0,
+    "reference_spell_count": 361.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.47688172043010757,
+    "macro_f1": 0.7715673359313074,
+    "short_spell_recall_iou_0_5_lt3s": 0.33548387096774196,
+    "d_f1": 0.7892078865444482,
+    "predicted_spell_count": 383.0,
+    "reference_spell_count": 361.0
+   }
+  },
+  "SkillCorner__2006229__clean__0": {
+   "control": {
+    "spell_f1": 0.506455862977602,
+    "macro_f1": 0.8091916613275805,
+    "short_spell_recall_iou_0_5_lt3s": 0.28,
+    "d_f1": 0.76613665663945,
+    "predicted_spell_count": 379.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.506455862977602,
+    "macro_f1": 0.8091916613275805,
+    "short_spell_recall_iou_0_5_lt3s": 0.28,
+    "d_f1": 0.76613665663945,
+    "predicted_spell_count": 379.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.506455862977602,
+    "macro_f1": 0.8091916613275805,
+    "short_spell_recall_iou_0_5_lt3s": 0.28,
+    "d_f1": 0.76613665663945,
+    "predicted_spell_count": 379.0,
+    "reference_spell_count": 380.0
+   }
+  },
+  "SkillCorner__2006229__feed_like_v1__1": {
+   "control": {
+    "spell_f1": 0.4572199730094467,
+    "macro_f1": 0.7831833026308367,
+    "short_spell_recall_iou_0_5_lt3s": 0.23333333333333334,
+    "d_f1": 0.7611612588436205,
+    "predicted_spell_count": 361.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4572199730094467,
+    "macro_f1": 0.7831833026308367,
+    "short_spell_recall_iou_0_5_lt3s": 0.23333333333333334,
+    "d_f1": 0.7611612588436205,
+    "predicted_spell_count": 361.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4572199730094467,
+    "macro_f1": 0.7831833026308367,
+    "short_spell_recall_iou_0_5_lt3s": 0.23333333333333334,
+    "d_f1": 0.7611612588436205,
+    "predicted_spell_count": 361.0,
+    "reference_spell_count": 380.0
+   }
+  },
+  "SkillCorner__2006229__feed_like_v1__2": {
+   "control": {
+    "spell_f1": 0.46347469220246246,
+    "macro_f1": 0.7923982099840757,
+    "short_spell_recall_iou_0_5_lt3s": 0.22,
+    "d_f1": 0.7756232686980609,
+    "predicted_spell_count": 351.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.46347469220246246,
+    "macro_f1": 0.7923982099840757,
+    "short_spell_recall_iou_0_5_lt3s": 0.22,
+    "d_f1": 0.7756232686980609,
+    "predicted_spell_count": 351.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.46347469220246246,
+    "macro_f1": 0.7923982099840757,
+    "short_spell_recall_iou_0_5_lt3s": 0.22,
+    "d_f1": 0.7756232686980609,
+    "predicted_spell_count": 351.0,
+    "reference_spell_count": 380.0
+   }
+  },
+  "SkillCorner__2006229__feed_like_v2__1": {
+   "control": {
+    "spell_f1": 0.49906790945406126,
+    "macro_f1": 0.8148485362817243,
+    "short_spell_recall_iou_0_5_lt3s": 0.26,
+    "d_f1": 0.7818120122158128,
+    "predicted_spell_count": 371.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.49906790945406126,
+    "macro_f1": 0.8148485362817243,
+    "short_spell_recall_iou_0_5_lt3s": 0.26,
+    "d_f1": 0.7818120122158128,
+    "predicted_spell_count": 371.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.49906790945406126,
+    "macro_f1": 0.8148485362817243,
+    "short_spell_recall_iou_0_5_lt3s": 0.26,
+    "d_f1": 0.7818120122158128,
+    "predicted_spell_count": 371.0,
+    "reference_spell_count": 380.0
+   }
+  },
+  "SkillCorner__2006229__feed_like_v2__2": {
+   "control": {
+    "spell_f1": 0.5045092838196286,
+    "macro_f1": 0.8171978765849554,
+    "short_spell_recall_iou_0_5_lt3s": 0.2733333333333333,
+    "d_f1": 0.7849634177108739,
+    "predicted_spell_count": 374.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.5045092838196286,
+    "macro_f1": 0.8171978765849554,
+    "short_spell_recall_iou_0_5_lt3s": 0.2733333333333333,
+    "d_f1": 0.7849634177108739,
+    "predicted_spell_count": 374.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.5045092838196286,
+    "macro_f1": 0.8171978765849554,
+    "short_spell_recall_iou_0_5_lt3s": 0.2733333333333333,
+    "d_f1": 0.7849634177108739,
+    "predicted_spell_count": 374.0,
+    "reference_spell_count": 380.0
+   }
+  },
+  "SkillCorner__2006229__feed_like_v2__3": {
+   "control": {
+    "spell_f1": 0.503485254691689,
+    "macro_f1": 0.8213411445722091,
+    "short_spell_recall_iou_0_5_lt3s": 0.26666666666666666,
+    "d_f1": 0.7979680213191206,
+    "predicted_spell_count": 366.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.503485254691689,
+    "macro_f1": 0.8213411445722091,
+    "short_spell_recall_iou_0_5_lt3s": 0.26666666666666666,
+    "d_f1": 0.7979680213191206,
+    "predicted_spell_count": 366.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.503485254691689,
+    "macro_f1": 0.8213411445722091,
+    "short_spell_recall_iou_0_5_lt3s": 0.26666666666666666,
+    "d_f1": 0.7979680213191206,
+    "predicted_spell_count": 366.0,
+    "reference_spell_count": 380.0
+   }
+  },
+  "SkillCorner__2006229__feed_like_v2__4": {
+   "control": {
+    "spell_f1": 0.4955704697986577,
+    "macro_f1": 0.825222670007209,
+    "short_spell_recall_iou_0_5_lt3s": 0.24,
+    "d_f1": 0.8081789994133913,
+    "predicted_spell_count": 365.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/replace": {
+    "spell_f1": 0.4955704697986577,
+    "macro_f1": 0.825222670007209,
+    "short_spell_recall_iou_0_5_lt3s": 0.24,
+    "d_f1": 0.8081789994133913,
+    "predicted_spell_count": 365.0,
+    "reference_spell_count": 380.0
+   },
+   "rb8_1024/half": {
+    "spell_f1": 0.4955704697986577,
+    "macro_f1": 0.825222670007209,
+    "short_spell_recall_iou_0_5_lt3s": 0.24,
+    "d_f1": 0.8081789994133913,
+    "predicted_spell_count": 365.0,
+    "reference_spell_count": 380.0
+   }
+  }
+ },
+ "retained": [],
+ "success": false
+}

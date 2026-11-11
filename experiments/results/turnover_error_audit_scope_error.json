@@ -1,0 +1,2118 @@
+{
+  "diagnostic_only": true,
+  "input": {
+    "arrays_loaded": [
+      "labels",
+      "period",
+      "model_period",
+      "timestamps",
+      "fps",
+      "prob__approved_baseline",
+      "decoded__approved_baseline"
+    ],
+    "baseline_feed_like_v2_spell_f1": 0.5936187198896373,
+    "cell_count": 35,
+    "manifest": "data/experiments/frontier_recovery_v1/frontier_native_probability_manifest.json",
+    "manifest_sha256": "7c98e401b61d501011df6f5ebb7292174de09ce7386bcaf6cb7240636a8fe494"
+  },
+  "method": {
+    "d_mask": "fixed approved baseline decoder output",
+    "duration_bins": [
+      "<=3s",
+      "3-10s",
+      ">10s"
+    ],
+    "eligibility": "at least 1s contiguous H immediately before and A immediately after",
+    "historical_claude_turnover_count_difference": null,
+    "historical_note": "FRONTIER_POSTPROCESS_V1.md mentions Claude turnover-count diagnostics qualitatively; no comparable numeric count was available in this cache.",
+    "matching": "directional predicted H-to-A edge, one-to-one max-cardinality/minimum-time-error, within +/-1s",
+    "truth": "direct adjacent native H-to-A edges in valid period>0/model_period/timestamp-contiguous blocks"
+  },
+  "private_event_details": "data/experiments/turnover_error_audit/events.json",
+  "question": "Can H/A emission supervision address current-frontier direct H-to-A turnover misses while the D mask remains fixed?",
+  "schema": "turnover_error_audit_v1",
+  "source_freeze": {
+    "diagnostic_source_sha256": "dc30dc38b8358f356fe7950b8fcad0b5090a908509d8e83f0ee69710bef228f0",
+    "native_cell_hashes_verified": true,
+    "native_manifest_sha256": "7c98e401b61d501011df6f5ebb7292174de09ce7386bcaf6cb7240636a8fe494"
+  },
+  "summary": {
+    "by_provider": [
+      {
+        "all_direct_HA_edges": 1071,
+        "cells": 7,
+        "eligible_HA_edges": 889,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 82,
+          "baseline_D_within_1s": 31,
+          "no_D_within_1s": 199
+        },
+        "misses": 312,
+        "misses_baseline_D_at_boundary": 82,
+        "misses_baseline_D_within_1s": 113,
+        "post_duration_bins_all_edges": {
+          "3-10s": 343,
+          "<=3s": 420,
+          ">10s": 308
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 595,
+          "reversed_or_weak": 294
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 371,
+          "<=3s": 315,
+          ">10s": 385
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 126,
+          "3-10s|<=3s": 133,
+          "3-10s|>10s": 112,
+          "<=3s|3-10s": 105,
+          "<=3s|<=3s": 140,
+          "<=3s|>10s": 70,
+          ">10s|3-10s": 112,
+          ">10s|<=3s": 147,
+          ">10s|>10s": 126
+        },
+        "predicted_HA_edges": 821,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 577
+      },
+      {
+        "all_direct_HA_edges": 2058,
+        "cells": 21,
+        "eligible_HA_edges": 1407,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 55,
+          "baseline_D_within_1s": 55,
+          "no_D_within_1s": 1059
+        },
+        "misses": 1169,
+        "misses_baseline_D_at_boundary": 55,
+        "misses_baseline_D_within_1s": 110,
+        "post_duration_bins_all_edges": {
+          "3-10s": 693,
+          "<=3s": 1071,
+          ">10s": 294
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 163,
+          "reversed_or_weak": 1244
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 875,
+          "<=3s": 693,
+          ">10s": 490
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 301,
+          "3-10s|<=3s": 469,
+          "3-10s|>10s": 105,
+          "<=3s|3-10s": 231,
+          "<=3s|<=3s": 315,
+          "<=3s|>10s": 147,
+          ">10s|3-10s": 161,
+          ">10s|<=3s": 287,
+          ">10s|>10s": 42
+        },
+        "predicted_HA_edges": 1217,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 238
+      },
+      {
+        "all_direct_HA_edges": 1162,
+        "cells": 7,
+        "eligible_HA_edges": 973,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 112,
+          "baseline_D_within_1s": 55,
+          "no_D_within_1s": 369
+        },
+        "misses": 536,
+        "misses_baseline_D_at_boundary": 112,
+        "misses_baseline_D_within_1s": 167,
+        "post_duration_bins_all_edges": {
+          "3-10s": 413,
+          "<=3s": 560,
+          ">10s": 189
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 446,
+          "reversed_or_weak": 527
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 462,
+          "<=3s": 511,
+          ">10s": 189
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 189,
+          "3-10s|<=3s": 196,
+          "3-10s|>10s": 77,
+          "<=3s|3-10s": 189,
+          "<=3s|<=3s": 252,
+          "<=3s|>10s": 70,
+          ">10s|3-10s": 35,
+          ">10s|<=3s": 112,
+          ">10s|>10s": 42
+        },
+        "predicted_HA_edges": 640,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 437
+      }
+    ],
+    "by_provider_view": [
+      {
+        "all_direct_HA_edges": 153,
+        "cells": 1,
+        "eligible_HA_edges": 127,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 11,
+          "baseline_D_within_1s": 4,
+          "no_D_within_1s": 6
+        },
+        "misses": 21,
+        "misses_baseline_D_at_boundary": 11,
+        "misses_baseline_D_within_1s": 15,
+        "post_duration_bins_all_edges": {
+          "3-10s": 49,
+          "<=3s": 60,
+          ">10s": 44
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 115,
+          "reversed_or_weak": 12
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 53,
+          "<=3s": 45,
+          ">10s": 55
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 18,
+          "3-10s|<=3s": 19,
+          "3-10s|>10s": 16,
+          "<=3s|3-10s": 15,
+          "<=3s|<=3s": 20,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 16,
+          ">10s|<=3s": 21,
+          ">10s|>10s": 18
+        },
+        "predicted_HA_edges": 132,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 106,
+        "view": "clean"
+      },
+      {
+        "all_direct_HA_edges": 306,
+        "cells": 2,
+        "eligible_HA_edges": 254,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 27,
+          "baseline_D_within_1s": 11,
+          "no_D_within_1s": 81
+        },
+        "misses": 119,
+        "misses_baseline_D_at_boundary": 27,
+        "misses_baseline_D_within_1s": 38,
+        "post_duration_bins_all_edges": {
+          "3-10s": 98,
+          "<=3s": 120,
+          ">10s": 88
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 142,
+          "reversed_or_weak": 112
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 106,
+          "<=3s": 90,
+          ">10s": 110
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 36,
+          "3-10s|<=3s": 38,
+          "3-10s|>10s": 32,
+          "<=3s|3-10s": 30,
+          "<=3s|<=3s": 40,
+          "<=3s|>10s": 20,
+          ">10s|3-10s": 32,
+          ">10s|<=3s": 42,
+          ">10s|>10s": 36
+        },
+        "predicted_HA_edges": 192,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 135,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 612,
+        "cells": 4,
+        "eligible_HA_edges": 508,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 44,
+          "baseline_D_within_1s": 16,
+          "no_D_within_1s": 112
+        },
+        "misses": 172,
+        "misses_baseline_D_at_boundary": 44,
+        "misses_baseline_D_within_1s": 60,
+        "post_duration_bins_all_edges": {
+          "3-10s": 196,
+          "<=3s": 240,
+          ">10s": 176
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 338,
+          "reversed_or_weak": 170
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 212,
+          "<=3s": 180,
+          ">10s": 220
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 72,
+          "3-10s|<=3s": 76,
+          "3-10s|>10s": 64,
+          "<=3s|3-10s": 60,
+          "<=3s|<=3s": 80,
+          "<=3s|>10s": 40,
+          ">10s|3-10s": 64,
+          ">10s|<=3s": 84,
+          ">10s|>10s": 72
+        },
+        "predicted_HA_edges": 497,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 336,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 294,
+        "cells": 3,
+        "eligible_HA_edges": 201,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 6,
+          "baseline_D_within_1s": 10,
+          "no_D_within_1s": 144
+        },
+        "misses": 160,
+        "misses_baseline_D_at_boundary": 6,
+        "misses_baseline_D_within_1s": 16,
+        "post_duration_bins_all_edges": {
+          "3-10s": 99,
+          "<=3s": 153,
+          ">10s": 42
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 29,
+          "reversed_or_weak": 172
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 125,
+          "<=3s": 99,
+          ">10s": 70
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 43,
+          "3-10s|<=3s": 67,
+          "3-10s|>10s": 15,
+          "<=3s|3-10s": 33,
+          "<=3s|<=3s": 45,
+          "<=3s|>10s": 21,
+          ">10s|3-10s": 23,
+          ">10s|<=3s": 41,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 186,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 41,
+        "view": "clean"
+      },
+      {
+        "all_direct_HA_edges": 588,
+        "cells": 6,
+        "eligible_HA_edges": 402,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 20,
+          "baseline_D_within_1s": 15,
+          "no_D_within_1s": 317
+        },
+        "misses": 352,
+        "misses_baseline_D_at_boundary": 20,
+        "misses_baseline_D_within_1s": 35,
+        "post_duration_bins_all_edges": {
+          "3-10s": 198,
+          "<=3s": 306,
+          ">10s": 84
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 37,
+          "reversed_or_weak": 365
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 250,
+          "<=3s": 198,
+          ">10s": 140
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 86,
+          "3-10s|<=3s": 134,
+          "3-10s|>10s": 30,
+          "<=3s|3-10s": 66,
+          "<=3s|<=3s": 90,
+          "<=3s|>10s": 42,
+          ">10s|3-10s": 46,
+          ">10s|<=3s": 82,
+          ">10s|>10s": 12
+        },
+        "predicted_HA_edges": 314,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 50,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 1176,
+        "cells": 12,
+        "eligible_HA_edges": 804,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 29,
+          "baseline_D_within_1s": 30,
+          "no_D_within_1s": 598
+        },
+        "misses": 657,
+        "misses_baseline_D_at_boundary": 29,
+        "misses_baseline_D_within_1s": 59,
+        "post_duration_bins_all_edges": {
+          "3-10s": 396,
+          "<=3s": 612,
+          ">10s": 168
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 97,
+          "reversed_or_weak": 707
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 500,
+          "<=3s": 396,
+          ">10s": 280
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 172,
+          "3-10s|<=3s": 268,
+          "3-10s|>10s": 60,
+          "<=3s|3-10s": 132,
+          "<=3s|<=3s": 180,
+          "<=3s|>10s": 84,
+          ">10s|3-10s": 92,
+          ">10s|<=3s": 164,
+          ">10s|>10s": 24
+        },
+        "predicted_HA_edges": 717,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 147,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 166,
+        "cells": 1,
+        "eligible_HA_edges": 139,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 11,
+          "baseline_D_within_1s": 7,
+          "no_D_within_1s": 41
+        },
+        "misses": 59,
+        "misses_baseline_D_at_boundary": 11,
+        "misses_baseline_D_within_1s": 18,
+        "post_duration_bins_all_edges": {
+          "3-10s": 59,
+          "<=3s": 80,
+          ">10s": 27
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 81,
+          "reversed_or_weak": 58
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 66,
+          "<=3s": 73,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 27,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 11,
+          "<=3s|3-10s": 27,
+          "<=3s|<=3s": 36,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 16,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 107,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 80,
+        "view": "clean"
+      },
+      {
+        "all_direct_HA_edges": 332,
+        "cells": 2,
+        "eligible_HA_edges": 278,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 39,
+          "baseline_D_within_1s": 17,
+          "no_D_within_1s": 124
+        },
+        "misses": 180,
+        "misses_baseline_D_at_boundary": 39,
+        "misses_baseline_D_within_1s": 56,
+        "post_duration_bins_all_edges": {
+          "3-10s": 118,
+          "<=3s": 160,
+          ">10s": 54
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 103,
+          "reversed_or_weak": 175
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 132,
+          "<=3s": 146,
+          ">10s": 54
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 54,
+          "3-10s|<=3s": 56,
+          "3-10s|>10s": 22,
+          "<=3s|3-10s": 54,
+          "<=3s|<=3s": 72,
+          "<=3s|>10s": 20,
+          ">10s|3-10s": 10,
+          ">10s|<=3s": 32,
+          ">10s|>10s": 12
+        },
+        "predicted_HA_edges": 163,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 98,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 664,
+        "cells": 4,
+        "eligible_HA_edges": 556,
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 62,
+          "baseline_D_within_1s": 31,
+          "no_D_within_1s": 204
+        },
+        "misses": 297,
+        "misses_baseline_D_at_boundary": 62,
+        "misses_baseline_D_within_1s": 93,
+        "post_duration_bins_all_edges": {
+          "3-10s": 236,
+          "<=3s": 320,
+          ">10s": 108
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 262,
+          "reversed_or_weak": 294
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 264,
+          "<=3s": 292,
+          ">10s": 108
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 108,
+          "3-10s|<=3s": 112,
+          "3-10s|>10s": 44,
+          "<=3s|3-10s": 108,
+          "<=3s|<=3s": 144,
+          "<=3s|>10s": 40,
+          ">10s|3-10s": 20,
+          ">10s|<=3s": 64,
+          ">10s|>10s": 24
+        },
+        "predicted_HA_edges": 370,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 259,
+        "view": "feed_like_v2"
+      }
+    ],
+    "cells": [
+      {
+        "all_direct_HA_edges": 153,
+        "cell": "Metrica|metrica_3|clean|0",
+        "eligible_HA_edges": 127,
+        "match": "metrica_3",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 11,
+          "baseline_D_within_1s": 4,
+          "no_D_within_1s": 6
+        },
+        "misses": 21,
+        "misses_baseline_D_at_boundary": 11,
+        "misses_baseline_D_within_1s": 15,
+        "post_duration_bins_all_edges": {
+          "3-10s": 49,
+          "<=3s": 60,
+          ">10s": 44
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 115,
+          "reversed_or_weak": 12
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 53,
+          "<=3s": 45,
+          ">10s": 55
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 18,
+          "3-10s|<=3s": 19,
+          "3-10s|>10s": 16,
+          "<=3s|3-10s": 15,
+          "<=3s|<=3s": 20,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 16,
+          ">10s|<=3s": 21,
+          ">10s|>10s": 18
+        },
+        "predicted_HA_edges": 132,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 106,
+        "rep": 0,
+        "view": "clean"
+      },
+      {
+        "all_direct_HA_edges": 153,
+        "cell": "Metrica|metrica_3|feed_like_v1|1",
+        "eligible_HA_edges": 127,
+        "match": "metrica_3",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 14,
+          "baseline_D_within_1s": 6,
+          "no_D_within_1s": 36
+        },
+        "misses": 56,
+        "misses_baseline_D_at_boundary": 14,
+        "misses_baseline_D_within_1s": 20,
+        "post_duration_bins_all_edges": {
+          "3-10s": 49,
+          "<=3s": 60,
+          ">10s": 44
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 74,
+          "reversed_or_weak": 53
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 53,
+          "<=3s": 45,
+          ">10s": 55
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 18,
+          "3-10s|<=3s": 19,
+          "3-10s|>10s": 16,
+          "<=3s|3-10s": 15,
+          "<=3s|<=3s": 20,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 16,
+          ">10s|<=3s": 21,
+          ">10s|>10s": 18
+        },
+        "predicted_HA_edges": 94,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 71,
+        "rep": 1,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 153,
+        "cell": "Metrica|metrica_3|feed_like_v1|2",
+        "eligible_HA_edges": 127,
+        "match": "metrica_3",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 13,
+          "baseline_D_within_1s": 5,
+          "no_D_within_1s": 45
+        },
+        "misses": 63,
+        "misses_baseline_D_at_boundary": 13,
+        "misses_baseline_D_within_1s": 18,
+        "post_duration_bins_all_edges": {
+          "3-10s": 49,
+          "<=3s": 60,
+          ">10s": 44
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 68,
+          "reversed_or_weak": 59
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 53,
+          "<=3s": 45,
+          ">10s": 55
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 18,
+          "3-10s|<=3s": 19,
+          "3-10s|>10s": 16,
+          "<=3s|3-10s": 15,
+          "<=3s|<=3s": 20,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 16,
+          ">10s|<=3s": 21,
+          ">10s|>10s": 18
+        },
+        "predicted_HA_edges": 98,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 64,
+        "rep": 2,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 153,
+        "cell": "Metrica|metrica_3|feed_like_v2|1",
+        "eligible_HA_edges": 127,
+        "match": "metrica_3",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 14,
+          "baseline_D_within_1s": 3,
+          "no_D_within_1s": 29
+        },
+        "misses": 46,
+        "misses_baseline_D_at_boundary": 14,
+        "misses_baseline_D_within_1s": 17,
+        "post_duration_bins_all_edges": {
+          "3-10s": 49,
+          "<=3s": 60,
+          ">10s": 44
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 88,
+          "reversed_or_weak": 39
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 53,
+          "<=3s": 45,
+          ">10s": 55
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 18,
+          "3-10s|<=3s": 19,
+          "3-10s|>10s": 16,
+          "<=3s|3-10s": 15,
+          "<=3s|<=3s": 20,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 16,
+          ">10s|<=3s": 21,
+          ">10s|>10s": 18
+        },
+        "predicted_HA_edges": 124,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 81,
+        "rep": 1,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 153,
+        "cell": "Metrica|metrica_3|feed_like_v2|2",
+        "eligible_HA_edges": 127,
+        "match": "metrica_3",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 9,
+          "baseline_D_within_1s": 3,
+          "no_D_within_1s": 31
+        },
+        "misses": 43,
+        "misses_baseline_D_at_boundary": 9,
+        "misses_baseline_D_within_1s": 12,
+        "post_duration_bins_all_edges": {
+          "3-10s": 49,
+          "<=3s": 60,
+          ">10s": 44
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 87,
+          "reversed_or_weak": 40
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 53,
+          "<=3s": 45,
+          ">10s": 55
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 18,
+          "3-10s|<=3s": 19,
+          "3-10s|>10s": 16,
+          "<=3s|3-10s": 15,
+          "<=3s|<=3s": 20,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 16,
+          ">10s|<=3s": 21,
+          ">10s|>10s": 18
+        },
+        "predicted_HA_edges": 120,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 84,
+        "rep": 2,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 153,
+        "cell": "Metrica|metrica_3|feed_like_v2|3",
+        "eligible_HA_edges": 127,
+        "match": "metrica_3",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 8,
+          "baseline_D_within_1s": 4,
+          "no_D_within_1s": 30
+        },
+        "misses": 42,
+        "misses_baseline_D_at_boundary": 8,
+        "misses_baseline_D_within_1s": 12,
+        "post_duration_bins_all_edges": {
+          "3-10s": 49,
+          "<=3s": 60,
+          ">10s": 44
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 80,
+          "reversed_or_weak": 47
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 53,
+          "<=3s": 45,
+          ">10s": 55
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 18,
+          "3-10s|<=3s": 19,
+          "3-10s|>10s": 16,
+          "<=3s|3-10s": 15,
+          "<=3s|<=3s": 20,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 16,
+          ">10s|<=3s": 21,
+          ">10s|>10s": 18
+        },
+        "predicted_HA_edges": 129,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 85,
+        "rep": 3,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 153,
+        "cell": "Metrica|metrica_3|feed_like_v2|4",
+        "eligible_HA_edges": 127,
+        "match": "metrica_3",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 13,
+          "baseline_D_within_1s": 6,
+          "no_D_within_1s": 22
+        },
+        "misses": 41,
+        "misses_baseline_D_at_boundary": 13,
+        "misses_baseline_D_within_1s": 19,
+        "post_duration_bins_all_edges": {
+          "3-10s": 49,
+          "<=3s": 60,
+          ">10s": 44
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 83,
+          "reversed_or_weak": 44
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 53,
+          "<=3s": 45,
+          ">10s": 55
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 18,
+          "3-10s|<=3s": 19,
+          "3-10s|>10s": 16,
+          "<=3s|3-10s": 15,
+          "<=3s|<=3s": 20,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 16,
+          ">10s|<=3s": 21,
+          ">10s|>10s": 18
+        },
+        "predicted_HA_edges": 124,
+        "provider": "Metrica",
+        "recovered_one_to_one_within_1s": 86,
+        "rep": 4,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 109,
+        "cell": "SkillCorner|1996435|clean|0",
+        "eligible_HA_edges": 72,
+        "match": "1996435",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 2,
+          "no_D_within_1s": 54
+        },
+        "misses": 56,
+        "misses_baseline_D_at_boundary": 2,
+        "misses_baseline_D_within_1s": 2,
+        "post_duration_bins_all_edges": {
+          "3-10s": 39,
+          "<=3s": 51,
+          ">10s": 19
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 11,
+          "reversed_or_weak": 61
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 40,
+          "<=3s": 39,
+          ">10s": 30
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 19,
+          "3-10s|<=3s": 16,
+          "3-10s|>10s": 5,
+          "<=3s|3-10s": 11,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 12,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 19,
+          ">10s|>10s": 2
+        },
+        "predicted_HA_edges": 65,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 16,
+        "rep": 0,
+        "view": "clean"
+      },
+      {
+        "all_direct_HA_edges": 109,
+        "cell": "SkillCorner|1996435|feed_like_v1|1",
+        "eligible_HA_edges": 72,
+        "match": "1996435",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 3,
+          "baseline_D_within_1s": 1,
+          "no_D_within_1s": 55
+        },
+        "misses": 59,
+        "misses_baseline_D_at_boundary": 3,
+        "misses_baseline_D_within_1s": 4,
+        "post_duration_bins_all_edges": {
+          "3-10s": 39,
+          "<=3s": 51,
+          ">10s": 19
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 10,
+          "reversed_or_weak": 62
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 40,
+          "<=3s": 39,
+          ">10s": 30
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 19,
+          "3-10s|<=3s": 16,
+          "3-10s|>10s": 5,
+          "<=3s|3-10s": 11,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 12,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 19,
+          ">10s|>10s": 2
+        },
+        "predicted_HA_edges": 57,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 13,
+        "rep": 1,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 109,
+        "cell": "SkillCorner|1996435|feed_like_v1|2",
+        "eligible_HA_edges": 72,
+        "match": "1996435",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 1,
+          "baseline_D_within_1s": 1,
+          "no_D_within_1s": 66
+        },
+        "misses": 68,
+        "misses_baseline_D_at_boundary": 1,
+        "misses_baseline_D_within_1s": 2,
+        "post_duration_bins_all_edges": {
+          "3-10s": 39,
+          "<=3s": 51,
+          ">10s": 19
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 3,
+          "reversed_or_weak": 69
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 40,
+          "<=3s": 39,
+          ">10s": 30
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 19,
+          "3-10s|<=3s": 16,
+          "3-10s|>10s": 5,
+          "<=3s|3-10s": 11,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 12,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 19,
+          ">10s|>10s": 2
+        },
+        "predicted_HA_edges": 57,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 4,
+        "rep": 2,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 109,
+        "cell": "SkillCorner|1996435|feed_like_v2|1",
+        "eligible_HA_edges": 72,
+        "match": "1996435",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 2,
+          "baseline_D_within_1s": 1,
+          "no_D_within_1s": 53
+        },
+        "misses": 56,
+        "misses_baseline_D_at_boundary": 2,
+        "misses_baseline_D_within_1s": 3,
+        "post_duration_bins_all_edges": {
+          "3-10s": 39,
+          "<=3s": 51,
+          ">10s": 19
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 7,
+          "reversed_or_weak": 65
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 40,
+          "<=3s": 39,
+          ">10s": 30
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 19,
+          "3-10s|<=3s": 16,
+          "3-10s|>10s": 5,
+          "<=3s|3-10s": 11,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 12,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 19,
+          ">10s|>10s": 2
+        },
+        "predicted_HA_edges": 69,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 16,
+        "rep": 1,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 109,
+        "cell": "SkillCorner|1996435|feed_like_v2|2",
+        "eligible_HA_edges": 72,
+        "match": "1996435",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 2,
+          "no_D_within_1s": 54
+        },
+        "misses": 56,
+        "misses_baseline_D_at_boundary": 2,
+        "misses_baseline_D_within_1s": 2,
+        "post_duration_bins_all_edges": {
+          "3-10s": 39,
+          "<=3s": 51,
+          ">10s": 19
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 7,
+          "reversed_or_weak": 65
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 40,
+          "<=3s": 39,
+          ">10s": 30
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 19,
+          "3-10s|<=3s": 16,
+          "3-10s|>10s": 5,
+          "<=3s|3-10s": 11,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 12,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 19,
+          ">10s|>10s": 2
+        },
+        "predicted_HA_edges": 64,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 16,
+        "rep": 2,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 109,
+        "cell": "SkillCorner|1996435|feed_like_v2|3",
+        "eligible_HA_edges": 72,
+        "match": "1996435",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 4,
+          "no_D_within_1s": 53
+        },
+        "misses": 57,
+        "misses_baseline_D_at_boundary": 4,
+        "misses_baseline_D_within_1s": 4,
+        "post_duration_bins_all_edges": {
+          "3-10s": 39,
+          "<=3s": 51,
+          ">10s": 19
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 10,
+          "reversed_or_weak": 62
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 40,
+          "<=3s": 39,
+          ">10s": 30
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 19,
+          "3-10s|<=3s": 16,
+          "3-10s|>10s": 5,
+          "<=3s|3-10s": 11,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 12,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 19,
+          ">10s|>10s": 2
+        },
+        "predicted_HA_edges": 69,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 15,
+        "rep": 3,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 109,
+        "cell": "SkillCorner|1996435|feed_like_v2|4",
+        "eligible_HA_edges": 72,
+        "match": "1996435",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 2,
+          "baseline_D_within_1s": 2,
+          "no_D_within_1s": 54
+        },
+        "misses": 58,
+        "misses_baseline_D_at_boundary": 2,
+        "misses_baseline_D_within_1s": 4,
+        "post_duration_bins_all_edges": {
+          "3-10s": 39,
+          "<=3s": 51,
+          ">10s": 19
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 7,
+          "reversed_or_weak": 65
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 40,
+          "<=3s": 39,
+          ">10s": 30
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 19,
+          "3-10s|<=3s": 16,
+          "3-10s|>10s": 5,
+          "<=3s|3-10s": 11,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 12,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 19,
+          ">10s|>10s": 2
+        },
+        "predicted_HA_edges": 65,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 14,
+        "rep": 4,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 82,
+        "cell": "SkillCorner|1996436|clean|0",
+        "eligible_HA_edges": 57,
+        "match": "1996436",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 1,
+          "baseline_D_within_1s": 3,
+          "no_D_within_1s": 41
+        },
+        "misses": 45,
+        "misses_baseline_D_at_boundary": 1,
+        "misses_baseline_D_within_1s": 4,
+        "post_duration_bins_all_edges": {
+          "3-10s": 27,
+          "<=3s": 49,
+          ">10s": 6
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 7,
+          "reversed_or_weak": 50
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 44,
+          "<=3s": 25,
+          ">10s": 13
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 4,
+          "<=3s|3-10s": 10,
+          "<=3s|<=3s": 13,
+          "<=3s|>10s": 2,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 8
+        },
+        "predicted_HA_edges": 68,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 12,
+        "rep": 0,
+        "view": "clean"
+      },
+      {
+        "all_direct_HA_edges": 82,
+        "cell": "SkillCorner|1996436|feed_like_v1|1",
+        "eligible_HA_edges": 57,
+        "match": "1996436",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 3,
+          "baseline_D_within_1s": 2,
+          "no_D_within_1s": 45
+        },
+        "misses": 50,
+        "misses_baseline_D_at_boundary": 3,
+        "misses_baseline_D_within_1s": 5,
+        "post_duration_bins_all_edges": {
+          "3-10s": 27,
+          "<=3s": 49,
+          ">10s": 6
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 4,
+          "reversed_or_weak": 53
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 44,
+          "<=3s": 25,
+          ">10s": 13
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 4,
+          "<=3s|3-10s": 10,
+          "<=3s|<=3s": 13,
+          "<=3s|>10s": 2,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 8
+        },
+        "predicted_HA_edges": 51,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 7,
+        "rep": 1,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 82,
+        "cell": "SkillCorner|1996436|feed_like_v1|2",
+        "eligible_HA_edges": 57,
+        "match": "1996436",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 2,
+          "baseline_D_within_1s": 3,
+          "no_D_within_1s": 45
+        },
+        "misses": 50,
+        "misses_baseline_D_at_boundary": 2,
+        "misses_baseline_D_within_1s": 5,
+        "post_duration_bins_all_edges": {
+          "3-10s": 27,
+          "<=3s": 49,
+          ">10s": 6
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 2,
+          "reversed_or_weak": 55
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 44,
+          "<=3s": 25,
+          ">10s": 13
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 4,
+          "<=3s|3-10s": 10,
+          "<=3s|<=3s": 13,
+          "<=3s|>10s": 2,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 8
+        },
+        "predicted_HA_edges": 49,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 7,
+        "rep": 2,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 82,
+        "cell": "SkillCorner|1996436|feed_like_v2|1",
+        "eligible_HA_edges": 57,
+        "match": "1996436",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 2,
+          "baseline_D_within_1s": 1,
+          "no_D_within_1s": 44
+        },
+        "misses": 47,
+        "misses_baseline_D_at_boundary": 2,
+        "misses_baseline_D_within_1s": 3,
+        "post_duration_bins_all_edges": {
+          "3-10s": 27,
+          "<=3s": 49,
+          ">10s": 6
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 7,
+          "reversed_or_weak": 50
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 44,
+          "<=3s": 25,
+          ">10s": 13
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 4,
+          "<=3s|3-10s": 10,
+          "<=3s|<=3s": 13,
+          "<=3s|>10s": 2,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 8
+        },
+        "predicted_HA_edges": 60,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 10,
+        "rep": 1,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 82,
+        "cell": "SkillCorner|1996436|feed_like_v2|2",
+        "eligible_HA_edges": 57,
+        "match": "1996436",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 2,
+          "baseline_D_within_1s": 1,
+          "no_D_within_1s": 45
+        },
+        "misses": 48,
+        "misses_baseline_D_at_boundary": 2,
+        "misses_baseline_D_within_1s": 3,
+        "post_duration_bins_all_edges": {
+          "3-10s": 27,
+          "<=3s": 49,
+          ">10s": 6
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 6,
+          "reversed_or_weak": 51
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 44,
+          "<=3s": 25,
+          ">10s": 13
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 4,
+          "<=3s|3-10s": 10,
+          "<=3s|<=3s": 13,
+          "<=3s|>10s": 2,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 8
+        },
+        "predicted_HA_edges": 60,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 9,
+        "rep": 2,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 82,
+        "cell": "SkillCorner|1996436|feed_like_v2|3",
+        "eligible_HA_edges": 57,
+        "match": "1996436",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 1,
+          "baseline_D_within_1s": 1,
+          "no_D_within_1s": 45
+        },
+        "misses": 47,
+        "misses_baseline_D_at_boundary": 1,
+        "misses_baseline_D_within_1s": 2,
+        "post_duration_bins_all_edges": {
+          "3-10s": 27,
+          "<=3s": 49,
+          ">10s": 6
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 8,
+          "reversed_or_weak": 49
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 44,
+          "<=3s": 25,
+          ">10s": 13
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 4,
+          "<=3s|3-10s": 10,
+          "<=3s|<=3s": 13,
+          "<=3s|>10s": 2,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 8
+        },
+        "predicted_HA_edges": 59,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 10,
+        "rep": 3,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 82,
+        "cell": "SkillCorner|1996436|feed_like_v2|4",
+        "eligible_HA_edges": 57,
+        "match": "1996436",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 1,
+          "baseline_D_within_1s": 1,
+          "no_D_within_1s": 45
+        },
+        "misses": 47,
+        "misses_baseline_D_at_boundary": 1,
+        "misses_baseline_D_within_1s": 2,
+        "post_duration_bins_all_edges": {
+          "3-10s": 27,
+          "<=3s": 49,
+          ">10s": 6
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 6,
+          "reversed_or_weak": 51
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 44,
+          "<=3s": 25,
+          ">10s": 13
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 4,
+          "<=3s|3-10s": 10,
+          "<=3s|<=3s": 13,
+          "<=3s|>10s": 2,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 8
+        },
+        "predicted_HA_edges": 59,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 10,
+        "rep": 4,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 103,
+        "cell": "SkillCorner|2006229|clean|0",
+        "eligible_HA_edges": 72,
+        "match": "2006229",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 3,
+          "baseline_D_within_1s": 7,
+          "no_D_within_1s": 49
+        },
+        "misses": 59,
+        "misses_baseline_D_at_boundary": 3,
+        "misses_baseline_D_within_1s": 10,
+        "post_duration_bins_all_edges": {
+          "3-10s": 33,
+          "<=3s": 53,
+          ">10s": 17
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 11,
+          "reversed_or_weak": 61
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 41,
+          "<=3s": 35,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 23,
+          "3-10s|>10s": 6,
+          "<=3s|3-10s": 12,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 7,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 14,
+          ">10s|>10s": 4
+        },
+        "predicted_HA_edges": 53,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 13,
+        "rep": 0,
+        "view": "clean"
+      },
+      {
+        "all_direct_HA_edges": 103,
+        "cell": "SkillCorner|2006229|feed_like_v1|1",
+        "eligible_HA_edges": 72,
+        "match": "2006229",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 5,
+          "baseline_D_within_1s": 2,
+          "no_D_within_1s": 55
+        },
+        "misses": 62,
+        "misses_baseline_D_at_boundary": 5,
+        "misses_baseline_D_within_1s": 7,
+        "post_duration_bins_all_edges": {
+          "3-10s": 33,
+          "<=3s": 53,
+          ">10s": 17
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 7,
+          "reversed_or_weak": 65
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 41,
+          "<=3s": 35,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 23,
+          "3-10s|>10s": 6,
+          "<=3s|3-10s": 12,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 7,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 14,
+          ">10s|>10s": 4
+        },
+        "predicted_HA_edges": 50,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 10,
+        "rep": 1,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 103,
+        "cell": "SkillCorner|2006229|feed_like_v1|2",
+        "eligible_HA_edges": 72,
+        "match": "2006229",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 6,
+          "baseline_D_within_1s": 6,
+          "no_D_within_1s": 51
+        },
+        "misses": 63,
+        "misses_baseline_D_at_boundary": 6,
+        "misses_baseline_D_within_1s": 12,
+        "post_duration_bins_all_edges": {
+          "3-10s": 33,
+          "<=3s": 53,
+          ">10s": 17
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 11,
+          "reversed_or_weak": 61
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 41,
+          "<=3s": 35,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 23,
+          "3-10s|>10s": 6,
+          "<=3s|3-10s": 12,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 7,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 14,
+          ">10s|>10s": 4
+        },
+        "predicted_HA_edges": 50,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 9,
+        "rep": 2,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 103,
+        "cell": "SkillCorner|2006229|feed_like_v2|1",
+        "eligible_HA_edges": 72,
+        "match": "2006229",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 4,
+          "baseline_D_within_1s": 5,
+          "no_D_within_1s": 51
+        },
+        "misses": 60,
+        "misses_baseline_D_at_boundary": 4,
+        "misses_baseline_D_within_1s": 9,
+        "post_duration_bins_all_edges": {
+          "3-10s": 33,
+          "<=3s": 53,
+          ">10s": 17
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 11,
+          "reversed_or_weak": 61
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 41,
+          "<=3s": 35,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 23,
+          "3-10s|>10s": 6,
+          "<=3s|3-10s": 12,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 7,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 14,
+          ">10s|>10s": 4
+        },
+        "predicted_HA_edges": 56,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 12,
+        "rep": 1,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 103,
+        "cell": "SkillCorner|2006229|feed_like_v2|2",
+        "eligible_HA_edges": 72,
+        "match": "2006229",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 3,
+          "baseline_D_within_1s": 7,
+          "no_D_within_1s": 51
+        },
+        "misses": 61,
+        "misses_baseline_D_at_boundary": 3,
+        "misses_baseline_D_within_1s": 10,
+        "post_duration_bins_all_edges": {
+          "3-10s": 33,
+          "<=3s": 53,
+          ">10s": 17
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 9,
+          "reversed_or_weak": 63
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 41,
+          "<=3s": 35,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 23,
+          "3-10s|>10s": 6,
+          "<=3s|3-10s": 12,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 7,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 14,
+          ">10s|>10s": 4
+        },
+        "predicted_HA_edges": 51,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 11,
+        "rep": 2,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 103,
+        "cell": "SkillCorner|2006229|feed_like_v2|3",
+        "eligible_HA_edges": 72,
+        "match": "2006229",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 2,
+          "baseline_D_within_1s": 7,
+          "no_D_within_1s": 51
+        },
+        "misses": 60,
+        "misses_baseline_D_at_boundary": 2,
+        "misses_baseline_D_within_1s": 9,
+        "post_duration_bins_all_edges": {
+          "3-10s": 33,
+          "<=3s": 53,
+          ">10s": 17
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 10,
+          "reversed_or_weak": 62
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 41,
+          "<=3s": 35,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 23,
+          "3-10s|>10s": 6,
+          "<=3s|3-10s": 12,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 7,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 14,
+          ">10s|>10s": 4
+        },
+        "predicted_HA_edges": 54,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 12,
+        "rep": 3,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 103,
+        "cell": "SkillCorner|2006229|feed_like_v2|4",
+        "eligible_HA_edges": 72,
+        "match": "2006229",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 4,
+          "baseline_D_within_1s": 4,
+          "no_D_within_1s": 52
+        },
+        "misses": 60,
+        "misses_baseline_D_at_boundary": 4,
+        "misses_baseline_D_within_1s": 8,
+        "post_duration_bins_all_edges": {
+          "3-10s": 33,
+          "<=3s": 53,
+          ">10s": 17
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 9,
+          "reversed_or_weak": 63
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 41,
+          "<=3s": 35,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 12,
+          "3-10s|<=3s": 23,
+          "3-10s|>10s": 6,
+          "<=3s|3-10s": 12,
+          "<=3s|<=3s": 16,
+          "<=3s|>10s": 7,
+          ">10s|3-10s": 9,
+          ">10s|<=3s": 14,
+          ">10s|>10s": 4
+        },
+        "predicted_HA_edges": 51,
+        "provider": "SkillCorner",
+        "recovered_one_to_one_within_1s": 12,
+        "rep": 4,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 166,
+        "cell": "Sportec|J03WOY|clean|0",
+        "eligible_HA_edges": 139,
+        "match": "J03WOY",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 11,
+          "baseline_D_within_1s": 7,
+          "no_D_within_1s": 41
+        },
+        "misses": 59,
+        "misses_baseline_D_at_boundary": 11,
+        "misses_baseline_D_within_1s": 18,
+        "post_duration_bins_all_edges": {
+          "3-10s": 59,
+          "<=3s": 80,
+          ">10s": 27
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 81,
+          "reversed_or_weak": 58
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 66,
+          "<=3s": 73,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 27,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 11,
+          "<=3s|3-10s": 27,
+          "<=3s|<=3s": 36,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 16,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 107,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 80,
+        "rep": 0,
+        "view": "clean"
+      },
+      {
+        "all_direct_HA_edges": 166,
+        "cell": "Sportec|J03WOY|feed_like_v1|1",
+        "eligible_HA_edges": 139,
+        "match": "J03WOY",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 19,
+          "baseline_D_within_1s": 9,
+          "no_D_within_1s": 61
+        },
+        "misses": 89,
+        "misses_baseline_D_at_boundary": 19,
+        "misses_baseline_D_within_1s": 28,
+        "post_duration_bins_all_edges": {
+          "3-10s": 59,
+          "<=3s": 80,
+          ">10s": 27
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 53,
+          "reversed_or_weak": 86
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 66,
+          "<=3s": 73,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 27,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 11,
+          "<=3s|3-10s": 27,
+          "<=3s|<=3s": 36,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 16,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 79,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 50,
+        "rep": 1,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 166,
+        "cell": "Sportec|J03WOY|feed_like_v1|2",
+        "eligible_HA_edges": 139,
+        "match": "J03WOY",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 20,
+          "baseline_D_within_1s": 8,
+          "no_D_within_1s": 63
+        },
+        "misses": 91,
+        "misses_baseline_D_at_boundary": 20,
+        "misses_baseline_D_within_1s": 28,
+        "post_duration_bins_all_edges": {
+          "3-10s": 59,
+          "<=3s": 80,
+          ">10s": 27
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 50,
+          "reversed_or_weak": 89
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 66,
+          "<=3s": 73,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 27,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 11,
+          "<=3s|3-10s": 27,
+          "<=3s|<=3s": 36,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 16,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 84,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 48,
+        "rep": 2,
+        "view": "feed_like_v1"
+      },
+      {
+        "all_direct_HA_edges": 166,
+        "cell": "Sportec|J03WOY|feed_like_v2|1",
+        "eligible_HA_edges": 139,
+        "match": "J03WOY",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 20,
+          "baseline_D_within_1s": 6,
+          "no_D_within_1s": 46
+        },
+        "misses": 72,
+        "misses_baseline_D_at_boundary": 20,
+        "misses_baseline_D_within_1s": 26,
+        "post_duration_bins_all_edges": {
+          "3-10s": 59,
+          "<=3s": 80,
+          ">10s": 27
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 70,
+          "reversed_or_weak": 69
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 66,
+          "<=3s": 73,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 27,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 11,
+          "<=3s|3-10s": 27,
+          "<=3s|<=3s": 36,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 16,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 91,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 67,
+        "rep": 1,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 166,
+        "cell": "Sportec|J03WOY|feed_like_v2|2",
+        "eligible_HA_edges": 139,
+        "match": "J03WOY",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 13,
+          "baseline_D_within_1s": 5,
+          "no_D_within_1s": 53
+        },
+        "misses": 71,
+        "misses_baseline_D_at_boundary": 13,
+        "misses_baseline_D_within_1s": 18,
+        "post_duration_bins_all_edges": {
+          "3-10s": 59,
+          "<=3s": 80,
+          ">10s": 27
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 66,
+          "reversed_or_weak": 73
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 66,
+          "<=3s": 73,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 27,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 11,
+          "<=3s|3-10s": 27,
+          "<=3s|<=3s": 36,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 16,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 98,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 68,
+        "rep": 2,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 166,
+        "cell": "Sportec|J03WOY|feed_like_v2|3",
+        "eligible_HA_edges": 139,
+        "match": "J03WOY",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 12,
+          "baseline_D_within_1s": 13,
+          "no_D_within_1s": 50
+        },
+        "misses": 75,
+        "misses_baseline_D_at_boundary": 12,
+        "misses_baseline_D_within_1s": 25,
+        "post_duration_bins_all_edges": {
+          "3-10s": 59,
+          "<=3s": 80,
+          ">10s": 27
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 61,
+          "reversed_or_weak": 78
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 66,
+          "<=3s": 73,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 27,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 11,
+          "<=3s|3-10s": 27,
+          "<=3s|<=3s": 36,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 16,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 89,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 64,
+        "rep": 3,
+        "view": "feed_like_v2"
+      },
+      {
+        "all_direct_HA_edges": 166,
+        "cell": "Sportec|J03WOY|feed_like_v2|4",
+        "eligible_HA_edges": 139,
+        "match": "J03WOY",
+        "miss_reason_counts": {
+          "baseline_D_at_boundary": 17,
+          "baseline_D_within_1s": 7,
+          "no_D_within_1s": 55
+        },
+        "misses": 79,
+        "misses_baseline_D_at_boundary": 17,
+        "misses_baseline_D_within_1s": 24,
+        "post_duration_bins_all_edges": {
+          "3-10s": 59,
+          "<=3s": 80,
+          ">10s": 27
+        },
+        "posterior_evidence_counts": {
+          "both_correct_over_0.5": 65,
+          "reversed_or_weak": 74
+        },
+        "pre_duration_bins_all_edges": {
+          "3-10s": 66,
+          "<=3s": 73,
+          ">10s": 27
+        },
+        "pre_post_duration_bins_all_edges": {
+          "3-10s|3-10s": 27,
+          "3-10s|<=3s": 28,
+          "3-10s|>10s": 11,
+          "<=3s|3-10s": 27,
+          "<=3s|<=3s": 36,
+          "<=3s|>10s": 10,
+          ">10s|3-10s": 5,
+          ">10s|<=3s": 16,
+          ">10s|>10s": 6
+        },
+        "predicted_HA_edges": 92,
+        "provider": "Sportec",
+        "recovered_one_to_one_within_1s": 60,
+        "rep": 4,
+        "view": "feed_like_v2"
+      }
+    ],
+    "overall": {
+      "all_direct_HA_edges": 4291,
+      "cells": 35,
+      "eligible_HA_edges": 3269,
+      "miss_reason_counts": {
+        "baseline_D_at_boundary": 249,
+        "baseline_D_within_1s": 141,
+        "no_D_within_1s": 1627
+      },
+      "misses": 2017,
+      "misses_baseline_D_at_boundary": 249,
+      "misses_baseline_D_within_1s": 390,
+      "post_duration_bins_all_edges": {
+        "3-10s": 1449,
+        "<=3s": 2051,
+        ">10s": 791
+      },
+      "posterior_evidence_counts": {
+        "both_correct_over_0.5": 1204,
+        "reversed_or_weak": 2065
+      },
+      "pre_duration_bins_all_edges": {
+        "3-10s": 1708,
+        "<=3s": 1519,
+        ">10s": 1064
+      },
+      "pre_post_duration_bins_all_edges": {
+        "3-10s|3-10s": 616,
+        "3-10s|<=3s": 798,
+        "3-10s|>10s": 294,
+        "<=3s|3-10s": 525,
+        "<=3s|<=3s": 707,
+        "<=3s|>10s": 287,
+        ">10s|3-10s": 308,
+        ">10s|<=3s": 546,
+        ">10s|>10s": 210
+      },
+      "predicted_HA_edges": 2678,
+      "recovered_one_to_one_within_1s": 1252
+    }
+  }
+}

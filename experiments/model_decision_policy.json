@@ -1,6 +1,6 @@
 {
-  "version": 10,
-  "confirmed_utc_date": "2026-11-01",
+  "version": 13,
+  "confirmed_utc_date": "2026-11-11",
   "primary_order": [
     "spell_f1",
     "macro_f1"
@@ -16,15 +16,15 @@
   "aggregation": "Compare identical whole-match cohorts; mean within provider, then equal mean across providers",
   "preferred_development_view": "full_provider_holdout",
   "working_candidate": {
-    "family": "Original-full two-seed ensemble with uniform phase averaging",
-    "model": "joint_gru_sn_dense_original_diversity_phase_ensemble",
-    "status": "User-authorized provisional working baseline; independent gold confirmation pending",
+    "family": "Reconstructed pooled spell frontier with frozen ball-exit D correction",
+    "model": "joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble",
+    "status": "User-authorized reconstructed provisional working baseline; independent continuous-gold confirmation pending",
     "baseline_manifest": "experiments/baseline_manifest.json",
-    "baseline_manifest_sha256": "85b5eb7129023df4c03c25d40b72cc935e6b6ba755cdf04f794cc847d7dca44b",
+    "baseline_manifest_sha256": "e0c5e988f16f71b8ad7df4fdaabec7c4923ade8ddccb7874f9649d280a4de5dd",
     "prediction_entrypoint": "python -m experiments.current_baseline predict",
-    "reason": "Explicit user adoption of original_full phase averaging; historical +.01 clean screen remains failed. All seven historical active guards pass; original clean/v1/v2 and GAR TEST paired gains support a provisional upgrade. TEST silver-label interval includes zero; calibrated+phase remains spell point leader. Independent continuous-match gold confirmation remains pending.",
-    "promotion_record": "experiments/results/baseline_original_full_phase_promotion.json",
-    "previous_policy": "experiments/baselines/model_decision_policy_joint_gru_sn_dense_original_diversity_ensemble_v1.json"
+    "reason": "Pooled stage-1024 CE weights reconstructed under the predeclared recipe; exact frontier CSV parity and fixed deployment checks passed.",
+    "promotion_record": "experiments/results/ball_exit_reconstructed_v1.json",
+    "previous_policy": "experiments/baselines/model_decision_policy_provisional_before_reconstructed.json"
   },
   "pathcrf_component": {
     "default_enabled": false,
@@ -41,7 +41,7 @@
   ],
   "stress_guardrail": {
     "view": "feed_like_v2",
-    "reference_recipe": "joint_gru_sn_dense_original_diversity_phase_ensemble",
+    "reference_recipe": "joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble",
     "minimum_realizations": 4,
     "rule": "Matched full-provider candidate v2 spell >= adopted -.01; protect each provider clean macro/D-F1 within .02; report component seeds separately",
     "changed_from": "feed_like",
@@ -68,8 +68,8 @@
   "clean_improvement_screen": {
     "default_delta": 0.01,
     "historical_failures_preserved": true,
-    "current_screen_passes": false,
-    "current_adoption_exception": "Explicit user adoption of original_full phase averaging; historical +.01 clean screen remains failed. All seven historical active guards pass; original clean/v1/v2 and GAR TEST paired gains support a provisional upgrade. TEST silver-label interval includes zero; calibrated+phase remains spell point leader. Independent continuous-match gold confirmation remains pending."
+    "current_screen_passes": true,
+    "current_adoption_exception": "Explicit user-authorized reconstruction promotion after exact full-CSV frontier parity and fixed GAR/public regression checks; historical failures remain preserved."
   },
   "primary_evaluation_view": "feed_like_v2",
   "evaluation_roles": {

@@ -1,0 +1,87 @@
+{
+  "arms": [
+    "fresh_control",
+    "uniform_turnover",
+    "hard_turnover"
+  ],
+  "inputs": {
+    "baseline_turnover_audit": {
+      "path": "experiments/results/turnover_error_audit.json",
+      "sha256": "a70db2145eaef75ecf385938e50f1d8405859b53bb263676bc1b296c8907e455"
+    },
+    "cells": [
+      "Metrica|metrica_3|clean|0",
+      "Metrica|metrica_3|feed_like_v1|1",
+      "Metrica|metrica_3|feed_like_v1|2",
+      "Metrica|metrica_3|feed_like_v2|1",
+      "Metrica|metrica_3|feed_like_v2|2",
+      "Metrica|metrica_3|feed_like_v2|3",
+      "Metrica|metrica_3|feed_like_v2|4",
+      "SkillCorner|1996435|clean|0",
+      "SkillCorner|1996435|feed_like_v1|1",
+      "SkillCorner|1996435|feed_like_v1|2",
+      "SkillCorner|1996435|feed_like_v2|1",
+      "SkillCorner|1996435|feed_like_v2|2",
+      "SkillCorner|1996435|feed_like_v2|3",
+      "SkillCorner|1996435|feed_like_v2|4",
+      "SkillCorner|1996436|clean|0",
+      "SkillCorner|1996436|feed_like_v1|1",
+      "SkillCorner|1996436|feed_like_v1|2",
+      "SkillCorner|1996436|feed_like_v2|1",
+      "SkillCorner|1996436|feed_like_v2|2",
+      "SkillCorner|1996436|feed_like_v2|3",
+      "SkillCorner|1996436|feed_like_v2|4",
+      "SkillCorner|2006229|clean|0",
+      "SkillCorner|2006229|feed_like_v1|1",
+      "SkillCorner|2006229|feed_like_v1|2",
+      "SkillCorner|2006229|feed_like_v2|1",
+      "SkillCorner|2006229|feed_like_v2|2",
+      "SkillCorner|2006229|feed_like_v2|3",
+      "SkillCorner|2006229|feed_like_v2|4",
+      "Sportec|J03WOY|clean|0",
+      "Sportec|J03WOY|feed_like_v1|1",
+      "Sportec|J03WOY|feed_like_v1|2",
+      "Sportec|J03WOY|feed_like_v2|1",
+      "Sportec|J03WOY|feed_like_v2|2",
+      "Sportec|J03WOY|feed_like_v2|3",
+      "Sportec|J03WOY|feed_like_v2|4"
+    ],
+    "evaluation_declaration": {
+      "path": "experiments/results/turnover_supervision_eval_declaration.json",
+      "sha256": "3ba90ada46b817344026184da36b0c1747d0e660aeead5f0578f728525726b45"
+    },
+    "native_manifest": {
+      "path": "data/experiments/frontier_recovery_v1/frontier_native_probability_manifest.json",
+      "sha256": "7c98e401b61d501011df6f5ebb7292174de09ce7386bcaf6cb7240636a8fe494"
+    },
+    "training_declaration": {
+      "path": "experiments/results/turnover_supervision_train_declaration.json",
+      "sha256": "2bdfd9ec87d21ab6845b01f03da8c04b7a572968bad8e8f1d6942952b3e7ec42"
+    }
+  },
+  "method": {
+    "auditor": "turnover_error_audit.audit_cell, unchanged",
+    "counts": "eligible, recovered, misses, miss reason, and weak/reversed posterior evidence; predicted H/A edge count is descriptive and is not precision because the reference subset is restricted to eligible turnovers",
+    "eligible_event": "direct H\u2194A edge with >=1s contiguous same-team context before and after in one period/model-time block",
+    "recovery": "directional one-to-one maximum-cardinality match within \u00b11s, same block",
+    "retention": "aggregate counts by provider/view and cell only; do not save raw event details",
+    "scope": "35 repeated cache cells spanning five matches; candidate rows are descriptive and not independent samples or selection guards"
+  },
+  "official_candidate_scoring": false,
+  "organizer_reference_access": false,
+  "promotion": false,
+  "question": "Do the three pooled turnover-supervision candidates recover more eligible direct H/A turnovers than the approved baseline while retaining a fixed D/X mask?",
+  "schema": "turnover_supervision_turnover_readout_v1",
+  "selection_guard": false,
+  "source_sha256": {
+    "data/experiments/frontier_recovery_v1/frontier_native_probability_manifest.json": "7c98e401b61d501011df6f5ebb7292174de09ce7386bcaf6cb7240636a8fe494",
+    "experiments/results/turnover_error_audit.json": "a70db2145eaef75ecf385938e50f1d8405859b53bb263676bc1b296c8907e455",
+    "experiments/tests/test_turnover_supervision_turnover_readout.py": "b6770804755791a4ea08aa43105ca4bf21508ee814e74239aa074429932fcb73",
+    "experiments/turnover_error_audit.py": "d93b267f3f2805cc2c303aa030862b58bb67753ab101c43fc94fbfaac11ac945",
+    "experiments/turnover_supervision_eval.py": "e1e263091c020e6e9c0be476dbdd69c71bfe6a430f517c6ec7932a8fa3e47a45",
+    "experiments/turnover_supervision_train.py": "d4ec20dfba5c26777b3e4a85b6462320638951ad4c9e7d949ad9c830f65db664",
+    "experiments/turnover_supervision_turnover_readout.py": "41b9cac34976bb099fe9b63451e7c5e5becbca6eb384997785c9de6585141849"
+  },
+  "status": "frozen_before_turnover_candidate_readout",
+  "study_id": "turnover_supervision_turnover_readout_v1"
+}

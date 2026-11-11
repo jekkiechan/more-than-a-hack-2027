@@ -1,0 +1,21 @@
+{
+  "candidate_metrics_saved": false,
+  "comparison_changed": false,
+  "correction": "Allow exactly six phases using the identical float64 seed mean then phase mean. Existing 2/5 paths call the original helper unchanged.",
+  "declaration_sha256": "a4492e73a7424c490d7e827b8cb236cc6b06a0c0d27c353f783271a96b7b66d9",
+  "failed_attempt_log": "concurrent.futures.process._RemoteTraceback: \n\"\"\"\nTraceback (most recent call last):\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/concurrent/futures/process.py\", line 264, in _process_worker\n    r = call_item.fn(*call_item.args, **call_item.kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/more-than-a-hack-2027/experiments/spell_frontier_gar.py\", line 285, in _run_game\n    components = package.components_from_records(view_inputs, phases, models, manifest)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/more-than-a-hack-2027/experiments/spell_frontier_baseline.py\", line 50, in components_from_records\n    components[role] = _pool_seed_phase_probabilities(array.tolist())\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/more-than-a-hack-2027/experiments/v2_spell_balanced_public.py\", line 382, in _pool_seed_phase_probabilities\n    raise ValueError(\"Expected aligned seed \u00d7 phase \u00d7 frame \u00d7 H/A/D probabilities\")\nValueError: Expected aligned seed \u00d7 phase \u00d7 frame \u00d7 H/A/D probabilities\n\"\"\"\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/more-than-a-hack-2027/experiments/spell_frontier_gar_execution.py\", line 94, in <module>\n    run(1, first_only=True)\n  File \"/workspace/more-than-a-hack-2027/experiments/spell_frontier_gar_execution.py\", line 81, in run\n    print(\"GAR COMPLETE\", future.result(), flush=True)\n                          ^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\nValueError: Expected aligned seed \u00d7 phase \u00d7 frame \u00d7 H/A/D probabilities\n",
+  "failed_attempt_log_sha256": "772fbd1fd078079835db18872173c9f574e93a6c22645beec55d3ef2dbb5c146",
+  "fitting": false,
+  "public_scoring": false,
+  "reason": "Frozen public pooling helper only accepts 2/5 phases; GAR requires 6. Failure occurred in first clean component pooling before decoding or scoring.",
+  "recipe_changed": false,
+  "runtime_sha256": "73988858e8c136e2e8204b16b861a3ec16e10e7ec317b9b467f323b6f35d81dc",
+  "scoring_started": false,
+  "seeds_changed": false,
+  "source_sha256": {
+    "experiments/spell_frontier_gar_sixphase.py": "f4be5fbd5d1cd761f121ce609c9d58f84a2e6ce3cd8077b0b51c5249e3515494",
+    "experiments/tests/test_spell_frontier_gar_sixphase.py": "6126b2437304f40d0e6d8cf07892dbf9628628eb292654f48097a5d4870cfae4"
+  },
+  "study": "spell_frontier_gar_v1",
+  "weights_changed": false
+}

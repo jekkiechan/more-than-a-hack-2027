@@ -1,0 +1,903 @@
+{
+  "candidate": {
+    "full_phase_baseline_native_arrays_included": false,
+    "newest_frontier_archive_sha256": "44c13a81d2facf56007e91ae0706309aa8b7b44aabdd4a832ea30b45e86c3422",
+    "newest_frontier_availability": "promotion receipt says local_only; no matching private remote branch/manifest found in complete ls-remote heads",
+    "newest_frontier_local_archive": "data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1_local.tar.gz",
+    "newest_frontier_member_count": 534,
+    "newest_frontier_restored": false,
+    "newest_frontier_source_commit": "282bacf8608d018ab2c2841828ed1e685c0f7883",
+    "restored_family": "short_original_diversity_v1 predecessor"
+  },
+  "checkpoint_audit": {
+    "count": 6,
+    "models": [
+      {
+        "candidate": {
+          "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2026.joblib",
+          "receipt": {
+            "declaration_sha256": "9455eea0794b091fbca6dd68c8e4f1011117455662d712d92a7148ea8921a8db",
+            "fold": "leave_out_metrica",
+            "model_sha256": "0fee9b2a65a7c00e5cc2ec3a6c81f2f0adf8868e3154064b3334b3d53131cccb",
+            "old_matches": [
+              "J03WMX",
+              "J03WN1",
+              "J03WOH",
+              "skillcorner_had_1874553",
+              "skillcorner_had_1886347",
+              "skillcorner_had_1899585",
+              "skillcorner_had_1925299",
+              "skillcorner_had_1927964",
+              "skillcorner_had_1953632",
+              "skillcorner_had_1959846",
+              "skillcorner_had_1986691"
+            ],
+            "seed": 2026
+          },
+          "sha256": "0fee9b2a65a7c00e5cc2ec3a6c81f2f0adf8868e3154064b3334b3d53131cccb",
+          "size_bytes": 1436623
+        },
+        "d_teacher": {
+          "heldout": "metrica",
+          "normalization_sha256": {
+            "median": "36d7f4c92b0248ebdb985b354e260eb8d9957d8104634d6517b7b822bdc36e0b",
+            "scale": "5ce1b7f04c0ab64922bfe1c82faba4d2403c902b626854bf9b11ad3ad7905f11"
+          },
+          "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+          "seed": 2026,
+          "sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91",
+          "size_bytes": 263111
+        },
+        "provider_excluded": "metrica",
+        "seed": 2026
+      },
+      {
+        "candidate": {
+          "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2027.joblib",
+          "receipt": {
+            "declaration_sha256": "9455eea0794b091fbca6dd68c8e4f1011117455662d712d92a7148ea8921a8db",
+            "fold": "leave_out_metrica",
+            "model_sha256": "a656a2f2fe1c4a8e95fe17d4cd757dab9730a7625ed5935a9ccf222f2aef3eb1",
+            "old_matches": [
+              "J03WMX",
+              "J03WN1",
+              "J03WOH",
+              "skillcorner_had_1874553",
+              "skillcorner_had_1886347",
+              "skillcorner_had_1899585",
+              "skillcorner_had_1925299",
+              "skillcorner_had_1927964",
+              "skillcorner_had_1953632",
+              "skillcorner_had_1959846",
+              "skillcorner_had_1986691"
+            ],
+            "seed": 2027
+          },
+          "sha256": "a656a2f2fe1c4a8e95fe17d4cd757dab9730a7625ed5935a9ccf222f2aef3eb1",
+          "size_bytes": 1436623
+        },
+        "d_teacher": {
+          "heldout": "metrica",
+          "normalization_sha256": {
+            "median": "36d7f4c92b0248ebdb985b354e260eb8d9957d8104634d6517b7b822bdc36e0b",
+            "scale": "5ce1b7f04c0ab64922bfe1c82faba4d2403c902b626854bf9b11ad3ad7905f11"
+          },
+          "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+          "seed": 2027,
+          "sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3",
+          "size_bytes": 263111
+        },
+        "provider_excluded": "metrica",
+        "seed": 2027
+      },
+      {
+        "candidate": {
+          "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2026.joblib",
+          "receipt": {
+            "declaration_sha256": "9455eea0794b091fbca6dd68c8e4f1011117455662d712d92a7148ea8921a8db",
+            "fold": "leave_out_skillcorner",
+            "model_sha256": "c00483d0b2645a1683e05b214e7fcf46f0563d148ad39cdefaa908a5ee09c58e",
+            "old_matches": [
+              "J03WMX",
+              "J03WN1",
+              "J03WOH",
+              "metrica_1",
+              "metrica_2"
+            ],
+            "seed": 2026
+          },
+          "sha256": "c00483d0b2645a1683e05b214e7fcf46f0563d148ad39cdefaa908a5ee09c58e",
+          "size_bytes": 1436317
+        },
+        "d_teacher": {
+          "heldout": "skillcorner",
+          "normalization_sha256": {
+            "median": "f095ec1757fc0c8c590415b490b5fd1cc0f1135216dd7d1fa21604bb0c9121c9",
+            "scale": "163d5570b07844654c5b1f19f1c2ec815029f3ae4bada535b1a525d9288b5083"
+          },
+          "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+          "seed": 2026,
+          "sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56",
+          "size_bytes": 263111
+        },
+        "provider_excluded": "skillcorner",
+        "seed": 2026
+      },
+      {
+        "candidate": {
+          "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2027.joblib",
+          "receipt": {
+            "declaration_sha256": "9455eea0794b091fbca6dd68c8e4f1011117455662d712d92a7148ea8921a8db",
+            "fold": "leave_out_skillcorner",
+            "model_sha256": "a08289a747b590b322cf70799dc843b81251263f3507798d8000dc3795661107",
+            "old_matches": [
+              "J03WMX",
+              "J03WN1",
+              "J03WOH",
+              "metrica_1",
+              "metrica_2"
+            ],
+            "seed": 2027
+          },
+          "sha256": "a08289a747b590b322cf70799dc843b81251263f3507798d8000dc3795661107",
+          "size_bytes": 1436317
+        },
+        "d_teacher": {
+          "heldout": "skillcorner",
+          "normalization_sha256": {
+            "median": "f095ec1757fc0c8c590415b490b5fd1cc0f1135216dd7d1fa21604bb0c9121c9",
+            "scale": "163d5570b07844654c5b1f19f1c2ec815029f3ae4bada535b1a525d9288b5083"
+          },
+          "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+          "seed": 2027,
+          "sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933",
+          "size_bytes": 263111
+        },
+        "provider_excluded": "skillcorner",
+        "seed": 2027
+      },
+      {
+        "candidate": {
+          "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2026.joblib",
+          "receipt": {
+            "declaration_sha256": "9455eea0794b091fbca6dd68c8e4f1011117455662d712d92a7148ea8921a8db",
+            "fold": "leave_out_sportec",
+            "model_sha256": "61280c37f12cafcc512d5368aaf3bbdb742242368650e6375907fa4ede679e85",
+            "old_matches": [
+              "metrica_1",
+              "metrica_2",
+              "skillcorner_had_1874553",
+              "skillcorner_had_1886347",
+              "skillcorner_had_1899585",
+              "skillcorner_had_1925299",
+              "skillcorner_had_1927964",
+              "skillcorner_had_1953632",
+              "skillcorner_had_1959846",
+              "skillcorner_had_1986691"
+            ],
+            "seed": 2026
+          },
+          "sha256": "61280c37f12cafcc512d5368aaf3bbdb742242368650e6375907fa4ede679e85",
+          "size_bytes": 1436605
+        },
+        "d_teacher": {
+          "heldout": "sportec",
+          "normalization_sha256": {
+            "median": "1c3d1cce09b2af075fe90a42f172928dc57be0d7bddbb149c1f90d37cd81f0f4",
+            "scale": "159e369c84f9c39bc67b817817fb1a1dfd3ee012912819990958b580e589147f"
+          },
+          "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+          "seed": 2026,
+          "sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676",
+          "size_bytes": 263111
+        },
+        "provider_excluded": "sportec",
+        "seed": 2026
+      },
+      {
+        "candidate": {
+          "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2027.joblib",
+          "receipt": {
+            "declaration_sha256": "9455eea0794b091fbca6dd68c8e4f1011117455662d712d92a7148ea8921a8db",
+            "fold": "leave_out_sportec",
+            "model_sha256": "f717d50a53cbd3f3c7aa9af28c084deefa770f29ec15096d018727f93a0821cc",
+            "old_matches": [
+              "metrica_1",
+              "metrica_2",
+              "skillcorner_had_1874553",
+              "skillcorner_had_1886347",
+              "skillcorner_had_1899585",
+              "skillcorner_had_1925299",
+              "skillcorner_had_1927964",
+              "skillcorner_had_1953632",
+              "skillcorner_had_1959846",
+              "skillcorner_had_1986691"
+            ],
+            "seed": 2027
+          },
+          "sha256": "f717d50a53cbd3f3c7aa9af28c084deefa770f29ec15096d018727f93a0821cc",
+          "size_bytes": 1436605
+        },
+        "d_teacher": {
+          "heldout": "sportec",
+          "normalization_sha256": {
+            "median": "1c3d1cce09b2af075fe90a42f172928dc57be0d7bddbb149c1f90d37cd81f0f4",
+            "scale": "159e369c84f9c39bc67b817817fb1a1dfd3ee012912819990958b580e589147f"
+          },
+          "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+          "seed": 2027,
+          "sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4",
+          "size_bytes": 263111
+        },
+        "provider_excluded": "sportec",
+        "seed": 2027
+      }
+    ],
+    "pairing_rule": "For each provider exclusion and seed, candidate leave_out_{provider}_{seed} joblib is paired with objective_alignment_v1/without_{provider}_combined_{seed}.joblib as D teacher. Candidate receipt fold/seed and teacher metadata heldout/seed agree. Teacher fold normalization digests come from objective_alignment_v1/training_parity.json; all 6 heldout providers are excluded from their corresponding fold training. Candidate uses dense H/A targets; D is supplied by paired teacher."
+  },
+  "cohort": {
+    "matches": [
+      "metrica_3",
+      "J03WOY",
+      "skillcorner_had_1996435",
+      "skillcorner_had_1996436",
+      "skillcorner_had_2006229"
+    ],
+    "prediction_cache_views": [
+      "clean",
+      "feed_like_corrupt_1",
+      "feed_like_corrupt_2"
+    ],
+    "providers": [
+      "metrica",
+      "sportec",
+      "skillcorner"
+    ],
+    "saved_component_seeds": [
+      2026,
+      2027
+    ],
+    "v2_realizations": "Must be regenerated from the restored input caches; saved arrays are clean/v1 only."
+  },
+  "created_utc_date": "2026-11-08",
+  "limitations": [
+    "The latest spell-frontier candidate is unavailable in the private artifact remote. This restore contains the older short_original_diversity_v1 provider-fold family only.",
+    "The archive contains no four fixed feed_like_v2 probability views; a bounded predecessor pilot may regenerate v2 corruptions and infer with restored fold models, without retraining.",
+    "No full phase-averaged current baseline probability arrays were restored."
+  ],
+  "restore": {
+    "feed_like_v2_views_included": false,
+    "files": [
+      {
+        "bytes": 1436623,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2026.joblib",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2026.joblib",
+        "sha256": "0fee9b2a65a7c00e5cc2ec3a6c81f2f0adf8868e3154064b3334b3d53131cccb"
+      },
+      {
+        "bytes": 13943,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2026.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2026.json",
+        "sha256": "3b77105151ad93a410c263817f3e62096f9844b090890c3d5429e09b6d6845ce"
+      },
+      {
+        "bytes": 95,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2026.lock.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2026.lock.json",
+        "sha256": "be1c32c10b91602f7c21e571a2d249c388bcb7b5d03fce1db55ef9c46fb857a2"
+      },
+      {
+        "bytes": 1436623,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2027.joblib",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2027.joblib",
+        "sha256": "a656a2f2fe1c4a8e95fe17d4cd757dab9730a7625ed5935a9ccf222f2aef3eb1"
+      },
+      {
+        "bytes": 13943,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2027.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2027.json",
+        "sha256": "b93a04ba2af2efbed6a453bdab4c42d5100aa986f04b38d0405ba66e1575381b"
+      },
+      {
+        "bytes": 95,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2027.lock.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_metrica_2027.lock.json",
+        "sha256": "be1c32c10b91602f7c21e571a2d249c388bcb7b5d03fce1db55ef9c46fb857a2"
+      },
+      {
+        "bytes": 1436317,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2026.joblib",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2026.joblib",
+        "sha256": "c00483d0b2645a1683e05b214e7fcf46f0563d148ad39cdefaa908a5ee09c58e"
+      },
+      {
+        "bytes": 13010,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2026.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2026.json",
+        "sha256": "faa150871558b81bb71c3cb437dce0b0029b0d3eadff76f7d04cf2e7e9f52539"
+      },
+      {
+        "bytes": 95,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2026.lock.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2026.lock.json",
+        "sha256": "be1c32c10b91602f7c21e571a2d249c388bcb7b5d03fce1db55ef9c46fb857a2"
+      },
+      {
+        "bytes": 1436317,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2027.joblib",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2027.joblib",
+        "sha256": "a08289a747b590b322cf70799dc843b81251263f3507798d8000dc3795661107"
+      },
+      {
+        "bytes": 13008,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2027.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2027.json",
+        "sha256": "8afd839ecc6ec3c4b602589d8bc62196d7e007a6bef400cce787f5ac50f538a0"
+      },
+      {
+        "bytes": 95,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2027.lock.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_skillcorner_2027.lock.json",
+        "sha256": "be1c32c10b91602f7c21e571a2d249c388bcb7b5d03fce1db55ef9c46fb857a2"
+      },
+      {
+        "bytes": 1436605,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2026.joblib",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2026.joblib",
+        "sha256": "61280c37f12cafcc512d5368aaf3bbdb742242368650e6375907fa4ede679e85"
+      },
+      {
+        "bytes": 13879,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2026.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2026.json",
+        "sha256": "f12e928e3509e248acb0e0d053a390ec203b3718e6d16942fb6cb18e967489ca"
+      },
+      {
+        "bytes": 95,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2026.lock.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2026.lock.json",
+        "sha256": "be1c32c10b91602f7c21e571a2d249c388bcb7b5d03fce1db55ef9c46fb857a2"
+      },
+      {
+        "bytes": 1436605,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2027.joblib",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2027.joblib",
+        "sha256": "f717d50a53cbd3f3c7aa9af28c084deefa770f29ec15096d018727f93a0821cc"
+      },
+      {
+        "bytes": 13877,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2027.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2027.json",
+        "sha256": "1c1679c7e249c4dfdce7e350507aa55cbbd4fe6dab80cee72410e96f5a564355"
+      },
+      {
+        "bytes": 95,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2027.lock.json",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/models/leave_out_sportec_2027.lock.json",
+        "sha256": "be1c32c10b91602f7c21e571a2d249c388bcb7b5d03fce1db55ef9c46fb857a2"
+      },
+      {
+        "bytes": 2317501,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__clean__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__clean__2026.npz",
+        "sha256": "491b28208b41a13c65d61291242b635fcb6524af91b79b4a2e91726e0277974f"
+      },
+      {
+        "bytes": 2312248,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__clean__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__clean__2027.npz",
+        "sha256": "ba91a175deead70d9e45f9b21df270220e0655e315c5f7e46ca53d1ebe3f5789"
+      },
+      {
+        "bytes": 2429914,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__clean__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__clean__ensemble.npz",
+        "sha256": "b484f4380718ae886281177002f3dfe9ad7938e3a92ee0fa083c17388c10f335"
+      },
+      {
+        "bytes": 2310550,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_1__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_1__2026.npz",
+        "sha256": "17e9cf7610653bc82542ceeab3c0b5acf0cab0239c47f2b0bd6dc942be70016f"
+      },
+      {
+        "bytes": 2307221,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_1__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_1__2027.npz",
+        "sha256": "57a48f2c9f6ba18b0b59fc2a12a0ae88c8a8297cad599a969dde8d8f4d2e687a"
+      },
+      {
+        "bytes": 2426409,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_1__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_1__ensemble.npz",
+        "sha256": "0d2c517a4174de09ecc2fa1e42e9e0f52418ed8eec7396ab4ea3323c3808ca3c"
+      },
+      {
+        "bytes": 2309388,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_2__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_2__2026.npz",
+        "sha256": "28eed4cb994687548257c1c81573274213dede4c26779ec605079504d1839c40"
+      },
+      {
+        "bytes": 2306860,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_2__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_2__2027.npz",
+        "sha256": "8fea261827720ee57515eba908d281cd561899191c2490975a91cef81259cf68"
+      },
+      {
+        "bytes": 2425949,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_2__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Metrica__metrica_3__feed_like_corrupt_2__ensemble.npz",
+        "sha256": "c59e86c6f33863d155c7ac2a91786b3b73a583c601090abb1c9c7a3de35c15a5"
+      },
+      {
+        "bytes": 857438,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__clean__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__clean__2026.npz",
+        "sha256": "fed4387a6062be50c7d044adf874f263efa71d1e00992e569e15c2af37cfbddb"
+      },
+      {
+        "bytes": 855274,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__clean__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__clean__2027.npz",
+        "sha256": "61fb054740e4200121557c55ce9801790be2fc51e9c74ed93b4a816fc5368d91"
+      },
+      {
+        "bytes": 887131,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__clean__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__clean__ensemble.npz",
+        "sha256": "1cf0a7c4a58003245a9808a1daecb32a6f5e5900b6db25b14cbd2578d34aec8c"
+      },
+      {
+        "bytes": 854464,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_1__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_1__2026.npz",
+        "sha256": "2bceb2179584df63d957219b42daa41be56e6c4bfdab5c1faed7222b37f7946a"
+      },
+      {
+        "bytes": 852237,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_1__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_1__2027.npz",
+        "sha256": "6386f732918db8f5fa1f1c4201cfa5afd7b5865491a8dddc06f7eb68e5fb526a"
+      },
+      {
+        "bytes": 883867,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_1__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_1__ensemble.npz",
+        "sha256": "6c71047bc8abfac5116c8d414909ded9ad0dcc8a512128d78084e17320179872"
+      },
+      {
+        "bytes": 852926,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_2__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_2__2026.npz",
+        "sha256": "6dbb777a89a25acd07c3bc1ccb79e005d545802014db958da985c093214354e0"
+      },
+      {
+        "bytes": 851188,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_2__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_2__2027.npz",
+        "sha256": "232f5eb09eb17c190df84197fd7c1ea4badb7fa395bf07393711441a7de0f529"
+      },
+      {
+        "bytes": 882926,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_2__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996435__feed_like_corrupt_2__ensemble.npz",
+        "sha256": "e0cd29f0f09cb18c67fd4083e92dd35df5bd3afda8f931dbc848b1b4d402b85d"
+      },
+      {
+        "bytes": 881742,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__clean__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__clean__2026.npz",
+        "sha256": "5f155e66255b03bb042e56a56c0309e11a67673e2972032ffce9dbf52d365da1"
+      },
+      {
+        "bytes": 879399,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__clean__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__clean__2027.npz",
+        "sha256": "de8ef8b8263e9678814ffb3a0e3449a9f5493f33bc7dad03cea8ef7718e6a841"
+      },
+      {
+        "bytes": 912536,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__clean__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__clean__ensemble.npz",
+        "sha256": "e26dad863fee004a2cd919f2c64c5d99a36f4573770c35389e201ba3e3017978"
+      },
+      {
+        "bytes": 878681,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_1__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_1__2026.npz",
+        "sha256": "3502ad140b5845d17ce80eb1c04bef41c6825f713689cb32011749ad27921da1"
+      },
+      {
+        "bytes": 877017,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_1__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_1__2027.npz",
+        "sha256": "9b831d4265f7c9c87782bcdd302932e793d1c052981992d743177a82b4be2ad2"
+      },
+      {
+        "bytes": 909769,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_1__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_1__ensemble.npz",
+        "sha256": "46eb26292ab370d14899821f224bf5975e3079cc8a0399bcc16d3625e53e79c6"
+      },
+      {
+        "bytes": 870965,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_2__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_2__2026.npz",
+        "sha256": "22d41abba1cfe701a345871c4009f66121176fc6c1fe10fef4c78030724102e6"
+      },
+      {
+        "bytes": 869815,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_2__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_2__2027.npz",
+        "sha256": "4e3da51a7f6360f3cc6466ca78abf407c1a965a0656799f550ad7a13d78ba3e2"
+      },
+      {
+        "bytes": 901198,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_2__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__1996436__feed_like_corrupt_2__ensemble.npz",
+        "sha256": "9007583747cb78f0ceda39946925cdfb9df2f077895348043d5d4cb5cbd14131"
+      },
+      {
+        "bytes": 861418,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__clean__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__clean__2026.npz",
+        "sha256": "6743a73363fa07df130c80de8d37877a40ba84f2278161c977e2d941d7a1487a"
+      },
+      {
+        "bytes": 860969,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__clean__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__clean__2027.npz",
+        "sha256": "a7cb4547fd4ad2f1074cf45e3545a37550463fa0d3872ce3d9286dbb5e44c6d4"
+      },
+      {
+        "bytes": 892169,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__clean__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__clean__ensemble.npz",
+        "sha256": "7c724df454e643786088d8e28565df1bcf1e96b0125b72d79918dd81e4da7c7d"
+      },
+      {
+        "bytes": 856236,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_1__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_1__2026.npz",
+        "sha256": "549d9cf9c4000fc7eb150ed1138dcdcc8b48592ca0b4efd10a7040a5caebb15d"
+      },
+      {
+        "bytes": 855511,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_1__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_1__2027.npz",
+        "sha256": "d5dfca5e6e2b00515bf0ed73640453506139c014000de3d16879e8d62e30d135"
+      },
+      {
+        "bytes": 886826,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_1__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_1__ensemble.npz",
+        "sha256": "05b1c895a74afae9e980c9f37caa9aa3a3cbef7c88c1f82fcb473451ca08f07a"
+      },
+      {
+        "bytes": 857465,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_2__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_2__2026.npz",
+        "sha256": "50eac84432af2f99aca3846249f1f01d3c813fa98f2ef9ccfbd360c9401ddc50"
+      },
+      {
+        "bytes": 856142,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_2__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_2__2027.npz",
+        "sha256": "50c918096d310d2ac2abfd802cac3464a84fa80241d758ef783aceb1b03a7004"
+      },
+      {
+        "bytes": 887441,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_2__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/SkillCorner__2006229__feed_like_corrupt_2__ensemble.npz",
+        "sha256": "7d2217737f79273daa6e7266ff5ac429ff9b00081d97547ca73fcfedf0e921b6"
+      },
+      {
+        "bytes": 2282930,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__clean__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__clean__2026.npz",
+        "sha256": "ca001e0c2cc60f77a2de5954be4da1a99616a7c3f1d979d27f7fa53661764a1e"
+      },
+      {
+        "bytes": 2277296,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__clean__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__clean__2027.npz",
+        "sha256": "2a9e613305da161562b18e03b65b8501d1cbd0c05055f61bf616f017a5a6fd85"
+      },
+      {
+        "bytes": 2391607,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__clean__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__clean__ensemble.npz",
+        "sha256": "3f8cd89af6470cb6b179897b8c854b04b431bb03f67f362ce49784b3f1e6eee7"
+      },
+      {
+        "bytes": 2282039,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_1__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_1__2026.npz",
+        "sha256": "f81bdc2051d47500904c32ec1bd8a881ed12f701fa726e088a935d128559e326"
+      },
+      {
+        "bytes": 2276028,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_1__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_1__2027.npz",
+        "sha256": "d2782bf3fb4fd50b90d2c50be12dcd306166034a691d8f7b2eaa85b8a53adb59"
+      },
+      {
+        "bytes": 2392555,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_1__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_1__ensemble.npz",
+        "sha256": "da6ff3a8b9dfe8e942eaab221f2805ac547b1d2ffa5d7499cc24862e65ccda99"
+      },
+      {
+        "bytes": 2280669,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_2__2026.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_2__2026.npz",
+        "sha256": "cb3ddbabd37edd768c81776794e88537159aaec4e65401cf5338be757a906ea6"
+      },
+      {
+        "bytes": 2274797,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_2__2027.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_2__2027.npz",
+        "sha256": "51782cd1702855d6d141586d2d6aa5ec5bc30a6e44059b5287bf208c25398775"
+      },
+      {
+        "bytes": 2391698,
+        "cache": "short_original_diversity_v1",
+        "manifest_path": "experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_2__ensemble.npz",
+        "path": "/workspace/mtah-sqd/experiments/short_quality_diversity_delivery_v1/artifacts/short_original_diversity_v1/predictions/original_full/Sportec__J03WOY__feed_like_corrupt_2__ensemble.npz",
+        "sha256": "54645973270ff984fb969a6e9d93229172b90ead83564645fe06e00c45dff950"
+      },
+      {
+        "bytes": 37595123,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/J03WOY_clean_clean.joblib",
+        "sha256": "11f7076fc43179f007c3f375c5a7734a46879664330daf1a9cd18496f82af09a"
+      },
+      {
+        "bytes": 63772461,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_1.joblib",
+        "sha256": "d177267994c27b1771d12cce6a7516cb010a2432be3a2e148d967322759299fc"
+      },
+      {
+        "bytes": 63092004,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/J03WOY_feed_like_corrupt_2.joblib",
+        "sha256": "bf21016a3d3af158140e0f6f40c2107630b732427f66e22ae1fe7b5467ca0274"
+      },
+      {
+        "bytes": 41630166,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/metrica_3_clean_clean.joblib",
+        "sha256": "868a0a4285ac5cdd0340f33f51b044a5a32b18ff534ca328ffe848f168c6a087"
+      },
+      {
+        "bytes": 60921765,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_1.joblib",
+        "sha256": "ea1084ce77216d4cc02e8cdf885e68b0db98925dd3fc604d4c3131ea42266334"
+      },
+      {
+        "bytes": 61148402,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/metrica_3_feed_like_corrupt_2.joblib",
+        "sha256": "e3cdb32c5dc002448b2bc60f8326f12b59abcb32e52dc46bf1c42ba086377259"
+      },
+      {
+        "bytes": 17156906,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996435_clean_clean.joblib",
+        "sha256": "e4fa88b2c39e0b1fe14f9711e1a7a381ad18d82653cda24b33569cd2241037f5"
+      },
+      {
+        "bytes": 19881567,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_1.joblib",
+        "sha256": "49ea6003cc94e60a532d7c98971f44d01b307e29ea0c6fc2f79e3e83289ee52f"
+      },
+      {
+        "bytes": 20299503,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996435_feed_like_corrupt_2.joblib",
+        "sha256": "58a9667d37f1dbd485597ee4ccbd00aef61d39741a27c05d4b427f8f291eb4b0"
+      },
+      {
+        "bytes": 15868178,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996436_clean_clean.joblib",
+        "sha256": "832abedda84b0d570e3c6738bbaf9291d06417b3fc9533f4237956675d12ce4b"
+      },
+      {
+        "bytes": 18068220,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_1.joblib",
+        "sha256": "786d0a58bb1d08f2061714ec1f4344286db073a4ca4682503857ef194a640c66"
+      },
+      {
+        "bytes": 17974485,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_1996436_feed_like_corrupt_2.joblib",
+        "sha256": "fef1f8583d85d1e17f54feda326ba18a6f9e1aee88a2bbf710d8cfe025b3e7a0"
+      },
+      {
+        "bytes": 17231158,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_2006229_clean_clean.joblib",
+        "sha256": "c673819a709d3804c1cdc1c5cfc7559b6c06ba4a6b452e4aa7f9d5e5c0a6fea2"
+      },
+      {
+        "bytes": 19826101,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_1.joblib",
+        "sha256": "22322457e4d276075d911b8c008f69d266bce3298c86f893ca9dc24102f8e17d"
+      },
+      {
+        "bytes": 19988307,
+        "cache": "seed_gap_context_v1",
+        "manifest_path": "experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib",
+        "path": "/workspace/mtah-data/experiments/seed_gap_context_v1/skillcorner_had_2006229_feed_like_corrupt_2.joblib",
+        "sha256": "88c649ce96cb4ed4692889b093ea24470213a11eb2e99f31b8dd5c126c6fcd5d"
+      },
+      {
+        "bytes": 263111,
+        "cache": "objective_alignment_v1",
+        "manifest_path": "experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+        "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2026.joblib",
+        "sha256": "b2a41684850435bceb78db2176188a2e21a4b8adc0073b55cceec4302d95ef91"
+      },
+      {
+        "bytes": 263111,
+        "cache": "objective_alignment_v1",
+        "manifest_path": "experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+        "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_metrica_combined_2027.joblib",
+        "sha256": "260cc80cff50a1a280af2423a77d8f7a66a372b5dc762994d1fc2df6b8d741b3"
+      },
+      {
+        "bytes": 263111,
+        "cache": "objective_alignment_v1",
+        "manifest_path": "experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+        "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2026.joblib",
+        "sha256": "faf05644439996b8afd0052d0b65ba3e853f2c7c20f7be24840e1055f72dab56"
+      },
+      {
+        "bytes": 263111,
+        "cache": "objective_alignment_v1",
+        "manifest_path": "experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+        "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_skillcorner_combined_2027.joblib",
+        "sha256": "f67e4a659daa60204be66fea1774d74e062a2a14f38b8835136d4109705f5933"
+      },
+      {
+        "bytes": 263111,
+        "cache": "objective_alignment_v1",
+        "manifest_path": "experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+        "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2026.joblib",
+        "sha256": "18e5dbe2da2e1d6f7659118889c72259bf7abed07d4ac927d46745dcff9e8676"
+      },
+      {
+        "bytes": 263111,
+        "cache": "objective_alignment_v1",
+        "manifest_path": "experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+        "path": "/workspace/mtah-data/experiments/objective_alignment_v1/without_sportec_combined_2027.joblib",
+        "sha256": "026c291ba5ac5d0093c2bbd5de500374f925567f5e91bc25cc974e2379ab73a4"
+      }
+    ],
+    "full_archive_restored": false,
+    "organizer_reference_labels_included": false,
+    "raw_provider_tracking_files_included": false,
+    "remote_archive_total_bytes": 1714557333,
+    "remote_archive_total_files": 559,
+    "selected_bytes": 570302741,
+    "selected_file_count": 84,
+    "soccernet_raw_included": false
+  },
+  "schema_version": 1,
+  "source_manifests": [
+    {
+      "archive_commit": "b39d06f256413ddc5d3a39d1fc93858ffbb6bf0b",
+      "commit": "d7d93d92ba9bb83c78d73d1e59f8e303098b9c11",
+      "path": "short_quality_diversity_v1_cache_manifest.json",
+      "ref": "refs/heads/research/short-quality-diversity-v1",
+      "remote_verification": {
+        "all_hashes_match": true,
+        "bytes": 1714557333,
+        "files": 559,
+        "independent_git_clone": true,
+        "independent_lfs_store": true
+      },
+      "repository": "mtah-data private",
+      "sha256": "2b92e7627bef89d5a167bdbd7ac4a110f3fdbb9f1b8957e89c9ba574cf38b246"
+    },
+    {
+      "commit": "56191d01512bfc4febfc27bda1e44ee5ccd2b82e",
+      "path": "seed_gap_context_cache_manifest.json",
+      "ref": "refs/heads/main",
+      "repository": "mtah-data private",
+      "sha256": "11ba724c305c9dc42a65f0a62742e89256d292b8df31f45fa274a774916f4a59"
+    },
+    {
+      "commit": "56191d01512bfc4febfc27bda1e44ee5ccd2b82e",
+      "path": "objective_alignment_cache_manifest.json",
+      "ref": "refs/heads/main",
+      "repository": "mtah-data private",
+      "sha256": "cfd124e4091d14bb6deff126a5c87df0c3ae266a300c46bd2203ace6fdae02e0"
+    }
+  ],
+  "status": "verified narrow restore; no training or scoring performed",
+  "study": "complementary_spell_v1"
+}

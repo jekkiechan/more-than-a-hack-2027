@@ -1,0 +1,802 @@
+{
+  "aborted_predeclaration_preflight_sha256": "1933013e63941870890a93260866c7aec47b51515155f4de9aa540bdf6d63a8e",
+  "aggregation": "Within each game: equal four v2 realizations, then equal games; TEST and VALID separate.",
+  "calibration_sha256": "ac42d0e7697b9d3a5c6684a903e7ea8c27d34a99091597432ab2d32e21faf684",
+  "corruption_repetitions": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "corruption_seed": "sha256(f'gar_deployment_eval_v2/{rep}/{game_id}')[:8], decimal big-endian",
+  "created_utc": "2026-11-07T05:47:09.756526+00:00",
+  "exposure": {
+    "test": "Repeated GAR TEST exposure; descriptive paired check, not fresh confirmation.",
+    "valid": "Previously exposed GAR VALID; separate development diagnostic."
+  },
+  "fitting": false,
+  "frozen_plan_sha256": "6db8fbb39d608015acfb30efb89fe3191777a6293112aec9ec2c23b377dc6cc0",
+  "game_ids": {
+    "test": [
+      "3850",
+      "3851",
+      "3852",
+      "3853",
+      "3854",
+      "3855",
+      "3856",
+      "3857",
+      "3858",
+      "3859"
+    ],
+    "valid": [
+      "3841",
+      "3842",
+      "3843",
+      "3844",
+      "3845",
+      "3846",
+      "3847",
+      "3848",
+      "3849"
+    ]
+  },
+  "organizer_reference_access": false,
+  "package": {
+    "architecture": {
+      "D": "Exact predecessor decoded D mask",
+      "kind": "sn_dense_spell_frontier_ensemble",
+      "phase_order": "seeds_then_phases",
+      "recipe": {
+        "adopted_weight": 0.125,
+        "calibrated_weight": 0.375,
+        "ce_weight": 0.5,
+        "ha_cost": 3.0,
+        "pooling": "arithmetic"
+      },
+      "roles": [
+        "ce",
+        "adopted",
+        "calibrated",
+        "teacher_adopted",
+        "teacher_calibrated"
+      ],
+      "seeds": [
+        2026,
+        2027
+      ]
+    },
+    "manifest_path": "data/models/joint_gru_sn_dense_spell_frontier_ensemble_v1/baseline_manifest.json",
+    "manifest_sha256": "909a9c50f66ffd598ef40fc79b8cf7565e2c8f60d439facb770a8338d2166012",
+    "model_sha256": {
+      "adopted_2026.joblib": "3bdf7a1b974055be411fed6852039a0dfb1be3ec62fb1afedc1a1dc12c2803a4",
+      "adopted_2027.joblib": "9b83c9e3fbd441980fb612ad0b8c621965045959b33b5c40ffa6382ea3557f21",
+      "calibrated_2026.joblib": "8acb85d30659eefa9f5a0601afc8718a9a2a50f85bdbbc41801470639d183091",
+      "calibrated_2027.joblib": "f089ba25b281afd9d1c859f120a446d43a3150d112ac412176c7576ef633627d",
+      "ce_2026.joblib": "d9691336672b13191bf2ce47715fc904f3bc6c14b8477b2f6ff2425d9f78d9c2",
+      "ce_2027.joblib": "4592c10dc06c947077f6d8569833c6d229d3a5620350740edd26fada6d83b0fa",
+      "teacher_adopted_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "teacher_adopted_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13",
+      "teacher_calibrated_2026.joblib": "a9fae01230a71512520222aafcbbc903c79d8bf991eaee3167756e131d694ec6",
+      "teacher_calibrated_2027.joblib": "4373fc6b326660ab0cd27ea56c83d8fee8e982fcba66d4e3132fbd9150518c13"
+    },
+    "roles": [
+      "ce_2026",
+      "ce_2027",
+      "adopted_2026",
+      "adopted_2027",
+      "calibrated_2026",
+      "calibrated_2027",
+      "teacher_adopted_2026",
+      "teacher_adopted_2027",
+      "teacher_calibrated_2026",
+      "teacher_calibrated_2027"
+    ]
+  },
+  "parent_declaration_sha256": "35ec557c4b5ad65ed210d937d38ba868c82fdbf5c043b01820afa4dc8ec23905",
+  "parent_result_sha256": "29a33186115ff11fdef904e2b70ee760ba861ef58c078fda43ec59343c9026a3",
+  "prepared_record_manifests": {
+    "test": {
+      "path": "data/experiments/gar_deployment_eval_v2/records/test/manifest.json",
+      "sha256": "08f352f8684cb6132af49c3f41e5c5712d641b0df6f3682c37f3fe23f5619c62"
+    },
+    "valid": {
+      "path": "data/experiments/gar_deployment_eval_v2/records/valid/manifest.json",
+      "sha256": "28d8d8f19fbcfef9484194b1cd6017b1cab33e765237ad43b4a4905bf92f9c0d"
+    }
+  },
+  "prior_artifact_inventory_sha256": "0742dc76726d5b1ef98436bb307799928259bd0e32691c036588eb5b3e66dcf0",
+  "prior_control_reconstruction": {
+    "available_prior_evidence": "Frozen per-game score report plus verified 19-file prediction inventory; NPZ payloads were absent locally.",
+    "prediction_payload_available_locally": false,
+    "replay": "Reconstruct original_full phase_avg through the sealed adopted two-seed package on the same clean and four seeded views; require clean per-game and four-view mean per-game metrics to match the frozen report exactly.",
+    "saved_npz_hashes_are_inventory_only": true
+  },
+  "prior_game_artifacts": {
+    "test/3850": {
+      "clean": {
+        "d_f1": 0.5676827269747623,
+        "d_precision": 0.5234209731036567,
+        "d_recall": 0.6201217329036878,
+        "graded_frames": 111161.0,
+        "macro_f1": 0.7987606846183929,
+        "predicted_spell_count": 299.0,
+        "reference_spell_count": 348.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.3563218390804598,
+        "spell_f1": 0.7585780525502318
+      },
+      "inventory": {
+        "bytes": 468642,
+        "graded_frames": 111161,
+        "name": "test__3850.npz",
+        "native_frames": 122240,
+        "records": 239,
+        "sha256": "2b15ac2e3807cb76f2100c9efde1d4a48fe06fcab599e645e1c394ca7b633ba1"
+      },
+      "v2": {
+        "d_f1": 0.5797247622972329,
+        "d_precision": 0.5261142733231194,
+        "d_recall": 0.6456766917293233,
+        "graded_frames": 111161.0,
+        "macro_f1": 0.8023876903124065,
+        "predicted_spell_count": 301.25,
+        "reference_spell_count": 348.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.3448275862068966,
+        "spell_f1": 0.7568736226917299
+      }
+    },
+    "test/3851": {
+      "clean": {
+        "d_f1": 0.5847739201617952,
+        "d_precision": 0.5207993824513252,
+        "d_recall": 0.6666666666666666,
+        "graded_frames": 79189.0,
+        "macro_f1": 0.7408053372716689,
+        "predicted_spell_count": 321.0,
+        "reference_spell_count": 412.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2953020134228188,
+        "spell_f1": 0.618281036834925
+      },
+      "inventory": {
+        "bytes": 384402,
+        "graded_frames": 79189,
+        "name": "test__3851.npz",
+        "native_frames": 96414,
+        "records": 255,
+        "sha256": "d86fe8810955993ad784d172fff3f76436b5cb7aad8c685033ec86a4e0110627"
+      },
+      "v2": {
+        "d_f1": 0.5927635944445732,
+        "d_precision": 0.5182350243227815,
+        "d_recall": 0.6926054018445323,
+        "graded_frames": 79189.0,
+        "macro_f1": 0.7428674822005049,
+        "predicted_spell_count": 313.75,
+        "reference_spell_count": 412.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2969798657718121,
+        "spell_f1": 0.6173092529787239
+      }
+    },
+    "test/3852": {
+      "clean": {
+        "d_f1": 0.5157496850062998,
+        "d_precision": 0.4357185097575399,
+        "d_recall": 0.6317955753730063,
+        "graded_frames": 111798.0,
+        "macro_f1": 0.7676123443446191,
+        "predicted_spell_count": 365.0,
+        "reference_spell_count": 403.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.3333333333333333,
+        "spell_f1": 0.7067708333333333
+      },
+      "inventory": {
+        "bytes": 485010,
+        "graded_frames": 111798,
+        "name": "test__3852.npz",
+        "native_frames": 125330,
+        "records": 266,
+        "sha256": "ee0e30b0ba3093f7703a0b3d52a118b7f4449f34512009db2f376437af6cf75b"
+      },
+      "v2": {
+        "d_f1": 0.5408591053746507,
+        "d_precision": 0.4551873545833034,
+        "d_recall": 0.6663522551877894,
+        "graded_frames": 111798.0,
+        "macro_f1": 0.7761874806240936,
+        "predicted_spell_count": 364.75,
+        "reference_spell_count": 403.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.31756756756756754,
+        "spell_f1": 0.7042961160973642
+      }
+    },
+    "test/3853": {
+      "clean": {
+        "d_f1": 0.5510456553755523,
+        "d_precision": 0.47275851612251085,
+        "d_recall": 0.6604066647839594,
+        "graded_frames": 90281.0,
+        "macro_f1": 0.7608688495978552,
+        "predicted_spell_count": 293.0,
+        "reference_spell_count": 353.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.3068181818181818,
+        "spell_f1": 0.7046439628482972
+      },
+      "inventory": {
+        "bytes": 407184,
+        "graded_frames": 90281,
+        "name": "test__3853.npz",
+        "native_frames": 104283,
+        "records": 227,
+        "sha256": "a5740a2163835a5cac4ae1bd85e75177e1565d76e8a3c9225165ad571c068cbf"
+      },
+      "v2": {
+        "d_f1": 0.5561577854226177,
+        "d_precision": 0.471268681556449,
+        "d_recall": 0.6784100536571589,
+        "graded_frames": 90281.0,
+        "macro_f1": 0.7619690543547682,
+        "predicted_spell_count": 290.0,
+        "reference_spell_count": 353.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.3210227272727273,
+        "spell_f1": 0.7076397362143294
+      }
+    },
+    "test/3854": {
+      "clean": {
+        "d_f1": 0.5858620989479175,
+        "d_precision": 0.5082214511992759,
+        "d_recall": 0.6915024630541872,
+        "graded_frames": 114152.0,
+        "macro_f1": 0.7807859816344722,
+        "predicted_spell_count": 297.0,
+        "reference_spell_count": 354.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.19101123595505617,
+        "spell_f1": 0.7496159754224271
+      },
+      "inventory": {
+        "bytes": 476294,
+        "graded_frames": 114152,
+        "name": "test__3854.npz",
+        "native_frames": 124811,
+        "records": 228,
+        "sha256": "1ad9a9214b22f5e1a8293271ba8c5a100c3d4d19ad1806125dbc9e0156083fb8"
+      },
+      "v2": {
+        "d_f1": 0.5907784157130138,
+        "d_precision": 0.5174938837820787,
+        "d_recall": 0.6883723316912972,
+        "graded_frames": 114152.0,
+        "macro_f1": 0.7806583807390807,
+        "predicted_spell_count": 294.0,
+        "reference_spell_count": 354.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.17696629213483145,
+        "spell_f1": 0.74893867539532
+      }
+    },
+    "test/3855": {
+      "clean": {
+        "d_f1": 0.637862796833773,
+        "d_precision": 0.5488081725312145,
+        "d_recall": 0.7614173228346457,
+        "graded_frames": 102376.0,
+        "macro_f1": 0.8130056915310478,
+        "predicted_spell_count": 336.0,
+        "reference_spell_count": 394.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2719298245614035,
+        "spell_f1": 0.7358904109589042
+      },
+      "inventory": {
+        "bytes": 459192,
+        "graded_frames": 102376,
+        "name": "test__3855.npz",
+        "native_frames": 117370,
+        "records": 253,
+        "sha256": "61f9765d8b86f5c7cf97ca25b7c28f242dda47090f8d791d2e9769901ca5bec1"
+      },
+      "v2": {
+        "d_f1": 0.6325928979404063,
+        "d_precision": 0.5412128682017496,
+        "d_recall": 0.7611023622047244,
+        "graded_frames": 102376.0,
+        "macro_f1": 0.8106646920600913,
+        "predicted_spell_count": 328.5,
+        "reference_spell_count": 394.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2565789473684211,
+        "spell_f1": 0.7379881380246718
+      }
+    },
+    "test/3856": {
+      "clean": {
+        "d_f1": 0.5910918489896089,
+        "d_precision": 0.5188376569804748,
+        "d_recall": 0.6867265226886679,
+        "graded_frames": 87761.0,
+        "macro_f1": 0.7771685368237256,
+        "predicted_spell_count": 303.0,
+        "reference_spell_count": 373.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.25,
+        "spell_f1": 0.657396449704142
+      },
+      "inventory": {
+        "bytes": 409886,
+        "graded_frames": 87761,
+        "name": "test__3856.npz",
+        "native_frames": 104499,
+        "records": 234,
+        "sha256": "1baad7fa66012efc659c8f20481396bf9dd7bc305b023eb6f348168bfcbf72c6"
+      },
+      "v2": {
+        "d_f1": 0.6023429144920397,
+        "d_precision": 0.5236162277554781,
+        "d_recall": 0.7089602038340209,
+        "graded_frames": 87761.0,
+        "macro_f1": 0.78007916117144,
+        "predicted_spell_count": 302.25,
+        "reference_spell_count": 373.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.25,
+        "spell_f1": 0.6557544591719849
+      }
+    },
+    "test/3857": {
+      "clean": {
+        "d_f1": 0.6051517543230249,
+        "d_precision": 0.531912209889001,
+        "d_recall": 0.7017806623398236,
+        "graded_frames": 92475.0,
+        "macro_f1": 0.7831096281390034,
+        "predicted_spell_count": 298.0,
+        "reference_spell_count": 355.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.23711340206185566,
+        "spell_f1": 0.6713629402756508
+      },
+      "inventory": {
+        "bytes": 422648,
+        "graded_frames": 92475,
+        "name": "test__3857.npz",
+        "native_frames": 108035,
+        "records": 246,
+        "sha256": "4c913eed065d690b4a0b4174157f8bace2bcfd68b9e7a5c283931cce45262a01"
+      },
+      "v2": {
+        "d_f1": 0.6066478922790048,
+        "d_precision": 0.527915155487714,
+        "d_recall": 0.7130554168746879,
+        "graded_frames": 92475.0,
+        "macro_f1": 0.7841690255141911,
+        "predicted_spell_count": 295.75,
+        "reference_spell_count": 355.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.25,
+        "spell_f1": 0.6747505937335706
+      }
+    },
+    "test/3858": {
+      "clean": {
+        "d_f1": 0.6176294701590719,
+        "d_precision": 0.5313303837843399,
+        "d_recall": 0.737398257889476,
+        "graded_frames": 89778.0,
+        "macro_f1": 0.7983692057295521,
+        "predicted_spell_count": 316.0,
+        "reference_spell_count": 399.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2459016393442623,
+        "spell_f1": 0.711048951048951
+      },
+      "inventory": {
+        "bytes": 414042,
+        "graded_frames": 89778,
+        "name": "test__3858.npz",
+        "native_frames": 105149,
+        "records": 257,
+        "sha256": "571567f20654e46933fd533c8a2ceab4f0ad1d712f40c073173d0bf79862b33b"
+      },
+      "v2": {
+        "d_f1": 0.618803973205593,
+        "d_precision": 0.5276884209466806,
+        "d_recall": 0.7480008567756675,
+        "graded_frames": 89778.0,
+        "macro_f1": 0.7959688366221801,
+        "predicted_spell_count": 319.0,
+        "reference_spell_count": 399.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2459016393442623,
+        "spell_f1": 0.7026545025638676
+      }
+    },
+    "test/3859": {
+      "clean": {
+        "d_f1": 0.577892561983471,
+        "d_precision": 0.45240598463404774,
+        "d_recall": 0.7997140814867763,
+        "graded_frames": 89994.0,
+        "macro_f1": 0.7702411966473721,
+        "predicted_spell_count": 289.0,
+        "reference_spell_count": 349.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2289156626506024,
+        "spell_f1": 0.7028213166144202
+      },
+      "inventory": {
+        "bytes": 404784,
+        "graded_frames": 89994,
+        "name": "test__3859.npz",
+        "native_frames": 102978,
+        "records": 234,
+        "sha256": "304bbff49fa2b270f377013f8c5f371a7f6c802c0755b9257bb1244d693b4fa6"
+      },
+      "v2": {
+        "d_f1": 0.5778344604514665,
+        "d_precision": 0.4510155303213285,
+        "d_recall": 0.8040743388134381,
+        "graded_frames": 89994.0,
+        "macro_f1": 0.7700645460456308,
+        "predicted_spell_count": 288.25,
+        "reference_spell_count": 349.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.22289156626506024,
+        "spell_f1": 0.7066834071558654
+      }
+    },
+    "valid/3841": {
+      "clean": {
+        "d_f1": 0.5867523180413309,
+        "d_precision": 0.5063807531380753,
+        "d_recall": 0.6974499351678433,
+        "graded_frames": 90192.0,
+        "macro_f1": 0.7828916307196642,
+        "predicted_spell_count": 279.0,
+        "reference_spell_count": 335.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.24705882352941178,
+        "spell_f1": 0.704885993485342
+      },
+      "inventory": {
+        "bytes": 409537,
+        "graded_frames": 90192,
+        "name": "valid__3841.npz",
+        "native_frames": 104476,
+        "records": 244,
+        "sha256": "558bba71862d6f27de91e0a724431385cc3fb2a6ae35c88831ac80810ac161f1"
+      },
+      "v2": {
+        "d_f1": 0.5905304007941893,
+        "d_precision": 0.5055228833086123,
+        "d_recall": 0.710128223598905,
+        "graded_frames": 90192.0,
+        "macro_f1": 0.7836441049538334,
+        "predicted_spell_count": 278.75,
+        "reference_spell_count": 335.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2529411764705882,
+        "spell_f1": 0.7071505326824477
+      }
+    },
+    "valid/3842": {
+      "clean": {
+        "d_f1": 0.6075794621026895,
+        "d_precision": 0.5005493499359092,
+        "d_recall": 0.7728300819903874,
+        "graded_frames": 101849.0,
+        "macro_f1": 0.805597655857067,
+        "predicted_spell_count": 326.0,
+        "reference_spell_count": 382.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.3786407766990291,
+        "spell_f1": 0.7847457627118644
+      },
+      "inventory": {
+        "bytes": 447245,
+        "graded_frames": 101849,
+        "name": "valid__3842.npz",
+        "native_frames": 114335,
+        "records": 250,
+        "sha256": "5272e6aae808e6bab36d84849e4bd917d839cc39b6427ca916f5bedf5834d46e"
+      },
+      "v2": {
+        "d_f1": 0.605631336562671,
+        "d_precision": 0.49381596269762873,
+        "d_recall": 0.7830081990387334,
+        "graded_frames": 101849.0,
+        "macro_f1": 0.8042570706448795,
+        "predicted_spell_count": 329.75,
+        "reference_spell_count": 382.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.3907766990291262,
+        "spell_f1": 0.7768208735256958
+      }
+    },
+    "valid/3843": {
+      "clean": {
+        "d_f1": 0.585380290026635,
+        "d_precision": 0.5484541799528629,
+        "d_recall": 0.6276376328732349,
+        "graded_frames": 93762.0,
+        "macro_f1": 0.7844453277885517,
+        "predicted_spell_count": 308.0,
+        "reference_spell_count": 385.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.23,
+        "spell_f1": 0.7059163059163059
+      },
+      "inventory": {
+        "bytes": 415037,
+        "graded_frames": 93762,
+        "name": "valid__3843.npz",
+        "native_frames": 106680,
+        "records": 225,
+        "sha256": "013b8b6daee330e6d36e5411ce091fe588b1960265e65567595f633934e00e0b"
+      },
+      "v2": {
+        "d_f1": 0.5974838592342531,
+        "d_precision": 0.5456911763598127,
+        "d_recall": 0.660280818657782,
+        "graded_frames": 93762.0,
+        "macro_f1": 0.7866479512401228,
+        "predicted_spell_count": 305.0,
+        "reference_spell_count": 385.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.22749999999999998,
+        "spell_f1": 0.7061786105532409
+      }
+    },
+    "valid/3844": {
+      "clean": {
+        "d_f1": 0.6835819189667982,
+        "d_precision": 0.6024982371310568,
+        "d_recall": 0.7898837823560486,
+        "graded_frames": 77328.0,
+        "macro_f1": 0.7907592133307588,
+        "predicted_spell_count": 277.0,
+        "reference_spell_count": 380.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.23741007194244604,
+        "spell_f1": 0.6277016742770167
+      },
+      "inventory": {
+        "bytes": 369468,
+        "graded_frames": 77328,
+        "name": "valid__3844.npz",
+        "native_frames": 93006,
+        "records": 240,
+        "sha256": "9a69ee5ac4f6165c61e21faf3cd34e66ba7633a84d7a91c369a260fdd75063cd"
+      },
+      "v2": {
+        "d_f1": 0.6797418714973227,
+        "d_precision": 0.5939453404926381,
+        "d_recall": 0.7946381405176968,
+        "graded_frames": 77328.0,
+        "macro_f1": 0.7882650984357689,
+        "predicted_spell_count": 279.75,
+        "reference_spell_count": 380.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.23920863309352516,
+        "spell_f1": 0.6235681852438248
+      }
+    },
+    "valid/3845": {
+      "clean": {
+        "d_f1": 0.48636148007590135,
+        "d_precision": 0.3751028994786426,
+        "d_recall": 0.6914516944865958,
+        "graded_frames": 109933.0,
+        "macro_f1": 0.7543297096891446,
+        "predicted_spell_count": 310.0,
+        "reference_spell_count": 373.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.20952380952380953,
+        "spell_f1": 0.6904831625183017
+      },
+      "inventory": {
+        "bytes": 473208,
+        "graded_frames": 109933,
+        "name": "valid__3845.npz",
+        "native_frames": 123073,
+        "records": 255,
+        "sha256": "28b6494805b6b117ba8b5941f9b99ab4825985a55c3b87e4cc2cffc1155249a5"
+      },
+      "v2": {
+        "d_f1": 0.49578453123814825,
+        "d_precision": 0.3815132743043651,
+        "d_recall": 0.7078064407351206,
+        "graded_frames": 109933.0,
+        "macro_f1": 0.7576752306573901,
+        "predicted_spell_count": 309.0,
+        "reference_spell_count": 373.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.20952380952380953,
+        "spell_f1": 0.6885731301182698
+      }
+    },
+    "valid/3846": {
+      "clean": {
+        "d_f1": 0.6444765342960289,
+        "d_precision": 0.5936419260441607,
+        "d_recall": 0.7048325963360708,
+        "graded_frames": 89645.0,
+        "macro_f1": 0.8153325238742944,
+        "predicted_spell_count": 273.0,
+        "reference_spell_count": 323.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2619047619047619,
+        "spell_f1": 0.7046979865771812
+      },
+      "inventory": {
+        "bytes": 385864,
+        "graded_frames": 89645,
+        "name": "valid__3846.npz",
+        "native_frames": 99016,
+        "records": 198,
+        "sha256": "ab67131e8a52706b9e2dcb2423eee7e58beb85c0afe07a6c2e0f5bbb4444b51e"
+      },
+      "v2": {
+        "d_f1": 0.645980942948756,
+        "d_precision": 0.5851651124611158,
+        "d_recall": 0.7210202147820595,
+        "graded_frames": 89645.0,
+        "macro_f1": 0.8131397362403282,
+        "predicted_spell_count": 269.25,
+        "reference_spell_count": 323.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.2857142857142857,
+        "spell_f1": 0.7059621981668417
+      }
+    },
+    "valid/3847": {
+      "clean": {
+        "d_f1": 0.5490770210057289,
+        "d_precision": 0.45892743136837627,
+        "d_recall": 0.6833016476552598,
+        "graded_frames": 96179.0,
+        "macro_f1": 0.7747141246677652,
+        "predicted_spell_count": 328.0,
+        "reference_spell_count": 400.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.35344827586206895,
+        "spell_f1": 0.721978021978022
+      },
+      "inventory": {
+        "bytes": 440452,
+        "graded_frames": 96179,
+        "name": "valid__3847.npz",
+        "native_frames": 112717,
+        "records": 269,
+        "sha256": "09ab38d6616914936d1e5d39a1fec8aca60c7cfc2ce8ad07b4666d62798acf71"
+      },
+      "v2": {
+        "d_f1": 0.5695615112096876,
+        "d_precision": 0.471965791050474,
+        "d_recall": 0.7181162864385298,
+        "graded_frames": 96179.0,
+        "macro_f1": 0.7820503480251365,
+        "predicted_spell_count": 329.25,
+        "reference_spell_count": 400.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.36637931034482757,
+        "spell_f1": 0.7263909874509402
+      }
+    },
+    "valid/3848": {
+      "clean": {
+        "d_f1": 0.5975857171840129,
+        "d_precision": 0.4714308578745198,
+        "d_recall": 0.8159279778393351,
+        "graded_frames": 97108.0,
+        "macro_f1": 0.7719087352548222,
+        "predicted_spell_count": 320.0,
+        "reference_spell_count": 430.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.29285714285714287,
+        "spell_f1": 0.7061333333333333
+      },
+      "inventory": {
+        "bytes": 437064,
+        "graded_frames": 97108,
+        "name": "valid__3848.npz",
+        "native_frames": 111637,
+        "records": 252,
+        "sha256": "752f9c0913d2c338319d311818a9b616966fc0ad56ab7974c63cc774099ba805"
+      },
+      "v2": {
+        "d_f1": 0.5879834694700262,
+        "d_precision": 0.4644251533928109,
+        "d_recall": 0.801281163434903,
+        "graded_frames": 97108.0,
+        "macro_f1": 0.7640499369397492,
+        "predicted_spell_count": 319.75,
+        "reference_spell_count": 430.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.28035714285714286,
+        "spell_f1": 0.6906216164782585
+      }
+    },
+    "valid/3849": {
+      "clean": {
+        "d_f1": 0.5662262326780536,
+        "d_precision": 0.5156020737552578,
+        "d_recall": 0.6278737343656938,
+        "graded_frames": 95019.0,
+        "macro_f1": 0.7528965283899877,
+        "predicted_spell_count": 315.0,
+        "reference_spell_count": 393.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.17117117117117117,
+        "spell_f1": 0.6604519774011299
+      },
+      "inventory": {
+        "bytes": 438509,
+        "graded_frames": 95019,
+        "name": "valid__3849.npz",
+        "native_frames": 112058,
+        "records": 258,
+        "sha256": "a1105316a8b66ee50f0eb1f84d7e65dc373a2a48b62257219921b72661406100"
+      },
+      "v2": {
+        "d_f1": 0.573415851655731,
+        "d_precision": 0.5162652513529329,
+        "d_recall": 0.6449672424061942,
+        "graded_frames": 95019.0,
+        "macro_f1": 0.7562018004337345,
+        "predicted_spell_count": 318.0,
+        "reference_spell_count": 393.0,
+        "short_spell_recall_iou_0_5_lt3s": 0.16216216216216217,
+        "spell_f1": 0.6559886681224316
+      }
+    }
+  },
+  "prior_test_exposure": true,
+  "promotion": false,
+  "public_scoring": false,
+  "purpose": "Paired, frozen deployment check of the spell-frontier pooled blend on previously used GAR TEST/VALID data.",
+  "raw_files": [
+    {
+      "bytes": 1671596,
+      "path": "test/metadata.parquet",
+      "sha256": "d2c570bcc7cd508eaceab3bef72579b5882b825295ddcfb5e69ddc70df750359"
+    },
+    {
+      "bytes": 126530,
+      "path": "test/shard_manifest.parquet",
+      "sha256": "5b8b68b9c5232448f0235f423de1c6cfcfa5dc092cd7dad00e8ec449e7b93ebf"
+    },
+    {
+      "bytes": 1012981760,
+      "path": "test/shards/shard-000000.tar",
+      "sha256": "ba9ca8f305236dc2c20a732c399821ee16af11a5d19c4c68d426442ed5928e7d"
+    },
+    {
+      "bytes": 78366720,
+      "path": "test/shards/shard-000001.tar",
+      "sha256": "88e93a7b28141dcbfb3654e27d75e79af1a970478dcdf5694a4b577cf31e35fd"
+    },
+    {
+      "bytes": 1477794,
+      "path": "valid/metadata.parquet",
+      "sha256": "38fce1638a36772fce042b314acc83b800a42feb3cf3238b1494aaf7937a2627"
+    },
+    {
+      "bytes": 114529,
+      "path": "valid/shard_manifest.parquet",
+      "sha256": "d317e3d18da9b294239272ae9f5dcad039f22fa9c79e960343d92ce54106b634"
+    },
+    {
+      "bytes": 974571520,
+      "path": "valid/shards/shard-000000.tar",
+      "sha256": "7af4a91e66d1b0a51dab129df4e582c0c3e4930c31c095d1f570d992215b6c31"
+    }
+  ],
+  "runtime_inference_only": true,
+  "selection_or_tuning": false,
+  "source_sha256": {
+    "experiments/current_baseline.py": "2f8e5725d215fbe5f97bfa46d7544780d7755f1f0d208a02397afa7aac1d5867",
+    "experiments/feed_benchmark_audit_v1.py": "bc77799b99f864bb6301c0cc1ce25c1298fee501a188d44285a7db12ef4d8c38",
+    "experiments/feed_like_v2.py": "786e10bb23478a9d6e454b48940d9467a1d1f36c7f282508663c7bf36a36ec04",
+    "experiments/gar_deployment_eval_v2.py": "33b8fc765c6a0cc438c21127e5780a3fd2064f616289eb3706b7da8c9f9de345",
+    "experiments/gar_heldout_eval_v1.py": "331cd117807b33afea1930b21a217cb65fb11bad274fd0459fa6f480cd32e4bf",
+    "experiments/results/gar_deployment_eval_v2.json": "29a33186115ff11fdef904e2b70ee760ba861ef58c078fda43ec59343c9026a3",
+    "experiments/results/gar_deployment_eval_v2_declaration.json": "35ec557c4b5ad65ed210d937d38ba868c82fdbf5c043b01820afa4dc8ec23905",
+    "experiments/results/gar_deployment_eval_v2_verification.json": "eca2aa5f72c28bb8020945654bd704011f882e23fa717854b96c34cb015de977",
+    "experiments/results/gar_heldout_eval_v1_download_receipt.json": "1d97ea5174a9d6049fdc69a72b6b1c661a84848264f01b317ab64e24a977bcf3",
+    "experiments/results/spell_frontier_gar_v1_aborted_predeclaration.json": "1933013e63941870890a93260866c7aec47b51515155f4de9aa540bdf6d63a8e",
+    "experiments/results/spell_frontier_gar_v1_plan.json": "6db8fbb39d608015acfb30efb89fe3191777a6293112aec9ec2c23b377dc6cc0",
+    "experiments/soccernet_dense_labels.py": "7076e684f64e2beff4ead1c283420cccf81b01dae4eb254ab7364a6862727061",
+    "experiments/spell_frontier_baseline.py": "c42d74154b48714836f704dfa623fe38c164a6e7c10de6aaa80e17edcd5c8610",
+    "experiments/spell_frontier_gar.py": "f7b5ef7dfdf0b3f7c5c182bf0958d3cfcf424c18d91d05624b9902ed3c0fc3a7",
+    "experiments/tests/test_spell_frontier_gar.py": "b2102c5a1042ec1d0e400b97ee921a4f81a3cac84a4cc292b361959252db6cb6",
+    "experiments/v2_iterative_runtime.py": "199b9cc1f196883ff767121c6a96390234fb9ac30adb79dcea1756caac7c3d5b"
+  },
+  "splits": {
+    "test": {
+      "games": 10
+    },
+    "valid": {
+      "games": 9
+    }
+  },
+  "study": "spell_frontier_gar_v1",
+  "views": [
+    "clean",
+    "v2_1",
+    "v2_2",
+    "v2_3",
+    "v2_4"
+  ]
+}
