@@ -11,6 +11,11 @@ at public PR #91, commit `9a4e7f0f2e5c347b679322a9483a44b5db3490a1`.
 The new study is `ball_exit_crossing_v1`; the pending delivery is
 `ball_exit_promotion_v1`.
 
+After the user requested complementary improvements instead, the separate
+[turnover composition study](BALL_EXIT_COMPLEMENT.md) retained a small research
+gain to .598780 v2. It does not change the unchanged-Fable promotion target or
+resolve the missing pooled weights.
+
 ## Matched development result
 
 | Rule | Clean spell | V1 spell | V2 spell | V2 short-spell recall | Decision |
@@ -122,10 +127,13 @@ possessions. No conclusion about regression is available yet.
 
 ## Delivery checks and site update
 
-The 21 focused ball-exit tests pass, covering Fable parity, observation masks,
+The 28 focused ball-exit tests pass, covering Fable parity, observation masks,
 time breaks, target independence, geometric crossing, missing-weight failure,
-source/seal checks and exclusive scoring gates. Full-suite results and the PR
-are recorded in the final delivery receipt after completion.
+source/seal checks, exclusive scoring gates and complementary H/A composition.
+The final full suite has 958 tests: 952 pass, one skips, and five inherited
+public-contract tests require absent historical local-only seal/CSV fixtures.
+The 26 root tests, documentation check, file-backed fit contract and bundled
+submission format check pass.
 
 The research site was readable at version 37 with its custom restricted
 audience. The packaged Sites source helper is absent from this environment.
@@ -134,8 +142,10 @@ scoped credential, including after the repository's explicit delivery instructio
 was cited: it required direct authorization for the separate private site.
 No site source was accessed or edited, and the audience is unchanged.
 
-The pending site update is this report's result table and interpretation on
+The pending site update is this report's and the [complement report's](BALL_EXIT_COMPLEMENT.md)
+result tables and interpretation on
 Experiments, plus a Progress note: “Fable's .598690 v2 result reproduced; two
 crossing-time extensions did not improve it. Promotion and GAR/public regression
-checks await the exact pooled CE weights.” It must not mark the model adopted
+checks await the exact pooled CE weights. A separate complementary H/A composition
+adds a small eligible .000090 v2 development gain; it is not deployed.” It must not mark the model adopted
 or display unmeasured GAR/public gains. Publication remains blocked on approval.

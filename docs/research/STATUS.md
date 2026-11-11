@@ -1,5 +1,18 @@
 # Current research state
 
+## Complementary live-team improvement — 11 November 2026
+
+[The complementary comparison](../../experiments/BALL_EXIT_COMPLEMENT.md)
+retains a small development candidate: apply the existing .75 hard-turnover /
+.25 fresh-continuation H/A blend only on live intervals whose boundaries snap
+leaves unchanged. Clean/v1/v2 spell becomes **.681677/.534829/.598780**;
+v2 gain over Fable is **+.000090**. All declared retention checks pass, with the
+small v2 mean gain concentrated in SkillCorner. Direct composition reaches a
+higher .599644 but fails clean/short-recall checks. Both rounds are independently
+verified; neither is a pooled deployment or GAR/public evaluation. Retain this
+as research evidence and stop the bounded composition search. The unchanged
+Fable promotion remains blocked as described below.
+
 ## Ball-exit follow-up and requested promotion — 11 November 2026
 
 [The ball-exit follow-up](../../experiments/BALL_EXIT_PROMOTION.md) independently
