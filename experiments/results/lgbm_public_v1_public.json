@@ -1,0 +1,146 @@
+{
+  "adopted": false,
+  "candidate": {
+    "auxiliary_70_30": 0.6647585426010947,
+    "bootstrap_draws": 1000,
+    "d_f1": 0.9247159090909091,
+    "d_precision": 0.9665924276169265,
+    "d_recall": 0.8863172226004085,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "headline_iou": 0.5,
+    "macro_f1": 0.8865688793773865,
+    "macro_f1_bootstrap_5_95": [
+      0.790827611469155,
+      0.9147239718912926
+    ],
+    "predicted_spells": 16,
+    "primary_metric": "spell_f1_mean",
+    "spell_by_iou": {
+      "0.3": {
+        "f1": 0.7272727272727272,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 4,
+        "precision": 0.75,
+        "recall": 0.7058823529411765
+      },
+      "0.4": {
+        "f1": 0.6666666666666667,
+        "n_matched": 11,
+        "n_missed": 6,
+        "n_spurious": 5,
+        "precision": 0.6875,
+        "recall": 0.6470588235294118
+      },
+      "0.5": {
+        "f1": 0.6666666666666667,
+        "n_matched": 11,
+        "n_missed": 6,
+        "n_spurious": 5,
+        "precision": 0.6875,
+        "recall": 0.6470588235294118
+      },
+      "0.6": {
+        "f1": 0.42424242424242425,
+        "n_matched": 7,
+        "n_missed": 10,
+        "n_spurious": 9,
+        "precision": 0.4375,
+        "recall": 0.4117647058823529
+      },
+      "0.7": {
+        "f1": 0.3636363636363636,
+        "n_matched": 6,
+        "n_missed": 11,
+        "n_spurious": 10,
+        "precision": 0.375,
+        "recall": 0.35294117647058826
+      }
+    },
+    "spell_f1_at_headline": 0.6666666666666667,
+    "spell_f1_bootstrap_5_95": [
+      0.4121212121212121,
+      0.7272727272727273
+    ],
+    "spell_f1_mean": 0.5696969696969697
+  },
+  "delta": {
+    "d_f1": 0.03534362817108294,
+    "macro_f1": 0.02233445266350953,
+    "spell_f1_mean": -0.053832442067736186
+  },
+  "gate_sha256": "3754587e98f451c7b830b0b065e7c48b70ec66118c18bdee20e8bc1abcfacf7f",
+  "interpretation": "Requested diagnostic on 17 exposed possessions; no significance or full-match claim",
+  "reference_sha256": "e596a9af9626c623bb94be6fd350e12ee9a75c76a696cfadca3bc01735e92487",
+  "saved_baseline": {
+    "auxiliary_70_30": 0.6957409162494572,
+    "bootstrap_draws": 1000,
+    "d_f1": 0.8893722809198261,
+    "d_precision": 0.8181818181818182,
+    "d_recall": 0.9741320626276379,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "headline_iou": 0.5,
+    "macro_f1": 0.864234426713877,
+    "macro_f1_bootstrap_5_95": [
+      0.7196030610960874,
+      0.9006513455684882
+    ],
+    "predicted_spells": 17,
+    "primary_metric": "spell_f1_mean",
+    "spell_by_iou": {
+      "0.3": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.4": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.5": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.6": {
+        "f1": 0.5882352941176471,
+        "n_matched": 10,
+        "n_missed": 7,
+        "n_spurious": 7,
+        "precision": 0.5882352941176471,
+        "recall": 0.5882352941176471
+      },
+      "0.7": {
+        "f1": 0.4117647058823529,
+        "n_matched": 7,
+        "n_missed": 10,
+        "n_spurious": 10,
+        "precision": 0.4117647058823529,
+        "recall": 0.4117647058823529
+      }
+    },
+    "spell_f1_at_headline": 0.7058823529411765,
+    "spell_f1_bootstrap_5_95": [
+      0.4588235294117647,
+      0.7764705882352941
+    ],
+    "spell_f1_mean": 0.6235294117647059
+  },
+  "seal_sha256": "28ca50256089ee417b7c9140fc75c2c2e4132946429a8bdc5669ae7a3980c75b",
+  "selection_or_tuning": false,
+  "study": "lgbm_public_v1"
+}

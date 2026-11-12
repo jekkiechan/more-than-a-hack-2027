@@ -1,5 +1,26 @@
 # Current research state
 
+## Pooled LightGBM public diagnostic — 12 November 2026
+
+The [user-requested public check](../../experiments/LGBM_PUBLIC_V1.md) is complete.
+One fixed pooled, block-safe adaptation of `R2_full_w0.5` was fitted on 532,637
+rows from the 35 exposed development cells. Baseline full-CSV replay is exact;
+source/model/input/prediction seals precede the exclusive public gate. Public
+spell changes **.623529 → .569697**, macro **.864234 → .886569**, and D-F1
+**.889372 → .924716**. D precision improves but recall falls; predicted
+possessions are 16 versus 17 references. The same 17-possession window is a
+diagnostic only. No tuning, repeat scoring or promotion follows.
+
+Keep reconstructed Fable adopted. The original development gain justifies a
+label-independent missingness stress test, recommended by the parallel Luna
+reviews; v1 error localization is the second proposed experiment. Neither was
+run during the public-first task. This pooled adaptation has no matched
+development/GAR evaluation, and its upstream training/deployment probabilities
+differ in fold scope. The original v1 macro guard remains failed.
+
+Current-main correction: PR #92 and PR #93 are merged as of this review
+(`81d013e`); historical sections below preserve their earlier branch statuses.
+
 ## V2 target push — 12 November 2026
 
 [The v2 target push study](../../experiments/V2_TARGET_PUSH_V1.md) scores 37
