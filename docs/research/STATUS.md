@@ -18,6 +18,10 @@ run during the public-first task. This pooled adaptation has no matched
 development/GAR evaluation, and its upstream training/deployment probabilities
 differ in fold scope. The original v1 macro guard remains failed.
 
+Delivery: [PR #94](https://github.com/jekkiechan/more-than-a-hack-2027/pull/94),
+private 369-member archive verified from a fresh isolated remote restore, and
+research site version 44 published with unchanged restricted audience.
+
 Current-main correction: PR #92 and PR #93 are merged as of this review
 (`81d013e`); historical sections below preserve their earlier branch statuses.
 
