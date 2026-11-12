@@ -112,3 +112,18 @@ only those broken setup links were removed. Final validation: **987 experiment
 tests, 986 pass and one skip; all 26 root tests pass**, exact file-backed fit
 parity, submission format and documentation checks pass. See the
 [verification receipt](results/lgbm_public_v1_verification.json).
+
+
+## Delivery
+
+[PR #94](https://github.com/jekkiechan/more-than-a-hack-2027/pull/94) publishes
+the implementation and aggregate evidence. The
+[private delivery receipt](results/lgbm_public_v1_private_delivery.json) records
+a fresh isolated remote restore of all 369 archive members (45.7 MB archive)
+on private branch `research/lgbm-public-v1`; private main is unchanged.
+
+The [research progress site](https://more-than-a-hack-progress.tanapat-ratana.chatgpt.site)
+is published as version 44 with its restricted audience unchanged. Overview,
+timeline and Research journal distinguish this diagnostic from adopted Fable
+and the original development study. Desktop/mobile layout, anchor navigation
+and study search pass. [Publication receipt](results/lgbm_public_v1_site_publication.json).
