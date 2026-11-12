@@ -1,0 +1,69 @@
+{
+ "family": "D_round2",
+ "declared_utc": "2026-11-12T05:12:08.932512+00:00",
+ "control": "snap_m0.0",
+ "control_spell": {
+  "clean": 0.6815078591350278,
+  "feed_like_v1": 0.5347305641499814,
+  "feed_like_v2": 0.5986897355231381
+ },
+ "training_rows": "LOPO; clean + feed_like_v1 (2) + feed_like_v2 (4) cells of the two training providers, every 5th frame, seed 2026",
+ "lightgbm_params": {
+  "n_estimators": 300,
+  "learning_rate": 0.05,
+  "num_leaves": 31,
+  "min_child_samples": 200,
+  "subsample": 0.8,
+  "subsample_freq": 1,
+  "colsample_bytree": 0.8,
+  "reg_lambda": 1.0,
+  "random_state": 2026,
+  "n_jobs": 4,
+  "verbose": -1
+ },
+ "feature_sets": {
+  "full": "round-1 features",
+  "nomiss": "full minus ball_observed, since/until observed, beyond_next; ball speed and beyond-last forward-filled within block (back-filled at block start, 0 if never observed)",
+  "nospeed": "full minus ball_speed",
+  "nomiss_nospeed": "nomiss minus ball speed (ball only via ffilled signed distance beyond boundary)",
+  "noball": "no ball_* features"
+ },
+ "arms": {
+  "R2_full_w1.0": {
+   "featureset": "full",
+   "w_refined": 1.0,
+   "pipeline": "f062 decode of blended P(D) -> snap_m0.0 -> frontier H/A decode"
+  },
+  "R2_full_w0.5": {
+   "featureset": "full",
+   "w_refined": 0.5,
+   "pipeline": "f062 decode of blended P(D) -> snap_m0.0 -> frontier H/A decode"
+  },
+  "R2_full_w0.25": {
+   "featureset": "full",
+   "w_refined": 0.25,
+   "pipeline": "f062 decode of blended P(D) -> snap_m0.0 -> frontier H/A decode"
+  },
+  "R2_nomiss_w0.5": {
+   "featureset": "nomiss",
+   "w_refined": 0.5,
+   "pipeline": "f062 decode of blended P(D) -> snap_m0.0 -> frontier H/A decode"
+  },
+  "R2_nospeed_w0.5": {
+   "featureset": "nospeed",
+   "w_refined": 0.5,
+   "pipeline": "f062 decode of blended P(D) -> snap_m0.0 -> frontier H/A decode"
+  },
+  "R2_nomiss_nospeed_w0.5": {
+   "featureset": "nomiss_nospeed",
+   "w_refined": 0.5,
+   "pipeline": "f062 decode of blended P(D) -> snap_m0.0 -> frontier H/A decode"
+  },
+  "R2_noball_w0.5": {
+   "featureset": "noball",
+   "w_refined": 0.5,
+   "pipeline": "f062 decode of blended P(D) -> snap_m0.0 -> frontier H/A decode"
+  }
+ },
+ "predictions_kept_for": "all eligible arms plus R2_full_w0.5 and R2_nomiss_w0.5"
+}

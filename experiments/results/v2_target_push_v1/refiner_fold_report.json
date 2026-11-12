@@ -1,0 +1,125 @@
+{
+ "Metrica": {
+  "n_train_rows": 237755,
+  "train_D_frac": 0.37044436499758154,
+  "importance_gain_frac_top12": {
+   "ball_speed": 0.5520587085341809,
+   "predecessor_pD_shift-0.4s": 0.08486670821317768,
+   "predecessor_pD_mean3s": 0.05994075630837073,
+   "predecessor_pD_shift-1.0s": 0.039229453596798004,
+   "calibrated_pD_mean3s": 0.03574640156733515,
+   "player_spread": 0.03357244750299498,
+   "ball_beyond_last_obs": 0.031808079271557536,
+   "ball_beyond_next_obs": 0.023786067355006803,
+   "ball_since_obs_s": 0.015806642015532908,
+   "ball_until_obs_s": 0.012606874112238774,
+   "calibrated_pD_shift-0.4s": 0.012301718819604582,
+   "player_speed_mean_d2s": 0.010285104113700304
+  },
+  "heldout": {
+   "clean": {
+    "n": 142698,
+    "auc_refined": 0.9982090986500702,
+    "auc_predecessor": 0.9747444066478154,
+    "logloss_refined": 0.07281451874328243,
+    "logloss_predecessor": 0.18047165230862083
+   },
+   "feed_like_v1": {
+    "n": 285396,
+    "auc_refined": 0.9839725754612697,
+    "auc_predecessor": 0.9743346502229495,
+    "logloss_refined": 0.17352013572939146,
+    "logloss_predecessor": 0.18288120942962735
+   },
+   "feed_like_v2": {
+    "n": 570792,
+    "auc_refined": 0.9952193011124069,
+    "auc_predecessor": 0.9701958382256645,
+    "logloss_refined": 0.08766692497044597,
+    "logloss_predecessor": 0.2009944518548286
+   }
+  }
+ },
+ "SkillCorner": {
+  "n_train_rows": 285240,
+  "train_D_frac": 0.3900750245407376,
+  "importance_gain_frac_top12": {
+   "ball_speed": 0.6681881087356867,
+   "predecessor_pD_mean3s": 0.07633833217680223,
+   "predecessor_pD_mean1s": 0.055708531222385886,
+   "predecessor_pD_shift-0.4s": 0.03307255702584575,
+   "ball_beyond_last_obs": 0.0314095362278609,
+   "ball_beyond_next_obs": 0.027041515316108652,
+   "ball_until_obs_s": 0.020969459931258053,
+   "ball_since_obs_s": 0.016076968992167744,
+   "predecessor_pD": 0.014756249754796625,
+   "player_spread": 0.008330094209242222,
+   "player_speed_p90": 0.004605813911140622,
+   "calibrated_pD_shift-4.0s": 0.004310074588986891
+  },
+  "heldout": {
+   "clean": {
+    "n": 95223,
+    "auc_refined": 0.9264085204294304,
+    "auc_predecessor": 0.9273200106310806,
+    "logloss_refined": 0.7244397631991344,
+    "logloss_predecessor": 0.2929144636119096
+   },
+   "feed_like_v1": {
+    "n": 190446,
+    "auc_refined": 0.8413634499260474,
+    "auc_predecessor": 0.9254609020718337,
+    "logloss_refined": 0.6169479628127209,
+    "logloss_predecessor": 0.2960631879629121
+   },
+   "feed_like_v2": {
+    "n": 380892,
+    "auc_refined": 0.950130203551897,
+    "auc_predecessor": 0.9257695721732352,
+    "logloss_refined": 0.47117915921137243,
+    "logloss_predecessor": 0.2981838807289348
+   }
+  }
+ },
+ "Sportec": {
+  "n_train_rows": 237915,
+  "train_D_frac": 0.28085660845259863,
+  "importance_gain_frac_top12": {
+   "ball_speed": 0.5444855598985735,
+   "ball_until_obs_s": 0.08939076668507608,
+   "predecessor_pD_mean3s": 0.07465613509196398,
+   "player_spread": 0.05135975775865419,
+   "ball_since_obs_s": 0.03619060865206156,
+   "predecessor_pD_shift+0.4s": 0.02714379059288019,
+   "calibrated_pD_mean3s": 0.025248348196167978,
+   "predecessor_pD_mean1s": 0.018709002220755108,
+   "ball_beyond_last_obs": 0.01855139112589803,
+   "ball_beyond_next_obs": 0.015249919871054892,
+   "player_speed_mean_d2s": 0.009576002866272046,
+   "predecessor_pD_shift+1.0s": 0.009129384882945383
+  },
+  "heldout": {
+   "clean": {
+    "n": 142536,
+    "auc_refined": 0.994938963453815,
+    "auc_predecessor": 0.9714968199610304,
+    "logloss_refined": 0.13064284316273053,
+    "logloss_predecessor": 0.2380105767292957
+   },
+   "feed_like_v1": {
+    "n": 285072,
+    "auc_refined": 0.9130456094716061,
+    "auc_predecessor": 0.9702792180765629,
+    "logloss_refined": 0.4363865688354619,
+    "logloss_predecessor": 0.24493642018170778
+   },
+   "feed_like_v2": {
+    "n": 570144,
+    "auc_refined": 0.9836074807613258,
+    "auc_predecessor": 0.9647013478511106,
+    "logloss_refined": 0.17272114846945702,
+    "logloss_predecessor": 0.2702654211427447
+   }
+  }
+ }
+}

@@ -1,0 +1,202 @@
+{
+ "declaration": "declaration_D.json",
+ "arms": [
+  {
+   "arm": "D1_refined",
+   "family": "D",
+   "spec": {
+    "pD": "d1"
+   },
+   "spell": {
+    "clean": 0.7014493863208764,
+    "feed_like_v1": 0.5056305771160101,
+    "feed_like_v2": 0.615810203884611
+   },
+   "macro": {
+    "clean": 0.8859350999758097,
+    "feed_like_v1": 0.762242462231853,
+    "feed_like_v2": 0.8720249559139132
+   },
+   "d_f1": {
+    "clean": 0.8804242290378032,
+    "feed_like_v1": 0.7596412817972151,
+    "feed_like_v2": 0.8943858958281182
+   },
+   "short": {
+    "clean": 0.5123692215455765,
+    "feed_like_v1": 0.25456323431433964,
+    "feed_like_v2": 0.34452526504843517
+   },
+   "delta_spell_vs_snap": {
+    "clean": 0.01994152718584863,
+    "feed_like_v1": -0.02909998703397132,
+    "feed_like_v2": 0.017120468361472962
+   },
+   "delta_macro_vs_snap": {
+    "clean": 0.00973119186363991,
+    "feed_like_v1": -0.06506723483611665,
+    "feed_like_v2": 0.017109888808851448
+   },
+   "delta_dF1_vs_snap": {
+    "clean": 0.0048664540679946855,
+    "feed_like_v1": -0.10157883073821061,
+    "feed_like_v2": 0.024616248892352144
+   },
+   "delta_short_vs_snap": {
+    "clean": 0.06013603956947661,
+    "feed_like_v1": 0.024201926317531403,
+    "feed_like_v2": 0.03698180507579557
+   },
+   "v2_spell_by_provider": {
+    "Sportec": 0.6168835990148749,
+    "Metrica": 0.7562008981137254,
+    "SkillCorner": 0.47434611452523284
+   },
+   "v2_spell_delta_by_provider": {
+    "Metrica": 0.04152188641709498,
+    "SkillCorner": -0.004396739116140913,
+    "Sportec": 0.014236257783464934
+   },
+   "failed_retention_checks": [
+    "feed_like_v1/spell_f1",
+    "feed_like_v1/macro_f1",
+    "clean/macro_f1/SkillCorner",
+    "clean/d_f1/SkillCorner"
+   ],
+   "retained": false,
+   "meets_0_60": true,
+   "eligible_and_meets_0_60": false
+  },
+  {
+   "arm": "D2_half_refined",
+   "family": "D",
+   "spec": {
+    "pD": "d2"
+   },
+   "spell": {
+    "clean": 0.6941493134633165,
+    "feed_like_v1": 0.5251750727235417,
+    "feed_like_v2": 0.6162375116328899
+   },
+   "macro": {
+    "clean": 0.8908810648210671,
+    "feed_like_v1": 0.793709736994583,
+    "feed_like_v2": 0.872345924476452
+   },
+   "d_f1": {
+    "clean": 0.8981445274857744,
+    "feed_like_v1": 0.8056659639308398,
+    "feed_like_v2": 0.8972758500269026
+   },
+   "short": {
+    "clean": 0.4687731053704527,
+    "feed_like_v1": 0.2341272786974441,
+    "feed_like_v2": 0.32195378622675164
+   },
+   "delta_spell_vs_snap": {
+    "clean": 0.012641454328288781,
+    "feed_like_v1": -0.009555491426439744,
+    "feed_like_v2": 0.017547776109751778
+   },
+   "delta_macro_vs_snap": {
+    "clean": 0.014677156708897354,
+    "feed_like_v1": -0.033599960073386614,
+    "feed_like_v2": 0.017430857371390274
+   },
+   "delta_dF1_vs_snap": {
+    "clean": 0.02258675251596598,
+    "feed_like_v1": -0.05555414860458596,
+    "feed_like_v2": 0.027506203091136494
+   },
+   "delta_short_vs_snap": {
+    "clean": 0.016539923394352785,
+    "feed_like_v1": 0.0037659707006358623,
+    "feed_like_v2": 0.014410326254112038
+   },
+   "v2_spell_by_provider": {
+    "Sportec": 0.6213861438699905,
+    "Metrica": 0.7440398049066383,
+    "SkillCorner": 0.4832865861220408
+   },
+   "v2_spell_delta_by_provider": {
+    "Metrica": 0.02936079321000795,
+    "SkillCorner": 0.004543732480667029,
+    "Sportec": 0.01873880263858052
+   },
+   "failed_retention_checks": [
+    "feed_like_v1/spell_f1",
+    "feed_like_v1/macro_f1"
+   ],
+   "retained": false,
+   "meets_0_60": true,
+   "eligible_and_meets_0_60": false
+  },
+  {
+   "arm": "D3_refined_nosnap",
+   "family": "D",
+   "spec": {
+    "pD": "d1",
+    "snap": false
+   },
+   "spell": {
+    "clean": 0.7003477239678354,
+    "feed_like_v1": 0.5048504750694027,
+    "feed_like_v2": 0.6148230913672178
+   },
+   "macro": {
+    "clean": 0.8815111203407616,
+    "feed_like_v1": 0.7600497429762504,
+    "feed_like_v2": 0.8695940015982716
+   },
+   "d_f1": {
+    "clean": 0.870856389879871,
+    "feed_like_v1": 0.755281697442341,
+    "feed_like_v2": 0.8895074682159493
+   },
+   "short": {
+    "clean": 0.5130860674237128,
+    "feed_like_v1": 0.2548044268741829,
+    "feed_like_v2": 0.34241793396943226
+   },
+   "delta_spell_vs_snap": {
+    "clean": 0.01883986483280764,
+    "feed_like_v1": -0.02988008908057871,
+    "feed_like_v2": 0.01613335584407971
+   },
+   "delta_macro_vs_snap": {
+    "clean": 0.005307212228591873,
+    "feed_like_v1": -0.06725995409171925,
+    "feed_like_v2": 0.014678934493209894
+   },
+   "delta_dF1_vs_snap": {
+    "clean": -0.004701385089937449,
+    "feed_like_v1": -0.10593841509308477,
+    "feed_like_v2": 0.0197378212801832
+   },
+   "delta_short_vs_snap": {
+    "clean": 0.06085288544761286,
+    "feed_like_v1": 0.024443118877374687,
+    "feed_like_v2": 0.034874473996792665
+   },
+   "v2_spell_by_provider": {
+    "Sportec": 0.6140040326354554,
+    "Metrica": 0.7567780928395664,
+    "SkillCorner": 0.4736871486266314
+   },
+   "v2_spell_delta_by_provider": {
+    "Metrica": 0.042099081142936035,
+    "SkillCorner": -0.00505570501474234,
+    "Sportec": 0.011356691404045494
+   },
+   "failed_retention_checks": [
+    "feed_like_v1/spell_f1",
+    "feed_like_v1/macro_f1",
+    "clean/macro_f1/SkillCorner",
+    "clean/d_f1/SkillCorner"
+   ],
+   "retained": false,
+   "meets_0_60": true,
+   "eligible_and_meets_0_60": false
+  }
+ ]
+}
