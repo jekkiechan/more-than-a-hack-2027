@@ -1,5 +1,27 @@
 # Current research state
 
+## LightGBM spell retention — 12 November 2026
+
+The [bounded development follow-up](../../experiments/LGBM_SPELL_RETENTION_V1.md)
+completes 18 provider-held-out refiner fits and six fixed strategies. Conservative
+D-end updates improve spell and D-F1 in clean/v1/v2: v2 spell **.598690 → .600820**,
+D-F1 **.869770 → .875536**. This retains only 21.95% of the unrestricted refiner’s
+v2 D gain; historical-v1 short recall falls .001576. The two-ended adapter also
+fails only v1 short recall. Full/equal-view refiners retain v1 macro/D failures;
+missingness ablation loses clean/v2 short recall. Every ensemble is ineligible.
+
+Keep reconstructed Fable adopted. No public/GAR scoring or pooled deployment fit
+occurs in this follow-up; public spell retention remains unestablished. The five
+matches are exposed development data with non-nested upstream features. All 630
+saved candidate rows and control aggregates pass independent replay. All 1,000
+experiment tests pass apart from one skip, plus 26 root tests and file-backed
+parity. Next localize short spells harmed by D-end movements and test missingness
+transfer with fixed label-independent masks before another bounded correction.
+
+Delivery: the 646-member private archive passes a fresh isolated remote restore.
+The [site publication receipt](../../experiments/results/lgbm_spell_retention_v1_site_publication.json)
+records version 45 with unchanged restricted audience and passing desktop/mobile checks.
+
 ## Pooled LightGBM public diagnostic — 12 November 2026
 
 The [user-requested public check](../../experiments/LGBM_PUBLIC_V1.md) is complete.
