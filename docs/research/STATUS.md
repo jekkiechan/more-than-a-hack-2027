@@ -18,6 +18,10 @@ experiment tests pass apart from one skip, plus 26 root tests and file-backed
 parity. Next localize short spells harmed by D-end movements and test missingness
 transfer with fixed label-independent masks before another bounded correction.
 
+Delivery: the 646-member private archive passes a fresh isolated remote restore.
+The [site publication receipt](../../experiments/results/lgbm_spell_retention_v1_site_publication.json)
+records version 45 with unchanged restricted audience and passing desktop/mobile checks.
+
 ## Pooled LightGBM public diagnostic — 12 November 2026
 
 The [user-requested public check](../../experiments/LGBM_PUBLIC_V1.md) is complete.
