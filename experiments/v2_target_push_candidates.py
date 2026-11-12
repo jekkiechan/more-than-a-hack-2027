@@ -50,6 +50,8 @@ def geom(cell):
 def build(cell, spec):
     """spec keys: dt, cost, pD in {pred, avg, cal, d1, d2}, snap (bool), ha_cost, c=(r, lam)."""
     dt, cost, src = spec.get("dt", 4), spec.get("cost", 3), spec.get("pD", "pred")
+    if spec.get("r2"):
+        src = "r2"
     default = (dt, cost, src) == (4, 3, "pred") and not spec.get("assert_control")
     if default:
         base = cell.base_dead
@@ -58,7 +60,11 @@ def build(cell, spec):
         if src == "pred":
             P = cell.pooled["predecessor"]
         else:
-            pD = {"avg": 0.5 * (pred_pD + cal_pD), "cal": cal_pD, "d1": None, "d2": None}[src]
+            pD = {"avg": 0.5 * (pred_pD + cal_pD), "cal": cal_pD, "d1": None, "d2": None, "r2": None}[src]
+            if src == "r2":
+                fs, w = spec["r2"]
+                ref = np.load(OUT / "refinedD2" / fs / f"{cell.key}.npy").astype(np.float64)
+                pD = w * ref + (1 - w) * pred_pD
             if src in ("d1", "d2"):
                 ref = refined_pD(cell)
                 pD = ref if src == "d1" else 0.5 * ref + 0.5 * pred_pD
@@ -85,7 +91,7 @@ def build(cell, spec):
 
 
 # ------------------------------------------------------------------ scoring wrapper
-def run_arm(name, spec, family):
+def run_arm(name, spec, family, keep=False):
     d = PRED / name
     d.mkdir(parents=True, exist_ok=True)
 
@@ -107,7 +113,11 @@ def run_arm(name, spec, family):
            "v2_spell_delta_by_provider": {p: a["feed_like_v2"]["spell_f1/providers"][p] - ctrl["feed_like_v2"]["spell_f1/providers"][p] for p in PROVIDERS},
            "failed_retention_checks": res["failed_retention_checks"], "retained": res["retained"], "meets_0_60": res["meets_0_60"],
            "eligible_and_meets_0_60": res["retained"] and res["meets_0_60"]}
-    if not rec["retained"]:
+    rec["cell_spell"] = {k: r["spell_f1"] for k, r in res["rows"].items()}
+    rec["delta_spell_by_provider_all_views"] = {v: {p: a[v]["spell_f1/providers"][p] - ctrl[v]["spell_f1/providers"][p] for p in PROVIDERS} for v in VIEWS}
+    rec["delta_macro_by_provider_clean"] = {p: a["clean"]["macro_f1/providers"][p] - ctrl["clean"]["macro_f1/providers"][p] for p in PROVIDERS}
+    rec["delta_dF1_by_provider_clean"] = {p: a["clean"]["d_f1/providers"][p] - ctrl["clean"]["d_f1/providers"][p] for p in PROVIDERS}
+    if not rec["retained"] and not keep:
         shutil.rmtree(d, ignore_errors=True)
     return rec
 

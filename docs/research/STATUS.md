@@ -1,5 +1,20 @@
 # Current research state
 
+## V2 target push — 12 November 2026
+
+[The v2 target push study](../../experiments/V2_TARGET_PUSH_V1.md) scores 37
+declared arms against the adopted Fable `snap_m0.0` control. Decoder re-tuning,
+H/A cost and nearest-player H/A evidence give no eligible arm. A provider-held-out
+LightGBM dead-ball refiner blended 50/50 with the existing P(D) reaches
+clean/v1/v2 spell **.6932/.5392/.6135** with short recall up in every view; it
+fails only the v1 macro retention check (−.0050 against a .001 allowance), so no
+arm is eligible under the repository guards. Ablations show about two thirds of
+the v2 gain comes from ball-missingness features, which `feed_like_v2` places
+with development labels; without them v2 is .6036 and short recall fails.
+The adopted package is unchanged. The refiner is fit on the exposed development
+matches themselves; no pooled deployment fit, GAR or public check was run, and
+the research site was not updated from this session.
+
 ## Reconstructed deployment verification — 11 November 2026
 
 The originally missing pooled CE checkpoints were not recovered. Instead, the
