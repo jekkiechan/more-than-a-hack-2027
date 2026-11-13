@@ -1,5 +1,21 @@
 # Current research state
 
+## Gated boundary refiner — 13 November 2026
+
+[The follow-up](../../experiments/LGBM_BOUNDARY_GATE_V1.md) scores 43 fixed
+deployment rules for the LightGBM dead-ball refiner on development; 15 pass all
+guards. Confident boundary shifts (threshold .6) keep 63% of the v2 spell gain
+(**+.0093**) and leave public spell F1 unchanged at **.623529** in one sealed
+user-requested regression check. On exact-package GAR TEST10 it lowers spell F1
+in nine of ten games: clean **−.0039**, v2 **−.0051**, both intervals below
+zero. The predeclared GAR rule fails.
+
+Keep reconstructed Fable adopted; manifest and policy are unchanged. The
+development v2 gain did not transfer: the refiner adds dead ball on GAR and
+removes it on the challenge match. A D-to-live-only gated arm on GAR is the one
+open follow-up and needs its own declaration. The progress site has not been
+updated for this study.
+
 ## LightGBM spell retention — 12 November 2026
 
 The [bounded development follow-up](../../experiments/LGBM_SPELL_RETENTION_V1.md)
