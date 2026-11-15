@@ -141,7 +141,8 @@ def joint_gru_ensemble_probabilities(inputs, models, manifest):
 
 
 def predict_probabilities(inputs, models, manifest=None):
-    if manifest and manifest.get('architecture', {}).get('kind') == 'sn_dense_spell_frontier_ball_exit_ensemble':
+    if manifest and manifest.get('architecture', {}).get('kind') in (
+            'sn_dense_spell_frontier_ball_exit_ensemble', 'sn_dense_spell_frontier_ball_exit_tactical_ensemble'):
         raise ValueError('Ball-exit package requires predict_labels to preserve its corrected D mask')
     if manifest and manifest.get('architecture', {}).get('kind') == 'sn_dense_spell_frontier_ensemble':
         from experiments import spell_frontier_baseline
@@ -188,7 +189,10 @@ def main():
         raise ValueError('Refusing to overwrite a generated baseline candidate')
     inputs = load_inputs(args.inputs)
     models = load_models(args.models_dir, args.manifest)
-    if manifest.get('architecture', {}).get('kind') == 'sn_dense_spell_frontier_ball_exit_ensemble':
+    if manifest.get('architecture', {}).get('kind') == 'sn_dense_spell_frontier_ball_exit_tactical_ensemble':
+        from experiments import tactical_ha_runtime
+        labels = tactical_ha_runtime.predict_labels(inputs, models, manifest)
+    elif manifest.get('architecture', {}).get('kind') == 'sn_dense_spell_frontier_ball_exit_ensemble':
         from experiments import ball_exit_runtime
         labels = ball_exit_runtime.predict_labels(inputs, models, manifest)
     elif manifest.get('architecture', {}).get('kind') == 'sn_dense_spell_frontier_ensemble':

@@ -66,7 +66,22 @@ class BaselinePromotionContracts(unittest.TestCase):
         self.assertEqual(policy['working_candidate']['model'], manifest['model'])
         self.assertEqual(policy['working_candidate']['baseline_manifest_sha256'],
                          sha256(root/'baseline_manifest.json'))
-        if manifest['architecture']['kind']=='sn_dense_spell_frontier_ball_exit_ensemble':
+        if manifest['architecture']['kind']=='sn_dense_spell_frontier_ball_exit_tactical_ensemble':
+            from experiments import ball_exit_runtime, spell_frontier_baseline, tactical_ha_runtime
+            self.assertEqual(manifest['architecture']['recipe'], spell_frontier_baseline.RECIPE)
+            self.assertEqual(manifest['architecture']['ball_exit'], ball_exit_runtime.CORRECTION)
+            self.assertEqual(manifest['architecture']['tactical'], tactical_ha_runtime.TACTICAL)
+            previous_manifest = json.loads((root.parent/manifest['previous_manifest']).read_text())
+            added = set(manifest['models_sha256']) - set(previous_manifest['models_sha256'])
+            self.assertEqual(added, {'tactical_ha.joblib'})
+            for name, digest in previous_manifest['models_sha256'].items():
+                self.assertEqual(manifest['models_sha256'][name], digest)
+            self.assertFalse(manifest['promotion']['fitting_during_promotion'] if 'fitting_during_promotion' in manifest['promotion'] else False)
+            self.assertFalse(manifest['promotion']['organizer_rescoring_performed'])
+            self.assertFalse(manifest['promotion']['public_used_for_selection'])
+            self.assertFalse(manifest['evidence']['historical_clean_screen_passes'])
+            self.assertFalse(policy['clean_improvement_screen']['current_screen_passes'])
+        elif manifest['architecture']['kind']=='sn_dense_spell_frontier_ball_exit_ensemble':
             from experiments import ball_exit_runtime, spell_frontier_baseline
             self.assertEqual(manifest['architecture']['recipe'], spell_frontier_baseline.RECIPE)
             self.assertEqual(manifest['architecture']['ball_exit'], ball_exit_runtime.CORRECTION)

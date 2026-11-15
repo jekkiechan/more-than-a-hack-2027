@@ -1,0 +1,352 @@
+{
+ "study": "tactical_ha_v1_sportec_heldout",
+ "matches": [
+  "J03WPY",
+  "J03WQQ",
+  "J03WR9"
+ ],
+ "package": "exact pooled deployment package + pooled tactical expert",
+ "exposure": "Never used for any training or for this selection; Sportec provider is in training; J03WPY/J03WQQ scored by an earlier study (sportec_extra_eval_v1)",
+ "views": {
+  "clean": 1,
+  "feed_like_v2": 4
+ },
+ "seed_rule": "sha256(\"tactical_ha_v1/confirm_sportec/{rep}/{match}\")[:8]",
+ "pass_rule_fixed_before_scoring": "mean v2 spell delta > 0 and mean clean spell delta >= 0",
+ "cells": [
+  {
+   "cell": [
+    "J03WPY",
+    "clean",
+    0
+   ],
+   "seconds": 111.0904529094696,
+   "base": {
+    "spell": 0.7545454545454546,
+    "macro": 0.9317411368115053,
+    "n_pred": 327,
+    "n_gt": 421
+   },
+   "cand": {
+    "spell": 0.7552000000000001,
+    "macro": 0.9318305867847555,
+    "n_pred": 329,
+    "n_gt": 421
+   }
+  },
+  {
+   "cell": [
+    "J03WPY",
+    "feed_like_v2",
+    1
+   ],
+   "seconds": 114.26326251029968,
+   "base": {
+    "spell": 0.6324175824175824,
+    "macro": 0.8884012549211026,
+    "n_pred": 307,
+    "n_gt": 421
+   },
+   "cand": {
+    "spell": 0.6429347826086956,
+    "macro": 0.8919129442669669,
+    "n_pred": 315,
+    "n_gt": 421
+   }
+  },
+  {
+   "cell": [
+    "J03WPY",
+    "feed_like_v2",
+    2
+   ],
+   "seconds": 108.66942477226257,
+   "base": {
+    "spell": 0.6520775623268698,
+    "macro": 0.8971458514240548,
+    "n_pred": 301,
+    "n_gt": 421
+   },
+   "cand": {
+    "spell": 0.6604651162790697,
+    "macro": 0.899669583904887,
+    "n_pred": 310,
+    "n_gt": 421
+   }
+  },
+  {
+   "cell": [
+    "J03WPY",
+    "feed_like_v2",
+    3
+   ],
+   "seconds": 108.33559274673462,
+   "base": {
+    "spell": 0.6478561549100968,
+    "macro": 0.8964315341902335,
+    "n_pred": 302,
+    "n_gt": 421
+   },
+   "cand": {
+    "spell": 0.6655737704918032,
+    "macro": 0.9007255957246425,
+    "n_pred": 311,
+    "n_gt": 421
+   }
+  },
+  {
+   "cell": [
+    "J03WPY",
+    "feed_like_v2",
+    4
+   ],
+   "seconds": 107.86031126976013,
+   "base": {
+    "spell": 0.6496607869742198,
+    "macro": 0.8998729093754596,
+    "n_pred": 316,
+    "n_gt": 421
+   },
+   "cand": {
+    "spell": 0.6539597315436242,
+    "macro": 0.9039927932315366,
+    "n_pred": 324,
+    "n_gt": 421
+   }
+  },
+  {
+   "cell": [
+    "J03WQQ",
+    "clean",
+    0
+   ],
+   "seconds": 109.38484978675842,
+   "base": {
+    "spell": 0.726552179656539,
+    "macro": 0.9129481615518804,
+    "n_pred": 356,
+    "n_gt": 401
+   },
+   "cand": {
+    "spell": 0.7315789473684211,
+    "macro": 0.9133289511843689,
+    "n_pred": 359,
+    "n_gt": 401
+   }
+  },
+  {
+   "cell": [
+    "J03WQQ",
+    "feed_like_v2",
+    1
+   ],
+   "seconds": 105.55480527877808,
+   "base": {
+    "spell": 0.6569500674763833,
+    "macro": 0.897693920786633,
+    "n_pred": 340,
+    "n_gt": 401
+   },
+   "cand": {
+    "spell": 0.6607764390896921,
+    "macro": 0.8993551541874986,
+    "n_pred": 346,
+    "n_gt": 401
+   }
+  },
+  {
+   "cell": [
+    "J03WQQ",
+    "feed_like_v2",
+    2
+   ],
+   "seconds": 105.59449648857117,
+   "base": {
+    "spell": 0.6708791208791209,
+    "macro": 0.9008487462756037,
+    "n_pred": 327,
+    "n_gt": 401
+   },
+   "cand": {
+    "spell": 0.6723287671232876,
+    "macro": 0.9016973956670321,
+    "n_pred": 329,
+    "n_gt": 401
+   }
+  },
+  {
+   "cell": [
+    "J03WQQ",
+    "feed_like_v2",
+    3
+   ],
+   "seconds": 105.45573043823242,
+   "base": {
+    "spell": 0.6413043478260869,
+    "macro": 0.8881924348196059,
+    "n_pred": 335,
+    "n_gt": 401
+   },
+   "cand": {
+    "spell": 0.6499325236167343,
+    "macro": 0.8915106748760456,
+    "n_pred": 340,
+    "n_gt": 401
+   }
+  },
+  {
+   "cell": [
+    "J03WQQ",
+    "feed_like_v2",
+    4
+   ],
+   "seconds": 105.5817608833313,
+   "base": {
+    "spell": 0.6650205761316872,
+    "macro": 0.8944304330880976,
+    "n_pred": 328,
+    "n_gt": 401
+   },
+   "cand": {
+    "spell": 0.6756164383561644,
+    "macro": 0.8985326269710135,
+    "n_pred": 329,
+    "n_gt": 401
+   }
+  },
+  {
+   "cell": [
+    "J03WR9",
+    "clean",
+    0
+   ],
+   "seconds": 115.3583505153656,
+   "base": {
+    "spell": 0.7475699558173785,
+    "macro": 0.9275275732047091,
+    "n_pred": 309,
+    "n_gt": 370
+   },
+   "cand": {
+    "spell": 0.7475699558173786,
+    "macro": 0.9270782525775272,
+    "n_pred": 309,
+    "n_gt": 370
+   }
+  },
+  {
+   "cell": [
+    "J03WR9",
+    "feed_like_v2",
+    1
+   ],
+   "seconds": 107.42107796669006,
+   "base": {
+    "spell": 0.6654377880184331,
+    "macro": 0.909859624910934,
+    "n_pred": 281,
+    "n_gt": 370
+   },
+   "cand": {
+    "spell": 0.671165644171779,
+    "macro": 0.9109062842046886,
+    "n_pred": 282,
+    "n_gt": 370
+   }
+  },
+  {
+   "cell": [
+    "J03WR9",
+    "feed_like_v2",
+    2
+   ],
+   "seconds": 114.90085768699646,
+   "base": {
+    "spell": 0.6804314329738059,
+    "macro": 0.9026612732078757,
+    "n_pred": 279,
+    "n_gt": 370
+   },
+   "cand": {
+    "spell": 0.6815950920245399,
+    "macro": 0.9029732116342034,
+    "n_pred": 282,
+    "n_gt": 370
+   }
+  },
+  {
+   "cell": [
+    "J03WR9",
+    "feed_like_v2",
+    3
+   ],
+   "seconds": 116.13714790344238,
+   "base": {
+    "spell": 0.655267175572519,
+    "macro": 0.8958640514858341,
+    "n_pred": 285,
+    "n_gt": 370
+   },
+   "cand": {
+    "spell": 0.6745454545454546,
+    "macro": 0.9009607067447853,
+    "n_pred": 290,
+    "n_gt": 370
+   }
+  },
+  {
+   "cell": [
+    "J03WR9",
+    "feed_like_v2",
+    4
+   ],
+   "seconds": 116.09769940376282,
+   "base": {
+    "spell": 0.6381102362204725,
+    "macro": 0.893711262698495,
+    "n_pred": 265,
+    "n_gt": 370
+   },
+   "cand": {
+    "spell": 0.6420062695924764,
+    "macro": 0.8959654023639726,
+    "n_pred": 268,
+    "n_gt": 370
+   }
+  }
+ ],
+ "aggregate": {
+  "clean": {
+   "control_spell_f1": 0.742889196673124,
+   "candidate_spell_f1": 0.7447829677285999,
+   "spell_delta": 0.0018937710554758347,
+   "control_macro_f1": 0.9240722905226982,
+   "candidate_macro_f1": 0.9240792635155506,
+   "macro_delta": 6.9729928523498685e-06,
+   "per_match_spell_delta": {
+    "J03WPY": 0.0006545454545454632,
+    "J03WQQ": 0.005026767711882152,
+    "J03WR9": 1.1102230246251565e-16
+   }
+  },
+  "feed_like_v2": {
+   "control_spell_f1": 0.6546177359772731,
+   "candidate_spell_f1": 0.6625750024536101,
+   "spell_delta": 0.007957266476336988,
+   "control_macro_f1": 0.8970927747653276,
+   "candidate_macro_f1": 0.8998501978147727,
+   "macro_delta": 0.0027574230494451513,
+   "per_match_spell_delta": {
+    "J03WPY": 0.010230328573605951,
+    "J03WQQ": 0.006125013968150017,
+    "J03WR9": 0.007516456887254996
+   }
+  }
+ },
+ "cells_up_equal_down": [
+  14,
+  1,
+  0
+ ],
+ "passed": true
+}
