@@ -1,5 +1,9 @@
 # Current research state
 
+## Tactical H/A expert — 15 November 2026
+
+[The study](../../experiments/TACTICAL_HA_V1.md) adds a direction-aware, tracking-only H/A expert to Fable. Spell F1 improves on exposed development (clean/v1/v2 **+.0002/+.0176/+.0044**), three held-out Sportec matches (**+.0019/+.0080** clean/v2) and exact-package GAR TEST10 (**+.0075/+.0066**, 9 of 10 games up). One strict development guard fails (clean short recall -.000151). Promoted on the user's spell-F1 instruction; manifest and policy updated. Not scored on the public window; no gold confirmation. The progress site has not been updated.
+
 ## Gated boundary refiner — 13 November 2026
 
 [The follow-up](../../experiments/LGBM_BOUNDARY_GATE_V1.md) scores 43 fixed
