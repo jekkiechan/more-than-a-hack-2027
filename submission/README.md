@@ -7,7 +7,7 @@ One response per team; the last edit before the deadline is scored.
 
 ## Reproduce
 
-Use the [technical document](TECHNICAL_DOCUMENT.md#how-to-reproduce) for setup.
+Use the [technical document](TECHNICAL_DOCUMENT.md#8-reproduction) for setup.
 From the repository root, with `uv` 0.12.23 installed and tactical ATD in
 `data/tactical/`, run on Linux x86-64:
 
@@ -74,8 +74,11 @@ and retain `--require-hashes`. Keep fallback environments out of version control
   name (required before November 10), and team size of 3–5 for full eligibility.
 - Produce `TEAM_NAME.csv`; verify 199,319 rows, frames 0–199318, H/A/D/X, and
   SHA-256 `8e26f823a3e933f1feca2a64dfe6d7f728a4741548c8c7cd95d51746b6a355b9`.
-- Copy [TECHNICAL_DOCUMENT.md](TECHNICAL_DOCUMENT.md) to `TEAM_NAME.md`. The rules
-  allow Markdown; no PDF conversion is needed.
+- Build `data/submission/TEAM_NAME.pdf` from
+  [TECHNICAL_DOCUMENT.md](TECHNICAL_DOCUMENT.md) with
+  `node submission/build_pdf.mjs 'TEAM_NAME'` (pandoc, Playwright Chromium and
+  network access to jsDelivr for KaTeX/Mermaid). The PDF renders the diagram and
+  equations, which plain Markdown viewers may show as source.
 - Confirm the public repository URL and release downloads work without login.
 - Use a Google account to upload the CSV and technical document, enter the exact
   team name and public repository URL, and submit once per team.
