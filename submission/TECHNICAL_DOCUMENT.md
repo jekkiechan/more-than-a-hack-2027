@@ -171,7 +171,7 @@ $$
 
 Only complete H/A spells receive duration weights. For duration $\ell$ seconds,
 computed from native-rate labels before downsampling, the raw factor is
-$r(\ell)=\operatorname{clip}(\sqrt{5/\ell},0.5,2)$. Factors are normalized to
+$r(\ell)=\mathrm{clip}(\sqrt{5/\ell},0.5,2)$. Factors are normalized to
 mean one across eligible sampled rows within each training record. Spells
 touching a record/time-block edge or an unknown target are censored and keep
 $s_t=1$. The normalization can move final weights beyond the raw caps.
@@ -184,7 +184,7 @@ targets, define $z_t=\mathbf{1}[y_t\ne y_{t+1}]$ and
 
 $$
 c_t=q_{t,H}q_{t+1,A}+q_{t,A}q_{t+1,H},\qquad
-\operatorname{BCE}(c,z)=-z\log c-(1-z)\log(1-c).
+\mathrm{BCE}(c,z)=-z\log c-(1-z)\log(1-c).
 $$
 
 Within each data group (original providers or GAR), $L_{tr}$ is half the mean
@@ -202,7 +202,7 @@ the independently parameterized player-only path uses
 
 $$
 L_D(w)=\frac{1}{|J_w|}\sum_{t\in J_w}
-\operatorname{BCE}(d_t,\mathbf{1}[y_t=D]).
+\mathrm{BCE}(d_t,\mathbf{1}[y_t=D]).
 $$
 
 With half of each batch from each data group, the dense-training loss is
@@ -274,7 +274,7 @@ supplies additional H/A evidence; postprocessing combines it with the temporal
 ensemble while preserving the corrected dead-ball mask.
 
 Its fitting objective is weighted binary log loss on known live frames:
-$L_{tac}=\sum_i a_i\operatorname{BCE}(h_i,\mathbf{1}[y_i=H])/\sum_i a_i$.
+$L_{tac}=\sum_i a_i\mathrm{BCE}(h_i,\mathbf{1}[y_i=H])/\sum_i a_i$.
 Each provider has equal total weight, divided equally among its matches, views
 and direct/swapped rows. The estimator uses 300 boosting iterations, learning
 rate 0.05, at most 31 leaves per tree, minimum 200 samples per leaf and L2
@@ -309,7 +309,7 @@ The implementation names these roles `ce`, `calibrated` and `adopted`, respectiv
 
 Use the diversified branch's pooled H/A/D probabilities alone for this step.
 The frozen `f062` calibration softens its dead-ball probability to
-$\tilde d_t=\sigma(\operatorname{logit}(d_t)/4)$, with D clipped to
+$\tilde d_t=\sigma(\mathrm{logit}(d_t)/4)$, with D clipped to
 $[10^{-7},1-10^{-7}]$ before taking the logit. H/A temperature is 1.
 Recombine $((1-\tilde d_t)q_{t,H},(1-\tilde d_t)q_{t,A},\tilde d_t)$
 and run three-state Viterbi decoding independently in each continuous block.
@@ -366,8 +366,8 @@ the swapped prediction back gives
 $h_t=\tfrac12(h_t^{direct}+1-h_t^{swapped})$. Fuse it with the temporal blend:
 
 $$
-q'_{t,H}=\sigma\left(\operatorname{logit}(q^{mix}_{t,H})
-+0.25g_t\operatorname{logit}(h_t)\right),\qquad q'_{t,A}=1-q'_{t,H}.
+q'_{t,H}=\sigma\left(\mathrm{logit}(q^{mix}_{t,H})
++0.25g_t\mathrm{logit}(h_t)\right),\qquad q'_{t,A}=1-q'_{t,H}.
 $$
 
 Both logit inputs are clipped to $[10^{-6},1-10^{-6}]$. Decode $q'$ again
