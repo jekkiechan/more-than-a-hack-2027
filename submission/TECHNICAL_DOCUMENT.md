@@ -1,166 +1,155 @@
-# Tracking-based football possession with a tactical H/A expert
+# Tracking-based football possession — Douki Douki
 
-More Than A Hack 2027, Initial Challenge · 16 November 2026
+More Than A Hack 2027 · 16 November 2026
 
-Submission package: `joint_gru_sn_dense_spell_frontier_ball_exit_tactical_ensemble_v1`.
-The team-named CSV has 199,319 consecutive `frame,label` rows at 25 Hz.
-Its SHA-256 is
-`8e26f823a3e933f1feca2a64dfe6d7f728a4741548c8c7cd95d51746b6a355b9`.
-The team name is supplied in the submission form and upload filenames.
+```mermaid
+flowchart TD
+    A["Tactical tracking: players, ball, pitch"] --> B["Tracking features and observation masks"]
+    B --> C["5 Hz temporal GRU ensemble: ownership and dead ball"]
+    B --> D["Tactical expert: attacking direction and team shape"]
+    C --> E["25 Hz probabilities and possession decoding"]
+    A --> F["Geometric ball-exit correction"]
+    E --> F
+    E --> G["Tactical H/A fusion and final decoding"]
+    D --> G
+    F -->|Fixed dead-ball mask| G
+    G --> H["199,319 frame labels: H / A / D / X"]
+```
 
-## Approach and rationale
+Temporal and tactical models combine with a ball-exit rule to produce labels.
+This offline system uses past and future context. H/A denote home/away possession, D dead ball, and X frames
+outside the tracking-defined halves.
 
-We infer H (home), A (away) and D (dead ball) from tactical tracking. Inference
-uses both past and future observations; this is an offline full-match system.
-The adopted pipeline combines learned temporal possession, a geometric dead-ball
-boundary correction, and a direction-aware team-attribution expert.
+## Data
 
-1. **Tracking features and temporal models.** Tactical ATD coordinates are scaled
-   to pitch metres. At 5 Hz we build 137 team/ball features and 67 player-only
-   features: nearest-player distances, contact history, ball motion and gaps,
-   player observation masks, team speeds and rolling summaries. Bidirectional
-   GRUs use 10 s cores with 5 s context on either side. Conditional H/A and
-   player-only dead-ball paths separate team attribution from stoppage detection.
-   Hidden widths are 96 for H/A and 24 for the teacher's D path.
-2. **Frozen temporal ensemble.** Three H/A experts (CE, calibrated and adopted)
-   are combined with weights .5/.375/.125. Each has seeds 2026/2027. We average
-   seeds within each native 5 Hz sampling phase, then phases, and interpolate to
-   the native 25 Hz timeline. Ten checkpoint roles implement these experts and
-   their paired teachers; identical teacher bytes are retained under both role
-   names. A cost-3 decoder controls H/A switching. The predecessor's decoded
-   dead-ball mask is preserved before the geometric correction.
-3. **Ball-exit correction (Fable).** A frozen zero-margin pitch-exit rule snaps
-   dead-ball boundaries toward observed ball exits, with a 3 s advance window
-   and a 5 s delay window. It is tracking-only and adds no learned model or
-   match-specific frame corrections.
-4. **Tactical H/A expert.** A HistGradientBoosting classifier predicts P(H | live)
-   from 97 tracking features: each team's attacking direction per half, oriented
-   ball position/velocity/progress, ball relative to team centroids and lines,
-   players ahead of the ball, team spreads and motion. Direction is inferred
-   from player locations. Direct and team-swapped predictions are averaged.
-   We add .25 times its log-odds to the temporal conditional H/A log-odds,
-   protecting adopted spells shorter than 5 s, and decode H/A again inside the
-   unchanged Fable D mask.
+Challenge-match inputs are `BAR-ATH_tactical_atd.xml` and `.txt`:
+pitch geometry, team assignments, players and ball. Tactical video was inspected
+to understand the feed, without creating labels or corrections. Broadcast
+video/tracking and homographies were unused; Smart Tagging was audited and
+dropped because its phases are not possession labels. No manual annotations,
+human-produced events or private ground truth from this match enter the system.
 
-Nearest-player heuristics and per-frame classifiers miss sustained possession
-through ball gaps. Temporal context helps recover those intervals; the tactical
-expert contributes team shape and attacking direction that the local temporal
-features lack. The player-only D path avoids provider-specific shortcuts in
-ball visibility. The decoder suppresses flicker because the ranking metric is
-whole-possession `spellF1`, rather than only frame accuracy.
+All learning uses other matches:
 
-The two pooled CE weights were reconstructed in a separately declared study
-because the historical files were unavailable. They are new checkpoint bytes,
-not the missing originals. The frozen recipe, sampling and normalization were
-verified, and these exact reconstructed files are in the released package.
+| Dataset and source | Training amount | Label producer and construction |
+| --- | --- | --- |
+| [Sportec Open DFL, v1](https://doi.org/10.6084/m9.figshare.28196177.v1), CC BY 4.0 | 3 matches: J03WMX/J03WN1/J03WOH | Sportec Solutions/DFL `BallStatus` and `BallPossession` channels. |
+| [Metrica Sports sample data](https://github.com/metrica-sports/sample-data) | Games 1–2 | Fixed H/A/D conversion of Metrica's human-annotated events. |
+| [SkillCorner open data](https://github.com/SkillCorner/opendata), MIT, revision `4340d27` | 8 A-League matches | Provider `possession.group` for H/A and `game_interruption` for D; 1 s unknown margins. |
+| [SoccerNet-GAR tracking-full](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR), revision `32c8402`, gated access | 45 TRAIN games | Algorithmic dense H/A/D silver labels from dataset touch/event columns; not human frame-level possession annotations. |
 
-## Assets used and dropped
+The temporal ensemble uses all 13 original matches and 45 GAR TRAIN games.
+The tactical expert uses only the 13 original matches. Unknown targets and
+match, half and segment breaks are preserved. Organizer public labels are used
+only for a post-selection diagnostic, never training, tuning or selection.
 
-| Organizer asset | Use |
-| --- | --- |
-| `BAR-ATH_tactical_atd.xml` and `.txt` | The only model inputs: pitch geometry, track-slot teams, players and ball. |
-| Tactical video | Inspected to understand the feed; not a model input or a source of hand labels/corrections. |
-| Broadcast video/tracking | Not used; different timeline and incomplete geometry. |
-| Homographies | Not used; tactical ATD already supplies pitch coordinates. |
-| Smart Tagging | Audited as an automatic prior, then dropped; phases are not possession labels. |
-| Organizer public 5-minute labels | Post-selection pipeline diagnostics only. Never used for fitting, tuning or candidate selection. The window was reused across historical checks and is not independent confirmation. |
+## Features
 
-No organizer-match hand labels, human-produced events, corrected tracking or
-private ground truth enter training or inference. Missing players and ball are
-masked; no person corrected trajectories, identities or transitions.
+ATD coordinates are converted to pitch metres. At 5 Hz, 137 team/ball features
+capture nearest-player distances, contact history, ball motion and gaps;
+67 player-only features capture observation masks, player counts, speeds and
+rolling motion summaries. Raw missingness masks are retained; tactical features
+fill short ball gaps. Training includes player-slot dropout and synthetic gaps.
 
-## External training data and labels
+The tactical expert uses 97 features: inferred attacking direction per team and
+half; oriented ball position, velocity and progress; ball position relative to
+team centroids and lines; players ahead of the ball; team spread and motion.
+Direction comes from player locations.
 
-All learned components use other matches. We made no manual match annotations.
-Provider labels and algorithmically derived silver labels are distinguished below.
+## Modeling
 
-| Dataset | Training amount | Label source and producer | Access |
-| --- | --- | --- | --- |
-| Sportec Open DFL data, Bassek et al., v1, CC BY 4.0 | 3 matches: J03WMX/J03WN1/J03WOH | Sportec Solutions/DFL provider `BallStatus` and `BallPossession` channels. | [figshare](https://doi.org/10.6084/m9.figshare.28196177.v1) |
-| Metrica Sports sample data | Games 1 and 2 | Fixed H/A/D conversion of Metrica's human-annotated event streams. | [sample-data](https://github.com/metrica-sports/sample-data) |
-| SkillCorner open data, MIT | 8 A-League matches | Provider `possession.group` for H/A; provider `game_interruption` events for D, with 1 s unknown margins. | [opendata](https://github.com/SkillCorner/opendata), revision `4340d27` |
-| SoccerNet-GAR `tracking-full` | 45 TRAIN games | Fixed touch-stream rules produce dense H/A/D silver labels from dataset event columns; not human frame-level possession annotation. | [OpenSportsLab/SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR), revision `32c8402`, gated access |
+Bidirectional gated recurrent units (GRUs) process 10 s cores with 5 s context
+on each side. Conditional H/A prediction separates ownership from a
+player-only dead-ball path, reducing reliance on provider-specific ball visibility.
+H/A hidden width is 96; the teacher's D path uses width 24.
 
-The temporal package uses these 13 original TRAIN matches and 45 GAR TRAIN
-games. The initial dense training uses complete-spell/transition losses and
-per-frame supervision, with 50% GAR windows. Later CE continuation uses 512
-updates at `3e-4` followed by 512 at `1e-4`, 32-window batches, a 50/50
-original/GAR mix, distinct-possession sampling and a frozen four-view schedule.
-The tactical expert uses only the 13 original TRAIN matches: 5 Hz live frames,
-clean plus one synthetic v2 view, direct and team-swapped examples, and equal
-provider/match/view weighting. It uses no GAR, development or organizer labels.
+Three temporal branches combine H/A probabilities with weights 0.5/0.375/0.125:
+a cross-entropy continuation, a dense-label model, and a model with diversified
+possession sampling. The diversified branch supplies the initial dead-ball mask.
+Each uses seeds 2026 and 2027. Each sampling offset's predictions are interpolated
+to 25 Hz, then averaged across seeds within offsets and across offsets.
+Ten checkpoint roles include the branches and paired teachers.
 
-Development uses five other matches (Sportec J03WOY, Metrica Game 3,
-SkillCorner 1996435/1996436/2006229), with whole-provider exclusions for the
-held-out comparison. These matches were reused extensively for selection.
-The 9 selected-on GAR VALID games and 10 repeatedly evaluated GAR TEST games
-are separate evaluation sets, not training data. The three additional Sportec
-evaluation matches J03WPY/J03WQQ/J03WR9 are not training matches.
+Dense training combines frame, complete-possession and transition supervision,
+with 50% GAR windows. Cross-entropy continuation uses 512 updates at `3e-4`,
+then 512 at `1e-4`, 32-window batches, equal original/GAR sampling,
+distinct-possession sampling and four fixed corruption views. Released checkpoints
+freeze the exact model used for the submitted file.
 
-Source code, dataset acquisition, split details and training recipes are in
-`experiments/SOCCERNET_DATA_ACCESS.md`, `SOCCERNET_DENSE.md`,
-`FRONTIER_POOLED_RECONSTRUCTION.md` and `TACTICAL_HA_V1.md` in the repository.
-Released checkpoints make retraining unnecessary for exact CSV reproduction.
+A HistGradientBoosting classifier predicts home ownership given live play.
+It trains on 5 Hz live frames, clean and one synthetic `feed_like_v2` view,
+with equal provider/match/view weighting. Direct and team-swapped examples
+are used in training, and both inference passes are averaged.
 
-## Possession rules and tracking defects
+## Postprocessing
 
-- **Loose or contested ball:** SoccerNet's silver-label rule retains the last
-  controlling team across uncontrolled opponent touches, challenges and rebounds;
-  control changes at the next controlled opponent touch.
-- **Restarts:** an `OUT` event in external training labels starts D until the
-  next touch. In deployment, learned D and the pitch-exit correction provide
-  stoppage boundaries; no event stream from the challenge game is read.
-- **Missing/noisy tracks:** explicit masks, visible-player counts, contact
-  history and bidirectional context preserve evidence across gaps. Training
-  includes track-slot dropout and synthetic ball-gap views. The decoder carries
-  an owner until competing evidence supports a switch; this is not a guarantee
-  that every contested interval follows the rule correctly.
-- **Symmetry:** team swaps in training and the tactical expert's two inference
-  passes reduce home/away bias.
-- **Abstention:** X is written outside the two tracking-defined half blocks.
-  Every frame inside those blocks receives H, A or D. No score labels determine
-  the half boundaries.
+A temporal decoder penalizes H/A switches with cost 3 to suppress flicker.
+The frozen ball-exit rule moves dead-ball starts toward observed pitch exits,
+using zero pitch margin, a 3 s advance window and a 5 s delay window.
+The tactical expert contributes 0.25 times its log-odds to temporal H/A log-odds,
+except inside initially decoded possessions shorter than 5 s. H/A is decoded
+again within the unchanged corrected dead-ball mask.
 
-## Saved results and limitations
+The label convention retains the last controlling team through loose balls,
+challenges and rebounds until controlled opponent contact. GAR silver labels
+implement this explicitly; an OUT event starts D until the next touch. At
+inference, tracking models and the exit rule estimate those boundaries without
+challenge-match events. Every frame inside the two tracking-defined halves
+receives H/A/D; outside frames receive X. There are no manual frame corrections.
 
-These are saved evaluations; preparing the submission does not rescore or tune
-on the organizer public labels. The full-match organizer score is unknown.
+## Eval
 
-| Protocol | Final spell F1 | Comparison / interpretation |
-| --- | ---: | --- |
-| Five exposed development matches, clean, equal-provider mean | .681742 | Fable .681508 |
-| Same development, historical feed-like v1 | .552349 | Fable .534731 |
-| Same development, feed-like v2 | .603079 | Fable .598690 |
-| Three additional Sportec matches, clean / four v2 views | .744783 / .662575 | Fable .742889 / .654618 |
-| GAR TEST10 exact package, clean / four v2 views, equal-game means | .716648 / .715728 | Fable .709186 / .709176; 9/10 games improve in each view |
-| Organizer public diagnostic, 7,500 graded frames / 17 possessions | .623529 | Macro F1 .870218; D-F1 .889372. Public spell unchanged from Fable. |
+Whole matches are separated for fitting and evaluation. Development uses
+Sportec J03WOY, Metrica Game 3 and SkillCorner 1996435/1996436/2006229.
+The tactical expert is also held out by provider; upstream components do not
+constitute a fully nested provider holdout. We average matches within each
+provider, then providers equally. Each match is evaluated on clean tracking and
+four fixed `feed_like_v2` stress realizations. This simulator uses label-free
+challenge-feed statistics to calibrate ball gaps, player dropout, tracking noise
+and identity switches, with missingness concentrated around stoppages.
 
-Protocols have different labels and aggregation; their scores cannot be pooled.
-Development tuning included approximately 56 exploratory tactical fusion arms.
-A strict clean short-spell recall guard fails by .000151, and the historical
-+.01 clean-improvement screen is unmet. Adoption follows the user's explicit
-spell-F1 preference, with those failures disclosed. GAR labels are silver,
-segments are discontinuous and TEST has repeated exposure. Synthetic v2 gaps
-are model-conditioned and use development labels when constructing corruption;
-that limits what transfer gains establish. Sportec is also a training provider.
-None of these sets establishes independent continuous-match gold performance.
+The exact deployed pooled package is checked on three additional Sportec
+matches (J03WPY/J03WQQ/J03WR9) and ten GAR TEST games. Neither set enters
+fitting. Corruption scores average four realizations within each game, then
+games equally. Nine selected-on GAR VALID games remain separate from TEST.
 
-Short possessions, ball loss and cross-provider domain shift remain failure
-modes. The model can retain a wrong owner through long gaps and its temporal
-smoothing can merge brief spells. The geometric rule can miss unseen exits.
-The final full-match file contains 281 predicted possessions under the official
-validator's counting convention. With more time, we would acquire independently
-annotated continuous matches from other games and improve automatic tracking.
+The official ranking metric, spell F1, matches H/A possessions one-to-one by
+temporal intersection over union (IoU), averaging F1 at thresholds 0.3, 0.4,
+0.5, 0.6 and 0.7. Macro F1 averages frame-level F1 across H/A/D. Final results:
 
-## Exact reproduction
+| Evaluation set | Clean spell F1 | Feed-like v2 spell F1 |
+| --- | ---: | ---: |
+| Five exposed development matches | 0.681742 | 0.603079 |
+| Three additional Sportec matches | 0.744783 | 0.662575 |
+| GAR TEST, ten games | 0.716648 | 0.715728 |
 
-Public source: [jekkiechan/more-than-a-hack-2027](https://github.com/jekkiechan/more-than-a-hack-2027).
-Use release tag `submission-2026-v1` for a stable source and weight package.
-[Release downloads](https://github.com/jekkiechan/more-than-a-hack-2027/releases/tag/submission-2026-v1)
-require no private-repository access. Only the eleven inference checkpoint roles,
-a manifest and a readme are released; organizer assets and predictions are excluded.
+The organizer diagnostic covers 7,500
+frames and 17 possessions: spell F1 **0.623529**, macro F1 **0.870218**,
+D-F1 **0.889372**. The spell bootstrap 5–95% interval is [0.458824, 0.776471].
+Full-match organizer performance is unknown. Sources:
+[tactical evaluation](https://github.com/jekkiechan/more-than-a-hack-2027/blob/submission-2026-v1/experiments/TACTICAL_HA_V1.md)
+and [public diagnostic](https://github.com/jekkiechan/more-than-a-hack-2027/blob/submission-2026-v1/experiments/TACTICAL_PUBLIC_V1.md).
 
-Use Linux with Python 3.12, CPU PyTorch 2.8.0, and the pinned dependencies:
+Development selection included about 56 tactical fusion variants.
+The clean short-possession recall guard was not satisfied;
+adoption prioritized overall spell F1. GAR has silver labels, discontinuous
+segments and repeated TEST exposure. Sportec is also a training provider;
+two extra matches had prior evaluation exposure. V2 corruption is
+model-conditioned and uses development labels in its construction. The reused
+public window is small. These protocols cannot be pooled or treated as
+independent continuous-match gold confirmation.
+
+Long ball gaps can preserve a wrong owner, smoothing can merge brief possessions,
+and unseen exits can defeat geometric correction. Further work needs independent,
+continuously annotated matches and improved automatic tracking.
+
+## How to reproduce
+
+The frozen package is
+`joint_gru_sn_dense_spell_frontier_ball_exit_tactical_ensemble_v1`.
+[Public source and weights](https://github.com/jekkiechan/more-than-a-hack-2027/releases/tag/submission-2026-v1)
+are pinned by `submission/model_manifest.json` and `submission/weights.json`.
+On Linux with Python 3.12:
 
 ```sh
 git clone --branch submission-2026-v1 https://github.com/jekkiechan/more-than-a-hack-2027.git
@@ -171,19 +160,18 @@ python -m pip install -r submission/requirements.txt
 python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
 ```
 
-Put the organizer's `BAR-ATH_tactical_atd.xml` and
-`BAR-ATH_tactical_atd.txt` in `data/tactical/` (or use `MTAH_DATA_DIR` for the
-organizer bundle root). Then, from the repository root:
+Place the organizer's tactical ATD `.xml` and `.txt` files in `data/tactical/`, then run:
 
 ```sh
-bash submission/make_submission.sh 'YOUR_REGISTERED_TEAM_NAME'
+bash submission/make_submission.sh 'Douki Douki'
 ```
 
-The wrapper downloads missing weights, checks archive and checkpoint SHA-256,
-prepares tracking inputs from raw ATD without reading reference labels, predicts,
-runs the official format validator and requires the sealed CSV hash above.
-It fixes CPU thread counts to one. The output is
-`data/submission/YOUR_REGISTERED_TEAM_NAME.csv`; existing CSVs are never overwritten.
-`submission/model_manifest.json` freezes the submitted recipe independently of
-future research defaults. `submission/weights.json` pins release bytes and hashes.
-The downloader can also use an offline archive with `--archive /path/to/archive`.
+The wrapper verifies downloaded weights, prepares tracking without reference
+labels, predicts with one CPU thread, validates format and checks the hash.
+Clean-environment reproduction is verified. Output:
+`data/submission/Douki Douki.csv`, 199,319 rows and 281 predicted possessions;
+existing CSVs are not overwritten. Expected SHA-256:
+
+```text
+8e26f823a3e933f1feca2a64dfe6d7f728a4741548c8c7cd95d51746b6a355b9
+```
