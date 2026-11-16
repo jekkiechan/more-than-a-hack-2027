@@ -58,44 +58,85 @@ Direction comes from player locations.
 
 ## Modeling
 
-Bidirectional gated recurrent units (GRUs) process 10 s cores with 5 s context
-on each side. Conditional H/A prediction separates ownership from a
-player-only dead-ball path, reducing reliance on provider-specific ball visibility.
-H/A hidden width is 96; the teacher's D path uses width 24.
+The model has two complementary sources of ownership evidence: temporal tracking
+context and team-level tactical structure. The diagram shows their outputs and
+how the postprocessing below combines them.
 
-Three temporal branches combine H/A probabilities with weights 0.5/0.375/0.125:
-a cross-entropy continuation, a dense-label model, and a model with diversified
-possession sampling. The diversified branch supplies the initial dead-ball mask.
-Each uses seeds 2026 and 2027. Each sampling offset's predictions are interpolated
-to 25 Hz, then averaged across seeds within offsets and across offsets.
-Ten checkpoint roles include the branches and paired teachers.
+```mermaid
+flowchart TD
+    F["204 temporal features at 5 Hz"] --> C
+    F --> L
+    F --> V
+    subgraph GRU["Temporal GRUs: two seeds per branch"]
+        C["Cross-entropy continuation"]
+        L["Dense-label training"]
+        V["Diversified possession sampling"]
+    end
+    C -->|0.50| M["H/A probability blend at 25 Hz"]
+    L -->|0.375| M
+    V -->|0.125| M
+    V --> D["Initial dead-ball mask"]
+    D --> S["Ball-exit correction: fixed D mask"]
+    T["97 tactical features"] --> B["Gradient-boosted trees: direct and team-swapped passes"]
+    B --> P["Tactical probability of home ownership"]
+    M --> I["Initial H/A decode within fixed D mask"]
+    S --> I
+    I -->|Protect spells shorter than 5 s| U["Add weighted tactical log-odds"]
+    M --> U
+    P --> U
+    U --> O["Final H/A decode"]
+    S -->|Keep D unchanged| O
+```
 
-Dense training combines frame, complete-possession and transition supervision,
-with 50% GAR windows. Cross-entropy continuation uses 512 updates at `3e-4`,
-then 512 at `1e-4`, 32-window batches, equal original/GAR sampling,
-distinct-possession sampling and four fixed corruption views. Released checkpoints
-freeze the exact model used for the submitted file.
+- **Separate ownership and dead-ball paths.** Bidirectional gated recurrent units
+  (GRUs) use a 10 s core with 5 s context on either side. Past and future evidence
+  helps bridge tracking gaps. H/A ownership receives hidden width 96; the teacher's
+  smaller D path uses width 24 and only player features, avoiding provider-specific
+  shortcuts in ball visibility during stoppages.
+- **Blend temporal evidence.** The three branches use different training objectives
+  and possession sampling, so the final prediction need not depend on a single
+  recipe. H/A probabilities use weights 0.5/0.375/0.125; the diversified branch
+  supplies the initial D mask. Each branch uses seeds 2026/2027. Predictions are
+  interpolated to 25 Hz and averaged across seeds within sampling offsets, then
+  offsets, reducing sensitivity to initialization and the 5 Hz sampling phase.
+- **Train for whole possessions and imperfect feeds.** Frame, complete-possession
+  and transition supervision address both label accuracy and possession boundaries.
+  Equal original/GAR sampling prevents the larger GAR set from dominating;
+  distinct-possession sampling limits long spells' influence. Four fixed corruption
+  views expose the model to feed defects. Cross-entropy continuation uses 512
+  updates at `3e-4`, then 512 at `1e-4`, with 32-window batches.
+- **Add tactical context.** A HistGradientBoosting classifier predicts home
+  ownership given live play from attacking direction and team shape, cues absent
+  from the local temporal features. Boosted trees capture nonlinear relationships
+  in these tabular features. It trains on 5 Hz live frames, clean plus one synthetic
+  `feed_like_v2` view, with equal provider/match/view weights. Team-swapped training
+  and averaged direct/swapped inference reduce dependence on home/away assignment.
 
-A HistGradientBoosting classifier predicts home ownership given live play.
-It trains on 5 Hz live frames, clean and one synthetic `feed_like_v2` view,
-with equal provider/match/view weighting. Direct and team-swapped examples
-are used in training, and both inference passes are averaged.
+Released checkpoints freeze the exact model used for the submitted file.
 
 ## Postprocessing
 
-A temporal decoder penalizes H/A switches with cost 3 to suppress flicker.
-The frozen ball-exit rule moves dead-ball starts toward observed pitch exits,
-using zero pitch margin, a 3 s advance window and a 5 s delay window.
-The tactical expert contributes 0.25 times its log-odds to temporal H/A log-odds,
-except inside initially decoded possessions shorter than 5 s. H/A is decoded
-again within the unchanged corrected dead-ball mask.
+Weights, decoder cost and timing windows were selected on external development
+data and frozen before final package checks.
 
-The label convention retains the last controlling team through loose balls,
-challenges and rebounds until controlled opponent contact. GAR silver labels
-implement this explicitly; an OUT event starts D until the next touch. At
-inference, tracking models and the exit rule estimate those boundaries without
-challenge-match events. Every frame inside the two tracking-defined halves
-receives H/A/D; outside frames receive X. There are no manual frame corrections.
+- **Suppress possession flicker.** A temporal decoder applies an H/A switch cost
+  of 3. This discourages brief unsupported changes that split one possession into
+  several and hurt the whole-possession ranking metric.
+- **Align stoppages with observed exits.** The ball-exit rule moves dead-ball
+  starts toward tracking-observed pitch exits, with zero pitch margin, a 3 s
+  advance window and a 5 s delay window. This uses direct geometric evidence
+  to refine boundaries inferred from slower-changing player motion.
+- **Fuse cautiously.** Add 0.25 times tactical log-odds to temporal H/A log-odds,
+  except inside initially decoded possessions shorter than 5 s. The modest weight
+  adds tactical context while short-spell protection avoids directly reweighting
+  already brief possessions. Final decoding keeps the corrected D mask fixed:
+  the tactical expert can change the owning team, but cannot create stoppages.
+- **Apply the possession convention.** Loose balls, challenges and rebounds stay
+  with the last controlling team until controlled opponent contact. GAR silver
+  labels encode this; an OUT event starts D until the next touch. Inference
+  estimates these boundaries from tracking alone. Frames inside the two
+  tracking-defined halves receive H/A/D; outside frames receive X. There are
+  no manual frame corrections.
 
 ## Eval
 
@@ -112,6 +153,16 @@ The exact deployed pooled package is checked on three additional Sportec
 matches (J03WPY/J03WQQ/J03WR9) and ten GAR TEST games. Neither set enters
 fitting. Corruption scores average four realizations within each game, then
 games equally. Nine selected-on GAR VALID games remain separate from TEST.
+
+```mermaid
+flowchart TD
+    A["External matches: split whole matches before fitting"] --> B["Fit: 13 original matches and 45 GAR TRAIN games"]
+    A --> C["Development: 5 other matches; tactical expert held out by provider"]
+    A --> D["Deployed package checks: 3 Sportec matches and 10 GAR TEST games"]
+    C --> E["Clean tracking and four fixed stress realizations"]
+    D --> E
+    E --> F["Official metrics; report each evaluation set separately"]
+```
 
 The official ranking metric, spell F1, matches H/A possessions one-to-one by
 temporal intersection over union (IoU), averaging F1 at thresholds 0.3, 0.4,
