@@ -454,22 +454,31 @@ The frozen package is
 `joint_gru_sn_dense_spell_frontier_ball_exit_tactical_ensemble_v1`.
 [Public source and weights](https://github.com/jekkiechan/more-than-a-hack-2027/releases/tag/submission-2026-v1)
 are pinned by `submission/model_manifest.json` and `submission/weights.json`.
-On Linux with Python 3.12:
+The locked inference environment targets Linux x86-64, Python 3.12.14 and
+`uv` 0.12.23. Install that version of
+[uv](https://docs.astral.sh/uv/getting-started/installation/), then use a checkout
+containing `submission/uv.lock` (the original `submission-2026-v1` tag predates
+the lockfile):
 
 ```sh
-git clone --branch submission-2026-v1 https://github.com/jekkiechan/more-than-a-hack-2027.git
+git clone https://github.com/jekkiechan/more-than-a-hack-2027.git
 cd more-than-a-hack-2027
-python3.12 -m venv .venv
-. .venv/bin/activate
-python -m pip install -r submission/requirements.txt
-python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+git rev-parse HEAD # Record the source revision alongside the output hash.
+uv sync --project submission --locked
 ```
 
 Place the organizer's tactical ATD `.xml` and `.txt` files in `data/tactical/`, then run:
 
 ```sh
-bash submission/make_submission.sh 'Douki Douki'
+uv run --project submission --locked bash submission/make_submission.sh 'Douki Douki'
 ```
+
+`submission/pyproject.toml` pins direct dependencies and the CPU-only PyTorch
+index; `submission/uv.lock` pins transitive dependencies and distribution hashes.
+The environment is created at `submission/.venv`. `--locked` rejects an outdated
+lockfile instead of silently resolving new versions. Python is pinned in both
+the project and `.python-version`. A hash-checked pip fallback and lockfile
+maintenance commands are in [the submission README](README.md#environment-maintenance-and-pip-fallback).
 
 The wrapper verifies downloaded weights, prepares tracking without reference
 labels, predicts with one CPU thread, validates format and checks the hash.

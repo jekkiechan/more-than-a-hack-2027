@@ -29,6 +29,12 @@ jobs:
             experiments/requirements-soccernet.txt
       - name: Check documentation links and skill routing
         run: python scripts/check_docs.py
+      - name: Check submission lockfile and requirements export
+        run: |
+          python -m pip install uv==0.12.23
+          uv lock --project submission --check
+          uv export --project submission --locked --no-dev --emit-index-url --format requirements-txt --output-file submission/requirements.txt
+          git diff --exit-code -- submission/uv.lock submission/requirements.txt
       - name: Install test dependencies
         run: python -m pip install -r experiments/requirements-soccernet.txt
       - name: Install CPU PyTorch for temporal model contract tests
