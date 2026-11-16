@@ -1,0 +1,145 @@
+{
+  "adoption_precedes_public": true,
+  "candidate": {
+    "auxiliary_70_30": 0.6975360935576511,
+    "bootstrap_draws": 1000,
+    "d_f1": 0.8893722809198261,
+    "d_precision": 0.8181818181818182,
+    "d_recall": 0.9741320626276379,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "headline_iou": 0.5,
+    "macro_f1": 0.8702183510745232,
+    "macro_f1_bootstrap_5_95": [
+      0.7216580884443694,
+      0.9096634878342439
+    ],
+    "predicted_spells": 17,
+    "primary_metric": "spell_f1_mean",
+    "spell_by_iou": {
+      "0.3": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.4": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.5": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.6": {
+        "f1": 0.5882352941176471,
+        "n_matched": 10,
+        "n_missed": 7,
+        "n_spurious": 7,
+        "precision": 0.5882352941176471,
+        "recall": 0.5882352941176471
+      },
+      "0.7": {
+        "f1": 0.4117647058823529,
+        "n_matched": 7,
+        "n_missed": 10,
+        "n_spurious": 10,
+        "precision": 0.4117647058823529,
+        "recall": 0.4117647058823529
+      }
+    },
+    "spell_f1_at_headline": 0.7058823529411765,
+    "spell_f1_bootstrap_5_95": [
+      0.4588235294117647,
+      0.7764705882352941
+    ],
+    "spell_f1_mean": 0.6235294117647059
+  },
+  "declaration_sha256": "cad2aa2efae017f88386da13d8f4ca9e4794ddff5f39571217a7e4a01926a086",
+  "delta": {
+    "d_f1": 0.0,
+    "macro_f1": 0.005983924360646209,
+    "spell_f1_mean": 0.0
+  },
+  "gate_sha256": "8bdb87fe1931991fea45b00e726330891c59daaf3242502c278fa638488438d4",
+  "interpretation": "Repeated 7500-frame/17-possession pipeline diagnostic; no continuous-match gold claim",
+  "saved_baseline": {
+    "auxiliary_70_30": 0.6957409162494572,
+    "bootstrap_draws": 1000,
+    "d_f1": 0.8893722809198261,
+    "d_precision": 0.8181818181818182,
+    "d_recall": 0.9741320626276379,
+    "frames": 199319,
+    "graded_frames": 7500,
+    "ground_truth_spells": 17,
+    "headline_iou": 0.5,
+    "macro_f1": 0.864234426713877,
+    "macro_f1_bootstrap_5_95": [
+      0.7196030610960874,
+      0.9006513455684882
+    ],
+    "predicted_spells": 17,
+    "primary_metric": "spell_f1_mean",
+    "spell_by_iou": {
+      "0.3": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.4": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.5": {
+        "f1": 0.7058823529411765,
+        "n_matched": 12,
+        "n_missed": 5,
+        "n_spurious": 5,
+        "precision": 0.7058823529411765,
+        "recall": 0.7058823529411765
+      },
+      "0.6": {
+        "f1": 0.5882352941176471,
+        "n_matched": 10,
+        "n_missed": 7,
+        "n_spurious": 7,
+        "precision": 0.5882352941176471,
+        "recall": 0.5882352941176471
+      },
+      "0.7": {
+        "f1": 0.4117647058823529,
+        "n_matched": 7,
+        "n_missed": 10,
+        "n_spurious": 10,
+        "precision": 0.4117647058823529,
+        "recall": 0.4117647058823529
+      }
+    },
+    "spell_f1_at_headline": 0.7058823529411765,
+    "spell_f1_bootstrap_5_95": [
+      0.4588235294117647,
+      0.7764705882352941
+    ],
+    "spell_f1_mean": 0.6235294117647059
+  },
+  "selection_or_tuning": false,
+  "study": "tactical_public_v1"
+}

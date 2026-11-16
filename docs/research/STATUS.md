@@ -2,7 +2,7 @@
 
 ## Tactical H/A expert — 15 November 2026
 
-[The study](../../experiments/TACTICAL_HA_V1.md) adds a direction-aware, tracking-only H/A expert to Fable. Spell F1 improves on exposed development (clean/v1/v2 **+.0002/+.0176/+.0044**), three held-out Sportec matches (**+.0019/+.0080** clean/v2) and exact-package GAR TEST10 (**+.0075/+.0066**, 9 of 10 games up). One strict development guard fails (clean short recall -.000151). Promoted on the user's spell-F1 instruction; manifest and policy updated. Not scored on the public window; no gold confirmation. The progress site has not been updated.
+[The study](../../experiments/TACTICAL_HA_V1.md) adds a direction-aware, tracking-only H/A expert to Fable. Spell F1 improves on exposed development (clean/v1/v2 **+.0002/+.0176/+.0044**), three held-out Sportec matches (**+.0019/+.0080** clean/v2) and exact-package GAR TEST10 (**+.0075/+.0066**, 9 of 10 games up). One strict development guard fails (clean short recall -.000151). Promoted on the user's spell-F1 instruction; manifest and policy updated. The [16 November public diagnostic](../../experiments/TACTICAL_PUBLIC_V1.md) leaves spell at **.623529**, raises macro **.864234 → .870218**, and leaves D-F1 **.889372** unchanged. All 47 private package files verify and default inference reproduces the sealed CSV exactly. This reused 17-possession window does not change adoption; independent continuous-match gold confirmation remains open. Research site version 46 is published with its restricted audience preserved; desktop/mobile checks pass. See the [delivery receipt](../../experiments/results/tactical_public_v1_delivery.json).
 
 ## Gated boundary refiner — 13 November 2026
 
