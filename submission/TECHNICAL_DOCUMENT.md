@@ -45,16 +45,56 @@ only for a post-selection diagnostic, never training, tuning or selection.
 
 ## Features
 
-ATD coordinates are converted to pitch metres. At 5 Hz, 137 team/ball features
-capture nearest-player distances, contact history, ball motion and gaps;
-67 player-only features capture observation masks, player counts, speeds and
-rolling motion summaries. Raw missingness masks are retained; tactical features
-fill short ball gaps. Training includes player-slot dropout and synthetic gaps.
+**Align, clean and sample the tracking.** Each tactical ATD row maps to a video
+frame; normalized coordinates are scaled by the pitch dimensions into metres.
+Team membership comes from track-slot metadata. Computation resets at match,
+half and timestamp breaks, so derivatives and rolling windows cannot bridge
+unrelated periods. Internal ball gaps of at most 0.5 s are linearly interpolated;
+longer gaps stay missing, and original observation flags are retained. Speeds
+come from position differences multiplied by frame rate; implausible player
+jumps are excluded from motion summaries. We compute features on the native
+frame timeline and sample 5 Hz sequences for temporal modeling.
 
-The tactical expert uses 97 features: inferred attacking direction per team and
-half; oriented ball position, velocity and progress; ball position relative to
-team centroids and lines; players ahead of the ball; team spread and motion.
-Direction comes from player locations.
+**Temporal inputs: 137 team/ball features plus 67 player-only features.**
+The following families turn coordinates into evidence about control and stoppages:
+
+| Feature family | How it is constructed and what it captures |
+| --- | --- |
+| Proximity and pressure | For each team, sort player-to-ball distances; keep the nearest three, counts within 2/5/10 m, and visible-player counts. Subtract home distance from away distance to measure the home team's proximity advantage. |
+| Contact history | At 1/2/3 m proximity thresholds, record the nearest team's last and next close approach and the elapsed time to each. These are geometric contact proxies that preserve evidence through passes and loose-ball intervals. |
+| Ball motion and boundaries | Differentiate ball positions to obtain speed, acceleration and turning; measure distance to the nearest pitch edge and velocity directed out of that edge. This describes kicks, deflections and exits. |
+| Player–ball motion | For the nearest two players of each team, compute relative speed, closing speed and motion alignment. Combine proximity with shared motion into continuous control evidence; proximity with ball acceleration gives a contact-impulse proxy. |
+| Missingness and short context | Keep raw observation/availability flags and time since/until an observed ball position. Centered rolling means summarize distances, nearest-team votes, speeds and visibility over short intervals. Future observations are allowed because inference is offline. |
+| Player-only stoppage evidence | Aggregate speed mean, spread and quantiles; fractions moving slowly/quickly; motion coherence; squad spread; touchline occupancy; and team-centroid separation. Add centered summaries, typically at ±0.3/1/3 s. This 67-feature block uses no ball data. |
+
+For example, a home player near the ball and moving with it provides stronger
+control evidence than proximity alone. A mostly stationary squad with stable
+team separation supplies dead-ball evidence even when the ball disappears.
+Team aggregates and nearest-player ranks limit dependence on stable player IDs.
+
+GRU preprocessing subtracts training-set feature medians, divides by training-set
+standard deviations and clips standardized values to ±10. Missing values become
+zero with a separate validity bit, producing 408 inputs from 204 raw features.
+The dead-ball path receives only the player-only values and their validity bits.
+All normalization statistics are fitted on training inputs and reused unchanged.
+
+**Tactical inputs: 97 direction-aware features.** We infer each team's attacking
+direction from the ordering of the teams' mean longitudinal positions over a
+half. Coordinates are centered on the pitch and the longitudinal axis is oriented
+to express progress in the team's attacking direction. For each frame we derive:
+
+- **Ball progress:** oriented position and velocity, plus the difference between
+  mean future and past ball positions over 2 s and 5 s horizons.
+- **Ball relative to team shape:** distance along the pitch from ball to team
+  centroid, second-deepest visible player (a defensive-line proxy) and most
+  advanced player; fraction of visible players ahead of the ball; player counts
+  within 10/20 m and mean player-to-ball distance.
+- **Collective movement:** centroid and defensive-line forward speed, longitudinal
+  and lateral spread, separation between team centroids, and centered ±1/3 s
+  summaries. Counts and missing values describe partial visibility.
+
+This gives the tactical expert field position and team structure beyond local
+ball-contact evidence. Its boosted trees handle missing feature values directly.
 
 ## Modeling
 
@@ -64,7 +104,7 @@ how the postprocessing below combines them.
 
 ```mermaid
 flowchart TD
-    F["204 temporal features at 5 Hz"] --> C
+    F["204 temporal features at 5 Hz, plus validity bits"] --> C
     F --> L
     F --> V
     subgraph GRU["Temporal GRUs: two seeds per branch"]
@@ -88,31 +128,75 @@ flowchart TD
     S -->|Keep D unchanged| O
 ```
 
-- **Separate ownership and dead-ball paths.** Bidirectional gated recurrent units
-  (GRUs) use a 10 s core with 5 s context on either side. Past and future evidence
-  helps bridge tracking gaps. H/A ownership receives hidden width 96; the teacher's
-  smaller D path uses width 24 and only player features, avoiding provider-specific
-  shortcuts in ball visibility during stoppages.
-- **Blend temporal evidence.** The three branches use different training objectives
-  and possession sampling, so the final prediction need not depend on a single
-  recipe. H/A probabilities use weights 0.5/0.375/0.125; the diversified branch
-  supplies the initial D mask. Each branch uses seeds 2026/2027. Predictions are
-  interpolated to 25 Hz and averaged across seeds within sampling offsets, then
-  offsets, reducing sensitivity to initialization and the 5 Hz sampling phase.
-- **Train for whole possessions and imperfect feeds.** Frame, complete-possession
-  and transition supervision address both label accuracy and possession boundaries.
-  Equal original/GAR sampling prevents the larger GAR set from dominating;
-  distinct-possession sampling limits long spells' influence. Four fixed corruption
-  views expose the model to feed defects. Cross-entropy continuation uses 512
-  updates at `3e-4`, then 512 at `1e-4`, with 32-window batches.
-- **Add tactical context.** A HistGradientBoosting classifier predicts home
-  ownership given live play from attacking direction and team shape, cues absent
-  from the local temporal features. Boosted trees capture nonlinear relationships
-  in these tabular features. It trains on 5 Hz live frames, clean plus one synthetic
-  `feed_like_v2` view, with equal provider/match/view weights. Team-swapped training
-  and averaged direct/swapped inference reduce dependence on home/away assignment.
+### Temporal backbone and training objective
 
-Released checkpoints freeze the exact model used for the submitted file.
+A gated recurrent unit (GRU) is a neural network that carries information along a
+sequence. Bidirectional GRUs read both forward and backward, allowing observations
+on either side of a ball gap to inform ownership. Each input window contains a
+10 s prediction core plus 5 s context on either side; only the core is emitted.
+The H/A network has hidden width 96. A separate player-only dead-ball network
+uses width 24, avoiding provider-specific ball-visibility shortcuts at stoppages.
+
+The ownership output is conditional: the probability of home versus away
+possession **given that play is live**. Dead-ball probability is estimated
+separately. Dense supervision supplies a target at every known training frame,
+including algorithmically generated GAR silver labels; unknown targets are
+excluded. Frame-level cross-entropy penalizes assigning low probability to the
+correct team: a home-owned frame with predicted home probability 0.9 incurs
+`-log(0.9)`. Possession-based weighting limits long runs' dominance, while a
+transition term supervises ownership changes between neighboring frames. These
+terms connect frame accuracy with the whole-possession ranking metric.
+
+### The three temporal branches
+
+All three branches share this temporal representation; they differ in training
+history or sampling. Their H/A probabilities are blended as shown in the diagram.
+
+1. **Dense-label branch — weight 0.375.** Train on known frame-level H/A/D targets
+   from the 13 original matches and 45 GAR games, using frame, possession and
+   transition supervision. Both ownership and the player-only D path are learned.
+   This provides broad supervision across ordinary play and stoppages.
+2. **Diversified-possession branch — weight 0.125.** Use the same dense targets,
+   but deliberately spread training exposure across distinct short possessions.
+   On original-provider data, 25% of eligible window draws are replaced by windows
+   overlapping complete possessions of at most 3 s, cycling through a shuffled
+   bag before reuse. GAR short-spell sampling additionally requires corroborating
+   touch/geometry evidence. Labels are unchanged. This gives brief possessions
+   more varied exposure than repeated random windows; this branch also supplies
+   the initial dead-ball mask.
+3. **Cross-entropy continuation — weight 0.5.** Start from the trained diversified
+   ownership checkpoint and continue updating its H/A weights, rather than
+   initializing a new network. The principal loss remains cross-entropy on known
+   live frames, with the existing possession weights and transition term retained.
+   The D network and normalization are frozen. Train for 512 updates at learning
+   rate `3e-4`, followed by 512 at `1e-4`, cycling through four fixed tracking views.
+   This adapts team attribution to feed defects without changing the learned
+   stoppage detector. “Continuation” refers to this additional training stage.
+
+Training batches have 32 windows, half from original providers and half from GAR,
+so the larger GAR collection cannot dominate. Each branch uses seeds 2026/2027.
+At 25 Hz there are five possible 5 Hz sampling offsets; each offset's predictions
+are interpolated to the full timeline, then averaged across seeds and offsets.
+This reduces sensitivity to initialization and which frames enter a sampled
+sequence. Ensemble weights are selected on external development data.
+
+### Tactical expert and combination
+
+HistGradientBoosting is an ensemble of decision trees fitted sequentially, with
+later trees correcting remaining prediction errors. It captures nonlinear
+relationships in the 97 tactical features and outputs home-ownership probability
+on live frames. It adds attacking direction and team shape to the temporal
+models' local tracking evidence.
+
+The classifier trains on 5 Hz live frames from the 13 original matches, with
+clean and one synthetic `feed_like_v2` view, weighted equally by provider, match
+and view. Team-swapped training examples exchange H/A identities and targets.
+At inference, direct and swapped probabilities are mapped back to the same team
+identity and averaged. This reduces dependence on home/away naming. The expert
+supplies additional H/A evidence; postprocessing combines it with the temporal
+ensemble while preserving the corrected dead-ball mask.
+
+Released checkpoints freeze the exact models used for the submitted file.
 
 ## Postprocessing
 
