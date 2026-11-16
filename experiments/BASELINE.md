@@ -2,6 +2,8 @@
 
 Active package `joint_gru_sn_dense_spell_frontier_ball_exit_tactical_ensemble_v1`: the reconstructed Fable GRU roles and ball-exit D mask, plus one tracking-only tactical H/A expert. User-instructed promotion on spell-F1 evidence; see the [report](TACTICAL_HA_V1.md). Spell F1 vs Fable: development +.0002/+.0176/+.0044 (clean/v1/v2), GAR TEST10 +.0075/+.0066. One strict guard fails (clean short recall -.000151). Candidate CSV SHA-256 `8e26f823a3e933f1feca2a64dfe6d7f728a4741548c8c7cd95d51746b6a355b9`. The Fable section below is the immediate predecessor ([manifest](baselines/joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1.json)).
 
+Verified 16 November: exact private restore of 47 package files; default CLI CSV parity passes. Public spell **.623529** (unchanged), macro **.870218** (+.005984), D-F1 **.889372** (unchanged). See [public diagnostic and exact restore commands](TACTICAL_PUBLIC_V1.md); public results do not select the package.
+
 # Current baseline: Fable ball-exit correction
 
 The selected recipe is `joint_gru_sn_dense_spell_frontier_ball_exit_reconstructed_ensemble_v1`:
