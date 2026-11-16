@@ -7,7 +7,7 @@ One response per team; the last edit before the deadline is scored.
 
 ## Reproduce
 
-Use the [technical document](TECHNICAL_DOCUMENT.md#exact-reproduction) for setup.
+Use the [technical document](TECHNICAL_DOCUMENT.md#how-to-reproduce) for setup.
 From the repository root, with the pinned environment active and tactical ATD in
 `data/tactical/`, run:
 
