@@ -2,6 +2,32 @@
 
 More Than A Hack 2027 · 16 November 2026
 
+## Overview
+
+**Task.** Label every 25 Hz frame of BAR–ATH as home possession (H), away
+possession (A), dead ball (D), or outside the halves (X), using only the tactical
+tracking feed: player and ball positions. No video, event data or labels from
+this match are used. The system is offline, so it uses both past and future context.
+
+**System.** The pipeline has five components:
+
+1. **Tracking features.** 204 frame-level features describe who is near the
+   ball, who approached it last and next, how the ball and squads move, and what
+   is missing. A separate set of 97 direction-aware features describes field
+   position and team shape.
+2. **Temporal GRU ensemble.** Bidirectional GRUs read 20 s windows at 5 Hz and
+   output H/A/D probabilities. Ownership (home vs away, given live play) and dead
+   ball are separate networks, and the dead-ball network sees no ball data. Three
+   training variants, each with two seeds, are blended.
+3. **Tactical expert.** Gradient-boosted trees on the 97 tactical features
+   estimate the probability that the home team owns the ball. This adds
+   attacking-direction and team-shape evidence the GRUs do not model directly.
+4. **Dead-ball mask.** A Viterbi decoder turns probabilities into dead-ball runs.
+   A geometric rule then moves each run's start to the ball's observed exit from
+   the pitch.
+5. **Ownership decoding.** With dead ball fixed, a second Viterbi pass decodes
+   H/A, adds tactical evidence to spells of at least 5 s, and decodes again.
+
 ```mermaid
 flowchart TD
     A["Tactical tracking: players, ball, pitch"] --> B["Tracking features and observation masks"]
@@ -16,18 +42,57 @@ flowchart TD
     G --> H["199,319 frame labels: H / A / D / X"]
 ```
 
-Temporal and tactical models combine with a ball-exit rule to produce labels.
-This offline system uses past and future context. H/A denote home/away possession, D dead ball, and X frames
-outside the tracking-defined halves.
+**Training data.** 13 matches from three open providers (Sportec, Metrica,
+SkillCorner) with provider-produced labels, plus 45 SoccerNet-GAR games with
+algorithmic silver labels. There is no manual annotation and nothing from the
+challenge match.
+
+**Why this design and not something else.**
+
+- **Temporal context beats per-frame rules.** Nearest-player smoothing (the
+  published baselines) and per-frame boosted models plateaued. The first
+  bidirectional GRU improved clean development spell F1 by +0.093
+  ([screen](../experiments/LIVE_GAP_HAD_GRU.md)).
+- **The ranking metric rewards whole possessions.** Every stage favours complete
+  spells over frame accuracy: duration-weighted and transition losses in
+  training, and Viterbi decoding with switch costs instead of framewise argmax.
+- **Team attribution is the main error.** In an early validation audit, 98.6% of
+  wrong frames were H/A confusion ([headroom](../experiments/HEADROOM.md)).
+  Most capacity therefore goes to ownership: three GRU branches plus the
+  tactical expert.
+- **Ball-based dead-ball detection does not transfer.** External providers' ball
+  channels contain dead-ball shortcuts (Sportec, for example, freezes the ball).
+  The dead-ball network uses player motion only, and observed ball positions are
+  used only to time stoppage starts at pitch exits.
+- **The challenge feed is automatic and often loses the ball.** Features keep
+  explicit missingness flags, and models are trained and selected on synthetic
+  feed-like corruption as well as clean tracking.
+
+**Results.** Spell F1 is the official ranking metric (details in [Eval](#eval)):
+
+| Evaluation set | Clean | Feed-like corruption |
+| --- | ---: | ---: |
+| Five development matches | 0.682 | 0.603 |
+| Three additional Sportec matches | 0.745 | 0.663 |
+| GAR TEST, ten games | 0.717 | 0.716 |
+
+On the organizer's public 5-minute window (a one-off pipeline check, never used
+for selection) the submission scores 0.624. The published floor,
+`baseline_smooth50`, scores 0.326 on the same window.
 
 ## Data
 
-Challenge-match inputs are `BAR-ATH_tactical_atd.xml` and `.txt`:
-pitch geometry, team assignments, players and ball. Tactical video was inspected
-to understand the feed, without creating labels or corrections. Broadcast
-video/tracking and homographies were unused; Smart Tagging was audited and
-dropped because its phases are not possession labels. No manual annotations,
-human-produced events or private ground truth from this match enter the system.
+Challenge-match assets, used and dropped:
+
+| Asset | Use |
+| --- | --- |
+| Tactical ATD (`BAR-ATH_tactical_atd.xml` and `.txt`) | **The only model input:** pitch geometry, team assignments, players and ball. |
+| Tactical video | Inspected to understand the feed. No labels or corrections were created from it. |
+| Broadcast video/tracking, homographies | Unused. |
+| Smart Tagging | Audited and dropped: its phases are not possession labels. |
+
+No manual annotations, human-produced events or private ground truth from this
+match enter the system.
 
 All learning uses other matches:
 
@@ -38,25 +103,35 @@ All learning uses other matches:
 | [SkillCorner open data](https://github.com/SkillCorner/opendata), MIT, revision `4340d27` | 8 A-League matches | Provider `possession.group` for H/A and `game_interruption` for D; 1 s unknown margins. |
 | [SoccerNet-GAR tracking-full](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR), revision `32c8402`, gated access | 45 TRAIN games | Algorithmic dense H/A/D silver labels from dataset touch/event columns; not human frame-level possession annotations. |
 
-The temporal ensemble uses all 13 original matches and 45 GAR TRAIN games.
-The tactical expert uses only the 13 original matches. Unknown targets and
-match, half and segment breaks are preserved. Organizer public labels are used
-only for a post-selection diagnostic, never training, tuning or selection.
+- The temporal ensemble uses all 13 original matches and 45 GAR TRAIN games.
+- The tactical expert uses only the 13 original matches.
+- Unknown targets and match, half and segment breaks are preserved.
+- Organizer public labels are used only for a post-selection diagnostic, never
+  for training, tuning or selection.
 
 ## Features
 
-**Align, clean and sample the tracking.** Each tactical ATD row maps to a video
-frame; normalized coordinates are scaled by the pitch dimensions into metres.
-Team membership comes from track-slot metadata. Computation resets at match,
-half and timestamp breaks, so derivatives and rolling windows cannot bridge
-unrelated periods. Internal ball gaps of at most 0.5 s are linearly interpolated;
-longer gaps stay missing, and original observation flags are retained. Speeds
-come from position differences multiplied by frame rate; implausible player
-jumps are excluded from motion summaries. We compute features on the native
-frame timeline and sample 5 Hz sequences for temporal modeling.
+Feature construction has three parts: cleaning the tracking, building the
+temporal inputs for the GRUs, and building the tactical inputs for the
+boosted-tree expert.
 
-**Temporal inputs: 137 team/ball features plus 67 player-only features.**
-The following families turn coordinates into evidence about control and stoppages:
+### Align, clean and sample the tracking
+
+- **Coordinates.** Each tactical ATD row maps to a video frame. Normalized
+  coordinates are scaled by the pitch dimensions into metres. Team membership
+  comes from track-slot metadata.
+- **Breaks.** Computation resets at match, half and timestamp breaks, so
+  derivatives and rolling windows cannot bridge unrelated periods.
+- **Ball gaps.** Internal ball gaps of at most 0.5 s are linearly interpolated.
+  Longer gaps stay missing, and original observation flags are retained.
+- **Speeds.** Position differences multiplied by frame rate. Implausible player
+  jumps are excluded from motion summaries.
+- **Sampling.** Features are computed on the native frame timeline, then sampled
+  as 5 Hz sequences for temporal modeling.
+
+### Temporal inputs: 137 team/ball features plus 67 player-only features
+
+Six feature families turn coordinates into evidence about control and stoppages:
 
 | Feature family | How it is constructed and what it captures |
 | --- | --- |
@@ -72,16 +147,22 @@ control evidence than proximity alone. A mostly stationary squad with stable
 team separation supplies dead-ball evidence even when the ball disappears.
 Team aggregates and nearest-player ranks limit dependence on stable player IDs.
 
-GRU preprocessing subtracts training-set feature medians, divides by training-set
-standard deviations and clips standardized values to ±10. Missing values become
-zero with a separate validity bit, producing 408 inputs from 204 raw features.
-The dead-ball path receives only the player-only values and their validity bits.
-All normalization statistics are fitted on training inputs and reused unchanged.
+GRU preprocessing:
 
-**Tactical inputs: 97 direction-aware features.** We infer each team's attacking
+- Subtract training-set feature medians, divide by training-set standard
+  deviations, and clip standardized values to ±10.
+- Missing values become zero with a separate validity bit, producing 408 inputs
+  from 204 raw features.
+- The dead-ball path receives only the player-only values and their validity bits.
+- All normalization statistics are fitted on training inputs and reused unchanged.
+
+### Tactical inputs: 97 direction-aware features
+
+We infer each team's attacking
 direction from the ordering of the teams' mean longitudinal positions over a
 half. Coordinates are centered on the pitch and the longitudinal axis is oriented
-to express progress in the team's attacking direction. For each frame we derive:
+to express progress in the team's attacking direction. For each frame we derive
+three groups:
 
 - **Ball progress:** oriented position and velocity, plus the difference between
   mean future and past ball positions over 2 s and 5 s horizons.
@@ -99,8 +180,14 @@ ball-contact evidence. Its boosted trees handle missing feature values directly.
 ## Modeling
 
 The model has two complementary sources of ownership evidence: temporal tracking
-context and team-level tactical structure. The diagram shows their outputs and
-how the postprocessing below combines them.
+context and team-level tactical structure. This section covers four parts:
+
+1. the temporal backbone shared by all GRUs;
+2. its training losses;
+3. the three temporal branches and how they are ensembled;
+4. the tactical expert.
+
+The diagram shows their outputs and how the postprocessing below combines them.
 
 ```mermaid
 flowchart TD
@@ -132,20 +219,26 @@ flowchart TD
 
 A gated recurrent unit (GRU) is a neural network that carries information along a
 sequence. Bidirectional GRUs read both forward and backward, allowing observations
-on either side of a ball gap to inform ownership. Each input window contains a
-10 s prediction core plus 5 s context on either side; only the core is emitted.
-The H/A network has hidden width 96. A separate player-only dead-ball network
-uses width 24, avoiding provider-specific ball-visibility shortcuts at stoppages.
+on either side of a ball gap to inform ownership.
 
-The ownership output is conditional: the probability of home versus away
-possession **given that play is live**. Dead-ball probability is estimated
-separately. Dense supervision supplies a target at every known training frame,
-including algorithmically generated GAR silver labels; unknown targets are
-excluded. Frame-level cross-entropy penalizes assigning low probability to the
-correct team: a home-owned frame with predicted home probability 0.9 incurs
-`-log(0.9)`. Possession-based weighting limits long runs' dominance, while a
-transition term supervises ownership changes between neighboring frames. These
-terms connect frame accuracy with the whole-possession ranking metric.
+- **Windows.** Each input window contains a 10 s prediction core plus 5 s
+  context on either side; only the core is emitted.
+- **Ownership network.** Hidden width 96. Its output is conditional: the
+  probability of home versus away possession **given that play is live**.
+- **Dead-ball network.** A separate player-only network with width 24, which
+  avoids provider-specific ball-visibility shortcuts at stoppages.
+
+Dense supervision supplies a target at every known training frame, including
+algorithmically generated GAR silver labels; unknown targets are excluded.
+Training combines three ideas, formalized in the next subsection:
+
+- **Frame-level cross-entropy** penalizes assigning low probability to the
+  correct team: a home-owned frame with predicted home probability 0.9 incurs
+  `-log(0.9)`.
+- **Possession-based weighting** limits long runs' dominance.
+- **A transition term** supervises ownership changes between neighboring frames.
+
+Together these connect frame accuracy with the whole-possession ranking metric.
 
 ### Loss functions and target masks
 
@@ -157,8 +250,9 @@ P_t(H)=(1-d_t)q_{t,H},\qquad
 P_t(A)=(1-d_t)q_{t,A},\qquad P_t(D)=d_t.
 $$
 
-The following is the dense-training objective used by the temporal branches;
-the continuation retains its H/A terms while freezing D. These differentiable
+The dense-training objective has three terms: a duration-weighted ownership
+loss, an ownership-transition loss and a dead/live loss. The continuation branch
+retains the H/A terms while freezing D. These differentiable
 losses encourage possession recovery, but **do not directly optimize the
 official, discrete spell F1**. Spell F1 is used for external evaluation and selection.
 
@@ -169,15 +263,18 @@ $$
 L_{HA}(w)=\frac{1}{|K_w|}\sum_{t\in K_w}s_t[-\log q_{t,y_t}].
 $$
 
-Only complete H/A spells receive duration weights. For duration $\ell$ seconds,
-computed from native-rate labels before downsampling, the raw factor is
-$r(\ell)=\mathrm{clip}(\sqrt{5/\ell},0.5,2)$. Factors are normalized to
-mean one across eligible sampled rows within each training record. Spells
-touching a record/time-block edge or an unknown target are censored and keep
-$s_t=1$. The normalization can move final weights beyond the raw caps.
-This increases short spells' contribution without treating incomplete runs as
-known short possessions. D and unknown rows contribute no H/A loss; the
-denominator counts known live rows, not the sum of duration weights.
+How the duration weights $s_t$ are set:
+
+- Only complete H/A spells receive duration weights. For duration $\ell$
+  seconds, computed from native-rate labels before downsampling, the raw factor
+  is $r(\ell)=\mathrm{clip}(\sqrt{5/\ell},0.5,2)$.
+- Factors are normalized to mean one across eligible sampled rows within each
+  training record. The normalization can move final weights beyond the raw caps.
+- Spells touching a record/time-block edge or an unknown target are censored and
+  keep $s_t=1$. This increases short spells' contribution without treating
+  incomplete runs as known short possessions.
+- D and unknown rows contribute no H/A loss. The denominator counts known live
+  rows, not the sum of duration weights.
 
 **Ownership-transition loss.** For adjacent sampled frames with known live
 targets, define $z_t=\mathbf{1}[y_t\ne y_{t+1}]$ and
@@ -187,13 +284,16 @@ c_t=q_{t,H}q_{t+1,A}+q_{t,A}q_{t+1,H},\qquad
 \mathrm{BCE}(c,z)=-z\log c-(1-z)\log(1-c).
 $$
 
-Within each data group (original providers or GAR), $L_{tr}$ is half the mean
-BCE over stable pairs plus half the mean over changed pairs. An absent stable/change group
-contributes zero rather than doubling the other group's weight. A pair is
-eligible only if the full native interval between its endpoints is known and
-stays within one time block; both sampled endpoints must be H/A. The final
-core frame may pair with the first right-context frame, preserving chunk-seam
-supervision. Probabilities are clipped to $[10^{-6},1-10^{-6}]$ for BCE.
+- **Balancing.** Within each data group (original providers or GAR), $L_{tr}$ is
+  half the mean BCE over stable pairs plus half the mean over changed pairs. An
+  absent stable/change group contributes zero rather than doubling the other
+  group's weight.
+- **Eligible pairs.** The full native interval between the endpoints must be
+  known and stay within one time block, and both sampled endpoints must be H/A.
+  The final core frame may pair with the first right-context frame, preserving
+  chunk-seam supervision.
+- **Numerics.** Probabilities are clipped to $[10^{-6},1-10^{-6}]$ for BCE.
+
 This is a balanced surrogate built from endpoint marginals, not a learned
 transition head or a calibrated joint transition probability.
 
@@ -212,13 +312,15 @@ L=\sum_{g\in\{\mathrm{original},\mathrm{GAR}\}}\frac12
 \left(\overline{L}_{HA,g}+0.05L_{tr,g}+\lambda_D\overline{L}_{D,g}\right).
 $$
 
-Bars denote averages of per-window losses within that group. Dense D training
-uses $\lambda_D=1$; H/A continuation omits the D term and preserves its
-checkpoint. The continuation's code name `ce_control` still includes duration
-weights and the transition term; it adds no boundary-margin loss. Unknown
-targets and padded core positions have zero supervised weight. The separate
-short-possession sampler described below changes which windows are drawn, in
-addition to the duration weighting inside each window.
+Bars denote averages of per-window losses within that group.
+
+- Dense D training uses $\lambda_D=1$. H/A continuation omits the D term and
+  preserves its checkpoint.
+- The continuation's code name `ce_control` still includes duration weights and
+  the transition term; it adds no boundary-margin loss.
+- Unknown targets and padded core positions have zero supervised weight.
+- The separate short-possession sampler described below changes which windows
+  are drawn, in addition to the duration weighting inside each window.
 
 Implementation: [dense trainer](../experiments/sn_dense_train.py),
 [spell weights and transition masks](../experiments/objective_losses.py), and
@@ -250,12 +352,16 @@ history or sampling. Their H/A probabilities are blended as shown in the diagram
    This adapts team attribution to feed defects without changing the learned
    stoppage detector. “Continuation” refers to this additional training stage.
 
-Training batches have 32 windows, half from original providers and half from GAR,
-so the larger GAR collection cannot dominate. Each branch uses seeds 2026/2027.
-At 25 Hz there are five possible 5 Hz sampling offsets; each offset's predictions
-are interpolated to the full timeline, then averaged across seeds and offsets.
-This reduces sensitivity to initialization and which frames enter a sampled
-sequence. Ensemble weights are selected on external development data.
+Shared training and ensembling settings:
+
+- **Batches.** 32 windows, half from original providers and half from GAR, so
+  the larger GAR collection cannot dominate.
+- **Seeds.** Each branch uses seeds 2026 and 2027.
+- **Sampling offsets.** At 25 Hz there are five possible 5 Hz sampling offsets.
+  Each offset's predictions are interpolated to the full timeline, then averaged
+  across seeds and offsets. This reduces sensitivity to initialization and to
+  which frames enter a sampled sequence.
+- **Weights.** Ensemble weights are selected on external development data.
 
 ### Tactical expert and combination
 
@@ -265,13 +371,14 @@ relationships in the 97 tactical features and outputs home-ownership probability
 on live frames. It adds attacking direction and team shape to the temporal
 models' local tracking evidence.
 
-The classifier trains on 5 Hz live frames from the 13 original matches, with
-clean and one synthetic `feed_like_v2` view, weighted equally by provider, match
-and view. Team-swapped training examples exchange H/A identities and targets.
-At inference, direct and swapped probabilities are mapped back to the same team
-identity and averaged. This reduces dependence on home/away naming. The expert
-supplies additional H/A evidence; postprocessing combines it with the temporal
-ensemble while preserving the corrected dead-ball mask.
+- **Training data.** 5 Hz live frames from the 13 original matches, with clean
+  and one synthetic `feed_like_v2` view, weighted equally by provider, match and
+  view.
+- **Team symmetry.** Team-swapped training examples exchange H/A identities and
+  targets. At inference, direct and swapped probabilities are mapped back to the
+  same team identity and averaged. This reduces dependence on home/away naming.
+- **Role.** The expert supplies additional H/A evidence; postprocessing combines
+  it with the temporal ensemble while preserving the corrected dead-ball mask.
 
 Its fitting objective is weighted binary log loss on known live frames:
 $L_{tac}=\sum_i a_i\mathrm{BCE}(h_i,\mathbf{1}[y_i=H])/\sum_i a_i$.
@@ -286,17 +393,28 @@ Released checkpoints freeze the exact models used for the submitted file.
 ## Postprocessing
 
 Weights, decoder costs and timing windows were selected on external development
-data and frozen before final package checks. The order matters: first establish
-the dead-ball mask, then decode ownership with that mask fixed.
+data and frozen before final package checks. Postprocessing has five steps:
+
+1. Reconstruct and pool 25 Hz probabilities from the temporal branches.
+2. Decode an initial dead-ball mask.
+3. Snap dead-ball starts to observed pitch exits.
+4. Decode H/A inside live spans, add tactical evidence, and decode again.
+5. Apply the X mask and write the CSV.
+
+The order matters: first establish the dead-ball mask, then decode ownership with
+that mask fixed.
 
 ### 1. Reconstruct and pool native-frame probabilities
 
 Each temporal branch predicts H/A/D at all five 5 Hz sampling offsets of the
-25 Hz input. Linearly interpolate each probability channel within its continuous
-time block, holding the nearest sampled value at the block edges. Average the
-two seeds within each offset, then average offsets. No interpolation or decoder
-state crosses a half or timestamp discontinuity. Convert each pooled branch to
-conditional H/A by dividing its H/A probabilities by their sum, then form
+25 Hz input.
+
+- Linearly interpolate each probability channel within its continuous time
+  block, holding the nearest sampled value at the block edges.
+- Average the two seeds within each offset, then average offsets. No
+  interpolation or decoder state crosses a half or timestamp discontinuity.
+- Convert each pooled branch to conditional H/A by dividing its H/A
+  probabilities by their sum, then form
 
 $$
 q_t^{mix}=0.50q_t^{CE}+0.375q_t^{dense}+0.125q_t^{diverse}.
@@ -322,11 +440,12 @@ $$
 \sum_{t>1}C(y_{t-1},y_t)\right].
 $$
 
-Staying in the same state costs zero. H↔A and live↔D switches each have
-configured cost 3, scaled by $fps/10$: the actual penalty is **7.5 at 25 Hz**.
-There is no hard minimum spell duration. Dynamic programming accumulates
-evidence across the block and backtracks the best path; it is not framewise
-argmax or a moving-majority filter. Only its D mask is retained at this stage.
+- Staying in the same state costs zero. H↔A and live↔D switches each have
+  configured cost 3, scaled by $fps/10$: the actual penalty is **7.5 at 25 Hz**.
+- There is no hard minimum spell duration.
+- Dynamic programming accumulates evidence across the block and backtracks the
+  best path; it is not framewise argmax or a moving-majority filter.
+- Only its D mask is retained at this stage.
 
 ### 3. Snap dead-ball starts to observed pitch exits
 
@@ -345,21 +464,29 @@ For each block, perform these edits in order:
    the first outside observation. Extend D back to it only if the intervening
    frames contain no existing D segment.
 
-Runs starting at the block boundary are skipped. The rule adjusts existing D
-starts, leaves their ends unchanged and does not create an isolated D run merely
-because an outside point exists. It uses neither ball speed nor frozen-ball
-coordinates as a stoppage test. For example, a predicted D start at 100 s with
-an inside observation at 100.2 s and the first outside observation at 101 s
-moves to 101 s, provided that exit lies within the same D run and search window.
-Missing exits leave the relevant boundary unchanged.
+Scope of the rule:
+
+- Runs starting at the block boundary are skipped.
+- It adjusts existing D starts and leaves their ends unchanged. It does not
+  create an isolated D run merely because an outside point exists.
+- It uses neither ball speed nor frozen-ball coordinates as a stoppage test.
+- Missing exits leave the relevant boundary unchanged.
+
+For example, a predicted D start at 100 s with an inside observation at 100.2 s
+and the first outside observation at 101 s moves to 101 s, provided that exit
+lies within the same D run and search window.
 
 ### 4. Decode H/A, add tactical evidence, then decode again
 
-With corrected D fixed, run two-state Viterbi on $q^{mix}$ separately inside
-each maximal live span, using the same H/A switch penalty. These initial labels
-determine a gate $g_t$: zero inside an H/A spell strictly shorter than 5 s,
-one otherwise. Spell durations are measured on the native frame timeline and
-reset at time-block boundaries. A spell of exactly 5 s receives tactical evidence.
+**Initial decode.** With corrected D fixed, run two-state Viterbi on $q^{mix}$
+separately inside each maximal live span, using the same H/A switch penalty.
+
+**Short-spell gate.** The initial labels determine a gate $g_t$: zero inside an
+H/A spell strictly shorter than 5 s, one otherwise. Spell durations are measured
+on the native frame timeline and reset at time-block boundaries. A spell of
+exactly 5 s receives tactical evidence.
+
+**Fusion.**
 
 The tactical expert runs directly and with team identities swapped. Mapping
 the swapped prediction back gives
@@ -370,20 +497,26 @@ q'_{t,H}=\sigma\left(\mathrm{logit}(q^{mix}_{t,H})
 +0.25g_t\mathrm{logit}(h_t)\right),\qquad q'_{t,A}=1-q'_{t,H}.
 $$
 
-Both logit inputs are clipped to $[10^{-6},1-10^{-6}]$. Decode $q'$ again
-inside the same live spans. The short-spell gate suppresses added evidence;
-it does **not** lock those labels, so global decoding may still move their
-boundaries. The corrected D mask is asserted unchanged. There is no additional
-median filter, minimum-duration pruning or manual correction after this pass.
+Both logit inputs are clipped to $[10^{-6},1-10^{-6}]$.
+
+**Final decode.** Decode $q'$ again inside the same live spans.
+
+- The short-spell gate suppresses added evidence; it does **not** lock those
+  labels, so global decoding may still move their boundaries.
+- The corrected D mask is asserted unchanged.
+- There is no additional median filter, minimum-duration pruning or manual
+  correction after this pass.
 
 ### 5. Apply the output mask and serialize
 
-Keep H/A/D inside the tracking-defined halves and overwrite frames with
-nonpositive input period as X. A missing ball alone never triggers X. Write
-199,319 consecutive `frame,label` rows, validate the submission format and check
-the frozen CSV hash. Loose-ball ownership is learned from labels that retain
-the last controlling team until controlled opponent contact; the decoder does
-not detect touch events or explicitly enforce that convention at inference.
+- Keep H/A/D inside the tracking-defined halves and overwrite frames with
+  nonpositive input period as X. A missing ball alone never triggers X.
+- Write 199,319 consecutive `frame,label` rows, validate the submission format
+  and check the frozen CSV hash.
+
+**Loose balls.** Loose-ball ownership is learned from labels that retain the last
+controlling team until controlled opponent contact. The decoder does not detect
+touch events or explicitly enforce that convention at inference.
 
 Implementation: [native probability pooling](../experiments/spell_frontier_baseline.py),
 [calibration](../experiments/feed_spell_push.py),
@@ -394,19 +527,22 @@ Implementation: [native probability pooling](../experiments/spell_frontier_basel
 
 ## Eval
 
-Whole matches are separated for fitting and evaluation. Development uses
-Sportec J03WOY, Metrica Game 3 and SkillCorner 1996435/1996436/2006229.
-The tactical expert is also held out by provider; upstream components do not
-constitute a fully nested provider holdout. We average matches within each
-provider, then providers equally. Each match is evaluated on clean tracking and
-four fixed `feed_like_v2` stress realizations. This simulator uses label-free
+Whole matches are separated for fitting and evaluation. There are two
+evaluation roles:
+
+- **Development (model selection).** Sportec J03WOY, Metrica Game 3 and
+  SkillCorner 1996435/1996436/2006229. The tactical expert is also held out by
+  provider; upstream components do not constitute a fully nested provider
+  holdout. We average matches within each provider, then providers equally.
+- **Deployed-package checks.** The exact deployed pooled package is checked on
+  three additional Sportec matches (J03WPY/J03WQQ/J03WR9) and ten GAR TEST
+  games. Neither set enters fitting. Scores average within each game, then games
+  equally. Nine selected-on GAR VALID games remain separate from TEST.
+
+**Stress testing.** Each match is evaluated on clean tracking and four fixed
+`feed_like_v2` stress realizations. This simulator uses label-free
 challenge-feed statistics to calibrate ball gaps, player dropout, tracking noise
 and identity switches, with missingness concentrated around stoppages.
-
-The exact deployed pooled package is checked on three additional Sportec
-matches (J03WPY/J03WQQ/J03WR9) and ten GAR TEST games. Neither set enters
-fitting. Corruption scores average four realizations within each game, then
-games equally. Nine selected-on GAR VALID games remain separate from TEST.
 
 ```mermaid
 flowchart TD
@@ -435,18 +571,33 @@ Full-match organizer performance is unknown. Sources:
 [tactical evaluation](https://github.com/jekkiechan/more-than-a-hack-2027/blob/submission-2026-v1/experiments/TACTICAL_HA_V1.md)
 and [public diagnostic](https://github.com/jekkiechan/more-than-a-hack-2027/blob/submission-2026-v1/experiments/TACTICAL_PUBLIC_V1.md).
 
-Development selection included about 56 tactical fusion variants.
-The clean short-possession recall guard was not satisfied;
-adoption prioritized overall spell F1. GAR has silver labels, discontinuous
-segments and repeated TEST exposure. Sportec is also a training provider;
-two extra matches had prior evaluation exposure. V2 corruption is
-model-conditioned and uses development labels in its construction. The reused
-public window is small. These protocols cannot be pooled or treated as
-independent continuous-match gold confirmation.
+**How far to trust these numbers.** These protocols cannot be pooled or treated
+as independent continuous-match gold confirmation:
 
-Long ball gaps can preserve a wrong owner, smoothing can merge brief possessions,
-and unseen exits can defeat geometric correction. Further work needs independent,
-continuously annotated matches and improved automatic tracking.
+- Development selection included about 56 tactical fusion variants.
+- GAR has silver labels, discontinuous segments and repeated TEST exposure.
+- Sportec is also a training provider, and two of the extra matches had prior
+  evaluation exposure.
+- V2 corruption is model-conditioned and uses development labels in its
+  construction.
+- The reused public window is small.
+
+## Limitations
+
+**Where it fails:**
+
+- **Long ball gaps** can preserve a wrong owner across the gap.
+- **Brief possessions** can be merged by decoder smoothing. The clean
+  short-possession recall guard was not satisfied; adoption prioritized overall
+  spell F1.
+- **Unseen exits** defeat the geometric dead-ball correction, which needs an
+  observed ball position outside the pitch.
+- **Domain shift.** All training labels come from other providers or from
+  silver-label rules, whose possession definitions differ from the challenge's.
+  Feed-like corruption only approximates the challenge feed.
+
+**With more time** we would build independent, continuously annotated matches
+for confirmation and improve the automatic tracking itself.
 
 ## How to reproduce
 
@@ -467,7 +618,8 @@ git rev-parse HEAD # Record the source revision alongside the output hash.
 uv sync --project submission --locked
 ```
 
-Place the organizer's tactical ATD `.xml` and `.txt` files in `data/tactical/`, then run:
+Place the organizer's tactical ATD `.xml` and `.txt` files in `data/tactical/`,
+then run:
 
 ```sh
 uv run --project submission --locked bash submission/make_submission.sh 'Douki Douki'
