@@ -1,0 +1,27 @@
+[project]
+name = "mtah-submission"
+version = "1.0.0"
+description = "Locked CPU inference environment for the frozen possession submission"
+requires-python = "==3.12.14"
+dependencies = [
+    "numpy==2.3.5",
+    "pandas==2.2.3",
+    "scipy==1.17.0",
+    "scikit-learn==1.8.0",
+    "joblib==1.5.3",
+    "threadpoolctl==3.6.0",
+    "torch==2.8.0+cpu",
+]
+
+[tool.uv]
+package = false
+required-version = "==0.12.23"
+environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
