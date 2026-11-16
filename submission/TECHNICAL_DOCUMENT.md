@@ -147,6 +147,83 @@ correct team: a home-owned frame with predicted home probability 0.9 incurs
 transition term supervises ownership changes between neighboring frames. These
 terms connect frame accuracy with the whole-possession ranking metric.
 
+### Loss functions and target masks
+
+Let $q_t=(q_{t,H},q_{t,A})$ be the conditional ownership softmax and
+$d_t=P(D\mid x_t)$ the player-only dead-ball sigmoid. Their frame probabilities are
+
+$$
+P_t(H)=(1-d_t)q_{t,H},\qquad
+P_t(A)=(1-d_t)q_{t,A},\qquad P_t(D)=d_t.
+$$
+
+The following is the dense-training objective used by the temporal branches;
+the continuation retains its H/A terms while freezing D. These differentiable
+losses encourage possession recovery, but **do not directly optimize the
+official, discrete spell F1**. Spell F1 is used for external evaluation and selection.
+
+**Duration-weighted ownership loss.** For a sampled window $w$, let $K_w$
+contain its known H/A targets in the 10 s core. The loss is
+
+$$
+L_{HA}(w)=\frac{1}{|K_w|}\sum_{t\in K_w}s_t[-\log q_{t,y_t}].
+$$
+
+Only complete H/A spells receive duration weights. For duration $\ell$ seconds,
+computed from native-rate labels before downsampling, the raw factor is
+$r(\ell)=\operatorname{clip}(\sqrt{5/\ell},0.5,2)$. Factors are normalized to
+mean one across eligible sampled rows within each training record. Spells
+touching a record/time-block edge or an unknown target are censored and keep
+$s_t=1$. The normalization can move final weights beyond the raw caps.
+This increases short spells' contribution without treating incomplete runs as
+known short possessions. D and unknown rows contribute no H/A loss; the
+denominator counts known live rows, not the sum of duration weights.
+
+**Ownership-transition loss.** For adjacent sampled frames with known live
+targets, define $z_t=\mathbf{1}[y_t\ne y_{t+1}]$ and
+
+$$
+c_t=q_{t,H}q_{t+1,A}+q_{t,A}q_{t+1,H},\qquad
+\operatorname{BCE}(c,z)=-z\log c-(1-z)\log(1-c).
+$$
+
+Within each data group (original providers or GAR), $L_{tr}$ is half the mean
+BCE over stable pairs plus half the mean over changed pairs. An absent stable/change group
+contributes zero rather than doubling the other group's weight. A pair is
+eligible only if the full native interval between its endpoints is known and
+stays within one time block; both sampled endpoints must be H/A. The final
+core frame may pair with the first right-context frame, preserving chunk-seam
+supervision. Probabilities are clipped to $[10^{-6},1-10^{-6}]$ for BCE.
+This is a balanced surrogate built from endpoint marginals, not a learned
+transition head or a calibrated joint transition probability.
+
+**Dead/live loss and total objective.** For known H/A/D core targets $J_w$,
+the independently parameterized player-only path uses
+
+$$
+L_D(w)=\frac{1}{|J_w|}\sum_{t\in J_w}
+\operatorname{BCE}(d_t,\mathbf{1}[y_t=D]).
+$$
+
+With half of each batch from each data group, the dense-training loss is
+
+$$
+L=\sum_{g\in\{\mathrm{original},\mathrm{GAR}\}}\frac12
+\left(\overline{L}_{HA,g}+0.05L_{tr,g}+\lambda_D\overline{L}_{D,g}\right).
+$$
+
+Bars denote averages of per-window losses within that group. Dense D training
+uses $\lambda_D=1$; H/A continuation omits the D term and preserves its
+checkpoint. The continuation's code name `ce_control` still includes duration
+weights and the transition term; it adds no boundary-margin loss. Unknown
+targets and padded core positions have zero supervised weight. The separate
+short-possession sampler described below changes which windows are drawn, in
+addition to the duration weighting inside each window.
+
+Implementation: [dense trainer](../experiments/sn_dense_train.py),
+[spell weights and transition masks](../experiments/objective_losses.py), and
+[H/A continuation](../experiments/v2_iterative_train.py).
+
 ### The three temporal branches
 
 All three branches share this temporal representation; they differ in training
@@ -196,31 +273,124 @@ identity and averaged. This reduces dependence on home/away naming. The expert
 supplies additional H/A evidence; postprocessing combines it with the temporal
 ensemble while preserving the corrected dead-ball mask.
 
+Its fitting objective is weighted binary log loss on known live frames:
+$L_{tac}=\sum_i a_i\operatorname{BCE}(h_i,\mathbf{1}[y_i=H])/\sum_i a_i$.
+Each provider has equal total weight, divided equally among its matches, views
+and direct/swapped rows. The estimator uses 300 boosting iterations, learning
+rate 0.05, at most 31 leaves per tree, minimum 200 samples per leaf and L2
+regularization 1; early stopping is disabled. It has no D or transition loss.
+See the [tactical trainer](../experiments/tactical_ha_train.py).
+
 Released checkpoints freeze the exact models used for the submitted file.
 
 ## Postprocessing
 
-Weights, decoder cost and timing windows were selected on external development
-data and frozen before final package checks.
+Weights, decoder costs and timing windows were selected on external development
+data and frozen before final package checks. The order matters: first establish
+the dead-ball mask, then decode ownership with that mask fixed.
 
-- **Suppress possession flicker.** A temporal decoder applies an H/A switch cost
-  of 3. This discourages brief unsupported changes that split one possession into
-  several and hurt the whole-possession ranking metric.
-- **Align stoppages with observed exits.** The ball-exit rule moves dead-ball
-  starts toward tracking-observed pitch exits, with zero pitch margin, a 3 s
-  advance window and a 5 s delay window. This uses direct geometric evidence
-  to refine boundaries inferred from slower-changing player motion.
-- **Fuse cautiously.** Add 0.25 times tactical log-odds to temporal H/A log-odds,
-  except inside initially decoded possessions shorter than 5 s. The modest weight
-  adds tactical context while short-spell protection avoids directly reweighting
-  already brief possessions. Final decoding keeps the corrected D mask fixed:
-  the tactical expert can change the owning team, but cannot create stoppages.
-- **Apply the possession convention.** Loose balls, challenges and rebounds stay
-  with the last controlling team until controlled opponent contact. GAR silver
-  labels encode this; an OUT event starts D until the next touch. Inference
-  estimates these boundaries from tracking alone. Frames inside the two
-  tracking-defined halves receive H/A/D; outside frames receive X. There are
-  no manual frame corrections.
+### 1. Reconstruct and pool native-frame probabilities
+
+Each temporal branch predicts H/A/D at all five 5 Hz sampling offsets of the
+25 Hz input. Linearly interpolate each probability channel within its continuous
+time block, holding the nearest sampled value at the block edges. Average the
+two seeds within each offset, then average offsets. No interpolation or decoder
+state crosses a half or timestamp discontinuity. Convert each pooled branch to
+conditional H/A by dividing its H/A probabilities by their sum, then form
+
+$$
+q_t^{mix}=0.50q_t^{CE}+0.375q_t^{dense}+0.125q_t^{diverse}.
+$$
+
+This is an arithmetic probability blend, not a vote among decoded labels.
+The implementation names these roles `ce`, `calibrated` and `adopted`, respectively.
+
+### 2. Decode the initial dead-ball mask
+
+Use the diversified branch's pooled H/A/D probabilities alone for this step.
+The frozen `f062` calibration softens its dead-ball probability to
+$\tilde d_t=\sigma(\operatorname{logit}(d_t)/4)$, with D clipped to
+$[10^{-7},1-10^{-7}]$ before taking the logit. H/A temperature is 1.
+Recombine $((1-\tilde d_t)q_{t,H},(1-\tilde d_t)q_{t,A},\tilde d_t)$
+and run three-state Viterbi decoding independently in each continuous block.
+
+For frame probabilities $p_t$, the decoder finds
+
+$$
+\hat y=\arg\max_y\left[
+\sum_t\log\max(p_t(y_t),10^{-7})-
+\sum_{t>1}C(y_{t-1},y_t)\right].
+$$
+
+Staying in the same state costs zero. H↔A and live↔D switches each have
+configured cost 3, scaled by $fps/10$: the actual penalty is **7.5 at 25 Hz**.
+There is no hard minimum spell duration. Dynamic programming accumulates
+evidence across the block and backtracks the best path; it is not framewise
+argmax or a moving-majority filter. Only its D mask is retained at this stage.
+
+### 3. Snap dead-ball starts to observed pitch exits
+
+The frozen `snap_m0.0` rule uses finite, observed ball coordinates and the pitch
+rectangle $[0,L]\times[0,W]$. Points on the boundary count as inside; any
+strictly outside point counts as outside. Missing coordinates count as neither.
+For each block, perform these edits in order:
+
+1. **Delay an early D start.** For a D run $[a,b)$, search
+   $[a,\min(b,a+5\,fps))$ for the first outside observation. If an inside
+   observation occurs between the original start and that exit, make the
+   intervening frames live, so D starts at the observed exit.
+2. **Advance a late D start.** Recompute D runs after the delay step. Search up
+   to 3 s before each start, bounded by the current time block. After the last
+   inside observation in that interval (or its beginning if none exists), find
+   the first outside observation. Extend D back to it only if the intervening
+   frames contain no existing D segment.
+
+Runs starting at the block boundary are skipped. The rule adjusts existing D
+starts, leaves their ends unchanged and does not create an isolated D run merely
+because an outside point exists. It uses neither ball speed nor frozen-ball
+coordinates as a stoppage test. For example, a predicted D start at 100 s with
+an inside observation at 100.2 s and the first outside observation at 101 s
+moves to 101 s, provided that exit lies within the same D run and search window.
+Missing exits leave the relevant boundary unchanged.
+
+### 4. Decode H/A, add tactical evidence, then decode again
+
+With corrected D fixed, run two-state Viterbi on $q^{mix}$ separately inside
+each maximal live span, using the same H/A switch penalty. These initial labels
+determine a gate $g_t$: zero inside an H/A spell strictly shorter than 5 s,
+one otherwise. Spell durations are measured on the native frame timeline and
+reset at time-block boundaries. A spell of exactly 5 s receives tactical evidence.
+
+The tactical expert runs directly and with team identities swapped. Mapping
+the swapped prediction back gives
+$h_t=\tfrac12(h_t^{direct}+1-h_t^{swapped})$. Fuse it with the temporal blend:
+
+$$
+q'_{t,H}=\sigma\left(\operatorname{logit}(q^{mix}_{t,H})
++0.25g_t\operatorname{logit}(h_t)\right),\qquad q'_{t,A}=1-q'_{t,H}.
+$$
+
+Both logit inputs are clipped to $[10^{-6},1-10^{-6}]$. Decode $q'$ again
+inside the same live spans. The short-spell gate suppresses added evidence;
+it does **not** lock those labels, so global decoding may still move their
+boundaries. The corrected D mask is asserted unchanged. There is no additional
+median filter, minimum-duration pruning or manual correction after this pass.
+
+### 5. Apply the output mask and serialize
+
+Keep H/A/D inside the tracking-defined halves and overwrite frames with
+nonpositive input period as X. A missing ball alone never triggers X. Write
+199,319 consecutive `frame,label` rows, validate the submission format and check
+the frozen CSV hash. Loose-ball ownership is learned from labels that retain
+the last controlling team until controlled opponent contact; the decoder does
+not detect touch events or explicitly enforce that convention at inference.
+
+Implementation: [native probability pooling](../experiments/spell_frontier_baseline.py),
+[calibration](../experiments/feed_spell_push.py),
+[Viterbi recurrence and cost scaling](../experiments/decoder_search.py),
+[ball-exit edits](../experiments/ball_exit_dmask_v1.py),
+[fixed-D ownership decoding](../experiments/v2_spell_balanced_eval.py), and
+[tactical fusion](../experiments/tactical_ha_runtime.py).
 
 ## Eval
 
